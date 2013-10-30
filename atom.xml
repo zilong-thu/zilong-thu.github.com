@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Born in summer]]></title>
+  <title><![CDATA[王子龙的个人博客]]></title>
   <link href="http://zilong-thu.github.io/atom.xml" rel="self"/>
   <link href="http://zilong-thu.github.io/"/>
-  <updated>2013-10-30T21:22:18+08:00</updated>
+  <updated>2013-10-30T21:31:43+08:00</updated>
   <id>http://zilong-thu.github.io/</id>
   <author>
-    <name><![CDATA[Wang Zilong]]></name>
+    <name><![CDATA[王子龙]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
