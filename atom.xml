@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://zilong-thu.github.io/atom.xml" rel="self"/>
+  <link href="http://zilong-thu.github.io/"/>
+  <updated>2013-10-30T20:23:41+08:00</updated>
+  <id>http://zilong-thu.github.io/</id>
+  <author>
+    <name><![CDATA[Wang Zilong]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[all kinds of hints]]></title>
+    <link href="http://zilong-thu.github.io/blog/2013/10/30/all-kinds-of-hints/"/>
+    <updated>2013-10-30T20:08:00+08:00</updated>
+    <id>http://zilong-thu.github.io/blog/2013/10/30/all-kinds-of-hints</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[another article again]]></title>
+    <link href="http://zilong-thu.github.io/blog/2013/10/30/another-article-again/"/>
+    <updated>2013-10-30T15:29:00+08:00</updated>
+    <id>http://zilong-thu.github.io/blog/2013/10/30/another-article-again</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My first octopress blog]]></title>
+    <link href="http://zilong-thu.github.io/blog/2013/10/30/my-first-octopress-blog/"/>
+    <updated>2013-10-30T14:13:00+08:00</updated>
+    <id>http://zilong-thu.github.io/blog/2013/10/30/my-first-octopress-blog</id>
+    <content type="html"><![CDATA[<p>test</p>
+]]></content>
+  </entry>
+  
+</feed>
