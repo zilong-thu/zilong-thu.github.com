@@ -4,7 +4,7 @@
   <title><![CDATA[王子龙的个人博客]]></title>
   <link href="http://zilong-thu.github.io/atom.xml" rel="self"/>
   <link href="http://zilong-thu.github.io/"/>
-  <updated>2013-10-31T11:31:31+08:00</updated>
+  <updated>2013-10-31T11:40:51+08:00</updated>
   <id>http://zilong-thu.github.io/</id>
   <author>
     <name><![CDATA[王子龙]]></name>
@@ -35,13 +35,15 @@
 <ul>
     <li>已读</li>
         <ol>
-            <li>《大话数据结构</li>
-            <li>《高性能JavaScript</li>
+            <li>《大话数据结构》
+                <p>读过此书（没有百分百读完，图、查找这两章没有读完），收获良多。感觉前端工程师确实应该了解数据结构，那位面试官同学把我刷下来不无道理。这本书的确非常适合我这种非计算机专业的、想对数据结构有入门了解的人读。</p>
+            </li>
+            <li>《高性能JavaScript》</li>
         </ol>
     <li>未读</li>
     <ol>
-        <li>《HTML5 经典实例></li>
-        <li>《高性能网站建设指南.</li>
+        <li>《HTML5 经典实例》</li>
+        <li>《高性能网站建设指南》</li>
         <li>《高性能网站建设进阶指南》</li>
         <li>《精通CSS：高级Web标准解决方案》</li>
         <li>《HTML5 Canvas核心技术》</li>
@@ -59,8 +61,6 @@
     </ol>
 </ul>
 
-
-<p>读完《大话数据结构》，收获良多。</p>
 
 <p>【未完待续】</p>
 ]]></content>
