@@ -1,35 +1,38 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+#content .blog-index article h1 a:hover{
+        text-decoration:none;
+}
 #content .blog-index a[rel=full-article] {
-	background: #ebebeb;
-	display: inline-block;
-	padding: .4em .8em;
-	margin-right: .5em;
-	text-decoration: none;
-	color: #666;
-	-webkit-transition: background-color 0.5s;
-	-moz-transition: background-color 0.5s;
-	-o-transition: background-color 0.5s;
-	transition: background-color 0.5s;
-	border: 1px solid #999999;
-	border-radius: 1.5em;
+        background: #ebebeb;
+        display: inline-block;
+        padding: .4em .8em;
+        margin-right: .5em;
+        text-decoration: none;
+        color: #666;
+        -webkit-transition: background-color 0.5s;
+        -moz-transition: background-color 0.5s;
+        -o-transition: background-color 0.5s;
+        transition: background-color 0.5s;
+        border: 1px solid #999999;
+        border-radius: 1.5em;
 }
 .noticeBox{
-	box-shadow: 1px 1px 10px #666666;
-	display:none;
-	font-size:16px;
-	font-weight:bold;
-	margin-left:25px;
-	color:#ffffff;
-	background-color:#FEFAB8;
-	border: 7px solid rgba(90,90,90,.8);
-	border-radius: 6px;
-	padding:20px;
-	z-index: 800;
+        box-shadow: 1px 1px 10px #666666;
+        display:none;
+        font-size:16px;
+        font-weight:bold;
+        margin-left:25px;
+        color:#ffffff;
+        background-color:#FEFAB8;
+        border: 7px solid rgba(90,90,90,.8);
+        border-radius: 6px;
+        padding:20px;
+        z-index: 800;
 }
 .fixed-center{
-	position: fixed;
-	left: 40%;
-	top: 30%;
-	max-width: 300px;
+        position: fixed;
+        left: 40%;
+        top: 30%;
+        max-width: 300px;
 }
