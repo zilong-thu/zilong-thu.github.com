@@ -6,9 +6,6 @@ comments: true
 categories: 
 ---
 <div id="noticeBox" class="noticeBox"></div>
-<input type="button" id="go" value="单击以获取你的地理位置"/>
-<div id="lat_and_long"></div>
-<div id="your_address"></div>
 
 <p>本来想采用Script DOM Element方法动态加载外部脚本，未能如愿（失败了的代码如下）。有时间再研究。</p>
 <pre>
@@ -22,6 +19,12 @@ head.appendChild(scriptElement_a);
 head.appendChild(scriptElement_b);
 </code>
 </pre>
+
+<!-- more -->
+<input type="button" id="go" value="单击以获取你的地理位置"/>
+<div id="lat_and_long" style="display:none;"></div>
+<div id="your_address"></div>
+
 <script>
 $(document).ready(function(){
 $('#go').click(function(){
@@ -40,7 +43,7 @@ function geo_success(postion){
 	//printAddress(postion.coords.latitude, postion.coords.longitude);
 }
 function printLatLong(lat, lon){
-$('#lat_and_long').html('<p>纬度(Latitude):'+lat+'</p><p>经度(Longitude):'+lon+'</p>');
+$('#lat_and_long').html('<p>纬度(Latitude):'+lat+'</p><p>经度(Longitude):'+lon+'</p>').slideDown();
 }
 function error(msg){
 	$('#noticeBox').html(msg).fadeIn("slow");
