@@ -3,7 +3,7 @@ layout: post
 title: "搭建Octopress博客过程中遇到的问题与解决方法"
 date: 2013-11-01 12:43
 comments: true
-keywords: Octopress, 博客搭建, 问题解决
+keywords: Octopress, 博客搭建, 问题解决, SEO
 categories: 
 ---
 ###问题1：Non-fast-forward
@@ -59,3 +59,9 @@ end
 在post.puts "comments: true"下面添加这样一句代码即可：
     
 	post.puts "keywords: "
+
+可以参考
+1. [Octopress 的 SEO 优化](http://havee.me/internet/2013-01/octopress-seo.html)
+2. [SEO for Octopress Websites](http://xit0.org/2013/05/seo-for-octopress-websites/)
+
+对于Octopress SEO技术，目前的文章大同小异。看上面两篇足够了。
