@@ -5,8 +5,6 @@ date: 2013-11-01 12:43
 comments: true
 categories: 
 ---
-###problems-and-solution-duaring-building-octopress-blog
-
 ###问题1：Non-fast-forward
 rake deploy时遇到的：
 {%img /images/blog/error-01.gif %}
