@@ -61,7 +61,20 @@ end
 	post.puts "keywords: "
 
 可以参考
+
 1. [Octopress 的 SEO 优化](http://havee.me/internet/2013-01/octopress-seo.html)
+
 2. [SEO for Octopress Websites](http://xit0.org/2013/05/seo-for-octopress-websites/)
 
 对于Octopress SEO技术，目前的文章大同小异。看上面两篇足够了。
+
+###添加豆瓣侧边栏
+
+所谓“豆瓣用户名”，可以是你在豆瓣的8位数字ID，也可以是你的登录邮箱。例如我的_config.yml文件是这样修改的。
+
+  # Douban Books
+  douban_user: ***@qq.com
+
+参考：
+
+[Octopress主题改造](http://shanewfx.github.io/blog/2012/08/13/improve-blog-theme/)
