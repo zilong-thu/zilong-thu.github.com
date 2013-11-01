@@ -1,0 +1,18 @@
+---
+layout: post
+title: "HTML5 audio 实验"
+date: 2013-11-01 13:51
+comments: true
+categories: 
+---
+<!-- more --> 
+下面是一段音频，来自《火影忍者》的插曲《夏日星》。文件大小为1.4MB，比较大。因为我的博客在写这篇博文之前只有300K多一点。
+
+`loop`属性：当用户点击了播放，并且不点击暂停，则音频将循环播放。这个比`autoplay`属性友好很多。
+
+<!-- more --> 
+
+<audio controls loop>
+<source src="/audios/naruto_xia_ri_xing.mp3">
+HTML5 not supported.
+</audio>
