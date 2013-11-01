@@ -3,6 +3,7 @@ layout: post
 title: "HTML5相关学习书籍"
 date: 2013-10-31 15:21
 comments: true
+keywords: HTML5, Canvas
 categories: 
 ---
 

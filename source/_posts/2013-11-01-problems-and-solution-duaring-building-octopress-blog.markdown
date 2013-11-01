@@ -3,6 +3,7 @@ layout: post
 title: "搭建Octopress博客过程中遇到的问题与解决方法"
 date: 2013-11-01 12:43
 comments: true
+keywords: Octopress, 博客搭建, 问题解决
 categories: 
 ---
 ###问题1：Non-fast-forward
@@ -19,3 +20,42 @@ rake deploy时遇到的：
 $ rake setup_github_pages</code>
 </pre>
 这样就会生成`_deploy/`目录，以及将其设为master分支，并对应远程仓库。
+
+###如何在新建博文时添加关键字
+尚不知道如何自动生成关键字，但是可以在运行`rake new_post['your_title']`的时候这样生成keywords选项，然后手动填写关键词：
+
+在octopress的根目录下，找到Rakefile文件，打开，在100行左右有如下代码：
+
+<pre>
+<code>
+# usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
+desc "Begin a new post in #{source_dir}/#{posts_dir}"
+task :new_post, :title do |t, args|
+  if args.title
+    title = args.title
+  else
+    title = get_stdin("Enter a title for your post: ")
+  end
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{posts_dir}"
+  filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: post"
+    post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+    post.puts "comments: true"
+    post.puts "categories: "
+    post.puts "---"
+  end
+end
+</code>
+</pre>
+
+在post.puts "comments: true"下面添加这样一句代码即可：
+    
+	post.puts "keywords: "
