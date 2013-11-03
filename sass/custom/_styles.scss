@@ -1,7 +1,11 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+#content .blog-index article h1 a{
+    text-shadow: 1px 1px 5px #333333;
+}
 #content .blog-index article h1 a:hover{
         text-decoration:none;
+        text-shadow: 1px 1px 4px #666666;
 }
 #content .blog-index a[rel=full-article] {
         background: #ebebeb;
@@ -16,6 +20,9 @@
         transition: background-color 0.5s;
         border: 1px solid #999999;
         border-radius: 1.5em;
+}
+article header h1{
+    text-shadow: 1px 1px 5px #333333;
 }
 .noticeBox{
         box-shadow: 1px 1px 10px #666666;
@@ -49,5 +56,5 @@ hr{
     margin: 1.2em 0;
     height:1px;
     border:none;
-    border-top:1px dashed #cccccc;
+    border-top:1px dashed #0066CC;
 }
