@@ -12,3 +12,5 @@ categories:
 <li>波波熊的博客：<a href="http://boboshone.com/blog/2013/06/05/write-octopress-blog-on-multiple-machines/">在多台电脑上写Octopress博客</a></li>
 </ul>
 
+<!-- more -->
+
