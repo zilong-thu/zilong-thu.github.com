@@ -195,3 +195,36 @@ dojo.addClass(element, 'reveal');
 {%img /images/blog/phisicsJS.PNG %}
 
 短小的代码则可以考虑采用“零全局变量”方式嵌入到页面中。
+
+###检测引用值
+引用值也称作对象（`object`）。在JavaScript中除了5种原始类型外的值都是引用。
+
+JavaScript内置引用类型：
+
++ Object
++ Array
++ Date
++ Error
++ Regexp
++ Function
+
+检测某个引用值类型的最好方法是使用`instanceof`运算符，此运算符的返回值类型是Boolean。注意：所有的对象都被认为是`Object`的实例。
+
+关于检测数组，ECMAScript5 将`Array.isArray()`正式引入JavaScript，唯一的目的就是准确地检测一个值是否为数组。
+
+不过此前Kangax提出的优雅的解决方案还是值得欣赏的：
+
+	function isArray(){
+		return Object.prototype.toString.call(value) === "[object Array]";
+	}
+
+在当前，可以这样实现数组检测：
+
+	function isArray(value) {
+		if (typeof Array.isArray === "function") {
+			return Array.isArray(value);
+		} else {
+			return Object.prototype.toString.call(value) === "[object Array]";
+		}
+	}
+
