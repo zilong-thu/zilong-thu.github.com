@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://zilong-thu.github.io/sitemap.xml 
