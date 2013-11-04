@@ -170,3 +170,28 @@ Y.one(element).addClass('reveal');
 dojo.addClass(element, 'reveal');
 </code>
 </pre>
+
+###将HTML从JavaScript中抽离
+【待实践】
+
+在HTML中使用占位符预先写好文档结构（模板），然后使用JS根据模板动态生成页面。
+
+这一节的技术是比较新潮的。复杂客户端模板可参考Handlebars所提供的解决方案。
+
+###单全局变量模式
+单全局变量模式已经在各种流行的JavaScript类库中广泛使用了。
+
+单全局变量模式是指，整个上下文中，只创建一个全局变量；它不会和内置的API冲突，并将你所有的功能代码都挂载到这个全局对象上。
+
+> + YUI定义了唯一一个YUI全局对象
+> + jQuery定义了两个全局对象，$和jQuery。只有在$被其他的类库使用了的情况下，为了避免冲突而使用jQuery。
+> + Dojo定义了一个dojo全局对象。
+> + Cloure类库定义了一个goog全局对象。
+
+关于模块，提到了两个：YUI模块和AMD模块（Asynchronous Module Definition，异步模块定义）。
+
+现在比较好的一个物理效果引擎，[PhysicsJS](http://wellcaffeinated.net/PhysicsJS/)，就采用了AMD模式。
+
+{%img /images/blog/phisicsJS.PNG %}
+
+短小的代码则可以考虑采用“零全局变量”方式嵌入到页面中。
