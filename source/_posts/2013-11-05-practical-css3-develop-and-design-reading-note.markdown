@@ -44,6 +44,41 @@ IE条件注释这样使用：
 + if lte IE 8  // 如果是IE8或者更早的IE浏览器
 
 ###Web字体
+使用下载了的ttf格式的UglyQua字体，将其放在网站根目录下的fonts文件夹中，就可以使用`@font-face`规则自定义web字体了。CSS代码如下：
 
-<p class="myFont">UglyQua</p>
+	// css code
+	@font-face{
+    	font-family: UglyQua;
+    	src: url('/fonts/UglyQua.ttf');
+    	src: url('/fonts/UglyQua-Italic.ttf');
+	}
+	.myFont{
+	    font-family: UglyQua;
+	}
 
+	// html code
+	<p class="myFont">This is some text using font format <i>UglyQua</i>.</p>
+
+<p class="myFont">This is some text using font format <i>UglyQua</i>.</p>
+
+###多重文本阴影
+在同一个CSS选择器下，可以应用多重文本阴影。例如
+
+	// css code
+	.multi-shadow{
+		font-size:2em;
+		text-shadow: 0 0 2px #000,
+					 0 0 2px #aaa,
+					 0 0 4px #999,
+					 0 0 6px #888,
+					 0 0 8px #666,
+					 0 6px 6px rgba(0,0,0,0.5),
+					 0 8px 20px rgba(0,0,0,0.5);
+	}
+
+	// html code
+	<span class="multi-shadow">Multiple Text Shadows!</span>
+
+那么就会得到这样的字体：
+
+<span class="multi-shadow">Multiple Text Shadows!</span>
