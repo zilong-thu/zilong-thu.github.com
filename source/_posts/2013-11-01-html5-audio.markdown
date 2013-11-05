@@ -11,7 +11,9 @@ categories:
 
 <!-- more --> 
 
+<figure>
 <audio controls loop>
 <source src="/audios/naruto_xia_ri_xing.mp3">
-HTML5 not supported.
 </audio>
+<figcaption>《火影忍者》插曲《夏日星》</figcaption>
+</figure>
