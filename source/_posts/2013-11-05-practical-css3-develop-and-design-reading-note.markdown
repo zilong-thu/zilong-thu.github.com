@@ -82,3 +82,26 @@ IE条件注释这样使用：
 那么就会得到这样的字体：
 
 <span class="multi-shadow">Multiple Text Shadows!</span>
+
+###控制文本溢出
+如果容器盒定义了`overflow: hidden;`，那么其文本子节点的`text-overflow`属性控制文本溢出时的显示效果。
+
+语法：
+
+	text-overflow: clip|ellipsis|string;
+
++ clip
+	修剪文本。
++ ellipsis
+	显示省略符号来代表被修剪的文本。主流的现代浏览器都支持此属性。
++ string
+	使用给定的字符串来代表被修剪的文本。
+
+具体见[w3school的例子](http://www.w3school.com.cn/cssref/pr_text-overflow.asp)吧。
+
+但是目前对于第三个属性，只有Firefox支持，Chrome尚不支持。Firefox中的使用方法如下：
+
+	text-overflow: ' ...read more';
+
+###控制断字
+使用hyphens属性。
