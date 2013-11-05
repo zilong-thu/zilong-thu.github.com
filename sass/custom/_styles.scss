@@ -47,11 +47,13 @@ article header h1{
         max-width: 300px;
 }
 #blog-archives  article{
-    border-radius: 0.3em;
-    border-right: 0.3em solid transparent;
+    border-radius: 0.4em;
+    border-right: 0.4em solid transparent;
+    color: #333333;
 }
 #blog-archives article:hover{
-    border-right: 0.3em solid #7FFF00;
+    border-right: 0.4em solid #7FFF00;
+    color: #000000;
 }
 #blog-archives h1 a:hover{
     text-decoration:none;

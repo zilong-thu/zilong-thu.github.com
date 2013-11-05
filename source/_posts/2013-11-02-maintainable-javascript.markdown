@@ -210,7 +210,7 @@ JavaScript内置引用类型：
 
 检测某个引用值类型的最好方法是使用`instanceof`运算符，此运算符的返回值类型是Boolean。注意：所有的对象都被认为是`Object`的实例。
 
-关于检测数组，ECMAScript5 将`Array.isArray()`正式引入JavaScript，唯一的目的就是准确地检测一个值是否为数组。
+关于检测数组，ECMAScript 5 将`Array.isArray()`正式引入JavaScript，唯一的目的就是准确地检测一个值是否为数组。
 
 不过此前Kangax提出的优雅的解决方案还是值得欣赏的：
 
@@ -228,3 +228,37 @@ JavaScript内置引用类型：
 		}
 	}
 
+###关于继承
+（1）基于对象的继承
+
+基于对象的继承也叫做“原型继承”，一个对象继承另外一个对象（的属性和方法）是不需要调用构造函数的。ECMAScript 5 的`Object.create()`方法是实现这种继承的最简单的方式。例如：
+
+	var person = {
+		name: "Nicholas",
+		sayName: function(){
+			alert(this.name);
+		}
+	};
+
+	var myPerson = Object.create(person);
+	myPerson.sayName();
+
+myPerson会自动继承所有来自person的属性和方法，而如果myPerson重新实现sayName方法，则myPerson.sayName()会自动切断对person.sayName()的访问。
+
+（2）基于类型的继承
+
+###ECMAScript 5 阻止修改策略
+
++ 防止扩展
++ 密封
++ 冻结
+
+##总结
+对于纯粹学习JavaScript的人来说，可以只阅读本书的第一部分和第二部分。第三部分“自动化”，讲在团队开发中如何组织文件管理、文件合并、校验与测试等。
+
+Nicholas写在引言中的话也让人印象深刻。[这里](http://book.51cto.com/art/201303/385990.htm)可以看到引言的网页版。强烈推荐想读此书或者在犹豫要不要买此书的人都先去读一读这篇引言。
+
+总体而言，收获很大。我一边读，就一边觉得，其实像《编写可维护的JavaScript》《JavaScript经典实例》《JavaScript核心技术》这些小部头的书，所讲的内容在《JavaScript权威指南》也大都提到过了，仅仅由于《JavaScript权威指南》是我学习JavaScript时读的第一本书，况且又如此大部头，因而没能读仔细、读透彻的缘故。
+
+读了《JavaScript权威指南》之后我读了《JavaScript核心概念及实践》《高性能JavaScript》，然后现在又读了《编写可维护的JavaScript》，感觉后面这几本可以称为《JavaScript权威指南》的辅助读本，也是进阶读本。
+现在觉得当时如果买Nicholas的《JavaScript高级程序设计》作为学习JavaScript的第一本书，效果可能会更好。因为《JavaScript权威指南》确实偏晦涩。
