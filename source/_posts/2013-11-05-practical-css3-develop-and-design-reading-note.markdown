@@ -6,7 +6,7 @@ comments: true
 keywords: practical css3, develop and design, CSS3, 前端
 categories: 
 ---
-[在豆瓣读书中查看此书](http://book.douban.com/subject/24745215/)
+本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。本书详细信息可以参见[豆瓣读书：《CSS3实战：开发与设计》](http://book.douban.com/subject/24745215/)。
 
 ###用rem调整文本大小
 参见 [http://www.w3.org/TR/css3-values/](http://www.w3.org/TR/css3-values/)
