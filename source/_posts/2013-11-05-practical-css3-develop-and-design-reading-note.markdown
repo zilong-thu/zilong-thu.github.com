@@ -6,6 +6,8 @@ comments: true
 keywords: practical css3, develop and design, CSS3, 前端
 categories: 
 ---
+[在豆瓣读书中查看此书](http://book.douban.com/subject/24745215/)
+
 ###用rem调整文本大小
 参见 [http://www.w3.org/TR/css3-values/](http://www.w3.org/TR/css3-values/)
 
@@ -166,3 +168,74 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 </div>
 
 像`backface-visibility`（当元素在3D空间旋转而导致其正面远离观察者时，指定它的背面是否可见），`translate`,`preserve-3d`这些属性，目前浏览器支持度还不是很好，暂不研究了。
+
+###CSS3 transition
+下面是7种不同的timing-function属性值的实验。鼠标悬浮于上即可看到在3秒内不同timing-function产生的过渡动画效果。
+
+<div id="transition-example-div">
+	<div class="linear">linear</div>
+	<div class="ease">ease</div>
+	<div class="ease-out">ease-out</div>
+	<div class="ease-in">ease-in</div>
+	<div class="ease-in-out">ease-in-out</div>
+	<div class="steps">steps(5)</div>
+	<div class="cubic-bezier">cubic-bezier(0.25, 0.1, 0.25, 1.0)</div>
+</div>
+
+###CSS3 animation
+
+<span class="button_glow">发光按钮</span>
+
+下面我们将上面制作的火焰文字动起来。
+
+<div class="burning_text">燃烧的文字动画</div>
+
+CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用`@-webkit-keyframes text-flames`定义的样式（且整个规则copy一遍），Firefox最新版则已经支持不带前缀的`@keyframes`规则了。
+
+	@keyframes text-flames{
+	    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
+	                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
+	    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
+	                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
+	    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
+	                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
+	    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
+	                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
+	    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
+	                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
+	    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
+	                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
+	    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
+	                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
+	    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
+	                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
+	    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
+	                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
+	    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
+	                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
+	}
+	div.burning_text{
+		-webkit-animation: text-flames 0.6s infinite;
+	    animation: text-flames 0.6s infinite;
+	    font-size: 3em;
+	    color: orange;
+	    line-height: 2em;
+	    font-family: sans-serif;
+	    font-weight: bold;
+	}
+
+当然了，将动画用于使文字呈现闪烁功能，有点像回到了以前文本的`blink`噩梦时代。还是得将动画的精力放在其他上面。动画的精髓应该在于：如何安排关键帧属性。
+
+###CSS3与图标
+约定俗成的图标能比文字更快更准确地传达信息。讲CSS的书很少专门讲图标，不过相信讲“交互设计”这类主题的书籍应该会非常强调图标的重要性。
+
+这应该涉及符号学与人类学、语言学。图标传达信息非常直接，与人类早期创造象形文字的原因是一样的。文字后来才出现，可以弥补象形符号的不足，使其更准确——但仍不够精确，无法完全避免误解。
+
+图标应作为背景图片而不是img元素放入页面，并且，在CSS3之前，就已经有针对背景图片的优化技术：CSS Sprite。最主要目的就是减少HTTP请求数目。
+
+另外一个非常赞的做法是，使用纯HTML+CSS制作的图标。我已知的例子是三角形的制作以及由其进阶衍生的气泡提示框的制作（来自另一本CSS3的入门书籍：[《CSS3实用指南》](http://book.douban.com/subject/10482084/) by 吉伦瓦特）。
+
+Lucian Martin提供了一套成熟的图标集。见 [Peculiar](http://lucianmarin.com/peculiar)
+
+{%img /images/blog/Peculiar.PNG %}
+
