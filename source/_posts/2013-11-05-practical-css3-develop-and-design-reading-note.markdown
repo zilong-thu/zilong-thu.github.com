@@ -83,6 +83,24 @@ IE条件注释这样使用：
 
 <span class="multi-shadow">Multiple Text Shadows!</span>
 
+使用下面的代码则可以创造火焰文字：
+
+	// css code
+	.fire-words{
+	    font-size: 2em;
+	    text-shadow: 0 0 4px white,
+	                 0 -5px 4px #ffff33,
+	                 2px -10px 6px #ffdd33,
+	                 -2px -15px 11px #ff8800,
+	                 2px -25px 18px #ff2200;
+	    color: orange;
+	}
+
+	// html code
+	<p class="fire-words">火焰文字</p>
+
+<p class="fire-words">火焰文字</p>
+
 ###控制文本溢出
 如果容器盒定义了`overflow: hidden;`，那么其文本子节点的`text-overflow`属性控制文本溢出时的显示效果。
 
@@ -106,3 +124,45 @@ IE条件注释这样使用：
 ###控制断字
 使用hyphens属性。
 
+###border-radius高级
+
+	border-radius: 10px/20px;
+
+意味着每个圆角水平半径为10px，垂直半径为20px。而
+
+	border-radius: 5px 10px 15px 20px/30px 15px 10px 5px;
+
+`/`之前的代表从左上角顺时针各个角的水平半径，后面则代表四个角的垂直半径。这样应该就可以画一个椭圆的盒子出来了：
+
+	.ellipse{
+		width: 400px;
+	    height: 200px;
+	    border-radius: 200px/100px;
+	    background-color: #cccccc;
+	    line-height: 200px;
+	    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+	}
+
+<div class="ellipse">这是一个椭圆形的div盒子。</div>
+
+###渐变色
+本质上来讲，CSS渐变是一种特殊的背景图片，你完全可以把它放在任何一个图片能工作的位置，例如`background-image`和`border-image`。
+
+在线性渐变中，对角线关键词能保证渐变方向总是从一个角到另一角，但角度则是从左上角开始逆时针转的，除非是正方形，否则135°就不是从右上角到左下角的渐变了。
+
+###多重背景
+CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`background`中添加多个`img`或者`gradient`即可。背景的层叠顺序是：先声明的在上层，后声明的在下层，像photoshop，向栈，但绝不像CSS的层叠顺序啊——确实，鬼知道那些CSS规范制定者脑子里在想什么。
+
+###CSS3 transform
+下面的代码，Chrome不支持。但是新版的Firefox完全没问题。
+
+<div id="book_wrapper" style="position: relative;height:400px;transform: perspective(1200px) rotateY(-9deg);transform-style: preserve-3d;">
+	<article id="book_front" style="transform: translateZ(3rem);">
+		<p style="font-size:1.5em;text-alignt:center;font-weight:bold;">随笔</p>
+	</article>
+	<article id="book_p1" style="transform: translateZ(0rem);"></article>
+	<article id="book_p2" style="transform: translateZ(-3rem);"></article>
+	<article id="book_back" style="transform: translateZ(-6rem);"></article>
+</div>
+
+像`backface-visibility`（当元素在3D空间旋转而导致其正面远离观察者时，指定它的背面是否可见），`translate`,`preserve-3d`这些属性，目前浏览器支持度还不是很好，暂不研究了。

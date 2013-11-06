@@ -93,12 +93,37 @@ article blockquote{
     font-family: UglyQua;
 }
 .multi-shadow{
-        font-size:2em;
-        text-shadow: 0 0 2px #000,
-                     0 0 2px #aaa,
-                     0 0 4px #999,
-                     0 0 6px #888,
-                     0 0 8px #666,
-                     0 6px 6px rgba(0,0,0,0.5),
-                     0 8px 20px rgba(0,0,0,0.5);
-    }
+    font-size:2em;
+    text-shadow: 0 0 2px #000,
+                 0 0 2px #aaa,
+                 0 0 4px #999,
+                 0 0 6px #888,
+                 0 0 8px #666,
+                 0 6px 6px rgba(0,0,0,0.5),
+                 0 8px 20px rgba(0,0,0,0.5);
+}
+.ellipse{
+    width: 400px;
+    height: 200px;
+    border-radius: 200px/100px;
+    background-color: #cccccc;
+    line-height: 200px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+.fire-words{
+    font-size: 3em;
+    text-shadow: 0 0 4px white,
+                 0 -5px 4px #ffff33,
+                 2px -10px 6px #ffdd33,
+                 -2px -15px 11px #ff8800,
+                 2px -25px 18px #ff2200;
+    color: orange;
+}
+#book_wrapper article{
+    position: absolute;
+    width: 240px;
+    height: 300px;
+    border-radius: 30px;
+    background-color: #cccccc;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
