@@ -32,6 +32,8 @@ categories:
 				<p>很不错的HTML5入门书籍。</p>
 			<li>《编写可维护的JavaScript》</li>
 				<p>精华在前两部分。</p>
+			<li>《CSS3实战》</li>
+				<p>用给出的例子练练挺好。</p>
 		</ol>
 	<li>未读</li>
 	<ol>
@@ -45,7 +47,6 @@ categories:
 		<li>《黑客与画家》</li>
 		<li>《CSS权威指南》</li>
 		<li>《完美网页的视觉设计法则》</li>
-		<li>《CSS3实战》</li>
 		<li>《字体与版式设计》</li>
 		<li>《计算机网络》</li>
 		<li>《PHP和MySQL Web开发》</li>

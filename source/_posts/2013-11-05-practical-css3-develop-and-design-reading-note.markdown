@@ -239,3 +239,49 @@ Lucian Martin提供了一套成熟的图标集。见 [Peculiar](http://lucianmar
 
 {%img /images/blog/Peculiar.PNG %}
 
+###弹性盒子：flexbox
+CSS3为`display`属性添加了一个新的值：`flex`。`flex-flow`定义了弹性盒子里面子元素的流动方向。
+
+	// css code
+	section{
+		display: flex;
+		flex-flow: row;
+	}
+	article{
+		width: 30%;
+		padding: 1em;
+	}
+
+	// html code
+	<section>
+		<article></article>
+		<article></article>
+		<article></article>
+		<article></article>
+		<article></article>
+	</section>
+
+##响应式布局之媒介查询
+	
+	@media screen and (max-width: 800px){
+		/* some code here */
+	}
+
+该代码意思是：当且仅当设备是屏幕媒体类型并且浏览器窗口宽度不超过800px时，应用代码块里的样式。
+
+然而移动设备的浏览器有时候是个骗子：它会按照假设的宽度去渲染网页，而不是使用设备的宽度。解决此问题的方法是使用`viewport`。在HTML的`<head>`里添加：
+
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+这段代码会视情况来触发媒介查询从而让浏览器已自身的实际宽度来渲染网页。
+
+##总结
+★★★★☆（其实不到四星，也就3.7星这样）
+
+总体而言，这本书文笔不是特别晦涩，书里面没有放置完整的代码，而是放在网站上，因此节省了空间；对于CSS3的主要特性都讲到了，也给出了很好的演示例子。错误不多。作者目前就职于Opera，很多例子都会涉及到代码在Opera浏览器下的表现以及与其他浏览器的差异，算是视角比较独特，因为Opera的用户群比Firefox，Chrome，Safari都要少。
+
+如果你想学习CSS3，又完全没有读过任何一本CSS3方面的书籍，可以从这本入手。
+
+{%img /images/blog/browser-market-share-2013-11-6.PNG %}
+
+（桌面浏览器全球市场份额，截止到2013-11-06）
