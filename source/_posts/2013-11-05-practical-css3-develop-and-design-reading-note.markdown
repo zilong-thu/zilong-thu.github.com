@@ -190,7 +190,7 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 
 <div class="burning_text">燃烧的文字动画</div>
 
-CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用`@-webkit-keyframes text-flames`定义的样式（且整个规则copy一遍），Firefox最新版则已经支持不带前缀的`@keyframes`规则了。
+CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用`@-webkit-keyframes text-flames`定义的样式（且整个规则copy一遍），Firefox最新版和IE10(WIN8平台下的)则已经支持不带前缀的`@keyframes`规则了。
 
 	@keyframes text-flames{
 	    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
