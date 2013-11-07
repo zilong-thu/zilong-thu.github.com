@@ -1,0 +1,10 @@
+---
+layout: post
+title: "*我的简历"
+date: 2013-10-30 17:29
+comments: true
+categories: 个人-生活
+---
+【待完成】
+<!-- more --> 
+
