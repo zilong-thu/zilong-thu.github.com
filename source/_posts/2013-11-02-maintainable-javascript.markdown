@@ -4,7 +4,7 @@ title: "《编写可维护的JavaScript》读书笔记"
 date: 2013-11-02 22:23
 comments: true
 keywords: JavaScript, 编程规范, Maintainable JavaScript, JavaScript代码规范
-categories: 读书笔记, Web前端
+categories: 读书笔记
 ---
 “程序是写给人读的，只是偶尔让计算机执行一下。”
 

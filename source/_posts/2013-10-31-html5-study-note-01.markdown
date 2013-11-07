@@ -4,7 +4,7 @@ title: "HTML5相关学习书籍"
 date: 2013-10-31 15:21
 comments: true
 keywords: HTML5, Canvas
-categories: 读书笔记，Web前端
+categories: HTML5
 ---
 
 现在仍有不少用户使用IE8/9（30.85%，见下图），这俩浏览器对HTML5的支持并不完善。而是用“现代浏览器”的用户则达到了47.25%以上——这里，“现代浏览器”包括：IE10+,Chrome, Firefox, Safari。个人观点：只要现代浏览器用户数量超过50%，就可以认为进入HTML5时代了——之后的web应用开发就应该尽量使用HTML5标准了~~

@@ -4,7 +4,7 @@ title: "学习HTML5 Web Worker"
 date: 2013-11-07 00:36
 comments: true
 keywords: Web Worker, HTML5
-categories: HTML5, Web前端
+categories: HTML5
 ---
 以下摘自《JavaScript权威指南·第6版》
 
