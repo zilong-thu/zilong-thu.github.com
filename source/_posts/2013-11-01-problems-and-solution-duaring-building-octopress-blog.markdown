@@ -4,7 +4,7 @@ title: "搭建Octopress博客过程中遇到的问题与解决方法"
 date: 2013-11-01 12:43
 comments: true
 keywords: Octopress, 博客搭建, 问题解决, SEO
-categories: 
+categories: Octopress
 ---
 ###问题1：Non-fast-forward
 rake deploy时遇到的：

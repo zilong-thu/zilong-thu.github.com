@@ -4,7 +4,7 @@ title: "《书籍设计（第10辑）》简评"
 date: 2013-11-06 22:56
 comments: true
 keywords: 书籍设计, book design
-categories: 
+categories: 读书笔记
 ---
 
 > 学无新旧也，无中西也，无有用无用也。凡立此名者，皆不学之徒，即学焉，而未尝知学者也。

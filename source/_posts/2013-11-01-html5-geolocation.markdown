@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "html5地理位置获取：GeoLocation"
+title: "HTML5地理位置获取：GeoLocation"
 date: 2013-11-01 15:42
 comments: true
-categories: 
+categories: HTML5
 ---
 <div id="noticeBox" class="noticeBox"></div>
 

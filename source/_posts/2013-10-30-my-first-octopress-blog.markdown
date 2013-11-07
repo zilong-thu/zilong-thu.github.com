@@ -3,7 +3,7 @@ layout: post
 title: "第一篇Octopress博文"
 date: 2013-10-30 14:13
 comments: true
-categories: 
+categories: 原创
 ---
 
 ###跟世界说**“你好”**！
