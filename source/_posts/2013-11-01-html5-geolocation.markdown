@@ -7,6 +7,9 @@ categories:
 ---
 <div id="noticeBox" class="noticeBox"></div>
 
+在包含GPS硬件的设备上，通过GPS单元可以获取精确的位置信息。不过，大多数情况下，位置信息都是通过Web获取的。当浏览器提交Internet IP地址给一个Web服务器的时候，该服务器通常能够知道（基于ISP记录）该IP属于哪个城市（通常广告商会在服务器端这么做）。
+<!-- more -->
+
 <p>本来想采用Script DOM Element方法动态加载外部脚本，未能如愿（失败了的代码如下）。有时间再研究。</p>
 <pre>
 <code>
@@ -20,10 +23,14 @@ head.appendChild(scriptElement_b);
 </code>
 </pre>
 
-<!-- more -->
-<input type="button" id="go" value="单击以获取你的地理位置"/>
+本例子涉及使用Google静态地图图片技术，见： [Static Maps API V2 开发者指南](https://developers.google.com/maps/documentation/staticmaps/?hl=zh-cn#URL_Parameters)
+
+单击下面的按钮，可以获得你的地理位置坐标，并借助谷歌生成你所在城市的静态地图。
+
+<input type="button" id="go" value="Click Here!" style="height:3em;padding: 2px 0.5em;"/>
 <div id="lat_and_long" style="display:none;"></div>
 <div id="your_address"></div>
+<div id="div_staticmap"></div>
 
 <script>
 $(document).ready(function(){
@@ -39,11 +46,30 @@ $('#go').click(function(){
 });
 
 function geo_success(postion){
-	printLatLong(postion.coords.latitude, postion.coords.longitude);
+	var latitude  = postion.coords.latitude,
+		longitude = postion.coords.longitude,
+		accuracy  = postion.coords.accuracy;
+	printLatLong(latitude, longitude);
+	setMapURL(latitude, longitude, accuracy);
 	//printAddress(postion.coords.latitude, postion.coords.longitude);
 }
 function printLatLong(lat, lon){
 $('#lat_and_long').html('<p>纬度(Latitude):'+lat+'</p><p>经度(Longitude):'+lon+'</p>').slideDown();
+}
+function setMapURL(latitude, longitude, accuracy){
+	var image = document.createElement('img');
+	var url = 'http://maps.googleapis.com/maps/api/staticmap'+
+			  '?center=' + latitude + ',' + longitude + '&size=600x450&sensor=true';
+	
+	// 设置大致的缩放级别
+	var zoomlevel = 20;
+	if(accuracy > 70){
+		zoomlevel = zoomlevel - Math.round(Math.log(accuracy/30)/Math.LN2);
+	}
+	url = url + '&zoom='+ zoomlevel;
+
+	image.src = url;
+	$('#div_staticmap').html('').append(image);
 }
 function error(msg){
 	$('#noticeBox').html(msg).fadeIn("slow");
