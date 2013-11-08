@@ -61,7 +61,7 @@ IE条件注释这样使用：
 	// html code
 	<p class="myFont">This is some text using font format <i>UglyQua</i>.</p>
 
-<p class="myFont">This is some text using font format <i>UglyQua</i>.</p>
+<p class="myFont" style="font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
 
 ###多重文本阴影
 在同一个CSS选择器下，可以应用多重文本阴影。例如
@@ -83,7 +83,7 @@ IE条件注释这样使用：
 
 那么就会得到这样的字体：
 
-<span class="multi-shadow">Multiple Text Shadows!</span>
+<span class="multi-shadow" style="font-size:2em;">Multiple Text Shadows!</span>
 
 使用下面的代码则可以创造火焰文字：
 
@@ -108,7 +108,7 @@ IE条件注释这样使用：
 
 语法：
 
-	text-overflow: clip|ellipsis|string;
+	text-overflow: clip | ellipsis | string;
 
 + clip
 	修剪文本。
@@ -183,9 +183,6 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 </div>
 
 ###CSS3 animation
-
-<span class="button_glow">发光按钮</span>
-
 下面我们将上面制作的火焰文字动起来。
 
 <div class="burning_text">燃烧的文字动画</div>

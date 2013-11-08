@@ -7,44 +7,44 @@ article{
     text-shadow: 1px 1px 5px #333333;
 }
 #content .blog-index article h1 a:hover{
-        text-decoration:none;
-        text-shadow: 1px 1px 4px #666666;
+    text-decoration:none;
+    text-shadow: 1px 1px 4px #666666;
 }
 #content .blog-index a[rel=full-article] {
-        background: #ebebeb;
-        display: inline-block;
-        padding: .4em .8em;
-        margin-right: .5em;
-        text-decoration: none;
-        color: #666;
-        -webkit-transition: background-color 0.5s;
-        -moz-transition: background-color 0.5s;
-        -o-transition: background-color 0.5s;
-        transition: background-color 0.5s;
-        border: 1px solid #999999;
-        border-radius: 1.5em;
+    background: #ebebeb;
+    display: inline-block;
+    padding: .4em .8em;
+    margin-right: .5em;
+    text-decoration: none;
+    color: #666;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+    transition: background-color 0.5s;
+    border: 1px solid #999999;
+    border-radius: 1.5em;
 }
 article header h1{
     text-shadow: 1px 1px 5px #333333;
 }
 .noticeBox{
-        box-shadow: 1px 1px 10px #666666;
-        display:none;
-        font-size:16px;
-        font-weight:bold;
-        margin-left:25px;
-        color:#ffffff;
-        background-color:#FEFAB8;
-        border: 7px solid rgba(90,90,90,.8);
-        border-radius: 6px;
-        padding:20px;
-        z-index: 800;
+    box-shadow: 1px 1px 10px #666666;
+    display:none;
+    font-size:16px;
+    font-weight:bold;
+    margin-left:25px;
+    color:#ffffff;
+    background-color:#FEFAB8;
+    border: 7px solid rgba(90,90,90,.8);
+    border-radius: 6px;
+    padding:20px;
+    z-index: 800;
 }
 .fixed-center{
-        position: fixed;
-        left: 40%;
-        top: 30%;
-        max-width: 300px;
+    position: fixed;
+    left: 40%;
+    top: 30%;
+    max-width: 300px;
 }
 #blog-archives  article{
     border-radius: 0.4em;
@@ -58,12 +58,6 @@ article header h1{
 #blog-archives h1 a:hover{
     text-decoration:none;
 }
-hr{
-    margin: 1.2em 0;
-    height:1px;
-    border:none;
-    border-top:1px dashed #0066CC;
-}
 article blockquote{
     font-style: normal;
     font-size: 1em;
@@ -72,6 +66,7 @@ article blockquote{
     background-color: rgb(143, 252, 143);
     background-color: rgba(143, 252, 143, 0.5);
     margin-left: 0.5em;
+    box-shadow: 1px 1px 8px #666666;
 }
 .span-first-charactor{
     float: left;
@@ -90,11 +85,9 @@ article blockquote{
     src: url('/fonts/UglyQua-Italic.ttf');
 }
 .myFont{
-    font-size: 1.5em;
     font-family: UglyQua;
 }
 .multi-shadow{
-    font-size:2em;
     text-shadow: 0 0 2px #000,
                  0 0 2px #aaa,
                  0 0 4px #999,
@@ -178,22 +171,6 @@ article blockquote{
     background-color: gray;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
-@-webkit-keyframes button-glow{
-    0%   {color:#000;background-color:#e69ee0;}
-    50%  { color: #666; background-color: #ffeeee;}
-    100% { color: #000; background-color: #369ee0;}
-}
-@keyframes button-glow{
-    0%   {color:#000;background-color:#e69ee0;}
-    50%  { color: #666; background-color: #ffeeee;}
-    100% { color: #000; background-color: #369ee0;}
-}
-span.button_glow{
-    display: inline-block;
-    animation-name: button-glow;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
 @-webkit-keyframes text-flames{
     0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
                      -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
@@ -216,7 +193,6 @@ span.button_glow{
     100% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
                      -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
 }
-
 @keyframes text-flames{
     0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
                      -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
