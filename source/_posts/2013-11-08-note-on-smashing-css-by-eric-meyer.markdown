@@ -16,16 +16,30 @@ categories: 读书笔记
 
 > 如何使用CSS解决各浏览器默认样式不一致的问题？
 
-该问题的答案就在“$1.9 重启样式表”一节中。我想将其原文摘录如下：
+该问题的答案就在“$1.9 重启样式表”一节中。在此将其原文摘录如下：
 
 <blockquote>
 <p>有一件关于CSS的事情你可能没有考虑过，那就是即便你创建了HTML文档后，一行CSS也不写，CSS也总是对文档起作用。实际上，有大量的CSS被应用在“未应用样式”的文档上，它们全部来自于浏览器本身。标题元素的默认大小和字体粗细、不同元素和不同行之间的间距、列表项前面的项目符号，甚至块元素和行内元素之间的区别——全部是默认样式集决定的。</p>
-<p>当然，不同浏览器的默认样式略有不同，这不能怪浏览器厂商，因为还没有规范确切地说明文档应该具有什么样的默认样式。鉴于这种情况，大部分浏览器都尽量模仿<span class="Mosaic">Mosaic浏览器<span>Mosaic浏览器：互联网上第一个被普遍使用的浏览器，由美国伊利诺伊大学的NCSA组织在1993年发布。</span></span>显示文档的效果。是的，确实是Mosaic！因为它曾经是Netscape 1.0和IE3等浏览器试图模仿的对象。如果深入了解浏览器的默认样式，你就会发现那些从早期的Mosaic测试版浏览器复制过来的东西，设置连像素都是。</p>
+<p>当然，不同浏览器的默认样式略有不同，这不能怪浏览器厂商，因为还没有规范确切地说明文档应该具有什么样的默认样式。鉴于这种情况，大部分浏览器都尽量模仿<span class="Mosaic">Mosaic浏览器<sup>注</sup><span>Mosaic浏览器：互联网上第一个被普遍使用的浏览器，由美国伊利诺伊大学的NCSA组织在1993年发布。</span></span>显示文档的效果。是的，确实是Mosaic！因为它曾经是Netscape 1.0和IE3等浏览器试图模仿的对象。如果深入了解浏览器的默认样式，你就会发现那些从早期的Mosaic测试版浏览器复制过来的东西，设置连像素都是。</p>
 <p>作为对策，很多人开发了重置样式，这意味着可以通过设置通用的属性尽量减少浏览器之间的不一致性，最简单的方式是：</p>
-<code>
- * {maring: 0; padding: 0;}
-</code>
 </blockquote>
 
-嗯，我已经感动地想哭了。没有任何实习经验项目经验的人要想快速获得经验，最好的办法就是读书了——可是笔试之前我TM都干嘛去了………
+	* {maring: 0; padding: 0;}
+
+后来对此方法的改进是，在样式表第一条规则中队希望采用重置样式的元素逐一声明，像Octopress博客模板的`screen.css`这样：
+
+	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+		margin:0;
+		padding:0;
+		border:0;
+		font:inherit;
+		font-size:100%;
+		vertical-align:baseline;
+	}
+	html{
+		line-height:1;
+	}
+
+
+嗯，我已经感动地想哭了。没有任何实习经验项目经验的人要想快速获得经验，最好的办法就是读书了——可是笔试之前我TM都干嘛去了………以后还是得多读书+多练习！
 
