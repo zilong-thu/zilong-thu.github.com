@@ -3,7 +3,7 @@ layout: post
 title: "关于我-刚入门的web前端码农"
 date: 2013-10-30 15:29
 comments: true
-categories: 个人-生活
+categories: Essays
 ---
 <span class="span-first-charactor">我</span>叫王子龙，生于1989年的盛夏，家在山东省沂水县。2007年，高考发挥不利，只好填报清华大学的定向生，于是来到了航天航空学院。本来想想倒也不差，搞飞机。但是上了一年课明白了：这个学院原本是工程力学系，现在赶时髦改名叫航天航空学院了而已，课依旧是力学类的。甚至没有飞行器设计专业。
 

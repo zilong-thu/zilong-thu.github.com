@@ -248,6 +248,8 @@ div.burning_text{
     font-family: sans-serif;
     font-weight: bold;
 }
+
+/*纯CSS提示框*/
 span.Mosaic{
     display: inline-block;
     position: relative;
@@ -262,21 +264,31 @@ span.Mosaic sup{
     padding: 0.3em;
     border-radius: 0.9em;
 }
-span.Mosaic span{
+span.Mosaic span.annotate-content{
     display: none;
     font-size: 75%;
     color: green;
 }
-span.Mosaic:hover span{
+span.Mosaic:hover span.annotate-content{
     position: absolute;
     display: inline-block;
-    padding: 2px 1em;
-    bottom: 2em;
+    padding: 5px;
+    bottom: 2.1em;
     left: 1em;
     background-color: #FEFAB8;
     border-radius: 0.3em;
     min-width: 24em;
     max-width: 35em;
-    box-shadow: 1px 1px 10px #000000;
+    box-shadow: 1px 1px 15px #000000;
     font-weight: normal;
 }
+span.triTop{
+  display: inline-block;
+  border: 8px solid transparent;  
+  border-top-color: #FEFAB8;  
+  width: 0;  
+  height: 0;  
+  position: absolute;  
+  left: 5em;  
+  bottom: -16px;  
+}  

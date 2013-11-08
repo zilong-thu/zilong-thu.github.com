@@ -4,7 +4,7 @@ title: "我的简历"
 date: 2013-10-30 17:29
 comments: true
 keywords: 简历
-categories: 个人-生活
+categories: Essays
 ---
 说明：这份简历是我求职用的第一份简历word->html后的样子。打算就这么留着，网页版就去看“关于我”吧。
 

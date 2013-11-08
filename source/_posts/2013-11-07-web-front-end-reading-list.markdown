@@ -4,7 +4,7 @@ title: "Book List on My Way to Becoming A Web Front-End Engineer"
 date: 2013-11-07 21:39
 comments: true
 keywords: 
-categories: 个人-生活
+categories: Reading-Notes
 ---
 记录一下我为了成为Web前端工程师而读的书们。也许最终我不能如愿以偿，但读书学技术总归是好的，结果起码是我终于有了“一技之长”。
 
