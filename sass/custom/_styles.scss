@@ -248,3 +248,26 @@ div.burning_text{
     font-family: sans-serif;
     font-weight: bold;
 }
+span.Mosaic{
+    display: inline-block;
+    position: relative;
+    text-shadow: 1px 1px 3px #333333;
+}
+span.Mosaic span{
+    display: none;
+    font-size: 75%;
+    color: green;
+}
+span.Mosaic:hover span{
+    position: absolute;
+    display: inline-block;
+    padding: 2px 1em;
+    bottom: 2em;
+    left: 1em;
+    background-color: #FEFAB8;
+    border-radius: 0.3em;
+    min-width: 20em;
+    max-width: 35em;
+    text-shadow: none;
+    box-shadow: 1px 1px 10px #333333;
+}

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Book List for Web Front-End Engineer"
+title: "Book List on My Way to Becoming A Web Front-End Engineer"
 date: 2013-11-07 21:39
 comments: true
 keywords: 
@@ -15,7 +15,7 @@ categories: 个人-生活
 			<li>《HTML&amp;CSS设计与构建网站》</li>
 			<li>《瞬间之美》</li>
 			<li>《Web界面设计》</li>
-			<p>收获巨大，非常实用。</p>
+				<div>收获巨大，非常实用。</div>
 			<li>《简约至上》</li>
 			<li>《CSS3实用指南》</li>
 			<li>《JavaScript核心概念及实践》</li>
@@ -48,8 +48,8 @@ categories: 个人-生活
 		<li>《计算机网络》</li>
 		<li>《PHP和MySQL Web开发》</li>
 		<li>《众妙之门：自由网站设计师成功之道》</li>
-		<li>《计算机网络》</li>
-		<li>《计算机网络》</li>
-		<li>《计算机网络》</li>
+		<li>《众妙之门：网页设计专业之道》</li>
+		<li>《Web开发秘方》</li>
+		<li>《精彩绝伦的CSS》Eric A. Meyer著</li>
 	</ol>
 </ul>
