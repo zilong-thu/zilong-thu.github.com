@@ -104,3 +104,32 @@ Eric Meyer强烈推荐仅将使用伪元素生成内容用于渐进增强（prog
 问题的关键在于，你必须同时包含这两个值并且按照该顺序进行书写——先写字号，再写字体族。如果颠倒了顺序，或者漏掉了其中一个，那么任何现代浏览器都会完全忽略这条声明。
 
 此外，如果在声明中包含了其他关键字，则它们全部（有一个例外，即行高`line-height`，它必须放在字号的后面，用`/`与字号值连起来）都得放在这两个必备值的前面——这些在字号前面的属性值的顺序可以随意打乱，只要确保它们都在字号的前面即可。
+
+###图像替换技术
+CSS图像替换技术允许你使用图像替换文本，通过这种方式，文本仍然是可打印、可访问的。最受欢迎的图像替换技术通常被认为是Phark，也叫Rundle方法：
+
+	h1 {
+		height: 140xp;
+		text-indent: -9999px;
+		background: url('page-header.gif');
+	}
+
+默认情况下，背景图片是不会被打印的。于是，相应的打印样式表就可以这样写：
+
+	h1 {
+		text-indent: 0;
+		background: none;
+	}
+
+上面的Phark方式的漏洞是：图片加载失败的话，一切就完蛋了。于是有另外一种方案：
+
+	<h1><img src="page-header.gif" alt="Dive Into Fishing"></h1>
+
+此方法缺点在于，图像在屏幕上和打印时都会出现。
+
+###打印样式
+三种方式可以将打印样式关联到页面，如下。而几乎所有人都会使用link的方式，所以，你也不必过于纠结使用哪个方式——Just link！
+
+	<style type="text/css" media="print">...</style>
+	<link rel="stylesheet" type="text/css" media="print" href="print.css">
+	@import url(print.css) print;

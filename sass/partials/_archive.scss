@@ -20,7 +20,8 @@
       color: inherit;
       &:hover { color: $link-color-hover; }
       font-weight: normal;
-      display: inline-block;
+      display: block;
+      padding: 0.2em;
     }
   }
   a.category, time {
