@@ -183,17 +183,17 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 
 轮廓的绘制总是贴着边框。如果边框有外边距，那么轮廓会覆盖在外边距内，并依然贴着盒子边框的外侧。
 
-<div style="outline: 10px dashed blue; width:20em;height:5em;margin:1em;border:10px solid green;">
-	<pre>
-		<code>
-			style="outline: 10px dashed blue; width:20em;height:5em;margin:1em;border:10px solid green;"
-		</code>
-	</pre>
-</div>
-<div style="outline: 10px dashed blue; width:20em;height:5em;padding:1em;border:10px solid green;background-color:#cccccc;">
+<div style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;">
 	<pre>
 		<code>
 			style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;"
+		</code>
+	</pre>
+</div>
+<div style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;">
+	<pre>
+		<code>
+			style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;"
 		</code>
 	</pre>
 </div>
@@ -202,3 +202,21 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 记录一下本节作者引用的CSS规范，这是原理性的东西，所以值得重视：
 
 > 当一个元素具有特定的宽度，并且左右外边距都设为自动确定时（`margin: 0 auto;`），浏览器会取元素和容器的宽度之差，除以二后分别应用在元素的左外边距和右外边距上。因此元素就被居中了。
+
+###多栏布局中使用浮动与定位的优劣比较
+在4.9节，作者提到，“它们最有可能被浮动，因为使用定位一般被认为是实现多栏布局的一个很糟糕的解决方案。”
+
+那么，在此稍微研究下这两种技术在多栏布局方面的优劣区别。
+
+知乎上面有人问这样的问题：[在 CSS 布局中，用 float 好还是用 position 好？分别有什么优势？](http://www.zhihu.com/question/19588854)（尼玛知乎长得跟stackoverflow真像。）
+
+看了下解答，原因大致就是：position用于整体框架布局，需使用大量的精确计算，结果还未必正确；而float则不必。
+
+`float`的本质是给用户添加了可自定义尺寸`inline-block`的盒模型。
+
+另外，对于移动web开发，目前最好使用CSS3的新特性如`flex-box`、`column layout`等。因为这些平台（iOS，Android）浏览器的实现都是按照最新的标准开发的。
+
+###复杂的螺旋
+确实，这是个很有价值的例子——是不是很老我就不清楚了，不过作者说他在2001年的时候创建了这个技术，到现在，12年过去了……
+
+其实思路很简单，跟Adobe Photoshop或者Premiere里的遮罩层原理一样。但是图片消耗有点大哈。
