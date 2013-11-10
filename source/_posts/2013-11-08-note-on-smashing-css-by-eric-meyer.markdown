@@ -96,6 +96,10 @@ Eric Meyer强烈推荐仅将使用伪元素生成内容用于渐进增强（prog
 
 详见[“Going to Print”](http://alistapart.com/article/goingtoprint/)。这是Eric Meyer 在2002年写的一篇文章。
 
+`content`的属性还可以是`url`，例如用图片代替`list-style`作为列表项的标记：
+
+	ul, ol li:before{content: url('star.gif'); }
+
 ###调整字体值的顺序
 在此强调一下`font`简写属性的书写顺序问题。最基本的`font`声明如下：
 
@@ -133,3 +137,68 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 	<style type="text/css" media="print">...</style>
 	<link rel="stylesheet" type="text/css" media="print" href="print.css">
 	@import url(print.css) print;
+
+###列表缩进：margin or padding？
+作者提到一点：<strong>我们有着强有力的论据可以证明使用内边距要好过使用外边距。</strong>即在应用了
+
+	body {padding:0; margin: 0;}
+
+消除所有浏览器的装订距离后，如果要自定义缩进，那么最好使用padding。
+至于列表结构，使用外边距、内边距的区别见下面的例子。（内容取自我简历的学业、学科获奖情况）
+
+`ul, ol {margin-left:0; padding-left:2.5em;}` =>
+
+<ol style="margin-left:0; padding-left:2.5em;background-color: #cccccc;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+`ul, ol {margin-left:1.25; padding-left:1.25em;}` =>
+
+<ol style="margin-left:1.25; padding-left:1.25em;background-color: #cccccc;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+`ul, ol {margin-left:2.5em; padding-left:0;}` =>
+
+<ol style="margin-left:2.5em; padding-left:0;background-color: #cccccc;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+###文档背景
+根据HTML规范，绘制Web页面的区域，首先是从`html`元素那里获取背景，如果`html`元素没有设置背景，则从`body`元素获取背景。如果`body`元素也没有设置背景的话，那么浏览器就会使用某个默认的颜色进行填充。
+
+一般是白色。
+
+###轮廓与边框的区别
+轮廓（`outline`）的尺寸对布局没有影响，而边框（`border`）的尺寸则会被计算到盒模型的宽度与高度上，从而影响页面布局。这方面与轮廓相似的一个属性是`box-shadow`，盒子阴影也可以显示块元素的位置，但不会影响到布局。
+
+轮廓的绘制总是贴着边框。如果边框有外边距，那么轮廓会覆盖在外边距内，并依然贴着盒子边框的外侧。
+
+<div style="outline: 10px dashed blue; width:20em;height:5em;margin:1em;border:10px solid green;">
+	<pre>
+		<code>
+			style="outline: 10px dashed blue; width:20em;height:5em;margin:1em;border:10px solid green;"
+		</code>
+	</pre>
+</div>
+<div style="outline: 10px dashed blue; width:20em;height:5em;padding:1em;border:10px solid green;background-color:#cccccc;">
+	<pre>
+		<code>
+			style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;"
+		</code>
+	</pre>
+</div>
+
+###居中块状框
+记录一下本节作者引用的CSS规范，这是原理性的东西，所以值得重视：
+
+> 当一个元素具有特定的宽度，并且左右外边距都设为自动确定时（`margin: 0 auto;`），浏览器会取元素和容器的宽度之差，除以二后分别应用在元素的左外边距和右外边距上。因此元素就被居中了。

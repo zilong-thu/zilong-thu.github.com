@@ -63,9 +63,8 @@ article blockquote{
     border-left: 5px solid green;
     border-radius: 5px;
     background-color: rgb(143, 252, 143);
-    background-color: rgba(143, 252, 143, 0.5);
-    margin-left: 0.5em;
-    box-shadow: 1px 1px 8px #666666;
+    padding-right: 0.5em;
+    box-shadow: 0px 0px 1em #666666 inset;
 }
 .span-first-charactor{
     float: left;
@@ -266,4 +265,8 @@ span.triTop{
   position: absolute;  
   left: 5em;  
   bottom: -16px;  
-}  
+} 
+canvas {
+    box-shadow: 1px 1px 5px #333333;
+    margin: 0.5em 0;
+}
