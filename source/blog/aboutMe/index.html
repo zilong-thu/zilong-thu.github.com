@@ -1,16 +1,27 @@
 ---
 layout: page
-title: 关于我
+title: 博主有话要说
+sidebar: false
 footer: false
 ---
+<div id="aboutMe" style='background-image:url({{ root_url }}/blog/aboutMe/mountains_bg.jpg);'>
 <img src="{{ root_url }}/blog/aboutMe/unformalAvatar_01_inNanking.jpg" alt="我的头像" style="float:right;"/>
 <h3>我是谁</h3>
 <p>我叫王子龙，是一个刚喜欢上Web前端技术的直男。坏消息是还在读研究生，好消息是快毕业了。平时特别喜欢踢球、看电影，在犹豫是不是最好在博客里写写影评啥的。OK，上头像先~~
 </p>
-<h3>技能树</h3>
-<div>
-<canvas id="canvas_skill_tree" width="600" height="500">你Out了！浏览器居然不支持最新标准的HTML5 Canvas元素，更新或者更换浏览器吧~~</canvas>
-</div>
+<h3>我干啥</h3>
+兴趣点：
+<ul>
+<li>Web前端技术</li>
+<li>影视评论</li>
+</ul>
+<h3>我住哪儿</h3>
+<article>
+嗯，我暂时住在北京。说“暂时”，因为明年7月就要到南京去了。珍惜在北京的每一天！
+</article>
+<article>
+感谢昵图网供图
+</article>
 
 <article>
   <a href="{{ root_url }}/blog/2013/10/30/aboutMe/">关于我：一个刚入门的web前端码农</a>
@@ -18,12 +29,4 @@ footer: false
 <article>
   <a href="{{ root_url }}/blog/2013/10/30/myResume/">我的个人简历</a>
 </article>
-
-<script type="text/javascript">
-var M = {};
-M.canvas = document.getElementById('canvas_skill_tree');
-M.context = M.canvas.getContext('2d');
-M.context.fillStyle = 'blue';
-M.context.font = '20px sans-serif';
-M.context.fillText('暂时还没想好怎么画技能树……',100,100);
-</script>
+</div>

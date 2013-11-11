@@ -3,7 +3,7 @@ layout: post
 title: "《 Smashing CSS 》读书笔记"
 date: 2013-11-08 13:24
 comments: true
-keywords: CSS, smashing css, Eric Meyer
+keywords: CSS, smashing css, Eric Meyer, 精彩绝伦的CSS
 categories: Reading-Notes
 ---
 <em>Smashing CSS: Professional Techniques for Modern Layout</em>(by Eric Meyer)，我所读的中文版译名为《精彩绝伦的CSS》。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。
@@ -183,19 +183,11 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 
 轮廓的绘制总是贴着边框。如果边框有外边距，那么轮廓会覆盖在外边距内，并依然贴着盒子边框的外侧。
 
-<div style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;">
-	<pre>
-		<code>
-			style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;"
-		</code>
-	</pre>
+<div style="outline: 10px dashed blue; width:30em;height:5em;border:10px solid green;">
+	<code>style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;"</code>
 </div>
-<div style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;">
-	<pre>
-		<code>
-			style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;"
-		</code>
-	</pre>
+<div style="outline: 10px dashed blue; width:30em;height:5em;margin:3em;border:10px solid green;">
+	<code>style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;"</code>
 </div>
 
 ###居中块状框
@@ -220,3 +212,49 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 确实，这是个很有价值的例子——是不是很老我就不清楚了，不过作者说他在2001年的时候创建了这个技术，到现在，12年过去了……
 
 其实思路很简单，跟Adobe Photoshop或者Premiere里的遮罩层原理一样。但是图片消耗有点大哈。
+
+###表格样式
+不推荐使用表格来布局，但用来呈现数据内容还是非常方便的。不能总是排斥它。下面是一个行标题的例子。为行中的`<th>`声明属性`scope="col"`即可。
+
+另外，6.5节“表的图形化”非常有意思，原来表格的每个`tr`元素都是可以通过浮动属性绘制直方图。当然了，这个工作最好用JS来完成。
+
+<table>
+	<thead>
+		<th scope="col">巴萨</th><th scope="col">费用项目</th><th scope="col">广州恒大</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>梅西，1800万欧元</td>
+			<th scope="row">球员最高年薪</th>
+			<td>孔卡，700万美元</td>
+		</tr>
+		<tr>
+			<td><span class="Mosaic">2.17亿美元<sup>注</sup>
+				<span class="annotate-content">
+					<span class="triTop"></span>
+					数据参考自2012年的ESPN“<a href="http://sports.sohu.com/20120503/n342252893.shtml" target="_blank">世界体育队伍年薪排行榜</a>”（2012年05月03日）</span>
+				</span>
+			</td>
+			<th>全队工资</th>
+			<td><span class="Mosaic">约1.5亿人民币<sup>注</sup>
+				<span class="annotate-content">
+					<span class="triTop"></span>
+					从<a href="http://tieba.baidu.com/p/1923926617" target="_blank">百度“广州fc吧”</a>里找到的帖子推算而得，该帖发表于2012-10-15</span>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+###媒体查询
+作者说这可以自成一章，甚至编撰成一本书，我想他说的应该是“响应式Web设计”或者“移动Web设计”这类内容。
+
+> 媒体查询（media query）的重点就在于设置可以应用在不同媒体环境的、分条件的样式代码块。
+
+###多背景技术
+CSS3中正式引入。同一个元素可以设置多个背景。不过，先声明的在上层。
+
+##总结
+本来觉得3年前的书了，也许会过时。但读完后还是非常有收获。有几个非常好的技术，我没有在博客里写演示实例，以后有机会使用它们的时候再去翻书好了。
+
+对于这本CSS领域的书籍，最后总体评分：★★★★★
