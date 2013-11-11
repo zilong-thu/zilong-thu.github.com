@@ -241,6 +241,7 @@ span.Mosaic sup{
 span.Mosaic span.annotate-content{
     display: none;
     font-size: 75%;
+    font-weight: normal;
     color: green;
 }
 span.Mosaic:hover span.annotate-content{
@@ -250,11 +251,12 @@ span.Mosaic:hover span.annotate-content{
     bottom: 2.2em;
     left: 1em;
     background-color: #FEFAB8;
-    border-radius: 0.3em;
-    min-width: 24em;
+    border: 1px solid #666;
+    border-radius: 0.4em;
     max-width: 35em;
-    box-shadow: 1px 1px 15px #000000;
-    font-weight: normal;
+    min-width: 25em;
+    box-shadow: 1px 1px 20px #000;
+    z-index: 100;
 }
 span.triTop{
   display: inline-block;
@@ -263,10 +265,18 @@ span.triTop{
   width: 0;  
   height: 0;  
   position: absolute;  
-  left: 3em;  
-  bottom: -16px;  
-} 
-canvas {
-    box-shadow: 1px 1px 5px #333333;
-    margin: 0.5em 0;
+  left: 30px;  
+  bottom: -16px; 
+  z-index: 101;
 }
+span.triTopOuter{
+  display: inline-block;
+  border: 10px solid transparent;  
+  border-top-color: #666;  
+  width: 0;  
+  height: 0;  
+  position: absolute;  
+  left: 28px;  
+  bottom: -20px; 
+  z-index: 100;
+} 

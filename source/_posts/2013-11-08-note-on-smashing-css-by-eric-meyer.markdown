@@ -26,6 +26,7 @@ categories: Reading-Notes
 	<span class="Mosaic">Mosaic浏览器<sup>注</sup>
 		<span class="annotate-content">
 			<span class="triTop"></span>
+			<span class="triTopOuter"></span>
 			Mosaic浏览器：互联网上第一个被普遍使用的浏览器，由美国伊利诺伊大学的NCSA组织在1993年发布。
 		</span>
 	</span>显示文档的效果。是的，确实是Mosaic！因为它曾经是Netscape 1.0和IE3等浏览器试图模仿的对象。如果深入了解浏览器的默认样式，你就会发现那些从早期的Mosaic测试版浏览器复制过来的东西，设置连像素都是。</p>
@@ -231,14 +232,14 @@ CSS图像替换技术允许你使用图像替换文本，通过这种方式，�
 		<tr>
 			<td><span class="Mosaic">2.17亿美元<sup>注</sup>
 				<span class="annotate-content">
-					<span class="triTop"></span>
+					<span class="triTop"></span><span class="triTopOuter"></span>
 					数据参考自2012年的ESPN“<a href="http://sports.sohu.com/20120503/n342252893.shtml" target="_blank">世界体育队伍年薪排行榜</a>”（2012年05月03日）</span>
 				</span>
 			</td>
 			<th>全队工资</th>
 			<td><span class="Mosaic">约1.5亿人民币<sup>注</sup>
 				<span class="annotate-content">
-					<span class="triTop"></span>
+					<span class="triTop"></span><span class="triTopOuter"></span>
 					从<a href="http://tieba.baidu.com/p/1923926617" target="_blank">百度“广州fc吧”</a>里找到的帖子推算而得，该帖发表于2012-10-15</span>
 				</span>
 			</td>
