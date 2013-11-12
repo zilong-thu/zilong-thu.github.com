@@ -97,3 +97,27 @@ function updateTime(){
   setTimeout(updateTime, 500);
 }
 
+function drawTicks(cx, cy, r, id){
+  var svgns = 'http://www.w3.org/2000/svg';
+  var x1, y1, x2, y2,
+      r1 = 44,
+      r2 = r,
+      angle,
+      ticks_container = document.getElementById(id);
+
+  for(var i=0;i<12;i++){
+    angle = 30*i*Math.PI/180;
+    x1 = cx + r1 * Math.sin(angle);
+    y1 = cy - r1 * Math.cos(angle);
+    x2 = cx + r2 * Math.sin(angle);
+    y2 = cy - r2 * Math.cos(angle);
+
+    var path = document.createElementNS(svgns, 'path');
+    var d = 'M ' + x1 + ',' + y1 +        // M : moveTo
+            ' L ' + x2 + ',' + y2;      // L : lineTo
+    path.setAttribute('d',d);
+    path.setAttribute('stroke','black');
+    path.setAttribute('stroke-width', '2');
+    ticks_container.appendChild(path);
+  }
+}

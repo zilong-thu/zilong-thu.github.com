@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "* HTML5 SVG Study"
+title: "HTML5 SVG Study"
 date: 2013-11-07 14:28
 comments: true
 keywords: SVG, HTML5
@@ -25,6 +25,7 @@ $(document).ready(function(){
 	var pieChartContainer = document.getElementById('pieChartContainer');
 	pieChartContainer.appendChild(svgPieChart);
 
+	drawTicks(50,50,48,'ticks');
 	// 运行矢量时钟
 	 updateTime();
 });
@@ -44,7 +45,7 @@ $(document).ready(function(){
 		</filter>
 	</defs>
 	<circle id="face" cx="50" cy="50" r="48" style="stroke-width:3;"/>
-	<g id="ticks" style="stroke-width:2px;"></g>
+	<g id="ticks"></g>
 	<g id="numbers" style="font-family: sans-serif; font-size: 7pt; font-weight: bold; text-anchor: middle; stroke: none; fill: black;">
 		<text x="50" y="15">12</text>
 		<text x="88" y="53">3</text>
@@ -54,7 +55,7 @@ $(document).ready(function(){
 	<g id="hands" filter="url(#hand-shadow)">
 		<line id="hourhand" x1="50" y1="50" x2="50" y2="28" style="stroke-width: 5;"/>
 		<line id="minutehand" x1="50" y1="50" x2="50" y2="24" style="stroke-width: 3;"/>
-		<line id="secondhand" x1="50" y1="56" x2="50" y2="16" style="stroke-width: 1;"/>
+		<polygon id="secondhand" points="50,58 49,50 50,16 51,50" style="fill:red;stroke:red;"/>
 	</g>
 </svg>
 </div>
