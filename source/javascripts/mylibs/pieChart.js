@@ -97,6 +97,7 @@ function updateTime(){
   setTimeout(updateTime, 500);
 }
 
+// draw clock ticks
 function drawTicks(cx, cy, r, id){
   var svgns = 'http://www.w3.org/2000/svg';
   var x1, y1, x2, y2,
@@ -120,4 +121,18 @@ function drawTicks(cx, cy, r, id){
     path.setAttribute('stroke-width', '2');
     ticks_container.appendChild(path);
   }
+}
+
+// 自己定义的全局对象
+var myVariables={
+  x:0,
+  isVibrating: false,
+  id_of_setinterval: null
+};
+
+function sinVibration(){
+  var svgObj = document.getElementById('tree_hat_01');
+  var angle = 15*Math.sin(myVariables.x);
+  svgObj.setAttribute('transform', 'rotate('+ angle +',105,298)');
+  myVariables.x += Math.PI/20;
 }
