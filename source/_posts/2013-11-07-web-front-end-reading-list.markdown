@@ -3,7 +3,7 @@ layout: post
 title: "Book List on My Way to Becoming A Web Front-End Engineer"
 date: 2013-11-07 21:39
 comments: true
-keywords: 
+keywords: 前端工程师读书单，Front-End
 categories: Reading-Notes
 ---
 记录一下我为了成为Web前端工程师而读的书们。也许最终我不能如愿以偿，但读书学技术总归是好的，结果起码是我终于有了“一技之长”。
@@ -15,10 +15,11 @@ categories: Reading-Notes
 			<li>《HTML&amp;CSS设计与构建网站》</li>
 			<li>《瞬间之美》</li>
 			<li>《Web界面设计》</li>
-				<div>收获巨大，非常实用。</div>
+				<div>中秋节回家的大巴上开始读的，到家的时候基本看完了（7个小时）。收获巨大，非常实用。</div>
 			<li>《简约至上》</li>
 			<li>《CSS3实用指南》</li>
 			<li>《JavaScript核心概念及实践》</li>
+<!-- more --> 
 			<li>《网页的吸引力设计法则》</li>
 			<li>《高性能JavaScript》</li>
 				<div>JavaScript进阶，收获良多，五星推荐。</div>
@@ -30,8 +31,11 @@ categories: Reading-Notes
 				<div>用给出的例子练练挺好。</div>
 			<li>《大话数据结构》</li>
 				<div>读过此书（没有百分百读完，图、查找这两章没有读完），收获良多。感觉前端工程师确实应该了解数据结构，那位面试官同学把我刷下来不无道理。这本书的确非常适合我这种非计算机专业的、想对数据结构有入门了解的人读。</div>
+			<li>《精彩绝伦的CSS》Eric A. Meyer著</li>
+			<div>CSS的各种实用技术。非常赞。</div>
+			<li>《点石成金：访客至上的网页设计秘笈》原书第二版</li>
+			<div>对现在的我来说最有惊喜的是第九章：一天10美分的可用性测试。网站可用性测试很有帮助，也很有意思。另外第12章“救命！老板想让我……当好人遇到不好的设计决策”基本提到了我在实验室遇到的问题，我的解决方案是坚持合理的设计，当然最后老板胜出，并且我没法再参与设计。其实，给这样的老板做WEB设计，是一种痛苦，退出是一种解脱~~他需要读一读这本书~~</div>
 		</ol>
-<!-- more --> 
 	<li>未读/在读</li>
 	<ol>
 		<li>《高性能网站建设指南》</li>
@@ -50,6 +54,5 @@ categories: Reading-Notes
 		<li>《众妙之门：自由网站设计师成功之道》</li>
 		<li>《众妙之门：网页设计专业之道》</li>
 		<li>《Web开发秘方》</li>
-		<li>《精彩绝伦的CSS》Eric A. Meyer著</li>
 	</ol>
 </ul>
