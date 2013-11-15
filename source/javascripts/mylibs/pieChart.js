@@ -134,5 +134,5 @@ function sinVibration(){
   var svgObj = document.getElementById('tree_hat_01');
   var angle = 15*Math.sin(myVariables.x);
   svgObj.setAttribute('transform', 'rotate('+ angle +',105,298)');
-  myVariables.x += Math.PI/20;
+  myVariables.x += Math.PI/24;
 }
