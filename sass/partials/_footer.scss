@@ -2,14 +2,14 @@ body > footer {
   @extend .sans;
   font-size: .8em;
   color: $footer-color;
-  text-shadow: lighten($footer-bg, 5) 0 1px;
   background-color: $footer-bg;
+  box-shadow: 0 0 20px #ccc;
   @include background($footer-bg-front, $footer-bg-back);
   border-top: 1px solid $footer-border-top;
   position: relative;
   padding-top: 1em;
   padding-bottom: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
   @include border-bottom-radius(.4em);
   z-index: 1;
   a {

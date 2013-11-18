@@ -1,6 +1,7 @@
 body > nav {
   position: relative;
   background-color: $nav-bg;
+  box-shadow: 0 0 20px #ccc;
   @include background($nav-bg-front, $nav-bg-back);
   border: {
     top: 1px solid $nav-border-top;
