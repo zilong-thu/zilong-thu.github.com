@@ -5,13 +5,17 @@ body > header {
     a, a:visited, a:hover {
       color: $title_color;
       text-decoration: none;
+      text-shadow: 0.1em 0.1em 0.2em #333;
+    }
+    a:hover {
+      color: #ccc;
     }
   }
   h2 {
-    margin: .2em 0 0;
+    margin: 0.2em 0 0 0;
     @extend .sans;
     font-size: 1em;
-    color: $subtitle-color;
+    color: $title_color;
     font-weight: normal;
   }
 }
