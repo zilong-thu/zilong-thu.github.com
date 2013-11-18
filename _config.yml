@@ -91,8 +91,12 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: borninsummer
-disqus_show_comment_count: false
+# disqus_short_name: borninsummer
+# disqus_show_comment_count: false
+
+# Duoshuo Comments
+duoshuo_comments: true
+duoshuo_short_name: borninsummer
 
 # Google Analytics
 google_analytics_tracking_id: UA-45360338-1
