@@ -2,20 +2,20 @@ body > header {
   h1 {
     display: inline-block;
     margin: 0;
+    font-weight: bold;
     a, a:visited, a:hover {
-      color: $title_color;
+      color: #008000;
       text-decoration: none;
-      text-shadow: 0.1em 0.1em 0.2em #333;
     }
     a:hover {
-      color: #ccc;
+      color: #228B22;
     }
   }
   h2 {
     margin: 0.2em 0 0 0;
     @extend .sans;
     font-size: 1em;
-    color: $title_color;
+    color: #778899;
     font-weight: normal;
   }
 }

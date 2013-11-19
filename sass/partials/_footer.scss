@@ -5,7 +5,6 @@ body > footer {
   background-color: $footer-bg;
   box-shadow: 0 0 20px #ccc;
   @include background($footer-bg-front, $footer-bg-back);
-  border-top: 1px solid $footer-border-top;
   position: relative;
   padding-top: 1em;
   padding-bottom: 1em;
