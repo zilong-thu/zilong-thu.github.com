@@ -44,6 +44,20 @@ SVG内部可以添加`<style>`标签包含的样式表，例如在这个风车�
 ###循环动画的实现
 目前暂时使用`setInterval`来实现动画，每隔35毫秒让风车的四个叶子顺时针旋转1°，于是帧速率约等于28帧（根据《高性能JavaScript》的介绍，`setInterval`方法是不精确的，所以说“约等于”）。等有时间再研究如何使用`requestAnimationFrame()`方法实现动画。
 
+	function runTheWindmill(){
+		var angle = myVar.angle;
+		var center_circle = document.getElementById('center_circle');
+		var cx = center_circle.getAttribute('cx'),  // 获取转轴坐标
+			cy = center_circle.getAttribute('cy');
+		myVar.SVG_windmill.setAttribute('transform','rotate('+ angle +','+ cx +','+ cy +')');
+		myVar.angle += 1;
+
+		// 防止风车无限转下去而导致超过JS可以表示的最大整数
+		if(myVar.anglel>360){
+			myVar.angle -= 360;
+		}
+	}
+
 ###3D效果
 作为一个引子，下篇博文将研究Illustrator绘制具有3D效果的矢量图并将其输出为SVG后，其元素的交互性能，以及与3ds max的关系。
 

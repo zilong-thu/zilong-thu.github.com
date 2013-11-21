@@ -6,7 +6,7 @@ comments: true
 keywords: HTML5,程序设计,web前端
 categories: Reading-Notes
 ---
-##以及对前端知识的思考随笔
+<h2 style="color:#222;font-size:2em;">以及对前端知识的思考随笔</h2>
 
 这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。
 
@@ -49,7 +49,9 @@ V8引擎在运行之前将JavaScript编译成机器码，而非字节码或是�
 	var n = 102.000000000000001;
 	console.log(n%2===0);
 
-运行结果是`true`。所以我认为，这里面应该有个截断误差的问题，好比小于10-5次方的部分就会被舍弃。当然，如果知道自己使用取余数运算符时传给它的数总是整数，那就没有任何问题。对小数取余也没什么实际意义，当用户给`%`一个小数时，JavaScript只是不得不对它计算一下而已。
+运行结果是`true`。所以我认为，这里面应该有个截断误差的问题，好比小于10-15次方的部分就会被舍弃。当然，如果知道自己使用取余数运算符时传给它的数总是整数，那就没有任何问题。对小数取余也没什么实际意义，当用户给`%`一个小数时，JavaScript只是不得不对它计算一下而已。
+
+另外，Number类用于四舍五入的`toFixed()`方法，最多也只能支持到小数点后16位。
 
 ###函数参数传递
 JavaScript大部分参数是值传递，而对function、object、array类型，则是引用传递。例如
@@ -93,3 +95,41 @@ void是一个操作符，它计算一个表达式，但是不返回值。可以�
 	var str = 'hello world, hello JavaScript, hello Octopress.';
 	console.log(replaceAll(str,'hello','hi'));  // =>  'hi world, hi JavaScript, hi Octopress.'
 
+###String类的四种正则表达式方法
+String类有<span class="Mosaic">四种支持正则表达式的方法<sup>注</sup><span class="annotate-content"><span class="triTop"></span><span class="triTopOuter"></span>这部分内容主要参考自<a href="http://book.douban.com/subject/10549733/" title="去豆瓣看看" target="_blank">《JavaScript权威指南（第六版）》</a> pp262~263.</span></span>：
+
+####search()
+`search()`返回第一个与正则表达式匹配的子串的起始位置。它不支持全局检索，因为它忽略正则表达式参数中的修饰符`g`。
+
+	var str1 = "It's a very nice day today.";
+	console.log(str1.search(/n/i));  // => 12
+	var str2 = 'It\'s a very nice day today.';
+	console.log(str2.search(/ n/i));  // =>  11，注意n前面的空格
+
+####replace()
+`replace()`方法执行检索与替换操作。其接受两个参数：第一个参数是正则表达式或字符串（上面的例子），第二个参数是要换成的新的字符串。如果正则表达式中设置了修饰符`g`，那么源字符串中所有与模式匹配的子串都将替换成第二个参数指定的字符串；如果不带修饰符`g`，则只替换所匹配的第一个子串。所以上面例子的`replaceAll()`可以用原生`replace()`方法使用正则表达式参数实现。
+####match()
+`match()`
+####exec()
+`exec()`
+
+###parseInt
+parse这个单词意为“vt.从语法上描述或分析（词句等）”。因此`parseInt`可理解为将字符串尽可能解析为`Int`类型的数字，而`parseFloat()`则意味着尽可能将字符串解析为浮点数。
+
+###JavaScript与矩阵
+JavaScript本身不支持多维数组，例如我们无法这样构造一个10×10的矩阵：`var _2dArray[10][10];`，只能通过一位数组来构造多维数组。代码6-28比较好地说明了构造矩阵的方法。
+
+###location对象
+今年10月份百度web前端笔试的试题就有一道题，让你用JavaScript实现从当前窗口的URL中提取search字段的方法。
+
+大致如此书所说的这样：
+
+	function getRULParams(){
+		var str = location.search;
+		if(str.indexOf('?')<0){
+			return '';
+		}else{
+			var array = str.substring(1).split('&');
+			return array;
+		}
+	}
