@@ -133,3 +133,8 @@ JavaScript本身不支持多维数组，例如我们无法这样构造一个10×
 			return array;
 		}
 	}
+
+###Screen对象
+属性`availHeight`，`availWidth`，指设备（显示器）的可用最大高度、宽度。对windows系统，要除去任务栏。不过win7下如果将任务栏设为“自动隐藏任务栏”，那么它们就等于屏幕的分辨率高度、宽度。
+
+对于台式机，`DeviceXDPI`、`DeviceYDPI`是`undefined`。
