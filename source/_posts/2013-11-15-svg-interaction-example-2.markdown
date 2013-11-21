@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "HTML5 SVG实例：转动的风车"
+title: "HTML5 SVG交互实例：转动的风车"
 date: 2013-11-15 15:44
 comments: true
-keywords: HTML5, SVG
+keywords: HTML5, SVG, SVG交互
 categories: HTML5
 ---
-我读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。
+在HTML里读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。
 
 风车是我用Adobe Illustrator，仿照随便百度来的一个位图画的。
 

@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "Illustrator练习作业(02)：时尚女孩"
+title: "Illustrator自由路径练习(02)：时尚女孩"
 date: 2013-11-19 18:59
 comments: true
 keywords: Illustrator, HTML5, SVG, 矢量图,作品, 自由路径, 美女
 categories: Illustrator
 ---
-
 Illustrator从零开始作画，才能起到练手的作用。这个是花费4个小时画出来的练习作品：Fashion Girl。
 
 嘴唇我懒得画了，用弧线代替。下次再研究如何画烈焰红唇~~

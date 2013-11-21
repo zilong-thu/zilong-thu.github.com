@@ -8,7 +8,7 @@ categories: Reading-Notes
 ---
 ##以及对前端知识的思考随笔
 
-这些天想通过读一本书，来发散式地对前端只是进行调研、思考，选的是<a href="http://book.douban.com/subject/20430370/" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。
+这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。
 
 这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，希望他们以后会出修订版或者第二版。
 
@@ -77,3 +77,19 @@ void是一个操作符，它计算一个表达式，但是不返回值。可以�
 	var str = '{"name":"lili","sex":"male"}';
 	var jsonObj = eval('('+str+')');
 	console.log(jsonObj.name);  // => lili
+
+###替换全部字串
+由于字符串的`replace()`方法只会替换它碰到的第一个字串，于是书中6.1.2节给出了实现将字符串A中全部字串b1替换为b2的方法，其实很简单：
+
+	function replaceAll(str, oldStr, newStr){
+		var value = str;
+		while(value.indexOf(oldStr)>=0){
+			value = value.replace(oldStr, newStr);
+		}
+
+		return value;
+	}
+
+	var str = 'hello world, hello JavaScript, hello Octopress.';
+	console.log(replaceAll(str,'hello','hi'));  // =>  'hi world, hi JavaScript, hi Octopress.'
+
