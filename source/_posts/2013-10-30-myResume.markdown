@@ -31,12 +31,10 @@ categories: Essays
 + 2013/06 - 2013/09	在实验室自主知识与教育平台“集合群知识库”中负责Web前端开发
 
 ###开发语言/软件技能
-+ 掌握的开发语言	C/C++语言及Qt；   HTML/XHTML,CSS,JavaScript
-+ 熟悉的软件	MS Word/PowerPoint，Adobe After Effects/ Premiere/ Photoshop。
++ 掌握的开发语言：C/C++语言及Qt； HTML/XHTML,CSS,JavaScript
++ 熟悉的软件：MS Word/PowerPoint，Adobe After Effects/ Premiere/ Photoshop/ Illustrator。
 
 ###自我评价
 + 喜欢足球、电影。为人乐观，向来真诚待人，并喜欢帮助别人。
 + 学习能力强，追求全面发展。
 + 对互联网行业充满激情。
-
-
