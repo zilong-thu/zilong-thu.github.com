@@ -78,3 +78,12 @@ end
 参考：
 
 [Octopress主题改造](http://shanewfx.github.io/blog/2012/08/13/improve-blog-theme/)
+
+###*代码高亮功能
+尚未搞定
+
+参考这个： http://www.cnblogs.com/oec2003/archive/2013/05/27/3100896.html
+
+http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
+
+代码高亮部分的CSS在`octopress\sass\base\_solarized.scss`文件里。

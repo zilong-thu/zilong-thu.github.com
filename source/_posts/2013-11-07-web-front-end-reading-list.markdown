@@ -38,6 +38,8 @@ categories: Reading-Notes
 			<li>《写给程序员的Web设计书》</li><p>只适合新手读。有关于Photoshop切图的一些知识。具体读书笔记见我的博文<a href="/blog/2013/11/19/reading-notes-on-book-web-design-for-developers/" target="_blank">《写给程序员的Web设计书》读书笔记</a></p>
 			<li>《众妙之门：自由网站设计师成功之道》</li>
 			<p>不是我这种层次的人需要读的。稍有所成的自由网站设计开发人士应该用得到，因为涉及一些商业指导。</p>
+			<li>《无懈可击的Web设计II》</li>
+			<p>整本书最有思想、最有价值的是第四章，而不是作者为表谢意而提到的第六章。第四章讲设计理念，讲程序员在面对新老技术交替时该如何做取舍的问题，是超越技术层面的探讨，也基本不受时空的限制，所以我认为这一章更有价值，也因此先读的这一章。<a href=" http://zilong-thu.github.io/blog/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/ ">读书笔记</a></p>
 		</ol>
 	<li>未读/在读</li>
 	<ol>
