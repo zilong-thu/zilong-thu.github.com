@@ -62,8 +62,6 @@ a {
     color: inherit;
     text-decoration: none;
     padding: 0 0.1em;
-    background: rgba(255,255,255,0.5);
-
     -webkit-transition: 0.5s;
     -moz-transition:    0.5s;
     -ms-transition:     0.5s;
@@ -73,8 +71,7 @@ a {
 
 a:hover,
 a:focus {
-    background: rgba(255,255,255,1);
-    text-shadow: -1px -1px 8px rgba(100,100,100,0.5);
+    color: #0181eb;
 }
 .fallback-message {
     font-family: sans-serif;
@@ -119,7 +116,7 @@ a:focus {
     font-size: 1.5em;
     line-height: 1.2;
     padding: 0.2em;
-    text-shadow: 3px 3px 0.08em rgba(90,90,90,0.8);
+    text-shadow: 3px 3px 6px rgba(90,90,90,0.8);
 }
 .impress-enabled .step {
     margin: 0;
@@ -197,12 +194,13 @@ img.poster{
     max-width: 200px;
     max-height: 300px;
     float: left;
-    margin: 0px 20px 0 0;
+    margin: 10px 20px 5px 0;
     box-shadow: 2px 2px 6px #999;
 }
 .brief-intro{
     font-size: 1.2rem;
     line-height: 1.2;
+    text-indent: 2em;
 }
 .left_part{
     float: left;
