@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "希腊神话相关电影推荐"
+title: "关于希腊神话与传说的电影集锦"
 date: 2013-11-25 17:03
 comments: true
 keywords: 希腊神话, 电影, Greek Mythology
 categories: Movies
 ---
-请点击：<a href="{{ root_url }}\blog\impressPages\greek_mythology_movies.html" target="_blank" style="font-size:1.5em;color:#32cd32">希腊神话相关电影推荐</a>
+请点击：<a href="{{ root_url }}\blog\impressPages\greek_mythology_movies.html" target="_blank" style="font-size:1.5em;color:#32cd32">关于希腊神话与传说的电影集锦</a>
 
 这是一个用impress.js模板写成的页面，整理了一下我看过的希腊神话相关的电影，会有短评、推荐指数等。不过……尚未完工。神啊，再给我10个小时！！！
 
@@ -25,3 +25,8 @@ categories: Movies
 + MIUI v5 安卓浏览器，NO
 + Chrome，OK
 + Firefox，OK
+
+###代码压缩
+从Github上拉去过来的impress.js项目文件带有大量注释，所以推到网站上时务必要进行压缩。
+
+使用Uglify对impress.js进行压缩。压缩前33KB，压缩后7KB。下载也快了不少。

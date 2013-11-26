@@ -1,6 +1,3 @@
-// 当本文件大于30KB的时候再进行压缩优化
-
-// 绘制饼状图的函数
 function pieChart(data, width, height, cx, cy, r, colors,labels, lx, ly){
   var svgns = 'http://www.w3.org/2000/svg';
 
@@ -37,10 +34,10 @@ function pieChart(data, width, height, cx, cy, r, colors,labels, lx, ly){
 
     var path = document.createElementNS(svgns, 'path');
 
-    var d = 'M ' + cx + ',' + cy +        // M : moveTo
-            ' L ' + x1 + ',' + y1 +       // L : lineTo
-            ' A ' + r  + ',' + r  +       // A : arc
-            ' 0 ' + big+ ' 1 ' +          // 弧的绘制方向？
+    var d = 'M ' + cx + ',' + cy +
+            ' L ' + x1 + ',' + y1 +
+            ' A ' + r  + ',' + r  +
+            ' 0 ' + big+ ' 1 ' +
             x2 + ',' + y2 +
             ' Z';
 
@@ -52,7 +49,6 @@ function pieChart(data, width, height, cx, cy, r, colors,labels, lx, ly){
 
     startAngle = endAngle;
 
-    // 绘制Labels
     var icon = document.createElementNS(svgns, 'rect');
     icon.setAttribute('x', lx);
     icon.setAttribute('y', ly + 30*i);
@@ -63,7 +59,6 @@ function pieChart(data, width, height, cx, cy, r, colors,labels, lx, ly){
     icon.setAttribute('stroke-width', '2');
     chart.appendChild(icon);
 
-    // 标签的文字
     var label = document.createElementNS(svgns, 'text');
     label.setAttribute('x', lx + 30);
     label.setAttribute('y', ly + 30*i + 18);
@@ -73,10 +68,9 @@ function pieChart(data, width, height, cx, cy, r, colors,labels, lx, ly){
     chart.appendChild(label);
   }
 
-  return chart;  // f返回一个<svg>元素
+  return chart;
 }
 
-// 更新时钟时间
 function updateTime(){
   var now = new Date();
   var second = now.getSeconds(),
@@ -97,7 +91,6 @@ function updateTime(){
   setTimeout(updateTime, 500);
 }
 
-// draw clock ticks
 function drawTicks(cx, cy, r, id){
   var svgns = 'http://www.w3.org/2000/svg';
   var x1, y1, x2, y2,
@@ -114,8 +107,7 @@ function drawTicks(cx, cy, r, id){
     y2 = cy - r2 * Math.cos(angle);
 
     var path = document.createElementNS(svgns, 'path');
-    var d = 'M ' + x1 + ',' + y1 +        // M : moveTo
-            ' L ' + x2 + ',' + y2;      // L : lineTo
+    var d = 'M ' + x1 + ',' + y1 + ' L ' + x2 + ',' + y2;
     path.setAttribute('d',d);
     path.setAttribute('stroke','black');
     path.setAttribute('stroke-width', '2');
@@ -123,7 +115,6 @@ function drawTicks(cx, cy, r, id){
   }
 }
 
-// 自己定义的全局对象
 var myVariables={
   x:0,
   isVibrating: false,

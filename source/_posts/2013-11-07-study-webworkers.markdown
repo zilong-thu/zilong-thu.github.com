@@ -6,6 +6,7 @@ comments: true
 keywords: Web Worker, HTML5
 categories: HTML5
 ---
+###关于Web Workers
 以下摘自《JavaScript权威指南·第6版》
 
 客户端JavaScript的一个基本特性就是单线程，现在是，恐怕将来几十年也仍然是。之所以设计成单线程，是基于这样的理论：客户端的JavaScript必须不能运行太长时间，否则会导致循环事件，Web浏览器无法对用户输入做出相应。
@@ -31,8 +32,7 @@ Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去
 		context.drawImage(img, 0, 0);
 		var pixels = context.getImageData(0,0,width, height);
 
-		// 将像素信息传递给Worker线程
-		var worker = new Worker('/javascripts/example/webworker_smear.js');
+		var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
 		worker.postMessage(pixels);
 
 		worker.onmessage = function(e){
@@ -86,7 +86,7 @@ Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去
 		var pixels = context.getImageData(0,0,width, height);
 
 		// 将像素信息传递给Worker线程
-		var worker = new Worker('/javascripts/example/webworker_smear.js');
+		var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
 		worker.postMessage(pixels);
 
 		worker.onmessage = function(e){
@@ -99,5 +99,3 @@ Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去
 	}
 
 <img src="/images/blog/football.jpg" onclick="smear(this)" title="单击以运行worker线程" />
-
-
