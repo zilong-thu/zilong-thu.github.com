@@ -26,7 +26,24 @@ categories: Movies
 + Chrome，OK
 + Firefox，OK
 
-###代码压缩
+###性能优化
+####主页面
+该页面html文件大小为11KB，额外HTTP请求13次。暂时没有做优化。
+
+####压缩代码
 从Github上拉去过来的impress.js项目文件带有大量注释，所以推到网站上时务必要进行压缩。
 
 使用Uglify对impress.js进行压缩。压缩前33KB，压缩后7KB。下载也快了不少。
+
+####压缩图片
+电影海报的样式是这样的：
+
+	img.poster{
+	    max-width: 200px;
+	    max-height: 300px;
+	    float: left;
+	    margin: 10px 20px 5px 0;
+	    box-shadow: 2px 2px 6px #999;
+	}
+
+然后我把图片的宽度都统一调到了200px，于是海报图的总体积从854KB降到了253KB。

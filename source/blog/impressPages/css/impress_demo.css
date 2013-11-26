@@ -86,8 +86,8 @@ a:focus {
 }
 .step {
     position: relative;
-    width: 900px;
-    padding: 30px;
+    width: 960px;
+    padding: 10px;
     margin: 20px auto;
 
     -webkit-box-sizing: border-box;
@@ -120,9 +120,9 @@ a:focus {
 .impress-enabled .step.active { opacity: 1 }
 .slide {
     display: block;
-    width: 900px;
+    width: 980px;
     height: 700px;
-    padding: 40px 60px;
+    padding: 40px;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 10px;
@@ -181,14 +181,14 @@ a:focus {
 
 /*我定义的部分*/
 .left_part{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     float: left;
-    width: 59%;
+    width: 68%;
 }
 .right_part{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     float: right;
-    width: 39%;
+    width: 28%;
 }
 img.poster{
     max-width: 200px;
@@ -198,8 +198,8 @@ img.poster{
     box-shadow: 2px 2px 6px #999;
 }
 .brief-intro{
-    font-size: 1.2rem;
-    line-height: 1.2;
+    font-size: 1.3rem;
+    line-height: 1.5em;
     text-indent: 2em;
 }
 .group:after{
@@ -209,7 +209,6 @@ img.poster{
     clear: both;
     visibility: hidden;
 }
-/*星级*/
 span.rank_stars{
     color: #A04905;
 }
