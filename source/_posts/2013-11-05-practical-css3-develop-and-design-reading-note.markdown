@@ -101,7 +101,13 @@ IE条件注释这样使用：
 	// html code
 	<p class="fire-words">火焰文字</p>
 
-<p class="fire-words">火焰文字</p>
+<p style="font-size: 3em;line-height:1.2;
+	text-shadow: 0 0 4px white,
+                 0 -5px 4px #ffff33,
+                 2px -10px 6px #ffdd33,
+                 -2px -15px 11px #ff8800,
+                 2px -25px 18px #ff2200;
+    color: orange;">火焰文字</p>
 
 ###控制文本溢出
 如果容器盒定义了`overflow: hidden;`，那么其文本子节点的`text-overflow`属性控制文本溢出时的显示效果。
@@ -117,7 +123,7 @@ IE条件注释这样使用：
 + string
 	使用给定的字符串来代表被修剪的文本。
 
-具体见[w3school的例子](http://www.w3school.com.cn/cssref/pr_text-overflow.asp)吧。
+具体见<a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp" target="_blank">w3school的例子</a>吧。
 
 但是目前对于第三个属性，只有Firefox支持，Chrome尚不支持。Firefox中的使用方法如下：
 
@@ -136,16 +142,14 @@ IE条件注释这样使用：
 
 `/`之前的代表从左上角顺时针各个角的水平半径，后面则代表四个角的垂直半径。这样应该就可以画一个椭圆的盒子出来了：
 
-	.ellipse{
-		width: 400px;
+<div style="width: 400px;
 	    height: 200px;
 	    border-radius: 200px/100px;
 	    background-color: #cccccc;
 	    line-height: 200px;
-	    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-	}
-
-<div class="ellipse">这是一个椭圆形的div盒子。</div>
+	    text-align: center;
+	    margin: 10px 0;
+	    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);">这是一个椭圆形的div盒子。</div>
 
 ###渐变色
 本质上来讲，CSS渐变是一种特殊的背景图片，你完全可以把它放在任何一个图片能工作的位置，例如`background-image`和`border-image`。
@@ -159,12 +163,12 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 下面的代码，Chrome不支持。但是新版的Firefox完全没问题。
 
 <div id="book_wrapper" style="position: relative;height:400px;transform: perspective(1200px) rotateY(-9deg);transform-style: preserve-3d;">
-	<article id="book_front" style="transform: translateZ(3rem);">
+	<article id="book_front" style="-webkit-transform:translateZ(3rem);transform: translateZ(3rem);">
 		<p style="font-size:1.5em;text-alignt:center;font-weight:bold;">随笔</p>
 	</article>
-	<article id="book_p1" style="transform: translateZ(0rem);"></article>
-	<article id="book_p2" style="transform: translateZ(-3rem);"></article>
-	<article id="book_back" style="transform: translateZ(-6rem);"></article>
+	<article id="book_p1" style="-webkit-transform: translateZ(0rem);transform: translateZ(0rem);"></article>
+	<article id="book_p2" style="-webkit-transform: translateZ(-3rem);transform: translateZ(-3rem);"></article>
+	<article id="book_back" style="-webkit-transform: translateZ(-6rem);transform: translateZ(-6rem);"></article>
 </div>
 
 像`backface-visibility`（当元素在3D空间旋转而导致其正面远离观察者时，指定它的背面是否可见），`translate`,`preserve-3d`这些属性，目前浏览器支持度还不是很好，暂不研究了。
@@ -172,7 +176,7 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 ###CSS3 transition
 下面是7种不同的timing-function属性值的实验。鼠标悬浮于上即可看到在3秒内不同timing-function产生的过渡动画效果。
 
-<div id="transition-example-div">
+<div id="tran-eg" style="width:600px;height:350px;border:1px solid #cccccc;">
 	<div class="linear">linear</div>
 	<div class="ease">ease</div>
 	<div class="ease-out">ease-out</div>
@@ -282,3 +286,11 @@ CSS3为`display`属性添加了一个新的值：`flex`。`flex-flow`定义了�
 {%img /images/blog/browser-market-share-2013-11-6.PNG %}
 
 （桌面浏览器全球市场份额，截止到2013-11-06）
+
+<script type="text/javascript">
+// $(document).ready(function(){
+// 	$('#book_wrapper article').each(function(i,e){
+// 		$(e).attr('style','position: absolute;width: 240px;height: 300px;border-radius: 30px;background-color: #cccccc;box-shadow: 1px 1px 5px rgba(0,0,0,0.6);');
+// 	});
+// });
+</script>

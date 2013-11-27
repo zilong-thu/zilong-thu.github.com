@@ -4,11 +4,11 @@ article{
     transition: border-color 0.5s;
 }
 #content .blog-index article h1 a{
-    text-shadow: 1px 1px 5px #333333;
+    text-shadow: 1px 1px 5px #333;
 }
 #content .blog-index article h1 a:hover{
     text-decoration:none;
-    text-shadow: 1px 1px 4px #666666;
+    text-shadow: 1px 1px 4px #666;
 }
 #content .blog-index a[rel=full-article] {
     background: #ebebeb;
@@ -25,26 +25,7 @@ article{
     border-radius: 1.5em;
 }
 article header h1{
-    text-shadow: 1px 1px 5px #333333;
-}
-.noticeBox{
-    box-shadow: 1px 1px 10px #666666;
-    display:none;
-    font-size:16px;
-    font-weight:bold;
-    margin-left:25px;
-    color:#ffffff;
-    background-color:#FEFAB8;
-    border: 7px solid rgba(90,90,90,.8);
-    border-radius: 6px;
-    padding:20px;
-    z-index: 800;
-}
-.fixed-center{
-    position: fixed;
-    left: 40%;
-    top: 30%;
-    max-width: 300px;
+    text-shadow: 1px 1px 5px #333;
 }
 #blog-archives  article{
     border-radius: 0.4em;
@@ -52,7 +33,7 @@ article header h1{
     color: #666666;
 }
 #blog-archives article:hover{
-    color: #000000;
+    color: #000;
 }
 #blog-archives h1 a:hover{
     text-decoration:none;
@@ -64,16 +45,16 @@ article blockquote{
     border-radius: 5px;
     background-color: rgb(143, 252, 143);
     padding: 0.5em 1em;
-    box-shadow: 0px 0px 1em #666666 inset;
+    box-shadow: 0px 0px 1em #666 inset;
 }
 .span-first-charactor{
     float: left;
     font-size: 2.1em;
-    text-shadow: 1px 1px 3px #333333;
+    text-shadow: 1px 1px 3px #333;
     padding: 0 4px 2px 4px;
     line-height: 1.3em;
     font-weight: bold;
-    color: #ffffff;
+    color: #fff;
     background-color: #6c6c6c;
     margin-right: 0.1em;
 }
@@ -94,37 +75,15 @@ article blockquote{
                  0 6px 6px rgba(0,0,0,0.5),
                  0 8px 20px rgba(0,0,0,0.5);
 }
-.ellipse{
-    width: 400px;
-    height: 200px;
-    border-radius: 200px/100px;
-    background-color: #cccccc;
-    line-height: 200px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-}
-.fire-words{
-    font-size: 3em;
-    text-shadow: 0 0 4px white,
-                 0 -5px 4px #ffff33,
-                 2px -10px 6px #ffdd33,
-                 -2px -15px 11px #ff8800,
-                 2px -25px 18px #ff2200;
-    color: orange;
-}
 #book_wrapper article{
     position: absolute;
     width: 240px;
     height: 300px;
     border-radius: 30px;
-    background-color: #cccccc;
+    background-color: #ccc;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
 }
-#transition-example-div{
-    width: 600px;
-    height: 350px;
-    border: 1px solid #cccccc;
-}
-#transition-example-div div{
+#tran-eg div{
     height: 50px;
     width: 10%;
     background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%),
@@ -136,82 +95,82 @@ article blockquote{
     transition: width 3s;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-shadow: 1px 1px 2px #ffffff;
+    text-shadow: 1px 1px 2px #fff;
 }
-#transition-example-div:hover div{
+#tran-eg:hover div{
     width: 100%;
 }
-#transition-example-div .linear{
+#tran-eg .linear{
     background-color: blue;
     transition-timing-function: linear;
 }
-#transition-example-div .ease{
+#tran-eg .ease{
     background-color: red;
     transition-timing-function: ease;
 }
-#transition-example-div .ease-out{
+#tran-eg .ease-out{
     background-color: green;
     transition-timing-function: ease-out;
 }
-#transition-example-div .ease-in{
-    background-color: #cccccc;
+#tran-eg .ease-in{
+    background-color: #ccc;
     transition-timing-function: ease-in;
 }
-#transition-example-div .ease-in-out{
+#tran-eg .ease-in-out{
     background-color: orange;
     transition-timing-function: ease-in-out;
 }
-#transition-example-div .steps{
-    background-color: #0066ff;
+#tran-eg .steps{
+    background-color: #06f;
     transition-timing-function: steps(5);
 }
-#transition-example-div .cubic-bezier{
+#tran-eg .cubic-bezier{
     background-color: gray;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 @-webkit-keyframes text-flames{
-    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
-                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
-    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
-                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
-    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
-                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
-    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
-                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
-    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
-                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
-    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
-                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
-    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
-    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
-    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
-                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
-    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
-                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
+    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
+                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
+    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
+                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
+    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
+                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
+    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
+                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
+    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
+                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
+    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
+                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
+    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
+                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
+    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
+                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
+    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
+                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
+    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
+                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
 }
 @keyframes text-flames{
-    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
-                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
-    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33,
-                     -2px -15px 11px #ff8800, 2px -25px 18px #ff2200;}
-    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
-                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
-    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ffff44, 3px -9px 7px #ffdd33,
-                     -3px -14px 12px #ff9900, 3px -24px 19px #ff3300;}
-    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
-                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
-    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 3px -8px 8px #ffdd44,
-                     -3px -12px 11px #ff8800, 2px -25px 20px #ff3300;}
-    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
-    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ffff55, 2px -7px 7px #ffdd33,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #ff4411;}
-    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
-                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
-    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 5px -8px 6px #ffee33,
-                     -4px -12px 13px #ff8822, 2px -26px 18px #ff2200;}
+    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
+                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
+    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
+                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
+    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
+                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
+    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
+                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
+    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
+                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
+    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
+                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
+    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
+                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
+    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
+                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
+    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
+                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
+    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
+                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
 }
 div.burning_text{
     -webkit-animation: text-flames 0.6s infinite;
@@ -222,17 +181,15 @@ div.burning_text{
     font-family: sans-serif;
     font-weight: bold;
 }
-
-/*纯CSS提示框*/
 span.Mosaic{
     display: inline-block;
     position: relative;
-    color: #663300;
+    color: #630;
     font-weight: bold;
 }
 span.Mosaic sup{
-    background-color: #663300;
-    color: #ffffff;
+    background-color: #630;
+    color: #fff;
     font-weight: normal;
     font-family: sans-serif;
     padding: 0.3em;
