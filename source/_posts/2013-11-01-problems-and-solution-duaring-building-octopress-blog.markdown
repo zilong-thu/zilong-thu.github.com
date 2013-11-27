@@ -87,3 +87,19 @@ end
 http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
 
 代码高亮部分的CSS在`octopress\sass\base\_solarized.scss`文件里。
+
+###个性化域名
+我买了个域名，borninsummer.com，采取以下步骤：
+
+<ol style="list-style-type:decimal;">
+<li>在source目录下创建CNAME文件，文件内容为 borninsummer.com </li>
+<li>主机记录：www，记录类型：CNAME，记录值：borninsummer.com</li>
+<li>主机记录：*，记录类型：A，记录值：207.97.227.245</li>
+</ol>
+
+博客无法访问。然后不更改CNAME文件，尝试如下设置：
+
++ 主机记录：www，记录类型：CNAME，记录值：borninsummer.com
++ 主机记录：*，记录类型：CNAME，记录值：zilong-thu.github.com
+
+不知是否能生效，等待中。
