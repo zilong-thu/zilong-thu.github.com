@@ -98,6 +98,8 @@ article + article {
   a[rel=full-article] {
     background: darken($main-bg, 5);
     display: inline-block;
+    border: 1px solid #9c9c9c;
+    border-radius: 1.5em;
     padding: .4em .8em;
     margin-right: .5em;
     text-decoration: none;

@@ -91,11 +91,9 @@ http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
 ###个性化域名
 我买了个域名，borninsummer.com，采取以下步骤：
 
-<ol style="list-style-type:decimal;">
-<li>在source目录下创建CNAME文件，文件内容为 borninsummer.com </li>
-<li>主机记录：www，记录类型：CNAME，记录值：borninsummer.com</li>
-<li>主机记录：*，记录类型：A，记录值：207.97.227.245</li>
-</ol>
++ 在source目录下创建CNAME文件，文件内容为 borninsummer.com
++ 主机记录：www，记录类型：CNAME，记录值：borninsummer.com
++ 主机记录：*，记录类型：A，记录值：207.97.227.245
 
 博客无法访问。然后不更改CNAME文件，尝试如下设置：
 
@@ -103,3 +101,19 @@ http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
 + 主机记录：*，记录类型：CNAME，记录值：zilong-thu.github.com
 
 不知是否能生效，等待中。
+
+经过10小时，未能生效。根据<a href="http://octopress.org/docs/deploying/github/" target="_blank">Octopress官方文档</a>：
+
+> For a sub-domain like www.example.com you would simply create a CNAME record pointing at charlie.github.io..
+>
+> If you are using a top-level domain like example.com, you must use an A record pointing to 204.232.175.78.
+> 
+> Remember that it may take up to a full day for DNS changes to propagate, so be patient.
+
+先尝试：
+
++ CNAME文件内容为 www.borninsummer.com 
++ 主机记录：www，记录类型：CNAME，记录值：zilong-thu.github.com
++ 不设置A记录
+
+这样很快就生效了，大概10多分钟。所以说，官方文档很重要~~

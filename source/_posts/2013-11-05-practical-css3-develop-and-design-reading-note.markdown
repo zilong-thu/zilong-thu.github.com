@@ -81,9 +81,16 @@ IE条件注释这样使用：
 	// html code
 	<span class="multi-shadow">Multiple Text Shadows!</span>
 
-那么就会得到这样的字体：
+那么就会得到这样的字体：（为减小本网站screen.css样式表的体积，本博文尽可能使用内联样式。）
 
-<span class="multi-shadow" style="font-size:2em;">Multiple Text Shadows!</span>
+<span class="multi-shadow" style="font-size:2em;
+	text-shadow: 0 0 2px #000,
+                 0 0 2px #aaa,
+                 0 0 4px #999,
+                 0 0 6px #888,
+                 0 0 8px #666,
+                 0 6px 6px rgba(0,0,0,0.5),
+                 0 8px 20px rgba(0,0,0,0.5);">Multiple Text Shadows!</span>
 
 使用下面的代码则可以创造火焰文字：
 
@@ -189,7 +196,11 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 ###CSS3 animation
 下面我们将上面制作的火焰文字动起来。
 
-<div class="burning_text">燃烧的文字动画</div>
+<div class="burning_text" style="font-size: 3em;
+    color: orange;
+    line-height: 2em;
+    font-family: sans-serif;
+    font-weight: bold;">燃烧的文字动画</div>
 
 CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用`@-webkit-keyframes text-flames`定义的样式（且整个规则copy一遍），Firefox最新版和IE10(WIN8平台下的)则已经支持不带前缀的`@keyframes`规则了。
 
