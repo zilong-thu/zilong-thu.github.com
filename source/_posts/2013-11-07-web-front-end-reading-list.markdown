@@ -40,11 +40,17 @@ categories: Reading-Notes
 			<p>不是我这种层次的人需要读的。稍有所成的自由网站设计开发人士应该用得到，因为涉及一些商业指导。</p>
 			<li>《无懈可击的Web设计II》</li>
 			<p>整本书最有思想、最有价值的是第四章，而不是作者为表谢意而提到的第六章。第四章讲设计理念，讲程序员在面对新老技术交替时该如何做取舍的问题，是超越技术层面的探讨，也基本不受时空的限制，所以我认为这一章更有价值，也因此先读的这一章。<a href=" http://zilong-thu.github.io/blog/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/ ">读书笔记</a></p>
+			<li>《HTML5与JavaScript程序设计》</li>
+			<p>现在真的是到了谁都可以出书的时代了啊。在w3school随便找点wiki然后复制粘贴过来就成了一本书了啊？错误百出，惨不忍睹。</p>
+			<li>《完美网页的视觉设计法则》</li>
+			<p>色彩理论那块确实比较有启发性。没有太多技术细节，基本是偏重设计理念的。</p>
 		</ol>
-	<li>未读/在读</li>
+	<li>在读</li>
 	<ol>
-		<li>《HTML5与JavaScript程序设计》</li>
 		<li>《Illustrator CS6中文版从新手到高手》</li>
+	</ol>
+	<li>未读</li>
+	<ol>
 		<li>《JavaScript经典实例》</li>
 		<li>《深入浅出Ajax（中文版）》</li>
 		<li>《高性能网站建设指南》</li>
@@ -56,7 +62,6 @@ categories: Reading-Notes
 		<li>《算法竞赛入门经典》</li>
 		<li>《黑客与画家》</li>
 		<li>《CSS权威指南》</li>
-		<li>《完美网页的视觉设计法则》</li>
 		<li>《字体与版式设计》</li>
 		<li>《计算机网络》</li>
 		<li>《PHP和MySQL Web开发》</li>

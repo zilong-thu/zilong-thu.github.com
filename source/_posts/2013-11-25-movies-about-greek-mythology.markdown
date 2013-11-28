@@ -3,7 +3,7 @@ layout: post
 title: "关于希腊神话与传说的电影集锦"
 date: 2013-11-25 17:03
 comments: true
-keywords: 希腊神话, 电影, Greek Mythology
+keywords: 希腊神话, 电影, Greek Mythology,希腊神话与传说,魔幻电影
 categories: Movies
 ---
 
@@ -78,3 +78,22 @@ impress.js是这样来进行支持度检测的：
 	}
 
 在使用当前模板的前提下，将移动设备的那句正则表达式中安卓设备测试去掉后在我的手机上访问该网页，完全没有效果。所以说，目前impress.js还是只能针对PC、平板这样的大屏幕设备运行。毕竟是个类PPT应用，也没有支持小屏幕的必要。
+
+####dataset属性
+在HTML5中，可以使用`data-`作为前缀，为任意的DOM元素添加自定义的属性，然后可以通过该元素的`dataset`属性访问到前缀后面的属性值。详见<a href="http://www.zhangxinxu.com/wordpress/2011/06/html5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E5%AF%B9%E8%B1%A1dataset%E7%AE%80%E4%BB%8B/" target="_blank">HTML5自定义属性对象Dataset简介</a>。下面是该网页给的例子：
+
+	// HTML代码：
+	<div id="day2-meal-expense" data-drink="coffee" data-food="sushi" data-meal="lunch">¥20.12</div>
+	<button id="button">点击我</button>
+
+	// JS代码：
+	var expenseday2 = document.getElementById("day2-meal-expense");  
+	var typeOfDrink = expenseday2.dataset && expenseday2.dataset.drink;
+	document.getElementById("button").onclick = function() {
+	    alert("饮料是：" + typeOfDrink);
+	};
+
+	// 输出结果
+	"饮料是：coffee"
+
+在impress.js里使用了大量的`data-x`、`data-rotate-y`等，因此要求浏览器支持`dataset`属性。目前，IE只有11支持，其他浏览器的最新版则都支持此属性。（在此推荐一个很好的属性支持度查询网站：<a href="http://caniuse.com/" target="_blank">http://caniuse.com/</a>.）
