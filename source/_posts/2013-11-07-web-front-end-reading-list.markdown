@@ -44,6 +44,7 @@ categories: Reading-Notes
 			<p>现在真的是到了谁都可以出书的时代了啊。在w3school随便找点wiki然后复制粘贴过来就成了一本书了啊？错误百出，惨不忍睹。</p>
 			<li>《完美网页的视觉设计法则》</li>
 			<p>色彩理论那块确实比较有启发性。没有太多技术细节，基本是偏重设计理念的。</p>
+			<li>《高性能网站建设指南》</li>
 		</ol>
 	<li>在读</li>
 	<ol>
@@ -53,7 +54,6 @@ categories: Reading-Notes
 	<ol>
 		<li>《JavaScript经典实例》</li>
 		<li>《深入浅出Ajax（中文版）》</li>
-		<li>《高性能网站建设指南》</li>
 		<li>《高性能网站建设进阶指南》</li>
 		<li>《精通CSS：高级Web标准解决方案》</li>
 		<li>《HTML5 Canvas核心技术》</li>
