@@ -19,11 +19,12 @@ categories: Reading-Notes
 这是一种固定宽度、通常居中的网页布局框架。
 
 人人网也采用类似的思路，但是其主体的宽度改为了980px：
-
-	.layout_home3cols #main{
-		width: 980px;
-		padding-bottom: 20px;
-	}
+``` css
+.layout_home3cols #main{
+	width: 980px;
+	padding-bottom: 20px;
+}
+```
 然后再分为三栏：左栏160px，中间540px，右侧栏240px。
 
 ###三大布局方式

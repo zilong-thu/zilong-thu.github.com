@@ -88,25 +88,25 @@ function generateVisualization(){
 <a href="http://www.sitepoint.com/simple-clearing-of-floats/" target="_blank">Simple Clearing of Floats, by Alex Walker</a>
 
 本书的作者推崇的是`.clearfix`方法，原理是利用`:after`伪元素：
+``` css
+.clearfix:after{
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
 
-	.clearfix:after{
-		content: '.';
-		display: block;
-		height: 0;
-		clear: both;
-		visibility: hidden;
-	}
+/* for IE6 */
+* html .claerfix{
+	height: 1%;
+}
 
-	/* for IE6 */
-	* html .claerfix{
-		height: 1%;
-	}
-
-	/* for IE7 */
-	*:first-child+html .clearfix{
-		min-height: 1px;
-	}
-
+/* for IE7 */
+*:first-child+html .clearfix{
+	min-height: 1px;
+}
+```
 这三条就够了。【注意：书中IE7的那个代码把.clearfix写成了.group，是个小错误。如果说二者有什么相关性，是这样：后面的一节建议把.clearfix改名为.group】
 
 ####关于CSS框架
@@ -138,23 +138,23 @@ function generateVisualization(){
 
 该网站的代码是这样的：
 
-	/* html code */
-	<div class="wrapper outer">
-		<div class="wrapper inner">
-			<div class="content">
-				<!-- 这里是网页主体内容 -->
-			</div>
+``` html html code
+<div class="wrapper outer">
+	<div class="wrapper inner">
+		<div class="content">
+			<!-- 这里是网页主体内容 -->
 		</div>
 	</div>
-
-	/* css code */
-	.outer {
-		background: transparent url("/images/backgrounds/vines-mid.png") 70% 0 repeat-x;
-	}
-	.inner {
-		background: transparent url("/images/backgrounds/vines-front.png") 300% 0 repeat-x;
-	}
-
+</div>
+```
+``` css css code
+.outer {
+	background: transparent url("/images/backgrounds/vines-mid.png") 70% 0 repeat-x;
+}
+.inner {
+	background: transparent url("/images/backgrounds/vines-front.png") 300% 0 repeat-x;
+}
+```
 另外，使用负百分比定位背景图片的水平位置，则图片会与改变窗口大小时的方向相同（往左拉浏览器窗口，则该背景图也会往左走。）示例网站：
 
 <a href="http://therissingtonpodcast.co.uk/" target="_blank">The Rissington Podcast</a>

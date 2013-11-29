@@ -13,8 +13,7 @@ categories: Reading-Notes
 ###换行
 逗号也是运算符，例如下面，逗号应该作为前一行的结尾。如果把它拿到下面作为第二行的开始，ASI(Automatic Semicolon Insertion，自动分号插入)机制会在某些场景下在前一行结束的位置自动插入分号，于是导致错误的发生。
 
-<pre>
-<code>
+``` javascript
 // 好的代码风格
 function(document, element, window, strings, navigator, context,
 		div_somediv){
@@ -26,16 +25,14 @@ function(document, element, window, strings, navigator, context
 		, div_somediv){
 	// Here is some code of this function
 }
-</code>
-</pre>
+```
 
 <!-- more -->
 
 ###注释
 单行注释前应该有一个空行。多行注释最好如下所示进行标注与缩进。
 
-<pre>
-<code>
+``` javascript
 function(document, element, window, strings, navigator, context,
 		div_somediv){
 
@@ -51,14 +48,12 @@ function(document, element){
 	 */
 	print(document.text);
 }
-</code>
-</pre>
+```
 
 ###花括号的对齐方式
 之前我也没在意过这个问题，读到这一节才明白一件事：对于JavaScript，花括号最好放在块语句中第一句代码的末尾，原因与就是对于换行规范的解释：避免错误的分号自动插入。Google JavaScript风格指南则明确禁止将左花括号放在块语句首行的下一行：
 
-<pre>
-<code>
+``` javascript
 // 推荐的做法
 if (condition){
 	doSomething();
@@ -76,8 +71,7 @@ else
 {
 	doSomethingElse();
 }
-</code>
-</pre>
+```
 
 ###switch的default
 如果`switch`的`default`分支什么也不做，那还要不要留着`default`？Nicholas大神认为这时候应该直接省略掉defaul，因为这可以节省一些字节。
@@ -92,8 +86,7 @@ else
 
 `for-in`循环总是会遍历对象的全部属性——包括从原型继承来的属性。当遍历自定义对象的属性时，往往会因为意外的结果而终止。因此，最好使用`hasOwnProperty()`方法来为`for-in`循环过滤出实例属性（instance property）。例如：
 
-<pre>
-<code>
+``` javascript
 /* 这个代码是对书中的修正
  * var prop =>改为  var object
  * 因为for-in方法中的prop不需要用var来声明
@@ -105,8 +98,7 @@ for ( prop in objec){
     	console.log('Property value is ' + objec[prop]);
 	}
 }
-</code>
-</pre>
+```
 
 ###变量声明与函数声明
 1. 总是将局部变量的定义作为函数内第一条语句
@@ -117,8 +109,7 @@ for ( prop in objec){
 
 4. 函数声明不应当出现在语句块之内。例如
 
-<pre>
-<code>
+``` javascript
 // bad idea...
 if (condition){
 	function doSomething(){
@@ -129,21 +120,18 @@ if (condition){
 		alert('Yo!');
 	}
 }
-</code>
-</pre>
+```
 
 ###严格模式
 
 ###原始包装类型（primitive wrapper types）
 JavaScript有三种原始包装类型：`String`、`Boolean`和`Number`。每种类型都代表全局作用域中的一个构造函数，并分别表示各自对应的原始值的对象。
 
-<pre>
-<code>
+``` javascript
 var name = 'Nicholas';
 name.author = 'yes';
 console.log(name.author);  // =>undefined
-</code>
-</pre>
+```
 
 第二行，JavaScript引擎会根据name的上下文类型临时创建了`String`对象，为这个临时对象添加了一个 autor属性，但在这一句执行结束后，临时的`String`对象就被销毁了。
 
@@ -152,8 +140,7 @@ console.log(name.author);  // =>undefined
 ###将CSS从JavaScript中抽离
 JavaScript不应当直接操作样式，以便保持和CSS的松耦合。在JavaScript中将样式添加至元素的几种方法：
 
-<pre>
-<code>
+``` javascript
 // 好的写法 - 原生JS
 element.className += ' reveal';
 
@@ -168,8 +155,7 @@ Y.one(element).addClass('reveal');
 
 // 好的写法 - Dojo
 dojo.addClass(element, 'reveal');
-</code>
-</pre>
+```
 
 ###将HTML从JavaScript中抽离
 【待实践】
@@ -214,35 +200,37 @@ JavaScript内置引用类型：
 
 不过此前Kangax提出的优雅的解决方案还是值得欣赏的：
 
-	function isArray(){
-		return Object.prototype.toString.call(value) === "[object Array]";
-	}
+``` javascript
+function isArray(){
+	return Object.prototype.toString.call(value) === "[object Array]";
+}
+```
 
 在当前，可以这样实现数组检测：
-
-	function isArray(value) {
-		if (typeof Array.isArray === "function") {
-			return Array.isArray(value);
-		} else {
-			return Object.prototype.toString.call(value) === "[object Array]";
-		}
+``` javascript
+function isArray(value) {
+	if (typeof Array.isArray === "function") {
+		return Array.isArray(value);
+	} else {
+		return Object.prototype.toString.call(value) === "[object Array]";
 	}
-
+}
+```
 ###关于继承
 （1）基于对象的继承
 
 基于对象的继承也叫做“原型继承”，一个对象继承另外一个对象（的属性和方法）是不需要调用构造函数的。ECMAScript 5 的`Object.create()`方法是实现这种继承的最简单的方式。例如：
+``` javascript
+var person = {
+	name: "Nicholas",
+	sayName: function(){
+		alert(this.name);
+	}
+};
 
-	var person = {
-		name: "Nicholas",
-		sayName: function(){
-			alert(this.name);
-		}
-	};
-
-	var myPerson = Object.create(person);
-	myPerson.sayName();
-
+var myPerson = Object.create(person);
+myPerson.sayName();
+```
 myPerson会自动继承所有来自person的属性和方法，而如果myPerson重新实现sayName方法，则myPerson.sayName()会自动切断对person.sayName()的访问。
 
 （2）基于类型的继承

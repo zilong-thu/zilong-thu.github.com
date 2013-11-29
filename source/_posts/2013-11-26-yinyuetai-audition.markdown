@@ -12,33 +12,33 @@ categories: Essays
 <!-- more -->
 ###又是关于JavaScript的词法作用域
 问下面的代码会输出什么结果：
+``` javascript
+var tt = 'a';
+function test(){
+    console.log(tt);
+    var  tt = 'b';
+    console.log(tt);
+}
 
-	var tt = 'a';
-	function test(){
-	    console.log(tt);
-	    var  tt = 'b';
-	    console.log(tt);
-	}
+test();
 
-	test();
-
-	(function test_again(){
-	   var tt = 'c';
-	   test();
-	})();
-
+(function test_again(){
+   var tt = 'c';
+   test();
+})();
+```
 毫无压力，两次运行test()的结果是一样的。
 
 ###如何反转字符串
 当时答了上来，但是对于具体所用的方法名没有说对。
 
 准确答案应该是这样：
-
-	var str = 'abcdefg';
-	var array = str.split('');
-	str = array.reverse().join('');
-	console.log(str);  // => 'gfedcba'
-
+``` javascript
+var str = 'abcdefg';
+var array = str.split('');
+str = array.reverse().join('');
+console.log(str);  // => 'gfedcba'
+```
 ###如何实现数组元素去重
 之前确实没有关注过JS算法方面的问题，当时就完全没有回答上来，甚至连暴力算法也没敢提。然后回来Google，找到两篇好的参考文章：
 
@@ -47,47 +47,47 @@ categories: Essays
 <a href="http://www.nowamagic.net/javascript/js_RemoveRepeatElement.php" target="_blank">JavaScript数组去重的几种方法</a>
 
 常规方法是这样的：
-
-	// 字符串是26个小写英文字母的无序、重复集合
-	var str = 'asdfkjasqwertyuioppoiubnmzxcvbnmasdfghjklldjfjksdaifafnvdioasdfoiasnngsjdaiofjjioadfnaskdfkjsfoiasjfjiof';
-	var a = str.split('');
-	function ov2(a) {
-		    var a1=((new Date).getTime());
-		    var b = [], n = a.length, i, j;
-		    for (i = 0; i < n; i++) {
-		        for (j = i + 1; j < n; j++){
-		            if (a[i] === a[j]){
-		            	j=false;break;
-		            }
-		        }
-		        if(j){
-		        	b.push(a[i]);
-		        }
-		    }
-		    console.info((new Date).getTime()-a1);
-		    console.log(b.length);
-		    return b.sort(function(a,b){return a-b});
-		}
-	ov2(a);
-
-
-与这段代码等价：
-
-	function ov3(a) {
-	    // var a1=((new Date).getTime());
+``` javascript
+// 字符串是26个小写英文字母的无序、重复集合
+var str = 'asdfkjasqwertyuioppoiubnmzxcvbnmasdfghjklldjfjksdaifafnvdioasdfoiasnngsjdaiofjjioadfnaskdfkjsfoiasjfjiof';
+var a = str.split('');
+function ov2(a) {
+	    var a1=((new Date).getTime());
 	    var b = [], n = a.length, i, j;
 	    for (i = 0; i < n; i++) {
 	        for (j = i + 1; j < n; j++){
-		        if (a[i] === a[j]){
-		        	j=++i;
-		        }
-		    	b.push(a[i]);
-		    }
+	            if (a[i] === a[j]){
+	            	j=false;break;
+	            }
+	        }
+	        if(j){
+	        	b.push(a[i]);
+	        }
 	    }
-	    // console.info((new Date).getTime()-a1);  
+	    console.info((new Date).getTime()-a1);
+	    console.log(b.length);
 	    return b.sort(function(a,b){return a-b});
 	}
+ov2(a);
+```
 
+与这段代码等价：
+``` javascript
+function ov3(a) {
+    // var a1=((new Date).getTime());
+    var b = [], n = a.length, i, j;
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++){
+	        if (a[i] === a[j]){
+	        	j=++i;
+	        }
+	    	b.push(a[i]);
+	    }
+    }
+    // console.info((new Date).getTime()-a1);  
+    return b.sort(function(a,b){return a-b});
+}
+```
 当然还有什么字典方法，利用对象属性唯一的特点，遍历对象属性，即可做到数组去重。
 
 ###*JavaScript如何实现继承

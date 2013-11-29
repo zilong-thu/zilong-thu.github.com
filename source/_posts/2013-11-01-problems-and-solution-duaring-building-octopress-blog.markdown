@@ -26,8 +26,7 @@ $ rake setup_github_pages</code>
 
 在octopress的根目录下，找到Rakefile文件，打开，在100行左右有如下代码：
 
-<pre>
-<code>
+``` ruby
 # usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
 desc "Begin a new post in #{source_dir}/#{posts_dir}"
 task :new_post, :title do |t, args|
@@ -53,8 +52,7 @@ task :new_post, :title do |t, args|
     post.puts "---"
   end
 end
-</code>
-</pre>
+```
 
 在post.puts "comments: true"下面添加这样一句代码即可：
     
@@ -80,7 +78,7 @@ end
 [Octopress主题改造](http://shanewfx.github.io/blog/2012/08/13/improve-blog-theme/)
 
 ###*代码高亮功能
-尚未搞定
+嗯，根据第二篇博文，重启电脑搞定。
 
 参考这个： http://www.cnblogs.com/oec2003/archive/2013/05/27/3100896.html
 

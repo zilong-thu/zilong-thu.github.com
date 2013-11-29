@@ -35,20 +35,20 @@ categories: Reading-Notes
 </blockquote>
 
 后来对此方法的改进是，在样式表第一条规则中队希望采用重置样式的元素逐一声明，像Octopress博客模板的`screen.css`这样：
-
-	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
-	{
-		margin:0;
-		padding:0;
-		border:0;
-		font:inherit;
-		font-size:100%;
-		vertical-align:baseline;
-	}
-	html {
-		line-height:1;
-	}
-
+``` css Octopress博客模板的重置样式
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
+{
+	margin:0;
+	padding:0;
+	border:0;
+	font:inherit;
+	font-size:100%;
+	vertical-align:baseline;
+}
+html {
+	line-height:1;
+}
+```
 目的也是一样的：<em>为了让我们在开始书写CSS之前，尽量使所有的浏览器表现一致，同时也让页面好看一些。</em>
 
 嗯，我已经感动地想哭了。没有任何实习经验项目经验的人要想快速获得经验，最好的办法就是读书了——可是笔试之前我TM都干嘛去了………以后还是得多读书+多练习！
@@ -63,10 +63,10 @@ categories: Reading-Notes
 比较的时候，将这个“四位数”理解为“无穷进制”的数字即可，然后大的就有高的特殊性。
 
 关于特殊性的结构相近问题，看下面例子：
-
-	ul li {font-style: normal;}
-	html li {font-style: italic;}
-
+``` css
+ul li {font-style: normal;}
+html li {font-style: italic;}
+```
 这两个的特殊性相同，都是 0,0,0,2。此时后写的会赢，与html元素相比ul元素在文档中的位置离li元素更近也不管用。<strong>特殊性只是单纯的数值，它不会以任何方式评估页面的结构。</strong>
 
 特殊性的第一个 0 是用于行内样式的（inline style）。
@@ -75,9 +75,9 @@ categories: Reading-Notes
 
 ###通用选择
 星号（*）被作为通用选择符来代替“全部元素”。例如：
-
-	div * {border: 1px solid red;}
-
+``` css
+div * {border: 1px solid red;}
+```
 表示将`div`节点下的所有后代元素的边框设为该样式。
 
 通用选择符的唯一需要注意之处就是特殊性：* 对特殊性的贡献是 0,0,0,0 。
@@ -92,58 +92,58 @@ Eric Meyer强烈推荐仅将使用伪元素生成内容用于渐进增强（prog
 不过，这话是2010年说的，在如今IE6只占全球不到5%的市场份额的情况下，已经可以不必考虑浏览器是否能支持伪类特性，而仅需要考虑CSS是否能够被加载，然后据此来判断是否要采用伪元素生成内容。
 
 向页面的打印副本中插入超链接URL就是个很好的渐进增强示例。将下面的规则添加到打印媒体样式表中：
-
-	a[href]:after{ content: " [" attr(href) "]"; font-size: smaller;}
-
+``` css
+a[href]:after{ content: " [" attr(href) "]"; font-size: smaller;}
+```
 详见[“Going to Print”](http://alistapart.com/article/goingtoprint/)。这是Eric Meyer 在2002年写的一篇文章。
 
 `content`的属性还可以是`url`，例如用图片代替`list-style`作为列表项的标记：
-
-	ul, ol li:before{content: url('star.gif'); }
-
+``` css
+ul, ol li:before{content: url('star.gif'); }
+```
 ###调整字体值的顺序
 在此强调一下`font`简写属性的书写顺序问题。最基本的`font`声明如下：
-
-	font: <font-size> <font-family>;
-
+``` css
+font: <font-size> <font-family>;
+```
 问题的关键在于，你必须同时包含这两个值并且按照该顺序进行书写——先写字号，再写字体族。如果颠倒了顺序，或者漏掉了其中一个，那么任何现代浏览器都会完全忽略这条声明。
 
 此外，如果在声明中包含了其他关键字，则它们全部（有一个例外，即行高`line-height`，它必须放在字号的后面，用`/`与字号值连起来）都得放在这两个必备值的前面——这些在字号前面的属性值的顺序可以随意打乱，只要确保它们都在字号的前面即可。
 
 ###图像替换技术
 CSS图像替换技术允许你使用图像替换文本，通过这种方式，文本仍然是可打印、可访问的。最受欢迎的图像替换技术通常被认为是Phark，也叫Rundle方法：
-
-	h1 {
-		height: 140xp;
-		text-indent: -9999px;
-		background: url('page-header.gif');
-	}
-
+``` css
+h1 {
+	height: 140xp;
+	text-indent: -9999px;
+	background: url('page-header.gif');
+}
+```
 默认情况下，背景图片是不会被打印的。于是，相应的打印样式表就可以这样写：
-
-	h1 {
-		text-indent: 0;
-		background: none;
-	}
-
+``` css
+h1 {
+	text-indent: 0;
+	background: none;
+}
+```
 上面的Phark方式的漏洞是：图片加载失败的话，一切就完蛋了。于是有另外一种方案：
-
-	<h1><img src="page-header.gif" alt="Dive Into Fishing"></h1>
-
+``` html
+<h1><img src="page-header.gif" alt="Dive Into Fishing"></h1>
+```
 此方法缺点在于，图像在屏幕上和打印时都会出现。
 
 ###打印样式
 三种方式可以将打印样式关联到页面，如下。而几乎所有人都会使用link的方式，所以，你也不必过于纠结使用哪个方式——Just link！
-
+``` html
 	<style type="text/css" media="print">...</style>
 	<link rel="stylesheet" type="text/css" media="print" href="print.css">
 	@import url(print.css) print;
-
+```
 ###列表缩进：margin or padding？
 作者提到一点：<strong>我们有着强有力的论据可以证明使用内边距要好过使用外边距。</strong>即在应用了
-
-	body {padding:0; margin: 0;}
-
+``` css
+body {padding:0; margin: 0;}
+```
 消除所有浏览器的装订距离后，如果要自定义缩进，那么最好使用padding。
 至于列表结构，使用外边距、内边距的区别见下面的例子。（内容取自我简历的学业、学科获奖情况）
 

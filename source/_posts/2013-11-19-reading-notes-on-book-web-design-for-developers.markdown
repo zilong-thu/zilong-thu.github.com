@@ -47,11 +47,11 @@ categories: Reading-Notes
 
 ###4.3.3 字体栈（font stacks）
 下面就是一个字体栈：
-
-	body{
-		font-family: Helvectica, Arial, sans-serif;
-	}
-
+``` css
+body{
+	font-family: Helvectica, Arial, sans-serif;
+}
+```
 字体栈的设计关键在于，必须对所选字体有很清晰的了解，它们最好差别不要太大。
 
 有篇英文讲解字体栈：<a href="http://unitinteractive.com/blog/2008/06/26/better-css-font-stacks/" target="_blank">Better CSS Font Stacks</a>
