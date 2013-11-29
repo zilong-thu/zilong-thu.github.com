@@ -2,7 +2,7 @@ $blockquote: $type-border !default;
 $sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
 $serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+$heading-font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $heading-font-family !default;
 
@@ -110,12 +110,16 @@ big { font-size: 1.2em; }
 
 article blockquote {
   $bq-margin: 1.2em;
-  font-style: italic;
-  position: relative;
+  font-style: normal;
+  color: #000;
   font-size: 1em;
   line-height: 1.5em;
-  padding-left: 1em;
-  border-left: 4px solid rgba($text-color-light, .5);
+  font-family: FangSong,STFangsong,KaiTi_GB2312,KaiTi,STKaiti,serif;
+  border-left: 5px solid green;
+  border-radius: 5px;
+  background-color: rgb(143, 252, 143);
+  padding: 0.5em 1em;
+  box-shadow: 0px 0px 1em #666 inset;
   cite {
     font-style: italic;
     a { color: $text-color-light !important; word-wrap: break-word; }

@@ -53,6 +53,9 @@ categories: Reading-Notes
 	<li>未读</li>
 	<ol>
 		<li>《JavaScript经典实例》</li>
+		<li>《JavaScript高级程序设计》</li>
+		<li>《JavaScript核心技术》</li>
+		<li>《JavaScript高效图形编程》</li>
 		<li>《深入浅出Ajax（中文版）》</li>
 		<li>《高性能网站建设进阶指南》</li>
 		<li>《精通CSS：高级Web标准解决方案》</li>

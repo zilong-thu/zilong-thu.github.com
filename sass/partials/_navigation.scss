@@ -5,8 +5,8 @@ body > nav {
   margin: 0 0 20px 0;
   box-shadow: 1px 1px 5px #444;
   @include background($nav-bg-front, $nav-bg-back);
-  padding-top: .4em;
-  padding-bottom: .4em;
+  padding-top: 0em;
+  padding-bottom: 0em;
   form {
     @include background-clip(padding-box);
     margin: 0; padding: 0;
@@ -42,15 +42,15 @@ body > nav {
       @include horizontal-list(0);
       float: left;
       display: block;
-      padding-top: .15em;
+      padding: 0;
     }
     ul.subscription {
       margin-left: .8em;
       float: right;
-      li:last-child a { padding-right: 0; }
     }
     ul li {
       margin: 0;
+      padding: 0.4em 1em;
     }
     a {
       @include link-colors($nav-color, $nav-color-hover, $visited: $nav-color);
@@ -64,11 +64,9 @@ body > nav {
     }
     li + li {
       border-left: 1px solid $nav-border-left;
-      margin-left: .8em;
-      a {
-        padding-left: .8em;
-        border-left: 1px solid $nav-border-right;
-      }
+    }
+    li:hover {
+      
     }
     form {
       float: right;
