@@ -1,17 +1,16 @@
 body > nav {
   position: relative;
   background-color: $nav-bg;
-  border-radius: 1.5em;
+  border-radius: 2em;
   margin: 0 0 20px 0;
   box-shadow: 1px 1px 5px #444;
   @include background($nav-bg-front, $nav-bg-back);
-  padding-top: 0em;
-  padding-bottom: 0em;
+  padding: 0.3em 2em;
   form {
     @include background-clip(padding-box);
     margin: 0; padding: 0;
     .search {
-      padding: .3em .5em 0;
+      padding: .3em .5em;
       font-size: .85em;
       font-family: $sans;
       line-height: 1.1em;
@@ -50,7 +49,7 @@ body > nav {
     }
     ul li {
       margin: 0;
-      padding: 0.4em 1em;
+      padding: 0.1em 0.5em;
     }
     a {
       @include link-colors($nav-color, $nav-color-hover, $visited: $nav-color);
@@ -59,14 +58,11 @@ body > nav {
       float: left;
       text-decoration: none;
       font-size: 1.1em;
-      padding: .1em 0;
+      padding: .2em 1em;
       line-height: 1.5em;
     }
     li + li {
       border-left: 1px solid $nav-border-left;
-    }
-    li:hover {
-      
     }
     form {
       float: right;
