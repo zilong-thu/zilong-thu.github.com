@@ -61,6 +61,9 @@ body > nav {
       padding: .2em 1em;
       line-height: 1.5em;
     }
+    a:hover{
+      font-weight: bold;
+    }
     li + li {
       border-left: 1px solid $nav-border-left;
     }

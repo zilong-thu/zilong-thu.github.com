@@ -36,7 +36,17 @@ categories: Reading-Notes
 
 后来对此方法的改进是，在样式表第一条规则中队希望采用重置样式的元素逐一声明，像Octopress博客模板的`screen.css`这样：
 ``` css Octopress博客模板的重置样式
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,a,abbr,acronym,address,
+big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,figure,figcaption,
+footer,header,hgroup,menu,nav,output,ruby,section,summary,
+time,mark,audio,video
 {
 	margin:0;
 	padding:0;
@@ -95,7 +105,7 @@ Eric Meyer强烈推荐仅将使用伪元素生成内容用于渐进增强（prog
 ``` css
 a[href]:after{ content: " [" attr(href) "]"; font-size: smaller;}
 ```
-详见[“Going to Print”](http://alistapart.com/article/goingtoprint/)。这是Eric Meyer 在2002年写的一篇文章。
+详见<a href="http://alistapart.com/article/goingtoprint/" target="_blank" title="Going to Print">Eric Meyer, 2002, “Going to Print”</a>。
 
 `content`的属性还可以是`url`，例如用图片代替`list-style`作为列表项的标记：
 ``` css

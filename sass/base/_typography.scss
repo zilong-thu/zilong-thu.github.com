@@ -2,9 +2,9 @@ $blockquote: $type-border !default;
 $sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
 $serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif,"Microsoft YaHei",SimHei,"LiHei Pro Medium",STXihei !default;
+$heading-font-family: "PT Sans", "Helvetica Neue", Arial, "Microsoft YaHei",SimHei,"LiHei Pro Medium",STXihei,sans-serif !default;
 $header-title-font-family: $heading-font-family !default;
-$header-subtitle-font-family: $heading-font-family !default;
+$header-subtitle-font-family: "Shannon Book", $heading-font-family !default;
 
 // Fonts
 .heading {
@@ -129,7 +129,10 @@ article blockquote {
     padding-left: 1.5em;
     border-left-width: 4px;
   }
-  p { margin-bottom: 0.5em; }
+  p { 
+    margin-bottom: 0.5em;
+    text-indent: 1em;
+  }
 }
 
 .pullquote-right:before,
