@@ -29,7 +29,7 @@ V8引擎在运行之前将JavaScript编译成机器码，而非字节码或是�
 ###乔布斯：对Flash的思考
 2010年4月，乔帮主的一篇文章——<a href="http://www.apple.com/hotnews/thoughts-on-flash/" target="_blank" title="原文地址">Thoughts on Flash（对Flash的思考）</a>——将原本只是在开发人员中知名的HTML5推向主流媒体。乔帮主指出，指出随着HTML5的发展，观看视频或其它内容时，Adobe Flash将不再是必须的。
 
-这篇文章让我对开源、标准化有更深的理解了。
+这篇文章让我对开源、标准化有更深的理解了。也在此推荐一个可以将Flash文件迅速转换为HTML5的网站：<a href="https://www.pixelplant.com/" target="_blank" title="Convert Flash to HTML5">Convert Flash to HTML5</a>。
 
 ###判断奇偶数
 现在知道取余数运算`%`是可以非常精确的，但也会有误差，例如：

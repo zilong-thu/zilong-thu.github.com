@@ -33,9 +33,6 @@ a{
     src: url('/fonts/UglyQua.ttf');
     src: url('/fonts/UglyQua-Italic.ttf');
 }
-.myFont{
-    font-family: UglyQua;
-}
 #book_wrapper article{
     position: absolute;
     width: 240px;
@@ -60,34 +57,6 @@ a{
 }
 #tran-eg:hover div{
     width: 100%;
-}
-#tran-eg .linear{
-    background-color: blue;
-    transition-timing-function: linear;
-}
-#tran-eg .ease{
-    background-color: red;
-    transition-timing-function: ease;
-}
-#tran-eg .ease-out{
-    background-color: green;
-    transition-timing-function: ease-out;
-}
-#tran-eg .ease-in{
-    background-color: #ccc;
-    transition-timing-function: ease-in;
-}
-#tran-eg .ease-in-out{
-    background-color: orange;
-    transition-timing-function: ease-in-out;
-}
-#tran-eg .steps{
-    background-color: #06f;
-    transition-timing-function: steps(5);
-}
-#tran-eg .cubic-bezier{
-    background-color: gray;
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 @-webkit-keyframes text-flames{
     0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,

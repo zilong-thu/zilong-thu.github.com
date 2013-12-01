@@ -6,6 +6,11 @@ comments: true
 keywords: practical css3, develop and design, CSS3, 前端
 categories: Reading-Notes
 ---
+<style type="text/css">
+.myclass{
+	font-weight: bold;
+}
+</style>
 本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。本书详细信息可以参见[豆瓣读书：《CSS3实战：开发与设计》](http://book.douban.com/subject/24745215/)。
 
 ###用rem调整文本大小
@@ -55,14 +60,11 @@ IE条件注释这样使用：
 	src: url('/fonts/UglyQua.ttf');
 	src: url('/fonts/UglyQua-Italic.ttf');
 }
-.myFont{
-    font-family: UglyQua;
-}
 ```
 ``` html html code
-<p class="myFont">This is some text using font format <i>UglyQua</i>.</p>
+<p style="font-family: UglyQua;font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
 ```
-<p class="myFont" style="font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
+<p style="font-family: UglyQua;font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
 
 ###多重文本阴影
 在同一个CSS选择器下，可以应用多重文本阴影。例如
@@ -193,14 +195,14 @@ CSS3允许开发人员向一个元素添加多重背景，方法很简单，在`
 ###CSS3 transition
 下面是7种不同的timing-function属性值的实验。鼠标悬浮于上即可看到在3秒内不同timing-function产生的过渡动画效果。
 
-<div id="tran-eg" style="width:600px;height:350px;border:1px solid #cccccc;">
-	<div class="linear">linear</div>
-	<div class="ease">ease</div>
-	<div class="ease-out">ease-out</div>
-	<div class="ease-in">ease-in</div>
-	<div class="ease-in-out">ease-in-out</div>
-	<div class="steps">steps(5)</div>
-	<div class="cubic-bezier">cubic-bezier(0.25, 0.1, 0.25, 1.0)</div>
+<div id="tran-eg" style="width:600px;height:350px;border:1px solid #ccc;">
+	<div style="background-color: blue;transition-timing-function: linear;">linear</div>
+	<div style="background-color: red;transition-timing-function: ease;">ease</div>
+	<div style="background-color: green;transition-timing-function: ease-out;">ease-out</div>
+	<div style="background-color: #ccc;transition-timing-function: ease-in;">ease-in</div>
+	<div style="background-color: orange;transition-timing-function: ease-in-out;">ease-in-out</div>
+	<div style="background-color: #06f;transition-timing-function: steps(5);">steps(5)</div>
+	<div style="background-color: gray;transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);">cubic-bezier(0.25, 0.1, 0.25, 1.0)</div>
 </div>
 
 ###CSS3 animation
