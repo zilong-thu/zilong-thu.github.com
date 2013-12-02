@@ -9,7 +9,7 @@ categories: Movies
 
 效果页面：<a href="{{ root_url }}/blog/impressPages/greek_mythology_movies.html" target="_blank" style="font-size:1.5em;color:#32cd32;">关于希腊神话与传说的电影集锦</a>
 
-这是一个用impress.js模板写成的页面，整理了一下我看过的希腊神话相关的电影，会有短评、推荐指数等。不过……尚未完工。神啊，再给我10个小时！！！
+这是一个用impress.js模板写成的页面，整理了一下我看过的希腊神话相关的电影，会有短评、推荐指数等。
 
 暂时只找到了7部电影。都是自己看过的。下面是一些技术细节的记录。
 <!-- more -->

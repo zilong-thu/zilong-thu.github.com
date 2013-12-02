@@ -58,14 +58,13 @@ body > nav {
       float: left;
       text-decoration: none;
       font-size: 1.1em;
-      padding: .2em 1em;
+      padding: .2em 1em 0.1em 1em;
       line-height: 1.5em;
+      border-bottom: 2px solid transparent;
+      transition: border 0.5s;
     }
     a:hover{
-      font-weight: bold;
-    }
-    li + li {
-      border-left: 1px solid $nav-border-left;
+      border-bottom: 2px solid darken(green,5);
     }
     form {
       float: right;
