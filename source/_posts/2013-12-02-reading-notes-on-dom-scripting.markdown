@@ -83,3 +83,34 @@ function addLoadEvent(func){
 ```
 
 但我个人还是喜欢直接写 window.onload = function(){...}; ，并将其放在`<body>`标签之前。或者使用jQuery的 $(document).ready(function(){}); 。
+
+###DOM Core与HTML-DOM
+DOM Core并不专属于JavaScript，支持DOM的任何一种程序设计语言都可以使用它们。它们的用途也不仅限于处理网页，而是可以用来处理任何使用标记语言（比如XML）编写出来的文档。
+
+DOM Core方法示例：
+
++ getElementById()
++ getElementsByTagName()
++ getAttribute()
++ setAttribute()
+
+在DOM Core出现之前，人们使用HTML-DOM来进行文档操作。两种方法的比较如下：
+
+``` javascript HTML-DOM与DOM Core的比较
+// 获取文档元素
+// DOM Core
+var forms = document.getElementsByTagName("form");
+
+// HTML-DOM
+var forms = document.forms;
+
+// 获取元素属性
+// DOM Core
+var url = element.getAttribute("src");
+var source = element.getAttribute("href");
+
+// HTML-DOM
+var url = element.src;
+var source = element.href;
+
+二者可以得到相同的结果。HTML-DOM代码通常比较简短，但是它们只能用来处理Web文档。
