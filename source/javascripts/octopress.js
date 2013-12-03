@@ -121,11 +121,12 @@ function back_to_top(){
       }
     });
     $("#back_to_top").click(function(){
-      $('body,html').animate({scrollTop:0},1000);
+      $('body,html').animate({scrollTop:0},900);
       return false;
     });
   });
 }
+
 $('document').ready(function() {
   testFeatures();
   wrapFlashVideos();

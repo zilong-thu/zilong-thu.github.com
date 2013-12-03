@@ -1,7 +1,7 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 a{
-  transition: color 0.6s ease;
+  transition: color 0.6s ease,box-shadow 0.6s;
 }
 #content .blog-index article h1 a:hover{
     text-decoration:none;
@@ -164,18 +164,23 @@ span.triTopOuter{
 }
 #back_to_top{
   position: fixed;
-  bottom: 50px;
-  right: 50px;
-  z-index: 1000;
+  bottom: 2em;
+  right: 10px;
+  background-color:transparent;
 }
 #back_to_top a{
   display: block;
-  width: 4em;
-  height: 3em;
+  width: 3.5em;
+  height: 2.5em;
   border-radius: .5em;
-  font-size: 2em;
-  line-height:3em;
-  background-color:#FEFAB8;
+  font: 1.8em sans-serif bold;
+  color: #fff;
+  line-height:2.5em;
+  background-color:rgba(11,156,224,0.7);
   text-decoration: none;
   text-align:center;
+  z-index: 4;
+}
+#back_to_top a:hover{
+  box-shadow: 0 0 5px rgba(0,0,0,0.7)
 }

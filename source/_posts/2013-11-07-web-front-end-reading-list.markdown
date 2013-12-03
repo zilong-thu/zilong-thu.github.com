@@ -45,6 +45,7 @@ categories: Reading-Notes
 			<li>《完美网页的视觉设计法则》</li>
 			<p>色彩理论那块确实比较有启发性。没有太多技术细节，基本是偏重设计理念的。</p>
 			<li>《高性能网站建设指南》</li>
+			<li>《JavaScript DOM编程艺术》</li>
 		</ol>
 	<li>在读</li>
 	<ol>
