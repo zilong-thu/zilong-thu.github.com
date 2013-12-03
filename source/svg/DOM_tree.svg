@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="289.778px" viewBox="0 0 319.554 231.5" style="enable-background:new 0 0 319.554 231.5;"
+	 xml:space="preserve">
+<style type="text/css">
+.code{
+	font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
+}
+</style>
+<path style="fill:#009245;" d="M142.805,35c0,1.104-0.896,2-2,2h-40c-1.104,0-2-0.896-2-2V17c0-1.104,0.896-2,2-2h40
+	c1.104,0,2,0.896,2,2V35z"/>
+<text transform="matrix(1 0 0 1 111.4082 28.5083)" class="code" style="font-size:12;">div</text>
+<text transform="matrix(1 0 0 1 102.2148 11.1616)" style="font-size:10;">元素节点</text>
+<path style="fill:#009245;" d="M207.805,100c0,1.104-0.896,2-2,2h-40c-1.104,0-2-0.896-2-2V82c0-1.104,0.896-2,2-2h40
+	c1.104,0,2,0.896,2,2V100z"/>
+<text transform="matrix(1 0 0 1 176.4082 93.5083)" class="code" style="font-size:12;">div</text>
+<text transform="matrix(1 0 0 1 167.2148 70.1616)" style="font-size:10;">元素节点</text>
+<path style="fill:#F7931E;" d="M314.805,167.013c0,1.354-0.328,2.987-1.906,2.987h-57.109c-1.576,0-2.984-1.634-2.984-2.987v-22.062
+	c0-1.354,1.408-1.951,2.984-1.951h57.109c1.578,0,1.906,0.598,1.906,1.951V167.013z"/>
+<text transform="matrix(1 0 0 1 257.4082 158.5083)" class="code" style="font-size:12;">content.</text>
+<text transform="matrix(1 0 0 1 260.4775 135.1616)" style="font-size:10;">文本节点</text>
+<path style="fill:#009245;" d="M207.805,167.046c0,1.355-0.396,2.954-1.5,2.954h-40c-1.104,0-2.5-1.599-2.5-2.954v-22.091
+	c0-1.355,1.396-1.955,2.5-1.955h40c1.104,0,1.5,0.599,1.5,1.955V167.046z"/>
+<text transform="matrix(1 0 0 1 178.4082 158.5083)" class="code" style="font-size:12;">em</text>
+<text transform="matrix(1 0 0 1 167.2148 135.1616)" style="font-size:10;">元素节点</text>
+<path style="fill:#F7931E;" d="M134.805,167.013c0,1.354-0.329,2.987-1.906,2.987h-57.11c-1.577,0-2.984-1.634-2.984-2.987v-22.062
+	c0-1.354,1.408-1.951,2.984-1.951h57.11c1.577,0,1.906,0.598,1.906,1.951V167.013z"/>
+<text transform="matrix(1 0 0 1 79.8345 159.0005)" class="code" style="font-size:12;">This is</text>
+<text transform="matrix(1 0 0 1 81.6006 135.1616)" style="font-size:10;">文本节点</text>
+<path style="fill:#F7931E;" d="M207.805,225c0,1.104-0.896,2-2,2h-40c-1.104,0-2-0.896-2-2v-18c0-1.104,0.896-2,2-2h40
+	c1.104,0,2,0.896,2,2V225z"/>
+<text transform="matrix(1 0 0 1 178.4082 218.5078)" class="code" style="font-size:12;">my</text>
+<text transform="matrix(1 0 0 1 167.2148 201.1621)" style="font-size:10;">文本节点</text>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="164.305" y1="100.5" x2="130.727" y2="128.682"/>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="206.86" y1="101.919" x2="253.305" y2="128.682"/>
+<line style="fill:none;" x1="185.805" y1="165" x2="185.805" y2="187"/>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="100.305" y1="36.5" x2="78.19" y2="58.615"/>
+<ellipse style="fill:#338DC9;" cx="49.157" cy="95.396" rx="45.251" ry="24.229"/>
+<text transform="matrix(1 0 0 1 7.9165 98.5083)" class="code"  style="font-size:12;">id='testdiv'</text>
+<text transform="matrix(1 0 0 1 29.2148 67.3403)" style="font-size:10;">属性节点</text>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="185.305" y1="102" x2="185.305" y2="122"/>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="185.305" y1="170" x2="185.305" y2="187"/>
+<line style="fill:none;stroke:#000;stroke-miterlimit:10;" x1="142.305" y1="35.5" x2="164.361" y2="57.557"/>
+<text transform="matrix(1.0682 0 0 1 24.3047 221.0078)" style="font-family:'SimHei'; font-size:14;">DOM树示意图</text>
+</svg>

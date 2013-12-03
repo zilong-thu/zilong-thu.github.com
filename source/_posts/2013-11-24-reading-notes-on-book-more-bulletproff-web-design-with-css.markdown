@@ -6,11 +6,6 @@ comments: true
 keywords: reading notes,more bulletproff web design, css, css3
 categories: Reading-Notes
 ---
-<script type="text/javascript">
-$(document).ready(function(){
-	generateVisualization();
-});
-</script>
 <a href="http://book.douban.com/subject/4935289/" target="_blank" title="去豆瓣看看这本书~~">《无懈可击的Web设计II》</a>这本书装订得很漂亮，全部彩色打印。貌似老外写的书，引进并翻译过来后再出版的基本都会好好做装订，像《Web界面设计》也是全彩打印，真贵啊——不过这也是设计类书籍的惯例。装订精美，也不愁销量。
 
 ###渐进增强与优雅降级
@@ -67,6 +62,7 @@ function generateVisualization(){
 		current_span.attr('style','display:block;background-color:#87F664;position:absolute;top:0;left:0;height:100%;z-index:1;width:'+(span_length[i]/MAX_PRICE*100).toFixed(4)+'%');
 	}
 }
+generateVisualization();
 </script>
 
 ###Chapter 2：用border-radius制作圆角

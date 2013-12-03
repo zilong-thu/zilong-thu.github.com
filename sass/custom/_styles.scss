@@ -162,3 +162,20 @@ span.triTopOuter{
   bottom: -20px; 
   z-index: 100;
 }
+#back_to_top{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+}
+#back_to_top a{
+  display: block;
+  width: 4em;
+  height: 3em;
+  border-radius: .5em;
+  font-size: 2em;
+  line-height:3em;
+  background-color:#FEFAB8;
+  text-decoration: none;
+  text-align:center;
+}

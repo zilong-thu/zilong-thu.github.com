@@ -109,6 +109,23 @@ function renderDeliciousLinks(items) {
   $('#delicious').html(output);
 }
 
+function back_to_top(){
+  $("#back_to_top").hide();
+  $(function () {
+    $(window).scroll(function(){
+      if ($(window).scrollTop()>100){
+        $("#back_to_top").fadeIn(700);
+      }
+      else{
+        $("#back_to_top").fadeOut(700);
+      }
+    });
+    $("#back_to_top").click(function(){
+      $('body,html').animate({scrollTop:0},1000);
+      return false;
+    });
+  });
+}
 $('document').ready(function() {
   testFeatures();
   wrapFlashVideos();
@@ -116,6 +133,7 @@ $('document').ready(function() {
   addCodeLineNumbers();
   getNav();
   addSidebarToggler();
+  back_to_top();  // register event handler for back_to_top button
 });
 
 // iOS scaling bug fix
