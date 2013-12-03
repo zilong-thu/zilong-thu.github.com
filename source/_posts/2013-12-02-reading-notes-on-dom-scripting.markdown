@@ -12,7 +12,7 @@ categories: Reading-Notes
 
 单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。
 
-我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a href="http://book.douban.com/subject/1921890/" target="_blank">本书豆瓣链接</a>。
+我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="book_in_douban" href="http://book.douban.com/subject/1921890/" target="_blank" bookID="1921890">本书豆瓣链接</a>。
 
 本文一顿瞎写，老鸟们就别喷了，哥也只是一个四处找工作碰壁的JS新手罢了~~
 <!-- more -->
@@ -223,3 +223,23 @@ function addClass(element, value){
 本书中译本写于2006年9月，英文原版出版时间是2005-9-20。在书的最后，作者表示本书写成于Web2.0时代到来之前——这正是让我觉得可敬之处，已经过去9年了，书中的内容丝毫不过时啊！
 
 推荐度：★★★★★
+
+<p id="request_result"></p>
+
+<script type="text/javascript">
+function getBookInfo(){
+	var anchor_books = $('a.book_in_douban');
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('get','https://api.douban.com/v2/book/1921890?apikey=05890b77f44e9ccd109b2267dcebd667&alt=json&start-index=1&max-results=10',false);
+	xhr.send();
+	var status = xhr.status;
+	var p_res = document.getElementById('request_result');
+	if((status>=200 && status<300)|| status == 304){
+		$(p_res).html(xhr.responseText);
+	} else{
+		$(p_res).html('Request was unsuccessful:'+status);
+	}
+}
+getBookInfo();
+</script>
