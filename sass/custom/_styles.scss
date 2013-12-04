@@ -184,3 +184,14 @@ span.triTopOuter{
 #back_to_top a:hover{
   box-shadow: 0 0 5px rgba(0,0,0,0.7)
 }
+#div_douban_wrapper{
+  display: none;
+  position: fixed;
+  left: 30%;
+  top: 20%;
+  border: 5px solid #ccc;
+  z-index: 2;
+  box-shadow: 1px 1px 15px #333;
+  padding: 1em;
+  background-color: #fff;
+}

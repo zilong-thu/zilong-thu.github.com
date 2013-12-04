@@ -6,7 +6,7 @@ comments: true
 keywords: the non-desiner's design book, 写给大家看的设计书
 categories: Reading-Notes
 ---
-<a href="http://book.douban.com/subject/3323633/" target="_blank" title="去豆瓣查看此书~~">写给大家看的设计书（第3版）</a>，英文名“The Non-Desiner's Design Book”，封面其貌不扬，但内容与内容的排版设计都十分精彩。我大脑里与平面设计相关的灰质被深深地刺激到了，这块灰质表示此书可以给★★★★★。
+<a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="去豆瓣查看此书~~">写给大家看的设计书（第3版）</a>，英文名“The Non-Desiner's Design Book”，封面其貌不扬，但内容与内容的排版设计都十分精彩。我大脑里与平面设计相关的灰质被深深地刺激到了，这块灰质表示此书可以给★★★★★。
 <!-- more -->
 
 ###四大设计原则
@@ -56,3 +56,16 @@ pp116
 Robin原则：<strong>不要把同一个类别中的两种字体放在同一个页面上</strong>。
 
 在Web中，倒是可以用同一个类别的字体作为相互的候选字体方案。
+
+<div id="div_douban_wrapper"></div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	(function(){
+		var url = '{{root_url}}/javascripts/mylibs/bouban_book.js';
+		var script =  document.createElement("script");
+		script.src = url;
+		document.body.appendChild(script);
+	})();
+});
+</script>

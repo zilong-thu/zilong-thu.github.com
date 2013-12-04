@@ -223,31 +223,3 @@ function addClass(element, value){
 本书中译本写于2006年9月，英文原版出版时间是2005-9-20。在书的最后，作者表示本书写成于Web2.0时代到来之前——这正是让我觉得可敬之处，已经过去9年了，书中的内容丝毫不过时啊！
 
 推荐度：★★★★★
-
-<p id="request_result"></p>
-
-<script type="text/javascript">
-function getBookInfo(){
-	var anchor_books = $('a.book_in_douban');
-
-	var xhr = new XMLHttpRequest();
-	xhr.open('get','https://api.douban.com/v2/book/1921890',false);
-	xhr.send('apikey=05890b77f44e9ccd109b2267dcebd667&alt=json&start-index=1&max-results=10');
-	var p_res = $('#request_result');
-	xhr.onreadystatechange = function(){
-		var readystate = xhr.readyState;
-		if(readystate===4){
-			alert(xhr.status);
-			$(p_res).html(xhr.responseText);
-		}
-	}
-	// var status = xhr.status;
-	// 
-	// if((status>=200 && status<300)|| status == 304){
-	// 	$(p_res).html(xhr.responseText);
-	// } else{
-	// 	$(p_res).html('Request was unsuccessful:'+status);
-	// }
-}
-getBookInfo();
-</script>

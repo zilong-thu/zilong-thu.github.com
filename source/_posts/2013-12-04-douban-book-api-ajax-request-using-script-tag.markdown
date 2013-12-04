@@ -1,0 +1,107 @@
+---
+layout: post
+title: "使用script标签在博客中跨域调用豆瓣API"
+date: 2013-12-04 14:39
+comments: true
+keywords: Ajax,douban book api
+categories: Ajax
+---
+摘要：本文介绍如何在个人博客中为一些读过的图书添加Ajax实时请求：当鼠标点击该书名链接时，发起异步跨域HTTP请求，获得该书在豆瓣的基本信息，并显示在鼠标附近。另外，为保证“优雅降级”，该链接在用户禁用JavaScript时会直接去往豆瓣该书的页面。
+
+图书信息展示方式使用与豆瓣读书相同的布局，但不提供用户操作的选项，例如“写书评”“写读书笔记”等功能。
+
+<img src="{{root_url}}/images/blog/20131204_doubanAPI_target_result.png" alt="希望做成的效果图，与豆瓣读书相同" style="box-shadow: 2px 2px 10px #333;">
+
+<!-- more -->
+###1. 框架
+思路：任意博文，指向豆瓣书籍页面的链接按照一定的格式书写，然后我的JS代码即可在加载时为其注册鼠标悬停事件处理程序。
+
+要尽可能使此功能模块与我的博客分离开来，因此将尽量不共用CSS、不在博文中添加过多的标签。
+
+####1.1 HTML文档
+HTML文档中需要添加一个UI容器：
+```html
+<div id="div_douban_wrapper"></div>
+```
+书籍链接参数如下，其中`class`和`name`属性是必须的。考虑可访问性，`href`属性也是必须的。
+``` html
+<a class="douban_book" href="http://book.douban.com/subject/bookID/" name="bookID">bookName</a>
+```
+####1.2 CSS样式表
+在`_style.scss`里添加：
+``` css div_douban_wrapper容器的样式
+#div_douban_wrapper{
+	display: none;
+	position: fixed;
+	left: 30%;
+	top: 20%;
+	border: 5px solid #ccc;
+	z-index: 2;
+	box-shadow: 1px 1px 15px #333;
+	padding: 1em;
+	background-color: #fff;
+}
+```
+
+###2. `<script>`标签实现跨域HTTP请求
+参考<a class="douban_book" href="http://book.douban.com/subject/10747833/" name="10747833" target="_blank">精彩绝伦的jQuery</a>，使用如下代码即可为指向豆瓣读书的书名超链接添加Ajax请求：
+
+``` javascript
+// 为HTML里的豆瓣图书超链接注册事件处理函数
+function registerDoubanBookEventHanler(){
+	var a = $('a.douban_book');
+
+	for(var i=0, length=a.length;i<length;i++){
+		a[i].onmouseover = function(){
+			requestBookInfo(this);
+			return false;
+		};
+
+		a[i].onmouseout = function(){
+			setTimeout("$('#div_douban_wrapper').fadeOut();",1200);
+			return false;
+		};
+	}
+}
+
+// 请求豆瓣图书数据
+// element为事件的target元素
+function requestBookInfo(element){
+	var bookID = element.name;
+	var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=yourAPIKey&callback=showBookInfo';
+	var script =  document.createElement("script");
+	script.src = url;
+	script.setAttribute("class","script_for_ajax");  // 设置class属性是为了在完成Ajax请求后将其删除
+	document.body.appendChild(script);
+}
+```
+
+###3. 在某一篇Octopress博文中使用自己的js文件
+也是使用`<script>`标签的`src`属性即可。
+
+``` javascript
+$(document).ready(function(){
+	(function(){
+		var url = '{{root_url}}/javascripts/mylibs/bouban_book.js';
+		var script =  document.createElement("script");
+		script.src = url;
+		document.body.appendChild(script);
+	})();
+});
+```
+###4. 将信息框放在鼠标旁边
+待添加
+
+
+<div id="div_douban_wrapper"></div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	(function(){
+		var url = '{{root_url}}/javascripts/mylibs/bouban_book.js';
+		var script =  document.createElement("script");
+		script.src = url;
+		document.body.appendChild(script);
+	})();
+});
+</script>
