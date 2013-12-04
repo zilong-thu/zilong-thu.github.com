@@ -231,15 +231,23 @@ function getBookInfo(){
 	var anchor_books = $('a.book_in_douban');
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('get','https://api.douban.com/v2/book/1921890?apikey=05890b77f44e9ccd109b2267dcebd667&alt=json&start-index=1&max-results=10',false);
-	xhr.send();
-	var status = xhr.status;
-	var p_res = document.getElementById('request_result');
-	if((status>=200 && status<300)|| status == 304){
-		$(p_res).html(xhr.responseText);
-	} else{
-		$(p_res).html('Request was unsuccessful:'+status);
+	xhr.open('get','https://api.douban.com/v2/book/1921890',false);
+	xhr.send('apikey=05890b77f44e9ccd109b2267dcebd667&alt=json&start-index=1&max-results=10');
+	var p_res = $('#request_result');
+	xhr.onreadystatechange = function(){
+		var readystate = xhr.readyState;
+		if(readystate===4){
+			alert(xhr.status);
+			$(p_res).html(xhr.responseText);
+		}
 	}
+	// var status = xhr.status;
+	// 
+	// if((status>=200 && status<300)|| status == 304){
+	// 	$(p_res).html(xhr.responseText);
+	// } else{
+	// 	$(p_res).html('Request was unsuccessful:'+status);
+	// }
 }
 getBookInfo();
 </script>
