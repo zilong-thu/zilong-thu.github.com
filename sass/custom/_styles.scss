@@ -1,7 +1,10 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 a{
-  transition: color 0.6s ease,box-shadow 0.6s;
+  transition: color 0.6s ease, box-shadow 0.6s ease;
+}
+*{
+  transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
 }
 #content .blog-index article h1 a:hover{
     text-decoration:none;
@@ -9,7 +12,7 @@ a{
 #blog-archives  article{
     border-radius: 0.4em;
     border-right: 0.4em solid transparent;
-    color: #666666;
+    color: #666;
 }
 #blog-archives article:hover{
     color: #000;
@@ -104,29 +107,31 @@ span.triTopOuter{
   z-index: 4;
 }
 #back_to_top a:hover{
-  box-shadow: 0 0 5px rgba(0,0,0,0.7);
+  box-shadow: 0 0 5px #333;
 }
 
 /*豆瓣读书插件*/
 #div_douban_wrapper{
   display: none;
   position: fixed;
-  left: 25%;
+  left: 18%;
   top: 20%;
   z-index: 5;
   box-shadow: 1px 1px 20px rgba(0,0,0,0.8);
   padding: 1em;
   background-color: #fff;
   border-radius: .5em;
+  transition: left 0.5s, top 0.5s,right 0.5s, right 0.5s;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 560px){
   #div_douban_wrapper{
     left: 5%;
+    top: 10%;
     right: 5%;
     padding: .5em;
   }
 }
-@media screen and (min-width: 601px) and (max-width: 768px){
+@media screen and (min-width: 561px) and (max-width: 720px){
   #div_douban_wrapper{
     left: 10%;
     right: 10%;
@@ -135,6 +140,13 @@ span.triTopOuter{
 }
 #div_douban_wrapper div{
   border:none;
+  background:#fff;
+}
+#div_douban_wrapper img{
+  border:1px solid #ccc;
+}
+#div_douban_wrapper img:hover{
+  box-shadow: 1px 1px 5px #333;
 }
 #div_douban_wrapper span.douban_close{
   display:inline-block;

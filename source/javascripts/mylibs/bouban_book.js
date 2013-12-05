@@ -11,10 +11,10 @@ function showBookInfo(data){
 	var div_douban_content = $('#div_douban_content');
 
 	var str_html = '<h3>'+data.title+'</h3>' +
-			'<div style="float: left;margin: 5px 20px 5px 0;">'+
+			'<div style="float: left;margin: 0 20px 5px 0;">'+
 			'<a href="http://book.douban.com/subject/'+data.id+'/" target="_blank" title="《'+data.title+'》，去豆瓣，更精彩~~">'+
 			'<img src="'+data.images.medium+'"/></a></div>'+
-			'<div style="padding-right:2em;float: left;margin: 5px 20px 5px 0;">'+
+			'<div style="padding-right:2em;float: left;margin: 0 20px 5px 0;">'+
 			'作者： '+ data.author +
 			'<br/>出版社： ' + data.publisher + 
 			'<br/>出版年： ' + data.pubdate + 
