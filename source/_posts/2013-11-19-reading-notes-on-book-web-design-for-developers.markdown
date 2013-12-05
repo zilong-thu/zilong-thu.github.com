@@ -6,8 +6,7 @@ comments: true
 keywords: web design for developers,Web设计,
 categories: Reading-Notes
 ---
-
-<a href="http://book.douban.com/subject/6783748/" target="_blank" title="去豆瓣查看此书">写给程序员的Web设计书</a>原作名为“Web Design for Developers: A Programmer's Guide to Design Tools and Techniques”。
+<a href="http://book.douban.com/subject/6783748/" name="6783748" class="douban_book" target="_blank">《写给程序员的Web设计书》</a>原作名为“Web Design for Developers: A Programmer's Guide to Design Tools and Techniques”。
 
 下面各标题的编号对应的是书中的章节号。
 

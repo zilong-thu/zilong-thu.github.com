@@ -3,7 +3,7 @@ body > nav {
   background-color: $nav-bg;
   border-radius: 2em;
   margin: 0 0 20px 0;
-  @include background($nav-bg-front, $nav-bg-back);
+  @include background($nav-bg-back);
   padding: 0.4em 2.6em;
   form {
     @include background-clip(padding-box);

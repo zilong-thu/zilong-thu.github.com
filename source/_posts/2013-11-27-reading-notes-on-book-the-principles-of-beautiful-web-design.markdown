@@ -6,6 +6,7 @@ comments: true
 keywords: the principles of beautiful web design, 完美网页的视觉设计法则, web前端, 设计, 切图
 categories: Reading-Notes
 ---
+<a href="http://book.douban.com/subject/6978720/" class="douban_book" name="6978720" target="_blank" title="去豆瓣看看这本书~~">>>图书基本信息</a>
 
 ###什么是全面虚拟？
 > Comp是comprehensive dummy（全面虚拟）的缩写，这个术语来自于打印设计领域。是一种在进行打印之前，先将已经创建好的、用于打印的布局完全模拟的过程。将这个词移植到网页设计中，comp就是在我们开始用HTML进行原型设计之前的某个布局的图像。

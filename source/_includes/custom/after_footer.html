@@ -1,3 +1,18 @@
 {% comment %}
   Add content to be output at the bottom of each page. (You might use this for analytics scripts, for example)
 {% endcomment %}
+<div id="div_douban_wrapper">
+<span class="douban_close" title="close"></span>
+<div id="div_douban_content" class="group"></div>
+<div class="douban_footer">Powered by <a href="http://www.douban.com/" target="_blank">Douban</a></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	(function(){
+		var url = '{{root_url}}/javascripts/mylibs/bouban_book.js';
+		var script =  document.createElement("script");
+		script.src = url;
+		document.body.appendChild(script);
+	})();
+});
+</script>

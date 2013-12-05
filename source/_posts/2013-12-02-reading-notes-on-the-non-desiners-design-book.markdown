@@ -56,16 +56,3 @@ pp116
 Robin原则：<strong>不要把同一个类别中的两种字体放在同一个页面上</strong>。
 
 在Web中，倒是可以用同一个类别的字体作为相互的候选字体方案。
-
-<div id="div_douban_wrapper"></div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	(function(){
-		var url = '{{root_url}}/javascripts/mylibs/bouban_book.js';
-		var script =  document.createElement("script");
-		script.src = url;
-		document.body.appendChild(script);
-	})();
-});
-</script>

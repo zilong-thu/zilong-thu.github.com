@@ -6,12 +6,20 @@ comments: true
 keywords: practical css3, develop and design, CSS3, 前端
 categories: Reading-Notes
 ---
-<style type="text/css">
-.myclass{
-	font-weight: bold;
-}
-</style>
-本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。本书详细信息可以参见[豆瓣读书：《CSS3实战：开发与设计》](http://book.douban.com/subject/24745215/)。
+
+本文记录我在读<a href="http://book.douban.com/subject/24745215/" target="_blank" class="douban_book" name="24745215">《CSS3实战：开发与设计》</a>时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。
+
+<!-- more -->
+<script type="text/javascript">
+(function(){
+	var url = '{{root_url}}/stylesheets/style_practical_css3.css';
+	var link =  document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.href = url;
+	document.head.appendChild(link);
+})();
+</script>
 
 ###用rem调整文本大小
 参见 [http://www.w3.org/TR/css3-values/](http://www.w3.org/TR/css3-values/)
@@ -31,8 +39,6 @@ HTML5中的标题级别不再以标题`h`后面的数字代表，转而以它们
 这一点在《HTML5经典实例》中也详细介绍了。
 
 具体可参见Mozilla的文章：[Sections and Outlines of an HTML5 Document](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Sections_and_Outlines_of_an_HTML5_document)
-
-<!-- more -->
 
 ###IE条件注释
 IE条件注释这样使用：
@@ -316,3 +322,18 @@ article{
 {%img /images/blog/browser-market-share-2013-11-6.PNG %}
 
 （桌面浏览器全球市场份额，截止到2013-11-06）
+
+##附：关于本文的一个奇技淫巧
+本文在一开始的时候内嵌了这样一段JS代码：
+
+``` javascript
+(function(){
+	var url = '{{root_url}}/stylesheets/style_practical_css3.css';
+	var link =  document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.href = url;
+	document.head.appendChild(link);
+})();
+```
+用于获取仅用于本文的样式表。可以减轻全站总样式表的体积。

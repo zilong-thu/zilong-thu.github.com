@@ -12,7 +12,7 @@ categories: Reading-Notes
 
 单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。
 
-我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="book_in_douban" href="http://book.douban.com/subject/1921890/" target="_blank" bookID="1921890">本书豆瓣链接</a>。
+我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="douban_book" href="http://book.douban.com/subject/1921890/" target="_blank" name="1921890">>>图书基本信息</a>。
 
 本文一顿瞎写，老鸟们就别喷了，哥也只是一个四处找工作碰壁的JS新手罢了~~
 <!-- more -->
@@ -37,7 +37,6 @@ W3C对DOM的定义是：“一个与系统平台和编程语言无关的接口�
 ``` html 空链接示例
 <a href="http://www.baidu.com/" onclick="return false;" target="_blank">baidu</a>
 ```
-<a href="http://www.baidu.com/" onclick="return false;" target="_blank">baidu</a>
 
 《JavaScript权威指南（第六版）》pp442：
 > 一些事件有与之相关的默认操作。例如，当超链接上发生click事件时，浏览器的默认操作是按照链接加载新页面。事件处理程序可以通过返回一个适当的值、调用事件对象的某个方法或者设置事件对象的某个属性来阻止默认操作的发生。这有时称为“取消”事件。

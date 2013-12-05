@@ -6,7 +6,7 @@ comments: true
 keywords: high performance web sites, 高性能网站建设指南
 categories: Reading-Notes
 ---
-只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录《高性能网站建设指南》的若干技术要点。
+只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。
 <!-- more -->
 ###用到的HTTP基础知识
 HTTP是一种客户端/服务器协议，由请求和响应构成。浏览器向一个特定的URL发送HTTP请求，URL对应的宿主服务器发回HTTP响应。和很多Internet服务一样，该协议使用简单的纯文本格式。请求的类型有GET、POST、HEAD、PUT、DELETE、OPTIONS和TRACE。最常见的是GET请求。

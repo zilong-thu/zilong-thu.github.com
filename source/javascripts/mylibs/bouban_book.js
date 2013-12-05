@@ -7,7 +7,8 @@ function requestBookInfo(element){
 	document.body.appendChild(script);
 }
 function showBookInfo(data){
-	var div_douban_wrapper = document.getElementById('div_douban_wrapper');
+	var div_douban_wrapper = $('#div_douban_wrapper');
+	var div_douban_content = $('#div_douban_content');
 
 	var str_html = '<h3>'+data.title+'</h3>' +
 			'<div style="float: left;margin: 5px 20px 5px 0;">'+
@@ -21,15 +22,19 @@ function showBookInfo(data){
 			'<br/>定价： ' + data.price + 
 			'<br/>ISBN： ' + data.isbn13 +
 			'</div>'+
-			'<div style="float: left;margin: 5px 20px 5px 0;"><span class="bigstars"></span><br/><span class="numRaters"></span></div>';
-	div_douban_wrapper.innerHTML = str_html;
+			'<div style="float:left;margin:5px 20px 5px 0;"><span class="bigstars"></span><br/><span class="numRaters"></span></div>';
+	div_douban_content.html(str_html);
+	div_douban_wrapper.fadeIn('fast');
 
 	// rating
 	showRating(data.rating);
-	$('#div_douban_wrapper').fadeIn();
-
+	
 	// delete the script script_for_ajax
 	$('script.script_for_ajax').remove();
+
+	$($('#div_douban_wrapper span.douban_close')[0]).click(function(){
+		div_douban_wrapper.fadeOut();
+	});
 }
 function showRating(rating){
 	var average = rating.average,
@@ -49,18 +54,25 @@ function showRating(rating){
 }
 
 function registerDoubanBookEventHanler(){
-	var a = $('a.douban_book');
+	var anchors = $('a.douban_book');
+	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';  // \'/images/service_icons_color.png\';
+	var str_douban_icon_style = 'display:inline-block;width:16px;height:16px;background:url(\'' +
+								 icon_url + '\') 2px -96px no-repeat transparent;padding: 0 2px;';
 
-	for(var i=0, length=a.length;i<length;i++){
-		a[i].onmouseover = function(){
+	for(var i=0, length=anchors.length;i<length;i++){
+		var a = anchors[i];
+		$(a).after('<span style="'+str_douban_icon_style+'"></span>');
+		$(a).attr('title','点击查看该书基本信息');
+
+		a.onclick = function(){
 			requestBookInfo(this);
 			return false;
 		};
 
-		a[i].onmouseout = function(){
-			setTimeout("$('#div_douban_wrapper').fadeOut();",1200);
-			return false;
-		};
+		// a[i].onmouseout = function(){
+		// 	setTimeout("$('#div_douban_wrapper').fadeOut();",1200);
+		// 	return false;
+		// };
 	}
 }
 

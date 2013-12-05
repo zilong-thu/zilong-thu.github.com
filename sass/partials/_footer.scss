@@ -3,7 +3,7 @@ body > footer {
   font-size: .8em;
   color: $footer-color;
   background-color: $footer-bg;
-  @include background($footer-bg-front, $footer-bg-back);
+  @include background($footer-bg-back);
   position: relative;
   padding-top: 1em;
   padding-bottom: 1em;

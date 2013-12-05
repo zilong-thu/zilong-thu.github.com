@@ -28,84 +28,6 @@ a{
     background-color: #6c6c6c;
     margin-right: 0.1em;
 }
-@font-face{
-    font-family: UglyQua;
-    src: url('/fonts/UglyQua.ttf');
-    src: url('/fonts/UglyQua-Italic.ttf');
-}
-#book_wrapper article{
-    position: absolute;
-    width: 240px;
-    height: 300px;
-    border-radius: 30px;
-    background-color: #ccc;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-}
-#tran-eg div{
-    height: 50px;
-    width: 10%;
-    background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%),
-                -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%),
-                -ms-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%),
-                -o-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%),
-                linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.4) 70%);
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.4),inset;
-    transition: width 3s;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-shadow: 1px 1px 2px #fff;
-}
-#tran-eg:hover div{
-    width: 100%;
-}
-@-webkit-keyframes text-flames{
-    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
-                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
-    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
-                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
-    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
-                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
-    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
-                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
-    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
-                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
-    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
-                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
-    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
-    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
-    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
-                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
-    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
-                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
-}
-@keyframes text-flames{
-    0%  { text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
-                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
-    19% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3,
-                     -2px -15px 11px #f80, 2px -25px 18px #f20;}
-    20% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
-                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
-    39% {text-shadow: 0 0 4px white, 0 -4px 3px #ff4, 3px -9px 7px #fd3,
-                     -3px -14px 12px #f90, 3px -24px 19px #f30;}
-    40% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
-                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
-    59% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 3px -8px 8px #fd4,
-                     -3px -12px 11px #f80, 2px -25px 20px #f30;}
-    60% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
-    79% {text-shadow: 0 0 5px white, 0 -6px 5px #ff5, 2px -7px 7px #fd3,
-                     -5px -13px 15px #ff7700, 4px -24px 19px #f41;}
-    80% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
-                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
-    100% {text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 5px -8px 6px #fe3,
-                     -4px -12px 13px #f82, 2px -26px 18px #f20;}
-}
-div.burning_text{
-    -webkit-animation: text-flames 0.6s infinite;
-    animation: text-flames 0.6s infinite;
-}
 span.Mosaic{
     display: inline-block;
     position: relative;
@@ -182,16 +104,62 @@ span.triTopOuter{
   z-index: 4;
 }
 #back_to_top a:hover{
-  box-shadow: 0 0 5px rgba(0,0,0,0.7)
+  box-shadow: 0 0 5px rgba(0,0,0,0.7);
 }
+
+/*豆瓣读书插件*/
 #div_douban_wrapper{
   display: none;
   position: fixed;
-  left: 30%;
+  left: 25%;
   top: 20%;
-  border: 5px solid #ccc;
-  z-index: 2;
-  box-shadow: 1px 1px 15px #333;
+  z-index: 5;
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.8);
   padding: 1em;
   background-color: #fff;
+  border-radius: .5em;
+}
+@media screen and (max-width: 600px){
+  #div_douban_wrapper{
+    left: 5%;
+    right: 5%;
+    padding: .5em;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 768px){
+  #div_douban_wrapper{
+    left: 10%;
+    right: 10%;
+    padding: .5em;
+  }
+}
+#div_douban_wrapper div{
+  border:none;
+}
+#div_douban_wrapper span.douban_close{
+  display:inline-block;
+  width:24px;
+  height:24px;
+  padding:3px;
+  float:right;
+  background:url('/images/close_24px.png') 3px 3px no-repeat ;
+  border-radius: 3px;
+  border:1px solid transparent;
+}
+#div_douban_wrapper span.douban_close:hover{
+  border:1px solid #aaa;
+}
+#div_douban_wrapper span.douban_close:active{
+  border:1px solid #666;
+}
+.group:after{
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.douban_footer{
+  font-size: .8em;
+  color: #666;
 }

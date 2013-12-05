@@ -10,6 +10,8 @@ categories: Reading-Notes
 
 ——Donald Knuth
 
+关于本书：<a href="http://book.douban.com/subject/21792530/" class="douban_book" name="21792530" target="_blank">《编写可维护的JavaScript》</a>
+
 ###换行
 逗号也是运算符，例如下面，逗号应该作为前一行的结尾。如果把它拿到下面作为第二行的开始，ASI(Automatic Semicolon Insertion，自动分号插入)机制会在某些场景下在前一行结束的位置自动插入分号，于是导致错误的发生。
 

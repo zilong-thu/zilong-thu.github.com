@@ -75,10 +75,9 @@ html {
 }
 body {
   > div {
-    background: $sidebar-bg $noise-bg;
-    border-bottom: 1px solid $page-border-bottom;
+    background: $sidebar-bg;
     > div {
-      background: $main-bg $noise-bg;
+      background: $main-bg;
       border-right: 1px solid $sidebar-border;
     }
   }

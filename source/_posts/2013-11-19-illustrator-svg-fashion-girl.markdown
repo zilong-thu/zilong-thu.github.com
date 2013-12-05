@@ -6,7 +6,7 @@ comments: true
 keywords: Illustrator, HTML5, SVG, 矢量图,作品, 自由路径, 美女
 categories: Illustrator
 ---
-Illustrator从零开始作画，才能起到练手的作用。这个是花费4个小时画出来的练习作品：Fashion Girl。
+Illustrator从零开始作画，才能起到练手的作用。这个是花费4个小时画出来的练习作品：Fashion Girl。参考的仍是<a href="http://book.douban.com/subject/24303555/" class="douban_book" name="24303555" target="_blank">《Illustrator CS6中文版：从新手到高手》</a>。
 
 嘴唇我懒得画了，用弧线代替。下次再研究如何画烈焰红唇~~
 
