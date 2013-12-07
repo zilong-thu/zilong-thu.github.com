@@ -124,3 +124,41 @@ obj1.age=18;
 console.log(obj2.age);           // => 18
 console.log(obj["age"]);         // => 18
 ```
+
+###抽象
+程序员一直在寻找尽可能降低程序复杂度的方法，其中很重要的一点就是努力让程序变得更抽象。对于JavaScript，有两种常用的抽象方法：函数式编程和面向对象编程。
+###高阶函数
+高阶函数：操作其他函数的函数称为高阶函数。
+####（1）修改函数
+``` javascript
+function negate(func){
+	return function(x){
+		return !func(x);
+	};
+}
+
+var str1 = '246',
+    str2 = 245;
+var isNotNaN = negate(isNaN);
+
+console.log(isNaN(str1));              // => false
+console.log(isNaN(str2));              // => false
+console.log(isNotNaN(str2));           // => true
+console.log(isNotNaN(NaN));            // => false
+```
+
+####（2）归约函数
+####（3）映射数组
+映射数组算法遍历数组，将函数应用于每个元素（例如`forEach`），并返回新的数组。
+
+``` javascript
+function map(func, array){
+	var result = [];
+	array.forEach(function(element){
+		result.push(func(element));
+	});
+	return result;
+}
+
+map(Math.round, [0.01,0.2, 2, 9.89, Math.PI]);
+```
