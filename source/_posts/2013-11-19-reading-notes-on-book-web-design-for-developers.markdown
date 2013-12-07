@@ -4,7 +4,7 @@ title: "《写给程序员的Web设计书》读书笔记"
 date: 2013-11-19 22:09
 comments: true
 keywords: web design for developers,Web设计,
-categories: Reading-Notes
+categories: Reading
 ---
 <a href="http://book.douban.com/subject/6783748/" name="6783748" class="douban_book" target="_blank">《写给程序员的Web设计书》</a>原作名为“Web Design for Developers: A Programmer's Guide to Design Tools and Techniques”。
 

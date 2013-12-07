@@ -1,10 +1,15 @@
 function requestBookInfo(element){
+	if (!element.name) {
+		return false;
+	}
 	var bookID = element.name;
 	var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667&callback=showBookInfo';
 	var script =  document.createElement("script");
 	script.src = url;
 	script.setAttribute("class","script_for_ajax");
 	document.body.appendChild(script);
+
+	return true;
 }
 function showBookInfo(data){
 	var div_douban_wrapper = $('#div_douban_wrapper');
@@ -65,8 +70,8 @@ function registerDoubanBookEventHanler(){
 		$(a).attr('title','点击查看该书基本信息');
 
 		a.onclick = function(){
-			requestBookInfo(this);
-			return false;
+			var hasBookID = requestBookInfo(this);
+			return !hasBookID;
 		};
 
 		// a[i].onmouseout = function(){

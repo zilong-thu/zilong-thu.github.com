@@ -4,7 +4,7 @@ title: "《JavaScript DOM 编程艺术》笔记"
 date: 2013-12-02 15:17
 comments: true
 keywords: DOM Scripting, DOM, HTML-DOM,JavaScript
-categories: Reading-Notes
+categories: Reading
 ---
 这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”
 

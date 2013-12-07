@@ -4,7 +4,7 @@ title: "《无懈可击的Web设计II》笔记"
 date: 2013-11-24 10:24
 comments: true
 keywords: reading notes,more bulletproff web design, css, css3
-categories: Reading-Notes
+categories: Reading
 ---
 <a href="http://book.douban.com/subject/4935289/" class="douban_book" name="4935289" target="_blank" title="去豆瓣看看这本书~~">《无懈可击的Web设计II》</a>这本书装订得很漂亮，全部彩色打印。貌似老外写的书，引进并翻译过来后再出版的基本都会好好做装订，像<a href="http://book.douban.com/subject/3821157/" class="douban_book" name="3821157" target="_blank" title="去豆瓣看看这本书~~">《Web界面设计》</a>也是全彩打印，真贵啊——不过这也是设计类书籍的惯例。装订精美，也不愁销量。
 

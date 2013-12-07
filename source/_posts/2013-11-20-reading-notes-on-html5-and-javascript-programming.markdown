@@ -4,7 +4,7 @@ title: "前端知识的零星思考以及对某本书的读书笔记"
 date: 2013-11-20 20:33
 comments: true
 keywords: HTML5,程序设计,web前端
-categories: Reading-Notes
+categories: Reading
 ---
 这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" class="douban_book" name="20430370" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。
 

@@ -4,7 +4,7 @@ title: "《高性能网站建设指南》笔记"
 date: 2013-11-29 14:09
 comments: true
 keywords: high performance web sites, 高性能网站建设指南
-categories: Reading-Notes
+categories: Reading
 ---
 只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。
 <!-- more -->

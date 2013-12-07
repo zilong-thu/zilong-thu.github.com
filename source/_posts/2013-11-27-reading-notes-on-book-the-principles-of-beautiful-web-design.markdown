@@ -4,7 +4,7 @@ title: "《完美网页的视觉设计法则》笔记 "
 date: 2013-11-27 11:06
 comments: true
 keywords: the principles of beautiful web design, 完美网页的视觉设计法则, web前端, 设计, 切图
-categories: Reading-Notes
+categories: Reading
 ---
 <a href="http://book.douban.com/subject/6978720/" class="douban_book" name="6978720" target="_blank" title="去豆瓣看看这本书~~">>>图书基本信息</a>
 

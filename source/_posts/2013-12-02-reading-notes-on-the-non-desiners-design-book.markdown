@@ -4,7 +4,7 @@ title: "《写给大家看的设计书》笔记"
 date: 2013-12-02 00:09
 comments: true
 keywords: the non-desiner's design book, 写给大家看的设计书
-categories: Reading-Notes
+categories: Reading
 ---
 <a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="去豆瓣查看此书~~">写给大家看的设计书（第3版）</a>，英文名“The Non-Desiner's Design Book”，封面其貌不扬，但内容与内容的排版设计都十分精彩。我大脑里与平面设计相关的灰质被深深地刺激到了，这块灰质表示此书可以给★★★★★。
 <!-- more -->
