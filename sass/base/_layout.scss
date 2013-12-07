@@ -91,7 +91,10 @@ body {
 
 #content {
   overflow: hidden;
-  > div, > article { width: 100%; }
+  > div, > article {
+    width: 100%;
+    border-right: 1px solid $sidebar-border;
+  }
 }
 
 aside.sidebar {

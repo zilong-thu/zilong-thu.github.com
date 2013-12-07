@@ -6,7 +6,6 @@ comments: true
 keywords: eloquent javascript, JavaScript编程精解
 categories: Reading
 ---
-
 <a href="http://book.douban.com/subject/19933548/" class="douban_book" target="_blank" name="19933548">《JavaScript 编程精解》</a>书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
 
 作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~~
@@ -162,3 +161,10 @@ function map(func, array){
 
 map(Math.round, [0.01,0.2, 2, 9.89, Math.PI]);
 ```
+
+###对象即词典
+###原型继承
+###JavaScript正则表达式来历
+JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。
+
+> 该语法非常含糊，以至于在前10次（或更多次）使用的时候，不得不去查看正则表达式的细节。持之以恒，就可以编写出非常复杂、神秘的表达式了。

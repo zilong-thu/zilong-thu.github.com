@@ -4,7 +4,7 @@ a{
   transition: color 0.6s ease, box-shadow 0.6s ease;
 }
 *{
-  transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
+  transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
 }
 #content .blog-index article h1 a:hover{
     text-decoration:none;
@@ -138,9 +138,9 @@ span.triTopOuter{
     padding: .5em;
   }
 }
-#div_douban_wrapper div{
+#div_douban_wrapper, #div_douban_wrapper div{
   border:none;
-  background:#fff;
+  background:#FCF9B6;
 }
 #div_douban_wrapper img{
   border:1px solid #ccc;
@@ -157,12 +157,12 @@ span.triTopOuter{
   background:url('/images/close_24px.png') 3px 3px no-repeat ;
   border-radius: 3px;
   border:1px solid transparent;
-}
-#div_douban_wrapper span.douban_close:hover{
-  border:1px solid #aaa;
-}
-#div_douban_wrapper span.douban_close:active{
-  border:1px solid #333;
+  &:hover{
+    background-color: #ff5a40;
+  }
+  &:active{
+    border:1px solid #333;
+  }
 }
 .group:after{
     content: '.';

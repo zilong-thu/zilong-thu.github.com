@@ -27,7 +27,7 @@ categories: Reading
 
 > 现在设计师已经放弃了这种网络安全色调色板，因为大多数用户的显示器都能显示上百万种颜色了。虽然不同的机器上的色彩显示还是有区别，但是这种区别基本上可以忽略不计了。
 
-一个很不错的配色设计方案网站：http://colorschemedesigner.com/
+一个很不错的配色设计方案网站：<a href="http://colorschemedesigner.com/" target="_blank">colorschemedesigner.com</a>
 
 ###4.2 字体类别
 ####衬线字体（serif font）

@@ -90,6 +90,28 @@ function ov3(a) {
 ```
 当然还有什么字典方法，利用对象属性唯一的特点，遍历对象属性，即可做到数组去重。
 
+###关于JavaScript函数上下文
+问：JavaScript如何使对象element成为func函数内的上下文（即this的值）？
+
+答案：来自<a href="http://book.douban.com/subject/10549733/" class="douban_book" target="_blank" name="10549733">《JavaScript权威指南（第六版）》</a>。
+
+> JavaScript中的函数也是对象，和其他JavaScript对象没什么两样，函数对象也可以包含方法。其中两个方法call()和apply()可以用来间接地调用所需的this值，也就是说，任何函数可以作为任何对象的方法来调用，哪怕这个函数不是那个对象的方法。
+> 
+> call()和apply()的第一个实参是要调用的函数的母对象，它是调用上下文，在函数体内通过this来获得对它的引用。要想以对象o的方法来调用函数f()，可以这样使用call()和apply()：
+
+``` javascript
+f.call(o);
+f.apply(o);
+```
+
+每行代码和下面的代码功能类似（假设对象o中原先不存在名为m的属性）。
+
+``` javascript
+o.m = f;          // => 将f存储为o的临时方法
+o.m();            // => 调用它，不传入参数
+delete o.m;       // => 将临时方法删除
+```
+
 ###*JavaScript如何实现继承
 需要做框架的人才会去使用继承，所以我不会。
 

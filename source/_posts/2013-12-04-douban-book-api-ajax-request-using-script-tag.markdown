@@ -8,6 +8,8 @@ categories: Ajax
 ---
 摘要：本文介绍如何在个人博客中为一些读过的图书添加Ajax实时请求：当鼠标点击该书名链接时，发起异步跨域HTTP请求，获得该书在豆瓣的基本信息，并显示在鼠标附近。另外，为保证“优雅降级”，该链接在用户禁用JavaScript时会直接去往豆瓣该书的页面。
 
+参考<a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a>介绍的六种无阻塞加载脚本技术，本文使用的技术应该是“Script DOM Element”方法。
+
 图书信息展示方式使用与豆瓣读书相同的布局，但不提供用户操作的选项，例如“写书评”“写读书笔记”等功能。
 
 <img src="{{root_url}}/images/blog/20131204_doubanAPI_target_result.png" alt="希望做成的效果图，与豆瓣读书类似">
