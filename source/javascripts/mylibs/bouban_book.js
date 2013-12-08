@@ -62,7 +62,7 @@ function registerDoubanBookEventHanler(){
 	var anchors = $('a.douban_book');
 	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';  // \'/images/service_icons_color.png\';
 	var str_douban_icon_style = 'display:inline-block;width:16px;height:16px;background:url(\'' +
-								 icon_url + '\') 2px -96px no-repeat transparent;padding: 0 2px;';
+								 icon_url + '\') 2px -96px no-repeat transparent;padding:0 0.7em 0 2px;';
 
 	for(var i=0, length=anchors.length;i<length;i++){
 		var a = anchors[i];

@@ -1,8 +1,5 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
-a{
-  transition: color 0.6s ease, box-shadow 0.6s ease;
-}
 *{
   transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
 }
@@ -146,7 +143,8 @@ span.triTopOuter{
   border:1px solid #ccc;
 }
 #div_douban_wrapper img:hover{
-  box-shadow: 1px 1px 5px #333;
+  box-shadow: 0 0 10px #0f0;
+  border-color: #0f0;
 }
 #div_douban_wrapper span.douban_close{
   display:inline-block;
@@ -161,7 +159,7 @@ span.triTopOuter{
     background-color: #ff5a40;
   }
   &:active{
-    border:1px solid #333;
+    background-color: #f00;
   }
 }
 .group:after{

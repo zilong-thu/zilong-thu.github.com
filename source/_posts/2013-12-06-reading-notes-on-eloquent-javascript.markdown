@@ -164,7 +164,7 @@ map(Math.round, [0.01,0.2, 2, 9.89, Math.PI]);
 
 ###对象即词典
 ###原型继承
-###JavaScript正则表达式来历
+###JavaScript正则表达式
 JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。
 
 > 该语法非常含糊，以至于在前10次（或更多次）使用的时候，不得不去查看正则表达式的细节。持之以恒，就可以编写出非常复杂、神秘的表达式了。
