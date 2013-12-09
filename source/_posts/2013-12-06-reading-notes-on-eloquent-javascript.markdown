@@ -4,7 +4,7 @@ title: "《JavaScript编程精解》笔记"
 date: 2013-12-06 13:28
 comments: true
 keywords: eloquent javascript, JavaScript编程精解
-categories: Reading
+categories: JavaScript
 ---
 <a href="http://book.douban.com/subject/19933548/" class="douban_book" target="_blank" name="19933548">《JavaScript 编程精解》</a>书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
 
@@ -163,8 +163,74 @@ map(Math.round, [0.01,0.2, 2, 9.89, Math.PI]);
 ```
 
 ###对象即词典
+我读到这个标题而没读内容，便认识到了对象的数据结构特点。对象的词典特性在数组去重中有很好的应用，具体见<a href="/blog/2013/12/09/javascript-array-unique/" title="JavaScript数组去重方法汇总">JavaScript数组去重方法汇总</a>。
+
 ###原型继承
 ###JavaScript正则表达式
 JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。
 
 > 该语法非常含糊，以至于在前10次（或更多次）使用的时候，不得不去查看正则表达式的细节。持之以恒，就可以编写出非常复杂、神秘的表达式了。
+
+###HTTP请求
+具有浏览器兼容性的请求对象创建函数：
+``` javascript
+function requestObject(){
+	if(window.XMLHttpRequest){
+		return new XMLHttpRequest();
+	} else if(window.ActiveXObject){
+		return new ActiveXObject("Mxsml2.XMLHTTP");
+	} else {
+		throw new Error("Could not create HTTP request object.");
+	}
+}
+
+// 使用方法
+var request = requestObject();
+request.open('GET', '/stylesheets/data.txt', false);  // false意味着这是一个同步请求
+request.send(null);
+
+request.responseText;  // 同步请求，只有在收到服务器的返回数据时才会执行到这一句
+```
+####JSON优于XML的原因
+JSON是XML的替代方案，即JavaScript Object Notation。
+<ol>
+<li>XML文档过于冗长</li>
+<li>DOM接口在提取信息方面很笨拙</li>
+</ol>
+
+####读取JSON数据
+使用`eval()`可以对JSON文档进行解析。将一个JSON文档传给`eval`之前，需要用括号将其包住；如果程序以`{`字符开始，该字符将被市委代码块的开始，而不作为对象的开始。
+
+XMLHttpRequest仅允许请求自己的域名，通常我们会知道得到的是哪种文本，所以使用`eval()`来解析JSON对象也许不是什么问题。但如果使用Script DOM Element方法获取跨域HTTP请求时，则最好不要调用`eval()`。
+``` javascript
+var request = requestObject();
+request.open('GET', '/stylesheets/data.json', true);  // false意味着这是一个同步请求
+request.send(null);
+
+request.onreadystatechange = function(){
+	if(request.readyState == 4){
+		var data = eval("(" + request.responseText +")");
+		console.log(data.lemon);
+	}
+}; 
+```
+####对HTTP请求进行包装
+``` javascript XMLHttpRequest包装示例
+function simpleHttpRequest(url, success, failure){
+	var request = requestObject();
+	request.open("GET", url, true);
+
+	request.onreadystatechange = function(){
+		if(request.readyState == 4){
+			if(request.status == 200 || !failure ){
+				success(request.responseText);
+			} else if(failure){
+				failure( request.status, request.statusText);
+			}
+		}
+	};
+
+	request.send(null);
+}
+```
+在设计得更为复杂时，最好将参数设为一个对象。就像jQuery那样。

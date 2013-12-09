@@ -90,6 +90,8 @@ function ov3(a) {
 ```
 当然还有什么字典方法，利用对象属性唯一的特点，遍历对象属性，即可做到数组去重。
 
+【补充】已经整理到一篇文章中：<a href="{{root_url}}/blog/2013/12/09/javascript-array-unique/">JavaScript数组去重方法汇总</a>。（2013-12-09）
+
 ###关于JavaScript函数上下文
 问：JavaScript如何使对象element成为func函数内的上下文（即this的值）？
 
