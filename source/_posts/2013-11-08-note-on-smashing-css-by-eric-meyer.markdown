@@ -4,7 +4,7 @@ title: "《 Smashing CSS 》读书笔记"
 date: 2013-11-08 13:24
 comments: true
 keywords: CSS, smashing css, Eric Meyer, 精彩绝伦的CSS
-categories: Reading
+categories: CSS
 ---
 <em>Smashing CSS: Professional Techniques for Modern Layout</em>(by Eric Meyer)，我所读的中文版译名为<a href="http://book.douban.com/subject/10793898/" name="10793898" class="douban_book" target="_blank">《精彩绝伦的CSS》</a>。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。
 

@@ -4,7 +4,7 @@ title: "《CSS3实战：开发与设计》读书笔记"
 date: 2013-11-05 14:55
 comments: true
 keywords: practical css3, develop and design, CSS3, 前端
-categories: Reading
+categories: CSS
 ---
 
 本文记录我在读<a href="http://book.douban.com/subject/24745215/" target="_blank" class="douban_book" name="24745215">《CSS3实战：开发与设计》</a>时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。

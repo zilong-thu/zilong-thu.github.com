@@ -3,8 +3,8 @@ layout: post
 title: "使用script标签在博客中跨域调用豆瓣API"
 date: 2013-12-04 14:39
 comments: true
-keywords: Ajax,douban book api,豆瓣API,跨域HTTP请求
-categories: Ajax
+keywords: JavaScript, Ajax,douban book api,豆瓣API,跨域HTTP请求
+categories: JavaScript
 ---
 摘要：本文介绍如何在个人博客中为一些读过的图书添加Ajax实时请求：当鼠标点击该书名链接时，发起异步跨域HTTP请求，获得该书在豆瓣的基本信息，并显示在鼠标附近。另外，为保证“优雅降级”，该链接在用户禁用JavaScript时会直接去往豆瓣该书的页面。
 
@@ -12,9 +12,10 @@ categories: Ajax
 
 图书信息展示方式使用与豆瓣读书相同的布局，但不提供用户操作的选项，例如“写书评”“写读书笔记”等功能。
 
+<!-- more -->
+
 <img src="{{root_url}}/images/blog/20131204_doubanAPI_target_result.png" alt="希望做成的效果图，与豆瓣读书类似">
 
-<!-- more -->
 ###1. 框架与模块化
 思路：任意博文，指向豆瓣书籍页面的链接按照一定的格式书写，然后我的JS代码即可在加载时为其注册鼠标悬停/点击事件处理程序。
 

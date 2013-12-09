@@ -22,19 +22,20 @@ categories: JavaScript
 3. 数字与字符串乘、除、减时，JavaScript将尝试把字符串转换为数字
 
 ``` javascript
-false == 0;  // => true
-'' == 0;     // => true
-'5' == 5;    // => true
+false == 0;                 // => true
+'' == 0;                    // => true
+'5' == 5;                   // => true
 
-console.log(null + 'abc');  // => 'nullabc'
-console.log(5*'abc');       // => NaN
-console.log(5 - '3');       // => 2
-console.log(5 + '3');       // => '53'
-console.log(5/'3');         // => 1.6666666666666667
-console.log(5%'3');         // => 2
+console.log(null + 'abc');      // => 'nullabc'
+console.log(undefined+'abc');   // => 'undefinedabc'
+console.log(5*'abc');           // => NaN
+console.log(5 - '3');           // => 2
+console.log(5 + '3');           // => '53'
+console.log(5/'3');             // => 1.6666666666666667
+console.log(5%'3');             // => 2
 
-console.log(NaN == NaN);    // => false
-console.log(NaN === NaN);   // => false
+console.log(NaN == NaN);        // => false
+console.log(NaN === NaN);       // => false
 ```
 ###函数与闭包
 JavaScript函数是first-class functions (functions as first-class objects)。详见<a href="http://en.wikipedia.org/wiki/Funarg_problem" target="_blank">Wikipedia: Funarg problem</a>。
