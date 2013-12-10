@@ -3,7 +3,7 @@ layout: post
 title: "《JavaScript编程精解》笔记"
 date: 2013-12-06 13:28
 comments: true
-keywords: eloquent javascript, JavaScript编程精解
+keywords: eloquent javascript, JavaScript编程精解, 闭包, 解释型语言
 categories: JavaScript
 ---
 <a href="http://book.douban.com/subject/19933548/" class="douban_book" target="_blank" name="19933548">《JavaScript 编程精解》</a>书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
@@ -52,7 +52,9 @@ function createFunction(){
 ```
 一旦调用了`createFunction`函数，它就会创建一个局部变量`local`，并返回一个函数。如何处理这一情况就是向上函数变元问题（upwards funarg problem）。JavaScript是从一种能够解决这个问题的语言演变而来的，只要这个局部变量是可达的，就会尽力保存局部变量。
 
-<strong>包裹一些局部变量的一个函数叫做一个闭包。</strong>
+闭包：<strong>包裹一些局部变量的一个函数叫做一个闭包。</strong>
+
+<strong>闭包：即一个函数，通过它可以引用由包含这个函数的代码所定义的变量。</strong>——Lisp语言大师 Paul Graham在<a href="http://book.douban.com/subject/6021440/" class="douban_book" name="6021440" target="_blank">《黑客与画家》</a>(pp. 195)中的解释。
 
 ``` javascript
 function makeAdder(amount){
@@ -65,6 +67,28 @@ function makeAdder(amount){
 
 var addTwo = makeAdder(2);
 addTwo(3);    // => 25
+```
+
+更本质的例子应该是这样的：
+``` javascript javascript闭包示例
+function foo(){
+    var n=0;
+    return function(){
+        return ++n;
+    }
+}
+
+var a = foo();
+console.log(a());  // => 1
+console.log(a());  // => 2
+console.log(a());  // => 3
+
+var b = foo();
+console.log(b());  // => 1
+console.log(b());  // => 2
+
+var c = a;
+console.log(c());  // => 4
 ```
 
 纯函数：当使用函数的时候，同样的参数总是返回同样的值，而没有副作用。
@@ -98,6 +122,7 @@ findSequence(34);    // => "(((((1 * 3) + 5) * 3) + 5) + 5)"
 
 ###对象属性的命名
 中括号内的部分可以为任意表达式，中括号会将表达式转换为字符串来判断对象中是否有该属性的名称。所以，变量名称也可以当成属性名称。
+
 ```javascript
 var gf = {"my girlfriend name":"coco", age:19, 5:"25"};
 console.log(gf.age);                       // => 19
@@ -167,6 +192,7 @@ map(Math.round, [0.01,0.2, 2, 9.89, Math.PI]);
 我读到这个标题而没读内容，便认识到了对象的数据结构特点。对象的词典特性在数组去重中有很好的应用，具体见<a href="/blog/2013/12/09/javascript-array-unique/" title="JavaScript数组去重方法汇总">JavaScript数组去重方法汇总</a>。
 
 ###原型继承
+略过。
 ###JavaScript正则表达式
 JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。
 

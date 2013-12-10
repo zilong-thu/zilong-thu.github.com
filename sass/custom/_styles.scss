@@ -1,8 +1,18 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
-*{
+div,p,a,span,img{
   transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
 }
+dl{
+  margin: 1em 0;
+  dt{
+    padding-left: 2em;
+  }
+  dd{
+    padding-left: 3em;
+  }
+}
+
 #content .blog-index article h1 a:hover{
     text-decoration:none;
 }
@@ -143,8 +153,7 @@ span.triTopOuter{
   border:1px solid #ccc;
 }
 #div_douban_wrapper img:hover{
-  box-shadow: 0 0 10px #0f0;
-  border-color: #0f0;
+  box-shadow: 0 0 10px #003DFF;
 }
 #div_douban_wrapper span.douban_close{
   display:inline-block;

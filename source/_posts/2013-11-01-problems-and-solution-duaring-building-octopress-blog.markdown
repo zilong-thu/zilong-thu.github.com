@@ -115,3 +115,21 @@ http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
 + 不设置A记录
 
 这样很快就生效了，大概10多分钟。所以说，官方文档很重要~~
+
+###主题改造问题
+####（1）transition
+本来在custom/_styles.scss里写了这样的代码：
+
+``` css
+*{
+  transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
+}
+```
+本意是希望基本上都要有过渡效果。但是由于`<html>`标签也是定义了颜色的，所以刷新至任意页面时，背景总是会闪一下。这样很难看。于是改成：
+
+``` css
+div,p,a,span,img{
+  transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
+}
+```
+还是尽量将特效控制在明确的元素上比较好。
