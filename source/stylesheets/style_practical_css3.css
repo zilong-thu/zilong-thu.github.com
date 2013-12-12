@@ -73,6 +73,6 @@
                      -4px -12px 13px #f82, 2px -26px 18px #f20;}
 }
 div.burning_text{
-    -webkit-animation: text-flames 0.6s infinite;
-    animation: text-flames 0.6s infinite;
+    -webkit-animation: text-flames 0.65s infinite;
+    animation: text-flames 0.65s infinite;
 }

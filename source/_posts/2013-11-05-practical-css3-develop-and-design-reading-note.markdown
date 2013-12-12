@@ -9,7 +9,16 @@ categories: CSS
 
 本文记录我在读<a href="http://book.douban.com/subject/24745215/" target="_blank" class="douban_book" name="24745215">《CSS3实战：开发与设计》</a>时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。
 
+作者给的代码可以在新浪爱问共享资料下载：
+
+<a href="http://ishare.iask.sina.com.cn/f/63870741.html" target="_blank" title="点击进入下载页面">Practical_CSS3_code_part_1</a>
+
+<a href="http://ishare.iask.sina.com.cn/f/63870739.html" target="_blank" title="点击进入下载页面">Practical_CSS3_code_part_2</a>
+
 <!-- more -->
+<hr/><br/>
+
+
 <script type="text/javascript">
 (function(){
 	var url = '{{root_url}}/stylesheets/style_practical_css3.css';
@@ -22,14 +31,14 @@ categories: CSS
 </script>
 
 ###用rem调整文本大小
-参见 [http://www.w3.org/TR/css3-values/](http://www.w3.org/TR/css3-values/)
+更多可参见 <a href="http://www.w3.org/TR/css3-values/" target="_blank">www.w3.org/TR/css3-values/</a>。
 
 根元素，即`<html>`标签。1rem == html 的computed style 中的font-size。
 
 ###CSS3选择器
 目标伪类选择器 `:target`。
 
-CSS3还没普及完，CSS4标准就已经在研制了。可以参见[CSS4选择器](http://www.w3.org/TR/selectors4/)。
+CSS3还没普及完，CSS4标准就已经在研制了。可以参见<a href="http://www.w3.org/TR/selectors4/" target="_blank">CSS4选择器</a>。
 
 > Selectors Level 4 describes the selectors that already exist in [SELECT], and further introduces new selectors for CSS and other languages that may need them.
 
@@ -124,7 +133,7 @@ IE条件注释这样使用：
                  2px -10px 6px #ffdd33,
                  -2px -15px 11px #ff8800,
                  2px -25px 18px #ff2200;
-    color: orange;">火焰文字</p>
+    color: orange;">静态火焰文字</p>
 
 ###控制文本溢出
 如果容器盒定义了`overflow: hidden;`，那么其文本子节点的`text-overflow`属性控制文本溢出时的显示效果。
