@@ -116,10 +116,8 @@ article blockquote {
   line-height: 1.5em;
   font-family: "PT Serif",Georgia,Times,"Times New Roman",KaiTi_GB2312,KaiTi,STKaiti,FangSong,STFangsong,serif;
   border-left: 5px solid green;
-  border-radius: 5px;
-  background-color: rgb(143, 252, 143);
+  background-color: #AAFDAA;
   padding: 0.5em 1em;
-  box-shadow: 0px 0px 1em #666 inset;
   cite {
     font-style: italic;
     a { color: $text-color-light !important; word-wrap: break-word; }
