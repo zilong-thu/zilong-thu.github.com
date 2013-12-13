@@ -314,7 +314,65 @@ int gcd(int v1, int v2){
 ###引用形参
 > 从C语言背景转到C++的程序员习惯通过传递指针来实现对实参的访问。在C++中，使用引用形参则更安全和自然。
 
+####利用const引用避免复制
+``` cpp 比较两个非常长的字符串的长度，但又不希望该函数修改实参
+// compare the length of two strings
+bool isShorter(const string &s1, const string &s2){
+	return s1.size() < s2.size();
+}
+```
+> 如果使用引用形参的唯一目的是避免复制实参，则应将形参定义为const引用。否则，就毫无必要地限制了该函数的使用，如下。
 
+####非const引用形参的问题
+如果函数具有普通的非const引用形参，则显然不能通过const对象进行调用。毕竟此时函数可以修改传递进来的对象，这样就违背了实参的const特性。
+
+——容易忽略的是：调用这样的函数时，传递一个右值或具有需要转换的类型的对象同样是不允许的。
+
+``` cpp
+int incr(int &val){
+	return ++val;
+}
+int main(){
+	short v1 = 0;
+	const int v2 =42;
+	int v3 = incr(v1); //=> Error: v1 is not and int. VS2010: 无法用"short"类型的值初始化"int &"类型的引用（非常量限定）
+	v3 = incr(1);      //=> Error: literals are not lvalues. VS2010 非常量引用的初始值必须为左值
+	v3 = incr(v2);     //=> Error: v2 is const. VS2010 将"Int &"类型的引用绑定到"const int"类型的初始值设定项时，限定符被丢弃
+	v3 = incr(v1+v2);  //=> Error: addition doesn't yield an lvalue.
+	int v4 = incr(v3);  //=> ok: v3 is a non const object type int.
+}
+```
+所以，结论是：
+
+> 应该将不需要修改的引用形参定义为const引用。普通的非const引用形参在使用时不太灵活。这样的形参既不能用const对象初始化，也不能用字面值或产生右值的表达式实参初始化。
+
+####传递指向指针的引用
+mark 一下。略过。
+
+####vector和其他容器类型的形参
+> 通常，函数不应该有vector或其他标准库类型的形参。调用含有普通的非引用vector形参的函数将会复制vector的每一个元素。
+
+从避免复制vector的角度出发，应考虑将形参声明为引用类型。然而，C++程序员倾向于通过传递指向容器中需要处理的元素的迭代器来传递容器：
+
+``` cpp
+// pass iterations to the first and one past the last element to print
+void print(vector<int>::const_iterator beg, vector<int>::const_iterator end){
+	while(beg != end){
+		cout<< *beg++ <<" ";
+	}
+	cout<<endl;
+}
+
+// 这样使用
+vector<int> vec;
+for (int i=0;i<20;i++){
+	vec.push_back(i*2);
+}
+print(vec.begin(), vec.end());
+```
+
+####main:处理命令行选项
+即`int main(int argc, char *argv[]){/*...*/}`的用法。见<a href="http://blog.csdn.net/laixingjun/article/details/8937931" target="_blank">CSDN- main() 处理命令行选项</a>即可。
 
 ##书评
 本书大而全，是优点，亦是缺点。

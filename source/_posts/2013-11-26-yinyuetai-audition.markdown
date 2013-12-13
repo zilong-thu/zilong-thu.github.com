@@ -4,7 +4,7 @@ title: "音悦台面试笔记"
 date: 2013-11-26 17:53
 comments: true
 keywords: audition, 面试题目,音悦台,web前端
-categories: Essays
+categories: JavaScript
 ---
 在58同城上投了几份简历，很有幸被叫去参加面试了，虽然最后仍然是悲剧，但面试经历又增加了，找工作就像谈恋爱，爱要越挫越勇~~
 
