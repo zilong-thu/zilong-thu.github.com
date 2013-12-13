@@ -10,9 +10,12 @@ JavaScript有多种实现继承的方式。许多从C++、Java过渡而来的程
 
 <!--more-->
 ###基于原型的继承
-【待研究】
+以下主要参考自犀牛书<a href="http://book.douban.com/subject/10549733/" class="douban_book" name="10549733" target="_blank">《JavaScript权威指南·第六版》</a>第6章。
+
+对象是JavaScript的基本数据类型。JavaScript对象是动态的——可以随时新增属性和删除属性。
+
 ###基于函数的继承
-函数继承：functional inheritance。参考：<a href="http://book.douban.com/subject/10742066/" class="douban_book" name="10742066" target="_blank">JavaScript高效图形编程</a>。
+函数继承：functional inheritance。以下参考：<a href="http://book.douban.com/subject/10742066/" class="douban_book" name="10742066" target="_blank">JavaScript高效图形编程</a>。
 
 下面的代码很重要的一点是：legs变量是私有的。如果尝试从Cat外部“修改”不存在的公共legs属性，仅导致创建一个公有属性legs。私有的legs值被安全地保存在Pet的getDetails()方法创建的闭包内部。闭包（getDetails()）在函数（Pet()）执行结束后，保持了函数（Pet()）的局部变量。只有在构建一个对象的时候，能够生成私有和特权成员，公有成员可以随时添加。
 
