@@ -216,6 +216,17 @@ cout <<"eval = "<<eval<<endl;      // => eval = 3
 ###条件操作符
 即那个唯一的三元操作符。作者给出一个建议：避免条件操作符的深度嵌套。但<strong>没有给出原因</strong>，我想大概是因为太难懂。
 
+###sizeof操作符
+sizeof操作符的作用是返回一个对象或类型名的长度，返回值类型为size_t，长度的单位是字节。sizeof表达式的结果是编译时常量。可以用sizeof操作符计算数组元素的个数。
+
+``` cpp sizeof操作符计算数组元素的个数
+char *words[] = {"stately", "plump", "buck","list", ""};
+size_t words_size = sizeof(words) / sizeof(char *);
+cout<<"sizeof(words) => "<< sizeof(words)<<endl;        // 整个数组在内存中的存储长度， 20
+cout<<"sizeof(char *) => "<<sizeof(char *)<<endl;       // 元素类型的长度， 4
+cout<<"words_size = "<< words_size<<endl;               // 数组元素个数，words_size = 5
+```
+###复合表达式的求值
 ####求值顺序
 C++中，规定了操作数的计算顺序的操作符只有：
 
@@ -424,6 +435,23 @@ void func(){
 	string s = init();     // error: globale init is hidden
 }
 ```
+##Chapter 9. 顺序容器
+> 关键概念：容器元素都是副本
+> 
+> 在向容器中添加元素时，系统是将元素值复制到容器里。类似地，使用一段元素初始化新容器时，新容器存放的是原始元素的副本。被复制的原始值与新容器中的元素各不相关，此后，容器内元素值发生变化时，被复制的原值不会受到影响，反之亦然。
+
+###9.4 vector元素的自增长
+vector容器是顺序存储的线性表，list是链式存储的线性表。
+
+##Chapter 10. 关联容器
+9、10两章其实就是讲数据结构在C++标准库里的实现，可以暂时略过。
+##Chapter 11. 泛型算法
+不知道在讲什么。决定先把后面的看完。。。
+
+##Chapter 12. 类
+
+###12.4 隐含的this指针
+
 
 ##书评
 本书大而全，是优点，亦是缺点。
