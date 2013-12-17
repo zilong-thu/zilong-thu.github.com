@@ -4,7 +4,7 @@ title: "用C++重写《算法竞赛入门经典》题目"
 date: 2013-12-16 17:20
 comments: true
 keywords: algorithm competition, C++, CPP
-categories: C++
+categories: CPP
 published: false
 ---
 本文用C++重新实现<a href="http://book.douban.com/subject/4138920/" target="_blank" class="douban_book" name="4138920">《算法竞赛入门经典》</a>这本书中大部分的例子。所有代码使用VS2012进行调试。

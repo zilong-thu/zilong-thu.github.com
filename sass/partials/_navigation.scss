@@ -1,8 +1,7 @@
 body > nav {
   position: relative;
   background-color: $nav-bg;
-  border-radius: 2em;
-  margin: 0 0 20px 0;
+  border-radius: .4em .4em 0 0;
   @include background($nav-bg-back);
   padding: 0.4em 2.6em;
   form {
