@@ -7,7 +7,7 @@ keywords: Web Worker, HTML5
 categories: HTML5
 ---
 ###关于Web Workers
-以下摘自《JavaScript权威指南·第6版》
+以下例子根据<a href="http://book.douban.com/subject/10549733/" class="douban_book" name="10549733" target="_blank">《JavaScript权威指南·第六版》</a>进行改写。
 
 客户端JavaScript的一个基本特性就是单线程，现在是，恐怕将来几十年也仍然是。之所以设计成单线程，是基于这样的理论：客户端的JavaScript必须不能运行太长时间，否则会导致循环事件，Web浏览器无法对用户输入做出相应。
 
@@ -19,60 +19,30 @@ Web Workers处在一个自包含的执行环境中，无法访问Window对象和
 
 Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去处理次要操作是不划算的。
 <!-- more -->
-
 <script type="text/javascript">
-	function smear(img){
-		var canvas = document.createElement("canvas"),
-			width = img.width,
-			height = img.height;
+(function(){
+	var url = '{{root_url}}/stylesheets/widgets.css';
+	var link =  document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.href = url;
+	document.head.appendChild(link);
+})();
 
-		canvas.width = width;
-		canvas.height = height;
-		var context = canvas.getContext('2d');			
-		context.drawImage(img, 0, 0);
-		var pixels = context.getImageData(0,0,width, height);
+$(document).ready(function(){
+	var img = document.getElementById('img_for_smear');
 
-		var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
-		worker.postMessage(pixels);
+	$('#run_left').click(function(){
+		smear(img,'l');
+	});
 
-		worker.onmessage = function(e){
-			var smeared_pixels = e.data;
-			context.putImageData(smeared_pixels, 0, 0);
-			img.src = canvas.toDataURL();
-			worker.terminate();
-			canvas.width = canvas.height =0;
-		}
-	}
-</script>
+	$('#run_right').click(function(){
+		smear(img,'r');
+	});
+});
 
-###例1 多线程图片处理技术
-本例来自《JavaScript权威指南·第6版》$22.4节。
-
-``` javascript '/javascripts/example/webworker_smear.js'中的代码
-// 从主线程中获得ImageData对象，对其进行处理并将它传递回去
-onmessage = function(e){ postMessage(smear(e.data)); };
-
-// 将ImageData对象中的像素信息向右涂抹，产生动态模糊效果
-function smear(pixels){
-	var data = pixels.data,
-		width = pixels.width,
-		height = pixels.height,
-		n = 10, 
-		m = n-1;		
-	for(var row=0, i; row<height; row++){
-		i = row*width*4 + 4;
-		for(var col=1; col<width; col++, i+=4){
-			data[i]  = (data[i] + data[i-4]*m)/n;
-			data[i+1]  = (data[i+1] + data[i-3]*m)/n;
-			data[i+2]  = (data[i+2] + data[i-2]*m)/n;
-			data[i+3]  = (data[i+3] + data[i-1]*m)/n;
-		}
-	}		
-	return pixels;
-}
-```
-``` javascript 在本博文里的脚本
-function smear(img){
+// 抹除函数
+function smear(img, direct){
 	var canvas = document.createElement("canvas"),
 		width = img.width,
 		height = img.height;
@@ -83,9 +53,95 @@ function smear(img){
 	context.drawImage(img, 0, 0);
 	var pixels = context.getImageData(0,0,width, height);
 
-	// 将像素信息传递给Worker线程
 	var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
-	worker.postMessage(pixels);
+	worker.postMessage({pixels:pixels, direct: direct});
+
+	worker.onmessage = function(e){
+		var smeared_pixels = e.data;
+		context.putImageData(smeared_pixels, 0, 0);
+		img.src = canvas.toDataURL();
+		worker.terminate();
+		canvas.width = canvas.height =0;
+	}
+}
+</script>
+
+###例1 多线程图片处理技术
+本例来自《JavaScript权威指南·第6版》$22.4节。
+
+<button id="run_left" class="run-button">向左模糊</button> <button id="run_right" class="run-button">向右模糊</button>
+
+（注：现在向左模糊似乎结果不正确。因为尚不懂图片内部数据如何存储。）
+
+<img id="img_for_smear" src="/images/blog/football.jpg" title="单击以运行worker线程" />
+
+####代码
+``` javascript worker线程中的代码， 
+// 从主线程中获得ImageData对象，对其进行处理并将它传递回去
+onmessage = function(e){ postMessage(smear(e.data)); };
+
+// 将ImageData对象中的像素信息向左或者右涂抹，产生动态模糊效果
+function smear(obj){
+	var pixels = obj.pixels;
+	var data = pixels.data,
+		width = pixels.width,
+		height = pixels.height,
+		direct = obj.direct;
+		n = 10, 
+		m = n-1;
+	
+	if (direct=='r') {
+		for(var row=0, i;row<height;row++){
+			i = row*width*4 + 4;
+			for(var col=1; col<width; col++, i+=4){
+				data[i]  = (data[i] + data[i-4]*m)/n;
+				data[i+1]  = (data[i+1] + data[i-3]*m)/n;
+				data[i+2]  = (data[i+2] + data[i-2]*m)/n;
+				data[i+3]  = (data[i+3] + data[i-1]*m)/n;
+			}
+		}
+	} else{
+		for(var row=0, i;row<height;row++){
+			i = row*width*4 + 4;
+			for(var col=1; col<width; col++, i+=4){
+				data[i-4]  = (data[i-4] + data[i]*m)/n;
+				data[i-3]  = (data[i-3] + data[i+1]*m)/n;
+				data[i-2]  = (data[i-2] + data[i+2]*m)/n;
+				data[i-1]  = (data[i-1] + data[i+3]*m)/n;
+			}
+		}
+	}
+	
+	return pixels;
+}
+```
+``` javascript 在本博文里的脚本, master线程
+$(document).ready(function(){
+	var img = document.getElementById('img_for_smear');
+
+	$('#run_left').click(function(){
+		smear(img,'l');
+	});
+
+	$('#run_right').click(function(){
+		smear(img,'r');
+	});
+});
+
+// 抹除函数
+function smear(img, direct){
+	var canvas = document.createElement("canvas"),
+		width = img.width,
+		height = img.height;
+
+	canvas.width = width;
+	canvas.height = height;
+	var context = canvas.getContext('2d');			
+	context.drawImage(img, 0, 0);
+	var pixels = context.getImageData(0,0,width, height);
+
+	var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
+	worker.postMessage({pixels:pixels, direct: direct});
 
 	worker.onmessage = function(e){
 		var smeared_pixels = e.data;
@@ -96,4 +152,3 @@ function smear(img){
 	}
 }
 ```
-<img src="/images/blog/football.jpg" onclick="smear(this)" title="单击以运行worker线程" />
