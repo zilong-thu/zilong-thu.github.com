@@ -102,11 +102,9 @@ myModule.sayHello();
 
 运行`node getmodule.js`，结果是
 
-```
-Hello, WZL
-Hello, Wang Zilong
-Hello, Wang Zilong
-```
+	Hello, WZL
+	Hello, Wang Zilong
+	Hello, Wang Zilong
 
 因为require不会重复加载模块。上例中`myModule`和`myModule2`都是对同一个实例即`require('./module')`的引用。
 
@@ -121,9 +119,53 @@ Hello, Wang Zilong
 ###Express
 <a href="http://expressjs.com/">Express</a>（Node的MVC框架）也许是使用最为广泛的Node模块。Express通过路由定义的页面处理器来工作。
 ##MongoDB
-MongoDB是一个对象数据库，以BSON（一种JSON的二进制变种）格式存储数据。
+MongoDB是一个对象数据库，以BSON（一种JSON的二进制变种）格式存储数据。MongoDB的结构分为数据库（database）、集合（collection）、文档（document）三层。
+
+有两本不错的入门书籍：
+
+<ol>
+<li><a href="http://book.douban.com/subject/6068947/" name="6068947" class="douban_book" title="Node.js开发指南"> 《MongoDB权威指南》</a></li>
+<li><a href="http://book.douban.com/subject/19977785/" name="19977785" class="douban_book" title="Node即学即用"> 《MongoDB实战》</a></li>
+</ol>
+
+###启动与连接MongoDB数据库服务器
+启动MongoDB数据库服务器的命令是mongod，例如在Windows平台下将其解压在目录c:\mongodb下，那么在\bin文件夹中，启动命令行，运行mongod.exe即可。启动时可以指定路径参数（`--dbpath`）用以存放数据库文件以及端口号参数（`--port`）指定mongod监听连接的端口号，默认的端口号为27017。例如，如果希望将数据库文件存放在`d:\testdb\db`目录下，并使用27016端口，那么可以在`c:\mongodb\bin\`目录下运行这样的命令：
+
+	c:\mongodb\bin>mongod --dbpath d:\testdb\db --port 27016
+
+注意：如果数据目录不存在或不可写，服务器会启动失败。所以，在运行上面的命令前，要确保`d:\testdb\db`已经存在。另外，如果端口被占用，启动也会失败，通常这是由于MongoDB实例已经在运行了。
+
+`mongod`还会启动一个非常基本的HTTP服务器，监听数字比主端口号高1000的端口，默认情况下即28017端口。这意味着你可以通过浏览器访问`http://127.0.0.1:28017/`来获取数据库的管理信息。
+
+对MongoDB进行操作需要使用`mongo`命令。基本命令示例如下：
+
+	C:\mongodb\bin>mongo.exe       //=> 打开数据库，可进行交互操作
+	MongoDB shell version: 2.4.8
+	connecting to: test
+	> show dbs                     //=> 显示当前连接的数据库服务器所管理的数据库清单
+	local   0.078125GB
+	> db                           //=> 查看当前连接的数据库
+	test
+	> use foobar                   //=> 使用use命令切换数据库
+	switched to db foobar
+	> db
+	foobar
+
+这样就启动了MongoDB自带的JavaScript Shell。
+
+###更多参考资料
+更多细节还是参考上面的两本书吧。MongoDB现在如此火热，以至于任何新的编程书籍都想谈一谈这个对象数据库。如
+
+<a href="http://book.douban.com/subject/24536403/" name="24536403" class="douban_book" title="代码的未来"> 《代码的未来》</a>
+
+<a href="http://book.douban.com/subject/24165880/" name="24165880" class="douban_book" title="JavaScript核心概念及实践"> 《JavaScript核心概念及实践》</a>
+
 
 ##用Node.js进行微博网站开发实例
 由于本书是2012年7月出版，到现在至少过去一年半了，很多模块、包的版本已经发生了较大的变化。所以按照书里的代码进行微博网站的开发会遇到不少问题。已经有细心的朋友认真记录了相应的解决方法：
 
 <a href="http://crazylpy.me/blog/nodejskai-fa-zhi-nan-wen-ti-jie-jue/" target="_blank">NodeJS开发指南问题解决</a>
+
+除了版本问题，作者自己给的源码也是有不少错误。我把自己在本地运行成功了的源码放在这里，需要的朋友可以下载，对比一下，然后做相应的改动。
+
+[附件]： <a href="{{root_url}}/files/source/microblog.zip">点击下载microblog.zip源代码</a>-117.55KB
