@@ -3,7 +3,7 @@ layout: post
 title: "利用JSONP访问跨域数据"
 date: 2013-12-28 13:58
 comments: true
-keywords: accessing cross-site data with jsonp
+keywords: JSONP, accessing cross-site data with jsonp, 跨域数据
 categories: JavaScript
 ---
 在我的博文<a href="{{ root_url }}/blog/2013/12/04/douban-book-api-ajax-request-using-script-tag/">《使用script标签在博客中跨域调用豆瓣API》</a>中，介绍了发起跨域数据请求的最直接的方法。然后我博客下的引用了豆瓣书籍的地方都根据豆瓣API添加了书籍基本信息查询的功能。不过除了这种原生的方法，还可以使用jQuery对它们进行的封装（虽然与Ajax不是完全相同，但jQuery还是将其封装到ajax函数中去了）发起JSONP跨域请求。
@@ -67,9 +67,31 @@ $(document).ready(function(){
 ##示例
 点击下面按钮，运行jQuery封装了是JSONP跨域请求。如果成功，可以看到豆瓣返回的JSON数据。
 
-<button id="request_button" style="height:3em;">查询电影《无人区》的基本信息</button>
+<button id="request_button" 
+style="height: 3em;
+font: bold 0.8em sans-serif;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.15),0 1px 1px rgba(0,0,0,0.075);
+color: #fff;
+padding: 0 1em;
+border-radius: 0.5em;
+cursor: pointer;
+border:1px solid #398439;
+background-image: linear-gradient(to bottom,#5cb85c 0,#419641 100%);
+background-repeat: repeat-x;">
+查询电影《无人区》的基本信息
+</button>
 <h4>结果：</h4>
-<p id="response_data" style="display:none;font-size:0.8em;color:#444;border:6px solid #ccc;padding:1em;border-radius: 1em;background-color:#fff;"></p>
+<p id="response_data" 
+style="display:none;
+font-size:0.9em;
+color:#444;
+border:6px solid #ccc;
+padding:1em;
+border-radius: 1em;
+background-color:#fff;">
+</p>
+
 <script type="text/javascript">
 function ajax_douban_movie(){
 	$('#request_button').click(function(){
