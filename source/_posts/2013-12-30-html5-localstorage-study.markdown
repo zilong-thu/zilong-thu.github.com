@@ -31,7 +31,7 @@ Q：localStorage文件存储在哪里？
 
 A：Windows 8 下，Chrome浏览器将本地存储文件放在`C:\Users\username\AppData\Local\Google\Chrome\User Data\Default\Local Storage`目录下。如下图所示。
 
-<img src="{{root_url}}/images/blog/html5/20131230/chrome_localstorage_dir.PNG" title="localStorage of Chrome on win8">
+<img src="/images/blog/html5/20131230/chrome_localstorage_dir.PNG" title="localStorage of Chrome on win8">
 
 用记事本打开任何一个文件，可以看到里面都是十六进制码。
 <!--more-->
@@ -84,7 +84,7 @@ Q：能保存多久？
 
 A：存储在localStorage中的数据遵循这样的规则：数据保留到通过JavaScript删除或者是用户清除浏览器缓存。
 
-<img src="{{root_url}}/images/blog/html5/20131230/clearCache.PNG" title="clear localStorage Cache of Chrome on win8">
+<img src="/images/blog/html5/20131230/clearCache.PNG" title="clear localStorage Cache of Chrome on win8">
 
 注意：仅仅勾选“清空缓存”并不能删除localStorage中的数据，起作用的是上面那项——“删除Cookie以及其他网站数据和插件数据”。
 
