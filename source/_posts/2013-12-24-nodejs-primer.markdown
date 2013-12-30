@@ -151,7 +151,7 @@ MongoDB是一个对象数据库，以BSON（一种JSON的二进制变种）格�
 	> db
 	foobar
 
-这样就启动了MongoDB自带的JavaScript Shell。
+这样就启动了MongoDB自带的JavaScript Shell。可以运行帮助命令`help`以查看基本的操作提示。
 
 ###更多参考资料
 更多细节还是参考上面的两本书吧。MongoDB现在如此火热，以至于任何新的编程书籍都想谈一谈这个对象数据库。如
