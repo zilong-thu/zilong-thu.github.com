@@ -1,0 +1,84 @@
+---
+layout: post
+title: "12306网站前端初步优化之我见"
+date: 2014-01-03 10:25
+comments: true
+keywords: 12306网站优化, 前端性能优化
+categories: Web-FE
+---
+12306网站做得实在太垃圾了——加载速度慢，使用同步的Ajax验证码，未使用CSS Spirites …… ——完全不是抱着处理大量请求、高并发去的啊。因此，其前端部分是个极好的反面教材，可以作为web前端工程师进行性能优化的案例。本文仅指出12306网站前端方面存在的问题，并提出性能优化建议。鄙人水平有限，如有不对之处，还望读者朋友多多见谅，并感谢批评指正~~
+
+参考资料：
+<ul>
+<li><a href="http://book.douban.com/subject/3132277/" class="douban_book" name="3132277" target="_blank">《高性能网站建设指南》</a>
+</li>
+<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" name="4719162" target="_blank">《高性能网站建设进阶指南》</a></li>
+</ul>
+
+<!--more-->
+
+###1. 减少HTTP请求
+以铁路客户服务中心客运首页 https://kyfw.12306.cn/otn/index/init 为例。
+
+###问题分析
+先看第一次加载页面时的网络瀑布图（蓝色方框标记的为图片请求）：
+
+<img src="{{root_url}}/images/blog/web_fe/20140103/network_12306.PNG" title="铁路客户服务中心客运首页页面时的网络瀑布图"/>
+
+共34次HTTP请求，图片请求了14次。有很多是非常小的图片，例如 icon_new.png，只为了这1.3KB，就与服务器进行了三次握手，真是愚蠢。
+
+###优化建议
++ icon_new.png使用纯CSS制作（inline-block）
++ 背景色、框，不要使用bg.png、bg_navlist.png、bg_line.png、bg_nav01.png，应尽量使用CSS，可以绘制更高效的界面
++ 将 logo.png，icon_phone.png，icon8.png，bg_nav.png，icon.png合为一张Spirites图。
++ 其他icon也尽可能按照整个网站的需求进行合并（一张图最好）
+
+最后，非照片类图片请求数不应该超过两次。这样可以大大减轻服务器载荷。
+
+###2. 压缩组件
+以铁路客户服务中心客运首页 https://kyfw.12306.cn/otn/index/init 为例。
+
+<img src="{{root_url}}/images/blog/web_fe/20140103/comments_12306.PNG" title="HTML文件里含有不必要的注释"/>
+
+打开该页面的源代码，会看到一些注释。总体来说占html文件的比重不多。但是，考虑到该网站在放票的10秒内会接到大量的请求，还是应该将这些注释去掉。
+
+另外，这些注释的存在，使得人感觉这个网站仍然处于开发阶段——太不专业了。
+
+###3. 使用异步Ajax
+分析的是用户登录页面：https://kyfw.12306.cn/otn/login/init#
+
+<img src="{{root_url}}/images/blog/web_fe/20140103/login_validation.PNG" title="登录页面及HTTP Request头"/>
+
+用户在登录时需要输入验证码，其验证过程为：输入到第四个字符时，页面向服务器发送POST请求，对验证码进行验证。
+
+“异步”的英文名是Async。12306网站用户登录的随机码相关验证url名为checkRandCodeAnsyn，感觉不太对劲，然后看了下其JavaScript实现，好家伙，居然使用了同步Ajax请求！
+
+这就是为什么输入验证码后页面会假死——其实只是在等待服务器返回数据而已。什么人会故意使用同步Ajax请求呢？就是那些希望用户等待等待等待……的Idiots。
+
+我的优化建议是，把下面代码中`async`值改为`true`。
+
+``` javascript https://kyfw.12306.cn/otn/resources/merged/login_js.js?scriptVersion=1.171
+checkRandCode:function(){
+	var d;
+	var c=$("#randCode").val();
+	$.ajax(
+		{
+			url:ctx+"passcodeNew/checkRandCodeAnsyn",
+			type:"post",
+			data:{randCode:c,rand:"sjrand"},
+			async:false,    // => OK，这里是巨大的BUG。居然使用了同步Ajax请求！改为true就可以了
+			success:function(e){
+				if(e.data=="N"){
+					d=false;
+					$("#i-ok").css("display","none")
+				}else{
+					d=true;
+					$("#i-ok").css("display","block")
+				}
+			}
+		}
+	);
+
+	return d
+}
+```

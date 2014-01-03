@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="640px" height="480px" viewBox="0 0 640 480" style="enable-background:new 0 0 640 480;" xml:space="preserve">
+<g>
+	<path style="fill:#39B54A;" d="M218,66.322c0,1.288-1.435,2.678-2.693,2.678H27.279C26.021,69,25,67.61,25,66.322V31.333
+		C25,30.044,26.021,29,27.279,29h188.027c1.259,0,2.693,1.044,2.693,2.333V66.322z"/>
+	<text transform="matrix(1 0 0 1 37 53)" style="font-family:'CourierNewPSMT'; font-size:18;">Object.prototype</text>
+</g>
+<g>
+	<path style="fill:#29ABE2;" d="M406,215.322c0,1.288-1.732,2.678-3.252,2.678H175.752c-1.52,0-2.752-1.39-2.752-2.678v-34.989
+		c0-1.289,1.232-2.333,2.752-2.333h226.996c1.52,0,3.252,1.044,3.252,2.333V215.322z"/>
+	<text transform="matrix(1 0 0 1 197 202)" style="font-family:'CourierNewPSMT'; font-size:18;">Function.prototype</text>
+</g>
+<g>
+	<path style="fill:#FF4A51;" d="M573,392.322c0,1.288-1.502,2.678-2.819,2.678H373.386c-1.317,0-2.386-1.39-2.386-2.678v-34.989
+		c0-1.288,1.068-2.333,2.386-2.333h196.795c1.317,0,2.819,1.045,2.819,2.333V392.322z"/>
+	<text transform="matrix(1 0 0 1 383 379)" style="font-family:'CourierNewPSMT'; font-size:18;">function func(){}</text>
+</g>
+<path style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;" d="M75.5,69c0,0-9.042,39.193,0,46.5
+	c22.556,18.227,95.494-20.506,116,0c11.048,11.048,0,62.5,0,62.5"/>
+<path style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;" d="M320,218c0,0-29.674,57.364,45,68.5
+	c57,8.5,41,68.5,41,68.5"/>
+<path style="fill:#FF4A51;" d="M610,70.322c0,1.288-1.502,2.678-2.819,2.678H410.386c-1.317,0-2.386-1.39-2.386-2.678V35.333
+	c0-1.288,1.068-2.333,2.386-2.333h196.795c1.317,0,2.819,1.045,2.819,2.333V70.322z"/>
+<text transform="matrix(1 0 0 1 452 57)" style="font-family:'CourierNewPSMT'; font-size:18;">var obj = {}</text>
+<line style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;" x1="218" y1="50" x2="408" y2="50"/>
+<text transform="matrix(1 0 0 1 458 98)" style="font-family:'AdobeSongStd-Light-GBpc-EUC-H'; font-size:18;">对象字面量</text>
+<text transform="matrix(1 0 0 1 428 422)" style="font-family:'AdobeSongStd-Light-GBpc-EUC-H'; font-size:18;">函数对象</text>
+</svg>
