@@ -157,18 +157,18 @@ span.triTopOuter{
 }
 #div_douban_wrapper span.douban_close{
   display:inline-block;
-  width:24px;
-  height:24px;
-  padding:3px;
+  font-size: 2em;
+  font-weight: bold;
   float:right;
-  background:url('/images/close_24px.png') 3px 3px no-repeat ;
   border-radius: 3px;
-  border:1px solid transparent;
+  cursor: pointer;
+  color: #999;
   &:hover{
-    background-color: #ff5a40;
+    color: #000;
   }
   &:active{
-    background-color: #f00;
+    color: #f00;
+    text-shadow: 1px 1px 1px #666;
   }
 }
 .group:after{
@@ -182,6 +182,8 @@ span.triTopOuter{
   font-size: .8em;
   color: #666;
 }
+
+/*段落，用于测试代码输出结果*/
 .output{
   font-size:0.9em;
   color:#444;
@@ -189,4 +191,68 @@ span.triTopOuter{
   padding:1em;
   border-radius: 1em;
   background-color:#fff;
+}
+
+/**/
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+}
+.btn:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.btn:active{
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn.disabled,
+.btn[disabled]{
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.btn-primary {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active{
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+.btn-primary:active{
+  background-image: none;
 }

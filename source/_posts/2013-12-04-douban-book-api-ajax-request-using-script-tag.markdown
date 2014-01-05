@@ -148,5 +148,43 @@ $(a).attr('title','点击查看该书基本信息');
 	transition: left 0.5s, top 0.5s;
 }
 ```
-###6.2 点击页面空白处关闭消息框
+####6.2 弹出窗口的关闭按钮不使用图片
+优化原因：能不使用图片就不使用图片；想减少HTTP请求，又懒得CSS Spirites图。
+
+这种简单的关闭按钮也是Bootstrap所常用的。所以就看了下它的代码，“继承”过来了。
+
+``` css 之前的关闭按钮样式使用图片：
+#div_douban_wrapper span.douban_close{
+	background:url("/images/close_24px.png") 3px 3px no-repeat;
+}
+```
+
+``` css 优化后的按钮使用特殊字符来代替图片
+#div_douban_wrapper span.douban_close{
+  display:inline-block;
+  font-size: 2em;
+  font-weight: bold;
+  float:right;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #999;
+  &:hover{
+    color: #000;
+  }
+  &:active{
+    color: #f00;
+    text-shadow: 1px 1px 1px #666;
+  }
+}
+```
+
+``` html 相应的，octopress/source/_includes/custom/after_footer.html中的部分变为
+<div id="div_douban_wrapper">
+<span class="douban_close" title="关闭">&times;</span>
+<div id="div_douban_content" class="group"></div>
+<div class="douban_footer">Powered by <a href="http://www.douban.com/" target="_blank">Douban</a></div>
+</div>
+```
+
+###6.3 点击页面空白处关闭消息框
 【待研究】

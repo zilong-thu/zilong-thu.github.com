@@ -106,7 +106,7 @@ var myQuo = new Quo("confused");
 myQuo.get_status();                 // => confused
 ```
 
-<strong>我的感觉是：通过构造器函数实现继承的方式，是提供给那些无法接受原型继承思想的程序员来用的。</strong>
+<strong>我的感觉是：通过构造器函数实现继承的方式，是提供给那些无法接受原型继承思想的程序员来用的。</strong>JavaScript风格的“构造函数”应该是闭包（Closure）形式的、不使用new关键字。
 
 ####Apply调用模式
 函数是对象，所以函数可以拥有方法。
@@ -162,4 +162,216 @@ console.log(str2.length);     // => 2
 ```
 
 ###递归（Recursion）
+####汉诺塔
 
+``` javascript 汉诺塔问题的寻常解
+var hanoi = function(disc, src, aux, dst){
+	if(disc > 0){
+		hanoi(disc-1, src, dst, aux);
+		console.log('Move disc '+ disc + ' from '+ src + ' to '+ dst);
+		hanoi(disc-1, aux, src, dst);
+	}
+};
+
+hanoi(3, 'Src', 'Aux', 'Dst');
+```
+
+####DOM遍历
+递归函数可以非常高效地操作树形结构，比如浏览器端的文档对象模型（DOM）。每次递归调用时处理指定的树的一小段。下面的代码实际上解释了jQuery库中属性选择器的工作原理。
+
+``` javascript DOM遍历代码示例
+var walk_the_DOM = function walk(node, func){
+	func(node);
+	node = node.firstChild;
+	while(node){
+		walk(node, func);
+		node = node.nextSibling;
+	}
+};
+
+function getElementsByAttribute(att, value){
+	var results = [];
+
+	walk_the_DOM(document.body, function(node){
+		var actual = node.nodeType === 1 && node.getAttribute(att);
+		if(typeof actual === 'string' && (actual === value || typeof value !== 'string')){
+			results.push(node);
+		}
+	});
+
+	return results;
+}
+
+$(document).ready(function(){
+	$('#test_DOM_walker').click(function(){
+		var text_success = document.createTextNode('---- ^_^ 嗯，找到这个id为test_myAttribute的元素节点了 ~~~~ ');
+		var text_failed  = document.createTextNode('---- 不妙，没有找到这个节点诶 ………… ');
+		var p = getElementsByAttribute('id', 'test_myAttribute')[0];
+		if(p){
+			p.appendChild(text_success);
+		}else{
+			p.appendChild(text_failed);
+		}
+		
+	});
+});
+```
+<button id="test_DOM_walker" type="button" class="btn btn-primary" style="font:0.9em sans-serif;padding:0.5em 1.5em;">运行测试代码</button>
+<p id="test_myAttribute" class="output" myAttribute="x">some test paragraph.寻找本页面DOM中id属性为test_myAttribute的元素节点，如果成功找到了，就在本段落后面附上一段成功提示。否则，提示失败。</p>
+
+####尾递归优化
+
+``` javascript 什么是尾递归？
+// 这是一个尾递归
+var factorial = function factorial(n, a){
+	a = a || 1;
+	if(n<2){
+		return a;
+	}
+	return factorial(n-1, a*n);
+};
+
+// 返回的是n*fact(n-1)，而不是递归函数自身调用的结果
+// 因此这个不是尾递归
+function fact(n){
+	if(n>1){
+		return n*fact(n-1);
+	}else if(n<0 ){
+		return 0;
+	} else{
+		return 1;
+	}
+};
+```
+尾递归优化：如果一个函数返回自身递归调用的结果，那么这个调用的过程总是可以被替换为一个循环，从而可以显著提高速度，这就是尾递归优化。
+
+不过貌似到目前为止，依旧没有任何JavaScript解释器提供尾递归优化。深度递归的函数可能会因为堆栈溢出而运行失败。
+
+###闭包（Closure）
+函数作用域的好处是内部函数可以访问定义它们的外部函数的参数和变量（除了`this`和`arguments`）。
+
+闭包的特征之一就是：
+
+> 内部函数拥有比它的外部函数更长的生命周期。
+
+<p id="test_fade" class="output">点击下面按钮，本段落背景色先变黄，然后渐变为白色。</p>
+<button id="button_test_fade" type="button" class="btn btn-primary" style="font:0.9em sans-serif;padding:0.5em 1.5em;">运行背景色渐变代码</button>
+
+###模块（Module）
+> 模块的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它保存到一个可访问的地方。
+>
+> 使用模块模式就可以摒弃全局变量的使用。它促进了信息隐藏和其他优秀的设计实践。对于应用程序的封装，或者构造其他单例对象，模块模式非常有用。
+
+###柯里化（curry）
+###记忆（Memoization）
+记忆是一种优化方法：函数将先前操作的结果记录在某个对象里，从而避免无谓的重复运算。
+
+``` javascript 未经优化的Fibonacci数列计算
+var fibonacci = function(){
+	// 记录fibonacci 函数的调用次数
+	var invocation_count = 0;
+
+	var fib = function(n){
+		++invocation_count;
+
+		return n<2 ? n: fib(n-1) + fib(n-2);
+	};
+
+	for(var i=0; i<=10; ++i){
+		console.log(fib(i));
+	}
+
+	console.log(invocation_count);    // => 453
+}();
+```
+
+使用闭包存储一个结果数组，每次调用fib函数时，先检查当前n值是否已经存在于数组中，如果已经存在，就立即返回这个结果。
+
+``` javascript 使用记忆方法对Fibonacci递归算法进行优化
+var fibonacci = function(){
+	var invocation_count = 0;
+	var memo = [0, 1];
+	var fib = function(n){
+		var res = memo[n];
+		if(typeof res !== 'number'){
+			res = fib(n-1) + fib(n-2);
+			memo[n] = res;
+		}
+		invocation_count++;
+		return res;
+	};
+
+	for(var i=0; i<=10; ++i){
+		console.log(fib(i));
+	}
+
+	console.log(invocation_count);    // => 29
+}();
+```
+
+##第5章 继承
+###伪类
+这一节的主要目的是，让大家不要使用伪类方式去实现继承。
+
+###
+
+
+
+<script type="text/javascript">
+//========= walk DOM 例子 =============
+var walk_the_DOM = function walk(node, func){
+	func(node);
+	node = node.firstChild;
+	while(node){
+		walk(node, func);
+		node = node.nextSibling;
+	}
+};
+
+function getElementsByAttribute(att, value){
+	var results = [];
+
+	walk_the_DOM(document.body, function(node){
+		var actual = node.nodeType === 1 && node.getAttribute(att);
+		if(typeof actual === 'string' && (actual === value || typeof value !== 'string')){
+			results.push(node);
+		}
+	});
+
+	return results;
+}
+
+//===========  闭包，渐变背景色例子  ============
+var fade = function(node){
+	var level = 1;
+	var step = function(){
+		var hex = level.toString(16);
+		node.style.background = '#FFFF' + hex + hex;
+		if(level < 15){
+			level += 1;
+			setTimeout(step, 100);
+		}
+	};
+	setTimeout(step, 100);
+};
+
+// ========== 注册事件处理函数 ===========
+$(document).ready(function(){
+	$('#test_DOM_walker').click(function(){
+		var text_success = document.createTextNode('---- ^_^ 嗯，找到这个id为test_myAttribute的元素节点了 ~~~~ ');
+		var text_failed  = document.createTextNode('---- 不妙，没有找到这个节点诶 ………… ');
+		var p = getElementsByAttribute('id', 'test_myAttribute')[0];
+		if(p){
+			p.appendChild(text_success);
+		}else{
+			p.appendChild(text_failed);
+		}
+		
+	});
+
+	$('#button_test_fade').click(function(){
+		var p = document.getElementById('test_fade');
+		fade(p);
+	});
+});
+</script>
