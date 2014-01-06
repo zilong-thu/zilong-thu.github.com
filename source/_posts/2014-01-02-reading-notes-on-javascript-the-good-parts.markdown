@@ -218,7 +218,7 @@ $(document).ready(function(){
 	});
 });
 ```
-<button id="test_DOM_walker" type="button" class="btn btn-primary" style="font:0.9em sans-serif;padding:0.5em 1.5em;">运行测试代码</button>
+<button id="test_DOM_walker" type="button" class="btn btn-primary">运行测试代码</button>
 <p id="test_myAttribute" class="output" myAttribute="x">some test paragraph.寻找本页面DOM中id属性为test_myAttribute的元素节点，如果成功找到了，就在本段落后面附上一段成功提示。否则，提示失败。</p>
 
 ####尾递归优化
@@ -257,7 +257,7 @@ function fact(n){
 > 内部函数拥有比它的外部函数更长的生命周期。
 
 <p id="test_fade" class="output">点击下面按钮，本段落背景色先变黄，然后渐变为白色。</p>
-<button id="button_test_fade" type="button" class="btn btn-primary" style="font:0.9em sans-serif;padding:0.5em 1.5em;">运行背景色渐变代码</button>
+<button id="button_test_fade" type="button" class="btn btn-primary" >运行背景色渐变代码</button>
 
 ###模块（Module）
 > 模块的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它保存到一个可访问的地方。

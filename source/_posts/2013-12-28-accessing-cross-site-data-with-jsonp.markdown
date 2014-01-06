@@ -67,20 +67,7 @@ $(document).ready(function(){
 ##示例
 点击下面按钮，运行jQuery封装了是JSONP跨域请求。如果成功，可以看到豆瓣返回的JSON数据。
 
-<button id="request_button" 
-style="height: 3em;
-font: bold 0.8em sans-serif;
-text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
-box-shadow: inset 0 1px 0 rgba(255,255,255,0.15),0 1px 1px rgba(0,0,0,0.075);
-color: #fff;
-padding: 0 1em;
-border-radius: 0.5em;
-cursor: pointer;
-border:1px solid #398439;
-background-image: linear-gradient(to bottom,#5cb85c 0,#419641 100%);
-background-repeat: repeat-x;">
-查询电影《无人区》的基本信息
-</button>
+<button id="request_button" class="btn btn-primary">查询电影《无人区》的基本信息</button>
 <h4>结果：</h4>
 <p id="response_data" 
 style="display:none;

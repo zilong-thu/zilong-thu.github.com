@@ -13,14 +13,15 @@ Node.js是一个划时代的技术，它在原有的Web前端和后端技术的�
 
 历史上将JavaScript移植到浏览器外的计划不止一个，但Node.js是最出色的一个。
 
-###参考资料
-这里知识大多来自我在阅读的几本书：
+###Node.js学习资料
 
 <ol>
-<li><a href="http://book.douban.com/subject/10789820/" name="10789820" class="douban_book" title="Node.js开发指南"> 《Node.js开发指南》</a></li>
-<li><a href="http://book.douban.com/subject/20515024/" name="20515024" class="douban_book" title="Node即学即用"> 《Node即学即用》</a></li>
+<li><a href="http://book.douban.com/subject/10789820/" name="10789820" class="douban_book" title="Node.js开发指南" target="_blank">《Node.js开发指南》</a>——把这本书读完，并且成功完成里面讲的微博网站实例，才可以自称初步入门Node.js。</li>
+<li><a href="http://book.douban.com/subject/20515024/" name="20515024" class="douban_book" title="Node即学即用" target="_blank">《Node即学即用》</a></li>
+<li><a href="http://book.douban.com/subject/25768396/" name="25768396" class="douban_book" title="深入浅出Node.js" target="_blank">《深入浅出Node.js》</a></li>
 </ol>
-<!-- ###Node.js能做什么 -->
+
+另外，知名程序员兼翻译家阮一峰有一个适合Node.js初学者的页面：<a href="http://javascript.ruanyifeng.com/nodejs/basic.html#" target="_blank">JavaScript标准参考教程（alpha）-Node.js概述</a>。内容组织地非常清晰。
 
 <!--more-->
 ##Hello, Node.js
