@@ -27,15 +27,16 @@ head.appendChild(scriptElement_b);
 
 单击下面的按钮，可以获得你的地理位置坐标，并借助谷歌生成你所在城市的静态地图。
 
-<input type="button" id="go" value="Click Here!" style="height:3em;padding: 2px 0.5em;"/>
-<div id="lat_and_long" style="display:none;"></div>
-<div id="your_address"></div>
+<button id="test_geolocation" type="button" class="btn btn-primary">看看我的地理位置</button>
+<div id="lat_and_long" class="output" style="display:none;"></div>
+<div id="your_address" style="display:none;"></div>
 <div id="div_staticmap"></div>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
-$('#go').click(function(){
+$('#test_geolocation').click(function(){
 	if(navigator && navigator.geolocation){
+		$('#lat_and_long').html('加载中……').slideDown();
 		navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 	}else{
 		error('哎哟，你的浏览器不支持地理位置共享哈……用Chrome或者Mozilla吧~~');
@@ -54,16 +55,16 @@ function geo_success(postion){
 	//printAddress(postion.coords.latitude, postion.coords.longitude);
 }
 function printLatLong(lat, lon){
-$('#lat_and_long').html('<p>纬度(Latitude):'+lat+'</p><p>经度(Longitude):'+lon+'</p>').slideDown();
+$('#lat_and_long').html('你的地理坐标是：<br/>纬度(Latitude) ： '+lat+'<br/>经度(Longitude) ： '+lon).slideDown();
 }
 function setMapURL(latitude, longitude, accuracy){
 	var image = document.createElement('img');
 	var url = 'http://maps.googleapis.com/maps/api/staticmap'+
-			  '?center=' + latitude + ',' + longitude + '&size=600x450&sensor=true';
+			  '?center=' + latitude + ',' + longitude + '&size=640x450&sensor=true';
 	
 	// 设置大致的缩放级别
 	var zoomlevel = 20;
-	if(accuracy > 70){
+	if(accuracy > 100){
 		zoomlevel = zoomlevel - Math.round(Math.log(accuracy/30)/Math.LN2);
 	}
 	url = url + '&zoom='+ zoomlevel;
@@ -96,13 +97,13 @@ function printAddress(lat, lon, isMaxMind){
 	var yourLocation = new google.maps.LatLng(lat, lon);
 	geocoder.geocode({'latLng':yourLocation}, function(results, status){
 		if(status===google.maps.GeocoderStatus.OK){
-			$('#your_address').html('<p>你的地址是：<br/>'+results[0].formatted_address + '</p>');
+			$('#your_address').html('<p>你的地址是：<br/>'+results[0].formatted_address + '</p>').slideDown();
 		}else{
-			error('呃，抱歉哈，谷歌未能确定你的地址……');
+			error('呃，抱歉哈，谷歌未能确定你的地址……').slideDown();
 		}
 	});
 	if(isMaxMind){
-		$('#your_address').append('<p><a href="">IP to Location Service Provided by MaxMind</a></p>');
+		$('#your_address').append('<p><a href="">IP to Location Service Provided by MaxMind</a></p>').slideDown();
 	}
 }
 </script>
