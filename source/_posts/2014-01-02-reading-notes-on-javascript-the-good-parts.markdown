@@ -89,6 +89,13 @@ JavaScript一共有4种函数调用模式：
 + 构造器调用模式（the constructor invocation function）
 + apply调用模式（the apply invocation pattern）
 
+伴随着不同的调用方式，`this`也会指向不同的对象。
+
+####函数调用模式
+函数调用模式下（函数不作为对象的方法），this指向全局对象。在浏览器中，就是window对象。
+
+*这是JavaScript语言设计上的一个错误。
+
 ####构造器调用模式
 如果在一个函数前面带上 `new` 来调用，那么背地里将会创建一个连接到该函数的`prototype`成员的新对象，同时`this`将被绑定到那个新对象上。
 
