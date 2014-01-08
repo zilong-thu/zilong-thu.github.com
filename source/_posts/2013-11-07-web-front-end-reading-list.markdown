@@ -58,6 +58,8 @@ categories: Web-FE
 			<p>如果我大四选修《计算机网络技术基础》的时候读过这本书就好了。Headfirst系列名不虚传。这本书浅显易懂，把计算机网络所涉及的基本知识都讲解清楚了。</p>
 			<li>《JavaScript语言精粹》</li>
 			<p>前半部分读了两遍。我感觉，自从这本书起，读技术类的书，不再以“读完”为目的，而是以“读懂”为目的了。这本书非常好，值得读第三遍。</p>
+			<li><a href="http://book.douban.com/subject/23058345/" class="douban_book" name="23058345" target="_blank" title="HTML5应用开发实践指南">《HTML5应用开发实践指南》</a></li>
+			<p>这样的书居然要卖49块钱，你只有114页啊亲……HTML5提高了Web应用的标准。尽管它仍然需要工作在安全约束条件下，但最终会提供桌面开发人员期盼多年的工具。</p>
 		</ol>
 	<li>在读</li>
 	<ol>
@@ -81,6 +83,7 @@ categories: Web-FE
 		<li>《PHP和MySQL Web开发》</li>
 		<li>《众妙之门：网页设计专业之道》</li>
 		<li>《Web开发秘方》</li>
+		<li><a href="http://book.douban.com/subject/25761108/" class="douban_book" name="25761108" target="_blank">《HTML5游戏编程核心技术与实战》</a></li>
 	</ol>
 </ul>
 
@@ -105,3 +108,17 @@ categories: Web-FE
 </ol>
 
 另外，寒假回家一定要读的：<a href="http://book.douban.com/subject/10557282/" class="douban_book" target="_blank" name="10557282">《About Face 3: 交互设计精髓》</a>。
+
+###中途小记02
+（2014年1月8日）
+转眼一个月又过去了。在前端开发领域，我想我应该依旧处在“新手”阶段。
+
+<embed src="{{root_url}}/images/blog/web_fe/skill_distribution.svg">
+
+<blockquote>
+<p>那么，你想成为专家是吗？你需要投入大约十年的努力，不论哪个领域。</p>
+<p style="text-align:right;">——<a href="http://book.douban.com/subject/5372651/" name="5372651" class="douban_book" target="_blank">《程序员的思维修炼》</a>
+</p>
+</blockquote>
+
+十年，每天6小时，就是21900小时。但我自己又相信那个“一万小时的训练可以成为某领域的专家”一说。

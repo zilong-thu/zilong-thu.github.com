@@ -16,6 +16,10 @@ HTML5 Web Storage的目的是克服cookie的一些限制：当数据需要被严
 		</ul>
 	</p>
 	<p>——<a href="http://book.douban.com/subject/10546125/" name="10546125" class="douban_book" target="_blank">《JavaScript高级程序设计》</a></p>
+<br/>
+<p>localStorage机制提供一个持续跨Web重载的JavaScript对象。这种机制似乎是合理的、一致的和稳定的。localStorage适于存储小规模的数据，如session信息和用户偏好。
+</p>
+<p><a href="http://book.douban.com/subject/23058345/" class="douban_book" name="23058345" target="_blank" title="HTML5应用开发实践指南"> —— 《HTML5应用开发实践指南》</a></p>
 </blockquote>
 
 对HTML5 localStorage属性介绍比较早且比较好的一篇文章：

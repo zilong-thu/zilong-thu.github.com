@@ -28,45 +28,9 @@ Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去
 	link.href = url;
 	document.head.appendChild(link);
 })();
-
-$(document).ready(function(){
-	var img = document.getElementById('img_for_smear');
-
-	$('#run_left').click(function(){
-		smear(img,'l');
-	});
-
-	$('#run_right').click(function(){
-		smear(img,'r');
-	});
-});
-
-// 抹除函数
-function smear(img, direct){
-	var canvas = document.createElement("canvas"),
-		width = img.width,
-		height = img.height;
-
-	canvas.width = width;
-	canvas.height = height;
-	var context = canvas.getContext('2d');			
-	context.drawImage(img, 0, 0);
-	var pixels = context.getImageData(0,0,width, height);
-
-	var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
-	worker.postMessage({pixels:pixels, direct: direct});
-
-	worker.onmessage = function(e){
-		var smeared_pixels = e.data;
-		context.putImageData(smeared_pixels, 0, 0);
-		img.src = canvas.toDataURL();
-		worker.terminate();
-		canvas.width = canvas.height =0;
-	}
-}
 </script>
 
-###例1 多线程图片处理技术
+###例1 图像处理
 本例来自《JavaScript权威指南·第6版》$22.4节。
 
 <button id="run_left" class="run-button">向左模糊</button> <button id="run_right" class="run-button">向右模糊</button>
@@ -152,3 +116,45 @@ function smear(img, direct){
 	}
 }
 ```
+###例2 大规模计算
+
+如：<a href="http://www.atopon.org/mandel/#" target="_blank">Mandelbrot集合</a>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var img = document.getElementById('img_for_smear');
+
+	$('#run_left').click(function(){
+		smear(img,'l');
+	});
+
+	$('#run_right').click(function(){
+		smear(img,'r');
+	});
+});
+
+// 抹除函数
+function smear(img, direct){
+	var canvas = document.createElement("canvas"),
+		width = img.width,
+		height = img.height;
+
+	canvas.width = width;
+	canvas.height = height;
+	var context = canvas.getContext('2d');			
+	context.drawImage(img, 0, 0);
+	var pixels = context.getImageData(0,0,width, height);
+
+	var worker = new Worker('/javascripts/mylibs/webworker_smear.js');
+	worker.postMessage({pixels:pixels, direct: direct});
+
+	worker.onmessage = function(e){
+		var smeared_pixels = e.data;
+		context.putImageData(smeared_pixels, 0, 0);
+		img.src = canvas.toDataURL();
+		worker.terminate();
+		canvas.width = canvas.height =0;
+	}
+}
+</script>
