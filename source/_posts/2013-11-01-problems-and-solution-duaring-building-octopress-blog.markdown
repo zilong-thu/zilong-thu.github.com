@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "搭建Octopress博客过程中遇到的问题与解决方法"
+title: "搭建及配置Octopress博客"
 date: 2013-11-01 12:43
 comments: true
 keywords: Octopress, 博客搭建, 问题解决, SEO
@@ -16,9 +16,10 @@ rake deploy时遇到的：
 {%img /images/blog/error-02.gif %}
 
 ###问题2：把`_deploy/`目录整个删掉了怎么办
-<pre><code>
-$ rake setup_github_pages</code>
-</pre>
+
+```
+$ rake setup_github_pages
+```
 这样就会生成`_deploy/`目录，以及将其设为master分支，并对应远程仓库。
 
 ###如何在新建博文时添加关键字
@@ -77,7 +78,7 @@ end
 
 [Octopress主题改造](http://shanewfx.github.io/blog/2012/08/13/improve-blog-theme/)
 
-###*代码高亮功能
+###代码高亮功能
 嗯，根据第二篇博文，重启电脑搞定。
 
 参考这个： http://www.cnblogs.com/oec2003/archive/2013/05/27/3100896.html
@@ -116,7 +117,7 @@ http://jinlong.github.io/blog/2013/03/30/octopress-syntax-highlight/
 
 这样很快就生效了，大概10多分钟。所以说，官方文档很重要~~
 
-###主题改造问题
+###主题改造
 ####（1）transition
 本来在custom/_styles.scss里写了这样的代码：
 
@@ -133,3 +134,8 @@ div,p,a,span,img{
 }
 ```
 还是尽量将特效控制在明确的元素上比较好。
+
+###谷歌字体的取舍
+直接删掉，因为影响加载。而且，它只有英文字体，我的博客是中文，帮助不大。
+
+在`source/_includes/custom/head.html`中将其注释掉。
