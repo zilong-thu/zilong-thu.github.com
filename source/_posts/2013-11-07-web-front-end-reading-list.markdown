@@ -68,6 +68,8 @@ categories: Web-FE
 		<p>英文版是2011年出版的。书中的jQuery库版本大概为v1.3.*——所以有点老旧。但跟其他所有的Cookbook系列一样，这本书也是对于各种方法进行了非常深入的讨论。五星推荐。当然，如果会有第二版，我就会买了。</p>
 		<li><a href="http://book.douban.com/subject/20515024/" class="douban_book" name="20515024" target="_blank" title="HTML5应用开发实践指南">《Node即学即用》</a></li>
 		<p>学习Node必读。有人认为没有用过PHP做后端开发的人是没法读懂此书的。我觉得这样的人是忘记了自己如何学习后端开发的。从Node.js学服务器开发，我觉得比从PHP学起要好得多。</p>
+		<li><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a></li>
+		<p>豆瓣上这本书评价不高，可是为啥我觉得还不错捏——对于新手来说……</p>
 	</ol>
 	<li>未读</li>
 	<ol>
