@@ -4,7 +4,7 @@ title: "node.js搭建简单的HTTP服务器"
 date: 2014-01-09 19:45
 comments: true
 keywords: node http server examples
-categories: Node
+categories: NodeJS
 ---
 ###参考资料
 <a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章

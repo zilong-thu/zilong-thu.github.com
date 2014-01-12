@@ -4,7 +4,7 @@ title: "Node.js入门"
 date: 2013-12-24 10:17
 comments: true
 keywords: Node.js, 服务器端JavaScript
-categories: Node
+categories: NodeJS
 ---
 ###Node.js简介
 Node.js诞生于2009年5月，创始人Ryan Dahl。
