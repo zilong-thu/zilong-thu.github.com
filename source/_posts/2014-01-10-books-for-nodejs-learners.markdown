@@ -27,14 +27,23 @@ categories: NodeJS
 <ol>
 	<li>
 		<a href="http://book.douban.com/subject/20515024/" name="20515024" class="douban_book" title="Node即学即用" target="_blank">《Node即学即用》</a>
-		<p>例子很少。</p>
+		<p></p>
 	</li>
 	<li>
 		<a href="http://book.douban.com/subject/25767596/" name="25767596" class="douban_book" title="了不起的Node.js" target="_blank">《了不起的Node.js》</a>
-		<p>例子很少。</p>
+		<p></p>
 	</li>
 	<li>
 		<a href="http://book.douban.com/subject/25768396/" name="25768396" class="douban_book" title="深入浅出Node.js" target="_blank">《深入浅出Node.js》</a>
 		<p>例子很少，比较关注Node.js在C++、操作系统层面上的实现原理。所以，是入门后的提高书籍。</p>
+	</li>
+</ol>
+
+####未购
+
+<ol>
+	<li>
+		<a href="http://book.douban.com/subject/10586326/" name="10586326" class="douban_book" title="Node Web开发" target="_blank">《Node Web开发》</a>
+		<p></p>
 	</li>
 </ol>

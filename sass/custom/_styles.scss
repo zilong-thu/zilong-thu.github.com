@@ -3,6 +3,14 @@
 div,p,a,span,img,span{
   transition: color 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, background-color .5s;
 }
+#div_douban_wrapper{
+  transition: left 0.5s, top 0.5s,right 0.5s, right 0.5s;
+}
+
+#categories .category{
+  transition: padding-left 0.5s;
+}
+
 dl{
   margin: 1em 0;
   dt{
@@ -112,9 +120,9 @@ span.triTopOuter{
   text-decoration: none;
   text-align:center;
   z-index: 4;
-}
-#back_to_top a:hover{
-  box-shadow: 0 0 5px #333;
+  &:hover{
+    box-shadow: 0 0 5px #333;
+  }
 }
 
 /*豆瓣读书插件*/
@@ -128,7 +136,6 @@ span.triTopOuter{
   padding: 1em;
   background-color: #fff;
   border-radius: .5em;
-  transition: left 0.5s, top 0.5s,right 0.5s, right 0.5s;
 }
 @media screen and (max-width: 560px){
   #div_douban_wrapper{
@@ -253,4 +260,20 @@ span.triTopOuter{
 
 .btn-primary:active{
   background-image: none;
+}
+
+// 侧边栏
+#categories{
+  .category{
+    position: relative;
+    left: 0;
+    top: 0;
+    &:hover{
+      padding-left: 0.5em;
+      font-weight: bold;
+    }
+    a{
+      display: block;
+    }
+  }
 }
