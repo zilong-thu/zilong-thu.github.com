@@ -277,3 +277,17 @@ span.triTopOuter{
     }
   }
 }
+
+// 表格
+table.mytable{
+  border-collapse: collapse;
+  margin: 1em 0; 
+  td,th{
+    padding: 0.3em 1em;
+    border: 1px solid #b4d17a;
+  }
+  th{
+    font-weight:bold;
+    text-align: center;
+  }
+}
