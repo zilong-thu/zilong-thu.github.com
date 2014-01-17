@@ -241,4 +241,8 @@ if(doubanBooksGot[bookID]){
 下一步的优化，是在查询本页面的全局对象doubanBooksGot中是否包含当前要查询的图书ID信息前，先查看本地的localstorage对象是否已经存储了相应的信息。——如何判断localstorage数据是否过时，也是个问题，也许考虑到此，使用一个页内JS对象存储数据就足够了，反正……Ajax嘛，就是这么用的~~
 
 ####6.4 点击页面空白处关闭消息框
-【待研究】
+方法也很简单。添加一个div，使其与图书信息框一同出现、一同消失。这个网站（<a href="https://webops.nodejitsu.com/" target="_blank">nodejitsu.com</a>）上点击Sign In按钮后的动画使用纯CSS3制作，我则直接使用jQuery的基础动画方法fadeIn()，fadeOut()。
+
+现在，我的博客里也可以点击任意空白位置就将图书信息框关闭了。对于平板、手机，更为方便。
+
+功能添加日期：2014年1月18日凌晨2点。

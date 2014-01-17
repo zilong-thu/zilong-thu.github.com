@@ -7,10 +7,6 @@ div,p,a,span,img,span{
   transition: left 0.5s, top 0.5s,right 0.5s, right 0.5s;
 }
 
-#categories .category{
-  transition: padding-left 0.5s;
-}
-
 dl{
   margin: 1em 0;
   dt{
@@ -104,7 +100,7 @@ span.triTopOuter{
 }
 #back_to_top{
   position: fixed;
-  bottom: 2em;
+  bottom: 10px;
   right: 10px;
   background-color:transparent;
 }
@@ -116,7 +112,8 @@ span.triTopOuter{
   font: 1.8em sans-serif bold;
   color: #fff;
   line-height:2.5em;
-  background-color:rgba(11,156,224,0.7);
+  background-color: rgba(11,156,224,0.7);
+  background:linear-gradient(rgba(11,156,224,0.7),rgb(4,111,162),rgba(11, 156, 224, 0.9));
   text-decoration: none;
   text-align:center;
   z-index: 4;
@@ -198,7 +195,7 @@ span.douban_icon{
   margin-right: 0.4em;
 }
 .lightbox {
-  background: rgba(0,0,0,0.8);
+  background: rgba(53, 112, 107, 0.5);
   height: 100%;
   left: 0;
   margin: 0;
@@ -206,68 +203,8 @@ span.douban_icon{
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
-}
-.animated {
-  -webkit-animation-duration: 1s;
-     -moz-animation-duration: 1s;
-       -o-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-     -moz-animation-fill-mode: both;
-       -o-animation-fill-mode: both;
-          animation-fill-mode: both;
-}
-@-webkit-keyframes fadeIn {
-  0% {opacity: 0;}  
-  100% {opacity: 1;}
-}
-@-moz-keyframes fadeIn {
-  0% {opacity: 0;}  
-  100% {opacity: 1;}
-}
-@-o-keyframes fadeIn {
-  0% {opacity: 0;}  
-  100% {opacity: 1;}
-}
-@keyframes fadeIn {
-  0% {opacity: 0;}  
-  100% {opacity: 1;}
-}
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  -moz-animation-name: fadeIn;
-  -o-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-@-webkit-keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-@-moz-keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-@-o-keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-@keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
-.fadeOut {
-  -webkit-animation-name: fadeOut;
-  -moz-animation-name: fadeOut;
-  -o-animation-name: fadeOut;
-  animation-name: fadeOut;
-}
-.gone {
-  display: none !important;
+  z-index: 400;
+  display: none;
 }
 
 /*段落，用于测试代码输出结果*/
@@ -343,18 +280,20 @@ span.douban_icon{
 }
 
 // 侧边栏
-#categories{
-  .category{
+aside.sidebar{
+  li{
     position: relative;
     left: 0;
     top: 0;
+    transition: padding-left 0.5s;
     &:hover{
       padding-left: 0.5em;
       font-weight: bold;
     }
-    a{
-      display: block;
-    }
+  }
+  a{
+    display: block;
+    padding: .6em 0;
   }
 }
 

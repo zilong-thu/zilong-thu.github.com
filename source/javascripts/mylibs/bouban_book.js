@@ -7,7 +7,7 @@ function showBookInfo(data){
 	var div_douban_wrapper = $('#div_douban_wrapper');
 	var div_douban_content = $('#div_douban_content');
 
-	var str_html = '<h3>'+data.title+'</h3>' +
+	var str_html = '<h4>'+data.title+'</h4>' +
 			'<div style="float: left;margin: 0 20px 5px 0;">'+
 			'<a href="http://book.douban.com/subject/'+data.id+'/" target="_blank" title="《'+data.title+'》，去豆瓣，更精彩~~">'+
 			'<img src="'+data.images.medium+'"/></a></div>'+
@@ -29,8 +29,9 @@ function showBookInfo(data){
 	// delete the script script_for_ajax
 	$('script.script_for_ajax').remove();
 
-	$($('#div_douban_wrapper span.douban_close')[0]).click(function(){
-		div_douban_wrapper.fadeOut();
+	$('#span_douban_close').click(function(){
+		div_douban_wrapper.fadeOut(500);
+		$('#lightbox').fadeOut(500);
 	});
 }
 
@@ -55,7 +56,8 @@ function showRating(rating){
 (function(){
 	var lightbox = document.getElementById('lightbox');
 	lightbox.onclick = function(){
-		$(lightbox).removeClass('fadeIn').addClass('fadeOut gone');
+		$(lightbox).fadeOut();
+		$('#div_douban_wrapper').fadeOut(500);
 	};
 	var anchors = $('a.douban_book');
 	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';
@@ -72,7 +74,7 @@ function showRating(rating){
 				return true;
 			}
 
-			$(lightbox).removeClass('gone').addClass('fadeIn animated');
+			$('#lightbox').fadeIn(500);
 
 			var bookID = element.name;
 			if(doubanBooksGot[bookID]){
