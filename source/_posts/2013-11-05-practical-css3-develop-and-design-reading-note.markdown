@@ -328,7 +328,7 @@ article{
 
 如果你想学习CSS3，又完全没有读过任何一本CSS3方面的书籍，可以从这本入手。
 
-{%img /images/blog/browser-market-share-2013-11-6.PNG %}
+{%img /images/blog/browser-market-share-2013-11-6.png %}
 
 （桌面浏览器全球市场份额，截止到2013-11-06）
 
