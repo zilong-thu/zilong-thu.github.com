@@ -37,4 +37,6 @@ sidebar: false
 
 <a href="http://caniuse.com/" target="_blank" title="可以在这里查询是否可用某项HTML5或者CSS3特性">Can I Use</a>
 
+<a href="http://marketshare.hitslink.com/" target="_blank" title="互联网相关技术全球市场份额报告">Market Share Reports</a>
+
 <a href="" target="_blank" title=""></a>

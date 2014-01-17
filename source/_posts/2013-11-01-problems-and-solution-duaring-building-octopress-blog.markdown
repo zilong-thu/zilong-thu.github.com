@@ -8,12 +8,12 @@ categories: Octopress
 ---
 ###问题1：Non-fast-forward
 rake deploy时遇到的：
-{%img /images/blog/error-01.gif %}
+{%img /images/blog/octopress/error-01.png %}
 
 其实这个问题归根到底还是对GitHub的工作原理不了解导致的。`octopress/_deploy`目录其实就是对应着master分支，其下的`.git`目录则对应着远程的master库。解决方法：（关键是一定要进入到`_deploy/`目录。）
 <!-- more --> 
 
-{%img /images/blog/error-02.gif %}
+{%img /images/blog/octopress/error-02.png %}
 
 ###问题2：把`_deploy/`目录整个删掉了怎么办
 

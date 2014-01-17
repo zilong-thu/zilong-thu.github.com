@@ -1,17 +1,9 @@
-function requestBookInfo(element){
-	if (!element.name) {
-		return false;
-	}
-	var bookID = element.name;
-	var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667&callback=showBookInfo';
-	var script =  document.createElement("script");
-	script.src = url;
-	script.setAttribute("class","script_for_ajax");
-	document.body.appendChild(script);
+// 存储已查询到了的书籍
+var doubanBooksGot = {};
 
-	return true;
-}
 function showBookInfo(data){
+	doubanBooksGot[data.id] = data;
+
 	var div_douban_wrapper = $('#div_douban_wrapper');
 	var div_douban_content = $('#div_douban_content');
 
@@ -41,6 +33,7 @@ function showBookInfo(data){
 		div_douban_wrapper.fadeOut();
 	});
 }
+
 function showRating(rating){
 	var average = rating.average,
 		numRaters = rating.numRaters;
@@ -58,27 +51,40 @@ function showRating(rating){
 	$($('#div_douban_wrapper .numRaters')[0]).html('( '+numRaters+'人评价'+' )');
 }
 
-function registerDoubanBookEventHanler(){
+// registerDoubanBookEventHanler
+(function(){
+	var lightbox = document.getElementById('lightbox');
+	lightbox.onclick = function(){
+		$(lightbox).removeClass('fadeIn').addClass('fadeOut gone');
+	};
 	var anchors = $('a.douban_book');
-	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';  // \'/images/service_icons_color.png\';
-	var str_douban_icon_style = 'display:inline-block;width:16px;height:16px;background:url(\'' +
-								 icon_url + '\') 2px -96px no-repeat transparent;padding:0 0.7em 0 2px;';
+	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';
 
 	for(var i=0, length=anchors.length;i<length;i++){
 		var a = anchors[i];
-		$(a).after('<span style="'+str_douban_icon_style+'"></span>');
+		$(a).after('<span class="douban_icon">豆</span>');
 		$(a).attr('title','点击查看该书基本信息');
 
 		a.onclick = function(){
-			var hasBookID = requestBookInfo(this);
-			return !hasBookID;
+			var element = this;
+
+			if (!element.name) {
+				return true;
+			}
+
+			$(lightbox).removeClass('gone').addClass('fadeIn animated');
+
+			var bookID = element.name;
+			if(doubanBooksGot[bookID]){
+				showBookInfo(doubanBooksGot[bookID]);
+			}else{
+				var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667&callback=showBookInfo';
+				var script =  document.createElement("script");
+				script.src = url;
+				script.setAttribute("class","script_for_ajax");
+				document.body.appendChild(script);
+			}
+			return false;
 		};
-
-		// a[i].onmouseout = function(){
-		// 	setTimeout("$('#div_douban_wrapper').fadeOut();",1200);
-		// 	return false;
-		// };
 	}
-}
-
-registerDoubanBookEventHanler();
+})();

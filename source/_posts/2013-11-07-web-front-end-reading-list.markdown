@@ -60,6 +60,9 @@ categories: Web-FE
 			<p>前半部分读了两遍。我感觉，自从这本书起，读技术类的书，不再以“读完”为目的，而是以“读懂”为目的了。这本书非常好，值得读第三遍。</p>
 			<li><a href="http://book.douban.com/subject/23058345/" class="douban_book" name="23058345" target="_blank" title="HTML5应用开发实践指南">《HTML5应用开发实践指南》</a></li>
 			<p>这样的书居然要卖49块钱，你只有114页啊亲……HTML5提高了Web应用的标准。尽管它仍然需要工作在安全约束条件下，但最终会提供桌面开发人员期盼多年的工具。</p>
+			<li><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a></li>
+			<p>豆瓣上这本书评价不高，可是为啥我觉得还不错捏——对于新手来说……</p>
+			<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a></li>
 		</ol>
 	<li>在读</li>
 	<ol>
@@ -68,15 +71,12 @@ categories: Web-FE
 		<p>英文版是2011年出版的。书中的jQuery库版本大概为v1.3.*——所以有点老旧。但跟其他所有的Cookbook系列一样，这本书也是对于各种方法进行了非常深入的讨论。五星推荐。当然，如果会有第二版，我就会买了。</p>
 		<li><a href="http://book.douban.com/subject/20515024/" class="douban_book" name="20515024" target="_blank" title="HTML5应用开发实践指南">《Node即学即用》</a></li>
 		<p>学习Node必读。有人认为没有用过PHP做后端开发的人是没法读懂此书的。我觉得这样的人是忘记了自己如何学习后端开发的。从Node.js学服务器开发，我觉得比从PHP学起要好得多。</p>
-		<li><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a></li>
-		<p>豆瓣上这本书评价不高，可是为啥我觉得还不错捏——对于新手来说……</p>
 	</ol>
 	<li>未读</li>
 	<ol>
 		<li>《JavaScript经典实例》</li>
 		<li>《JavaScript高级程序设计》</li>
 		<li>《JavaScript高效图形编程》</li>
-		<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a></li>
 		<li>《精通CSS：高级Web标准解决方案》</li>
 		<li>《HTML5 Canvas核心技术》</li>
 		<li>《WebGL入门指南》</li>
@@ -88,6 +88,10 @@ categories: Web-FE
 		<li>《众妙之门：网页设计专业之道》</li>
 		<li>《Web开发秘方》</li>
 		<li><a href="http://book.douban.com/subject/25761108/" class="douban_book" name="25761108" target="_blank">《HTML5游戏编程核心技术与实战》</a></li>
+		<li>《About Face 3: 交互设计精髓》</li>
+		<li>《jQuery基础教程》</li>
+		<li>《CSS设计指南》</li>
+		<li>《用AngularJS开发下一代Web应用》</li>
 	</ol>
 </ul>
 

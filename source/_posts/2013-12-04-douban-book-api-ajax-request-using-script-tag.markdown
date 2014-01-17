@@ -117,6 +117,33 @@ var str_douban_icon_style = 'display:inline-block;width:16px;height:16px;backgro
 $(a).after('<span style="'+str_douban_icon_style+'"></span>');
 $(a).attr('title','点击查看该书基本信息');
 ```
+#### ==>进一步优化（2014年1月17日）
+使用图片以及内联样式，不是最好的解决方案。决定使用文字、外部CSS样式表。
+
+``` javascript 更改后的JS代码
+for(var i=0, length=anchors.length;i<length;i++){
+	var a = anchors[i];
+	$(a).after('<span class="douban_icon">豆</span>');
+	$(a).attr('title','点击查看该书基本信息');
+
+	a.onclick = function(){
+		var hasBookID = requestBookInfo(this);
+		return !hasBookID;
+	};
+}
+```
+
+``` css 豆瓣LOGO样式
+span.douban_icon{
+  font-size: 0.8em;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #76BD76;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  margin-right: 0.4em;
+}
+```
 
 ###5. 为提示框添加响应式布局样式
 在PC端，屏幕横向分辨率一般大于1024px，这样的提示框宽度往往没有问题。要处理的是在移动设备下的宽度（我可以测试的仅有iPad与安卓手机）。
@@ -186,7 +213,32 @@ $(a).attr('title','点击查看该书基本信息');
 </div>
 ```
 
-####6.3 使用localStorage存储已查询了的数据
+####6.3 使用对象存储已查询了的数据
+暂时先用一个全局对象保存已经查询过了的图书数据，这样可以大大减少无谓的请求。
+``` javascript
+// 存储已查询到了的书籍
+var doubanBooksGot = {};
+
+// 回调里将新获得的数据保存
+function showBookInfo(data){
+	doubanBooksGot[data.id] = data;
+
+}
+
+// 为每个豆瓣图书链接注册事件处理函数时
+// 先看看此书ID是否已经在doubanBooksGot对象中了
+var bookID = element.name;
+if(doubanBooksGot[bookID]){
+	showBookInfo(doubanBooksGot[bookID]);
+}else{
+	var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667&callback=showBookInfo';
+	var script =  document.createElement("script");
+	script.src = url;
+	script.setAttribute("class","script_for_ajax");
+	document.body.appendChild(script);
+}
+```
+下一步的优化，是在查询本页面的全局对象doubanBooksGot中是否包含当前要查询的图书ID信息前，先查看本地的localstorage对象是否已经存储了相应的信息。——如何判断localstorage数据是否过时，也是个问题，也许考虑到此，使用一个页内JS对象存储数据就足够了，反正……Ajax嘛，就是这么用的~~
 
 ####6.4 点击页面空白处关闭消息框
 【待研究】
