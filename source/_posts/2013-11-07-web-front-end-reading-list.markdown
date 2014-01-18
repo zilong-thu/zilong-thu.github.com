@@ -6,7 +6,7 @@ comments: true
 keywords: 前端工程师读书单，Front-End, 前端工程师的自我修炼之道
 categories: Web-FE
 ---
-<span class="first">记</span>录一下我为了成为Web前端工程师而读的书们，以及每个阶段的大概计划。也许最终我不能如愿以偿，但读书学技术总归是好的，结果起码是我终于有了“一技之长”。
+<span class="first">记</span>录一下我为了成为Web前端工程师而读的书们，以及每个阶段的大概计划。也许最终我不能如愿以偿，但读书学技术总归是好的，结果起码是我终于有了一技之长。
 
 ###书单
 
@@ -35,9 +35,9 @@ categories: Web-FE
 				<p>读过此书（没有百分百读完，图、查找这两章没有读完），收获良多。感觉前端工程师确实应该了解数据结构，那位面试官同学把我刷下来不无道理。这本书的确非常适合我这种非计算机专业的、想对数据结构有入门了解的人读。此书也有不足之处：在图/查找/排序这三章，涉及算法时，并不讲解算法思路，而是直接上代码，感觉不太好。我直接看百度百科的算法思路讲解，就不必再去读作者啰里啰唆说这一步怎么样下一步又如何了——讲代码的执行过程，不如先讲讲算法思路~~</p>
 			<li><a href="http://book.douban.com/subject/10793898/" name="10793898" class="douban_book" target="_blank">《精彩绝伦的CSS》</a>Eric A. Meyer著</li>
 			<p>CSS的各种实用技术。非常赞。</p>
-			<li>《点石成金：访客至上的网页设计秘笈》原书第二版</li>
+			<li><a href="http://book.douban.com/subject/1827702/" name="1827702" class="douban_book" target="_blank">《点石成金：访客至上的网页设计秘笈》原书第二版</a></li>
 			<p>对现在的我来说最有惊喜的是第九章：一天10美分的可用性测试。网站可用性测试很有帮助，也很有意思。另外第12章“救命！老板想让我……当好人遇到不好的设计决策”基本提到了我在实验室遇到的问题，我的解决方案是坚持合理的设计，当然最后老板胜出，并且我没法再参与设计。其实，给这样的老板做WEB设计，是一种痛苦，退出是一种解脱~~他需要读一读这本书~~</p>
-			<li>《写给程序员的Web设计书》</li><p>只适合新手读。有关于Photoshop切图的一些知识。具体读书笔记见我的博文<a href="/blog/2013/11/19/reading-notes-on-book-web-design-for-developers/" target="_blank">《写给程序员的Web设计书》读书笔记</a></p>
+			<li><a href="http://book.douban.com/subject/6783748/" class="douban_book" name="6783748" target="_blank">《写给程序员的Web设计书》</a></li><p>只适合新手读。有关于Photoshop切图的一些知识。具体读书笔记见我的博文<a href="/blog/2013/11/19/reading-notes-on-book-web-design-for-developers/" target="_blank">《写给程序员的Web设计书》读书笔记</a></p>
 			<li>《众妙之门：自由网站设计师成功之道》</li>
 			<p>不是我这种层次的人需要读的。稍有所成的自由网站设计开发人士应该用得到，因为涉及一些商业指导。</p>
 			<li><a href="http://book.douban.com/subject/4935289/" class="douban_book" name="4935289" target="_blank" title="无懈可击的Web设计II">《无懈可击的Web设计II》</a></li>
@@ -47,7 +47,7 @@ categories: Web-FE
 			<li>《完美网页的视觉设计法则》</li>
 			<p>色彩理论那块确实比较有启发性。没有太多技术细节，基本是偏重设计理念的。</p>
 			<li><a href="http://book.douban.com/subject/3132277/" class="douban_book" name="3132277" target="_blank">《高性能网站建设指南》</a></li>
-			<li>《JavaScript DOM 编程艺术》</li>
+			<li><a href="http://book.douban.com/subject/1921890/" class="douban_book" name="1921890" target="_blank" title="JavaScript DOM 编程艺术">《JavaScript DOM 编程艺术》</a></li>
 			<li><a href="http://book.douban.com/subject/19933548/" class="douban_book" name="19933548" target="_blank" title="《JavaScript编程精解》">《JavaScript编程精解》</a></li>
 			<p>《JavaScript核心概念及实践》的风格跟这本书很像。它们都贯彻这样的写作思路：不追求大而全，只提那些核心概念；大都使用自己原创的例子代码，讲解核心技术；有作者自己对于JavaScript的理解在里头。</p>
 			<li><a href="http://book.douban.com/subject/6021440/" class="douban_book" name="6021440" target="_blank" title="黑客与画家">《黑客与画家》</a></li>
@@ -129,4 +129,4 @@ categories: Web-FE
 </p>
 </blockquote>
 
-十年，每天6小时，就是21900小时。但我自己又相信那个“一万小时的训练可以成为某领域的专家”一说。
+十年，每天6小时，就是21900小时。但我自己又相信“一万小时的训练可以成为某领域的专家”的说法。所以，如果坚持五年，每天投入6小时到web开发研究，应该就可以成为“砖家”啦。

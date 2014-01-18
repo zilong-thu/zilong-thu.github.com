@@ -126,7 +126,7 @@ span.triTopOuter{
 #div_douban_wrapper{
   display: none;
   position: fixed;
-  left: 18%;
+  left: 20%;
   top: 20%;
   z-index: 5;
   box-shadow: 1px 1px 20px rgba(0,0,0,0.8);
@@ -134,19 +134,11 @@ span.triTopOuter{
   background-color: #fff;
   border-radius: .5em;
 }
-@media screen and (max-width: 560px){
-  #div_douban_wrapper{
-    left: 5%;
-    top: 10%;
-    right: 5%;
-    padding: .5em;
-  }
-}
-@media screen and (min-width: 561px) and (max-width: 720px){
+@media screen and (max-width: 720px){
   #div_douban_wrapper{
     left: 10%;
     right: 10%;
-    padding: .5em;
+    top: 10%;
   }
 }
 #div_douban_wrapper, #div_douban_wrapper div{
@@ -154,11 +146,11 @@ span.triTopOuter{
   background:#FCF9B6;
 }
 #div_douban_wrapper img{
-  border:1px solid #ccc;
+  &:hover{
+    box-shadow: 0 0 5px #333;
+  }
 }
-#div_douban_wrapper img:hover{
-  box-shadow: 0 0 10px #003DFF;
-}
+
 #div_douban_wrapper span.douban_close{
   display:inline-block;
   font-size: 2em;

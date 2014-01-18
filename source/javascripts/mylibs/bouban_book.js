@@ -31,7 +31,7 @@ function showBookInfo(data){
 
 	$('#span_douban_close').click(function(){
 		div_douban_wrapper.fadeOut(500);
-		$('#lightbox').fadeOut(500);
+		$('#lightbox').fadeOut(600);
 	});
 }
 
@@ -57,7 +57,7 @@ function showRating(rating){
 	var lightbox = document.getElementById('lightbox');
 	lightbox.onclick = function(){
 		$(lightbox).fadeOut();
-		$('#div_douban_wrapper').fadeOut(500);
+		$('#div_douban_wrapper').fadeOut(600);
 	};
 	var anchors = $('a.douban_book');
 	var icon_url = 'http://static.duoshuo.com/images/service-icons-color.png';
