@@ -38,13 +38,13 @@ categories: Web-FE
 			<li><a href="http://book.douban.com/subject/1827702/" name="1827702" class="douban_book" target="_blank">《点石成金：访客至上的网页设计秘笈》原书第二版</a></li>
 			<p>对现在的我来说最有惊喜的是第九章：一天10美分的可用性测试。网站可用性测试很有帮助，也很有意思。另外第12章“救命！老板想让我……当好人遇到不好的设计决策”基本提到了我在实验室遇到的问题，我的解决方案是坚持合理的设计，当然最后老板胜出，并且我没法再参与设计。其实，给这样的老板做WEB设计，是一种痛苦，退出是一种解脱~~他需要读一读这本书~~</p>
 			<li><a href="http://book.douban.com/subject/6783748/" class="douban_book" name="6783748" target="_blank">《写给程序员的Web设计书》</a></li><p>只适合新手读。有关于Photoshop切图的一些知识。具体读书笔记见我的博文<a href="/blog/2013/11/19/reading-notes-on-book-web-design-for-developers/" target="_blank">《写给程序员的Web设计书》读书笔记</a></p>
-			<li>《众妙之门：自由网站设计师成功之道》</li>
+			<li><a href="http://book.douban.com/subject/24744271/" class="douban_book" name="24744271" target="_blank">《众妙之门：自由网站设计师成功之道》</a></li>
 			<p>不是我这种层次的人需要读的。稍有所成的自由网站设计开发人士应该用得到，因为涉及一些商业指导。</p>
 			<li><a href="http://book.douban.com/subject/4935289/" class="douban_book" name="4935289" target="_blank" title="无懈可击的Web设计II">《无懈可击的Web设计II》</a></li>
 			<p>整本书最有思想、最有价值的是第四章，而不是作者为表谢意而提到的第六章。第四章讲设计理念，讲程序员在面对新老技术交替时该如何做取舍的问题，是超越技术层面的探讨，也基本不受时空的限制，所以我认为这一章更有价值，也因此先读的这一章。<a href=" http://zilong-thu.github.io/blog/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/ ">读书笔记</a></p>
 			<li>《HTML5与JavaScript程序设计》</li>
 			<p>现在真的是到了谁都可以出书的时代了啊。在w3school随便找点wiki然后复制粘贴过来就成了一本书了啊？错误百出，惨不忍睹。</p>
-			<li>《完美网页的视觉设计法则》</li>
+			<li><a href="http://book.douban.com/subject/6978720/" class="douban_book" name="6978720" target="_blank">《完美网页的视觉设计法则》</a></li>
 			<p>色彩理论那块确实比较有启发性。没有太多技术细节，基本是偏重设计理念的。</p>
 			<li><a href="http://book.douban.com/subject/3132277/" class="douban_book" name="3132277" target="_blank">《高性能网站建设指南》</a></li>
 			<li><a href="http://book.douban.com/subject/1921890/" class="douban_book" name="1921890" target="_blank" title="JavaScript DOM 编程艺术">《JavaScript DOM 编程艺术》</a></li>
