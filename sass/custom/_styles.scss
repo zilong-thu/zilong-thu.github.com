@@ -113,12 +113,11 @@ span.triTopOuter{
   color: #fff;
   line-height:2.5em;
   background-color: rgba(11,156,224,0.7);
-  background:linear-gradient(rgba(11,156,224,0.7),rgb(4,111,162),rgba(11, 156, 224, 0.9));
   text-decoration: none;
   text-align:center;
   z-index: 4;
   &:hover{
-    box-shadow: 0 0 5px #333;
+    box-shadow: 0 0 4px #333;
   }
 }
 
