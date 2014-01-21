@@ -113,11 +113,11 @@ function back_to_top(){
   $("#back_to_top").hide();
   $(function () {
     $(window).scroll(function(){
-      if ($(window).scrollTop()>100){
-        $("#back_to_top").fadeIn(700);
+      if ($(window).scrollTop()>150){
+        $("#back_to_top").fadeIn(600);
       }
       else{
-        $("#back_to_top").fadeOut(700);
+        $("#back_to_top").fadeOut(600);
       }
     });
     $("#back_to_top").click(function(){

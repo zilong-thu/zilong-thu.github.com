@@ -32,6 +32,9 @@ script.src = url;
 document.body.appendChild(script);
 ```
 
+###JSONP技术的缺点
+基于script标签的JSONP技术要求回调函数必须预先由你的代码提供并且设为全局可访问的。这样不太好。而jQuery对其封装后，回调函数被隐藏了，因此减少了对全局命名空间的污染。个人觉得，如果网站使用了jQuery，那么涉及跨域访问的都最好使用jQuery封装过的ajax方法来实现。
+
 ##jQuery封装的JSONP方法
 
 用jQuery进行JSONP数据请求的代码如下所示。可以看到，在url的查询字段中不必写`callback=mycallback`了，只需指定`success`函数即可。另外，貌似jQuery还实现了错误处理（但因为没有进行测试，不知是否可正常运行）。
