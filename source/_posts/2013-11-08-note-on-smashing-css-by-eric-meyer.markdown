@@ -229,7 +229,7 @@ body {padding:0; margin: 0;}
 
 另外，6.5节“表的图形化”非常有意思，原来表格的每个`tr`元素都是可以通过浮动属性绘制直方图。当然了，这个工作最好用JS来完成。
 
-<table>
+<table class="mytable">
 	<thead>
 		<th scope="col">巴萨</th><th scope="col">费用项目</th><th scope="col">广州恒大</th>
 	</thead>
@@ -256,6 +256,7 @@ body {padding:0; margin: 0;}
 		</tr>
 	</tbody>
 </table>
+
 
 ###媒体查询
 作者说这可以自成一章，甚至编撰成一本书，我想他说的应该是“响应式Web设计”或者“移动Web设计”这类内容。

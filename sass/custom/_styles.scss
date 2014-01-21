@@ -134,11 +134,12 @@ span.triTopOuter{
   background-color: #fff;
   border-radius: .5em;
 }
-@media screen and (max-width: 720px){
+@media screen and (max-width: 700px){
   #div_douban_wrapper{
-    left: 10%;
-    right: 10%;
-    top: 10%;
+    left: 9%;
+    right: 9%;
+    top: 9%;
+    padding: .5em;
   }
 }
 #div_douban_wrapper, #div_douban_wrapper div{
