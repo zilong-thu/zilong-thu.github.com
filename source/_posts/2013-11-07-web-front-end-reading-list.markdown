@@ -65,6 +65,8 @@ categories: Web-FE
 			<li><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a></li>
 			<p>豆瓣上这本书评价不高，可是为啥我觉得还不错捏——对于新手来说……</p>
 			<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a></li>
+			<li><a href="http://book.douban.com/subject/6393626/" class="douban_book" name="6393626" target="_blank">《秩序之美》</a></li>
+			<p>小书一本。在回家前的几个小时里飞快地过了一遍。收获，远不及<a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="《写给大家看的设计书（第3版）》">《写给大家看的设计书（第3版）》</a></p>
 		</ol>
 	<li>在读</li>
 	<ol>
