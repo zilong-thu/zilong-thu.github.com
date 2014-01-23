@@ -50,6 +50,8 @@ categories: Web-FE
 			<li><a href="http://book.douban.com/subject/1921890/" class="douban_book" name="1921890" target="_blank" title="JavaScript DOM 编程艺术">《JavaScript DOM 编程艺术》</a></li>
 			<li><a href="http://book.douban.com/subject/19933548/" class="douban_book" name="19933548" target="_blank" title="《JavaScript编程精解》">《JavaScript编程精解》</a></li>
 			<p>《JavaScript核心概念及实践》的风格跟这本书很像。它们都贯彻这样的写作思路：不追求大而全，只提那些核心概念；大都使用自己原创的例子代码，讲解核心技术；有作者自己对于JavaScript的理解在里头。</p>
+			<li><a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="《写给大家看的设计书（第3版）》">《写给大家看的设计书（第3版）》</a></li>
+			<p>目前看过的最好的设计类书籍。</p>
 			<li><a href="http://book.douban.com/subject/6021440/" class="douban_book" name="6021440" target="_blank" title="黑客与画家">《黑客与画家》</a></li>
 			<p>Paul Graham是真正的大师。我是读过此书，才对编程语言有了更为深入的理解——也算是巧合，因为我碰巧对C++和JavaScript都半生不熟，而要读懂这本书，务必得了解一门静态型语言，一门动态型语言。考虑未来，必然是动态语言大行其道的时代。但是，当下，还是有必要学精一门静态语言的，所以，开始重学C++——也是硕士课题的需要。</p>
 			<li><a href="http://book.douban.com/subject/10789820/" name="10789820" class="douban_book" title="Node.js开发指南" target="_blank">《Node.js开发指南》</a></li>
