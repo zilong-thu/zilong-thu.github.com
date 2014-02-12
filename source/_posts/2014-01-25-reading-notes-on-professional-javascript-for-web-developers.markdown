@@ -6,7 +6,7 @@ comments: true
 keywords: JavaScript, professional javascript for web developers
 categories: JavaScript
 ---
-
+<a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a>
 <!-- more -->
 
 ##第4章

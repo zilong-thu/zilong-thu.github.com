@@ -70,7 +70,7 @@ categories: Web-FE
 		</ol>
 	<li>在读</li>
 	<ol>
-		<li>《JavaScript高级程序设计》</li>
+		<li><a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a></li>
 		<li><a href="http://book.douban.com/subject/24303555/" class="douban_book" name="24303555" target="_blank">《Illustrator CS6中文版：从新手到高手》</a></li>
 		<li><a href="http://book.douban.com/subject/23774480/" class="douban_book" name="23774480" target="_blank" title="jQuery Cookbook 中文版">《jQuery Cookbook 中文版》</a></li>
 		<p>英文版是2011年出版的。书中的jQuery库版本大概为v1.3.*——所以有点老旧。但跟其他所有的Cookbook系列一样，这本书也是对于各种方法进行了非常深入的讨论。五星推荐。当然，如果会有第二版，我就会买了。</p>
