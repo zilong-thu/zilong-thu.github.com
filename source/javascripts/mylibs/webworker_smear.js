@@ -9,7 +9,7 @@ function smear(obj){
 		n = 10, 
 		m = n-1;
 	
-	if (direct=='r') {
+	if (direct==='right') {
 		for(var row=0, i;row<height;row++){
 			i = row*width*4 + 4;
 			for(var col=1; col<width; col++, i+=4){
@@ -19,7 +19,7 @@ function smear(obj){
 				data[i+3]  = (data[i+3] + data[i-1]*m)/n;
 			}
 		}
-	} else{
+	} else if(direct === 'left'){
 		for(var row=0, i;row<height;row++){
 			i = row*width*4 + 4;
 			for(var col=1; col<width; col++, i+=4){
@@ -28,6 +28,13 @@ function smear(obj){
 				data[i-2]  = (data[i-2] + data[i+2]*m)/n;
 				data[i-1]  = (data[i-1] + data[i+3]*m)/n;
 			}
+		}
+	} else {
+		for (var i=0, len = data.length; i<len; i+=4){
+			var average = Math.floor((data[i] + data[i+1] + data[i+2])/3);
+			data[i] = average;
+			data[i+1] = average;
+			data[i+2] = average;
 		}
 	}
 	

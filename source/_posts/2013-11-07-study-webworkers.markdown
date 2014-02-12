@@ -33,13 +33,15 @@ Web Workers本身也不是轻量级的线程，因此创建一些新的Worker去
 ###例1 图像处理
 本例来自《JavaScript权威指南·第6版》$22.4节。
 
+用到的Canvas API getImageData()，该方法在<a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a>的15章15.2.10节（460页）介绍地很详细。该书给出的是灰阶过滤器的例子，见例2。
+
+getImageData()方法返回一个ImageData对象，该对象的每个实例都有三个属性：width、height和data。其中data属性是一个数组，保存着图像中每一个像素的数据。在data数组中，每一个像素用四个元素来保存，分别表示红、绿、蓝和透明度值。因此，第一个像素的数据就保存在数组的第0到第三个元素中，第二个像素的数据在第4到第7个元素中，往后以此类推。数组中每个元素的值都介于0和255之间（包括0和255）。
+
 <button id="run_left" class="run-button">向左模糊</button> <button id="run_right" class="run-button">向右模糊</button>
 
-（注：现在向左模糊似乎结果不正确。因为尚不懂图片内部数据如何存储。）
+<img id="img_for_smear" src="/images/blog/football.jpg"/>
 
-<img id="img_for_smear" src="/images/blog/football.jpg" title="单击以运行worker线程" />
-
-####代码
+####worker线程处理图像数据的JS代码
 ``` javascript worker线程中的代码， 
 // 从主线程中获得ImageData对象，对其进行处理并将它传递回去
 onmessage = function(e){ postMessage(smear(e.data)); };
@@ -116,7 +118,14 @@ function smear(img, direct){
 	}
 }
 ```
-###例2 大规模计算
+
+###例2 灰阶过滤器
+
+<img id="img_for_gray" src="/images/blog/football.jpg"/>
+
+<button id="run_gray" class="run-button">变为黑白风格</button>
+
+###例3 大规模计算
 
 如：<a href="http://www.atopon.org/mandel/#" target="_blank">Mandelbrot集合</a>
 
@@ -125,12 +134,18 @@ function smear(img, direct){
 $(document).ready(function(){
 	var img = document.getElementById('img_for_smear');
 
+	var img2 = document.getElementById('img_for_gray');
+
 	$('#run_left').click(function(){
-		smear(img,'l');
+		smear(img,'left');
 	});
 
 	$('#run_right').click(function(){
-		smear(img,'r');
+		smear(img,'right');
+	});
+
+	$('#run_gray').click(function(){
+		smear(img2, 'gray');
 	});
 });
 
