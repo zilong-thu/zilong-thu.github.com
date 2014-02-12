@@ -159,11 +159,12 @@ span.triTopOuter{
   border-radius: 3px;
   cursor: pointer;
   color: #999;
+  padding: 0 0.1em 0.2em 0.1em;
   &:hover{
-    color: #000;
+    background-color: #FD5D5D;
   }
   &:active{
-    color: #f00;
+    color: #000;
   }
 }
 .group:after{
