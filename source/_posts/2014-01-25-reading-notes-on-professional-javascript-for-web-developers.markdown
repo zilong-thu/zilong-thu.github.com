@@ -7,6 +7,10 @@ keywords: JavaScript, professional javascript for web developers
 categories: JavaScript
 ---
 <a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a>
+
+乱写一通。
+
+这本书是2013-2014的寒假坐火车回家前在候车室里开始看的。火车上也看了一路。整个假期基本就只看这一本书。偶尔敲一敲里面的代码。此书与犀牛书确实有很多不同之处，真正想学习JavaScript的同学，两本都买并无不可。
 <!-- more -->
 
 ##第4章
@@ -273,3 +277,9 @@ console.log(hasPlugin("QuickTime"));
 ###11.3 HTML5
 ####11.3.7 scrollIntoView()方法
 经测试，现在的Chrome浏览器也已经支持scrollIntoView()方法了。
+
+##第21章 Ajax与Comet
+####21.5.3 Comet
+Ajax是一种从页面向服务器请求数据的技术，而Comet则是一种服务器向页面推送数据的技术。Comet能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。
+
+Comet有两张实现方式：长轮询，流。

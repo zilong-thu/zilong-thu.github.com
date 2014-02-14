@@ -51,7 +51,12 @@ function ajax_douban_movie(){
 			jsonp:'callback',
 			success: function(data){
 				var data = data;
-				var jsonText = JSON.stringify(data,null,4);
+
+				// 序列化JS对象
+				// 传入三个参数：JS对象，函数，缩进空格数
+				// 只要传入有效的控制缩进的参数值，结果字符串就会包含换行符
+				// （因为只缩进而不换行意义不大）
+				var jsonText = JSON.stringify(data,null,4);  
 				p.html(jsonText);
 			},
 			error: function(){

@@ -162,9 +162,12 @@ span.triTopOuter{
   padding: 0 0.1em 0.2em 0.1em;
   &:hover{
     background-color: #FD5D5D;
+    color: #fff;
   }
   &:active{
-    color: #000;
+    color: #fff;
+    box-shadow: 1px 1px 3px #000 inset;
+    text-shadow: 1px 1px 1px #333;
   }
 }
 .group:after{
