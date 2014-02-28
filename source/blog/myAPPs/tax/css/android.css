@@ -1,30 +1,43 @@
 html{
 	font-size: 16px;
 	line-height: 1.5;
-	background-color: #444;
+	background-color: #333;
 }
 body{
-	font-family: Arial, sans-serif;
 	color:#fff;
 	padding: 10px;
 }
+body, input, select, button{
+  font-family: sans-serif;
+}
 div, p{
-	display: block;
-	padding: 3px;
-	margin: 0;
+  display: block;
+  padding: 3px;
+  margin: 0;
 }
 input,select{
 	font-size: 1em;
+  color:#fff;
 	border: none;
 	border-radius: 6px;
 	padding: 5px 10px;
+  margin-right: 5px;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  background: #505050;
+  border:1px solid #777;
+}
+input:focus{
+  background: #2c3037;
+  border:1px solid #ccc;
 }
 input:focus,
 select:focus{
 	outline: 0;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+option{
+  color: #fff;
 }
 .input-sm{
 	width: 5em;
@@ -99,8 +112,11 @@ div.sub{
 .btn-primary:active{
   background-image: none;
 }
+button.calc{
+  font-size: 18px;
+}
 .label{
-	font-weight: bold;
+	font-weight: normal;
 	display: inline-block;
 	width: 5em;
 }
