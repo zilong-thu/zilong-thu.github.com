@@ -1,0 +1,13 @@
+---
+layout: post
+title: "用HTML5创建Web应用"
+date: 2014-02-28 16:56
+comments: true
+keywords: 
+categories: HTML5
+---
+实在无聊死了。写几个别人也写过了的Web APP吧。
+
+一个是个税计算器，计划中的还有房贷计算器、车贷计算器。
+
+<a href="{{ root_url }}/blog/myAPPs/tax/index.html" target="_blank">个人所得税计算器</a>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<title>个人所得税计算器</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width" />
+	<link rel="stylesheet" type="text/css" href="css/android.css">
+</head>
+<body>
+<div id="tax-container">
+	<div>
+		<label class="label">税前收入</label>
+		<input type="text" class="inputs"/><span>元</span>
+	</div>
+
+	<div>
+		<label class="label">所在城市</label>
+		<select id="city" class="inputs">
+			<option value="Beijing">北京</option>
+			<option value="Shanghai">上海</option>
+		</select>
+	</div>
+
+	<div>
+		<div class="sub">
+			<label class="label">养老金</label>
+			<input type="text" class="input-sm">%
+		</div>
+		<div class="sub">
+			<label class="label">失业保险</label>
+			<input type="text" class="input-sm">%
+		</div>
+		<div class="sub">
+			<label class="label">医疗保险</label>
+			<input type="text" class="input-sm">%
+		</div>
+		<div class="sub">
+			<label class="label">生育保险</label>
+			<input type="text" class="input-sm">%
+		</div>
+		<div class="sub">
+			<label class="label">工伤保险</label>
+			<input type="text" class="input-sm">%
+		</div>
+	</div>
+		
+		
+	<div>
+		<button type="button" class="btn btn-primary">计算税后收入	</button>
+	</div>
+
+	<div id="result">
+	</div>
+</div>
+
+
+
+	<div id="house-container"></div>
+</body>
+</html>
