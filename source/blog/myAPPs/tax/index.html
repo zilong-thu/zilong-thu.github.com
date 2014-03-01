@@ -10,46 +10,61 @@
 	<script type="text/javascript" src="tax.js"></script>
 </head>
 <body>
+	<h1>个人所得税计算器</h1>
 <div id="tax-container">
-	<div>
-		<label class="label">税前收入</label>
-		<input type="text" class="inputs" id="salary-in"/><span>元</span>
+	<div class="row">
+		<label class="label title">税前收入</label>
+		<input type="text" class="inputs input-lg" id="salary-in"/><span>元</span>
 	</div>
 
-	<div>
-		<label class="label">所在城市</label>
-		<select id="city" class="inputs">
-			<option value="Beijing">北京</option>
-			<option value="Shanghai">上海</option>
-		</select>
+	<div class="row">
+		<label class="label title">五险一金</label>
+		<span id="ins-radio-group"><span class="radio radio-selected" data-name="user">手动输入</span><span class="radio" data-name="detail">详细计算</span></span>
+	</div>
+	<div class="row">
+		<label id="label-placeholder" class="label title" style="height: 0px;"> </label>
+		<input type="text" class="inputs input-lg" id="insurance"/><span>元</span>
 	</div>
 
-	<div>
-		<p class="sub">
-			<label class="label">养老金</label>
-			<input id="insurance_old" type="text" class="input-sm">%
+
+	<div id="insurance-details" style="display: none;">
+		<p>
+			<label class="label">选择城市</label>
+			<select id="select-city" class="inputs input-sm">
+				<option value="---">---</option>
+				<option value="Beijing">北京</option>
+				<option value="Shanghai">上海</option>
+			</select>
 		</p>
-		<p class="sub">
-			<label class="label">失业保险</label>
-			<input id="insurance_loseJob" type="text" class="input-sm">%
+		<p>
+			<label class="label">养老保险</label>
+			<input id="insurance_old" type="text" class="input-sm" >%
 		</p>
-		<p class="sub">
+		<p>
 			<label class="label">医疗保险</label>
 			<input id="insurance_medical" type="text" class="input-sm">%
 		</p>
-		<p class="sub">
+		<p>
+			<label class="label">失业保险</label>
+			<input id="insurance_loseJob" type="text" class="input-sm">%
+		</p>
+		<p>
+			<label class="label">工伤保险</label>
+			<input id="insurance_injure" type="text" class="input-sm">%
+		</p>
+		<p>
 			<label class="label">生育保险</label>
 			<input  id="insurance_baby" type="text" class="input-sm">%
 		</p>
-		<p class="sub">
-			<label class="label">工伤保险</label>
-			<input id="insurance_injure" type="text" class="input-sm">%
+		<p>
+			<label class="label">公积金</label>
+			<input id="insurance_providentFund" type="text" class="input-sm">%
 		</p>
 	</div>
 		
 		
 	<div>
-		<button id="calc-button" type="button" class="btn btn-primary calc">计算税后收入	</button>
+		<button id="calc-button" type="button" class="btn btn-primary calc"> 开始计算 </button>
 	</div>
 
 	<div id="result">
@@ -59,7 +74,52 @@
 <script type="text/javascript">
 (function(){
 	var calcButton = document.getElementById('calc-button');
-	calcButton.onclick = calc;
+	calcButton.onclick = function(e){
+		var e = e || window.event;
+		Tax.getSalaryIn().getInsurance().calcTax();
+		if(e.stopPropogation){
+			e.stopPropogation();
+		} else if(e.cancelBubble){
+			e.cancelBubble = true;
+		}
+
+	};
+
+	document.addEventListener('click', function(e){
+		var target = e.target;
+		var parent = target.parentNode,
+			spans  = parent.children;
+
+		// 响应自制的radio按钮
+		if(parent.id === 'ins-radio-group'){
+			for(var i=0, length = spans.length; i<length; i++){
+				spans[i].setAttribute('class', 'radio');
+			}
+			target.setAttribute('class' , 'radio radio-selected');
+
+			// 使详细计算div可见
+			var insDetails = document.getElementById('insurance-details');
+			if(target.dataset['name'] === 'user'){
+				insDetails.setAttribute('style', 'display: none;');
+			} else{
+				insDetails.setAttribute('style', '');
+			}
+		}
+	}, false);
+
+	var selectCity = document.getElementById('select-city');
+	selectCity.onchange = function(e){
+		var city = selectCity.value;
+		var inputElements = document.querySelectorAll('#insurance-details input[class="input-sm"]');
+		var insCity = Tax.insuranceCity[city];
+		if(insCity){
+			for(var i=0, len= inputElements.length; i< len; i++){
+				inputElements[i].value = insCity[i];
+			}
+
+			Tax.calcInsurance();
+		}
+	}; 
 })();
 </script>
 </body>
