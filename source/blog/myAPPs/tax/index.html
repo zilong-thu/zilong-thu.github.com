@@ -34,6 +34,7 @@
 				<option value="---">---</option>
 				<option value="Beijing">北京</option>
 				<option value="Shanghai">上海</option>
+				<option value="Nanjing">南京</option>
 			</select>
 		</p>
 		<p>
@@ -100,13 +101,16 @@
 			// 使详细计算div可见
 			var insDetails = document.getElementById('insurance-details');
 			if(target.dataset['name'] === 'user'){
+				Tax.insuranceMethod = 'user';
 				insDetails.setAttribute('style', 'display: none;');
 			} else{
+				Tax.insuranceMethod = 'city';
 				insDetails.setAttribute('style', '');
 			}
 		}
 	}, false);
 
+	// 根据城市，计算计税额度
 	var selectCity = document.getElementById('select-city');
 	selectCity.onchange = function(e){
 		var city = selectCity.value;
@@ -119,7 +123,18 @@
 
 			Tax.calcInsurance();
 		}
-	}; 
+	};
+
+	// 改变税前收入时，更新计税额度
+	var input_salaryIn = document.getElementById('salary-in');
+	input_salaryIn.onchange = function(e){
+		if(Tax.insuranceMethod === 'city'){
+			var city = selectCity.value;
+			if(city !== '---'){
+				Tax.calcInsurance();
+			}
+		}
+	};
 })();
 </script>
 </body>

@@ -126,15 +126,15 @@ label.title{
 
 /*开关样式*/
 #ins-radio-group span:first-child{
-  border-radius: 5px 0 0 5px;
+  border-radius: 6px 0 0 6px;
 }
 #ins-radio-group span:last-child{
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 6px 6px 0;
 }
 .radio{
   display: inline-block;
   border: 1px solid #ccc;
-  padding: 1px 5px;
+  padding: 2px 7px;
   margin: 0;
   cursor: pointer;
   transition: background-color 0.4s;

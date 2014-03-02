@@ -5,10 +5,13 @@ var Tax = {
 	moneyForTax : 0 ,
 	tax: 0 ,
 	START: 3500 ,
+	// 五险一金计算方法
+	insuranceMethod: 'user',
 	insuranceCity: {
 		// 顺序： 养老，医疗，失业，工伤，生育，公积金
 		Beijing: [8, 2, 0.2, 0, 0, 12],
-		Shanghai: [8, 2, 1, 0, 0, 7]
+		Shanghai: [8, 2, 1, 0, 0, 7],
+		Nanjing: [8, 2, 1, 0, 0, 8]
 	},
 
 	// 获取税前月收入
@@ -54,8 +57,8 @@ var Tax = {
 	calcTax : function(){
 		var self = this, tax;
 		//应纳税额
-		var moneyForTax =  ( self.salary_in - self.insurance -self.START ).toFixed(2) ;
-		moneyForTax = ( moneyForTax > 0 ) ? moneyForTax : 0;
+		var moneyForTax =  self.salary_in - self.insurance -self.START ;
+		moneyForTax = ( ( moneyForTax > 0 ) ? moneyForTax : 0 ).toFixed(2);
 
 		if(moneyForTax){
 			if(moneyForTax <= 9000){

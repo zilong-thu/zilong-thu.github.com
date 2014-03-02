@@ -67,10 +67,12 @@ categories: Web-FE
 			<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a></li>
 			<li><a href="http://book.douban.com/subject/6393626/" class="douban_book" name="6393626" target="_blank">《秩序之美》</a></li>
 			<p>小书一本。在回家前的几个小时里飞快地过了一遍。收获，远不及<a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="《写给大家看的设计书（第3版）》">《写给大家看的设计书（第3版）》</a></p>
+			<li><a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a></li>
+			<p>此书必须再读一遍。</p>
 		</ol>
+	
 	<li>在读</li>
 	<ol>
-		<li><a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a></li>
 		<li><a href="http://book.douban.com/subject/24303555/" class="douban_book" name="24303555" target="_blank">《Illustrator CS6中文版：从新手到高手》</a></li>
 		<li><a href="http://book.douban.com/subject/23774480/" class="douban_book" name="23774480" target="_blank" title="jQuery Cookbook 中文版">《jQuery Cookbook 中文版》</a></li>
 		<p>英文版是2011年出版的。书中的jQuery库版本大概为v1.3.*——所以有点老旧。但跟其他所有的Cookbook系列一样，这本书也是对于各种方法进行了非常深入的讨论。五星推荐。当然，如果会有第二版，我就会买了。</p>
