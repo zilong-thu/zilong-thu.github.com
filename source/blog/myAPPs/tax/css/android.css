@@ -127,9 +127,11 @@ label.title{
 /*开关样式*/
 #ins-radio-group span:first-child{
   border-radius: 6px 0 0 6px;
+  margin-right: 0;
 }
 #ins-radio-group span:last-child{
   border-radius: 0 6px 6px 0;
+  margin-left: 0;
 }
 .radio{
   display: inline-block;

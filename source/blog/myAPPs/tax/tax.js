@@ -92,13 +92,16 @@ var Tax = {
 
 		self.salary_res =  ( self.salary_in - self.insurance - self.tax ).toFixed(2);
 
+		// 输出结果
 		var str = '';
 		str += '<label class="label title">计算结果</label>';
 		str += '<div><label class="label">计税额度</label> = '+ moneyForTax +' 元</div>';
 		str += '<div><label class="label">个税</label>  = '+ tax +' 元</div>';
 		str += '<div><label class="label">税后收入</label>  = '+  self.salary_res +' 元</div>';
 
-		document.getElementById('result').innerHTML = str;
+		var dom_result = document.getElementById('result');
+		dom_result.innerHTML = str;
+		dom_result.scrollIntoView();
 
 		return this;
 	}

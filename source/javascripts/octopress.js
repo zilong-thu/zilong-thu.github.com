@@ -121,7 +121,7 @@ function back_to_top(){
       }
     });
     $("#back_to_top").click(function(){
-      $('body,html').animate({scrollTop:0},900);
+      $('body,html').animate({scrollTop:0},600);
       return false;
     });
   });
