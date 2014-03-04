@@ -8,6 +8,12 @@ body{
 	padding: 10px 0 10px 10px;
   margin: 0;
 }
+a{
+  color: #B1B17B;
+}
+a:hover{
+  color: #ddd;
+}
 body, input, select, button{
   font-family: sans-serif;
 }
@@ -15,6 +21,10 @@ div, p{
   display: block;
   padding: 3px;
   margin: 0;
+}
+.footer{
+  margin-top: 50px;
+  color: #7BA0B1;
 }
 input,select{
 	font-size: 1em;
@@ -139,7 +149,6 @@ label.title{
   padding: 2px 7px;
   margin: 0;
   cursor: pointer;
-  transition: background-color 0.4s;
 }
 .radio-selected{
   background: #B1B17B;

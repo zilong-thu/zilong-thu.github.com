@@ -11,3 +11,8 @@ categories: HTML5
 一个是个税计算器，计划中的还有房贷计算器、车贷计算器。
 
 <a href="{{ root_url }}/blog/myAPPs/tax/index.html" target="_blank">个人所得税计算器</a>
+
+###关于apple-touch-icon
+在网站的根目录下，放一个图片文件，名为 apple-touch-icon.png，然后如果用户将你的网站添加到iPad Safari浏览器的个人收藏里，那么Safari会将这个图片作为图标放在默认标签中。
+
+需要注意的是，这个图片的大小没有限制。在iPad 4 的Safari 里，会显示为57×57像素的效果。所以，最好将这个图片尺寸做得大一些，这样才能清楚。例如豆瓣电影、百度、淘宝、谷歌、新浪、优酷，都使用了大尺寸的apple-touch-icon图标。而虎嗅网还没有察觉到这个细节，目前仍然是使用了小尺寸的apple-touch-icon图标，所以不清晰。
