@@ -77,18 +77,20 @@
 (function(){
 	var calcButton = document.getElementById('calc-button');
 	calcButton.onclick = function(e){
-		var e = e || window.event;
-		Tax.getSalaryIn().getInsurance().calcTax();
-		if(e.stopPropogation){
-			e.stopPropogation();
-		} else if(e.cancelBubble){
-			e.cancelBubble = true;
+		var e = EventUtil.getEvent(e);
+		if(Tax.insuranceMethod === 'user'){
+			Tax.getSalaryIn().getInsurance().calcTax();
+		} else {
+			Tax.getSalaryIn().calcInsurance().getInsurance().calcTax();
 		}
+		
+		EventUtil.stopPropogation(e);
 
 	};
 
 	document.addEventListener('click', function(e){
-		var target = e.target;
+		var e = EventUtil.getEvent(e);
+		var target = EventUtil.getTarget(e);
 		var parent = target.parentNode,
 			spans  = parent.children;
 

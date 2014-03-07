@@ -95,9 +95,9 @@ var Tax = {
 		// 输出结果
 		var str = '';
 		str += '<label class="label title">计算结果</label>';
-		str += '<div><label class="label">计税额度</label> = '+ moneyForTax +' 元</div>';
-		str += '<div><label class="label">个税</label>  = '+ tax +' 元</div>';
-		str += '<div><label class="label">税后收入</label>  = '+  self.salary_res +' 元</div>';
+		str += '<div><span class="label">计税额度</span>  = <span class="hight-lite">&nbsp;'+ moneyForTax +'</span> 元</div>';
+		str += '<div><span class="label">应纳个税</span>  = <span class="hight-lite">&nbsp;'+ tax +'</span> 元</div>';
+		str += '<div><span class="label">税后收入</span>  = <span class="hight-lite">&nbsp;'+  self.salary_res +'</span> 元</div>';
 
 		var dom_result = document.getElementById('result');
 		dom_result.innerHTML = str;
@@ -105,5 +105,28 @@ var Tax = {
 
 		return this;
 	}
+};
 
+// 跨浏览器事件对象
+var EventUtil = {
+	getEvent: function(event){
+		return event ? event : window.event;
+	},
+	getTarget : function(event){
+		return event.target || event.srcElement ;
+	},
+	preventDefault: function(event){
+		if(event.preventDefault){
+			event.preventDefault();
+		} else{
+			event.returnValue = false;
+		}
+	},
+	stopPropagation: function(event){
+		if(event.stopPropagation){
+			event.stopPropagation();
+		}else {
+			event.cancelBubble = true;
+		}
+	}
 };

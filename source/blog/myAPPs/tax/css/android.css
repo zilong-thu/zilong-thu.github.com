@@ -154,6 +154,11 @@ label.title{
   background: #B1B17B;
   color: #000;
 }
+
+/*计算结果颜色高亮*/
+.hight-lite{
+  color:#A6FF2E;
+}
 /*android*/
 @media only screen and (max-width: 320px){
   body{
