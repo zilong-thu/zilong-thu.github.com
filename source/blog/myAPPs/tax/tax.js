@@ -103,7 +103,29 @@ var Tax = {
 		dom_result.innerHTML = str;
 		dom_result.scrollIntoView();
 
+		// 保存输入数据
+		self.saveInput();
+
 		return this;
+	},
+
+	saveInput: function(){
+		if(window.localStorage){
+			var self = this;
+			var data = {
+				salary_in: self.salary_in,
+				insurance: self.insurance,
+				insuranceMethod: self.insuranceMethod
+			};
+			localStorage.taxInput = JSON.stringify(data);
+		}
+	},
+	getInput: function(){
+		if(window.localStorage && localStorage.taxInput){
+			var data = JSON.parse(localStorage.taxInput);
+			document.getElementById('salary-in').value = data.salary_in;
+			document.getElementById('insurance').value = data.insurance;
+		}
 	}
 };
 
@@ -130,3 +152,73 @@ var EventUtil = {
 		}
 	}
 };
+
+(function(){
+	var calcButton = document.getElementById('calc-button');
+	calcButton.onclick = function(e){
+		var e = EventUtil.getEvent(e);
+		if(Tax.insuranceMethod === 'user'){
+			Tax.getSalaryIn().getInsurance().calcTax();
+		} else {
+			Tax.getSalaryIn().calcInsurance().getInsurance().calcTax();
+		}
+		
+		EventUtil.stopPropagation(e);
+
+	};
+
+	document.addEventListener('click', function(e){
+		var e = EventUtil.getEvent(e);
+		var target = EventUtil.getTarget(e);
+		var parent = target.parentNode,
+			spans  = parent.children;
+
+		// 响应自制的radio按钮
+		if(parent.id === 'ins-radio-group'){
+			for(var i=0, length = spans.length; i<length; i++){
+				spans[i].setAttribute('class', 'radio');
+			}
+			target.setAttribute('class' , 'radio radio-selected');
+
+			// 使详细计算div可见
+			var insDetails = document.getElementById('insurance-details');
+			if(target.dataset['name'] === 'user'){
+				Tax.insuranceMethod = 'user';
+				insDetails.setAttribute('style', 'display: none;');
+			} else{
+				Tax.insuranceMethod = 'city';
+				insDetails.setAttribute('style', '');
+			}
+		}
+	}, false);
+
+	// 根据城市，计算计税额度
+	var selectCity = document.getElementById('select-city');
+	selectCity.onchange = function(e){
+		var city = selectCity.value;
+		var inputElements = document.querySelectorAll('#insurance-details input[class="input-sm"]');
+		var insCity = Tax.insuranceCity[city];
+		if(insCity){
+			for(var i=0, len= inputElements.length; i< len; i++){
+				inputElements[i].value = insCity[i];
+			}
+
+			Tax.calcInsurance();
+		}
+	};
+
+	// 改变税前收入时，更新计税额度
+	var input_salaryIn = document.getElementById('salary-in');
+	input_salaryIn.onchange = function(e){
+		if(Tax.insuranceMethod === 'city'){
+			var city = selectCity.value;
+			if(city !== '---'){
+				Tax.calcInsurance();
+			}
+		}
+	};
+
+	window.onload = function(){
+		Tax.getInput();
+	};
+})();

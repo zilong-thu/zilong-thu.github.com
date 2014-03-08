@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<title>房贷计算器</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width" />
+	<link rel="stylesheet" type="text/css" href="css/android.css">
+	<script src="/javascripts/modernizr-2.0.js"></script>
+</head>
+<body>
+	<h1>房贷计算器</h1>
+<div class="container">
+	<div class="row">
+		<label class="label">贷款额度</label>
+		<input type="number" class="inputs input-mid" id="amount"/><span>元</span>
+	</div>
+
+	<div class="row">
+		<label class="label">贷款年限</label>
+		<select id="select-period" class="inputs input-mid">
+		</select>
+	</div>
+
+	<div class="row">
+		<label class="label">年 利 率</label>
+		<select id="selectInterest" class="inputs input-mid">
+		</select>
+		<input type="number" id="annual-interest" class="inputs input-sm"/><span>%</span>
+	</div>
+		
+	<div>
+		<button id="calc-button" type="button" class="btn btn-primary calc"> 开始计算 </button>
+	</div>
+
+	<div id="result">
+	</div>
+</div>
+
+<div class="container">
+	<canvas id="graph">
+		Your browser does not support canvas. You might want to use Chrome or Firefox or Safari or IE10+ to view this page.
+	</canvas>
+</div>
+
+	<div class="footer">
+		&copy; Copyright by <a href="http://www.borninsummer.com/" target="_blank">王子龙</a> 2014
+	</div>
+
+<script type="text/javascript" src="loan.js"></script>
+</body>
+</html>
