@@ -23,6 +23,8 @@ var Loan = {
 	price: 0,
 	downPayment: 0,
 
+	canvas_DefaultWidth: 400,
+
 	// 根据贷款年限，计算基准利率
 	calcBenchmarkRate: function(p){
 		var b = 6.55;
@@ -111,6 +113,16 @@ var Loan = {
 
 	// 根据浏览器大小，调整canvas的宽度
 	adjustCanvas: function(){
+		var graph = document.getElementById("graph"); 
+		var graphWidth = window.innerWidth * 0.9 ;
+		var h = graphWidth * 0.618;
+		if(graphWidth < 630 ){
+			graph.width = graphWidth;
+			graph.height = h;
+		} else {
+			graph.width = 600;
+			graph.height = 600 * 0.618 ;
+		}
 		
 	},
 };
@@ -146,6 +158,9 @@ function chart(principal, interest, monthly, payments) {
     var graph = document.getElementById("graph"); // Get the <canvas> tag
     graph.width = graph.width;  // Magic to clear and reset the canvas element
 
+    // 设置其样式
+    graph.setAttribute('class', 'canvas');
+
     // If we're called with no arguments, or if this browser does not support
     // graphics in a <canvas> element, then just return now.
     if (arguments.length == 0 || !graph.getContext) return;
@@ -166,7 +181,7 @@ function chart(principal, interest, monthly, payments) {
     g.closePath();                                 // And back to start
     g.fillStyle = "#f88";                          // Light red
     g.fill();                                      // Fill the triangle
-    g.font = "bold 12px sans-serif";               // Define a font
+    g.font = "normal 14px sans-serif";               // Define a font
     g.fillText("支付本息和", 20,20);  // Draw text in legend
 
     // Cumulative equity is non-linear and trickier to chart
@@ -181,9 +196,9 @@ function chart(principal, interest, monthly, payments) {
     }
     g.lineTo(paymentToX(payments), amountToY(0));  // Line back to X axis
     g.closePath();                                 // And back to start point
-    g.fillStyle = "green";                         // Now use green paint
+    g.fillStyle = "#7BA0B1";                         // 暗蓝色
     g.fill();                                      // And fill area under curve
-    g.fillText("支付本金", 20,35);             // Label it in green
+    g.fillText("支付本金", 20,40);             // Label it in 暗蓝色
 
     // Loop again, as above, but chart loan balance as a thick black line
     var bal = principal;
@@ -195,17 +210,19 @@ function chart(principal, interest, monthly, payments) {
         g.lineTo(paymentToX(p),amountToY(bal));    // Draw line to this point
     }
     g.lineWidth = 3;                               // Use a thick line
+    g.strokeStyle = "#A6FF2E";                         // 亮绿色
     g.stroke();                                    // Draw the balance curve
-    g.fillStyle = "black";                         // Switch to black text
-    g.fillText("贷款尾款", 20,50);             // Legend entry
+    g.fillStyle = "#A6FF2E";                         // 文本，亮绿色
+    g.fillText("贷款尾款", 20,60);             // Legend entry
 
     // Now make yearly tick marks and year numbers on X axis
+    g.fillStyle = "black";   
     g.textAlign="center";                          // Center text over ticks
     var y = amountToY(0);                          // Y coordinate of X axis
     for(var year=1; year*12 <= payments; year++) { // For each year
         var x = paymentToX(year*12);               // Compute tick position
         g.fillRect(x-0.5,y-3,1,3);                 // Draw the tick
-        if (year == 1) g.fillText("Year", x, y-5); // Label the axis
+        if (year == 1) g.fillText("年份", x, y-5); // Label the axis
         if (year % 5 == 0 && year*12 !== payments) // Number every 5 years
             g.fillText(String(year), x, y-5);
     }
@@ -214,12 +231,14 @@ function chart(principal, interest, monthly, payments) {
     g.textAlign = "right";                         // Right-justify text
     g.textBaseline = "middle";                     // Center it vertically
     var ticks = [monthly*payments, principal];     // The two points we'll mark
+    var colors = ["#f88", "#7BA0B1"];
     var rightEdge = paymentToX(payments);          // X coordinate of Y axis
     for(var i = 0; i < ticks.length; i++) {        // For each of the 2 points
         var y = amountToY(ticks[i]);               // Compute Y position of tick
+        g.fillStyle = colors[i]; 
         g.fillRect(rightEdge-3, y-0.5, 3,1);       // Draw the tick mark
         g.fillText(String(ticks[i].toFixed(0)),    // And label it.
-                   rightEdge-5, y);
+                   rightEdge-10, y);
     }
 }
 
@@ -291,5 +310,6 @@ function chart(principal, interest, monthly, payments) {
 	// 初始化
 	window.onload = function(){
 		Loan.getInput();
+		Loan.adjustCanvas();
 	};
 })();

@@ -26,6 +26,10 @@ div, p{
   padding: 3px;
   margin: 0;
 }
+div.container{
+  padding: 0;
+  margin: 0;
+}
 .footer{
   margin-top: 50px;
   color: #7BA0B1;
@@ -171,6 +175,13 @@ label.title{
   color:#A6FF2E;
   font-family: 'Courier New', 'Courier', monospace;
 }
+
+/*canvas style*/
+.canvas{
+  background: #333;
+  box-shadow: 1px 1px 5px #000;
+}
+
 /*android*/
 @media only screen and (max-width: 320px){
   body{
