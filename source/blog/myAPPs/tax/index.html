@@ -4,15 +4,15 @@
 	<title>个人所得税计算器</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width" />
-	<link rel="stylesheet" type="text/css" href="css/android.css">
+	<link rel="stylesheet" type="text/css" href="../css/android.css">
 	<script src="/javascripts/modernizr-2.0.js"></script>
 </head>
 <body>
-	<h1>个人所得税计算器</h1>
+	<h1>个税计算器</h1>
 <div id="tax-container">
 	<div class="row">
 		<label class="label title">税前收入</label>
-		<input type="number" class="inputs input-lg" id="salary-in"/><span>元</span>
+		<input type="number" class="inputs input-xl" id="salary-in"/><span>元</span>
 	</div>
 
 	<div class="row">
@@ -21,14 +21,14 @@
 	</div>
 	<div class="row">
 		<label id="label-placeholder" class="label title" style="height: 0px;"> </label>
-		<input type="number" class="inputs input-lg" id="insurance"/><span>元</span>
+		<input type="number" class="inputs input-xl" id="insurance"/><span>元</span>
 	</div>
 
 
 	<div id="insurance-details" style="display: none;">
 		<p>
 			<label class="label">选择城市</label>
-			<select id="select-city" class="inputs input-sm">
+			<select id="select-city" class="inputs input-m">
 				<option value="---">---</option>
 				<option value="Beijing">北京</option>
 				<option value="Shanghai">上海</option>
@@ -37,27 +37,27 @@
 		</p>
 		<p>
 			<label class="label">养老保险</label>
-			<input type="number" id="insurance_old" class="input-sm" >%
+			<input type="number" id="insurance_old" class="input-m" >%
 		</p>
 		<p>
 			<label class="label">医疗保险</label>
-			<input type="number" id="insurance_medical" class="input-sm">%
+			<input type="number" id="insurance_medical" class="input-m">%
 		</p>
 		<p>
 			<label class="label">失业保险</label>
-			<input type="number" id="insurance_loseJob" class="input-sm">%
+			<input type="number" id="insurance_loseJob" class="input-m">%
 		</p>
 		<p>
 			<label class="label">工伤保险</label>
-			<input type="number" id="insurance_injure" class="input-sm">%
+			<input type="number" id="insurance_injure" class="input-m">%
 		</p>
 		<p>
 			<label class="label">生育保险</label>
-			<input type="number"  id="insurance_baby" class="input-sm">%
+			<input type="number"  id="insurance_baby" class="input-m">%
 		</p>
 		<p>
 			<label class="label">公积金</label>
-			<input type="number" id="insurance_providentFund" class="input-sm">%
+			<input type="number" id="insurance_providentFund" class="input-m">%
 		</p>
 	</div>
 		

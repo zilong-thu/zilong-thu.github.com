@@ -8,6 +8,10 @@ body{
 	padding: 10px 0 10px 10px;
   margin: 0;
 }
+h1{
+  margin: 0.3em 0;
+  padding: 0;
+}
 a{
   color: #B1B17B;
 }
@@ -32,7 +36,7 @@ input,select{
 	border: none;
 	border-radius: 6px;
 	padding: 5px 10px;
-  margin-right: 5px;
+  margin-right: 3px;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   background: #505050;
@@ -51,19 +55,27 @@ option{
   color: #fff;
 }
 .input-sm{
-	width: 5em;
+	width: 3em;
 }
-.input-mid{
+.input-m{
+  width: 5em;
+}
+.input-l{
   width: 8em;
 }
-.input-lg{
+.input-xl{
   width: 10em;
+}
+.input-xxl{
+  width: 12em;
 }
 div.row{
 	margin-bottom: 2px;
   margin-top: 1px;
 }
+#label-placeholder{
 
+}
 .btn {
   display: inline-block;
   padding: 6px 18px;
@@ -157,6 +169,7 @@ label.title{
 /*计算结果颜色高亮*/
 .hight-lite{
   color:#A6FF2E;
+  font-family: 'Courier New', 'Courier', monospace;
 }
 /*android*/
 @media only screen and (max-width: 320px){

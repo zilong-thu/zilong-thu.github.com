@@ -153,6 +153,7 @@ var EventUtil = {
 	}
 };
 
+
 (function(){
 	var calcButton = document.getElementById('calc-button');
 	calcButton.onclick = function(e){
@@ -196,7 +197,7 @@ var EventUtil = {
 	var selectCity = document.getElementById('select-city');
 	selectCity.onchange = function(e){
 		var city = selectCity.value;
-		var inputElements = document.querySelectorAll('#insurance-details input[class="input-sm"]');
+		var inputElements = document.querySelectorAll('#insurance-details input[class="input-m"]');
 		var insCity = Tax.insuranceCity[city];
 		if(insCity){
 			for(var i=0, len= inputElements.length; i< len; i++){

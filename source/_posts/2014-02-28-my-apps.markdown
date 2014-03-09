@@ -8,13 +8,9 @@ categories: HTML5
 ---
 实在无聊死了。写几个别人也写过了的Web APP吧。
 
-一个是个税计算器。
+一个是 <a href="{{ root_url }}/blog/myAPPs/tax/index.html" target="_blank">个税计算器</a> 。
 
-<a href="{{ root_url }}/blog/myAPPs/tax/index.html" target="_blank">个人所得税计算器</a>
-
-一个是房贷计算器。
-
-<a href="{{ root_url }}/blog/myAPPs/loan/index.html" target="_blank">房贷计算器</a>
+一个是 <a href="{{ root_url }}/blog/myAPPs/loan/index.html" target="_blank">房贷计算器</a> 。
 
 计划中的还有车贷计算器。
 
