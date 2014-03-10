@@ -219,10 +219,10 @@ function chart(principal, interest, monthly, payments) {
     g.fillStyle = "black";   
     g.textAlign="center";                          // Center text over ticks
     var y = amountToY(0);                          // Y coordinate of X axis
+    g.fillText("年份", 20, y-5); // Label the axis
     for(var year=1; year*12 <= payments; year++) { // For each year
         var x = paymentToX(year*12);               // Compute tick position
         g.fillRect(x-0.5,y-3,1,3);                 // Draw the tick
-        if (year == 1) g.fillText("年份", x, y-5); // Label the axis
         if (year % 5 == 0 && year*12 !== payments) // Number every 5 years
             g.fillText(String(year), x, y-5);
     }
