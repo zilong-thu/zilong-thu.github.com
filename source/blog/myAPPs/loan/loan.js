@@ -231,6 +231,7 @@ function chart(principal, interest, monthly, payments) {
     g.textAlign = "right";                         // Right-justify text
     g.textBaseline = "middle";                     // Center it vertically
     var ticks = [monthly*payments, principal];     // The two points we'll mark
+
     var colors = ["#f88", "#0047B3"];
     var rightEdge = paymentToX(payments);          // X coordinate of Y axis
     for(var i = 0; i < ticks.length; i++) {        // For each of the 2 points
@@ -295,7 +296,7 @@ function chart(principal, interest, monthly, payments) {
 		var dom_result = document.getElementById('result');
 		var str = '';
 		str += '<div>等额本息还款法：</div>';
-		str += '<div><span class="label">月还款额</span> = <span class="hight-lite">'+ monthly +'</span> 元</div>';
+		str += '<div><span class="label">每月还款</span> = <span class="hight-lite">'+ monthly +'</span> 元</div>';
 		str += '<div><span class="label">支付总利息</span> = <span class="hight-lite">'+ totalInterest +'</span> 元</div>';
 		str += '<div><span class="label">总还款额</span> = <span class="hight-lite">'+ total +'</span> 元</div>';
 		
