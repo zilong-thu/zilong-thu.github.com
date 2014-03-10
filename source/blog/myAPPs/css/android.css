@@ -180,6 +180,7 @@ label.title{
 .canvas{
   background: #333;
   box-shadow: 1px 1px 5px #000;
+  margin: 5px 0;
 }
 
 /*android*/
