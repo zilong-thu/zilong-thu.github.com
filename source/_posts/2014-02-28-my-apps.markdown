@@ -12,7 +12,6 @@ categories: HTML5
 
 一个是 <a href="{{ root_url }}/blog/myAPPs/loan/index.html" target="_blank">房贷计算器</a> 。
 
-计划中的还有车贷计算器。
 
 ###关于apple-touch-icon
 在网站的根目录下，放一个图片文件，名为 apple-touch-icon.png，然后如果用户将你的网站添加到iPad Safari浏览器的个人收藏里，那么Safari会将这个图片作为图标放在默认标签中。

@@ -2,6 +2,8 @@
 var doubanBooksGot = {};
 
 function showBookInfo(data){
+	$('#lightbox').fadeIn(500);
+	
 	doubanBooksGot[data.id] = data;
 
 	var div_douban_wrapper = $('#div_douban_wrapper');
@@ -73,8 +75,6 @@ function showRating(rating){
 			if (!element.name) {
 				return true;
 			}
-
-			$('#lightbox').fadeIn(500);
 
 			var bookID = element.name;
 			if(doubanBooksGot[bookID]){
