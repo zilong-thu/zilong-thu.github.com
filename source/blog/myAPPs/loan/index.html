@@ -10,18 +10,51 @@
 <body>
 	<h1>房贷计算器</h1>
 <div class="container">
-	<div class="row">
+	<div>
+		<label class="label title"></label>
+		<span class="radio-group"><span class="radio radio-selected" data-name="user">按贷款额度</span><span class="radio" data-name="detail">按房屋面积</span></span>
+	</div>
+
+	<div id="by-houseArea" style="display:none;">
+		<div>
+			<label class="label title">面积</label>
+			<input type="number" class="inputs input-xl" id="house_area"/><span>平米</span>
+		</div>
+		<div>
+			<label class="label title">单价</label>
+			<input type="number" class="inputs input-xl" id="house_price"/><span>元/平米</span>
+		</div>
+		<div id="totalHousePrice" ></div>
+		<div>
+			<label class="label title">首付比例</label>
+			<select id="downPayment" class="inputs input-m">
+				<option value="30">3成</option>
+				<option value="40">4成</option>
+				<option value="50">5成</option>
+				<option value="60">6成</option>
+				<option value="70">7成</option>
+				<option value="80">8成</option>
+				<option value="90">9成</option>
+			</select>
+		</div>
+	</div>
+
+
+	<div id="by-loanAmount">
 		<label class="label title">贷款额度</label>
 		<input type="number" class="inputs input-xl" id="amount"/><span>元</span>
 	</div>
 
-	<div class="row">
+	
+	
+
+	<div>
 		<label class="label title">贷款年限</label>
 		<select id="select-period" class="inputs input-m">
 		</select>
 	</div>
 
-	<div class="row">
+	<div>
 		<label class="label title">年 利 率</label>
 		<select id="selectInterest" class="inputs input-xxl">
 		</select>
