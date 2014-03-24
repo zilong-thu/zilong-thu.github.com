@@ -17,18 +17,20 @@
 
 	<div id="by-houseArea" style="display:none;">
 		<div>
-			<label class="label title">面积</label>
-			<input type="number" class="inputs input-xl" id="house_area"/><span>平米</span>
+			<label class="label title">房屋面积</label>
+			<input type="number" class="inputs input-l" id="house_area"/><span>m<sup>2</sup></span>
 		</div>
 		<div>
-			<label class="label title">单价</label>
-			<input type="number" class="inputs input-xl" id="house_price"/><span>元/平米</span>
+			<label class="label title">平米单价</label>
+			<input type="number" class="inputs input-l" id="house_price"/><span>元/m<sup>2</sup></span>
 		</div>
 		<div id="totalHousePrice" ></div>
 		<div>
-			<label class="label title">首付比例</label>
+			<label class="label title">首 付 </label>
 			<select id="downPayment" class="inputs input-m">
-				<option value="30">3成</option>
+				<option value="10">1成</option>
+				<option value="20">2成</option>
+				<option value="30" selected="true">3成</option>
 				<option value="40">4成</option>
 				<option value="50">5成</option>
 				<option value="60">6成</option>
@@ -74,6 +76,12 @@
 		Your browser does not support canvas. You might want to use Chrome or Firefox or Safari or IE10+ to view this page.
 	</canvas>
 </div>
+
+	
+	<div id="debugDIV">
+	</div>
+
+
 
 	<div class="footer">
 		&copy; Copyright by <a href="http://www.borninsummer.com/" target="_blank">王子龙</a> 2014

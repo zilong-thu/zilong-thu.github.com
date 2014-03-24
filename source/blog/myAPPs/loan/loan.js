@@ -257,7 +257,15 @@ function chart(principal, interest, monthly, payments) {
 
 
 
+var Debug = {
+	getScreenSize: function(){
+		var windowWidth = window.innerWidth,
+			windowHeight = window.innerHeight,
+			dom_debugDIV = document.getElementById('debugDIV');
 
+		dom_debugDIV.innerHTML = '<span class="title">浏览器视窗尺寸</span><br/>屏幕宽度：'+ windowWidth + ' px <br/>屏幕高度：' + windowHeight +' px';
+	},
+};
 
 
 
@@ -321,7 +329,7 @@ function chart(principal, interest, monthly, payments) {
 				totalHousePrice = (area * price ).toFixed(2) ;
 
 				document.getElementById('totalHousePrice').innerHTML = '总房价= <span class="hight-lite">' + totalHousePrice + '</span> 元。';
-				Loan.amount = ( totalHousePrice * downPayment ).toFixed(2) ;
+				Loan.amount = ( totalHousePrice * ( 1 - downPayment ) ).toFixed(2) ;
 
 				dom_inputAmount.value = Loan.amount;
 			break;
@@ -385,5 +393,7 @@ function chart(principal, interest, monthly, payments) {
 	window.onload = function(){
 		Loan.getInput();
 		Loan.adjustCanvas();
+
+		Debug.getScreenSize();
 	};
 })();
