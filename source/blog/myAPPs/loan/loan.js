@@ -16,6 +16,8 @@ var Loan = {
 	periodLabels: ['6个月', '1年', '2年', '3年', '4年', '5年', '10年', '15年', '20年', '25年', '30年'],
 	periodValues: [0.5, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30],
 
+	loanAmountMethod: 'byLoanAmount',
+
 	// 基准利率，是贷款年限的函数
 	benchmarkRate: 0,
 
@@ -24,6 +26,7 @@ var Loan = {
 	downPayment: 0,
 
 	canvas_DefaultWidth: 400,
+
 
 	// 根据贷款年限，计算基准利率
 	calcBenchmarkRate: function(p){
@@ -148,6 +151,15 @@ var EventUtil = {
 		}else {
 			event.cancelBubble = true;
 		}
+	},
+	addHandler: function(element, type, handler){
+		if(element.addEventListener){
+			element.addEventListener(type, handler, false);
+		} else if(element.attachEvent){
+			element.attachEvent("on"+type, handler);
+		} else{
+			element["on"+type] = handler;
+		}
 	}
 };
 
@@ -244,6 +256,11 @@ function chart(principal, interest, monthly, payments) {
 }
 
 
+
+
+
+
+
 // 注册事件处理程序等
 (function(){
 	Loan.generateInterestList();
@@ -258,6 +275,63 @@ function chart(principal, interest, monthly, payments) {
 	dom_inputAmount.onchange = function(e){
 		Loan.amount = dom_inputAmount.value;
 	};
+
+	// 响应自制的radio按钮
+	document.addEventListener('click', function(e){
+		var e = EventUtil.getEvent(e);
+		var target = EventUtil.getTarget(e);
+		var parent = target.parentNode,
+			spans  = parent.children;
+
+		// 响应自制的radio按钮
+		if(parent.className === 'radio-group'){
+			for(var i=0, length = spans.length; i<length; i++){
+				spans[i].setAttribute('class', 'radio');
+			}
+			target.setAttribute('class' , 'radio radio-selected');
+
+			// 使相应div可见
+			var dom_divByHouseArea = document.getElementById('by-houseArea');;
+			if(target.dataset['name'] === 'user'){
+				dom_divByHouseArea.setAttribute('style', 'display: none;');
+				Loan.loanAmountMethod = 'byLoanAmount';
+			} else{
+				dom_divByHouseArea.setAttribute('style', '');
+				Loan.loanAmountMethod = 'byHouseArea';
+			}
+		}
+	}, false);
+
+	// 若选择按面积计算
+	var dom_input_house_area = document.getElementById('house_area');
+	var dom_input_house_price = document.getElementById('house_price');
+	var dom_select_downPayment = document.getElementById('downPayment');
+	EventUtil.addHandler(document, 'change', function(event){
+		event = EventUtil.getEvent(event);
+		var target = EventUtil.getTarget(event);
+		var area, price, downPayment, totalHousePrice;
+
+		switch(target.id){
+			case 'house_area':
+			case 'house_price':
+			case 'downPayment':
+				area = parseFloat( dom_input_house_area.value ) || 0;
+				price = parseFloat( dom_input_house_price.value ) || 0;
+				downPayment = parseFloat( dom_select_downPayment.value )*0.01;
+				totalHousePrice = (area * price ).toFixed(2) ;
+
+				document.getElementById('totalHousePrice').innerHTML = '总房价= <span class="hight-lite">' + totalHousePrice + '</span> 元。';
+				Loan.amount = ( totalHousePrice * downPayment ).toFixed(2) ;
+
+				dom_inputAmount.value = Loan.amount;
+			break;
+			default:
+				return;
+		}
+
+		EventUtil.stopPropagation(event);
+	});
+
 
 	// 根据贷款年限计算基准利率
 	dom_selectPeriod.onchange = function(e){
@@ -301,7 +375,6 @@ function chart(principal, interest, monthly, payments) {
 		str += '<div><span class="label">总还款额</span> = <span class="hight-lite">'+ total +'</span> 元</div>';
 		
 		dom_result.innerHTML = str;
-		dom_result.scrollIntoView();
 
 		Loan.saveInput();
 

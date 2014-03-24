@@ -101,7 +101,6 @@ var Tax = {
 
 		var dom_result = document.getElementById('result');
 		dom_result.innerHTML = str;
-		dom_result.scrollIntoView();
 
 		// 保存输入数据
 		self.saveInput();
@@ -175,7 +174,7 @@ var EventUtil = {
 			spans  = parent.children;
 
 		// 响应自制的radio按钮
-		if(parent.id === 'ins-radio-group'){
+		if(parent.className === 'radio-group'){
 			for(var i=0, length = spans.length; i<length; i++){
 				spans[i].setAttribute('class', 'radio');
 			}
