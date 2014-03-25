@@ -95,9 +95,9 @@ var Tax = {
 		// 输出结果
 		var str = '';
 		str += '<label class="label title">计算结果</label>';
-		str += '<div><span class="label">计税额度</span>  = <span class="hight-lite">&nbsp;'+ moneyForTax +'</span> 元</div>';
-		str += '<div><span class="label">应纳个税</span>  = <span class="hight-lite">&nbsp;'+ tax +'</span> 元</div>';
-		str += '<div><span class="label">税后收入</span>  = <span class="hight-lite">&nbsp;'+  self.salary_res +'</span> 元</div>';
+		str += '<div><span class="label">计税额度</span>  = <span class="high-lite">&nbsp;'+ moneyForTax +'</span> 元</div>';
+		str += '<div><span class="label">应纳个税</span>  = <span class="high-lite">&nbsp;'+ tax +'</span> 元</div>';
+		str += '<div><span class="label">税后收入</span>  = <span class="high-lite">&nbsp;'+  self.salary_res +'</span> 元</div>';
 
 		var dom_result = document.getElementById('result');
 		dom_result.innerHTML = str;

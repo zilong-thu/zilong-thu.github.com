@@ -314,6 +314,8 @@ var Debug = {
 	var dom_input_house_area = document.getElementById('house_area');
 	var dom_input_house_price = document.getElementById('house_price');
 	var dom_select_downPayment = document.getElementById('downPayment');
+	var dom_span_downPayment = document.getElementById('span_downPayment');
+
 	EventUtil.addHandler(document, 'change', function(event){
 		event = EventUtil.getEvent(event);
 		var target = EventUtil.getTarget(event);
@@ -328,10 +330,13 @@ var Debug = {
 				downPayment = parseFloat( dom_select_downPayment.value )*0.01;
 				totalHousePrice = (area * price ).toFixed(2) ;
 
-				document.getElementById('totalHousePrice').innerHTML = '总房价= <span class="hight-lite">' + totalHousePrice + '</span> 元。';
+				document.getElementById('totalHousePrice').innerHTML = '总房价： <span class="high-lite"> &yen;' + totalHousePrice + '</span>';
 				Loan.amount = ( totalHousePrice * ( 1 - downPayment ) ).toFixed(2) ;
 
 				dom_inputAmount.value = Loan.amount;
+
+				dom_span_downPayment.innerHTML =  ' &yen;' + (totalHousePrice*downPayment).toFixed(2) ;
+
 			break;
 			default:
 				return;
@@ -378,9 +383,9 @@ var Debug = {
 		var dom_result = document.getElementById('result');
 		var str = '';
 		str += '<div>等额本息还款法：</div>';
-		str += '<div><span class="label">每月还款</span> = <span class="hight-lite">'+ monthly +'</span> 元</div>';
-		str += '<div><span class="label">支付总利息</span> = <span class="hight-lite">'+ totalInterest +'</span> 元</div>';
-		str += '<div><span class="label">总还款额</span> = <span class="hight-lite">'+ total +'</span> 元</div>';
+		str += '<div><span class="label">每月还款</span> = <span class="high-lite">'+ monthly +'</span> 元</div>';
+		str += '<div><span class="label">支付总利息</span> = <span class="high-lite">'+ totalInterest +'</span> 元</div>';
+		str += '<div><span class="label">总还款额</span> = <span class="high-lite">'+ total +'</span> 元</div>';
 		
 		dom_result.innerHTML = str;
 
