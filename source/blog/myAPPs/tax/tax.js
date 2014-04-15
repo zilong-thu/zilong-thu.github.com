@@ -8,10 +8,10 @@ var Tax = {
 	// 五险一金计算方法
 	insuranceMethod: 'user',
 	insuranceCity: {
-		// 顺序： 养老，医疗，失业，工伤，生育，公积金
-		Beijing: [8, 2, 0.2, 0, 0, 12],
-		Shanghai: [8, 2, 1, 0, 0, 7],
-		Nanjing: [8, 2, 1, 0, 0, 8]
+		// 三险一金顺序： 养老，医疗，失业，公积金
+		Beijing: [8, 2, 0.2, 12],
+		Shanghai: [8, 2, 1, 7],
+		Nanjing: [8, 2, 1, 8]
 	},
 
 	// 获取税前月收入
@@ -39,8 +39,6 @@ var Tax = {
 		ins.old = document.getElementById('insurance_old').value;
 		ins.loseJob = document.getElementById('insurance_loseJob').value;
 		ins.medical = document.getElementById('insurance_medical').value;
-		ins.baby = document.getElementById('insurance_baby').value;
-		ins.injure = document.getElementById('insurance_injure').value;
 		ins.provident = document.getElementById('insurance_providentFund').value;
 
 		for(p in ins){
