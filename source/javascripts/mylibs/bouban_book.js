@@ -32,8 +32,8 @@ function showBookInfo(data){
 	$('script.script_for_ajax').remove();
 
 	$('#span_douban_close').click(function(){
-		div_douban_wrapper.fadeOut(500);
-		$('#lightbox').fadeOut(600);
+		div_douban_wrapper.fadeOut(400);
+		$('#lightbox').fadeOut(500);
 	});
 }
 
@@ -67,26 +67,41 @@ function showRating(rating){
 	for(var i=0, length=anchors.length;i<length;i++){
 		var a = anchors[i];
 		$(a).after('<span class="douban_icon">豆</span>');
-		$(a).attr('title','点击查看该书基本信息');
+		// $(a).attr('title','点击查看该书基本信息');
 
-		a.onclick = function(){
-			var element = this;
+		// a.onclick = function(){
+		// 	var element = this;
 
-			if (!element.name) {
-				return true;
-			}
+		// 	if (!element.name) {
+		// 		return true;
+		// 	}
 
-			var bookID = element.name;
-			if(doubanBooksGot[bookID]){
-				showBookInfo(doubanBooksGot[bookID]);
-			}else{
-				var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667&callback=showBookInfo';
-				var script =  document.createElement("script");
-				script.src = url;
-				script.setAttribute("class","script_for_ajax");
-				document.body.appendChild(script);
-			}
-			return false;
-		};
+		// 	var bookID = element.name;
+		// 	if(doubanBooksGot[bookID]){
+		// 		showBookInfo(doubanBooksGot[bookID]);
+		// 	}else{
+		// 		var url = 'https://api.douban.com/v2/book/'+bookID+'?apikey=05890b77f44e9ccd109b2267dcebd667';
+		// 		// var url = 'https://api.douban.com/v2/book/25786074';
+		// 		// var script =  document.createElement("script");
+		// 		// script.src = url;
+		// 		// script.setAttribute("class","script_for_ajax");
+		// 		// document.body.appendChild(script);
+
+		// 		$.ajax({
+		// 		          type: 'get',
+		// 		          url: url,
+		// 		          dataType: 'jsonp',
+		// 		          jsonp:'callback',
+		// 		          success: function(data){
+				             
+		// 		              showBookInfo(data);
+		// 		          },
+		// 		          error: function(){
+				              
+		// 		          }
+		// 		      });
+		// 	}
+		// 	return false;
+		// };
 	}
 })();

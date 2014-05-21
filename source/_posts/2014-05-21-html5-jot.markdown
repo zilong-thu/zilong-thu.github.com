@@ -1,0 +1,14 @@
+---
+layout: post
+title: "HTML5随笔"
+date: 2014-05-21 14:26
+comments: true
+keywords: HTML5
+categories: HTML5
+---
+###`<header>`标签的来历
+HTML5的研究者们花费了大量的精力来研究通用行为。比如，Google分析了上百万的页面，从中分析出了DIV标签的通用ID名称，并且发现其重复量很大。例如，很多开发人员使用DIV `id="header"`来标记页眉区域。
+
+—— <a href="http://book.douban.com/subject/5402708/" target="_blank" class="douban_book">《HTML5高级程序设计》</a>
+
+同样的还有页脚元素标记：`<footer>`。

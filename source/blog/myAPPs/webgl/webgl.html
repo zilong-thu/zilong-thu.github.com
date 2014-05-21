@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>WebGL入门示例</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width" />
+	<link rel="stylesheet" type="text/css" href="../css/android.css">
+	<link href="/favicon.png" rel="icon">
+	<script type="text/javascript" src="/javascripts/libs/three.min.js"></script>
+	<script type="text/javascript" src="webgl.js"></script>
+</head>
+
+<style type="text/css">
+div.output{
+    border:6px solid #444;
+    padding:1em;
+    border-radius: 1em;
+}
+
+p{
+	margin: 10px 0;
+}
+</style>
+
+
+<body>
+<img src="earth.jpg" style="display:none;">
+
+<h1>WebGL入门示例</h1>
+
+<h2>1. 贴图立方体</h2>
+
+<p>第一个例子根据Three.js的官网制作。详见博文：<a href="/blog/2013/11/11/webgl-study-step-01/">Hello, WebGL</a>。</p>
+
+<div id="webgl_cube_container" class="output" style="width: 400px; height: 400px;"></div>
+
+<h2>2. 贴图球体</h2>
+
+<p>参考<a href="http://book.douban.com/subject/25840617/" target="_blank">《JavaScript编程实战》</a></p>
+
+<div id="webgl_earth_container" class="output" style="width:600px; height: 400px;"></div>
+
+
+
+<div class="footer">
+	&copy; Copyright by <a href="http://www.borninsummer.com/" target="_blank">王子龙</a> 2014
+</div>
+
+
+
+<script type="text/javascript">
+window.onload = function(){
+    cube_loop();
+	earth();
+};
+</script>
+</body>
+</html>
