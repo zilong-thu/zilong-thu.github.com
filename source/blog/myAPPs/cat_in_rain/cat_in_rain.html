@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <title>躲雨的猫</title>
+  <meta charset="utf-8">
+  <meta name="author" content="王子龙">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link href="/favicon.png" rel="icon">
+</head>
+
+<body>
+    <h1>躲雨的猫</h1>
+
+
+<div class="container">
+    <div class="rain_drop m" style="-webkit-animation: drop-1 1s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop m" style="-webkit-animation: drop-3 1.3s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop m" style="-webkit-animation: drop-5 1.5s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop m" style="-webkit-animation: drop-7 0.9s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop m" style="-webkit-animation: drop-9 1.2s infinite;"><img src="rain_drop.png" ></div>
+
+
+    <div class="rain_drop l" style="-webkit-animation: drop-2 2.2s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop l" style="-webkit-animation: drop-4 1.6s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop l" style="-webkit-animation: drop-6 2.7s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop l" style="-webkit-animation: drop-8 1.7s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop l" style="-webkit-animation: drop-10 2.0s infinite;"><img src="rain_drop.png" ></div>
+
+    <div class="rain_drop xl" style="-webkit-animation: drop-1 1.2s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xl" style="-webkit-animation: drop-3 1.6s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xl" style="-webkit-animation: drop-5 1.8s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xl" style="-webkit-animation: drop-7 1.5s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xl" style="-webkit-animation: drop-9 1.9s infinite;"><img src="rain_drop.png" ></div>
+
+
+    <div class="rain_drop xxl" style="-webkit-animation: drop-8 0.9s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xxl" style="-webkit-animation: drop-4 1.1s infinite;"><img src="rain_drop.png" ></div>
+    <div class="rain_drop xxl" style="-webkit-animation: drop-2 1.3s infinite;"><img src="rain_drop.png" ></div>
+
+    <div class="cat_umb"><img src="cat_umb.png"></div>
+    <div class="umb_handler-reflect"></div>
+    <div class="cat-reflect"></div>
+    <div class="umb_tip-reflect"></div>
+</div>
+
+   <p>To be best viewed in webkit browsers such as Chrome and Safari. Firefox doesn't support CSS3 <code>box-reflect</code> property, so no reflection of the cat or the umbrella would be seen in FF. The following techs are used in this simple animation page:</p>
+    <ul>
+        <li>CSS3 <code>@keyframes</code>, animation</li>
+        <li>CSS2 positioning.</li>
+        <li>Adobe Illustrator. To make the rain drop image.</li>
+    </ul>
+
+
+    <div class="footer">
+        &copy; Copyright by <a href="http://www.borninsummer.com/" target="_blank">王子龙</a> 2014
+    </div>
+    
+
+<script type="text/javascript">
+(function(){
+    $('div.rain_drop').each(function(){
+        var style = $(this).attr('style');
+        var str = style.replace(/\-webkit\-/, ' ');
+        $(this).attr('style', style+str);
+    });
+})();
+
+$(function(){
+    $($('.container')[0]).animate({left: 0},800);
+});
+</script>
+</body>
+</html>
+
+

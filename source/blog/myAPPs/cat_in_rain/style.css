@@ -1,0 +1,222 @@
+/*通用*/
+html{
+    font-size: 18px;
+    line-height: 1.5;
+    background-color: #333;
+}
+body{
+    color: #B1B17B;
+    padding: 10px 0 10px 10px;
+  margin: 0;
+}
+h1{
+  margin: 0.3em 0;
+  padding: 0;
+  text-align: center;
+}
+h1, h2, h3,h4{
+  text-shadow: 0.1em 0.1em 0.1em #000;
+}
+p, ul{
+    max-width: 800px;
+    margin: 0 auto;
+}
+a{
+  color: #B1B17B;
+}
+a:hover{
+  color: #ddd;
+}
+body, input, select, button{
+  font-family: sans-serif;
+}
+.footer{
+  margin-top: 50px;
+  color: #7BA0B1;
+}
+
+code{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 0 3px;
+    margin: 0;
+    color: #ccc;
+    margin-right: 2px;
+}
+
+/*躲雨的喵专用*/
+div.container{
+    background: #444;
+    width:800px;
+    height: 500px;
+    position: relative;
+    left:50px;
+    top:0;
+    overflow:hidden;
+    padding: 0;
+    margin: 10px auto;
+    border-radius: 1em;
+    box-shadow: 0 0 0.3em #333 inset;
+}
+
+/*猫与雨伞，主体图片*/
+div.cat_umb{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 600px;
+  height: 450px;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+/*倒影效果*/
+div.umb_handler-reflect{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 450px;
+    background: url('cat_umb.png') 0 0 no-repeat;
+    -webkit-box-reflect: below -50px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.8, transparent), to(white));
+}
+div.cat-reflect{
+    position: absolute;
+    left: 300px;
+    top: 0;
+    width: 155px;
+    height: 450px;
+    background: url('cat_umb.png') -300px 0 no-repeat;
+    -webkit-box-reflect: below -108px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.7, transparent), to(white));
+}
+div.umb_tip-reflect{
+    position: absolute;
+    left: 455px;
+    top: 0;
+    width: 155px;
+    height: 450px;
+    background: url('cat_umb.png') -455px 0 no-repeat;
+    -webkit-box-reflect: below -97px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.7, transparent), to(white));
+}
+
+
+/*动画位置*/
+@-webkit-keyframes drop-1{
+    0% { left: 80px; top: 0px;}
+    100% { left: -70px; top: 500px;}
+}
+@-webkit-keyframes drop-2{
+    0% { left: 160px; top: 0px;}
+    100% { left: 10px; top: 500px;}
+}
+@-webkit-keyframes drop-3{
+    0% { left: 240px; top: 0px;}
+    100% { left: 90px; top: 500px;}
+}
+@-webkit-keyframes drop-4{
+    0% { left: 320px; top: 0px;}
+    100% { left: 170px; top: 500px;}
+}
+@-webkit-keyframes drop-5{
+    0% { left: 400px; top: 0px;}
+    100% { left: 250px; top: 500px;}
+}
+@-webkit-keyframes drop-6{
+    0% { left: 480px; top: 0px;}
+    100% { left: 400px; top: 500px;}
+}
+@-webkit-keyframes drop-7{
+    0% { left: 560px; top: 0px;}
+    100% { left: 410px; top: 500px;}
+}
+@-webkit-keyframes drop-8{
+    0% { left: 640px; top: 0px;}
+    100% { left: 490px; top: 500px;}
+}
+@-webkit-keyframes drop-9{
+    0% { left: 720px; top: 0px;}
+    100% { left: 570px; top: 500px;}
+}
+@-webkit-keyframes drop-10{
+    0% { left: 800px; top: 0px;}
+    100% { left: 650px; top: 500px;}
+}
+
+/*w3c*/
+@keyframes drop-1{
+    0% { left: 80px; top: 0px;}
+    100% { left: -70px; top: 500px;}
+}
+@keyframes drop-2{
+    0% { left: 160px; top: 0px;}
+    100% { left: 10px; top: 500px;}
+}
+@keyframes drop-3{
+    0% { left: 240px; top: 0px;}
+    100% { left: 90px; top: 500px;}
+}
+@keyframes drop-4{
+    0% { left: 320px; top: 0px;}
+    100% { left: 170px; top: 500px;}
+}
+@keyframes drop-5{
+    0% { left: 400px; top: 0px;}
+    100% { left: 250px; top: 500px;}
+}
+@keyframes drop-6{
+    0% { left: 480px; top: 0px;}
+    100% { left: 400px; top: 500px;}
+}
+@keyframes drop-7{
+    0% { left: 560px; top: 0px;}
+    100% { left: 410px; top: 500px;}
+}
+@keyframes drop-8{
+    0% { left: 640px; top: 0px;}
+    100% { left: 490px; top: 500px;}
+}
+@keyframes drop-9{
+    0% { left: 720px; top: 0px;}
+    100% { left: 570px; top: 500px;}
+}
+@keyframes drop-10{
+    0% { left: 800px; top: 0px;}
+    100% { left: 650px; top: 500px;}
+}
+
+div.rain_drop{
+    position: absolute;
+}
+.xxl img{
+    width: 80px;
+    height: 200px;
+}
+
+.xl img{
+    width: 40px;
+    height: 100px;
+}
+.l img{
+    width: 30px;
+    height: 75px;
+}
+
+.m img{
+    width: 20px;
+    height: 50px;
+}
+
+/**/
+.xxl{
+    z-index: 100;
+}
+.xl{
+    z-index: 100;
+}
+.l{
+    z-index: 2;
+}
+.m{
+    z-index: 1;
+}

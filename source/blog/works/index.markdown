@@ -43,4 +43,10 @@ sidebar: false
 	<span class="space"></span>
     <a href="{{ root_url }}/blog/myAPPs/webgl/webgl.html" target="_blank">WebGL入门示例</a>
 </div>
+<div class="myApp-wrapper">
+	<span style="font-size:2.5em;font-weight:bold;color:#a61300;">C</span>
+	<span style="font-size:1.5em;font-weight:bold;color:#a61300;">at</span>
+	<span class="space"></span>
+    <a href="{{ root_url }}/blog/myAPPs/cat_in_rain/cat_in_rain.html" target="_blank">躲雨的猫</a>
+</div>
 

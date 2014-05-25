@@ -16,7 +16,7 @@ function cube_loop(){
 
         camera = new THREE.PerspectiveCamera( 75, width/ height, 1, 10000 );
 
-        camera.position.z = 900;
+        camera.position.z = 800;
 
         scene = new THREE.Scene();
 
@@ -41,8 +41,8 @@ function cube_loop(){
         // note: three.js includes requestAnimationFrame shim
         requestAnimationFrame( animate );
 
-        mesh.rotation.x += 0.005;
-        mesh.rotation.y += 0.01;
+        mesh.rotation.x += 0.004;
+        mesh.rotation.y += 0.008;
 
         renderer.render( scene, camera );
 
@@ -52,35 +52,114 @@ function cube_loop(){
 }
 
 // 地球的函数
-function earth(){
-    var container = document.getElementById('webgl_earth_container');
+function earth_loop(){
+    var renderer, scene, camera;
+    var geometry, material, mesh, light;
+    var earth;
+
+    function init(){
+        var container = document.getElementById('webgl_earth_container');
+        var width = container.offsetWidth,
+            height = container.offsetHeight;
+
+        renderer = new THREE.WebGLRenderer();
+        // var renderer = new THREE.CanvasRenderer();
+        renderer.setSize( width, height );
+        
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
+        camera.position.z = 350;
+        scene.add(camera);
+
+        // 颜色贴图
+        var map = THREE.ImageUtils.loadTexture('images/earthmap1k.jpg');
+        geometry = new THREE.SphereGeometry(100, 24, 24);
+        material = new THREE.MeshPhongMaterial({
+            // color: 0xff00
+            map: map
+        });
+        // 法线贴图
+        material.bumpMap   = THREE.ImageUtils.loadTexture('images/earthbump1k.jpg');
+        material.bumpScale = 0.05;
+        // 高光贴图
+        material.specularMap = THREE.ImageUtils.loadTexture('images/earthspec1k.jpg');
+        material.specular  = new THREE.Color('grey');
+
+        earth = new THREE.Mesh(geometry, material);
+        scene.add( earth );
+
+        light = new THREE.DirectionalLight( 0xffffff, 1);
+        light.position.set(0, 0.5, 1);
+        scene.add( light );
+
+        container.appendChild( renderer.domElement );
+    }
+    
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        earth.rotation.y += 0.005;
+
+        renderer.render( scene, camera );
+
+    }
+
+    init();
+    requestAnimationFrame( animate );
+}
+
+
+// JSONLoader
+function json_loop(){
+    var renderer, scene, camera;
+    var geometry, material, mesh, light;
+    var mesh;
+
+    var container = document.getElementById('jsonloader_container');
     var width = container.offsetWidth,
         height = container.offsetHeight;
 
-    var renderer = new THREE.WebGLRenderer();
-    // var renderer = new THREE.CanvasRenderer();
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize( width, height );
     
-    var scene = new THREE.Scene();
+    scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
-    camera.position.z = 400;
+    camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
+    camera.position.z = 350;
     scene.add(camera);
 
-    var map = THREE.ImageUtils.loadTexture('earth.jpg');
-    var geometry = new THREE.SphereGeometry(100, 24, 24);
-    var material = new THREE.MeshPhongMaterial({
-            // color: 0xFF0000
-            map: map
-        });
-    var earth = new THREE.Mesh(geometry, material);
-    scene.add( earth );
-
-    var light = new THREE.DirectionalLight( 0xffffff, 1);
+    light = new THREE.DirectionalLight( 0xffffff, 1);
     light.position.set(0, 0.5, 1);
     scene.add( light );
+   
+    var jsonloader = new THREE.JSONLoader();
+    jsonloader.load('buffalo/buffalo.js',function(geometry, material){
+        
+        material = new THREE.MeshPhongMaterial({
+            map : THREE.ImageUtils.loadTexture("buffalo/buffalo.png")
+        });
 
-    container.appendChild( renderer.domElement );
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add( mesh );
 
-    renderer.render( scene, camera );
+        container.appendChild( renderer.domElement );
+
+
+        function animate() {
+
+            requestAnimationFrame( animate );
+
+            mesh.rotation.y += 0.005;
+
+            renderer.render( scene, camera );
+
+        }
+
+        requestAnimationFrame( animate );
+
+    });   
+
 }
+

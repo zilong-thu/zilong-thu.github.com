@@ -17,3 +17,5 @@ categories: HTML5
 </audio>
 <figcaption>《火影忍者》插曲《夏日星》</figcaption>
 </figure>
+
+<a href="{{root_url}}/audios/naruto_xia_ri_xing.mp3">歌曲保存到本地</a> 1.39MB

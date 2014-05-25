@@ -12,6 +12,9 @@ h1{
   margin: 0.3em 0;
   padding: 0;
 }
+h1, h2, h3,h4{
+  text-shadow: 0.1em 0.1em 0.1em #000;
+}
 a{
   color: #B1B17B;
 }

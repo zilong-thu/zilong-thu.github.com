@@ -11,34 +11,90 @@
 </head>
 
 <style type="text/css">
-div.output{
-    border:6px solid #444;
+.output{
+    background-color: #444;
     padding:1em;
     border-radius: 1em;
+    width:  720px;
+    height: 480px;
 }
-
-p{
+p, ul{
 	margin: 10px 0;
 }
+body{
+    padding: 20px 90px;
+}
+
+@media screen and (min-width: 900px){
+	p,ul{
+		width: 720px;
+	}
+}
+@media screen and (max-width: 900px){
+	body{
+		padding: 20px 30px;
+	}
+	.output{
+    	width:  540px;
+    	height: 360px;
+    	margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px){
+	body{
+	    padding: 10px 5px;
+    }
+    .output{
+    	width:  300px;
+    	height: 200px;
+    	margin: 0 auto;
+    }
+}
+
 </style>
 
 
 <body>
-<img src="earth.jpg" style="display:none;">
+<img src="images/earthmap1k.jpg" style="display:none;">
+<img src="images/earthbump1k.jpg" style="display:none;">
+<img src="images/earthspec1k.jpg" style="display:none;">
+<img src="/images/blog/html5/box.gif" style="display:none;">
+
 
 <h1>WebGL入门示例</h1>
+
+<p>
+	各浏览器运行情况如下，我也就这几个平台的浏览器可以试。就目前来说，WebGL仍然是实验阶段。
+</p>
+
+	<ul>
+        <li>目前PC端Chrome浏览器下运行得最好</li>
+        <li>安卓手机平台，米3 MIUI 自带的浏览器简直是个渣。改用猎豹浏览器后，效果好不少。</li>
+        <li>iPad 4，iOS 7.1.1 Safari，更新之前还好，立方体的例子可以正常运行；更新到7.1.1后，Safari把webGL 贴图渲染地支离破碎。</li>
+	</ul>
 
 <h2>1. 贴图立方体</h2>
 
 <p>第一个例子根据Three.js的官网制作。详见博文：<a href="/blog/2013/11/11/webgl-study-step-01/">Hello, WebGL</a>。</p>
 
-<div id="webgl_cube_container" class="output" style="width: 400px; height: 400px;"></div>
+<div id="webgl_cube_container" class="output"></div>
+
+
 
 <h2>2. 贴图球体</h2>
 
-<p>参考<a href="http://book.douban.com/subject/25840617/" target="_blank">《JavaScript编程实战》</a></p>
+<p>做这个例子，最初是参考<a href="http://book.douban.com/subject/25840617/" target="_blank">《JavaScript编程实战》</a>。</p>
 
-<div id="webgl_earth_container" class="output" style="width:600px; height: 400px;"></div>
+<p>不过，做的过程中，找到了一篇更为深入的博文：<a href="http://learningthreejs.com/blog/2013/09/16/how-to-make-the-earth-in-webgl/" target="_blank">How to Make the Earth in WebGL?</a>。这哥们也是用Octopress写博客，专门研究Three.js，很牛逼。</p>
+
+<div id="webgl_earth_container" class="output"></div>
+
+
+<h2>3. JSONLoader 水牛</h2>
+<p>外形来自three.js自带的例子。结果也就这样。他们使用的是3.1版本的JSON Format，我把它改成了version4进行调用。可是我一直没能搞懂如何自己写一个version 4的json文件。这篇文章里有 three.js JSON数据格式的参数说明：<a href="http://article.neugls.info/%E5%9F%BA%E4%BA%8Ethree-js%E7%9A%84-json-%E6%A8%A1%E5%9E%8B%E6%A0%BC%E5%BC%8F-%E7%90%86%E8%A7%A3/" target="_blank">基于THREE JS的 JSON 模型格式 理解</a>，以后研究的时候参考。感觉各种贴图之类的，已经不是代码的范畴而是3D模型设计的范畴了。</p>
+<div id="jsonloader_container" class="output"></div>
+
 
 
 
@@ -51,7 +107,8 @@ p{
 <script type="text/javascript">
 window.onload = function(){
     cube_loop();
-	earth();
+	earth_loop();
+	json_loop();
 };
 </script>
 </body>
