@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "关于希腊神话与传说的电影集锦"
+title: "关于希腊神话与传说的电影集锦-Impress.js幻灯片"
 date: 2013-11-25 17:03
 comments: true
-keywords: 希腊神话, 电影, Greek Mythology,希腊神话与传说,魔幻电影
+keywords: impress.js, 希腊神话, 电影, Greek Mythology,希腊神话与传说,魔幻电影
 categories: Movies
 ---
 
 效果页面：<a href="{{ root_url }}/blog/impressPages/greek_mythology_movies.html" target="_blank" style="font-size:1.5em;color:#32cd32;">关于希腊神话与传说的电影集锦</a>
+
+<a href="{{ root_url }}/files/source/impressPages.zip">希腊神话电影-impress.js源码下载</a> [300KB]
 
 这是一个用impress.js模板写成的页面，整理了一下我看过的希腊神话相关的电影，会有短评、推荐指数等。
 

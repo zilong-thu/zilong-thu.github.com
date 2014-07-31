@@ -11,7 +11,6 @@
     <meta name="description" content="本文推荐7部与希腊神话、希腊传说故事相关的电影，包括《特洛伊》《诸神之战》《诸神之怒》《波西·杰克逊与神火之盗》《波西·杰克逊与魔兽之海》《惊天战神》《奥德赛：海神的诅咒 Odysseus and the Isle of the Mists》">
     <link href="css/impress_demo.css" rel="stylesheet"/>  
     <link rel="shortcut icon" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 </head>
 <body class="impress-not-supported">
 <div class="fallback-message">
@@ -168,15 +167,15 @@
     </div>
 </div>
 
-<div class="hint">
+<div class="hint" id="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
 <script>
 if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    document.getElementById("hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
-<script src="/javascripts/libs/impress.min.js"></script>
+<script src="js/impress.min.js"></script>
 <script>impress().init();</script>
 </body>
 </html>
