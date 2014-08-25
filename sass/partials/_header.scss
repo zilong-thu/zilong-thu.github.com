@@ -4,7 +4,7 @@ body > header {
     margin: 0;
     font-weight: bold;
     a, a:visited, a:hover {
-      color: #228B22;
+      color: #2BC02B;
       text-decoration: none;
       text-shadow: 1px 1px 1px #000;
     }
@@ -13,7 +13,7 @@ body > header {
     margin: 0.2em 0 0 0;
     @extend .sans;
     font-size: 1em;
-    color: #0b5a0b;
+    color: #ccc;
     font-weight: normal;
   }
 }
