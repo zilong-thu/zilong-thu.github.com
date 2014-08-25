@@ -6,89 +6,82 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width" />
 	<link rel="stylesheet" type="text/css" href="../css/android.css">
 	<link href="/favicon.png" rel="icon">
-	<script src="/javascripts/modernizr-2.0.js"></script>
 </head>
 <body>
 	<h1>房贷计算器</h1>
-<div class="container">
-	<div>
-		<label class="label title"></label>
-		<span class="radio-group"><span class="radio radio-selected" data-name="user">按贷款额度</span><span class="radio" data-name="detail">按房屋面积</span></span>
-	</div>
+	<div class="container">
+		<div>
+			<label class="label title"></label>
+			<span class="radio-group"><span class="radio radio-selected" data-name="user">按贷款额度</span><span class="radio" data-name="detail">按房屋面积</span></span>
+		</div>
 
-	<div id="by-houseArea" style="display:none;">
-		<div>
-			<label class="label title">房屋面积</label>
-			<input type="number" class="inputs input-l" id="house_area"/><span>m<sup>2</sup></span>
+		<div id="by-houseArea" style="display:none;">
+			<div>
+				<label class="label title">房屋面积</label>
+				<input type="number" class="inputs input-l" id="house_area"/><span>m<sup>2</sup></span>
+			</div>
+			<div>
+				<label class="label title">平米单价</label>
+				<input type="number" class="inputs input-l" id="house_price"/><span>元/m<sup>2</sup></span>
+			</div>
+			<div id="totalHousePrice" ></div>
+			<div>
+				<label class="label title">首 付 </label>
+				<select id="downPayment" class="inputs input-m">
+					<option value="10">1成</option>
+					<option value="20">2成</option>
+					<option value="30" selected="true">3成</option>
+					<option value="40">4成</option>
+					<option value="50">5成</option>
+					<option value="60">6成</option>
+					<option value="70">7成</option>
+					<option value="80">8成</option>
+					<option value="90">9成</option>
+				</select>
+				<span id="span_downPayment" class="high-lite"></span>
+			</div>
 		</div>
-		<div>
-			<label class="label title">平米单价</label>
-			<input type="number" class="inputs input-l" id="house_price"/><span>元/m<sup>2</sup></span>
+
+		<div id="by-loanAmount">
+			<label class="label title">贷款额度</label>
+			<input type="number" class="inputs input-xl" id="amount"/><span>元</span>
 		</div>
-		<div id="totalHousePrice" ></div>
+
 		<div>
-			<label class="label title">首 付 </label>
-			<select id="downPayment" class="inputs input-m">
-				<option value="10">1成</option>
-				<option value="20">2成</option>
-				<option value="30" selected="true">3成</option>
-				<option value="40">4成</option>
-				<option value="50">5成</option>
-				<option value="60">6成</option>
-				<option value="70">7成</option>
-				<option value="80">8成</option>
-				<option value="90">9成</option>
+			<label class="label title">贷款年限</label>
+			<select id="select-period" class="inputs input-m">
 			</select>
-			<span id="span_downPayment" class="high-lite"></span>
+		</div>
+
+		<div>
+			<label class="label title">年 利 率</label>
+			<select id="selectInterest" class="inputs input-xxl">
+			</select>
+			<input type="number" id="annual-interest" class="inputs input-sm"/><span>%</span>
+		</div>
+			
+		<div>
+			<button id="calc-button" type="button" class="btn btn-primary calc"> 开始计算 </button>
+		</div>
+
+		<div id="result">
 		</div>
 	</div>
 
-
-	<div id="by-loanAmount">
-		<label class="label title">贷款额度</label>
-		<input type="number" class="inputs input-xl" id="amount"/><span>元</span>
+	<div class="container">
+		<canvas id="graph" width="400" height="250">
+			Your browser does not support canvas. You might want to use Chrome or Firefox or Safari or IE10+ to view this page.
+		</canvas>
 	</div>
 
-	
-	
-
-	<div>
-		<label class="label title">贷款年限</label>
-		<select id="select-period" class="inputs input-m">
-		</select>
-	</div>
-
-	<div>
-		<label class="label title">年 利 率</label>
-		<select id="selectInterest" class="inputs input-xxl">
-		</select>
-		<input type="number" id="annual-interest" class="inputs input-sm"/><span>%</span>
-	</div>
-		
-	<div>
-		<button id="calc-button" type="button" class="btn btn-primary calc"> 开始计算 </button>
-	</div>
-
-	<div id="result">
-	</div>
-</div>
-
-<div class="container">
-	<canvas id="graph" width="400" height="250">
-		Your browser does not support canvas. You might want to use Chrome or Firefox or Safari or IE10+ to view this page.
-	</canvas>
-</div>
-
-	
 	<div id="debugDIV">
 	</div>
-
-
 
 	<div class="footer">
 		&copy; Copyright by <a href="http://www.borninsummer.com/" target="_blank">王子龙</a> 2014
 	</div>
 
+<script src="/javascripts/modernizr-2.0.js"></script>
 <script type="text/javascript" src="loan.js"></script>
 </body>
 </html>
