@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <div id="keyboard">
+  	<div class="k-row" data-k="10" style="width: 600px;"></div>
+  	<div class="k-row" data-k= "9" style="width: 540px;"></div>
+  	<div class="k-row" data-k= "7" style="width: 480px;"></div>
+  </div>
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script>
+(function($){
+	var letters = ['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'];
+
+	$('#keyboard div.k-row').each(function(index,ele){
+		var rowLetters = letters[index].split('');
+		var kCount = ele.dataset['k'] || rowLetters.length;
+		var str = '';
+
+		rowLetters.forEach(function(item, i){
+			str += '<div class="key">'+ item +'</div>';
+		});
+
+		$(ele).html(str);
+	});
+
+})(jQuery);
+</script>
+</body>
+</html>
