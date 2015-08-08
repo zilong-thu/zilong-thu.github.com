@@ -1,0 +1,717 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="读书笔记," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="图书信息：《CSS设计指南（第3版）》（豆瓣）原作名: Stylin’with CSS:a designer’s guide
+这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS设计指南（第3版）》笔记">
+<meta property="og:url" content="http://borninsummer.com/2015/01/19/reading-styling-with-css/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="图书信息：《CSS设计指南（第3版）》（豆瓣）原作名: Stylin’with CSS:a designer’s guide
+这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。">
+<meta property="og:updated_time" content="2015-07-26T05:45:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《CSS设计指南（第3版）》笔记">
+<meta name="twitter:description" content="图书信息：《CSS设计指南（第3版）》（豆瓣）原作名: Stylin’with CSS:a designer’s guide
+这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《CSS设计指南（第3版）》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《CSS设计指南（第3版）》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-01-19T23:06:22+08:00" content="2015-01-19">
+            2015-01-19
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/CSS/" itemprop="url" rel="index">
+                  <span itemprop="name">CSS</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/01/19/reading-styling-with-css/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/19/reading-styling-with-css/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>图书信息：<a href="http://book.douban.com/subject/23123255/" target="_blank">《CSS设计指南（第3版）》</a>（豆瓣）<br>原作名: Stylin’with CSS:a designer’s guide</p>
+<p>这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。</p>
+<a id="more"></a>
+<p>##第1章 HTML标记与文档结构</p>
+<blockquote>
+<p>目前，HTML一共有114个标签，但按照80/20原则，使用其中25个左右的标签就可以满足80%的标记需要。</p>
+</blockquote>
+<p>超链接元素<code>a</code>的属性<code>href</code>的英文短语是：hyperlink reference。意为“超链接引用”。</p>
+<p>####1.2.2 块级元素和行内元素</p>
+<blockquote>
+<p>几乎所有HTML元素的<code>display</code>属性值要么为<code>block</code>，要么为<code>inline</code>。最明显的一个例外是<code>table</code>元素，它又自己特殊的<code>display</code>属性值。</p>
+</blockquote>
+<p>##第2章 CSS工作原理</p>
+<p>###2.3 特殊的上下文选择符</p>
+<p>通用选择符*：</p>
+<blockquote>
+<p>这个选择符有一个非常有意思的用法，即用它来构成非子选择符，比如：</p>
+</blockquote>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">section * a&#123;font-size: 1.3em;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>###2.4 ID和类选择符</p>
+<blockquote>
+<p>可以给<code>id</code>和<code>class</code>属性设定任何值，但不能以数字或特殊符号开头。</p>
+</blockquote>
+<p>####2.9.3 计算特指度</p>
+<p>这本书给的计算方法为“ICE”公式。这是个无穷大进制的三位数。依次代表id-class-element。</p>
+<p>##第3章 定位元素<br>这里再次强调CSS的核心技术乃是定位：</p>
+<blockquote>
+<p>要掌握CSS技术，核心就是要掌握元素定位，只有这样才能用CSS创造出专业水准的页面布局。</p>
+</blockquote>
+<p>定位主要靠三个属性：<code>position</code> | <code>display</code> | <code>float</code>。</p>
+<p>###3.1 理解盒模型<br>简写样式：<br>盒模型边距或边框的属性值简写模式按照上右下左来写。如果只写了3个，那么漏写的那个（一般也就是最后那个，左边）将使用对边的值。</p>
+<p>####3.1.4 叠加外边距</p>
+<blockquote>
+<p><strong>垂直方向上的外边距会叠加。水平外边距不会叠加。</strong></p>
+</blockquote>
+<p>难怪在某本书上看到说，在布局控制方面，<code>padding</code>要比<code>margin</code>更好，就是因为前者定位明确。</p>
+<p>###3.2 盒子有多大</p>
+<blockquote>
+<p>盒模型结论一：没有（就是没有设置<code>width</code>的）宽度的块级元素始终会扩展到天猫其父元素的宽度为止。添加水平边框、内边距和外边距，会导致内容宽度减少，减少量等于水平边框、内边距和外边距的和。</p>
+<p>盒模型结论二：为设定了宽度的盒子添加边框、内边距和外边距，会导致盒子扩展得更宽。实际上，盒子的<code>width</code>属性设定的只是盒子内容区的宽度，而非盒子要占据的水平宽度。</p>
+</blockquote>
+<p>###3.3 浮动与清除</p>
+<blockquote>
+<p>浮动非图片元素时，必须给它指定宽度，否则后果难以预料。图片无所谓，因为它本身有默认的宽度。</p>
+</blockquote>
+<p>####3.3.2 围住浮动元素的三种方法</p>
+<blockquote>
+<p><strong>方法1：为父元素添加<code>overflow: hidden</code></strong><br><strong>方法2：同时浮动父元素</strong><br><strong>方法3：在父元素内容的末尾添加非浮动元素，可以直接在标记中添加，也可以通过给父元素添加<code>clearfix</code>类来添加（当然，样式表中得需要相应的<code>clearfix</code>规则）</strong></p>
+</blockquote>
+<p>###3.6 背景<br>背景图片是叠加在背景颜色之上的。</p>
+<blockquote>
+<p>渐变是CSS帮我们生成的背景图片。添加渐变可以使用<code>background-image</code>属性，也可以使用简写的<code>background</code>属性。</p>
+</blockquote>
+<p>##第4章 字体和文本<br>这一章的4.4.2节 借助网格排版，给出了一个水平网格线背景下的文字排版，网格间隔18像素，仔细排版后确实很好看。</p>
+<p>##第5章 页面布局</p>
+<blockquote>
+<p>很多网站为了在第一屏极可能多的显示信息，都采用了多栏布局。这里所说的“第一屏”就是用户无需滚动就能看到的页面区域，相当于传统报纸行业所说的“折痕之上”的版面。</p>
+</blockquote>
+<p>##第6章 界面组件</p>
+<p>###6.1 导航菜单</p>
+<blockquote>
+<p><code>:hover</code>事件会沿着元素的结构层次“向上冒泡”。</p>
+</blockquote>
+<p>下面是一个导航条+菜单示例。</p>
+<div class="multi_drop_menu"><ul><li><a href="#">导航1</a></li><li><a href="#">导航2</a></li><li><a href="#">导航3</a></li><li><a href="#">导航4有下拉菜单</a><ul><li><a href="#">二级子菜单1</a></li><li><a href="#">二级子菜单2 &gt;&gt;</a><ul><li><a href="#">三级子菜单1</a></li><li><a href="#">三级子菜单2</a></li><li><a href="#">三级子菜单3</a></li></ul></li><li><a href="#">二级子菜单3</a></li></ul></li><li><a href="#">导航5</a></li></ul></div>
+
+<p>###6.3 弹出层</p>
+<blockquote>
+<p>如果要使用<code>figcaption</code>，必须确保它在<code>figure</code>中是唯一的。而且，它要么是第一个子元素，要么是最后一个子元素。</p>
+<p>在一个包含多个同辈元素的容器内，这些同辈元素都会构造一个 <strong>堆叠上下文</strong>。<br><code>z-index</code>只对那些<code>position</code>值为<code>static</code>之外的元素有效。换句话说，涉及的两个元素必须是<code>absolute</code>、<code>relative</code>或<code>fixed</code>才行。</p>
+</blockquote>
+<div class="withTriangle">使用<code>::after</code>伪元素制作的三角形</div>
+
+<script>
+(function(){
+    var url = '/stylesheets/unique/stylin-with-css.css';
+    var link =  document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    document.head.appendChild(link);
+})();
+</script></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/22/server-pressure-testing-using-jmeter/" rel="prev">用JMeter进行服务器压力测试心得</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/03/web-performance-in-practice/" rel="next">Web前端性能优化实践</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/01/19/reading-styling-with-css/"
+                   data-title="《CSS设计指南（第3版）》笔记" data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

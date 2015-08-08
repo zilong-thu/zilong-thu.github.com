@@ -1,0 +1,694 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="读书笔记," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="《写给程序员的Web设计书》原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。
+下面各标题的编号对应的是书中的章节号。
+###2.3 明确目的
+
+设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《写给程序员的Web设计书》读书笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/11/19/reading-notes-on-book-web-design-for-developers/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《写给程序员的Web设计书》原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。
+下面各标题的编号对应的是书中的章节号。
+###2.3 明确目的
+
+设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这">
+<meta property="og:updated_time" content="2015-08-08T17:17:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《写给程序员的Web设计书》读书笔记">
+<meta name="twitter:description" content="《写给程序员的Web设计书》原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。
+下面各标题的编号对应的是书中的章节号。
+###2.3 明确目的
+
+设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《写给程序员的Web设计书》读书笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《写给程序员的Web设计书》读书笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-11-19T22:09:00+08:00" content="2013-11-19">
+            2013-11-19
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Web-FE/" itemprop="url" rel="index">
+                  <span itemprop="name">Web-FE</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/11/19/reading-notes-on-book-web-design-for-developers/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/19/reading-notes-on-book-web-design-for-developers/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="http://book.douban.com/subject/6783748/" name="6783748" class="douban_book" target="_blank">《写给程序员的Web设计书》</a>原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。</p>
+<p>下面各标题的编号对应的是书中的章节号。</p>
+<p>###2.3 明确目的</p>
+<blockquote>
+<p>设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这工作不是为你增添炫耀资本的，不要企图用那些刚刚学到的很炫的技术来震撼你的同事。客户和他们的目标用户才是第一位的。</p>
+</blockquote>
+<p>在我看来，按照优先级排序是这样的：网站目的&gt;目标用户&gt;客户或自己的老板&gt;自己想炫耀的技术。<br><a id="more"></a></p>
+<p>###2.5.1 一些约定俗成的布局风格</p>
+<blockquote>
+<p>之所以网站之间有这么多相似的地方，是因为开发人员会模仿已经成功的例子。例如，所有的新闻页看起来都差不多，这不是巧合。毕竟，所有的报纸的布局也是相似的。</p>
+<p>日积月累，用户就会对页面的共性有所期待。一个合格的页面应该做到让用户能够快速找到他想要找到的内容，而不是在页面里茫然四顾或在网站中点来点去。页面需要一个很简单的浏览方式……</p>
+</blockquote>
+<p>所以说，不应该排斥那些约定俗成的东西，不能总想着创新。这也是为什么HTML5直接引入了<code>&lt;header&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;footer&gt;</code>这样的语义结构标签了。</p>
+<p>###3.5 网络安全色</p>
+<blockquote>
+<p>网络安全色调色板只提供了216种颜色，这些颜色在不同的操作系统上都是一样的。这个概念起源于计算机显卡技术不够强大的时代。Mac机上的设计师想确保对于同一张图片，PC机用户也能看到同样的效果。</p>
+<p>现在设计师已经放弃了这种网络安全色调色板，因为大多数用户的显示器都能显示上百万种颜色了。虽然不同的机器上的色彩显示还是有区别，但是这种区别基本上可以忽略不计了。</p>
+</blockquote>
+<p>一个很不错的配色设计方案网站：<a href="http://colorschemedesigner.com/" target="_blank">colorschemedesigner.com</a></p>
+<p>###4.2 字体类别</p>
+<p>####衬线字体（serif font）<br>典型的是Times New Roman。衬线字体是为印刷而设计的，在电脑屏幕上的表现可不怎么样。衬线字体的主要问题是：太细的笔画使屏幕上显示的字母看不太清，字号越小越严重。不过不能因此而贬低其在印刷领域的地位——印刷的时候，衬线字体是一种可读性很高的字体。</p>
+<p>####无衬线字体（sans-serif font）<br>代表字体有Arial，Helvetica，Verdana。它们适合在屏幕上阅读，所以是网站主要内容的首选字体。甚至在字号很小的时候也很清晰。</p>
+<p>####等宽字体（fixed-width font或Monospaced font）<br>适合显示源代码、发票等对缩进、对齐有一定要求的内容。代表字体是Courier。</p>
+<p>####cursive<br>这些字体试图模仿人的手写体。通常，它们主要由曲线和 Serif 字体中没有的笔划装饰组成。例如，大写 A 再其左腿底部可能有一个小弯，或者完全由花体部分和小的弯曲部分组成。Cursive 字体的例子包括 Zapf Chancery、Author 和 Comic Sans。</p>
+<p>####fantasy</p>
+<p>关于字体类，<a href="http://www.w3school.com.cn/css/css_font-family.asp" target="_blank">w3school “CSS 字体系列”</a>也讲得很详细，可作为参考。</p>
+<blockquote>
+<p>最后，我们大概只能有这样的保证：每个系统上肯定都会有一种衬线字体、一种无衬线字体和一种等宽字体，而系统自己会为每种字体选一个默认的样式。</p>
+</blockquote>
+<p>###4.3.3 字体栈（font stacks）<br>下面就是一个字体栈：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">font-family</span>:<span class="value"> Helvectica, Arial, sans-serif</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>字体栈的设计关键在于，必须对所选字体有很清晰的了解，它们最好差别不要太大。</p>
+<p>有篇英文讲解字体栈：<a href="http://unitinteractive.com/blog/2008/06/26/better-css-font-stacks/" target="_blank">Better CSS Font Stacks</a></p>
+<p>###HTML实体代码<br><code>&amp;nbsp;</code> 空格，non-breaking blank space</p>
+<p><code>&amp;copy;</code> 版权符号 &copy;</p>
+<p><code>&amp;amp;</code> &amp;符号</p>
+<p>###图片格式<br>现在明白为什么当年借了师姐的数码单反相机，其照片是RAW格式的了，因为这是一种未经压缩的照片存储格式。而如果相机默认存储为JPEG，则一定是经过压缩了的。</p>
+<p>###十六进制颜色码的三位数写法<br>使用<code>#f80</code>来代替<code>#ff8800</code>的最大好处就是：减少代码字数，从而减小CSS文件的体积、使得下载更快。除此之外，没有别的好处。</p>
+<p>###什么时候可以终止对一种浏览器的支持？<br>这本书有很多内容与我看过的其他书是重复的，所以一一掠过。不过，这本书时不时出现的“小乔爱问”还是很不错的。就像这个。作者的回答是：</p>
+<blockquote>
+<p>我在决定支持哪种浏览器时一直遵守这条准则：支持市场份额最大的两个版本的浏览器，同时保证网站在其他浏览器中可用且刻度。不要求在所有浏览器中看到的网页完全相同，但至少用户可以正常使用网站。</p>
+</blockquote>
+<p>以及</p>
+<blockquote>
+<p>……由此我需要指出，不要用IE进行开发，那完全是浪费时间。你要做的是在一个与标准兼容的浏览器中做开发，然后针对其他怪异的浏览器做出修正。</p>
+</blockquote>
+<p>标准，当然指的就是W3C推荐的标准了。</p>
+<p>###关于SEO<br>与其做SEO，不如好好做网站编辑，对页面内容进行高质量加工。</p>
+<p>###20.3.5 压缩脚本文件<br>通过去掉JavaScript、CSS文件里的空格、换行，就足以将文件的尺寸减小不少了。</p>
+<p>##总结<br>这本书从零开始介绍了网站的前端页面是如何搭建的：从与客户交流，绘制草图，用Photoshop制作页面切图，切图转化为HTML、CSS代码，色彩方案的选择，以及到搜索引擎优化、前端性能优化，很完整的步骤。适合那些选修了《计算机网页设计基础》这类课程的新人去读。不太适合老手认认真真地读，但其提供的一些资源挺不错。</p>
+<p>评价：对于新手★★★★☆，对于学习了半年以上的人★★★☆☆</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/" rel="prev">前端知识的零星思考以及对某本书的读书笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/19/illustrator-svg-fashion-girl/" rel="next">Illustrator自由路径练习(02)：时尚女孩</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/11/19/reading-notes-on-book-web-design-for-developers/"
+                   data-title="《写给程序员的Web设计书》读书笔记" data-url="http://borninsummer.com/2013/11/19/reading-notes-on-book-web-design-for-developers/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

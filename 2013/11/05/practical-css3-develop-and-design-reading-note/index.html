@@ -1,0 +1,752 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS3实战：开发与设计》笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。">
+<meta property="og:image" content="http://borninsummer.com/images/blog/Peculiar.PNG">
+<meta property="og:image" content="http://borninsummer.com/images/blog/browser_market-share_20131106.png">
+<meta property="og:updated_time" content="2015-08-08T17:16:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《CSS3实战：开发与设计》笔记">
+<meta name="twitter:description" content="本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《CSS3实战：开发与设计》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《CSS3实战：开发与设计》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-11-05T14:55:00+08:00" content="2013-11-05">
+            2013-11-05
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/CSS/" itemprop="url" rel="index">
+                  <span itemprop="name">CSS</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/11/05/practical-css3-develop-and-design-reading-note/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/05/practical-css3-develop-and-design-reading-note/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>本文记录我在读<a href="http://book.douban.com/subject/24745215/" target="_blank" class="douban_book" name="24745215">《CSS3实战：开发与设计》</a>时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。</p>
+<a id="more"></a>
+<hr>
+
+<script type="text/javascript">
+(function(){
+    var url = '/stylesheets/style_practical_css3.css';
+    var link =  document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    document.head.appendChild(link);
+})();
+</script>
+
+<p>###用rem调整文本大小<br>更多可参见 <a href="http://www.w3.org/TR/css3-values/" target="_blank">www.w3.org/TR/css3-values/</a>。</p>
+<p>根元素，即<code>&lt;html&gt;</code>标签。1rem == html 的computed style 中的font-size。</p>
+<p>###CSS3选择器<br>目标伪类选择器 <code>:target</code>。</p>
+<p>CSS3还没普及完，CSS4标准就已经在研制了。可以参见<a href="http://www.w3.org/TR/selectors4/" target="_blank">CSS4选择器</a>。</p>
+<blockquote>
+<p>Selectors Level 4 describes the selectors that already exist in [SELECT], and further introduces new selectors for CSS and other languages that may need them.</p>
+</blockquote>
+<p>###HTML5标题<br>HTML5中的标题级别不再以标题<code>h</code>后面的数字代表，转而以它们所嵌套在内的所谓分区元素的级别为依托的HTML5纲要算法。</p>
+<p>这一点在《HTML5经典实例》中也详细介绍了。</p>
+<p>具体可参见Mozilla的文章：<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Sections_and_Outlines_of_an_HTML5_document" target="_blank" rel="external">Sections and Outlines of an HTML5 Document</a></p>
+<p>###IE条件注释<br>IE条件注释这样使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span><br><span class="line">	&lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样，当检测到浏览器是IE且版本低于IE9，则会加载并执行该脚本。</p>
+<p>在HTML文档中的任意位置，都可以使用这些IE条件判断。</p>
+<ul>
+<li>if IE        // 如果是IE浏览器</li>
+<li>if IE 6      // 如果是IE6</li>
+<li>if lt IE 9   // 如果是早于IE9的IE浏览器，不包括IE9</li>
+<li>if lte IE 8  // 如果是IE8或者更早的IE浏览器</li>
+</ul>
+<p>###Web字体<br>使用下载了的ttf格式的UglyQua字体，将其放在网站根目录下的fonts文件夹中，就可以使用<code>@font-face</code>规则自定义web字体了。CSS代码如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">font-family</span>:<span class="value"> UglyQua</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(<span class="string">'/fonts/UglyQua.ttf'</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(<span class="string">'/fonts/UglyQua-Italic.ttf'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><figcaption><span>html code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">style</span>=<span class="value">"font-family: UglyQua;font-size: 2em;"</span>&gt;</span>This is some text using font format <span class="tag">&lt;<span class="title">i</span>&gt;</span>UglyQua<span class="tag">&lt;/<span class="title">i</span>&gt;</span>.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p style="font-family: UglyQua;font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
+
+<p>###多重文本阴影<br>在同一个CSS选择器下，可以应用多重文本阴影。例如<br><figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.multi-shadow</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">2em</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="hexcolor">#000</span>,</span><br><span class="line">		<span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="hexcolor">#aaa</span>,</span><br><span class="line">		<span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> <span class="hexcolor">#999</span>,</span><br><span class="line">		<span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="hexcolor">#888</span>,</span><br><span class="line">		<span class="number">0</span> <span class="number">0</span> <span class="number">8px</span> <span class="hexcolor">#666</span>,</span><br><span class="line">		<span class="number">0</span> <span class="number">6px</span> <span class="number">6px</span> <span class="function">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),</span><br><span class="line">		<span class="number">0</span> <span class="number">8px</span> <span class="number">20px</span> <span class="function">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><figcaption><span>html code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"multi-shadow"</span>&gt;</span>Multiple Text Shadows!<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么就会得到这样的字体：（为减小本网站screen.css样式表的体积，本博文尽可能使用内联样式。）</p>
+<p class="multi-shadow" style="font-size:2em; text-shadow: 0 0 2px #000, 0 0 2px #aaa, 0 0 4px #999, 0 0 6px #888, 0 0 8px #666, 0 6px 6px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.5);">Multiple Text Shadows!</p>
+
+<p>使用下面的代码则可以创造火焰文字：</p>
+<figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.fire-words</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white,</span><br><span class="line">        <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>,</span><br><span class="line">        <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">        -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="hexcolor">#ff8800</span>,</span><br><span class="line">        <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="hexcolor">#ff2200</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> orange</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>html code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"fire-words"</span>&gt;</span>火焰文字<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p style="font-size: 3em;line-height:1.2; text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33, -2px -15px 11px #ff8800, 2px -25px 18px #ff2200; color: orange;">静态火焰文字</p>
+
+<p>###控制文本溢出<br>如果容器盒定义了<code>overflow: hidden;</code>，那么其文本子节点的<code>text-overflow</code>属性控制文本溢出时的显示效果。</p>
+<p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">text-overflow</span>:<span class="value"> clip | ellipsis | string</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>clip<br>  修剪文本。</li>
+<li>ellipsis<br>  显示省略符号来代表被修剪的文本。主流的现代浏览器都支持此属性。</li>
+<li>string<br>  使用给定的字符串来代表被修剪的文本。</li>
+</ul>
+<p>具体见<a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp" target="_blank">w3school的例子</a>吧。</p>
+<p>但是目前对于第三个属性，只有Firefox支持，Chrome尚不支持。Firefox中的使用方法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">text-overflow</span>:<span class="value"> <span class="string">' ...read more'</span></span></span>;</span><br></pre></td></tr></table></figure>
+<p>###控制断字<br>使用hyphens属性。</p>
+<p>###border-radius高级</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">10px</span>/<span class="number">20px</span></span></span>;</span><br></pre></td></tr></table></figure>
+<p>意味着每个圆角水平半径为10px，垂直半径为20px。而</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">5px</span> <span class="number">10px</span> <span class="number">15px</span> <span class="number">20px</span>/<span class="number">30px</span> <span class="number">15px</span> <span class="number">10px</span> <span class="number">5px</span></span></span>;</span><br></pre></td></tr></table></figure>
+<p><code>/</code>之前的代表从左上角顺时针各个角的水平半径，后面则代表四个角的垂直半径。这样应该就可以画一个椭圆的盒子出来了：</p>
+<div style="width: 400px;
+        height: 200px;
+        border-radius: 200px/100px;
+        background-color: #cccccc;
+        line-height: 200px;
+        text-align: center;
+        margin: 10px 0;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.5);">这是一个椭圆形的div盒子。</div>
+
+<p>###渐变色<br>本质上来讲，CSS渐变是一种特殊的背景图片，你完全可以把它放在任何一个图片能工作的位置，例如<code>background-image</code>和<code>border-image</code>。</p>
+<p>在线性渐变中，对角线关键词能保证渐变方向总是从一个角到另一角，但角度则是从左上角开始逆时针转的，除非是正方形，否则135°就不是从右上角到左下角的渐变了。</p>
+<p>###多重背景<br>CSS3允许开发人员向一个元素添加多重背景，方法很简单，在<code>background</code>中添加多个<code>img</code>或者<code>gradient</code>即可。背景的层叠顺序是：先声明的在上层，后声明的在下层，像photoshop，向栈，但绝不像CSS的层叠顺序啊——确实，鬼知道那些CSS规范制定者脑子里在想什么。</p>
+<p>###CSS3 transform<br>下面的代码，Chrome不支持。但是新版的Firefox完全没问题。</p>
+<div id="book_wrapper" style="position: relative;height:400px;transform: perspective(1200px) rotateY(-9deg);transform-style: preserve-3d;"><br>    <article id="book_front" style="-webkit-transform:translateZ(3rem);transform: translateZ(3rem);"><br>        <p style="font-size:1.5em;text-alignt:center;font-weight:bold;">随笔</p><br>    </article><br>    <article id="book_p1" style="-webkit-transform: translateZ(0rem);transform: translateZ(0rem);"></article><br>    <article id="book_p2" style="-webkit-transform: translateZ(-3rem);transform: translateZ(-3rem);"></article><br>    <article id="book_back" style="-webkit-transform: translateZ(-6rem);transform: translateZ(-6rem);"></article><br></div>
+
+<p>像<code>backface-visibility</code>（当元素在3D空间旋转而导致其正面远离观察者时，指定它的背面是否可见），<code>translate</code>,<code>preserve-3d</code>这些属性，目前浏览器支持度还不是很好，暂不研究了。</p>
+<p>###CSS3 transition<br>下面是7种不同的timing-function属性值的实验。鼠标悬浮于上即可看到在3秒内不同timing-function产生的过渡动画效果。</p>
+<div id="tran-eg" style="width:600px;height:350px;border:1px solid #ccc;"><br><div style="background-color: blue;transition-timing-function: linear;">linear</div><br><div style="background-color: red;transition-timing-function: ease;">ease</div><br><div style="background-color: green;transition-timing-function: ease-out;">ease-out</div><br><div style="background-color: #ccc;transition-timing-function: ease-in;">ease-in</div><br><div style="background-color: orange;transition-timing-function: ease-in-out;">ease-in-out</div><br><div style="background-color: #06f;transition-timing-function: steps(5);">steps(5)</div><br><div style="background-color: gray;transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);">cubic-bezier(0.25, 0.1, 0.25, 1.0)</div><br></div>
+
+<p>###CSS3 animation<br>下面我们将上面制作的火焰文字动起来。</p>
+<div class="burning_text" style="font-size: 3em;
+    color: orange;
+    line-height: 2em;
+    font-family: sans-serif;
+    font-weight: bold;">燃烧的文字动画</div>
+
+<p>CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用<code>@-webkit-keyframes text-flames</code>定义的样式（且整个规则copy一遍），Firefox最新版和IE10(WIN8平台下的)则已经支持不带前缀的<code>@keyframes</code>规则了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> text-flames</span>&#123;</span><br><span class="line">    0%  <span class="rules">&#123; <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="hexcolor">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="hexcolor">#ff2200</span></span></span>;&#125;</span></span><br><span class="line">    19% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="hexcolor">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="hexcolor">#ff2200</span></span></span>;&#125;</span></span><br><span class="line">    20% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">4px</span> <span class="number">3px</span> <span class="hexcolor">#ffff44</span>, <span class="number">3px</span> -<span class="number">9px</span> <span class="number">7px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">14px</span> <span class="number">12px</span> <span class="hexcolor">#ff9900</span>, <span class="number">3px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="hexcolor">#ff3300</span></span></span>;&#125;</span></span><br><span class="line">    39% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">4px</span> <span class="number">3px</span> <span class="hexcolor">#ffff44</span>, <span class="number">3px</span> -<span class="number">9px</span> <span class="number">7px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">14px</span> <span class="number">12px</span> <span class="hexcolor">#ff9900</span>, <span class="number">3px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="hexcolor">#ff3300</span></span></span>;&#125;</span></span><br><span class="line">    40% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">3px</span> -<span class="number">8px</span> <span class="number">8px</span> <span class="hexcolor">#ffdd44</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">12px</span> <span class="number">11px</span> <span class="hexcolor">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">20px</span> <span class="hexcolor">#ff3300</span></span></span>;&#125;</span></span><br><span class="line">    59% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">3px</span> -<span class="number">8px</span> <span class="number">8px</span> <span class="hexcolor">#ffdd44</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">12px</span> <span class="number">11px</span> <span class="hexcolor">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">20px</span> <span class="hexcolor">#ff3300</span></span></span>;&#125;</span></span><br><span class="line">    60% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> white, <span class="number">0</span> -<span class="number">6px</span> <span class="number">5px</span> <span class="hexcolor">#ffff55</span>, <span class="number">2px</span> -<span class="number">7px</span> <span class="number">7px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">5px</span> -<span class="number">13px</span> <span class="number">15px</span> <span class="hexcolor">#ff7700</span>, <span class="number">4px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="hexcolor">#ff4411</span></span></span>;&#125;</span></span><br><span class="line">    79% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> white, <span class="number">0</span> -<span class="number">6px</span> <span class="number">5px</span> <span class="hexcolor">#ffff55</span>, <span class="number">2px</span> -<span class="number">7px</span> <span class="number">7px</span> <span class="hexcolor">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">5px</span> -<span class="number">13px</span> <span class="number">15px</span> <span class="hexcolor">#ff7700</span>, <span class="number">4px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="hexcolor">#ff4411</span></span></span>;&#125;</span></span><br><span class="line">    80% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">5px</span> -<span class="number">8px</span> <span class="number">6px</span> <span class="hexcolor">#ffee33</span>,</span><br><span class="line">                     -<span class="number">4px</span> -<span class="number">12px</span> <span class="number">13px</span> <span class="hexcolor">#ff8822</span>, <span class="number">2px</span> -<span class="number">26px</span> <span class="number">18px</span> <span class="hexcolor">#ff2200</span></span></span>;&#125;</span></span><br><span class="line">    100% <span class="rules">&#123;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="hexcolor">#ffff33</span>, <span class="number">5px</span> -<span class="number">8px</span> <span class="number">6px</span> <span class="hexcolor">#ffee33</span>,</span><br><span class="line">                     -<span class="number">4px</span> -<span class="number">12px</span> <span class="number">13px</span> <span class="hexcolor">#ff8822</span>, <span class="number">2px</span> -<span class="number">26px</span> <span class="number">18px</span> <span class="hexcolor">#ff2200</span></span></span>;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">div</span><span class="class">.burning_text</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-animation</span>:<span class="value"> text-flames <span class="number">0.6s</span> infinite</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">animation</span>:<span class="value"> text-flames <span class="number">0.6s</span> infinite</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">3em</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> orange</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-family</span>:<span class="value"> sans-serif</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>当然了，将动画用于使文字呈现闪烁功能，有点像回到了以前文本的<code>blink</code>噩梦时代。还是得将动画的精力放在其他上面。动画的精髓应该在于：如何安排关键帧属性。</p>
+<p>###CSS3与图标<br>约定俗成的图标能比文字更快更准确地传达信息。讲CSS的书很少专门讲图标，不过相信讲“交互设计”这类主题的书籍应该会非常强调图标的重要性。</p>
+<p>这应该涉及符号学与人类学、语言学。图标传达信息非常直接，与人类早期创造象形文字的原因是一样的。文字后来才出现，可以弥补象形符号的不足，使其更准确——但仍不够精确，无法完全避免误解。</p>
+<p>图标应作为背景图片而不是img元素放入页面，并且，在CSS3之前，就已经有针对背景图片的优化技术：CSS Sprite。最主要目的就是减少HTTP请求数目。</p>
+<p>另外一个非常赞的做法是，使用纯HTML+CSS制作的图标。我已知的例子是三角形的制作以及由其进阶衍生的气泡提示框的制作（来自另一本CSS3的入门书籍：<a href="http://book.douban.com/subject/10482084/" target="_blank" rel="external">《CSS3实用指南》</a> by 吉伦瓦特）。</p>
+<p>Lucian Martin提供了一套成熟的图标集。见 <a href="http://lucianmarin.com/peculiar" target="_blank" rel="external">Peculiar</a></p>
+<img src="/images/blog/Peculiar.PNG">
+<p>###弹性盒子：flexbox<br>CSS3为<code>display</code>属性添加了一个新的值：<code>flex</code>。<code>flex-flow</code>定义了弹性盒子里面子元素的流动方向。</p>
+<figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">section</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">flex-flow</span>:<span class="value"> row</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="tag">article</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">30%</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">1em</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>html code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">section</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">article</span>&gt;</span><span class="tag">&lt;/<span class="title">article</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">article</span>&gt;</span><span class="tag">&lt;/<span class="title">article</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">article</span>&gt;</span><span class="tag">&lt;/<span class="title">article</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">article</span>&gt;</span><span class="tag">&lt;/<span class="title">article</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">article</span>&gt;</span><span class="tag">&lt;/<span class="title">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>##响应式布局之媒介查询</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">media</span> screen and (max-width: <span class="number">800px</span>)</span>&#123;</span><br><span class="line">	<span class="comment">/* some code here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该代码意思是：当且仅当设备是屏幕媒体类型并且浏览器窗口宽度不超过800px时，应用代码块里的样式。</p>
+<p>然而移动设备的浏览器有时候是个骗子：它会按照假设的宽度去渲染网页，而不是使用设备的宽度。解决此问题的方法是使用<code>viewport</code>。在HTML的<code>&lt;head&gt;</code>里添加：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这段代码会视情况来触发媒介查询从而让浏览器已自身的实际宽度来渲染网页。</p>
+<p>##总结<br>★★★★☆（其实不到四星，也就3.7星这样）</p>
+<p>总体而言，这本书文笔不是特别晦涩，书里面没有放置完整的代码，而是放在网站上，因此节省了空间；对于CSS3的主要特性都讲到了，也给出了很好的演示例子。错误不多。作者目前就职于Opera，很多例子都会涉及到代码在Opera浏览器下的表现以及与其他浏览器的差异，算是视角比较独特，因为Opera的用户群比Firefox，Chrome，Safari都要少。</p>
+<p>如果你想学习CSS3，又完全没有读过任何一本CSS3方面的书籍，可以从这本入手。</p>
+<img src="/images/blog/browser_market-share_20131106.png">
+<p>（桌面浏览器全球市场份额，截止到2013-11-06）</p>
+<p>##附：关于本文的一个奇技淫巧<br>本文在一开始的时候内嵌了这样一段JS代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> url = <span class="string">'&#123;&#123;root_url&#125;&#125;/stylesheets/style_practical_css3.css'</span>;</span><br><span class="line">	<span class="keyword">var</span> link =  <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</span><br><span class="line">	link.rel = <span class="string">"stylesheet"</span>;</span><br><span class="line">	link.type = <span class="string">"text/css"</span>;</span><br><span class="line">	link.href = url;</span><br><span class="line">	<span class="built_in">document</span>.head.appendChild(link);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>用于获取仅用于本文的样式表。可以减轻全站总样式表的体积。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/06/note-on-book-design/" rel="prev">《书籍设计（第10辑）》简评</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/02/maintainable-javascript/" rel="next">《编写可维护的JavaScript》笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/11/05/practical-css3-develop-and-design-reading-note/"
+                   data-title="《CSS3实战：开发与设计》笔记" data-url="http://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

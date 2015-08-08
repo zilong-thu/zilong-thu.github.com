@@ -1,0 +1,676 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数组去重方法汇总">
+<meta property="og:url" content="http://borninsummer.com/2013/12/09/javascript-array-unique/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。">
+<meta property="og:updated_time" content="2015-08-08T17:22:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数组去重方法汇总">
+<meta name="twitter:description" content="摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> JavaScript数组去重方法汇总 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              JavaScript数组去重方法汇总
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-12-09T09:47:00+08:00" content="2013-12-09">
+            2013-12-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/12/09/javascript-array-unique/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/09/javascript-array-unique/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。<br><a id="more"></a></p>
+<p>##1. 生成测试用的数组<br>测试使用的数组有两类：纯数值类型的数组，混合了数字与字符串的数组。</p>
+<p>###1.1 纯数值数组生成方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 生成一个m、n之间的整数 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random</span>(<span class="params">m,n</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">var</span> i=<span class="built_in">Math</span>.random(); </span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.round((n-m)*i+m); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* l：生成的数组的长度 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomArr</span>(<span class="params">m,n,l</span>)</span>&#123; </span><br><span class="line">	<span class="keyword">var</span> resultArr=[]; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;l;i++)&#123; </span><br><span class="line">		resultArr.push(random(m,n));</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> resultArr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###1.2 生成含有随机长度字符串的混合数组<br>参考<sup>[3]</sup>。生成随机字符串的思路很简单：先准备一个数组，含有 0~9、A~Z、a~z 这些字符；随机生成一个数字，根据用户设定的最大字符串长度，确定当前字符串的长度；根据这个长度进行循环，每次循环都随机生成一个数字，将其映射到该数组的下标，读取该下标的值，即为字符串当前位置处的一个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* length: 字符串的长度，如果未定义，则随机生成 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomString</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> chars = <span class="string">'0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'</span>.split(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">var</span> chars_length = chars.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (! length) &#123;</span><br><span class="line">        length = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * chars_length);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        str += chars[<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * chars_length)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：貌似针对混合数组进行去重的应用例子不多，所以下面也不具体研究了。</p>
+<p>##2. 去重方法</p>
+<p>###2.1 使用indexOf()进行数组遍历<br>思路：</p>
+<ol>
+<li>构建一个新的数组存放结果</li>
+<li>for循环中每次从原数组中取出一个元素，用indexOf查找新数组中是否有该元素</li>
+<li>若没有，则存到结果数组中</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.indexOf(v) == -<span class="number">1</span>) </span><br><span class="line">            res.push(v);</span><br><span class="line">    &#125;)  </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度分析：</p>
+<p>按最坏的情况，数组里没有任何重复元素，则需要进行 n 次indexOf()运算，但indexOf()本身的复杂度为 i，所以总体数组下标查询次数为 1+2+3+…+ (n-1)=(n-1)n/2，于是复杂度为O(n2)。可见这并不是一个高效的算法。</p>
+<p>###2.2 先排序再遍历<br>思路：</p>
+<ol>
+<li>先将原数组进行排序</li>
+<li>检查原数组中的第i个元素 与 结果数组中的最后一个元素是否相同，因为已经排序，所以重复元素会在相邻位置</li>
+<li>如果不相同，则将该元素存入结果数组中</li>
+</ol>
+<p>####2.2.1 sort()方法<br>javascript内置了sort()方法，用于对数组进行排序。但其具体使用何种排序算法，取决于javascript引擎。</p>
+<figure class="highlight javascript"><figcaption><span>某种使用sort()的排序去重算法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;);    <span class="comment">/* 先排序 */</span></span><br><span class="line">    <span class="keyword">var</span> res = [<span class="keyword">this</span>[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>[i] !== res[res.length - <span class="number">1</span>])&#123;</span><br><span class="line">            res.push(<span class="keyword">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">10</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'e'</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>,<span class="string">'b'</span>, <span class="string">'d'</span>,  <span class="number">11</span>, <span class="number">12</span>, <span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用sort()对arr排序，在不同浏览器下得到不同结果：</span><br><span class="line"> * Firefox =&gt;  [0, 1, 3, "e", "e", "d", "b", "a", "a", 0, 1, 10, 11, 12, 20, "d", "b"]</span><br><span class="line"> * Chrome  =&gt;  [0, 0, 1, 1, 3, 10, 11, 12, 20, "a", "a", "b", "b", "d", "d", "e", "e"]</span><br><span class="line"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 去重的结果也不同：</span><br><span class="line"> * Firefox =&gt;  ["b", "d", 0, 1, 10, 11, 12, 20, "a", "b", "d", "e", 0, 1, 3]</span><br><span class="line"> * Chrome  =&gt;  [0, "e", 1, 3, 10, 11, 12, 0, "a", "b", "d", "e", 20]</span><br><span class="line"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(delrep2.call(arr));</span><br></pre></td></tr></table></figure>
+<p>####2.2.2 内置sort()方法纯数值数组排序速度测试<br>部分内容参考这篇文章：[4]。以该作者当时的机器与浏览器水平，对1~999999之间的长度为30000的随机数组的排序，火狐2.0居然要300多毫秒，现在火狐25.0.1在我台式机i5 CPU上，只需要3毫秒就完成同样规模的数组排序（外加去重，当然，去重的复杂度只有n，影响不大）。</p>
+<p>结论：</p>
+<p>先排序再去重能够提高复杂度，就是因为在遍历原数组以决定是否要把原数组中的某个元素放入新数组时，不必再遍历已生成的新数组，而是只需要判断该元素是否等于新数组的最后一个元素即可。</p>
+<p>对于纯数值类型的数组，可以考虑使用sort()方法减少代码量，此时要注意一定要自己指定传递给sort()方法的参考函数。但是对于数字与字符串混合的数组，不宜使用sort()方法，因为不同浏览器使用了不同的算法，会得到不同的排序结果（例如Chrome可以得到正确的排序结果，而火狐就不行）。此时应该使用自己定义的排序算法。</p>
+<p>###2.3 基于基数排序的词典法<br>如果认为一个混合数组中，元素1和元素”1”不相同，即要求区数组元素的类型，那么应该使用<code>typeof()</code>运算符将类型记忆下来。</p>
+<figure class="highlight javascript"><figcaption><span>不考虑类型的词典法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</span><br><span class="line">        res = [] ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[v]) &#123;</span><br><span class="line">            obj[v] = <span class="literal">true</span>;</span><br><span class="line">            res.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>区分类型的词典法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep4</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</span><br><span class="line">        res = [] ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[<span class="keyword">typeof</span>(v) + v]) &#123;</span><br><span class="line">            obj[<span class="keyword">typeof</span>(v) + v] = <span class="literal">true</span>;</span><br><span class="line">            res.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##3. 性能测试</p>
+<p>###3.1 测试代码<br><figure class="highlight javascript"><figcaption><span>测试模块代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readClock</span>(<span class="params">func,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">var</span> res = func.call(arr);</span><br><span class="line">    <span class="built_in">console</span>.log(+<span class="keyword">new</span> <span class="built_in">Date</span>() - start);</span><br><span class="line">    <span class="built_in">console</span>.log(res.slice(<span class="number">0</span>,<span class="number">10</span>));  <span class="comment">/* 只输出前10个元素 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = getRandomArr(<span class="number">0</span>,<span class="number">9999</span>,<span class="number">30000</span>);</span><br><span class="line">readClock(delrep1,arr);</span><br><span class="line">readClock(delrep2,arr);</span><br><span class="line">readClock(delrep3,arr);</span><br><span class="line">readClock(delrep4,arr);</span><br></pre></td></tr></table></figure></p>
+<p>###3.2 测试结果：</p>
+<p>（1）var arr = getRandomArr(0,9999,30000);</p>
+<p>单位：毫秒</p>
+<p>Chrome：  delrep1 222，delrep2 18, delrep3 4, delrep4 21</p>
+<p>Firefox： delrep1 6037，delrep2 8, delrep3 24, delrep4 47</p>
+<p>（2）var arr = getRandomArr(0,9999,500000);不运行readClock(delrep1,arr);</p>
+<p>单位：毫秒</p>
+<p>Chrome：  delrep2 174, delrep3 41, delrep4 155</p>
+<p>Firefox： delrep2 110，delrep3 379, delrep4 555</p>
+<p>###3.3 初步结论<br>对于相同的、不使用JS内置算法（如sort()）的情况下，谷歌浏览器的JS解释引擎比火狐快一个量级。</p>
+<p>火狐浏览器对sort()方法的实现，很可能使用了快速排序算法，才使得其如此之快。但从前面的混合数组例子来看，V8的sort()算法考虑更周全。</p>
+<p>Chrome的词典法去重，速度非常快。所以如果是运行于服务器端，使用Node.js，那么可以考虑优先采用词典法去重。</p>
+<p>##参考文章：</p>
+<p>[1] <a href="http://www.ituring.com.cn/article/49791" target="_blank">图灵社区-WEB前端-JavaScript数组去重</a></p>
+<p>[2] <a href="http://www.nowamagic.net/javascript/js_RemoveRepeatElement.php" target="_blank">JavaScript数组去重的几种方法</a></p>
+<p>[3] <a href="http://liunian.info/generate-random-string-in-javascript.html" target="_blank">使用 JavaScript 生成随机字符串</a></p>
+<p>[4] <a href="http://www.jb51.net/article/6136.htm" target="_blank">数据排序谁最快(javascript中的Array.prototype.sort PK 快速排序)</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/13/control-more-hardwares/" rel="prev">软件的未来：操控更多的硬件</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/06/reading-notes-on-eloquent-javascript/" rel="next">《JavaScript编程精解》笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/12/09/javascript-array-unique/"
+                   data-title="JavaScript数组去重方法汇总" data-url="http://borninsummer.com/2013/12/09/javascript-array-unique/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

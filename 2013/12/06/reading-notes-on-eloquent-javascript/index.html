@@ -1,0 +1,680 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="《JavaScript 编程精解》书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
+作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript编程精解》笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《JavaScript 编程精解》书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
+作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~">
+<meta property="og:updated_time" content="2015-08-08T17:22:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript编程精解》笔记">
+<meta name="twitter:description" content="《JavaScript 编程精解》书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。
+作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《JavaScript编程精解》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《JavaScript编程精解》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-12-06T13:28:00+08:00" content="2013-12-06">
+            2013-12-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/12/06/reading-notes-on-eloquent-javascript/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/06/reading-notes-on-eloquent-javascript/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="http://book.douban.com/subject/19933548/" class="douban_book" target="_blank" name="19933548">《JavaScript 编程精解》</a>书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。</p>
+<p>作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~~</p>
+<a id="more"></a>
+<p>###关于自动类型转换<br>作为弱类型语言，JavaScript有一套复杂的自动类型转换规则。</p>
+<p>最为重要的有这样几个：</p>
+<ol>
+<li>任意值向布尔值的类型转换</li>
+<li>任意值与字符串相加（或者应该叫做字符串拼接）时，任意值将会转换为字符串</li>
+<li>数字与字符串乘、除、减时，JavaScript将尝试把字符串转换为数字</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span> == <span class="number">0</span>;                 <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="string">''</span> == <span class="number">0</span>;                    <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="string">'5'</span> == <span class="number">5</span>;                   <span class="comment">// =&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> + <span class="string">'abc'</span>);      <span class="comment">// =&gt; 'nullabc'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">undefined</span>+<span class="string">'abc'</span>);   <span class="comment">// =&gt; 'undefinedabc'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>*<span class="string">'abc'</span>);           <span class="comment">// =&gt; NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> - <span class="string">'3'</span>);           <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> + <span class="string">'3'</span>);           <span class="comment">// =&gt; '53'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>/<span class="string">'3'</span>);             <span class="comment">// =&gt; 1.6666666666666667</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>%<span class="string">'3'</span>);             <span class="comment">// =&gt; 2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>);        <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> === <span class="literal">NaN</span>);       <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p>###函数与闭包<br>JavaScript函数是first-class functions (functions as first-class objects)。详见<a href="http://en.wikipedia.org/wiki/Funarg_problem" target="_blank">Wikipedia: Funarg problem</a>。</p>
+<p>函数栈的特性及其将函数用作对象的能力带来一个有趣的问题：如果创建的局部变量的函数调用不在栈上了，那局部变量会发生什么变化？如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> local = <span class="number">100</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> local;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦调用了<code>createFunction</code>函数，它就会创建一个局部变量<code>local</code>，并返回一个函数。如何处理这一情况就是向上函数变元问题（upwards funarg problem）。JavaScript是从一种能够解决这个问题的语言演变而来的，只要这个局部变量是可达的，就会尽力保存局部变量。</p>
+<p>闭包：<strong>包裹一些局部变量的一个函数叫做一个闭包。</strong></p>
+<p><strong>闭包：即一个函数，通过它可以引用由包含这个函数的代码所定义的变量。</strong>——Lisp语言大师 Paul Graham在<a href="http://book.douban.com/subject/6021440/" class="douban_book" name="6021440" target="_blank">《黑客与画家》</a>(pp. 195)中的解释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">amount</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> local = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">number</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> number + amount;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> addTwo = makeAdder(<span class="number">2</span>);</span><br><span class="line">addTwo(<span class="number">3</span>);    <span class="comment">// =&gt; 25</span></span><br></pre></td></tr></table></figure>
+<p>更本质的例子应该是这样的：<br><figure class="highlight javascript"><figcaption><span>javascript闭包示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = foo();</span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = foo();</span><br><span class="line"><span class="built_in">console</span>.log(b());  <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b());  <span class="comment">// =&gt; 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = a;</span><br><span class="line"><span class="built_in">console</span>.log(c());  <span class="comment">// =&gt; 4</span></span><br></pre></td></tr></table></figure></p>
+<p>纯函数：当使用函数的时候，同样的参数总是返回同样的值，而没有副作用。</p>
+<p>用递归解决一个算法问题：</p>
+<blockquote>
+<p>从数字1开始，重复执行加5或者乘3这个步骤，会产生无穷多个数字。如何编写函数，使其能够找出恰当的加法和乘法运算序列，以产生指定数字？例如，数字13=1*3+5+5。而数字15则没办法实现。</p>
+</blockquote>
+<figure class="highlight javascript"><figcaption><span>解决方案</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findSequence</span>(<span class="params">goal</span>)</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">find</span>(<span class="params">start, history</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(start == goal)&#123;</span><br><span class="line">			<span class="keyword">return</span> history;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(start&gt;goal)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> find(start+<span class="number">5</span>, <span class="string">'('</span>+history + <span class="string">'+ 5 )'</span>) || find(start*<span class="number">3</span>, <span class="string">'('</span>+history+<span class="string">' * 3 )'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> find(<span class="number">1</span>, <span class="string">'1'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">findSequence(<span class="number">34</span>);    <span class="comment">// =&gt; "(((((1 * 3) + 5) * 3) + 5) + 5)"</span></span><br></pre></td></tr></table></figure>
+<p>此方案找出的未必是最短的运算序列，只是找出一种序列而已。</p>
+<p>这样的递归非常消耗资源，例如，在Firebug里运行<code>findSequence(8001);</code>很快出结果，但是运行<code>findSequence(80001);</code>就会让火狐死掉，然后以“ too much recursion”为由不再继续进行运算。后者也会让Chrome很崩溃：“RangeError: Maximum call stack size exceeded”。</p>
+<p>作者在书里还非常推崇这种简洁美。我觉得，用递归实现算法原理设计，然后用循环取代之，才能放在项目里使用——这才是正经的程序员修炼之道。</p>
+<p>###对象属性的命名<br>中括号内的部分可以为任意表达式，中括号会将表达式转换为字符串来判断对象中是否有该属性的名称。所以，变量名称也可以当成属性名称。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gf = &#123;<span class="string">"my girlfriend name"</span>:<span class="string">"coco"</span>, age:<span class="number">19</span>, <span class="number">5</span>:<span class="string">"25"</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(gf.age);                       <span class="comment">// =&gt; 19</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="string">"5"</span>]);                      <span class="comment">// =&gt; 25</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="number">1</span>+<span class="number">2</span>+<span class="number">2</span>]);                    <span class="comment">// =&gt; 25</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="string">"my girlfriend name"</span>]);     <span class="comment">// =&gt; "coco"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> propertyName = <span class="string">"my girlfriend name"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(gf[propertyName]);             <span class="comment">// =&gt; "coco"</span></span><br></pre></td></tr></table></figure>
+<p>###对象的存储与引用<br>对象本身存储在堆上，而声名的变量只是对这个位置的引用。<br><figure class="highlight javascript"><figcaption><span>obj、obj1、obj2是对完全相同的一个对象的引用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;age:<span class="number">19</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = obj,</span><br><span class="line">    obj2 = obj1;</span><br><span class="line"><span class="keyword">var</span> obj3 = &#123;age:<span class="number">19</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj2 == obj);        <span class="comment">// =&gt; true;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj3 == obj);        <span class="comment">// =&gt; false;</span></span><br><span class="line"></span><br><span class="line">obj1.age=<span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj2.age);           <span class="comment">// =&gt; 18</span></span><br><span class="line"><span class="built_in">console</span>.log(obj[<span class="string">"age"</span>]);         <span class="comment">// =&gt; 18</span></span><br></pre></td></tr></table></figure></p>
+<p>###抽象<br>程序员一直在寻找尽可能降低程序复杂度的方法，其中很重要的一点就是努力让程序变得更抽象。对于JavaScript，有两种常用的抽象方法：函数式编程和面向对象编程。</p>
+<p>###高阶函数<br>高阶函数：操作其他函数的函数称为高阶函数。</p>
+<p>####（1）修改函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">negate</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> !func(x);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">'246'</span>,</span><br><span class="line">    str2 = <span class="number">245</span>;</span><br><span class="line"><span class="keyword">var</span> isNotNaN = negate(<span class="built_in">isNaN</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(str1));              <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(str2));              <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(isNotNaN(str2));           <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(isNotNaN(<span class="literal">NaN</span>));            <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure></p>
+<p>####（2）归约函数</p>
+<p>####（3）映射数组<br>映射数组算法遍历数组，将函数应用于每个元素（例如<code>forEach</code>），并返回新的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">func, array</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = [];</span><br><span class="line">	array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">		result.push(func(element));</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map(<span class="built_in">Math</span>.round, [<span class="number">0.01</span>,<span class="number">0.2</span>, <span class="number">2</span>, <span class="number">9.89</span>, <span class="built_in">Math</span>.PI]);</span><br></pre></td></tr></table></figure>
+<p>###对象即词典<br>我读到这个标题而没读内容，便认识到了对象的数据结构特点。对象的词典特性在数组去重中有很好的应用，具体见<a href="/blog/2013/12/09/javascript-array-unique/" title="JavaScript数组去重方法汇总">JavaScript数组去重方法汇总</a>。</p>
+<p>###原型继承<br>略过。</p>
+<p>###JavaScript正则表达式<br>JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。</p>
+<blockquote>
+<p>该语法非常含糊，以至于在前10次（或更多次）使用的时候，不得不去查看正则表达式的细节。持之以恒，就可以编写出非常复杂、神秘的表达式了。</p>
+</blockquote>
+<p>###HTTP请求<br>具有浏览器兼容性的请求对象创建函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">requestObject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">"Mxsml2.XMLHTTP"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Could not create HTTP request object."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法</span></span><br><span class="line"><span class="keyword">var</span> request = requestObject();</span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/stylesheets/data.txt'</span>, <span class="literal">false</span>);  <span class="comment">// false意味着这是一个同步请求</span></span><br><span class="line">request.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">request.responseText;  <span class="comment">// 同步请求，只有在收到服务器的返回数据时才会执行到这一句</span></span><br></pre></td></tr></table></figure></p>
+<p>####JSON优于XML的原因<br>JSON是XML的替代方案，即JavaScript Object Notation。</p>
+<ol><br><li>XML文档过于冗长</li><br><li>DOM接口在提取信息方面很笨拙</li><br></ol>
+
+<p>####读取JSON数据<br>使用<code>eval()</code>可以对JSON文档进行解析。将一个JSON文档传给<code>eval</code>之前，需要用括号将其包住；如果程序以<code>{</code>字符开始，该字符将被市委代码块的开始，而不作为对象的开始。</p>
+<p>XMLHttpRequest仅允许请求自己的域名，通常我们会知道得到的是哪种文本，所以使用<code>eval()</code>来解析JSON对象也许不是什么问题。但如果使用Script DOM Element方法获取跨域HTTP请求时，则最好不要调用<code>eval()</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = requestObject();</span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/stylesheets/data.json'</span>, <span class="literal">true</span>);  <span class="comment">// false意味着这是一个同步请求</span></span><br><span class="line">request.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(request.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> data = <span class="built_in">eval</span>(<span class="string">"("</span> + request.responseText +<span class="string">")"</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(data.lemon);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>####对HTTP请求进行包装<br><figure class="highlight javascript"><figcaption><span>XMLHttpRequest包装示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleHttpRequest</span>(<span class="params">url, success, failure</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> request = requestObject();</span><br><span class="line">	request.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(request.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(request.status == <span class="number">200</span> || !failure )&#123;</span><br><span class="line">				success(request.responseText);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span>(failure)&#123;</span><br><span class="line">				failure( request.status, request.statusText);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	request.send(<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在设计得更为复杂时，最好将参数设为一个对象。就像jQuery那样。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/09/javascript-array-unique/" rel="prev">JavaScript数组去重方法汇总</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/04/douban-book-api-ajax-request-using-script-tag/" rel="next">使用script标签在博客中跨域调用豆瓣API</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/12/06/reading-notes-on-eloquent-javascript/"
+                   data-title="《JavaScript编程精解》笔记" data-url="http://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

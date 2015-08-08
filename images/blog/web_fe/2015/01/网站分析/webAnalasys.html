@@ -1,0 +1,740 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;
+
+
+	网站分析
+	
+
+#echartsContainer,
+#ecContainerLoadTime{
+	width: 1000px;
+	height: 500px;
+	padding: 10px;
+	margin: 50px auto;
+}
+
+
+
+
+
+
+
+
+
+(function(){
+	var domEC = document.getElementById(&apos;ec">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王子龙的博客">
+<meta property="og:url" content="http://borninsummer.com/images/blog/web_fe/2015/01/网站分析/webAnalasys.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="&amp;lt;!DOCTYPE html&amp;gt;
+
+
+	网站分析
+	
+
+#echartsContainer,
+#ecContainerLoadTime{
+	width: 1000px;
+	height: 500px;
+	padding: 10px;
+	margin: 50px auto;
+}
+
+
+
+
+
+
+
+
+
+(function(){
+	var domEC = document.getElementById(&apos;ec">
+<meta property="og:updated_time" content="2015-07-26T05:45:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="王子龙的博客">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt;
+
+
+	网站分析
+	
+
+#echartsContainer,
+#ecContainerLoadTime{
+	width: 1000px;
+	height: 500px;
+	padding: 10px;
+	margin: 50px auto;
+}
+
+
+
+
+
+
+
+
+
+(function(){
+	var domEC = document.getElementById(&apos;ec">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title>
+  
+
+  
+     | 王子龙的博客
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <!DOCTYPE html>
+<html>
+<head>
+	<title>网站分析</title>
+	<meta charset="utf-8">
+<style type="text/css">
+#echartsContainer,
+#ecContainerLoadTime{
+	width: 1000px;
+	height: 500px;
+	padding: 10px;
+	margin: 50px auto;
+}
+</style>
+</head>
+<body>
+<div id="echartsContainer"></div>
+
+<div id="ecContainerLoadTime" style="width: 700px;height: 400px;"></div>
+
+<script type="text/javascript" src="echarts-plain.js"></script>
+<script>
+(function(){
+	var domEC = document.getElementById('echartsContainer');
+	var myEChart = echarts.init(domEC);
+	var option = {
+		title:{
+			text: '优化前的网站首次加载的资源统计分析',
+			subtext: '数据来源：Chrome的Network模块分析数据',
+			x: 'center'
+		},
+		tooltip : {
+	        trigger: 'item',
+	        // formatter: '{c} KB'
+	    },
+	    legend: {
+	        data:['智慧旅游', '百度地图', '天猫商城'],
+	        x: 'left'
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : false,
+	    grid: {
+	    	borderWidth: 0
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['脚本', '样式表', '图片'],
+	            splitLine: {show: false},
+	            axisLine: {show: true}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	        	name: '体积(KB)',
+	            type : 'value',
+	            splitArea : {show : false},
+	            splitLine: {show: false},
+	            axisLine: {show: true},
+	            max: 3000
+	        },{
+	        	name: '请求数(次)',
+	        	type: 'value',
+	        	splitArea : {show: false},
+	        	splitLine: {show: false},
+	        	axisLine: {show: true},
+	            max: 100
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'智慧旅游',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[2600, 480, 284]
+	        },{
+	            name:'智慧旅游',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[25, 10, 46]
+	        },{
+	            name:'百度地图',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[324, 22.7, 436]
+	        },{
+	            name:'百度地图',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[18, 1, 50]
+	        },{
+	            name:'天猫商城',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[379, 250, 1100]
+	        },{
+	            name:'天猫商城',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[49, 6, 95]
+	        }
+	    ]
+	};
+
+	
+	myEChart.setOption(option);
+})();
+
+
+function getArrayAverage(arr){
+	var length = arr.length;
+	var average = 0;
+	arr.forEach(function(val){
+		average += val/length;
+	});
+	return average.toFixed(2);
+}
+
+(function(){
+	//  无缓存
+	var contentLoadTime = [2.28, 2.25, 2.52, 2.30, 3.45, 2.79, 2.45, 2.35, 3.45, 2.27, 2.43, 2.83, 2.71];
+	var loadTime = [2.85, 3.19, 3.1, 2.94, 4.11, 3.41, 3.24, 3.32, 4.26, 2.93, 3.05, 3.37, 3.32];
+
+	var averageCLT = getArrayAverage(contentLoadTime);
+	var	averageLoadTime = getArrayAverage(loadTime);
+	console.log('无缓存平均contentLoadTime：', averageCLT);
+	console.log('无缓存平均loadTime：', averageLoadTime);
+
+
+	// 有缓存
+	var contentLoadTime2 = [1.68, 1.45, 1.26, 1.27, 1.22];
+	var loadTime2        = [2.40, 2.21, 1.88, 1.89, 1.86];
+	var averageCLT2 = getArrayAverage(contentLoadTime2);
+	var	averageLoadTime2 = getArrayAverage(loadTime2);
+	console.log('有缓存平均contentLoadTime2：', averageCLT2);
+	console.log('有缓存平均loadTime2：', averageLoadTime2);
+
+	var domEC = document.getElementById('ecContainerLoadTime');
+	var myEChart = echarts.init(domEC);
+	var option = {
+		title:{
+			text: '页面加载时间对比',
+			subtext: '数据来源：Chrome的Network模块分析数据',
+			x: 'right'
+		},
+		tooltip : {
+	        trigger: 'item',
+	        // formatter: '{c} KB'
+	    },
+	    legend: {
+	        data:['智慧旅游-优化前', '智慧旅游-优化后', '百度地图'],
+	        x: 'left'
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : false,
+	    grid: {
+	    	borderWidth: 0
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['无缓存DOMContentLoadTime', '无缓存LoadTime', '有缓存DOMContentLoadTime', '有缓存LoadTime'],
+	            splitLine: {show: false},
+	            axisLine: {show: true}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	        	name: '加载时间(s)',
+	            type : 'value',
+	            splitArea : {show : false},
+	            splitLine: {show: false},
+	            axisLine: {show: true},
+	            max: 30
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'智慧旅游-优化前',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data: [10, 30, 5.5, 10]
+	        },{
+	            name:'智慧旅游-优化后',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data: [averageCLT, averageLoadTime, averageCLT2, averageLoadTime2]
+	        },{
+	            name:'百度地图',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data:[1.78, 0.68, 1.43, 0.54]
+	        }
+	    ]
+	};
+
+	
+	myEChart.setOption(option);
+})();
+
+</script>
+</body>
+</html>
+    
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="images/blog/web_fe/2015/01/网站分析/webAnalasys.html"
+                   data-title="" data-url="http://borninsummer.com/images/blog/web_fe/2015/01/网站分析/webAnalasys.html">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

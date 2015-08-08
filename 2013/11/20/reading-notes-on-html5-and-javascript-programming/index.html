@@ -1,0 +1,669 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是《HTML5与JavaScript程序设计》。
+这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识的零星思考以及对某本书的读书笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/11/20/reading-notes-on-html5-and-javascript-programming/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是《HTML5与JavaScript程序设计》。
+这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，">
+<meta property="og:updated_time" content="2015-08-08T17:20:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识的零星思考以及对某本书的读书笔记">
+<meta name="twitter:description" content="这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是《HTML5与JavaScript程序设计》。
+这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 前端知识的零星思考以及对某本书的读书笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              前端知识的零星思考以及对某本书的读书笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-11-20T20:33:00+08:00" content="2013-11-20">
+            2013-11-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/20/reading-notes-on-html5-and-javascript-programming/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" class="douban_book" name="20430370" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。</p>
+<p>这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，希望他们以后会出修订版或者第二版。</p>
+<p>除非特别声明，所有代码均在Firefox V25.0.1+ 浏览器的Firebug控制台下测试。</p>
+<p>OK, GO!<br><a id="more"></a></p>
+<p>###HTML5发展历程</p>
+<ul>
+<li>超文本标记语言（第一版），1993年6月作为IETF工作草案发布</li>
+<li>HTML2.0， 1995年11月作为RFC1866发布</li>
+<li>HTML3.2， 1996年1月14日发布</li>
+<li>HTML4.0， 1997年12月18日发布</li>
+<li>HTML4.01，1999年12月24日发布，HTML4.0的微小改进</li>
+<li>HTML5， 2008年1月22日公布第一份正式草案</li>
+</ul>
+<p>###V8引擎<br>V8引擎在运行之前将JavaScript编译成机器码，而非字节码或是直译它，以此提升性能。更进一步，使用了如内联缓存（inline caching）等方法来提高性能。有了这些功能，JavaScript程序与V8引擎的速度媲美二进制编译。（来自Wikipedia，看上去《HTML5与JavaScript程序设计》这书的不少内容也是直接摘抄自维基百科。）</p>
+<p>###乔布斯：对Flash的思考<br>2010年4月，乔帮主的一篇文章——<a href="http://www.apple.com/hotnews/thoughts-on-flash/" target="_blank" title="原文地址">Thoughts on Flash（对Flash的思考）</a>——将原本只是在开发人员中知名的HTML5推向主流媒体。乔帮主指出，指出随着HTML5的发展，观看视频或其它内容时，Adobe Flash将不再是必须的。</p>
+<p>这篇文章让我对开源、标准化有更深的理解了。也在此推荐一个可以将Flash文件迅速转换为HTML5的网站：<a href="https://www.pixelplant.com/" target="_blank" title="Convert Flash to HTML5">Convert Flash to HTML5</a>。</p>
+<p>###判断奇偶数<br>现在知道取余数运算<code>%</code>是可以非常精确的，但也会有误差，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>运行结果为<code>true</code>。但是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102.00000000000001</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>结果为<code>false</code>，而<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102.000000000000001</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>运行结果是<code>true</code>。所以我认为，这里面应该有个截断误差的问题，好比小于10-15次方的部分就会被舍弃。当然，如果知道自己使用取余数运算符时传给它的数总是整数，那就没有任何问题。对小数取余也没什么实际意义，当用户给<code>%</code>一个小数时，JavaScript只是不得不对它计算一下而已。</p>
+<p>另外，Number类用于四舍五入的<code>toFixed()</code>方法，最多也只能支持到小数点后16位。</p>
+<p>###函数参数传递<br>JavaScript大部分参数是值传递，而对function、object、array类型，则是引用传递。例如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    array.push(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line">test(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// =&gt;  [0, 1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure></p>
+<p>###void函数与死链接<br>void是一个操作符，它计算一个表达式，但是不返回值。可以用来实现死链接，下面是三种实现死链接的方法——不过，话说死链接是干嘛用的？嗯，这种hack不可取，知道就行了。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"JavaScript:void(0)"</span>&gt;</span>死链接<span class="tag">&lt;/<span class="title">a</span>&gt;</span>  // 单击没有任何作用</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"JavaScript:void((function()&#123;alert('hello');&#125;)())"</span>&gt;</span>死链接<span class="tag">&lt;/<span class="title">a</span>&gt;</span>  // 单击会运行该函数</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>死链接<span class="tag">&lt;/<span class="title">a</span>&gt;</span>  // #默认的锚点是#top，未必如愿</span><br></pre></td></tr></table></figure></p>
+<p>###有限的栈空间与函数递归<br>浏览器的栈空间是有限的，递归应尽量使用迭代来代替。</p>
+<p>###eval动态执行<br>这是JavaScript的强大之处吧，eval方法（全局方法）铸就了JSON以及Ajax的牛逼。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'&#123;"name":"lili","sex":"male"&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> jsonObj = <span class="built_in">eval</span>(<span class="string">'('</span>+str+<span class="string">')'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(jsonObj.name);  <span class="comment">// =&gt; lili</span></span><br></pre></td></tr></table></figure></p>
+<p>###替换全部字串<br>由于字符串的<code>replace()</code>方法只会替换它碰到的第一个字串，于是书中6.1.2节给出了实现将字符串A中全部字串b1替换为b2的方法，其实很简单：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceAll</span>(<span class="params">str, oldStr, newStr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> value = str;</span><br><span class="line">	<span class="keyword">while</span>(value.indexOf(oldStr)&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">		value = value.replace(oldStr, newStr);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'hello world, hello JavaScript, hello Octopress.'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(replaceAll(str,<span class="string">'hello'</span>,<span class="string">'hi'</span>));  <span class="comment">// =&gt;  'hi world, hi JavaScript, hi Octopress.'</span></span><br></pre></td></tr></table></figure></p>
+<p>###String类的四种正则表达式方法<br>String类有<span class="Mosaic">四种支持正则表达式的方法<sup>注</sup><span class="annotate-content"><span class="triTop"></span><span class="triTopOuter"></span>这部分内容主要参考自<a href="http://book.douban.com/subject/10549733/" title="去豆瓣看看" target="_blank">《JavaScript权威指南（第六版）》</a> pp262~263.</span></span>：</p>
+<p>####search()<br><code>search()</code>返回第一个与正则表达式匹配的子串的起始位置。它不支持全局检索，因为它忽略正则表达式参数中的修饰符<code>g</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">"It's a very nice day today."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str1.search(<span class="regexp">/n/i</span>));  <span class="comment">// =&gt; 12</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'It\'s a very nice day today.'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str2.search(<span class="regexp">/ n/i</span>));  <span class="comment">// =&gt;  11，注意n前面的空格</span></span><br></pre></td></tr></table></figure></p>
+<p>####replace()<br><code>replace()</code>方法执行检索与替换操作。其接受两个参数：第一个参数是正则表达式或字符串（上面的例子），第二个参数是要换成的新的字符串。如果正则表达式中设置了修饰符<code>g</code>，那么源字符串中所有与模式匹配的子串都将替换成第二个参数指定的字符串；如果不带修饰符<code>g</code>，则只替换所匹配的第一个子串。所以上面例子的<code>replaceAll()</code>可以用原生<code>replace()</code>方法使用正则表达式参数实现。</p>
+<p>####match()<br><code>match()</code></p>
+<p>####exec()<br><code>exec()</code></p>
+<p>###parseInt<br>parse这个单词意为“vt.从语法上描述或分析（词句等）”。因此<code>parseInt</code>可理解为将字符串尽可能解析为<code>Int</code>类型的数字，而<code>parseFloat()</code>则意味着尽可能将字符串解析为浮点数。</p>
+<p>###JavaScript与矩阵<br>JavaScript本身不支持多维数组，例如我们无法这样构造一个10×10的矩阵：<code>var _2dArray[10][10];</code>，只能通过一位数组来构造多维数组。代码6-28比较好地说明了构造矩阵的方法。</p>
+<p>###location对象<br>今年10月份百度web前端笔试的试题就有一道题，让你用JavaScript实现从当前窗口的URL中提取search字段的方法。</p>
+<p>大致如此书所说的这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRULParams</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> str = location.search;</span><br><span class="line">	<span class="keyword">if</span>(str.indexOf(<span class="string">'?'</span>)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> array = str.substring(<span class="number">1</span>).split(<span class="string">'&amp;'</span>);</span><br><span class="line">		<span class="keyword">return</span> array;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###Screen对象<br>属性<code>availHeight</code>，<code>availWidth</code>，指设备（显示器）的可用最大高度、宽度。对windows系统，要除去任务栏。不过win7下如果将任务栏设为“自动隐藏任务栏”，那么它们就等于屏幕的分辨率高度、宽度。</p>
+<p>对于台式机，<code>DeviceXDPI</code>、<code>DeviceYDPI</code>是<code>undefined</code>。</p>
+<p>##书评<br>当我读到114页代码9-15“删除表格中的一行”，函数名写为`function showRow(lineBtn)·，就实在忍不下去了，删除表格行跟showRow毛关系哎？</p>
+<p>于是感觉这本书实在太烂了。唯一可取之处是它的代码还可以一看（虽然好多好多错误，以及不符合规范的写法）。国内的作者到时用点心去写啊，起码不要犯低级错误啊，109页，他们愣是把<code>element.nextSibling</code>解释为“前一个兄弟节点”，把<code>element.previousSibling</code>解释为“后一个兄弟节点”——你妹啊！！忍无可忍，不再读下去。</p>
+<p>总体评分★★☆☆☆</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/21/illustrator-svg-practice-color-gradient/" rel="prev">Illustrator色彩渐变练习</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/19/reading-notes-on-book-web-design-for-developers/" rel="next">《写给程序员的Web设计书》读书笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/11/20/reading-notes-on-html5-and-javascript-programming/"
+                   data-title="前端知识的零星思考以及对某本书的读书笔记" data-url="http://borninsummer.com/2013/11/20/reading-notes-on-html5-and-javascript-programming/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

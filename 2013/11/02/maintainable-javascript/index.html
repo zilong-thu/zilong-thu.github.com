@@ -1,0 +1,725 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="“程序是写给人读的，只是偶尔让计算机执行一下。”
+——Donald Knuth
+
+关于本书：《编写可维护的JavaScript》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《编写可维护的JavaScript》笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/11/02/maintainable-javascript/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="“程序是写给人读的，只是偶尔让计算机执行一下。”
+——Donald Knuth
+
+关于本书：《编写可维护的JavaScript》">
+<meta property="og:image" content="http://borninsummer.com/images/blog/phisicsJS.PNG">
+<meta property="og:updated_time" content="2015-08-08T17:16:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《编写可维护的JavaScript》笔记">
+<meta name="twitter:description" content="“程序是写给人读的，只是偶尔让计算机执行一下。”
+——Donald Knuth
+
+关于本书：《编写可维护的JavaScript》">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《编写可维护的JavaScript》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《编写可维护的JavaScript》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-11-02T22:23:00+08:00" content="2013-11-02">
+            2013-11-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/11/02/maintainable-javascript/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/02/maintainable-javascript/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><blockquote>
+<p>“程序是写给人读的，只是偶尔让计算机执行一下。”</p>
+<p>——Donald Knuth</p>
+</blockquote>
+<p>关于本书：<a href="http://book.douban.com/subject/21792530/" class="douban_book" name="21792530" target="_blank">《编写可维护的JavaScript》</a></p>
+<a id="more"></a>
+<p>###换行<br>逗号也是运算符，例如下面，逗号应该作为前一行的结尾。如果把它拿到下面作为第二行的开始，ASI(Automatic Semicolon Insertion，自动分号插入)机制会在某些场景下在前一行结束的位置自动插入分号，于是导致错误的发生。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的代码风格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">document, element, window, strings, navigator, context,</span><br><span class="line">		div_somediv</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// Here is some code of this function</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的代码风格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">document, element, window, strings, navigator, context</span><br><span class="line">		, div_somediv</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// Here is some code of this function</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###注释<br>单行注释前应该有一个空行。多行注释最好如下所示进行标注与缩进。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">document, element, window, strings, navigator, context,</span><br><span class="line">		div_somediv</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 这里是一个单行注释</span></span><br><span class="line">	mix(strings, context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">document, element</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	 * 这里是多行注释</span><br><span class="line">	 * 星号后面有个空格</span><br><span class="line">	 */</span></span><br><span class="line">	print(<span class="built_in">document</span>.text);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###花括号的对齐方式<br>之前我也没在意过这个问题，读到这一节才明白一件事：对于JavaScript，花括号最好放在块语句中第一句代码的末尾，原因与就是对于换行规范的解释：避免错误的分号自动插入。Google JavaScript风格指南则明确禁止将左花括号放在块语句首行的下一行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐的做法</span></span><br><span class="line"><span class="keyword">if</span> (condition)&#123;</span><br><span class="line">	doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	doSomethingElse();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不好的做法，单纯地模仿C#风格而已，却可能导致自己出现错误</span></span><br><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">&#123;</span><br><span class="line">	doSomething();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	doSomethingElse();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###switch的default<br>如果<code>switch</code>的<code>default</code>分支什么也不做，那还要不要留着<code>default</code>？Nicholas大神认为这时候应该直接省略掉defaul，因为这可以节省一些字节。</p>
+<p>想想像谷歌、百度这样的网站吧，节省一个单词 <code>default</code>，说不定就可以因为加快网站的加载速度而留住了更多的用户。</p>
+<p>网站在真正发布后，注释是会全部被删掉的。所以开发人员不必关心注释的字节数——个人观点。</p>
+<p>###for-in循环<br><code>for-in</code>循环是用来遍历（说成是“枚举”也许更合适——个人观点）对象属性的，不应用来遍历数组。</p>
+<p><code>for-in</code>循环总是会遍历对象的全部属性——包括从原型继承来的属性。当遍历自定义对象的属性时，往往会因为意外的结果而终止。因此，最好使用<code>hasOwnProperty()</code>方法来为<code>for-in</code>循环过滤出实例属性（instance property）。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 这个代码是对书中的修正</span><br><span class="line"> * var prop =&gt;改为  var object</span><br><span class="line"> * 因为for-in方法中的prop不需要用var来声明</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> objec = &#123;id: <span class="number">30</span>, value: <span class="string">'good'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> ( prop <span class="keyword">in</span> objec)&#123;</span><br><span class="line">    <span class="keyword">if</span> (objec.hasOwnProperty(prop))&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'Property name is '</span> + prop);</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'Property value is '</span> + objec[prop]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###变量声明与函数声明</p>
+<ol>
+<li><p>总是将局部变量的定义作为函数内第一条语句</p>
+</li>
+<li><p>使用单<code>var</code>语句——又一种减少代码字节数的方法——每个变量的初始化独占一行；对于那些没有进行初始化的变量，它们应当出现在<code>var</code>语句的尾部</p>
+</li>
+<li><p>哪怕是写在<code>for</code>循环里临时使用的变量，也最好放到函数顶部的变量声明语句中。</p>
+</li>
+<li><p>函数声明不应当出现在语句块之内。例如</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad idea...</span></span><br><span class="line"><span class="keyword">if</span> (condition)&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="string">'Hi!'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="string">'Yo!'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###严格模式</p>
+<p>###原始包装类型（primitive wrapper types）<br>JavaScript有三种原始包装类型：<code>String</code>、<code>Boolean</code>和<code>Number</code>。每种类型都代表全局作用域中的一个构造函数，并分别表示各自对应的原始值的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Nicholas'</span>;</span><br><span class="line">name.author = <span class="string">'yes'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(name.author);  <span class="comment">// =&gt;undefined</span></span><br></pre></td></tr></table></figure>
+<p>第二行，JavaScript引擎会根据name的上下文类型临时创建了<code>String</code>对象，为这个临时对象添加了一个 autor属性，但在这一句执行结束后，临时的<code>String</code>对象就被销毁了。</p>
+<p>不推荐使用<code>new</code>关键字来创建原始包装类型对象。</p>
+<p>###将CSS从JavaScript中抽离<br>JavaScript不应当直接操作样式，以便保持和CSS的松耦合。在JavaScript中将样式添加至元素的几种方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的写法 - 原生JS</span></span><br><span class="line">element.className += <span class="string">' reveal'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法 - HTML5</span></span><br><span class="line">element.classList.add(<span class="string">'reveal'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法 - jQuery</span></span><br><span class="line">$(element).addClass(<span class="string">'reveal'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法 - YUI</span></span><br><span class="line">Y.one(element).addClass(<span class="string">'reveal'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 好的写法 - Dojo</span></span><br><span class="line">dojo.addClass(element, <span class="string">'reveal'</span>);</span><br></pre></td></tr></table></figure>
+<p>###将HTML从JavaScript中抽离<br>【待实践】</p>
+<p>在HTML中使用占位符预先写好文档结构（模板），然后使用JS根据模板动态生成页面。</p>
+<p>这一节的技术是比较新潮的。复杂客户端模板可参考Handlebars所提供的解决方案。</p>
+<p>###单全局变量模式<br>单全局变量模式已经在各种流行的JavaScript类库中广泛使用了。</p>
+<p>单全局变量模式是指，整个上下文中，只创建一个全局变量；它不会和内置的API冲突，并将你所有的功能代码都挂载到这个全局对象上。</p>
+<blockquote>
+<ul>
+<li>YUI定义了唯一一个YUI全局对象</li>
+<li>jQuery定义了两个全局对象，$和jQuery。只有在$被其他的类库使用了的情况下，为了避免冲突而使用jQuery。</li>
+<li>Dojo定义了一个dojo全局对象。</li>
+<li>Cloure类库定义了一个goog全局对象。</li>
+</ul>
+</blockquote>
+<p>关于模块，提到了两个：YUI模块和AMD模块（Asynchronous Module Definition，异步模块定义）。</p>
+<p>现在比较好的一个物理效果引擎，<a href="http://wellcaffeinated.net/PhysicsJS/" target="_blank" rel="external">PhysicsJS</a>，就采用了AMD模式。</p>
+<img src="/images/blog/phisicsJS.PNG">
+<p>短小的代码则可以考虑采用“零全局变量”方式嵌入到页面中。</p>
+<p>###检测引用值<br>引用值也称作对象（<code>object</code>）。在JavaScript中除了5种原始类型外的值都是引用。</p>
+<p>JavaScript内置引用类型：</p>
+<ul>
+<li>Object</li>
+<li>Array</li>
+<li>Date</li>
+<li>Error</li>
+<li>Regexp</li>
+<li>Function</li>
+</ul>
+<p>检测某个引用值类型的最好方法是使用<code>instanceof</code>运算符，此运算符的返回值类型是Boolean。注意：所有的对象都被认为是<code>Object</code>的实例。</p>
+<p>关于检测数组，ECMAScript 5 将<code>Array.isArray()</code>正式引入JavaScript，唯一的目的就是准确地检测一个值是否为数组。</p>
+<p>不过此前Kangax提出的优雅的解决方案还是值得欣赏的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在当前，可以这样实现数组检测：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Array</span>.isArray === <span class="string">"function"</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Array</span>.isArray(value);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###关于继承<br>（1）基于对象的继承</p>
+<p>基于对象的继承也叫做“原型继承”，一个对象继承另外一个对象（的属性和方法）是不需要调用构造函数的。ECMAScript 5 的<code>Object.create()</code>方法是实现这种继承的最简单的方式。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name: <span class="string">"Nicholas"</span>,</span><br><span class="line">	sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myPerson = <span class="built_in">Object</span>.create(person);</span><br><span class="line">myPerson.sayName();</span><br></pre></td></tr></table></figure></p>
+<p>myPerson会自动继承所有来自person的属性和方法，而如果myPerson重新实现sayName方法，则myPerson.sayName()会自动切断对person.sayName()的访问。</p>
+<p>（2）基于类型的继承</p>
+<p>###ECMAScript 5 阻止修改策略</p>
+<ul>
+<li>防止扩展</li>
+<li>密封</li>
+<li>冻结</li>
+</ul>
+<p>##总结<br>对于纯粹学习JavaScript的人来说，可以只阅读本书的第一部分和第二部分。第三部分“自动化”，讲在团队开发中如何组织文件管理、文件合并、校验与测试等。</p>
+<p>Nicholas写在引言中的话也让人印象深刻。<a href="http://book.51cto.com/art/201303/385990.htm" target="_blank" rel="external">这里</a>可以看到引言的网页版。强烈推荐想读此书或者在犹豫要不要买此书的人都先去读一读这篇引言。</p>
+<p>总体而言，收获很大。我一边读，就一边觉得，其实像《编写可维护的JavaScript》《JavaScript经典实例》《JavaScript核心技术》这些小部头的书，所讲的内容在《JavaScript权威指南》也大都提到过了，仅仅由于《JavaScript权威指南》是我学习JavaScript时读的第一本书，况且又如此大部头，因而没能读仔细、读透彻的缘故。</p>
+<p>读了《JavaScript权威指南》之后我读了《JavaScript核心概念及实践》《高性能JavaScript》，然后现在又读了《编写可维护的JavaScript》，感觉后面这几本可以称为《JavaScript权威指南》的辅助读本，也是进阶读本。<br>现在觉得当时如果买Nicholas的《JavaScript高级程序设计》作为学习JavaScript的第一本书，效果可能会更好。因为《JavaScript权威指南》确实偏晦涩。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/05/practical-css3-develop-and-design-reading-note/" rel="prev">《CSS3实战：开发与设计》笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/01/write-with-another-computer/" rel="next">在第二台电脑上配置Octopress</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/11/02/maintainable-javascript/"
+                   data-title="《编写可维护的JavaScript》笔记" data-url="http://borninsummer.com/2013/11/02/maintainable-javascript/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

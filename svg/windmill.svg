@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="svg_layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="420px" height="520px" viewBox="0 0 420 520" enable-background="new 0 0 420 520" xml:space="preserve">
+<style type="text/css">
+#windmill_wings:hover{
+	cursor: pointer;
+	stroke: #999;
+}
+#windmill_wings:active{
+	stroke: #666;
+}
+</style>
+<path fill="#754C24" stroke="#603813" stroke-miterlimit="10" d="M43.702,500.425l-18.113-9.667l172.439-287.562l15.791,8.731
+	L43.702,500.425z"/>
+<g id="windmill_wings">
+	<g>
+		<path fill="#DBEF00" d="M204.068,203.263l70.917,70.668l60.804-70.668c23.074-38.719,28.841-47.745,35.493-65.294
+			c25.66-67.701,15.281-104.592,15.281-104.592L204.068,203.263z"/>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="328.752" y1="362.2148" x2="257.9591" y2="433.0077" gradientTransform="matrix(1 0 0 -1 -20.96 603.3398)">
+			<stop  offset="0.0056" style="stop-color:#9EA100"/>
+			<stop  offset="0.1348" style="stop-color:#F6FF0D"/>
+			<stop  offset="0.1816" style="stop-color:#FCFF04"/>
+			<stop  offset="0.2405" style="stop-color:#FFFF00"/>
+			<stop  offset="0.3399" style="stop-color:#F5F931"/>
+			<stop  offset="0.4715" style="stop-color:#E8F16C"/>
+			<stop  offset="0.5989" style="stop-color:#DEEB9D"/>
+			<stop  offset="0.7186" style="stop-color:#D6E6C2"/>
+			<stop  offset="0.8287" style="stop-color:#D1E3DE"/>
+			<stop  offset="0.9259" style="stop-color:#CDE1EE"/>
+			<stop  offset="1" style="stop-color:#CCE0F4"/>
+		</linearGradient>
+		<path fill="url(#SVGID_1_)" d="M204.068,203.263l70.917,70.668l60.804-70.668c0,0-31.67,14.671-68.137,6.337
+			c-46.666-10.664-52.239-16.898-52.239-16.898L204.068,203.263z"/>
+	</g>
+	<g>
+		<path fill="#4947FF" d="M203.416,203.672l72.976-68.541l-68.619-63.108c-37.936-24.341-48.702-31.419-66.022-38.646
+			C74.936,5.492,37.318,15.263,37.318,15.263L203.416,203.672z"/>
+		
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="265.1934" y1="499.752" x2="194.4668" y2="429.0254" gradientTransform="matrix(1 0 0 -1 -20.96 603.3398)">
+			<stop  offset="0.0056" style="stop-color:#005B97"/>
+			<stop  offset="0.1348" style="stop-color:#0075BE"/>
+			<stop  offset="0.1367" style="stop-color:#0176BF"/>
+			<stop  offset="0.1723" style="stop-color:#118BCC"/>
+			<stop  offset="0.2072" style="stop-color:#1B98D4"/>
+			<stop  offset="0.2405" style="stop-color:#1E9CD7"/>
+			<stop  offset="0.3503" style="stop-color:#45ABDD"/>
+			<stop  offset="0.5054" style="stop-color:#75BEE5"/>
+			<stop  offset="0.6529" style="stop-color:#9BCDEC"/>
+			<stop  offset="0.7887" style="stop-color:#B6D7F0"/>
+			<stop  offset="0.9086" style="stop-color:#C6DEF3"/>
+			<stop  offset="1" style="stop-color:#CCE0F4"/>
+		</linearGradient>
+		<path fill="url(#SVGID_2_)" d="M202.953,203.763l73.776-67.677l-67.379-62.611c0,0,12.744,30.996,2.785,67.053
+			c-12.746,46.141-19.225,51.429-19.225,51.429L202.953,203.763z"/>
+	</g>
+	<g>
+		<path fill="#00FF00" d="M203.447,203.571l-66.79-75.626l-65.631,68.471c-25.822,36.942-35.8,61.703-41.708,79.515
+			c-23.255,70.115-17,102.332-17,102.332L203.447,203.571z"/>
+		
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="197.0635" y1="370.8994" x2="125.0933" y2="442.8696" gradientTransform="matrix(1 0 0 -1 -20.96 603.3398)">
+			<stop  offset="0" style="stop-color:#CCE0F4"/>
+			<stop  offset="0.0927" style="stop-color:#CAE2EE"/>
+			<stop  offset="0.2143" style="stop-color:#C2E6DE"/>
+			<stop  offset="0.352" style="stop-color:#B7EDC3"/>
+			<stop  offset="0.5004" style="stop-color:#A7F79D"/>
+			<stop  offset="0.6019" style="stop-color:#9AFF7F"/>
+			<stop  offset="0.6479" style="stop-color:#96FF7B"/>
+			<stop  offset="0.6962" style="stop-color:#89FF6E"/>
+			<stop  offset="0.7455" style="stop-color:#75FF59"/>
+			<stop  offset="0.7953" style="stop-color:#58FF3C"/>
+			<stop  offset="0.8208" style="stop-color:#46FF2A"/>
+			<stop  offset="0.9944" style="stop-color:#00E92F"/>
+		</linearGradient>
+		<path fill="url(#SVGID_3_)" d="M204.386,204.157l-67.729-76.212l-63.631,66.471c0,0,32.668-12.288,68.419-1.281
+			c45.749,14.087,50.846,20.716,50.846,20.716L204.386,204.157z"/>
+	</g>
+	<g>
+		<path fill="#FF00FF" d="M203.515,204.073l-72.629,65.992l73.928,65.722c38.945,22.691,47.504,28.124,65.115,34.603
+			c67.95,24.992,111.069,10.19,111.069,10.19L203.515,204.073z"/>
+		
+			<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="186.4702" y1="298.6504" x2="255.6749" y2="367.855" gradientTransform="matrix(1 0 0 -1 -20.96 603.3398)">
+			<stop  offset="0.0056" style="stop-color:#94008D"/>
+			<stop  offset="0.1348" style="stop-color:#FF15DF"/>
+			<stop  offset="0.1596" style="stop-color:#FF2EE1"/>
+			<stop  offset="0.1873" style="stop-color:#FF43E2"/>
+			<stop  offset="0.2145" style="stop-color:#FF50E3"/>
+			<stop  offset="0.2405" style="stop-color:#FF54E3"/>
+			<stop  offset="0.2561" style="stop-color:#FD59E4"/>
+			<stop  offset="0.4339" style="stop-color:#EC89E9"/>
+			<stop  offset="0.6027" style="stop-color:#DEAFEE"/>
+			<stop  offset="0.7581" style="stop-color:#D4CAF1"/>
+			<stop  offset="0.8954" style="stop-color:#CEDAF3"/>
+			<stop  offset="1" style="stop-color:#CCE0F4"/>
+		</linearGradient>
+		<path fill="url(#SVGID_4_)" d="M203.435,204.207l-72.55,65.858l73.642,64.858c0,0-14.933-30.546-6.9-67.083
+			c10.276-46.75,16.465-52.376,16.465-52.376L203.435,204.207z"/>
+	</g>
+</g>
+<circle id="center_circle" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" cx="204.318" cy="203.263" r="50"/>
+<circle fill="#ED1E79" cx="204.318" cy="203.263" r="40"/>
+<script>
+	<![CDATA[
+var myVar = {
+	id_of_setinterval: null,
+	isWindmillRunning: false,
+	angle: 0,
+	SVG_windmill: null
+};
+	myVar.SVG_windmill = document.getElementById('windmill_wings');
+	myVar.SVG_windmill.onclick = function(e){
+		e.preventDefault();
+
+		if(!myVar.isWindmillRunning){
+			myVar.id_of_setinterval = setInterval('runTheWindmill()',35);
+		} else{
+			clearInterval(myVar.id_of_setinterval);
+		}
+
+		myVar.isWindmillRunning = !myVar.isWindmillRunning;
+	};
+
+function runTheWindmill(){
+	var angle = myVar.angle;
+	var center_circle = document.getElementById('center_circle');
+	var cx = center_circle.getAttribute('cx'),
+		cy = center_circle.getAttribute('cy');
+	myVar.SVG_windmill.setAttribute('transform','rotate('+ angle +','+cx+','+cy+')');
+	myVar.angle += 1;
+	if(myVar.anglel>360){
+		myVar.angle -= 360;
+	}
+}
+]]>
+</script>
+</svg>

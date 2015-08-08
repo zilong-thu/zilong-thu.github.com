@@ -1,0 +1,720 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”
+而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。
+单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。
+我读的是第一版，但并不推荐任何新手也去读第一版——这种偶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript DOM 编程艺术》笔记">
+<meta property="og:url" content="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”
+而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。
+单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。
+我读的是第一版，但并不推荐任何新手也去读第一版——这种偶">
+<meta property="og:updated_time" content="2015-08-08T17:20:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript DOM 编程艺术》笔记">
+<meta name="twitter:description" content="这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”
+而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。
+单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。
+我读的是第一版，但并不推荐任何新手也去读第一版——这种偶">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《JavaScript DOM 编程艺术》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《JavaScript DOM 编程艺术》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-12-02T15:17:00+08:00" content="2013-12-02">
+            2013-12-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/12/02/reading-notes-on-dom-scripting/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/02/reading-notes-on-dom-scripting/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”</p>
+<p>而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。</p>
+<p>单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。</p>
+<p>我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="douban_book" href="http://book.douban.com/subject/1921890/" target="_blank" name="1921890">&gt;&gt;图书基本信息</a>。</p>
+<p>本文一顿瞎写，老鸟们就别喷了，哥也只是一个四处找工作碰壁的JS新手罢了~~<br><a id="more"></a></p>
+<p>###DOM的诞生</p>
+<blockquote>
+<p>标准化的DOM有着非常远大的抱负。</p>
+<p>浏览器制造商们感兴趣的只不过是一些通过JavaScript操控网页的具体办法，但W3C退出的标准化DOM却可以让任何一种程序设计语言对使用任何一种标记语言编写出来的任何一份文档进行控制。</p>
+<p>DOM是一种API。简单地说，API就是一组已经得到有关各方共同认可的基本约定。……别忘了，英制度量衡与公制度量衡之间的差异至少导致过一次火星探测任务的失败。</p>
+</blockquote>
+<p>W3C对DOM的定义是：“一个与系统平台和编程语言无关的接口，程序和脚本可以通过这个接口动态地对文档的内容、结构和样式进行访问和修改。”</p>
+<p>###setAttribute()方法与运行时DOM</p>
+<blockquote>
+<p>这里有一个非常值得关注的细节：通过setAttribute()方法对文档做出的修改，将使得文档在浏览器窗口的显示效果和/或行为动作发生相应的变化，但我们在通过浏览器的view source（查看源代码）选项去查看文档的源代码时看到的仍然是原来的属性值——也就是说，setAttribute()方法做出的修改不会反映在文档本身的源代码里。这种“表里不一”的现象源自DOM的工作模式：先加载文档的静态内容、再以动态的方式对它们进行刷新，动态刷新不影响文档的静态内容。</p>
+</blockquote>
+<p>还真是如此。作者在115页才给出更详细的说明：</p>
+<p>在abc.html文件中使用setAttribute()方法修改某项属性，则abc.html并未发生任何变化。发生变化的是运行时的DOM树——在浏览器看来，DOM节点才是文档（document）。所以，以动态方式实时“创建”HTML内容的本质，是在改变浏览器的运行时DOM节点树。</p>
+<p>###取消事件<br>如下代码，由于onclick的事件处理函数接收到的JS代码返回值是false，于是onclick事件处理函数将认为“这个链接没有被点击”。<br><figure class="highlight html"><figcaption><span>空链接示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.baidu.com/"</span> <span class="attribute">onclick</span>=<span class="value">"return false;"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>《JavaScript权威指南（第六版）》pp442：</p>
+<blockquote>
+<p>一些事件有与之相关的默认操作。例如，当超链接上发生click事件时，浏览器的默认操作是按照链接加载新页面。事件处理程序可以通过返回一个适当的值、调用事件对象的某个方法或者设置事件对象的某个属性来阻止默认操作的发生。这有时称为“取消”事件。</p>
+</blockquote>
+<p>###nodeType<br>nodeType属性总共有12种可取值，但其中仅有3种具有实用价值：</p>
+<ul>
+<li>元素节点 nodeType == 1</li>
+<li>属性节点 nodeType == 2</li>
+<li>文本节点 nodeType == 3</li>
+</ul>
+<p>###为什么要确保网页在禁用JS的情况下也能工作？<br>使用<code>javascript:</code>伪协议，或者使用内嵌的事件处理函数（如在超链接里写`onclick=”(function(){})();return false;”）都是非常垃圾的做法。</p>
+<p>正常的人类用户是不会禁用图像和JavaScript的，即使有，也会越来越少。但有一类用户，即搜索机（searchbot），基本不认识图像和脚本。作者说，在成书的那个时候，只有极少数搜索机能够理解JS代码。</p>
+<p>放在现代来讲，就是指网络蜘蛛吧。</p>
+<p>###结构与行为分离</p>
+<blockquote>
+<p>作为一条原则，如果你想用JavaScript给某个网页添加一些行为，就不应该让你的JavaScript代码对这个网页的结构有任何依赖。</p>
+</blockquote>
+<p>例如，在查询DOM中某个元素时，如果获取不到，就不执行下面的JavaScript代码。</p>
+<p>另外，<span style="font-weight:bold;">结构化程序设计</span>理论提出了这样一条规则：每个函数应该只有一个入口点和一个出口点。</p>
+<p>作者认为，同一个函数有多个出口点的情况是可以接受的，但前提是它们应该集中出现在这个函数的开头部分。</p>
+<p>我个人认为，无所谓，取决于团队风格。</p>
+<p>###window.onload<br>Simon Willison发明了这样的可以无限添加函数到window.onload事件的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> oldonload = <span class="built_in">window</span>.onload;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">window</span>.onload != <span class="string">'function'</span>)&#123;</span><br><span class="line">		<span class="built_in">window</span>.onload = func;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			oldonload();</span><br><span class="line">			func();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但我个人还是喜欢直接写 window.onload = function(){…}; ，并将其放在<code>&lt;body&gt;</code>标签之前。或者使用jQuery的 $(document).ready(function(){}); 。</p>
+<p>###DOM Core与HTML-DOM<br>DOM Core并不专属于JavaScript，支持DOM的任何一种程序设计语言都可以使用它们。它们的用途也不仅限于处理网页，而是可以用来处理任何使用标记语言（比如XML）编写出来的文档。</p>
+<p>DOM Core方法示例：</p>
+<ul>
+<li>getElementById()</li>
+<li>getElementsByTagName()</li>
+<li>getAttribute()</li>
+<li>setAttribute()</li>
+</ul>
+<p>在DOM Core出现之前，人们使用HTML-DOM来进行文档操作。两种方法的比较如下：</p>
+<figure class="highlight javascript"><figcaption><span>HTML-DOM与DOM Core的比较</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取文档元素</span></span><br><span class="line"><span class="comment">// DOM Core</span></span><br><span class="line"><span class="keyword">var</span> forms = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"form"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// HTML-DOM</span></span><br><span class="line"><span class="keyword">var</span> forms = <span class="built_in">document</span>.forms;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取元素属性</span></span><br><span class="line"><span class="comment">// DOM Core</span></span><br><span class="line"><span class="keyword">var</span> url = element.getAttribute(<span class="string">"src"</span>);</span><br><span class="line"><span class="keyword">var</span> source = element.getAttribute(<span class="string">"href"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// HTML-DOM</span></span><br><span class="line"><span class="keyword">var</span> url = element.src;</span><br><span class="line"><span class="keyword">var</span> source = element.href;</span><br></pre></td></tr></table></figure>
+<p>二者可以得到相同的结果。HTML-DOM代码通常比较简短，但是它们只能用来处理Web文档。</p>
+<p>###innerHTML属性</p>
+<blockquote>
+<p>如今的浏览器都支持innerHTML属性，但这个属性并不是W3C DOM标准的组成部分。它始见于微软公司的IE4浏览器，并从那时起被其他的浏览器接受。不过，从目前来看，它不太可能成为标准化DOM的组成部分。</p>
+</blockquote>
+<p>如下面的HTML代码，其DOM树示意图紧随其后。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"testdiv"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is <span class="tag">&lt;<span class="title">em</span>&gt;</span>my<span class="tag">&lt;/<span class="title">em</span>&gt;</span> content.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<embed src="/svg/DOM_tree.svg" type="image/svg+xml">
+
+<p>innerHTML属性是字符串，值为元素节点标签内的html代码。本质来讲，innerHTML属性是来自HTML-DOM的，而非来自DOM Core的API。</p>
+<blockquote>
+<p>还有一件事要提醒大家：innerHTML属性是一项专利技术，不是一项业界标准。我认为，在编写JavaScript代码时应该避免使用任何形式的专利，这样我们才不会再次陷入一场浏览器大战。在上一场这样的战争里，不同品牌的浏览器使用的是不同的DOM，这给程序员和用户带来了许多烦恼和不便。虽说innerHTML属性现在已经得到了广泛的支持，但它的未来仍是一个未知数。</p>
+<p>在任何时候，标准的DOM都是可以替代innerHTML的。虽说这往往需要多编写一些代码才能获得同样的效果，但DOM提供了更高的精准性和更多的功能。</p>
+</blockquote>
+<p>###DOM节点方法<br>createElement()、createTextNode()都是document的方法。</p>
+<p>而appendChild()、insertBefore()是元素节点的方法。<br><figure class="highlight javascript"><figcaption><span>在元素pp前插入一个新节点元素newElement</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pp.parentNode.insertBefore(newElement, pp);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><figcaption><span>用户自定义的insertAfter()方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertAfter</span>(<span class="params">newElement, targetElement</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> parent = targetElement.parentNode;</span><br><span class="line">	<span class="keyword">if</span>(parent.lastChild == targetElement)&#123;</span><br><span class="line">		parent.appendChild(newElement);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		parent.insertBefore(newElement, targetElement.nextSibling);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###style属性与className属性<br>DOM元素节点的style属性是个对象，这个对象各个属性的值的类型是字符串。<br><figure class="highlight html"><figcaption><span>验证style属性是对象的代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"test_style_div"</span> <span class="attribute">style</span>=<span class="value">"border:1px solid #ccc;border-radius:1em;"</span>&gt;</span></span><br><span class="line">文本节点</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>文本节点的style属性值：<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"test_style_res"</span> <span class="attribute">style</span>=<span class="value">"color:blue;"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_div'</span>);</span><br><span class="line">	<span class="keyword">var</span> nodename = div.nodeName;</span><br><span class="line">	<span class="keyword">var</span> str = <span class="keyword">typeof</span> div.style;</span><br><span class="line">	<span class="keyword">var</span> par = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_res'</span>);</span><br><span class="line">	par.innerHTML = <span class="string">'div.nodeName =&gt; '</span> + nodename  <span class="comment">// DIV</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;typeof div.style =&gt; '</span>+str  <span class="comment">// object</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;par.style.valueOf() =&gt; '</span>+ par.style.valueOf();  <span class="comment">// [object CSSStyleDeclaration]</span></span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	 * 如果要修改某个元素节点的样式属性</span><br><span class="line">	 * 直接给其style赋个新的字符串值就可以了</span><br><span class="line">	 */</span></span><br><span class="line">	par.setAttribute(<span class="string">"style"</span>,<span class="string">"font-weight:bold;"</span>);  <span class="comment">// 粗体，不再是蓝色 </span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>DOM使用Camel记号来解决css属性的连字符问题，例如style对象的常见的属性：</p>
+<ul style="list-style-type: square;font-weight:normal;font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;"><br><li>backgroundColor ·········· background-color</li><br><li>color<br></li><li>fontFamily ··············· font-family</li><br><li>fontSize ················· font-size</li><br><li>fontWeight ··············· font-weight</li><br><li>marginTop ················ margin-top</li><br></ul>
+
+<figure class="highlight html"><figcaption><span>DOM可识别简写css属性的结算结果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"example"</span> <span class="attribute">style</span>=<span class="value">"color: grey; font: 12px Arial,sans-serif;"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> para = <span class="built_in">document</span>.getElementById(example);</span><br><span class="line"><span class="built_in">console</span>.log(para.style.fontSize); <span class="comment">// =&gt; 12px</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不过，style属性无法访问外部样式表声明的CSS属性值。它只能识别内嵌在DOM元素标记中的内联样式。</p>
+<p>DOM的className属性则是个字符串。操作起来比style方便多了，可以直接进行字符串拼接、删减，来操作元素的样式。例如最原始的addClass()方法（“原始”是与jQuery的addClass()方法相比而言的）：<br><figure class="highlight javascript"><figcaption><span>较原始的addClass()方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">element, value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!element.className)&#123;</span><br><span class="line">		element.className = value;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> newClassName = element.className + <span class="string">' '</span> + value;</span><br><span class="line">		element.className = newClassName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###再说表格</p>
+<blockquote>
+<p>在用CSS布置和美化网页时，千万不要人云亦云地认为表格都是不好的。利用表格来安排页面元素的屏幕显示位置不一定是个好主意，但利用表格来显示表格数据却是理所应当的。</p>
+</blockquote>
+<p>###第10章：用JS实现动画效果<br>很有趣。基本原理跟《JS权威指南》里给的例子类似。计划做个这方面的家庭作业：几张图片，为我大二去的甘肃民勤宣传一下节约用水。</p>
+<p>###Ajax的火爆从何处开始？<br>都怪Google，它使用了Google Suggest技术，从而点燃了众多程序员屌丝们对Ajax的热情，并使之一发不可收拾，从此进入Web2.0时代。</p>
+<p>##总结<br>本书中译本写于2006年9月，英文原版出版时间是2005-9-20。在书的最后，作者表示本书写成于Web2.0时代到来之前——这正是让我觉得可敬之处，已经过去9年了，书中的内容丝毫不过时啊！</p>
+<p>推荐度：★★★★★</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/03/way-back-to-school-after-an-audition/" rel="prev">坐在冬天的马路边吃午饭的女生</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/02/reading-notes-on-the-non-desiners-design-book/" rel="next">《写给大家看的设计书》笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/12/02/reading-notes-on-dom-scripting/"
+                   data-title="《JavaScript DOM 编程艺术》笔记" data-url="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

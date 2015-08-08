@@ -1,0 +1,652 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="HTML5将XML和HTML的区别进一步缩小，表现在：它允许SVG（和MathML）标记直接在HTML文件中使用，而不需要命名空间的声明或者标签前缀。
+这里演示的前两个例子来自《JavaScript权威指南·第六版》page 618.代码有些许优化。第三个例子根据基于XML的SVG应用指南介绍的方法，利用Illustrator CS6 自带的模板生成SVG，然后导入到HTML中。
+初步感觉，SVG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 SVG 初步学习">
+<meta property="og:url" content="http://borninsummer.com/2013/11/12/html5-svg-study/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="HTML5将XML和HTML的区别进一步缩小，表现在：它允许SVG（和MathML）标记直接在HTML文件中使用，而不需要命名空间的声明或者标签前缀。
+这里演示的前两个例子来自《JavaScript权威指南·第六版》page 618.代码有些许优化。第三个例子根据基于XML的SVG应用指南介绍的方法，利用Illustrator CS6 自带的模板生成SVG，然后导入到HTML中。
+初步感觉，SVG">
+<meta property="og:updated_time" content="2015-08-08T17:17:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 SVG 初步学习">
+<meta name="twitter:description" content="HTML5将XML和HTML的区别进一步缩小，表现在：它允许SVG（和MathML）标记直接在HTML文件中使用，而不需要命名空间的声明或者标签前缀。
+这里演示的前两个例子来自《JavaScript权威指南·第六版》page 618.代码有些许优化。第三个例子根据基于XML的SVG应用指南介绍的方法，利用Illustrator CS6 自带的模板生成SVG，然后导入到HTML中。
+初步感觉，SVG">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> HTML5 SVG 初步学习 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              HTML5 SVG 初步学习
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-11-12T14:28:00+08:00" content="2013-11-12">
+            2013-11-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/HTML5/" itemprop="url" rel="index">
+                  <span itemprop="name">HTML5</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/11/12/html5-svg-study/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/12/html5-svg-study/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>HTML5将XML和HTML的区别进一步缩小，表现在：它允许SVG（和MathML）标记直接在HTML文件中使用，而不需要命名空间的声明或者标签前缀。</p>
+<p>这里演示的前两个例子来自《JavaScript权威指南·第六版》page 618.代码有些许优化。第三个例子根据<a href="http://book.douban.com/subject/1246981/" target="_blank">基于XML的SVG应用指南</a>介绍的方法，利用Illustrator CS6 自带的模板生成SVG，然后导入到HTML中。</p>
+<p>初步感觉，SVG的基本绘图方法如<code>path</code>、 <code>arc</code>、 <code>move to</code>、 <code>line to</code>等都与<code>HTML5 canvas</code>很相似。</p>
+<a id="more"></a>
+<p>###例1：饼状图</p>
+<div id="pieChartContainer"></div><br><script type="text/javascript" src="/javascripts/mylibs/pieChart.js"></script><br><script type="text/javascript"><br>$(document).ready(function(){<br>    var svgPieChart = pieChart([12,24,33,65], 640, 400, 200, 200, 150,<br>                      [‘red’,’blue’,’yellow’,’green’],<br>                      [‘North’,’South’,’East’,’West’],<br>                      400, 100);<br>    var pieChartContainer = document.getElementById(‘pieChartContainer’);<br>    pieChartContainer.appendChild(svgPieChart);<br><br>    drawTicks(50,50,48,’ticks’);<br><br>    // 运行矢量时钟<br>     updateTime();<br><br>    // 为房子和树注册事件处理程序<br>    var tree_hat_01 = document.getElementById(‘tree_hat_01’);<br><br>    tree_hat_01.onclick = function(e){<br>        e.preventDefault();<br><br>        if(!myVariables.isVibrating){<br>            myVariables.id_of_setinterval = setInterval(‘sinVibration()’,50);<br>        } else{<br>            clearInterval(myVariables.id_of_setinterval);<br>        }<br><br>        myVariables.isVibrating = !myVariables.isVibrating;<br>    };<br>});<br></script><br><br>###例2：SVG模拟时钟<br>从这个例子则可以看出<code>svg</code>与<code>canvas</code>除了“矢量图与位图的区别”外，另一个明显区别：前者可对文档结构进行属性操作从而产生动画，而后者的动画则是基于像素的。<br><br><div><br><svg id="svg-clock" viewbox="0 0 100 100" width="350" height="350" style="stroke: black; stroke-linecap: round; fill: #eef;"><br/>    <defs><br/>        <filter id="hand-shadow" x="-50%" y="-50%" width="200%" height="200%"><br/>            <fegaussianblur in="SourceAlpha" stddeviation="1" result="blur"><br/>            <feoffset in="blur" dx="1" dy="1" result="shadow"><br/>            <femerge><br/>                <femergenode in="SourceGraphic"><femergenode in="shadow"><br/>            </femergenode></femergenode></femerge><br/>        </feoffset></fegaussianblur></filter><br/>    </defs><br/>    <circle id="face" cx="50" cy="50" r="48" style="stroke-width:3;"/><br/>    <g id="ticks"/><br/>    <g id="numbers" style="font-family: sans-serif; font-size: 7pt; font-weight: bold; text-anchor: middle; stroke: none; fill: black;"><br/>        <text x="50" y="15">12</text><br/>        <text x="88" y="53">3</text><br/>        <text x="50" y="91">6</text><br/>        <text x="12" y="53">9</text><br/>    </g><br/>    <g id="hands"><br/>        <line id="hourhand" filter="url(#hand-shadow)" x1="50" y1="50" x2="50" y2="28" style="stroke-width: 5;"/><br/>        <line id="minutehand" filter="url(#hand-shadow)" x1="50" y1="50" x2="50" y2="24" style="stroke-width: 3;"/><br/>        <polygon id="secondhand" points="50,58 49,50 50,16 51,50" style="fill:red;stroke:red;"/><br/>    </g><br/></svg><br></div>
+
+<p>###例3：Adobe Illustrator导出SVG<br>在本博文中尝试导入Illustrator输出的SVG文件到HTML中。是一朵花。</p>
+<embed src="/svg/flower.svg" type="image/svg+xml">
+
+<p>成功了。这是从Illustrator CS6 自带的模板里摘出来的（要不然原始模板太大）。这个SVG文件大小为49KB，却是完全矢量化的。比位图的优势大太多了。</p>
+<p>###例4：SVG的交互设计<br>这应该是最有应用价值的部分了。</p>
+<p>已知的一个很好的Web应用是<a href="https://moqups.com/" target="_blank">moqups</a>。</p>
+<p>在这里我也做了一个小例子出来。图像是根据<a href="http://book.douban.com/subject/24303555/" target="_blank">《从新手到高手：IllustratorCS6中文版从新手到高手》</a>最开始的介绍画的。这本书也提到了图像的SVG格式：</p>
+<blockquote>
+<p>SVG是目前最火热的图像文件格式之一，它的英文全称为Scalable Vector Graphics，意思为可缩放的矢量图形。它是基于XML（Extensible Markup Language），由World Wide Web Consortium（W3C）联盟进行开发的。严格来说XML是一种开放标准的矢量图形语言，可设计出高分辨率的Web图形页面。用户可以直接用代码来描绘图像，可以用任何文字处理工具打开SVG图像，通过改变部分代码来使图像具有交互功能，并可以随时插入到HTML中通过浏览器来观看。</p>
+<p>SVG文件比JPEG和GIF格式的文件要小很多，因而下载也很快。可以相信，SVG的开发将会为Web提供新的图像标准。</p>
+</blockquote>
+<p>然后我用Illustrator CS6从零开始画了个简单例子：树和房子。大小只有5KB左右。直接写在HTML里。结果如下，鼠标单击左侧的树（绿色部分），树冠会以正弦规律摆动；再点击，则停止摆动。</p>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="640px" height="480px" viewbox="0 0 640 480" style="enable-background:new 0 0 640 480;" xml:space="preserve"><br/><path id="tree_hat_01" style="fill:#39B54A;" d="M96.136,306.18c-6.919,5.519-25.795,20.166-42.913,4.713c-18.935-17.094,0-41.396,0-41.396 s-21.088,0.554-23.072-14.349c-2.539-19.069,18.854-24.837,18.854-24.837s-14.886-23.74,4.466-34.78 c22.325-12.735,29.771,19.318,29.771,19.318s23.816-12.142,33.244,2.769c6.459,10.216-1.489,26.484-1.489,26.484 s29.517,1.38,27.035,34.742c-1.877,25.242-21.732,27.635-28.53,25.955c-6.005-1.484-8.187-6.884-8.187-6.884 S107.383,297.209,96.136,306.18z"/><br/><path style="fill:#603813;" d="M63.891,228.647c0,0,10.424,6.177,17.174,17.047c5.886,9.479,12.375,20.003,16.041,26.196 c6.762,11.424,9.338,16.74,11.937,31.518c4.466,25.387-6.946,67.592-6.946,67.592H86.715c0,0,14.389-44.965,12.9-63.727 c-0.736-9.285-10.453-33.917-18.86-53.683C74.15,238.063,63.891,228.647,63.891,228.647z"/><br/><path style="fill:#603813;" d="M86.736,255.149c2.444-10.324,2.329-9.484,3.056-11.56c1.559-4.455,7.583-17.158,7.583-17.158    s-3.946,17.012-4.706,23.188c-1.518,12.336,0,14.908,0,14.908L86.736,255.149z"/><br/><path style="fill:#603813;" d="M94.607,288.273"/><br/><path style="fill:#603813;" d="M93.119,282.479c0,0,0.015-2.203-10.56-2.854c-6.768-0.415-17.436,1.462-17.436,1.462    c4.521-1.554,4.16-2.193,15.63-4.967c8.463-2.046,10.448,0,10.448,0L93.119,282.479z"/><br/><path style="fill:#603813;" d="M107.39,295.073c0,0-1.629-1.109,7.886-9.317c5.046-4.353,15.841-11.307,15.841-11.307    s-11.914,14.461-15.181,19.043c-6.894,9.665-6.085,16.482-6.085,16.482"/><br/><path id="tree_hat_02" style="fill:#39B54A;" d="M550.136,287.967c-6.918,5.518-25.795,20.165-42.912,4.712c-18.936-17.094,0-41.396,0-41.396    s-21.089,0.554-23.072-14.349c-2.538-19.069,18.854-24.837,18.854-24.837s-14.886-23.74,4.466-34.778    c22.324-12.736,29.771,19.317,29.771,19.317s23.816-12.142,33.244,2.769c6.46,10.215-1.488,26.483-1.488,26.483    s29.516,1.38,27.035,34.742c-1.879,25.242-21.732,27.636-28.529,25.956c-6.007-1.485-8.188-6.883-8.188-6.883    S561.383,278.995,550.136,287.967z"/><br/><path style="fill:#603813;" d="M517.89,210.434c0,0,10.426,6.179,17.175,17.047c5.886,9.479,12.375,20.004,16.041,26.197    c6.763,11.423,9.338,16.346,11.938,31.123c4.466,25.391-6.947,67.199-6.947,67.199h-15.381c0,0,14.389-44.57,12.899-63.334    c-0.735-9.283-10.451-33.72-18.859-53.485C528.149,219.652,517.89,210.434,517.89,210.434z"/><br/><path style="fill:#603813;" d="M540.736,236.938c2.444-10.325,2.331-9.485,3.056-11.563c1.561-4.454,7.584-17.157,7.584-17.157    s-3.946,17.013-4.707,23.188c-1.518,12.336,0,14.909,0,14.909L540.736,236.938z"/><br/><path style="fill:#603813;" d="M548.608,270.06"/><br/><path style="fill:#603813;" d="M547.12,264.265c0,0,0.014-2.203-10.56-2.853c-6.769-0.416-17.435,1.46-17.435,1.46    c4.521-1.553,4.16-2.193,15.629-4.967c8.463-2.045,10.447,0,10.447,0L547.12,264.265z"/><br/><path style="fill:#603813;" d="M561.39,276.859c0,0-1.629-1.108,7.887-9.316c5.045-4.354,15.84-11.308,15.84-11.308    s-11.912,14.463-15.18,19.043c-6.894,9.665-6.085,16.482-6.085,16.482"/><br/><polygon style="fill:#003874;stroke:#000000;stroke-miterlimit:10;" points="446.5,184.224 321.5,86.532 196.5,184.224 196.5,353.5 446.5,353.5 "/><br/><polygon style="fill:#42210B;stroke:#000000;stroke-miterlimit:10;" points="321.344,86.174 167.933,207.428 127.276,208.23    204.331,144.535 204.308,77.5 234.451,77.5 234.6,124.571 321.157,55.346 510.194,207.5 471.126,207.5 "/><br/><rect x="286.5" y="240.5" style="fill:#F2F2F2;stroke:#000000;stroke-miterlimit:10;" width="67" height="113"/><br/><rect x="294.5" y="246.5" style="fill:#603813;stroke:#000000;stroke-miterlimit:10;" width="52" height="95"/><br/><rect x="286" y="341" style="fill:#999999;" width="69" height="6"/><br/><rect x="280" y="347" style="fill:#666666;" width="81" height="7"/><br/><line style="fill:#F2F2F2;stroke:#F2F2F2;stroke-miterlimit:10;" x1="301.5" y1="289" x2="301.5" y2="309"/><br/></svg></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/11/15/svg-interaction-example-2/" rel="prev">HTML5 SVG交互实例：转动的风车</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/11/11/webgl-study-step-01/" rel="next">Hello, WebGL</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/11/12/html5-svg-study/"
+                   data-title="HTML5 SVG 初步学习" data-url="http://borninsummer.com/2013/11/12/html5-svg-study/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

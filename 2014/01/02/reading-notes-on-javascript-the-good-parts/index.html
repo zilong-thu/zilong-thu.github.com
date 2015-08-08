@@ -1,0 +1,764 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="《JavaScript语言精粹》
+伯乐在线 - 给JavaScript初学者的24条最佳实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript语言精粹》笔记">
+<meta property="og:url" content="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《JavaScript语言精粹》
+伯乐在线 - 给JavaScript初学者的24条最佳实践">
+<meta property="og:image" content="http://borninsummer.com/images/blog/javascript/20140102/where_do_javascript_comes.PNG">
+<meta property="og:updated_time" content="2015-08-08T17:22:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript语言精粹》笔记">
+<meta name="twitter:description" content="《JavaScript语言精粹》
+伯乐在线 - 给JavaScript初学者的24条最佳实践">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《JavaScript语言精粹》笔记 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《JavaScript语言精粹》笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2014-01-02T14:37:00+08:00" content="2014-01-02">
+            2014-01-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/01/02/reading-notes-on-javascript-the-good-parts/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/02/reading-notes-on-javascript-the-good-parts/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="http://book.douban.com/subject/3590768/" class="douban_book" name="3590768" target="_blank" title="《JavaScript语言精粹》">《JavaScript语言精粹》</a></p>
+<p><a href="http://blog.jobbole.com/53199/" target="_blank">伯乐在线 - 给JavaScript初学者的24条最佳实践</a></p>
+<p><img src="/images/blog/javascript/20140102/where_do_javascript_comes.PNG" title="JavaScript语言特性来源"></p>
+<a id="more"></a>
+<p>##第3章 对象</p>
+<p>###检索<br>优先考虑使用<code>.</code>表示法，因为它更紧凑且可读性更好。</p>
+<p>尝试从<code>undefined</code>的成员属性中取值将会导致TypeError异常，这时可以通过<code>&amp;&amp;</code>运算符来避免错误。</p>
+<p>###引用<br>对象通过引用来传递。它们永远不会被复制。</p>
+<p>###原型<br>Prototype</p>
+<p>所有通过对象字面量创建的对象都连接到<code>Object.prototype</code>，它是JavaScript中的标配对象。</p>
+<p>原型连接在更新时是不起作用的。当我们对某个对象做出改变时，不会触及该对象的原型。原型链只有在检索值的时候才被用到。</p>
+<figure class="highlight javascript"><figcaption><span>使用某对象作为原型创建新对象</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Object</span>.create !== <span class="string">'function'</span>)&#123;   <span class="comment">// 此处中文版有错误，不知为何，Object.create被印刷成Object.beget。可参加英文原版</span></span><br><span class="line">	<span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	<span class="string">'first-name'</span>: <span class="string">'Zilong'</span>,</span><br><span class="line">	<span class="string">'last-name'</span> : <span class="string">'Wang'</span>,</span><br><span class="line">	age : <span class="number">25</span>,</span><br><span class="line">	sayName     : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'My name is '</span>+ <span class="keyword">this</span>[<span class="string">'first-name'</span>] + <span class="string">' '</span> + <span class="keyword">this</span>[<span class="string">'last-name'</span>] + <span class="string">'.'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以person对象为原型的新对象</span></span><br><span class="line"><span class="keyword">var</span> another_person = <span class="built_in">Object</span>.create(person);</span><br><span class="line"></span><br><span class="line">another_person.sayName();                <span class="comment">// =&gt; My name is Zilong Wang.</span></span><br><span class="line">another_person[<span class="string">'first-name'</span>] = <span class="string">'San'</span>;</span><br><span class="line">another_person[<span class="string">'last-name'</span>] = <span class="string">'Zhang'</span>;</span><br><span class="line"></span><br><span class="line">another_person.sayName();                <span class="comment">// =&gt; My name is San Zhang.</span></span><br><span class="line">person.sayName();                        <span class="comment">// =&gt; My name is Zilong Wang.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对原型的更新会立即对所有基于此原型创建的对象可见</span></span><br><span class="line">person.address = <span class="string">'Beijing'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(another_person.address);     <span class="comment">// =&gt; Beijing</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不过在检查自有属性的时候，address并不在another_person中</span></span><br><span class="line"><span class="comment">// hasOwnProperty方法不会检查原型链</span></span><br><span class="line"><span class="built_in">console</span>.log(another_person.hasOwnProperty(<span class="string">'address'</span>));      <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p>##第4章 函数</p>
+<p>###函数对象</p>
+<blockquote>
+<p>JavaScript设计得最出色的就是它的函数的实现。它几乎接近完美。但是，想必你也能预料到，JavaScript的函数也存在瑕疵。</p>
+</blockquote>
+<p>JavaScript中的函数就是对象。对象是“名/值”对的几何并拥有一个连接到原型对象的隐藏连接。对象字面量产生的对象连接到<code>Object.prototype</code>。函数对象连接到<code>Function.prototype</code>（该对象本身连接到<code>Object.prototype</code>）。每个函数在创建时会附加两个隐藏属性：函数的上下文和实现函数行为的代码。</p>
+<p>这里涉及的原型链如下图所示。</p>
+<embed src="/images/blog/javascript/20140102/prototype_chain.svg" type="image/svg+xml">
+
+<p>另外，每个函数在创建时也随配有一个<code>prototype</code>属性。它的值是一个拥有<code>constructor</code>属性且值即为该函数的对象。这和隐藏连接到<code>Function.prototype</code>完全不同。</p>
+<p>一个内部函数除了可以访问自己的参数和变量，同时它也能自由访问把它嵌套在其中的付函数的参数与变量。通过函数字面量创建的函数对象包含一个连到外部上下文的连接。这被称为闭包（closure）。它是JavaScript强大表现力的来源。</p>
+<p>###调用（Invocation）</p>
+<p>JavaScript一共有4种函数调用模式：</p>
+<ul>
+<li>方法调用模式（the method invocation pattern）</li>
+<li>函数调用模式（the function invocation pattern）</li>
+<li>构造器调用模式（the constructor invocation function）</li>
+<li>apply调用模式（the apply invocation pattern）</li>
+</ul>
+<p>伴随着不同的调用方式，<code>this</code>也会指向不同的对象。</p>
+<p>####函数调用模式<br>函数调用模式下（函数不作为对象的方法），this指向全局对象。在浏览器中，就是window对象。</p>
+<p>*这是JavaScript语言设计上的一个错误。</p>
+<p>####构造器调用模式<br>如果在一个函数前面带上 <code>new</code> 来调用，那么背地里将会创建一个连接到该函数的<code>prototype</code>成员的新对象，同时<code>this</code>将被绑定到那个新对象上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Quo = <span class="function"><span class="keyword">function</span>(<span class="params">string</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.status = string;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为 Quo.prototype 是所有用 new 关键字来调用时创建的新对象的原型</span></span><br><span class="line"><span class="comment">// 所以，这样给Quo的所有实例提供一个名为 get_status 的公共方法：</span></span><br><span class="line">Quo.prototype.get_status = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.status);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myQuo = <span class="keyword">new</span> Quo(<span class="string">"confused"</span>);</span><br><span class="line"></span><br><span class="line">myQuo.get_status();                 <span class="comment">// =&gt; confused</span></span><br></pre></td></tr></table></figure>
+<p><strong>我的感觉是：通过构造器函数实现继承的方式，是提供给那些无法接受原型继承思想的程序员来用的。</strong>JavaScript风格的“构造函数”应该是闭包（Closure）形式的、不使用new关键字。</p>
+<p>####Apply调用模式<br>函数是对象，所以函数可以拥有方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> array = [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> sum = add.apply(<span class="literal">null</span>,array);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> statusObject = &#123;</span><br><span class="line">	status: <span class="string">'A-OK'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// statusObject 并没有继承自 Quo.prototype，但我们可以在statusObject上调用</span></span><br><span class="line"><span class="comment">// get_status 方法，尽管 statusObject 并没有一个名为 get_status 的方法</span></span><br><span class="line"><span class="comment">// 原因就是 apply 调用将 get_status 内的 this 值绑定到传递给它的对象上了</span></span><br><span class="line">Quo.prototype.get_status.apply(statusObject);   <span class="comment">//=&gt; A-OK</span></span><br></pre></td></tr></table></figure>
+<p>###关于返回值<br>一个函数总是会返回一个值。如果没有指定返回值，则返回 <code>undefined</code>。</p>
+<p>如果函数调用时在前面加上了 <code>new</code>前缀，且返回值不是一个对象，则返回 <code>this</code>（该新对象）。</p>
+<p>###扩展类型的功能</p>
+<p>JS允许给语言的基本类型扩充功能。例如通过给Function.prototype增加方法来使得该方法对所有函数可用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只有在确定没有改方法时添加它</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.method = <span class="function"><span class="keyword">function</span>(<span class="params">name, func</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">this</span>.prototype[name])&#123;</span><br><span class="line">		<span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// JavaScript缺少一个移除字符串收尾空白的方法，可用这样弥补：</span></span><br><span class="line"><span class="comment">// 由于在ECMAScript 5 规范中，已经为String对象添加了trim方法，所以先检测有没有原生的</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="built_in">String</span>.trim)&#123;</span><br><span class="line">	<span class="built_in">String</span>.method(<span class="string">'trim'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">'  aa '</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = str1.trim();</span><br><span class="line"><span class="built_in">console</span>.log(str1.length);     <span class="comment">// =&gt; 5</span></span><br><span class="line"><span class="built_in">console</span>.log(str2.length);     <span class="comment">// =&gt; 2</span></span><br></pre></td></tr></table></figure>
+<p>###递归（Recursion）</p>
+<p>####汉诺塔</p>
+<figure class="highlight javascript"><figcaption><span>汉诺塔问题的寻常解</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hanoi = <span class="function"><span class="keyword">function</span>(<span class="params">disc, src, aux, dst</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(disc &gt; <span class="number">0</span>)&#123;</span><br><span class="line">		hanoi(disc-<span class="number">1</span>, src, dst, aux);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'Move disc '</span>+ disc + <span class="string">' from '</span>+ src + <span class="string">' to '</span>+ dst);</span><br><span class="line">		hanoi(disc-<span class="number">1</span>, aux, src, dst);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hanoi(<span class="number">3</span>, <span class="string">'Src'</span>, <span class="string">'Aux'</span>, <span class="string">'Dst'</span>);</span><br></pre></td></tr></table></figure>
+<p>####DOM遍历<br>递归函数可以非常高效地操作树形结构，比如浏览器端的文档对象模型（DOM）。每次递归调用时处理指定的树的一小段。下面的代码实际上解释了jQuery库中属性选择器的工作原理。</p>
+<figure class="highlight javascript"><figcaption><span>DOM遍历代码示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> walk_the_DOM = <span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">node, func</span>)</span>&#123;</span><br><span class="line">	func(node);</span><br><span class="line">	node = node.firstChild;</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		walk(node, func);</span><br><span class="line">		node = node.nextSibling;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementsByAttribute</span>(<span class="params">att, value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> results = [];</span><br><span class="line"></span><br><span class="line">	walk_the_DOM(<span class="built_in">document</span>.body, <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> actual = node.nodeType === <span class="number">1</span> &amp;&amp; node.getAttribute(att);</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> actual === <span class="string">'string'</span> &amp;&amp; (actual === value || <span class="keyword">typeof</span> value !== <span class="string">'string'</span>))&#123;</span><br><span class="line">			results.push(node);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	$(<span class="string">'#test_DOM_walker'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> text_success = <span class="built_in">document</span>.createTextNode(<span class="string">'---- ^_^ 嗯，找到这个id为test_myAttribute的元素节点了 ~~~~ '</span>);</span><br><span class="line">		<span class="keyword">var</span> text_failed  = <span class="built_in">document</span>.createTextNode(<span class="string">'---- 不妙，没有找到这个节点诶 ………… '</span>);</span><br><span class="line">		<span class="keyword">var</span> p = getElementsByAttribute(<span class="string">'id'</span>, <span class="string">'test_myAttribute'</span>)[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">if</span>(p)&#123;</span><br><span class="line">			p.appendChild(text_success);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			p.appendChild(text_failed);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<button id="test_DOM_walker" type="button" class="btn btn-primary">运行测试代码</button><br><p id="test_myAttribute" class="output" myattribute="x">some test paragraph.寻找本页面DOM中id属性为test_myAttribute的元素节点，如果成功找到了，就在本段落后面附上一段成功提示。否则，提示失败。</p><br><br>####尾递归优化<br><br><figure class="highlight javascript"><figcaption><span>什么是尾递归？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个尾递归</span></span><br><span class="line"><span class="keyword">var</span> factorial = <span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n, a</span>)</span>&#123;</span><br><span class="line">	a = a || <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> factorial(n-<span class="number">1</span>, a*n);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回的是n*fact(n-1)，而不是递归函数自身调用的结果</span></span><br><span class="line"><span class="comment">// 因此这个不是尾递归</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> n*fact(n-<span class="number">1</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(n&lt;<span class="number">0</span> )&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br><br>尾递归优化：如果一个函数返回自身递归调用的结果，那么这个调用的过程总是可以被替换为一个循环，从而可以显著提高速度，这就是尾递归优化。<br><br>不过貌似到目前为止，依旧没有任何JavaScript解释器提供尾递归优化。深度递归的函数可能会因为堆栈溢出而运行失败。<br><br>###闭包（Closure）<br>函数作用域的好处是内部函数可以访问定义它们的外部函数的参数和变量（除了<code>this</code>和<code>arguments</code>）。<br><br>闭包的特征之一就是：<br><br>&gt; 内部函数拥有比它的外部函数更长的生命周期。<br><br><p id="test_fade" class="output">点击下面按钮，本段落背景色先变黄，然后渐变为白色。</p><br><button id="button_test_fade" type="button" class="btn btn-primary">运行背景色渐变代码</button>
+
+<p>###模块（Module）</p>
+<blockquote>
+<p>模块的一般形式是：一个定义了私有变量和函数的函数；利用闭包创建可以访问私有变量和函数的特权函数；最后返回这个特权函数，或者把它保存到一个可访问的地方。</p>
+<p>使用模块模式就可以摒弃全局变量的使用。它促进了信息隐藏和其他优秀的设计实践。对于应用程序的封装，或者构造其他单例对象，模块模式非常有用。</p>
+</blockquote>
+<p>###柯里化（curry）</p>
+<p>###记忆（Memoization）<br>记忆是一种优化方法：函数将先前操作的结果记录在某个对象里，从而避免无谓的重复运算。</p>
+<figure class="highlight javascript"><figcaption><span>未经优化的Fibonacci数列计算</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fibonacci = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 记录fibonacci 函数的调用次数</span></span><br><span class="line">	<span class="keyword">var</span> invocation_count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> fib = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">		++invocation_count;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> n&lt;<span class="number">2</span> ? n: fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;=<span class="number">10</span>; ++i)&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(fib(i));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.log(invocation_count);    <span class="comment">// =&gt; 453</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>使用闭包存储一个结果数组，每次调用fib函数时，先检查当前n值是否已经存在于数组中，如果已经存在，就立即返回这个结果。</p>
+<figure class="highlight javascript"><figcaption><span>使用记忆方法对Fibonacci递归算法进行优化</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fibonacci = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> invocation_count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> memo = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">var</span> fib = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> res = memo[n];</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> res !== <span class="string">'number'</span>)&#123;</span><br><span class="line">			res = fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">			memo[n] = res;</span><br><span class="line">		&#125;</span><br><span class="line">		invocation_count++;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;=<span class="number">10</span>; ++i)&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(fib(i));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.log(invocation_count);    <span class="comment">// =&gt; 29</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>##第5章 继承</p>
+<p>###伪类<br>这一节的主要目的是，让大家不要使用伪类方式去实现继承。</p>
+<p>###原型<br>待细读。</p>
+<p>##第6章 数组<br>数组是特殊的对象。其效率比C语言的数组低很多。</p>
+<p>##第7章 正则表达式</p>
+<p>##第8章 方法<br>没有太多特别的内容。类似犀牛书的第三部分。</p>
+<p>##第9章 代码风格<br>我觉得，更详细的内容可以参考<a href="http://book.douban.com/subject/21792530/" class="douban_book" name="21792530" target="_blank">《编写可维护的JavaScript》</a>。不过本章值得重新重视的还是有几点：</p>
+<ul>
+<li>在<code>if</code>和<code>(</code>之间放置一个空格，这样<code>if</code>就不会看起来像一个函数调用。只有真的是在调用一个函数时，才使<code>(</code>和其前面的符号相毗连。</li>
+<li>把<code>{</code>放在一行的结尾而不是下一行的开头，因为它会避免JavaScript的<code>return</code>语句中一个可怕的设计错误。</li>
+<li>对一个脚本引用或工具库，只用唯一一个全局变量。使用闭包能提供进一步的信息隐藏，增强模块的健壮性。</li>
+</ul>
+<p>##第10章：优美的特性<br>一门语言是否具备为其自身编写一个编译器的能力，仍然是对这门语言完整性的一个测试。</p>
+<blockquote>
+<p>特性有规定成本、设计成本和开发成本，还有测试成本和可靠性成本。特性越多，某个特性出现问题，或者和其他特性相互干扰的可能性就越大。在软件系统中，存储成本是无足轻重的，但在移动应用中，它又变得重要了。它们抬高了电池的效能成本，因为摩尔定律并不适用于电池。</p>
+</blockquote>
+<script type="text/javascript">
+//========= walk DOM 例子 =============
+var walk_the_DOM = function walk(node, func){
+    func(node);
+    node = node.firstChild;
+    while(node){
+        walk(node, func);
+        node = node.nextSibling;
+    }
+};
+
+function getElementsByAttribute(att, value){
+    var results = [];
+
+    walk_the_DOM(document.body, function(node){
+        var actual = node.nodeType === 1 && node.getAttribute(att);
+        if(typeof actual === 'string' && (actual === value || typeof value !== 'string')){
+            results.push(node);
+        }
+    });
+
+    return results;
+}
+
+//===========  闭包，渐变背景色例子  ============
+var fade = function(node){
+    var level = 1;
+    var step = function(){
+        var hex = level.toString(16);
+        node.style.background = '#FFFF' + hex + hex;
+        if(level < 15){
+            level += 1;
+            setTimeout(step, 100);
+        }
+    };
+    setTimeout(step, 100);
+};
+
+// ========== 注册事件处理函数 ===========
+$(document).ready(function(){
+    $('#test_DOM_walker').click(function(){
+        var text_success = document.createTextNode('---- ^_^ 嗯，找到这个id为test_myAttribute的元素节点了 ~~~~ ');
+        var text_failed  = document.createTextNode('---- 不妙，没有找到这个节点诶 ………… ');
+        var p = getElementsByAttribute('id', 'test_myAttribute')[0];
+        if(p){
+            p.appendChild(text_success);
+        }else{
+            p.appendChild(text_failed);
+        }
+
+    });
+
+    $('#button_test_fade').click(function(){
+        var p = document.getElementById('test_fade');
+        fade(p);
+    });
+});
+</script></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/03/how-to-improve-12306/" rel="prev">12306网站前端初步优化之我见</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/30/html5-localstorage-study/" rel="next">html5 localStorage初探</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2014/01/02/reading-notes-on-javascript-the-good-parts/"
+                   data-title="《JavaScript语言精粹》笔记" data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

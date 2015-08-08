@@ -1,0 +1,685 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一个不知名Web前端工程师的个人博客" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="###Node.js简介Node.js诞生于2009年5月，创始人Ryan Dahl。
+Node.js是一个划时代的技术，它在原有的Web前端和后端技术的基础上总结并提炼出了许多新的概念和方法，堪称十多年来Web开发经验的集大成者。Node.js可以作为服务器向用户提供服务，与PHP、Python、Ruby on Rails相比，它跳过了Apache、Nginx等HTTP服务器，直接面向前端开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js入门">
+<meta property="og:url" content="http://borninsummer.com/2013/12/24/nodejs-primer/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="###Node.js简介Node.js诞生于2009年5月，创始人Ryan Dahl。
+Node.js是一个划时代的技术，它在原有的Web前端和后端技术的基础上总结并提炼出了许多新的概念和方法，堪称十多年来Web开发经验的集大成者。Node.js可以作为服务器向用户提供服务，与PHP、Python、Ruby on Rails相比，它跳过了Apache、Nginx等HTTP服务器，直接面向前端开发。">
+<meta property="og:updated_time" content="2015-08-08T17:22:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js入门">
+<meta name="twitter:description" content="###Node.js简介Node.js诞生于2009年5月，创始人Ryan Dahl。
+Node.js是一个划时代的技术，它在原有的Web前端和后端技术的基础上总结并提炼出了许多新的概念和方法，堪称十多年来Web开发经验的集大成者。Node.js可以作为服务器向用户提供服务，与PHP、Python、Ruby on Rails相比，它跳过了Apache、Nginx等HTTP服务器，直接面向前端开发。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Node.js入门 | 王子龙的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">王子龙的博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Node.js入门
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-12-24T10:17:00+08:00" content="2013-12-24">
+            2013-12-24
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                  <span itemprop="name">NodeJS</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/12/24/nodejs-primer/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/24/nodejs-primer/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>###Node.js简介<br>Node.js诞生于2009年5月，创始人Ryan Dahl。</p>
+<p>Node.js是一个划时代的技术，它在原有的Web前端和后端技术的基础上总结并提炼出了许多新的概念和方法，堪称十多年来Web开发经验的集大成者。Node.js可以作为服务器向用户提供服务，与PHP、Python、Ruby on Rails相比，它跳过了Apache、Nginx等HTTP服务器，直接面向前端开发。Node.js的许多设计理念与经典架构（如LAMP）有着很大的不同，可提供强大的伸缩能力，以适应2010年以后规模越来越庞大的互联网环境。</p>
+<p>历史上将JavaScript移植到浏览器外的计划不止一个，但Node.js是最出色的一个。</p>
+<p>###Node.js学习资料</p>
+<ul>
+<li><a href="http://book.douban.com/subject/10789820/" name="10789820" class="douban_book" title="Node.js开发指南" target="_blank">《Node.js开发指南》</a>——把这本书读完，并且成功完成里面讲的微博网站实例，才可以自称初步入门Node.js。</li>
+<li><a href="http://book.douban.com/subject/20515024/" name="20515024" class="douban_book" title="Node即学即用" target="_blank">《Node即学即用》</a></li>
+<li><a href="http://book.douban.com/subject/25768396/" name="25768396" class="douban_book" title="深入浅出Node.js" target="_blank">《深入浅出Node.js》</a></li>
+</ul>
+<p>另外，知名程序员兼翻译家阮一峰有一个适合Node.js初学者的页面：<a href="http://javascript.ruanyifeng.com/nodejs/basic.html#" target="_blank">JavaScript标准参考教程（alpha）-Node.js概述</a>。内容组织地非常清晰。</p>
+<a id="more"></a>
+<p>##Hello, Node.js</p>
+<p>###CommonJS<br>CommonJS的作用就像当年为了统一JavaScript语言标准而制定的ECMAScript规范一样，统一JavaScript在浏览器之外的实现。CommonJS试图定义一套普通应用程序使用的API，从而填补JavaScript标准库过于简单的不足。CommonJS的终极目标是制定一个像C++标准库一样的规范，使得基于CommonJS API的应用程序可以在不同的环境下运行，就像用C++编写的应用程序可以使用不同的编译器和运行时函数库一样。为了保持中立，CommonJS不参与标准库的实现，而是将此任务交给像Node.js之类的项目来完成。</p>
+<p>###Windows下安装Node.js<br>在Node.js官网<a href="http://nodejs.org/download/" target="_blank">下载页面</a>，下载最新版本（目前是v0.10.24）的.msi安装包。</p>
+<p>此安装包会将node添加到环境变量PATH中，所以可以在cmd命令行下输入node进入node的REPL模式。npm（Node.js Package Manager，Node.js包管理器）也自动安装并添加到环境变量PATH中了。</p>
+<p>运行Node.js程序的基本方法就是执行 <code>node scriptname.js</code>。</p>
+<p>###Hello World<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);  </span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;  </span><br><span class="line">    res.writeHeader(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/html"</span>&#125;); </span><br><span class="line">    res.write(<span class="string">"&lt;h1&gt;Node.js&lt;/h1&gt;"</span>);   </span><br><span class="line">    res.write(<span class="string">"&lt;h3&gt;Hello World&lt;/h3&gt;"</span>);  </span><br><span class="line">    res.end();  </span><br><span class="line">&#125;).listen(<span class="number">3000</span>);  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server running at http://localhost:3000/"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>在Node运行时，对代码的修改都只能在终止Node.js再重新运行才会奏效。这是因为Node.js只有在第一次引用到某部分时才去解析脚本文件，以后都会直接访问内存，避免重复载入。与此相反，PHP则总是重新读取并解析脚本（如果没有专门的优化配置）。</p>
+<p>可以使用npm安装supervisor来监视对代码的改动，在发生改动时终止脚本，然后重启，从而提高调试效率。</p>
+<p>###阻塞与非阻塞<br>阻塞：线程在执行中如果遇到磁盘读写或者网络通信（统称为I/O操作），通常要耗费较长的时间，这时操作系统会剥夺这个线程的CPU控制权，使其暂停执行，同时将资源让给其他的工作线程，这种线程调度方式成为阻塞（block）。</p>
+<p>非阻塞I/O（Non-blocking I/O）或异步I/O（Asynchronous I/O）：当线程遇到I/O操作时，不会以阻塞的方式等待I/O操作的完成或数据的返回，而只是将I/O请求发送给操作系统，继续执行下一条语句。当操作系统完成I/O操作时，以事件的形式通知执行I/O操作的线程，线程会在特定的时候处理这个事件。为了处理异步I/O，线程必须有事件循环，不断地检查有没有未处理的事件，依次予以处理。</p>
+<p>对操作系统来说，创建一个线程的代价非常昂贵——需要给它分配内存、列入调度，同时在线程切换时还要执行内存换页，CPU的缓存被清空，切换回来的时候还要重新从内存读取信息，破坏了数据的局部性。</p>
+<p>###自定义事件<br>Node.js事件由EventEmitter对象提供。我们可以用EventEmitter发出事件信号，然后自定义回调（捕捉该事件的逻辑由EventEmitter封装）。有点像Qt的“信号-槽”（Signal-Slots）机制。<br><figure class="highlight javascript"><figcaption><span>Node.js的自定义事件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;</span><br><span class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> EventEmitter();</span><br><span class="line"></span><br><span class="line">event.on(<span class="string">'some_event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'some_event occured.'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	event.emit(<span class="string">'some_event'</span>);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure></p>
+<p>###模块和包<br>模块（Module）和包（Package）是Node.js最重要的支柱。Node.js提供了<code>require</code>函数来调用其他模块，且模块都是基于文件的。</p>
+<figure class="highlight javascript"><figcaption><span>自定义模块</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//module.js</span></span><br><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"></span><br><span class="line">exports.setName = <span class="function"><span class="keyword">function</span>(<span class="params">thyname</span>)</span>&#123;</span><br><span class="line">	name = thyname;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'Hello, '</span>+name);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>使用刚刚定义的模块</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getmodule.js</span></span><br><span class="line"><span class="keyword">var</span> myModule = <span class="built_in">require</span>(<span class="string">'./module'</span>);  <span class="comment">// myModule只是对该模块的引用</span></span><br><span class="line">myModule.setName(<span class="string">'WZL'</span>);</span><br><span class="line">myModule.sayHello();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myModule2 = <span class="built_in">require</span>(<span class="string">'./module'</span>);</span><br><span class="line">myModule2.setName(<span class="string">'Wang Zilong'</span>);</span><br><span class="line">myModule2.sayHello();</span><br><span class="line"></span><br><span class="line">myModule.sayHello();</span><br></pre></td></tr></table></figure>
+<p>运行<code>node getmodule.js</code>，结果是</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello, WZL</span><br><span class="line">Hello, Wang Zilong</span><br><span class="line">Hello, Wang Zilong</span><br></pre></td></tr></table></figure>
+<p>因为require不会重复加载模块。上例中<code>myModule</code>和<code>myModule2</code>都是对同一个实例即<code>require(&#39;./module&#39;)</code>的引用。</p>
+<p>###npm<br>默认情况下，npm从 <a href="http://npmjs.org" target="_blank">npmjs.org</a> 搜索或下载包，将包安装到当前目录的node_modules子目录下。</p>
+<p>###*调试Node.js</p>
+<p>##Node.js Core</p>
+<p>##重要的外部模块</p>
+<p>###Express<br><a href="http://expressjs.com/" target="_blank" rel="external">Express</a>（Node的MVC框架）也许是使用最为广泛的Node模块。Express通过路由定义的页面处理器来工作。</p>
+<p>##MongoDB<br>MongoDB是一个对象数据库，以BSON（一种JSON的二进制变种）格式存储数据。MongoDB的结构分为数据库（database）、集合（collection）、文档（document）三层。</p>
+<p>有两本不错的入门书籍：</p>
+<ul>
+<li><a href="http://book.douban.com/subject/6068947/" name="6068947" class="douban_book" title="Node.js开发指南" target="_blank" rel="external"> 《MongoDB权威指南》</a></li>
+<li><a href="http://book.douban.com/subject/19977785/" name="19977785" class="douban_book" title="Node即学即用" target="_blank" rel="external"> 《MongoDB实战》</a></li>
+</ul>
+<p>###启动与连接MongoDB数据库服务器<br>启动MongoDB数据库服务器的命令是mongod，例如在Windows平台下将其解压在目录c:\mongodb下，那么在\bin文件夹中，启动命令行，运行mongod.exe即可。启动时可以指定路径参数（<code>--dbpath</code>）用以存放数据库文件以及端口号参数（<code>--port</code>）指定mongod监听连接的端口号，默认的端口号为27017。例如，如果希望将数据库文件存放在<code>d:\testdb\db</code>目录下，并使用27016端口，那么可以在<code>c:\mongodb\bin\</code>目录下运行这样的命令：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c:<span class="command">\mongodb</span><span class="command">\bin</span>&gt;mongod --dbpath d:<span class="command">\testdb</span><span class="command">\db</span> --port 27016</span><br></pre></td></tr></table></figure>
+<p>注意：如果数据目录不存在或不可写，服务器会启动失败。所以，在运行上面的命令前，要确保<code>d:\testdb\db</code>已经存在。另外，如果端口被占用，启动也会失败，通常这是由于MongoDB实例已经在运行了。</p>
+<p><code>mongod</code>还会启动一个非常基本的HTTP服务器，监听数字比主端口号高1000的端口，默认情况下即28017端口。这意味着你可以通过浏览器访问<code>http://127.0.0.1:28017/</code>来获取数据库的管理信息。</p>
+<p>对MongoDB进行操作需要使用<code>mongo</code>命令。基本命令示例如下：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C:\mongodb\bin&gt;mongo.exe       <span class="comment">//=&gt; 打开数据库，可进行交互操作</span></span><br><span class="line">MongoDB <span class="keyword">shell</span> <span class="keyword">version</span>: 2.4.8</span><br><span class="line">connecting to: <span class="keyword">test</span></span><br><span class="line">&gt; show dbs                     <span class="comment">//=&gt; 显示当前连接的数据库服务器所管理的数据库清单</span></span><br><span class="line"><span class="keyword">local</span>   0.078125GB</span><br><span class="line">&gt; <span class="keyword">db</span>                           <span class="comment">//=&gt; 查看当前连接的数据库</span></span><br><span class="line"><span class="keyword">test</span></span><br><span class="line">&gt; <span class="keyword">use</span> foobar                   <span class="comment">//=&gt; 使用use命令切换数据库</span></span><br><span class="line">switched to <span class="keyword">db</span> foobar</span><br><span class="line">&gt; <span class="keyword">db</span></span><br><span class="line">foobar</span><br></pre></td></tr></table></figure>
+<p>这样就启动了MongoDB自带的JavaScript Shell。可以运行帮助命令<code>help</code>以查看基本的操作提示。</p>
+<p>###更多参考资料<br>更多细节还是参考上面的两本书吧。MongoDB现在如此火热，以至于任何新的编程书籍都想谈一谈这个对象数据库。如</p>
+<ul>
+<li><a href="http://book.douban.com/subject/24536403/" name="24536403" class="douban_book" title="代码的未来" target="_blank" rel="external"> 《代码的未来》</a></li>
+<li><a href="http://book.douban.com/subject/24165880/" name="24165880" class="douban_book" title="JavaScript核心概念及实践" target="_blank" rel="external"> 《JavaScript核心概念及实践》</a></li>
+</ul>
+<p>##用Node.js进行微博网站开发实例<br>由于本书是2012年7月出版，到现在至少过去一年半了，很多模块、包的版本已经发生了较大的变化。所以按照书里的代码进行微博网站的开发会遇到不少问题。已经有细心的朋友认真记录了相应的解决方法：</p>
+<p><a href="http://crazylpy.me/blog/nodejskai-fa-zhi-nan-wen-ti-jie-jue/" target="_blank">NodeJS开发指南问题解决</a></p>
+<p>除了版本问题，作者自己给的源码也是有不少错误。我把自己在本地运行成功了的源码放在这里，需要的朋友可以下载，对比一下，然后做相应的改动。</p>
+<p>[附件]： <a href="/files/source/microblog.zip">点击下载microblog.zip源代码</a>-117.55KB</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/28/accessing-cross-site-data-with-jsonp/" rel="prev">利用JSONP访问跨域数据</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/17/once-upon-a-time-on-fishfarm/" rel="next">渔场春秋</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/12/24/nodejs-primer/"
+                   data-title="Node.js入门" data-url="http://borninsummer.com/2013/12/24/nodejs-primer/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zilong-thu" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/47436584" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zilong-THU" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"borninsummer"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
