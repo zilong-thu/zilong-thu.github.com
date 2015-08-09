@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="在阿里云上部署完运行环境之后（部署参见NodeJS+Express+MySQL开发小记(2):服务器部署），运行了几天，发现有张表的字符集默认成了 Latin1，导致中文只显示问号。
 先趁此机会尝试安装MySQL5.6，省得以后再升级，但是折腾了一上午，未遂。权衡了一下，还是去修改当前的MySQL5.5的默认字符集得了。">
-<meta property="og:updated_time" content="2015-08-08T18:39:38.000Z">
+<meta property="og:updated_time" content="2015-08-09T02:34:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下更改MySQL5.5字符集为UTF-8的过程小记">
 <meta name="twitter:description" content="在阿里云上部署完运行环境之后（部署参见NodeJS+Express+MySQL开发小记(2):服务器部署），运行了几天，发现有张表的字符集默认成了 Latin1，导致中文只显示问号。
@@ -211,15 +211,12 @@
         <span itemprop="articleBody"><p>在阿里云上部署完运行环境之后（部署参见<a href="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/">NodeJS+Express+MySQL开发小记(2):服务器部署</a>），运行了几天，发现有张表的字符集默认成了 <code>Latin1</code>，导致中文只显示问号。</p>
 <p>先趁此机会尝试安装MySQL5.6，省得以后再升级，但是折腾了一上午，未遂。权衡了一下，还是去修改当前的MySQL5.5的默认字符集得了。</p>
 <a id="more"></a>
-<p>##修改之前</p>
-<p>###查看当前MySQL版本</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -V</span><br><span class="line">mysql  Ver <span class="number">14.14</span> Distrib <span class="number">5.5</span><span class="number">.43</span>, <span class="keyword">for</span> debian-linux-gnu (x86_64) <span class="keyword">using</span> readline <span class="number">6.3</span></span><br></pre></td></tr></table></figure>
-<p>###查看数据库字符集<br>进入MySQL之后，运行语句：</p>
+<h2 id="修改之前">修改之前</h2><h3 id="查看当前MySQL版本">查看当前MySQL版本</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -V</span><br><span class="line">mysql  Ver <span class="number">14.14</span> Distrib <span class="number">5.5</span><span class="number">.43</span>, <span class="keyword">for</span> debian-linux-gnu (x86_64) <span class="keyword">using</span> readline <span class="number">6.3</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看数据库字符集">查看数据库字符集</h3><p>进入MySQL之后，运行语句：</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="emphasis">'char%'</span>;</span><br><span class="line"><span class="header"> </span><br><span class="line">+--------------------------+----------------------------+</span></span><br><span class="line"><span class="header">| Variable_name            | Value                      |</span><br><span class="line">+--------------------------+----------------------------+</span></span><br><span class="line">| character<span class="emphasis">_set_</span>client     | utf8                       |</span><br><span class="line">| character<span class="emphasis">_set_</span>connection | utf8                       |</span><br><span class="line">| character<span class="emphasis">_set_</span>database   | latin1                     |</span><br><span class="line">| character<span class="emphasis">_set_</span>filesystem | binary                     |</span><br><span class="line">| character<span class="emphasis">_set_</span>results    | utf8                       |</span><br><span class="line">| character<span class="emphasis">_set_</span>server     | latin1                     |</span><br><span class="line">| character<span class="emphasis">_set_</span>system     | utf8                       |</span><br><span class="line"><span class="header">| character_sets_dir       | /usr/share/mysql/charsets/ |</span><br><span class="line">+--------------------------+----------------------------+</span></span><br></pre></td></tr></table></figure>
 <p>这样可以看到MySQL所使用的字符集。</p>
-<p>##开始更改设置</p>
-<p>###查看当前MySQL所使用的配置文件的顺序<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql --help | <span class="keyword">grep</span> <span class="keyword">Default</span> -A <span class="number">1</span></span><br><span class="line"><span class="keyword">Default</span> <span class="keyword">options</span> are <span class="keyword">read</span> <span class="keyword">from</span> the following files in the given order:</span><br><span class="line"><span class="regexp">/etc/my</span>.cnf <span class="regexp">/etc/my</span>sql<span class="regexp">/my.cnf /u</span>sr<span class="regexp">/etc/my</span>.cnf ~<span class="regexp">/.my.cnf</span></span><br></pre></td></tr></table></figure></p>
-<p>###修改配置文件<br>第一次安装MySQL，<code>/etc/my.cnf</code>文件应该是不存在的。所以打开<code>/etc/mysql/my.cnf</code>：</p>
+<h2 id="开始更改设置">开始更改设置</h2><h3 id="查看当前MySQL所使用的配置文件的顺序">查看当前MySQL所使用的配置文件的顺序</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql --help | <span class="keyword">grep</span> <span class="keyword">Default</span> -A <span class="number">1</span></span><br><span class="line"><span class="keyword">Default</span> <span class="keyword">options</span> are <span class="keyword">read</span> <span class="keyword">from</span> the following files in the given order:</span><br><span class="line"><span class="regexp">/etc/my</span>.cnf <span class="regexp">/etc/my</span>sql<span class="regexp">/my.cnf /u</span>sr<span class="regexp">/etc/my</span>.cnf ~<span class="regexp">/.my.cnf</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改配置文件">修改配置文件</h3><p>第一次安装MySQL，<code>/etc/my.cnf</code>文件应该是不存在的。所以打开<code>/etc/mysql/my.cnf</code>：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vi</span> /etc/mysql/my.<span class="keyword">cnf</span></span><br></pre></td></tr></table></figure>
 <p>在以下3个部分都做相应改动：<br>（1）在[client]字段里加入default-character-set=utf8，如下：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[client]</span></span><br><span class="line"><span class="setting">port = <span class="value"><span class="number">3306</span></span></span></span><br><span class="line"><span class="setting">socket = <span class="value">/var/lib/mysql/mysql.sock</span></span></span><br><span class="line"><span class="setting">default-character-set=<span class="value">utf8</span></span></span><br></pre></td></tr></table></figure>
@@ -228,20 +225,16 @@
 <p>也可以这样改：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=’<span class="operator"><span class="keyword">SET</span> <span class="keyword">NAMES</span> utf8′</span><br><span class="line"><span class="built_in">character</span>-<span class="keyword">set</span>-<span class="keyword">server</span> = utf8</span></span><br></pre></td></tr></table></figure></p>
 <p>（3）在[mysql]字段里加入default-character-set=utf8，如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line">no-<span class="keyword">auto</span>-rehash</span><br><span class="line"><span class="keyword">default</span>-character-<span class="built_in">set</span>=utf8</span><br></pre></td></tr></table></figure>
-<p>###重启MySQL</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> service mysql restart</span><br></pre></td></tr></table></figure>
-<p>###查看是否生效</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like 'char%';</span><br><span class="line"></span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">|<span class="string"> Variable_name            </span>|<span class="string"> Value                      </span>|</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">|<span class="string"> character_set_client     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_connection </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_database   </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_filesystem </span>|<span class="string"> binary                     </span>|</span><br><span class="line">|<span class="string"> character_set_results    </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_server     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_system     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_sets_dir       </span>|<span class="string"> /usr/share/mysql/charsets/ </span>|</span><br><span class="line">+--------------------------+----------------------------+</span><br></pre></td></tr></table></figure>
-<p>##如果出错了</p>
-<p>如果重启失败了，那么可以到<code>/var/log/mysql/error.log</code>文件中查看输出的启动错误。</p>
+<h3 id="重启MySQL">重启MySQL</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> service mysql restart</span><br></pre></td></tr></table></figure>
+<h3 id="查看是否生效">查看是否生效</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like 'char%';</span><br><span class="line"></span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">|<span class="string"> Variable_name            </span>|<span class="string"> Value                      </span>|</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">|<span class="string"> character_set_client     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_connection </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_database   </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_filesystem </span>|<span class="string"> binary                     </span>|</span><br><span class="line">|<span class="string"> character_set_results    </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_server     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_set_system     </span>|<span class="string"> utf8                       </span>|</span><br><span class="line">|<span class="string"> character_sets_dir       </span>|<span class="string"> /usr/share/mysql/charsets/ </span>|</span><br><span class="line">+--------------------------+----------------------------+</span><br></pre></td></tr></table></figure>
+<h2 id="如果出错了">如果出错了</h2><p>如果重启失败了，那么可以到<code>/var/log/mysql/error.log</code>文件中查看输出的启动错误。</p>
 <p>修改后，运行<code>sudo service mysql start</code>来启动服务。</p>
-<p>##表的字符集<br>修改了MySQL的默认字符设置，并不能更改已经生效的字符设置。如果某张表的字符仍是乱码，那么说明它的字符集仍然为Latin1。</p>
+<h2 id="表的字符集">表的字符集</h2><p>修改了MySQL的默认字符设置，并不能更改已经生效的字符设置。如果某张表的字符仍是乱码，那么说明它的字符集仍然为Latin1。</p>
 <p>可以这样查看某张表的建表情况：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name;</span></span><br><span class="line"> </span><br><span class="line">.....省略一大堆..() ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</span><br></pre></td></tr></table></figure>
 <p>所以最佳实践是：</p>
 <p><strong>在建表语句中，显式地声明该表所要使用的字符集</strong></p>
-<p>##参考资料</p>
-<ul>
+<h2 id="参考资料">参考资料</h2><ul>
 <li><a href="http://www.ha97.com/5359.html" target="_blank" rel="external">（原创）Linux下MySQL 5.5的修改字符集编码为UTF8（彻底解决中文乱码问题）</a></li>
 <li><a href="http://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf" target="_blank" rel="external">Change MySQL default character set to UTF-8 in my.cnf?</a></li>
 </ul>
@@ -327,28 +320,28 @@
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zilong Wang" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Zilong Wang</p>
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="王子龙" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">王子龙</p>
         </div>
         <p class="site-description motion-element" itemprop="description">一个不知名Web前端工程师的个人博客</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">86</span>
+              <span class="site-state-item-count">82</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -390,7 +383,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改之前"><span class="nav-number">1.</span> <span class="nav-text">修改之前</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前MySQL版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看当前MySQL版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看数据库字符集"><span class="nav-number">1.2.</span> <span class="nav-text">查看数据库字符集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始更改设置"><span class="nav-number">2.</span> <span class="nav-text">开始更改设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前MySQL所使用的配置文件的顺序"><span class="nav-number">2.1.</span> <span class="nav-text">查看当前MySQL所使用的配置文件的顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启MySQL"><span class="nav-number">2.3.</span> <span class="nav-text">重启MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看是否生效"><span class="nav-number">2.4.</span> <span class="nav-text">查看是否生效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果出错了"><span class="nav-number">3.</span> <span class="nav-text">如果出错了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的字符集"><span class="nav-number">4.</span> <span class="nav-text">表的字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -411,7 +404,7 @@
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Zilong Wang</span>
+  <span class="author" itemprop="copyrightHolder">王子龙</span>
 </div>
 
 <div class="powered-by">
