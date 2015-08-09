@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。
 计算机系统：Ubuntu 14.04 LTS 64bit">
-<meta property="og:updated_time" content="2015-07-26T05:45:52.000Z">
+<meta property="og:updated_time" content="2015-08-09T06:13:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下配置NodeJS环境">
 <meta name="twitter:description" content="记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。
@@ -55,7 +55,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'post'
+    sidebar: 'hide'
   };
 </script>
 
@@ -121,6 +121,14 @@
           <a href="/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
           </a>
         </li>
       
@@ -229,15 +237,13 @@
         <span itemprop="articleBody"><p>记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。</p>
 <p>计算机系统：Ubuntu 14.04 LTS 64bit</p>
 <a id="more"></a>
-<p>##Install Manually with Binary Package</p>
-<p>###移除某环境变量值*</p>
-<p>由于之前是通过浏览器下载Node的binaries包来安装的，因此先将其“卸载”，即从环境变量中移除某个目录　<code>/home/wzl/node/bin</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=$(<span class="built_in">echo</span> <span class="variable">$PATH</span> | sed <span class="operator">-e</span> <span class="string">'s;:\?/home/wzl/node/bin;;'</span> <span class="operator">-e</span> <span class="string">'s;/home/wzl/node/bin:\?;;'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Install_Manually_with_Binary_Package">Install Manually with Binary Package</h2><h3 id="移除某环境变量值*">移除某环境变量值*</h3><p>由于之前是通过浏览器下载Node的binaries包来安装的，因此先将其“卸载”，即从环境变量中移除某个目录　<code>/home/wzl/node/bin</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=$(<span class="built_in">echo</span> <span class="variable">$PATH</span> | sed <span class="operator">-e</span> <span class="string">'s;:\?/home/wzl/node/bin;;'</span> <span class="operator">-e</span> <span class="string">'s;/home/wzl/node/bin:\?;;'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>然后可以运行<code>echo $PATH</code>来查看是否已经将目标目录从环境变量中删除。——结果发现，如果关闭终端，则环境变量并没发生变化。【待解决】</p>
 <ul>
 <li><a href="http://www.linuxjournal.com/content/remove-path-your-path-variable-0" target="_blank" rel="external">Remove a path from your PATH variable</a></li>
 <li><a href="http://stackoverflow.com/questions/11650840/linux-remove-path-from-path-variable" target="_blank" rel="external">Linux: Remove path from $PATH variable</a></li>
 </ul>
-<p>###wget下载NodeJS binary 包<br>在　<code>/home/username/mydownloads/</code>目录下，通过<code>wget</code>来下载NodeJS of Linux Binaries (.tar.gz)，当然，前提是自己得知道该软件的URL。</p>
+<h3 id="wget下载NodeJS_binary_包">wget下载NodeJS binary 包</h3><p>在　<code>/home/username/mydownloads/</code>目录下，通过<code>wget</code>来下载NodeJS of Linux Binaries (.tar.gz)，当然，前提是自己得知道该软件的URL。</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="symbol">http:</span>/<span class="regexp">/nodejs.org/dist</span><span class="regexp">/v0.12.4/node</span>-v<span class="number">0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
 <p>如果网络状况不佳，则可以再次进入该目录，添加 -c 参数来实现断点续下：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c <span class="symbol">http:</span>/<span class="regexp">/nodejs.org/dist</span><span class="regexp">/v0.12.4/node</span>-v<span class="number">0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
@@ -245,51 +251,42 @@
 <ul>
 <li><a href="http://man.linuxde.net/wget" target="_blank" rel="external">wget命令参考</a></li>
 </ul>
-<p>###解压缩</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf node-v0.<span class="number">12.4</span>-linux-x64<span class="class">.tar</span><span class="class">.gz</span> -C /home/username</span><br></pre></td></tr></table></figure>
+<h3 id="解压缩">解压缩</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf node-v0.<span class="number">12.4</span>-linux-x64<span class="class">.tar</span><span class="class">.gz</span> -C /home/username</span><br></pre></td></tr></table></figure>
 <p>即可在<code>/home/username/</code>下得到目录名为<code>node-v0.12.4-linux-x64</code>的解压后的文件夹。方便辨识起见，将这个解压后的目录重命名为<code>node</code>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv node-v0<span class="number">.12</span><span class="number">.4</span>-linux-x64 node</span><br></pre></td></tr></table></figure>
-<p>###配置环境变量</p>
-<p>####方法1<br>nodejs环境变量的配置有两种办法，第一种是所谓的“软链接”，即将node和npm链接到/usr/local/bin 目录下如下执行，如此便可以全局使用node命令：</p>
+<h3 id="配置环境变量">配置环境变量</h3><h4 id="方法1">方法1</h4><p>nodejs环境变量的配置有两种办法，第一种是所谓的“软链接”，即将node和npm链接到/usr/local/bin 目录下如下执行，如此便可以全局使用node命令：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s <span class="regexp">/home/</span>username<span class="regexp">/node/</span>bin<span class="regexp">/node /</span>usr<span class="regexp">/local/</span>bin/node</span><br><span class="line">sudo ln -s <span class="regexp">/home/</span>username<span class="regexp">/node/</span>bin<span class="regexp">/npm /</span>usr<span class="regexp">/local/</span>bin/npm</span><br></pre></td></tr></table></figure>
 <p>但这样安装有一个问题：如果想全局安装一个包，好比<code>express</code>，在执行了<code>npm install -g express</code>后，它是安装到了<code>/usr/local/lib/</code>目录下，是无法全局调用<code>express</code>命令的。这是因为上面只是指定了<code>node</code>、<code>npm</code>命令的路径，并没有指明其全局按照的模块的路径<code>NODE_PATH</code>，如下面的文章所说的那样：</p>
 <ul>
 <li><a href="http://segmentfault.com/a/1190000002478924" target="_blank" rel="external">nodejs 中的 NODE_PATH</a></li>
 </ul>
 <p>但对于这篇文章给出的解决方案（尽可能地全局安装模块），个人不敢苟同。应该使用<code>package.json</code>实现对依赖模块的管理，用到的时候在服务器相应目录下<code>npm install</code>。</p>
-<p>####方法2</p>
-<p>另一种方式是这样配置环境变量：</p>
+<h4 id="方法2">方法2</h4><p>另一种方式是这样配置环境变量：</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">/* 然后在其最后面添加上这几句： */</span><br><span class="line">export PATH=<span class="variable">$PATH</span>:/home/username/node/bin</span><br><span class="line">export NODE_PATH=<span class="variable">$NODE</span>_HOME/lib/node_modules</span><br></pre></td></tr></table></figure>
 <p>然后执行<code>source /etc/profile</code>，重启计算机，就可以发现nodejs已经添加到环境变量中去了。</p>
 <ul>
 <li><a href="http://www.cnblogs.com/dubaokun/p/3558848.html" target="_blank" rel="external">linux 下部署nodejs（两种方式）</a></li>
 </ul>
-<p>####验证安装结果</p>
-<p>如果想检测环境变量配置是否成功，则可以运行<code>node -v</code>来查看node的版本号：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ node -v</span><br><span class="line">v0<span class="number">.12</span><span class="number">.4</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="验证安装结果">验证安装结果</h4><p>如果想检测环境变量配置是否成功，则可以运行<code>node -v</code>来查看node的版本号：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ node -v</span><br><span class="line">v0<span class="number">.12</span><span class="number">.4</span></span><br></pre></td></tr></table></figure></p>
 <p>输出正确的版本号，则说明node已安装成功。</p>
-<p>##Install via apt-get</p>
-<p>可以通过Ubuntu的Package Manager下载：</p>
+<h2 id="Install_via_apt-get">Install via apt-get</h2><p>可以通过Ubuntu的Package Manager下载：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> nodejs</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</span></span><br></pre></td></tr></table></figure>
 <p>但这样获得的NodeJS版本目前也就到0.10.~，很多新特性都用不了，例如<code>promise</code>。期待Unbutu将更新的NodeJS放入其软件中心的那一天。</p>
 <ul>
 <li><a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions" target="_blank" rel="external">Installing Node.js via package manager</a></li>
 <li><a href="http://stackoverflow.com/questions/13203335/set-node-js-to-path-ubuntu-12-04" target="_blank" rel="external">Set Node.js to $PATH (Ubuntu 12.04)</a></li>
 </ul>
-<p>##Uninstall an application</p>
-<blockquote>
+<h2 id="Uninstall_an_application">Uninstall an application</h2><blockquote>
 <p>Enter the command “sudo apt-get remove program_name” if the program was installed from the command line via the apt utility. This command only removes the program while leaving the configuration files behind. If you want to totally remove the program and all of its files, use the command “apt-get –purge remove program_name”</p>
 </blockquote>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span>  <span class="comment">--purge  remove  program_name</span></span><br></pre></td></tr></table></figure>
-<p>##后记【重要】</p>
-<p>###关于直接使用二进制文件的安装方法</p>
-<p>这里使用<code>wget</code>的方法是自己想到的，本以为很笨拙，后来继续搜索，发现这也是别人提到过的可行方案之一：</p>
+<h2 id="后记【重要】">后记【重要】</h2><h3 id="关于直接使用二进制文件的安装方法">关于直接使用二进制文件的安装方法</h3><p>这里使用<code>wget</code>的方法是自己想到的，本以为很笨拙，后来继续搜索，发现这也是别人提到过的可行方案之一：</p>
 <ul>
 <li><a href="http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/" target="_blank" rel="external">How to Install Node.js on Ubuntu 14.04</a> </li>
 </ul>
 <p>其介绍的方法略有不同，从效果来看，这个方法要好一些：</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 第一步依然是从官网下载二进制可执行程序的压缩包 */</span></span><br><span class="line">wget [**.tar.gz下载地址]</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 进入该下载文件目录后执行以下命令，将其安装到/usr/local/目录下： */</span></span><br><span class="line">sudo tar -C /usr/<span class="keyword">local</span> --strip-components 1 -xzf node-v0.10.34-linux-x86.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 查看是否安装成功 */</span></span><br><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> /usr/<span class="keyword">local</span>/bin/node</span><br><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> /usr/<span class="keyword">local</span>/bin/npm</span><br></pre></td></tr></table></figure>
-<p>###关于环境变量</p>
-<p>引用一段《鸟哥的Linux私房菜-基础学习篇（第三版）》里面的几句话，来说明变量、目录的皮毛知识：</p>
+<h3 id="关于环境变量">关于环境变量</h3><p>引用一段《鸟哥的Linux私房菜-基础学习篇（第三版）》里面的几句话，来说明变量、目录的皮毛知识：</p>
 <blockquote>
 <p>page 158<br>网络文件常常提到类似<code>./run.sh</code>的数据，这个命令的意义是什么？<br>答：由于命令的执行需要变量的支持，若你的执行文件放置在本目录，并且本目录并非正规的执行文件目录（<code>/bin</code>、<code>/usr/bin</code>等为正规），此时需要执行命令就得要严格指定该执行文件。<code>./</code>代表“本目录”的意思，所以<code>./run.sh</code>代表执行本目录下名为<code>run.sh</code>的文件。</p>
 </blockquote>
@@ -390,10 +387,10 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            
+            <a href="/categories">
               <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
@@ -440,7 +437,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install_Manually_with_Binary_Package"><span class="nav-number">1.</span> <span class="nav-text">Install Manually with Binary Package</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移除某环境变量值*"><span class="nav-number">1.1.</span> <span class="nav-text">移除某环境变量值*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wget下载NodeJS_binary_包"><span class="nav-number">1.2.</span> <span class="nav-text">wget下载NodeJS binary 包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压缩"><span class="nav-number">1.3.</span> <span class="nav-text">解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">1.4.</span> <span class="nav-text">配置环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1"><span class="nav-number">1.4.1.</span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2"><span class="nav-number">1.4.2.</span> <span class="nav-text">方法2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证安装结果"><span class="nav-number">1.4.3.</span> <span class="nav-text">验证安装结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install_via_apt-get"><span class="nav-number">2.</span> <span class="nav-text">Install via apt-get</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uninstall_an_application"><span class="nav-number">3.</span> <span class="nav-text">Uninstall an application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记【重要】"><span class="nav-number">4.</span> <span class="nav-text">后记【重要】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于直接使用二进制文件的安装方法"><span class="nav-number">4.1.</span> <span class="nav-text">关于直接使用二进制文件的安装方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于环境变量"><span class="nav-number">4.2.</span> <span class="nav-text">关于环境变量</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

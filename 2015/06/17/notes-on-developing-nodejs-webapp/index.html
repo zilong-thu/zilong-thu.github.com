@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="NodeJS+Express+MySQL开发小记(1)里讲过在本地搭建 NodeJS 网站的若干细节。本人最近在阿里云服务器上面按最低配租了4个月的云服务器，所以想试着把这个项目部署到云上。云服务器操作系统是Ubuntu 14.04 LTS。之前一直在Windows下做开发，对于Linux下的环境搭建、配置还不是很熟悉，搭建的过程中学到很多东西。
 本文简单记录对服务器进行部署的一些细节方面与解决方">
-<meta property="og:updated_time" content="2015-07-26T05:45:52.000Z">
+<meta property="og:updated_time" content="2015-08-09T06:12:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJS+Express+MySQL开发小记(2):服务器部署">
 <meta name="twitter:description" content="NodeJS+Express+MySQL开发小记(1)里讲过在本地搭建 NodeJS 网站的若干细节。本人最近在阿里云服务器上面按最低配租了4个月的云服务器，所以想试着把这个项目部署到云上。云服务器操作系统是Ubuntu 14.04 LTS。之前一直在Windows下做开发，对于Linux下的环境搭建、配置还不是很熟悉，搭建的过程中学到很多东西。
@@ -55,7 +55,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: 'post'
+    sidebar: 'hide'
   };
 </script>
 
@@ -121,6 +121,14 @@
           <a href="/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
           </a>
         </li>
       
@@ -229,20 +237,20 @@
         <span itemprop="articleBody"><p><a href="/2015/04/14/notes-on-nodejs-express-mysql-and-promise/">NodeJS+Express+MySQL开发小记(1)</a>里讲过在本地搭建 NodeJS 网站的若干细节。本人最近在阿里云服务器上面按最低配租了4个月的云服务器，所以想试着把这个项目部署到云上。云服务器操作系统是Ubuntu 14.04 LTS。之前一直在Windows下做开发，对于Linux下的环境搭建、配置还不是很熟悉，搭建的过程中学到很多东西。</p>
 <p>本文简单记录对服务器进行部署的一些细节方面与解决方案。</p>
 <a id="more"></a>
-<p>##安装MySQL Server<br>直接通过<code>apt-get</code>就可以：</p>
+<h2 id="安装MySQL_Server">安装MySQL Server</h2><p>直接通过<code>apt-get</code>就可以：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> mysql-<span class="keyword">server</span></span></span><br></pre></td></tr></table></figure>
 <p>安装过程会提示 <code>After this operation, 96.4 MB of additional disk space will be used.</code>。MySQL的版本为<code>Server version: 5.5.43-0ubuntu0.14.04.1 (Ubuntu)</code>。</p>
 <p>安装完成后，运行</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mysql</span> -u root -p</span><br></pre></td></tr></table></figure>
 <p>输入密码，即可进入MySQL的终端了。</p>
-<p>##用Git进行版本控制<br>出于跟风，以及提高技术的目的，毫不犹豫地选择了Git而不是SVN来进行代码版本控制。最初是使用Github来作为远程服务器，用了大概两个月，感觉对于开发这种业务性太强的项目（尤其要在代码里使用数据库的），使用开源的Github仓库来托管并不让人放心。</p>
+<h2 id="用Git进行版本控制">用Git进行版本控制</h2><p>出于跟风，以及提高技术的目的，毫不犹豫地选择了Git而不是SVN来进行代码版本控制。最初是使用Github来作为远程服务器，用了大概两个月，感觉对于开发这种业务性太强的项目（尤其要在代码里使用数据库的），使用开源的Github仓库来托管并不让人放心。</p>
 <p>后来发现了国内的业界良心 <a href="http://git.oschina.net/" target="_blank" rel="external">Git@OSC</a> ，其宣布永久开放git公有库和私有库。相关新闻：</p>
 <ul>
 <li><a href="http://www.oschina.net/news/40844/git-osc-welcome" target="_blank" rel="external">Git@OSC 欢迎你！</a></li>
 <li><a href="http://www.oschina.net/news/41842/git-osc-no-limitation" target="_blank" rel="external">OSC 全面永久开放 git 公有库和私有库</a></li>
 </ul>
 <p>此货的功能与Github并无太大区别，考虑到私有仓库的免费，便果断迁移了过来。</p>
-<p>###用Git部署代码<br>最开始是从Github上获取代码的：</p>
+<h3 id="用Git部署代码">用Git部署代码</h3><p>最开始是从Github上获取代码的：</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /<span class="keyword">var</span></span><br><span class="line"><span class="keyword">mkdir</span> www</span><br><span class="line"><span class="keyword">cd</span> www</span><br><span class="line">git clone https:<span class="comment">//github.com/zilong-thu/d.git debate</span></span><br></pre></td></tr></table></figure>
 <p>以后如果代码发生变动，可以这样更新代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> debate</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
@@ -250,7 +258,7 @@
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add osc <span class="string">https:</span><span class="comment">//git.oschina.net/zilong-thu/d.git</span></span><br><span class="line"> </span><br><span class="line">git pull osc master</span><br></pre></td></tr></table></figure>
 <p>如果要删除Github那个remote，可以这样：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> remote rm origin</span><br></pre></td></tr></table></figure>
-<p>###使用SSH而非HTTPS<br>先生成一个SSH公钥，方法：</p>
+<h3 id="使用SSH而非HTTPS">使用SSH而非HTTPS</h3><p>先生成一个SSH公钥，方法：</p>
 <ul>
 <li><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys | GithubHelp</a></li>
 </ul>
@@ -266,22 +274,19 @@
 <ul>
 <li><a href="https://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5" target="_blank" rel="external">4.3 服务器上的 Git - 生成 SSH 公钥</a></li>
 </ul>
-<p>##运行服务</p>
-<p>###安装依赖</p>
-<p>在<code>debate</code>目录下，安装node模块，执行</p>
+<h2 id="运行服务">运行服务</h2><h3 id="安装依赖">安装依赖</h3><p>在<code>debate</code>目录下，安装node模块，执行</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 <p>安装好所有依赖后，如下启动服务器：</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> start</span><br></pre></td></tr></table></figure>
 <p>使用阿里云给的IP加上端口号，即可访问到开启了的网站。</p>
-<p>###使NodeJS服务在后台运行</p>
-<p>目前是使用putty使用ssh远程登录来操作服务器的，如果关闭这个putty，即会话终止，则服务也随即停止。解决思路自然是让程序在后台不间断地运行。解决方案可以参考：</p>
+<h3 id="使NodeJS服务在后台运行">使NodeJS服务在后台运行</h3><p>目前是使用putty使用ssh远程登录来操作服务器的，如果关闭这个putty，即会话终止，则服务也随即停止。解决思路自然是让程序在后台不间断地运行。解决方案可以参考：</p>
 <ul>
 <li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/" target="_blank" rel="external">Linux 技巧：让进程在后台可靠运行的几种方法 | IBM Developerworks</a></li>
 </ul>
 <p>因此，在<code>/var/www/debate</code>目录下新建一个shell脚本<code>start.sh</code>，内容为：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#Deb</span>ate server start shell script</span><br><span class="line">nohup npm start &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debate server start shell script</span></span><br><span class="line">nohup <span class="built_in">npm</span> start &amp;</span><br></pre></td></tr></table></figure>
 <p><code>&amp;</code>是为了让程序能够在后台运行。这时候<code>ctrl+c</code>，或者关闭putty会话，就都不会杀死这个服务进程了。</p>
-<p>###用supervisor自动重启服务<br>NodeJS代码发生变化时，一般是必须重启Node程序才可以生效的。每次手动重启的话太麻烦，可以使用专为NodeJS打造的<a href="https://github.com/petruisfan/node-supervisor" target="_blank" rel="external">node-supervisor</a>模块来实现代码变动时自动重启，以及服务崩溃时自动重启的功能。</p>
+<h3 id="用supervisor自动重启服务">用supervisor自动重启服务</h3><p>NodeJS代码发生变化时，一般是必须重启Node程序才可以生效的。每次手动重启的话太麻烦，可以使用专为NodeJS打造的<a href="https://github.com/petruisfan/node-supervisor" target="_blank" rel="external">node-supervisor</a>模块来实现代码变动时自动重启，以及服务崩溃时自动重启的功能。</p>
 <p>其官网的描述是这样的：</p>
 <blockquote>
 <p>Node Supervisor is used to restart programs when they crash.<br>It can also be used to restart programs when a *.js file changes.</p>
@@ -295,15 +300,13 @@
 <p>因此执行的实际上是<code>node ./bin/www</code>。那么使用<code>supervisor</code>来代替<code>npm start</code>的话就应该是<code>supervisor ./bin/www</code>。因此，在shell脚本里可以这样写：</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">nohup</span> supervisor ./<span class="keyword">bin/www </span>&amp;</span><br></pre></td></tr></table></figure>
 <p>如此一来，当更新代码时，就不必手动去重启NodeJS服务了。</p>
-<p>##停止服务</p>
-<p>###使用kill<br>先列出所有进程，找到Node服务的进程ID，将其杀死，即可停止服务了。</p>
+<h2 id="停止服务">停止服务</h2><h3 id="使用kill">使用kill</h3><p>先列出所有进程，找到Node服务的进程ID，将其杀死，即可停止服务了。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line"></span><br><span class="line">root     <span class="number">11200</span>  <span class="number">1.1</span>  <span class="number">4.0</span> <span class="number">898452</span> <span class="number">20436</span> ?        Sl   Jun19  <span class="number">75</span>:<span class="number">13</span> node /usr/local</span><br><span class="line">root     <span class="number">11387</span>  <span class="number">0.0</span> <span class="number">15.4</span> <span class="number">923264</span> <span class="number">77080</span> ?        Sl   Jun19   <span class="number">0</span>:<span class="number">03</span> node ./bin/www</span><br><span class="line"></span><br><span class="line">kill <span class="number">11200</span></span><br></pre></td></tr></table></figure>
 <p>只要杀死<code>node /usr/local</code>开启的进程，<code>node ./bin/www</code>进程也随之死掉了。</p>
 <p>###使用进程名+脚本来停止服务</p>
-<p>##端口<br>如果运行在未被占用的非80端口上，服务器一声不吭就给开了。但是如果用80端口，可能要注意一下权限的问题。最近都是使用root用户来开启Node服务并运行于80端口上，没有碰到什么问题。</p>
+<h2 id="端口">端口</h2><p>如果运行在未被占用的非80端口上，服务器一声不吭就给开了。但是如果用80端口，可能要注意一下权限的问题。最近都是使用root用户来开启Node服务并运行于80端口上，没有碰到什么问题。</p>
 <p>使用80端口后，访问服务就不必加端口号了。</p>
-<p>##用shell实现自动化管理</p>
-</span>
+<h2 id="用shell实现自动化管理">用shell实现自动化管理</h2></span>
       
     </div>
 
@@ -402,10 +405,10 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            
+            <a href="/categories">
               <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
@@ -452,7 +455,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySQL_Server"><span class="nav-number">1.</span> <span class="nav-text">安装MySQL Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Git进行版本控制"><span class="nav-number">2.</span> <span class="nav-text">用Git进行版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用Git部署代码"><span class="nav-number">2.1.</span> <span class="nav-text">用Git部署代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用SSH而非HTTPS"><span class="nav-number">2.2.</span> <span class="nav-text">使用SSH而非HTTPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行服务"><span class="nav-number">3.</span> <span class="nav-text">运行服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖"><span class="nav-number">3.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使NodeJS服务在后台运行"><span class="nav-number">3.2.</span> <span class="nav-text">使NodeJS服务在后台运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用supervisor自动重启服务"><span class="nav-number">3.3.</span> <span class="nav-text">用supervisor自动重启服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止服务"><span class="nav-number">4.</span> <span class="nav-text">停止服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用kill"><span class="nav-number">4.1.</span> <span class="nav-text">使用kill</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口"><span class="nav-number">5.</span> <span class="nav-text">端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用shell实现自动化管理"><span class="nav-number">6.</span> <span class="nav-text">用shell实现自动化管理</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

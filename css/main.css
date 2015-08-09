@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #555;
@@ -670,7 +670,7 @@ td {
 .post .gist .gist-file .gist-meta {
   background: #f7f7f7;
   color: #8e908c;
-  font: 13px Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font: 13px "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -807,7 +807,7 @@ body {
   color: #fff;
   background: #222;
   border-bottom: none;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
 .logo {
   display: inline-block;
@@ -910,8 +910,8 @@ body {
   position: fixed;
   right: 50px;
   bottom: 45px;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   padding: 5px;
   background: #222;
   line-height: 0;
@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #60b3bb;
+  background: #b84ab5;
 }
 .sidebar-nav {
   margin: 0;
@@ -1468,7 +1468,7 @@ body {
   margin-left: 60px;
   font-size: 16px;
   font-weight: normal;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: inherit;
 }
 .posts-collapse .post-title::after {
@@ -1597,8 +1597,8 @@ body {
   bottom: 19px;
   right: 50px;
   z-index: 1050;
-  width: 15px;
-  height: 13px;
+  width: 18px;
+  height: 18px;
   padding: 5px;
   background: #222;
   color: #fff;
@@ -1621,7 +1621,7 @@ body {
   margin-top: 2px;
   width: 0;
   height: 0;
-  border-width: 0 7px 8px 7px;
+  border-width: 0 9px 10px 9px;
   border-color: transparent transparent #fff transparent;
   border-style: solid;
 }
