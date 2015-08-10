@@ -909,10 +909,10 @@ body {
 .sidebar-toggle {
   position: fixed;
   right: 50px;
-  bottom: 45px;
-  width: 18px;
-  height: 18px;
-  padding: 5px;
+  bottom: 50px;
+  width: 24px;
+  height: 24px;
+  padding: 7px 5px 5px 5px;
   background: #222;
   line-height: 0;
   z-index: 1050;
@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #25ff88;
+  background: #ff6034;
 }
 .sidebar-nav {
   margin: 0;
@@ -1597,8 +1597,8 @@ body {
   bottom: 19px;
   right: 50px;
   z-index: 1050;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   padding: 5px;
   background: #222;
   color: #fff;
@@ -1621,7 +1621,7 @@ body {
   margin-top: 2px;
   width: 0;
   height: 0;
-  border-width: 0 10px 11px 10px;
+  border-width: 0 12px 14px 12px;
   border-color: transparent transparent #fff transparent;
   border-style: solid;
 }
