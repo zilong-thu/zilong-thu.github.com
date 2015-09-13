@@ -27,7 +27,7 @@ Open Austack - Hain
 
 
 A Web Developer’s Learning from App Devel">
-<meta property="og:updated_time" content="2015-09-13T07:32:25.000Z">
+<meta property="og:updated_time" content="2015-09-13T08:47:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="北京 Node.js Party 参会录">
 <meta name="twitter:description" content="活动简介地点：海淀区海淀西大街39号3层36氪 氪空间，位于中关村创业大街
@@ -205,11 +205,31 @@ A Web Developer’s Learning from App Devel">
 <h2 id="Hybrid_APP">Hybrid APP</h2><p>《The Element of User Experience》</p>
 <p>屏幕上实现一个基本功能，最小需求一般是22×22像素。据此可以分析出PC屏幕与手机屏幕UI呈现力的区别。</p>
 <p>微交互。案例：支付宝、顺丰快递。是产品比较成熟后，在细节上做优化的设计思路。</p>
+<h2 id="Node-js_Based_IM">Node.js Based IM</h2><p>架构很赞。很有参考价值。</p>
+<p><strong>soket.io</strong>非常方便。（可以考虑回家后自己搭建一个出来，两天应该就可以了）</p>
+<h3 id="性能">性能</h3><p>压力测试工具： websocket-bench。测试结果：</p>
+<ul>
+<li>24000每台机器维持TCP连接</li>
+<li>10000条/秒，发消息</li>
+<li>96000条/秒，群组消息？？？</li>
+</ul>
+<h3 id="Brain">Brain</h3><p>任何一台Nodejs 服务器启动的时候，与Brain通信，告诉它，自己启动了。Brain就将其放到可用Nodejs server列表里。Brain也会隔一段时间就去检查每一台“奴隶”的负载情况。</p>
+<p>主要：分发Hash。</p>
+<h3 id="Nodejs_server">Nodejs server</h3><p>Nodejs server职能：</p>
+<ul>
+<li>security</li>
+<li>online/offline</li>
+<li>type</li>
+</ul>
+<h3 id="群发消息">群发消息</h3><p>群发消息时的技术难点，瓶颈大概就是在数据库设计上。</p>
+<p>方案1：向1000个人群发消息，数据库里写1000条消息。</p>
+<p>方案2：</p>
+<h3 id="MongoDB">MongoDB</h3><p>性能有点扛不住了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="ciei6p6lv000i9a9p7ug86nlu" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="ciei7n0jx000i1v9p0hodtfl6" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/#ds-thread" class="article-comment-link">Comments</a>
       
