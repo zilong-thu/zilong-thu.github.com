@@ -88,7 +88,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        81
+        82
         <span>posts</span>
       </div>
       <div class="article-info-block">
@@ -121,6 +121,62 @@
 
       
       <section id="main">
+      <article id="post-node-http-server-examples" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/09/node-http-server-examples/">node.js搭建简单的HTTP服务器</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/09/node-http-server-examples/">
+      <time datetime="2014-01-09T11:45:00.000Z" itemprop="datePublished">2014-01-09</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>###参考资料<br><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章</p>
+<p>###1. 最简单的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">	res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</span><br></pre></td></tr></table></figure>
+<p>###2. 路由控制的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>),</span><br><span class="line">	url  = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">	<span class="keyword">if</span> (pathname ===<span class="string">'/'</span>)&#123;</span><br><span class="line">		res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">		res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/about'</span>)&#123;</span><br><span class="line">		res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">			<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">		&#125;);</span><br><span class="line">		res.end(<span class="string">'About us\n'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/redirect'</span>) &#123;</span><br><span class="line">		<span class="comment">// 重定向</span></span><br><span class="line">		res.writeHead(<span class="number">302</span>, &#123;<span class="string">'Location'</span>:<span class="string">'/'</span>&#125;);</span><br><span class="line">		res.end();</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		res.writeHead(<span class="number">404</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">		res.end(<span class="string">'Page not found\n'</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;).listen(<span class="number">3000</span>,<span class="string">"127.0.0.1"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="ciekswm4i004uxms6l04e2t0b" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/09/node-http-server-examples/#ds-thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-html5-web-socket" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="ciej7b5dq004uozs6z583urxo" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="ciekswm4j004wxms6ihoq6q32" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/08/html5-web-socket/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -233,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="ciej7b5ds004wozs6rdayhuoo" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="ciekswm4k004yxms6ongg9z6q" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -292,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="ciej7b5dt004yozs6xhxeyz95" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="ciekswm4l0050xms6nsaejmas" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/03/how-to-improve-12306/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -350,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="ciej7b5du0050ozs6q1dh0ufp" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="ciekswm4n0052xms6b38o3yad" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -406,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="ciej7b5dw0052ozs6k38hnjk2" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="ciekswm4o0054xms6fl86z2mj" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/30/html5-localstorage-study/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -470,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="ciej7b5dy0055ozs6h1ljcajg" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="ciekswm4q0057xms607gyvgvo" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -535,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="ciej7b5dz0057ozs67hr0s52p" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="ciekswm4r0059xms6xbchesxc" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/24/nodejs-primer/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -594,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="ciej7b5e2005bozs6dnefkd5y" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="ciekswm4t005dxms60gsvpy2j" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/#ds-thread" class="article-comment-link">Comments</a>
       
@@ -655,68 +711,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="ciej7b5e10059ozs6udyk9lx7" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="ciekswm4s005bxms6h1a715oh" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/#ds-thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-reading-note-on-async-javascript" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/15/reading-note-on-async-javascript/">《异步JavaScript编程》笔记</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/15/reading-note-on-async-javascript/">
-      <time datetime="2013-12-15T14:42:00.000Z" itemprop="datePublished">2013-12-15</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###Metro应用开发<br>从这本书的前言里，我才知道JavaScript原来可以进行Windows 8 下的Metro风格应用的开发。&gt;&gt;详见 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/br211385.aspx" target="_blank">创建第一个采用 JavaScript 的 Windows 应用商店应用</a>。不过从该页面也了解到，操作系统必须是Window 8.1才可以。</p>
-<blockquote>
-<p>感谢网络浏览器的无处不在，JavaScript比以往任何语言都更接近于兑现Java那句古老的承诺：“一次编写，随处运行。”</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/15/reading-note-on-async-javascript/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/" data-id="ciej7b5e4005dozs6xcw6vort" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/#ds-thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -739,6 +736,23 @@
     <h3 class="widget-title">recents</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/09/15/npm-update-when-changing-nodejs-version/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/09/15/npm-update-when-changing-nodejs-version/" class="title">nodejs版本升级时npm包的更新</a></p>
+              <p class="item-date"><time datetime="2015-09-15T03:06:40.000Z" itemprop="datePublished">2015-09-15</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -810,23 +824,6 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/06/27/char-set-configuration-for-mysql-5-5/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/MySQL/">MySQL</a></p>
-              <p class="item-title"><a href="/2015/06/27/char-set-configuration-for-mysql-5-5/" class="title">Ubuntu下更改MySQL5.5字符集为UTF-8的过程小记</a></p>
-              <p class="item-date"><time datetime="2015-06-27T08:39:13.000Z" itemprop="datePublished">2015-06-27</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -845,7 +842,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">tag cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 17.5px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 10px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 10px;">Essays</a> <a href="/tags/GruntJS/" style="font-size: 10px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 12.5px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 10px;">JMeter</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 12.5px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 20px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 10px;">Web-FE</a> <a href="/tags/Web性能优化/" style="font-size: 12.5px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/算法/" style="font-size: 12.5px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 10px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 17.5px;">随笔</a>
+      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 10px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 10px;">Essays</a> <a href="/tags/GruntJS/" style="font-size: 10px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 12px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 10px;">JMeter</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 12px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 20px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 10px;">Web-FE</a> <a href="/tags/Web性能优化/" style="font-size: 12px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 10px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 16px;">随笔</a>
     </div>
   </div>
 
