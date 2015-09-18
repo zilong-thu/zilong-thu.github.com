@@ -5,16 +5,16 @@
   
   <title>Ubuntu Linux常用命令笔记 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##写在前头Linux里，所有程序或系统装置都是文件">
+  <meta name="description" content="写在前头Linux里，所有程序或系统装置都是文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu Linux常用命令笔记">
 <meta property="og:url" content="http://borninsummer.com/2015/06/11/linux-command-memo/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="##写在前头Linux里，所有程序或系统装置都是文件">
-<meta property="og:updated_time" content="2015-09-10T12:35:37.000Z">
+<meta property="og:description" content="写在前头Linux里，所有程序或系统装置都是文件">
+<meta property="og:updated_time" content="2015-09-18T02:48:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu Linux常用命令笔记">
-<meta name="twitter:description" content="##写在前头Linux里，所有程序或系统装置都是文件">
+<meta name="twitter:description" content="写在前头Linux里，所有程序或系统装置都是文件">
   
   
     <link rel="icon" href="/favicon.png">
@@ -156,10 +156,9 @@
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>##写在前头<br><strong>Linux里，所有程序或系统装置都是文件</strong></p>
+        <h2 id="写在前头">写在前头</h2><p><strong>Linux里，所有程序或系统装置都是文件</strong></p>
 <a id="more"></a>
-<p>##入门级命令</p>
-<p><code>ls -a</code>  查看所有文件，包括隐藏的文件</p>
+<h2 id="入门级命令">入门级命令</h2><p><code>ls -a</code>  查看所有文件，包括隐藏的文件</p>
 <p><code>ls -al</code>  列出当前目录下所有的文件的详细权限与属性，需要以root身份登录</p>
 <p><code>mkdir directoryName</code>  创建一个目录</p>
 <p><code>rm -rf</code>  强行(-f)向下递归(-r)删除一个目录，不管该目录是否为空</p>
@@ -168,14 +167,12 @@
 <p><code>who</code> 查看系统有哪些用户登录了</p>
 <p><code>netstat -a</code>  查看网络的联机状态</p>
 <p><code>ps -aux</code>  查看后台执行的程序</p>
-<p>##vi<br><code>i</code> 开始输入</p>
+<h2 id="vi">vi</h2><p><code>i</code> 开始输入</p>
 <p><code>:wq!</code>  保存并退出</p>
 <p><code>vi filename</code>  用vi打开一个文件</p>
 <p><code>esc</code>然后 <code>ctrl+z</code>可以退出编辑并关闭vi编辑器</p>
-<p>##压缩文件操作</p>
-<p><code>tar -C /usr/local -xzf node-v0.10.34-linux-x86.tar.gz</code> 把后面的压缩文件解压缩到目录<code>/usr/local</code>下</p>
-<p>##用户</p>
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 创建新用户 */</span><br><span class="line">root@iZ23jp8wbg8Z:/tmp<span class="preprocessor"># adduser wzl</span></span><br><span class="line">Adding user `wzl<span class="comment">' ...</span></span><br><span class="line">Adding <span class="keyword">new</span> <span class="keyword">group</span> `wzl<span class="comment">' (1000) ...</span></span><br><span class="line">Adding <span class="keyword">new</span> user `wzl<span class="comment">' (1000) with group `wzl' ...</span></span><br><span class="line">Creating home directory `/home/wzl<span class="comment">' ...</span></span><br><span class="line">Copying files <span class="keyword">from</span> `/etc/skel<span class="comment">' ...</span></span><br><span class="line">Enter <span class="keyword">new</span> UNIX password:</span><br><span class="line">Retype <span class="keyword">new</span> UNIX password:</span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
+<h2 id="压缩文件操作">压缩文件操作</h2><p><code>tar -C /usr/local -xzf node-v0.10.34-linux-x86.tar.gz</code> 把后面的压缩文件解压缩到目录<code>/usr/local</code>下</p>
+<h2 id="用户">用户</h2><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 创建新用户 */</span><br><span class="line">root@iZ23jp8wbg8Z:/tmp<span class="preprocessor"># adduser wzl</span></span><br><span class="line">Adding user `wzl<span class="comment">' ...</span></span><br><span class="line">Adding <span class="keyword">new</span> <span class="keyword">group</span> `wzl<span class="comment">' (1000) ...</span></span><br><span class="line">Adding <span class="keyword">new</span> user `wzl<span class="comment">' (1000) with group `wzl' ...</span></span><br><span class="line">Creating home directory `/home/wzl<span class="comment">' ...</span></span><br><span class="line">Copying files <span class="keyword">from</span> `/etc/skel<span class="comment">' ...</span></span><br><span class="line">Enter <span class="keyword">new</span> UNIX password:</span><br><span class="line">Retype <span class="keyword">new</span> UNIX password:</span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
 <p>创建完一个用户后，会在<code>/home</code>目录下以该用户名自动创建一个目录。</p>
 <p><code>su wzl</code>  切换为用户<code>wzl</code></p>
 <p><code>exit</code>，如果由root用户切换为wzl后再执行<code>exit</code>，则回到root用户下</p>
@@ -185,14 +182,13 @@
 <p><code>ps aux | grep node</code>  只查看与<code>node</code>有关的进程</p>
 <p><code>free -m -t</code>  以MB为单位（<code>-m</code>），显示所有可用内存（<code>-t</code>），然后打印出内存使用情况</p>
 <p><code>df -hl</code>  查看电脑的磁盘等信息</p>
-<p>##权限管理</p>
-<p><code>chown [选项] [所有者用户][:[组名]] 文件</code>  把某文件的所有者改为某某用户，以及归到某组下</p>
+<h2 id="权限管理">权限管理</h2><p><code>chown [选项] [所有者用户][:[组名]] 文件</code>  把某文件的所有者改为某某用户，以及归到某组下</p>
 <p>``</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cieksz24f001ez6s64e3de14a" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="ciep23dkd001ebms6pac4okwl" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/11/linux-command-memo/#ds-thread" class="article-comment-link">Comments</a>
       
