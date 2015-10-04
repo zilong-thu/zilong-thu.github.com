@@ -19,7 +19,7 @@
 对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：
 
 这个世界的知识，对于一个人来说，有三层：最内一层是舒适区，在这里面的知识都是这个人掌握得非常好，运">
-<meta property="og:updated_time" content="2015-10-04T14:32:43.000Z">
+<meta property="og:updated_time" content="2015-10-04T16:20:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小结：最近一月学到的东西">
 <meta name="twitter:description" content="最近一月（主要是9月份），通过若干项目，学到了一些新技能。
@@ -175,11 +175,13 @@
 <p>对于程序员来讲，往自己的上下游发展，是扩展自己技能树、提升个人能力的一个好途径。例如前端去学点设计，美工去懂点CSS，前端了解一些服务器开发技能，后端开发人员学习运维知识，等等。</p>
 <a id="more"></a>
 <h2 id="Angular-js">Angular.js</h2><p>Angular.js是个好东西。开发CRUD类型的单页面应用时务必首选此货！！！</p>
-<h2 id="理解RESTful">理解RESTful</h2><h2 id="前后端分离开发实践">前后端分离开发实践</h2><h3 id="何为前后端分离">何为前后端分离</h3><p>Web开发领域有个词现在比较火：<strong>大前端</strong></p>
+<h2 id="前后端分离开发实践">前后端分离开发实践</h2><p>何为前后端分离？</p>
+<p>Web开发领域有个词现在比较火：<strong>大前端</strong></p>
 <p>国内许多大公司也已经做出了相应的技术架构更改，例如淘宝，美团。</p>
 <p><a href="http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/" target="_blank" rel="external">前后端分离的思考与实践(一)</a></p>
 <p><a href="http://tech.meituan.com/node-fullstack-development-practice.html" target="_blank" rel="external">美团酒店Node全栈开发实践, 2015-06-26</a></p>
-<h3 id="Node-js作为代理服务器">Node.js作为代理服务器</h3><h3 id="模板">模板</h3><p>最开始学习Node.js，搭建一个微博网站，就是直接用EJS。也一直用到现在。因为没有见识过更好的模板，因此居然一直觉得这货很好用。</p>
+<h3 id="Node-js作为代理服务器">Node.js作为代理服务器</h3><p>视图的渲染工作有时是在Node端进行，有时是浏览器通过AJAX获取JSON数据来进行。如果网站存在认证机制，那么就可以使用node.js设计一个专门的路由，作为代理服务器。例如约定所有发往<code>/api/</code>的AJAX请求（包括GET, POST, PUT, DELETE等），都交由此路由进行转发。后台服务器则只对该node.js服务器提供数据服务（通过防火墙之类的措施）。</p>
+<h3 id="模板">模板</h3><p>最开始学习Node.js，搭建一个微博网站，就是直接用EJS。也一直用到现在。因为没有见识过更好的模板，因此居然一直觉得这货很好用。</p>
 <p>直到有一天，我发现它不支持模板继承。</p>
 <p>拜拜，ejs。</p>
 <p>最近的一个项目把Django的工程做了前后端分离，当时为了兼容Django的模板，就用了Nunjucks。还不错，这货也是前后端模板都可以统一的。所以，Nunjucks就进入了我的舒适区了。</p>
@@ -191,13 +193,15 @@
 <p>现在了解了切图是怎么回事。然后觉得其实也就这么回事。</p>
 <p>工具：Photoshop CC 2015 + Cutterman</p>
 <p>因为是在国内，也因为银子少，PS就搞破解版了。</p>
+<h2 id="前端JS脚本CMD模块化管理">前端JS脚本CMD模块化管理</h2><p>在朋友的推荐下，学习了sea.js的使用。感觉的确比require.js好用多了。后面那货，太2了。对node.js比较熟悉的话，前端脚本资源果断用CMD方式加载比较好。</p>
+<p>CMD!! CMD!!!!</p>
 <h2 id="该认真学习ES6了！">该认真学习ES6了！</h2><p>Node.js发布V4.0版本之后，ES6就不得不提上自己的学习日程了。</p>
 <h2 id="接口测试神器之：Postman">接口测试神器之：Postman</h2><p>Postman是Chrome浏览器的一个扩展应用。界面非常爽。发起各种HTTP请求也很方便。真是前后端开发的好帮手。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cifclyo8t000ii9s660k2mwbo" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cifcptn6f000ikvs6t70qunik" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/10/02/skills-learned-in-september/#ds-thread" class="article-comment-link">Comments</a>
       
