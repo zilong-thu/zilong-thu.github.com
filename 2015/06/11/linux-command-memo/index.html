@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/06/11/linux-command-memo/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="写在前头Linux里，所有程序或系统装置都是文件">
-<meta property="og:updated_time" content="2015-09-25T16:15:41.000Z">
+<meta property="og:updated_time" content="2015-10-12T16:12:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu Linux常用命令笔记">
 <meta name="twitter:description" content="写在前头Linux里，所有程序或系统装置都是文件">
@@ -181,6 +181,7 @@
 <p><code>ps aux | grep node</code>  只查看与<code>node</code>有关的进程</p>
 <p><code>free -m -t</code>  以MB为单位（<code>-m</code>），显示所有可用内存（<code>-t</code>），然后打印出内存使用情况</p>
 <p><code>df -hl</code>  查看电脑的磁盘等信息</p>
+<p><code>lscpu</code>  查看电脑的CPU信息，可以据此了解CPU核心数、主频等关键信息</p>
 <h2 id="权限管理">权限管理</h2><p><code>chown [选项] [所有者用户][:[组名]] 文件</code>  把某文件的所有者改为某某用户，以及归到某组下</p>
 <h2 id="网络操作">网络操作</h2><h3 id="lsof命令"><code>lsof</code>命令</h3><p>通过list open file命令可以查看到当前打开文件，在linux中所有事物都是以文件形式存在，包括网络连接及硬件设备。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -<span class="tag">i</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure>
@@ -188,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cifi5dehn001hxbfy3blmqq52" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cifo51i0j001hbc9pt0h3s9e8" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/11/linux-command-memo/#ds-thread" class="article-comment-link">Comments</a>
       
