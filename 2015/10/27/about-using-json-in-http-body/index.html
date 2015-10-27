@@ -3,30 +3,57 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小结：最近一月学到的东西 | 王子龙的博客</title>
+  <title>关于在HTTP请求BODY中使用JSON格式 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近一月（主要是9月份），通过若干项目，学到了一些新技能。
-月末又读了几篇学习方法理论相关的博文，加深、印证了自己的观念。
-对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：
+  <meta name="description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type：
 
-这个世界的知识，对于一个人来说，有三层：最内一层是舒适区，在这里面的知识都是这个人掌握得非常好，运">
+
+
+Content-Type
+类型说明
+示例
+
+
+
+
+application/x-www-form-urlencoded
+以 URLEncoded 的方式进行编码
+name=test&amp;amp;sub%5B%5D=1&amp;am">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小结：最近一月学到的东西">
-<meta property="og:url" content="http://borninsummer.com/2015/10/02/skills-learned-in-september/index.html">
+<meta property="og:title" content="关于在HTTP请求BODY中使用JSON格式">
+<meta property="og:url" content="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="最近一月（主要是9月份），通过若干项目，学到了一些新技能。
-月末又读了几篇学习方法理论相关的博文，加深、印证了自己的观念。
-对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：
+<meta property="og:description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type：
 
-这个世界的知识，对于一个人来说，有三层：最内一层是舒适区，在这里面的知识都是这个人掌握得非常好，运">
-<meta property="og:updated_time" content="2015-10-16T08:28:03.000Z">
+
+
+Content-Type
+类型说明
+示例
+
+
+
+
+application/x-www-form-urlencoded
+以 URLEncoded 的方式进行编码
+name=test&amp;amp;sub%5B%5D=1&amp;am">
+<meta property="og:updated_time" content="2015-10-27T15:55:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小结：最近一月学到的东西">
-<meta name="twitter:description" content="最近一月（主要是9月份），通过若干项目，学到了一些新技能。
-月末又读了几篇学习方法理论相关的博文，加深、印证了自己的观念。
-对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：
+<meta name="twitter:title" content="关于在HTTP请求BODY中使用JSON格式">
+<meta name="twitter:description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type：
 
-这个世界的知识，对于一个人来说，有三层：最内一层是舒适区，在这里面的知识都是这个人掌握得非常好，运">
+
+
+Content-Type
+类型说明
+示例
+
+
+
+
+application/x-www-form-urlencoded
+以 URLEncoded 的方式进行编码
+name=test&amp;amp;sub%5B%5D=1&amp;am">
   
   
     <link rel="icon" href="/favicon.png">
@@ -133,7 +160,7 @@
 </aside>
 
       
-      <section id="main"><article id="post-skills-learned-in-september" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-about-using-json-in-http-body" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -142,7 +169,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      小结：最近一月学到的东西
+      关于在HTTP请求BODY中使用JSON格式
     </h1>
   
 
@@ -150,8 +177,8 @@
           
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2015/10/02/skills-learned-in-september/">
-      <time datetime="2015-10-02T15:02:22.000Z" itemprop="datePublished">2015-10-02</time>
+    <a href="/2015/10/27/about-using-json-in-http-body/">
+      <time datetime="2015-10-27T15:15:06.000Z" itemprop="datePublished">2015-10-27</time>
     </a>
   </div>
 
@@ -163,53 +190,55 @@
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>最近一月（主要是9月份），通过若干项目，学到了一些新技能。</p>
-<p>月末又读了几篇学习方法理论相关的博文，加深、印证了自己的观念。</p>
-<p>对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：</p>
-<blockquote>
-<p>这个世界的知识，对于一个人来说，有三层：<br>最内一层是舒适区，在这里面的知识都是这个人掌握得非常好，运用得非常好的。就像一个学了一两年前端开发的同学A，对JS的各种特性肯定是如数家珍。<br>最外面的是新领域，叫做“恐慌区”，这里的知识对这个人来说都是陌生的，完全没有掌握甚至没有接触的。就像那个同学A（假定TA就像我一样，是自学编程，因此只会前端开发），如果让他去用JAVA写后台，通常真的会很痛苦。<br>处在新领域和舒适区之间的，就是学习区。好比如果这个同学动JS，又要学后端开发，那么直接上手Node.js，可能比先学JAVA，然后开始做后端开发要稍微少点门槛。</p>
-</blockquote>
+        <p>在使用 HTTP POST 或者 PUT 方法向服务器发送非<code>multipart</code>类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的<code>Content-Type</code>：</p>
+<table>
+<thead>
+<tr>
+<th><code>Content-Type</code></th>
+<th>类型说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>application/x-www-form-urlencoded</code></td>
+<td>以 URLEncoded 的方式进行编码</td>
+<td><code>name=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2</code></td>
+</tr>
+<tr>
+<td><code>application/json</code></td>
+<td>消息主体是序列化后的 JSON 字符串，要求服务器端能够支持JSON</td>
+<td><code>{&quot;name&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2]}</code></td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
-<p>之所以说“稍微少点”，是因为后端开发并不只是编程语言层面上的东西，编程语言只是服务器端开发的一个子集，理论上任何一门编程语言都可以实现一整套的服务器端逻辑，这个时候变的是语言，不变的是诸如HTTP、TCP、并发处理、页面渲染、文件分发、认证授权、会话管理、路由设计、并发处理等等。</p>
-<p>作为一个程序员，要经常跳出自己的舒适区，去学习一些新东西。</p>
-<p>很多新技术、新工具，通常都会提供一个“学习区”，叫做“Get started”，或者“快速入门”，或者“Hello world”。通过看这些东西，就可以知道这个是不是处在自己的学习区内。</p>
-<p>对于程序员来讲，往自己的上下游发展，是扩展自己技能树、提升个人能力的一个好途径。例如前端去学点设计，美工去懂点CSS，前端了解一些服务器开发技能，后端开发人员学习运维知识，等等。</p>
-<h2 id="Angular-js">Angular.js</h2><p>Angular.js是个好东西。开发CRUD类型的单页面应用时务必首选此货！！！</p>
-<p>用Angular做了一个网站的管理员后台，期间参考了目前看到的最好的Angular书籍，《精通AngularJS》，是Angular的开发团队的成员写的，极力推荐。</p>
-<p>用的版本是<code>v1.*</code>，等<code>v2.*</code>版本正式发布出来，还是得继续跟进。</p>
-<h2 id="前后端分离开发实践">前后端分离开发实践</h2><p>何为前后端分离？</p>
-<p>Web开发领域有个词现在比较火：<strong>大前端</strong></p>
-<p>国内许多大公司也已经做出了相应的技术架构更改，例如淘宝，美团。</p>
-<p><a href="http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/" target="_blank" rel="external">前后端分离的思考与实践(一)</a></p>
-<p><a href="http://tech.meituan.com/node-fullstack-development-practice.html" target="_blank" rel="external">美团酒店Node全栈开发实践, 2015-06-26</a></p>
-<h3 id="Node-js作为代理服务器">Node.js作为代理服务器</h3><p>视图的渲染工作有时是在Node端进行，有时是浏览器通过AJAX获取JSON数据来进行。如果网站存在认证机制，那么就可以使用node.js设计一个专门的路由，作为代理服务器。例如约定所有发往<code>/api/</code>的AJAX请求（包括GET, POST, PUT, DELETE等），都交由此路由进行转发。后台服务器则只对该node.js服务器提供数据服务（通过防火墙之类的措施）。</p>
-<h3 id="模板">模板</h3><p>最开始学习Node.js，搭建一个微博网站，就是直接用EJS。也一直用到现在。因为没有见识过更好的模板，因此居然一直觉得这货很好用。</p>
-<p>直到有一天，我发现它不支持模板继承。</p>
-<p>拜拜，ejs。</p>
-<p>最近的一个项目把Django的工程做了前后端分离，当时为了兼容Django的模板，就用了Nunjucks。还不错，这货也是前后端模板都可以统一的。所以，Nunjucks就进入了我的舒适区了。</p>
-<p>从此我也成了有阅历的人了：“不支持继承的模板不是好模板”。</p>
-<h3 id="真的是前后端通用吗？">真的是前后端通用吗？</h3><p>其实，有时候前后端并不是完全通用一份模板文件的。例如标签，如果一个页面有一部分是Node.js来渲染的，同时又输出了一部分包裹在<code>script</code>标签内部的浏览器端模板，那么着二者的标签一定是不一样的。大部分的模板标记系统都提供了更改标签的接口。</p>
-<p><strong>重要的不是模板文件统一，而是模板语法的统一。</strong></p>
-<p>然后，之所以说“有时候”，是因为可以采取这样的手段，来使浏览器与服务器端Node.js使用同一份模板文件：浏览器先加载页面，此时经过一次服务器端渲染；然后，浏览器单独发起一个AJAX请求，获取模板文件，拿到后把它查到DOM里面。这样就可以减少更改标记的麻烦。但问题肯定也存在：增加了一次HTTP请求，大多数时候可能不值得。</p>
-<h2 id="切图技能">切图技能</h2><p>对于没有上游工序的状况（即，没有美工给我提供稿件图），都是自己拍脑袋想出来布局、配色等等。因此对于切图、取色等技能，着实欠缺。</p>
-<p>现在了解了切图是怎么回事。然后觉得其实也就这么回事。</p>
-<p>工具：Photoshop CC 2015 + Cutterman</p>
-<p>因为是在国内，也因为银子少，PS就搞破解版了。</p>
-<h2 id="前端JS脚本CMD模块化管理">前端JS脚本CMD模块化管理</h2><p>在朋友的推荐下，学习了sea.js的使用。感觉的确比require.js好用多了。后面那货，太2了。对node.js比较熟悉的话，前端脚本资源果断用CMD方式加载比较好。</p>
-<p>CMD!! CMD!!!!</p>
-<h2 id="该认真学习ES6了！">该认真学习ES6了！</h2><p>Node.js发布V4.0版本之后，ES6就不得不提上自己的学习日程了。在一些技术卓越的团队里，ES6已经在普及开来了。</p>
-<p>一些新特性的确让人欢欣鼓舞，例如<code>Object.change</code>事件可以解决AngularJS的性能问题。而使用<code>let</code>关键字则可以声明块级作用域的变量，这样可以解决有时不得不用匿名函数来创造局部作用域的麻烦了。</p>
-<h2 id="接口测试神器之：Postman">接口测试神器之：Postman</h2><p>Postman是Chrome浏览器的一个扩展应用。界面非常爽。发起各种HTTP请求也很方便。真是前后端开发的好帮手。</p>
+<h2 id="浏览器端">浏览器端</h2><p>HTML表单默认是按照<code>application/x-www-form-urlencoded</code>进行编码的。</p>
+<p>如果使用jQuery，默认情况下，其<code>contentType</code>值为：<code>application/x-www-form-urlencoded; charset=UTF-8</code>。可以通过将其设为<code>application/json</code>，然后将数据进行JSON序列化，就可以正确地发送JSON数据了。</p>
+<p>urlencoded格式的Ajax请求：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="symbol">'some_ur</span>l',</span><br><span class="line">    <span class="class"><span class="keyword">type</span>:</span> <span class="symbol">'POS</span>T',</span><br><span class="line">    data: <span class="class"><span class="keyword">object</span></span><br><span class="line"></span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>JSON格式的Ajax请求（需要手动进行JSON）：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="symbol">'some_ur</span>l',</span><br><span class="line">    <span class="class"><span class="keyword">type</span>:</span> <span class="symbol">'POS</span>T',</span><br><span class="line">    contentType: <span class="symbol">'application</span>/json',</span><br><span class="line">    data: <span class="type">JSON</span>.stringify(<span class="class"><span class="keyword">object</span>)</span><br><span class="line"></span>&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Node-js端">Node.js端</h2><p>如果使用了流行的npm模块<a href="ttps://github.com/request/request" target="_blank" rel="external"><code>request</code></a>，那么这样写是模拟URLEncoded编码进行提交的：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">request</span><span class="class">.post</span>(<span class="string">'http://service.com/upload'</span>, &#123;</span><br><span class="line">    <span class="tag">form</span>: &#123;</span><br><span class="line">        <span class="attribute">key</span>:<span class="string">'value'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>而要想以JSON格式执行POST请求，那么应该这样：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: '',</span><br><span class="line">    <span class="keyword">method</span>: '<span class="type">POST</span>',</span><br><span class="line">    json: <span class="literal">true</span>,</span><br><span class="line">    body: <span class="keyword">object</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>request</code>模块对<code>body</code>的说明：</p>
+<blockquote>
+<p>body - entity body for PATCH, POST and PUT requests. Must be a Buffer or String, unless json is true. If json is true, then body must be a JSON-serializable object.</p>
+</blockquote>
+<p>是说，<code>body</code>必须是个<code>Buffer</code>类型或者<code>String</code>类型，除非<code>json</code>选项为<code>true</code>。如果<code>json</code>为真，那么<code>body</code>必须是一个可以被JSON序列化的对象。</p>
+<h2 id="参考资料">参考资料</h2><p><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="external">四种常见的 POST 提交数据方式</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cig9izn68000ly29p4w6i2ecd" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cig9izn61000iy29p4p8xhkmj" class="article-share-link">Share</a>
       
-        <a href="http://borninsummer.com/2015/10/02/skills-learned-in-september/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebFE/">WebFE</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
 
     </footer>
   </div>
@@ -217,19 +246,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/10/27/about-using-json-in-http-body/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          关于在HTTP请求BODY中使用JSON格式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/15/npm-update-when-changing-nodejs-version/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/10/02/skills-learned-in-september/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">nodejs版本升级时npm包的更新</div>
+      <div class="article-nav-title">小结：最近一月学到的东西</div>
     </a>
   
 </nav>
