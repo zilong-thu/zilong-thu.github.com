@@ -37,7 +37,7 @@ Content-Type
 application/x-www-form-urlencoded
 以 URLEncoded 的方式进行编码
 name=test&amp;amp;sub%5B%5D=1&amp;am">
-<meta property="og:updated_time" content="2015-10-27T15:55:38.000Z">
+<meta property="og:updated_time" content="2015-10-28T01:15:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于在HTTP请求BODY中使用JSON格式">
 <meta name="twitter:description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type：
@@ -214,7 +214,9 @@ name=test&amp;amp;sub%5B%5D=1&amp;am">
 </table>
 <a id="more"></a>
 <h2 id="浏览器端">浏览器端</h2><p>HTML表单默认是按照<code>application/x-www-form-urlencoded</code>进行编码的。</p>
-<p>如果使用jQuery，默认情况下，其<code>contentType</code>值为：<code>application/x-www-form-urlencoded; charset=UTF-8</code>。可以通过将其设为<code>application/json</code>，然后将数据进行JSON序列化，就可以正确地发送JSON数据了。</p>
+<h3 id="XMLHttpRequest">XMLHttpRequest</h3><p>如果使用浏览器原生的HTTP请求方法<code>XMLHttpRequest</code>，那么只需在open一个请求之后、send该请求之前，设置一下请求首部的<code>Content-Type</code>字段即可。示例代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>, <span class="string">'http://url'</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 所有相关的事件绑定必须在调用send()方法之前进行 */</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> state = xhr.readyState;</span><br><span class="line">    <span class="keyword">if</span>(state == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line">        <span class="comment">/* 响应成功, do something */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.send(<span class="built_in">JSON</span>.stringify(object));</span><br></pre></td></tr></table></figure>
+<h3 id="jQuery">jQuery</h3><p>如果使用jQuery，默认情况下，其<code>contentType</code>值为：<code>application/x-www-form-urlencoded; charset=UTF-8</code>。可以通过将其设为<code>application/json</code>，然后将数据进行JSON序列化，就可以正确地发送JSON数据了。</p>
 <p>urlencoded格式的Ajax请求：</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="symbol">'some_ur</span>l',</span><br><span class="line">    <span class="class"><span class="keyword">type</span>:</span> <span class="symbol">'POS</span>T',</span><br><span class="line">    data: <span class="class"><span class="keyword">object</span></span><br><span class="line"></span>&#125;);</span><br></pre></td></tr></table></figure>
 <p>JSON格式的Ajax请求（需要手动进行JSON）：</p>
@@ -233,7 +235,7 @@ name=test&amp;amp;sub%5B%5D=1&amp;am">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cig9k60i1000i0i9pkrzp2a1o" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="ciga422th000i589p1g0glt0u" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/#disqus_thread" class="article-comment-link">Comments</a>
       
