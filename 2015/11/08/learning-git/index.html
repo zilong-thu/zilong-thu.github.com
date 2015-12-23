@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git（中文版）》。">
-<meta property="og:updated_time" content="2015-12-21T15:51:08.000Z">
+<meta property="og:updated_time" content="2015-12-23T15:39:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git（中文版）》。">
@@ -45,12 +45,6 @@
         
       </nav>
       
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/about/myResumeAvatar.jpg"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-      
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
       </div>
@@ -77,49 +71,6 @@
 </header>
 
     <div class="outer">
-      
-        <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <img id="avatar" src="/about/myResumeAvatar.jpg">
-      <h2 id="name">王子龙</h2>
-      <h3 id="title">Stay hungry, stay foolish.</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>Nanjing, China</span>
-      <a id="follow" href="https://github.com/zilong-thu/">FOLLOW</a>
-    </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        86
-        <span>posts</span>
-      </div>
-      <div class="article-info-block">
-        43
-        <span>tags</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-          
-          <td><a href="http://github.com/zilong-thu/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-          
-          <td><a href="/#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-          
-          <td><a href="https://www.facebook.com/zilong.wang.334" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-          
-          <td><a href="/#" target="_blank" title="dribbble"><i class="fa fa-dribbble"></i></a></td>
-          
-          <td><a href="/atom.xml" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-          
-        </tr>
-      </table>
-    </div>
-    
-    
-  </div>
-</aside>
-
       
       <section id="main"><article id="post-learning-git" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -183,12 +134,12 @@
 <h2 id="分支操作">分支操作</h2><h3 id="删除分支">删除分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
 <p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
 <hr>
-<h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看关于某条命令的帮助</span></span><br><span class="line">git <span class="comment">--help &lt;command&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff <span class="comment">--check</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset <span class="comment">--hard HEAD~N</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交记录，带每次的更改状态</span></span><br><span class="line">git <span class="command">log</span> <span class="comment">--stat</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciig4v64w000lcds69tytf6fs" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciiizx470000ne0s6zz4aqmqc" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -242,6 +193,15 @@
             
             <div class="item-inner">
               <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/12/23/at-the-end-of-2015/" class="title">记 2015</a></p>
+              <p class="item-date"><time datetime="2015-12-23T15:40:57.000Z" itemprop="datePublished">2015-12-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
               <p class="item-title"><a href="/2015/11/26/a-turning-point-at-the-age-of-27/" class="title">A Turning Point at the Age of 27</a></p>
               <p class="item-date"><time datetime="2015-11-26T12:14:21.000Z" itemprop="datePublished">2015-11-26</time></p>
             </div>
@@ -274,25 +234,7 @@
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/NodeJS/">NodeJS</a></p>
-              <p class="item-title"><a href="/2015/09/15/npm-update-when-changing-nodejs-version/" class="title">nodejs版本升级时npm包的更新</a></p>
-              <p class="item-date"><time datetime="2015-09-15T03:06:40.000Z" itemprop="datePublished">2015-09-15</time></p>
-            </div>
-          </li>
-        
       </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Illustrator/">Illustrator</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movies/">Movies</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NodeJS/">NodeJS</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web-FE/">Web-FE</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/压力测试/">压力测试</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运动与健康/">运动与健康</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -301,7 +243,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">tag cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 17.5px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 10px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 10px;">Essays</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 10px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 12.5px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 10px;">JMeter</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 12.5px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 20px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 10px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 10px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 12.5px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/算法/" style="font-size: 12.5px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 10px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 16px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 10px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 10px;">Essays</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 10px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 12px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 10px;">JMeter</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 12px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 10px;">LBS</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 12px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 18px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 10px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 10px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 12px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 10px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
     </div>
   </div>
 
