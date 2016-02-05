@@ -5,16 +5,16 @@
   
   <title>Git 学习笔记 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git（中文版）》。">
+  <meta name="description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 学习笔记">
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git（中文版）》。">
-<meta property="og:updated_time" content="2016-01-14T15:34:53.000Z">
+<meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。">
+<meta property="og:updated_time" content="2016-02-05T14:59:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
-<meta name="twitter:description" content="记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git（中文版）》。">
+<meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -115,7 +115,7 @@
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>记录一下学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a href="http://git.oschina.net/progit/" target="_blank" rel="external">《Pro Git（中文版）》</a>。</p>
+        <p>本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a href="http://git.oschina.net/progit/" target="_blank" rel="external">《Pro Git 2nd Edition（中文版）》</a>。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。</p>
 <a id="more"></a>
 <h2 id="pull_操作">pull 操作</h2><h3 id="强制更新">强制更新</h3><p><a href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes" target="_blank" rel="external">Git Pull While Ignoring Local Changes?</a></p>
 <p>【方法1】先clean当前的工作目录，使其与上一次的commit一致，然后再pull即可</p>
@@ -131,6 +131,8 @@
 <p><strong>原理</strong></p>
 <p>不想使 <code>node_modules</code> 再在代码仓库里出现，过程是这样的：</p>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  master</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 执行这个</span></span><br><span class="line">git reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
+<h3 id="修改刚才的提交的注释">修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> <span class="comment">--amend</span></span></span><br></pre></td></tr></table></figure>
+<p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
 <h2 id="分支操作">分支操作</h2><h3 id="删除分支">删除分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
 <p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
 <h3 id="重命名一个本地分支">重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
@@ -142,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cik72jdc0000nbus6j35mzdoi" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cik9tizpr000nml9phfyp33lm" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
