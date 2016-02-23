@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。">
-<meta property="og:updated_time" content="2016-02-05T14:59:34.000Z">
+<meta property="og:updated_time" content="2016-02-23T14:44:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错。有纸质书可以读。">
@@ -133,7 +133,10 @@
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  master</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 执行这个</span></span><br><span class="line">git reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
 <h3 id="修改刚才的提交的注释">修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> <span class="comment">--amend</span></span></span><br></pre></td></tr></table></figure>
 <p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
-<h2 id="分支操作">分支操作</h2><h3 id="删除分支">删除分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
+<h2 id="分支操作">分支操作</h2><h3 id="查看分支">查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
+<p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
+<p><code>git branch -r</code>，只查看远程追踪分支</p>
+<h3 id="删除分支">删除分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
 <p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
 <h3 id="重命名一个本地分支">重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
 <p><code>git branch -m &lt;oldname&gt; &lt;newname&gt;</code>，修改任意本地分支的名字</p>
@@ -144,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cikqyolbe000nfrs6wga7abrn" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cikqzyl0v000nmos65yycc289" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
