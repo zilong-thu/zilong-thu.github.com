@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-02-28T13:24:17.000Z">
+<meta property="og:updated_time" content="2016-03-06T08:42:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -149,13 +149,14 @@
 <p><code>git stash apply</code> 只会取出储藏栈最上面的那个状态，并不会删除它。想要达到“弹出栈”的效果，可以使用 <code>git stash pop</code>，这条命令会把储藏栈的顶端状态弹出，并将其从栈中删除。</p>
 <p><code>git stash list</code>， 查看暂存栈。里面编号为 0 的是最新的暂存状态。</p>
 <p><code>git stash clean</code>， 清空暂存区</p>
+<h2 id="裸版本库">裸版本库</h2><p>【待学习补充】</p>
 <hr>
 <h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="preprocessor"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cil6l8tp5000nzls6fd8dkbfh" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cilgbbk2w000n1qs6ulnocx32" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
