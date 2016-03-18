@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-03-06T08:42:44.000Z">
+<meta property="og:updated_time" content="2016-03-18T15:47:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -141,6 +141,15 @@
 <h3 id="重命名一个本地分支">重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
 <p><code>git branch -m &lt;oldname&gt; &lt;newname&gt;</code>，修改任意本地分支的名字</p>
 <p><code>git branch -m &lt;new_name_for_the_current_branch&gt;</code>，修改当前所在分支的名字</p>
+<h3 id="跟踪远程分支">跟踪远程分支</h3><p>如果一个分支尚未与相应的远程分支建立跟踪关系，可以在 <code>push</code> 的时候顺便指定一下：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">push</span> --<span class="keyword">set</span>-upstream origin master</span><br></pre></td></tr></table></figure>
+<p>意思是，向远程（origin）分支（master）提交代码，并且今后把这个远程分支作为当前分支的远程跟踪分支。以后运行 <code>git status</code> 就会提示当前分支是否落后于远程跟踪分支了。</p>
+<p>Git 的提示：</p>
+<blockquote>
+<p>The current branch master has no upstream branch.</p>
+<p>To push the current branch and set the remote as upstream, use</p>
+<p>   git push –set-upstream origin master</p>
+</blockquote>
 <h2 id="储藏">储藏</h2><p><code>git stash</code> 命令会捕获当前分支的工作目录和索引的全部状态，将其存储在一个栈中。</p>
 <p>不想提交，又想获取最新的远程仓库代码时：</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull <span class="comment">--rebase origin feature/my_feature_1</span></span><br><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
@@ -156,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cilpgxruz000s1bs6po6g8qv9" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cilxvrbs9000sfms6ygzfhubn" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
