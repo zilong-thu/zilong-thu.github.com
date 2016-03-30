@@ -901,10 +901,13 @@ a.article-title:hover {
 .article-entry blockquote {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: bold;
-  padding: 0 20px;
+  padding: 10px 20px;
   text-align: left;
   border-left: 5px solid #ccc;
   background-color: #efefef;
+}
+.article-entry blockquote p {
+  margin: 10px 0;
 }
 .article-entry blockquote footer {
   font-size: 14px;
@@ -955,16 +958,18 @@ a.article-title:hover {
 .article-more-link a {
   display: inline-block;
   line-height: 1em;
-  padding: 6px 15px;
+  padding: 7px 15px;
   -webkit-border-radius: 15px;
   border-radius: 15px;
   background: #f5f8f9;
   color: #999;
   text-shadow: 0 1px #fff;
   text-decoration: none;
+  border: 1px solid #ccc;
 }
 .article-more-link a:hover {
   background: #38b7ea;
+  border-color: #38b7ea;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 1px #169cd2;
@@ -1783,6 +1788,15 @@ pre .javascript .function {
 }
 .tagcloud a {
   margin-right: 5px;
+  padding: 2px;
+  display: inline-block;
+  padding: 2px 5px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.tagcloud a:hover {
+  color: #fff !important;
+  background-color: #38b7ea;
 }
 .widget-wrap {
   margin: 40px 10px;
