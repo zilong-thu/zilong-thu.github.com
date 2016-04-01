@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-03-29T15:25:29.000Z">
+<meta property="og:updated_time" content="2016-04-01T14:10:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -163,13 +163,30 @@
 <p><code>git stash list</code>， 查看暂存栈。里面编号为 0 的是最新的暂存状态。</p>
 <p><code>git stash clean</code>， 清空暂存区</p>
 <h2 id="裸版本库">裸版本库</h2><p>【待学习补充】</p>
+<h2 id="提交历史">提交历史</h2><p><code>git log</code>，打开默认的文本编辑器，在其中显示当前分支的提交历史。</p>
+<p><code>git log &lt;branch_name&gt;</code>，显示某个分支的提交历史。</p>
+<h3 id="通过提交信息查找提交历史">通过提交信息查找提交历史</h3><p>这对应一个比较少的场景。</p>
+<blockquote>
+<p>产品经理说：“以前我不小心砍掉了一个功能，现在我想让它再次上线，以前的代码应该还在，所以恢复起来不难吧？”</p>
+</blockquote>
+<p>OK，不管难不难，首先得在广袤的代码仓库中找到相关的提交历史。</p>
+<p>这个时候，需要关键字。而用户能够用关键字标识提交对象的地方，就只有每次的提交信息（commit message）了。所以说，以后每个特定的功能开始、完成，最好都在提交历史中加入能够描述该功能的关键字。以便日后进行搜索定位。好了，下面说一下如何搜索历史。</p>
+<p>猜测那个功能的关键字，是“用户行为分析”。那么可以这样：</p>
+<blockquote>
+<p>To search the commit log (across all branches) for the given text:</p>
+<p>git log –all –grep=’用户行为分析’</p>
+<p>参考 <a href="http://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message" target="_blank" rel="external">How to search a Git repository by commit message?</a></p>
+</blockquote>
+<p>OK，真的出来了几个提交记录。那么想查看对应的记录快照是否有相应的代码，应该先创建一个分支，然后</p>
+<p><code>git checkout &lt;commit-id&gt;</code>，就会把该提交快照全部从仓库里拿到工作区域。</p>
+<p>这时候，可以查看当前的 HEAD 是否为希望的提交记录的 ID ：<code>git rev-parse HEAD</code>。</p>
 <hr>
 <h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="preprocessor"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cimf33b1i000s90s63iqc7f4n" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cimhsgb3v000sics6epur9lpb" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
