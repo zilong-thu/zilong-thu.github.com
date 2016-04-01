@@ -221,15 +221,15 @@ a:visited {
 }
 .article-entry h1,
 .widget h1 {
-  font-size: 2em;
+  font-size: 2.8em;
 }
 .article-entry h2,
 .widget h2 {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 .article-entry h3,
 .widget h3 {
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 .article-entry h4,
 .widget h4 {
@@ -808,17 +808,19 @@ a:visited {
 }
 .article-header .article-title {
   display: block;
-  margin-bottom: 14px;
 }
 .article-title {
   text-decoration: none;
-  font-size: 2em;
+  font-size: 2.6em;
   color: #565a5f;
   line-height: 1.1em;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
 }
 a.article-title:visited {
   color: #565a5f;
