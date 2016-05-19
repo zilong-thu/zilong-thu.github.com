@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-05-11T15:55:32.000Z">
+<meta property="og:updated_time" content="2016-05-19T06:58:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -237,13 +237,15 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>OK，真的出来了几个提交记录。那么想查看对应的记录快照是否有相应的代码，应该先创建一个分支，然后</p>
 <p><code>git checkout &lt;commit-id&gt;</code>，就会把该提交快照全部从仓库里拿到工作区域。</p>
 <p>这时候，可以查看当前的 HEAD 是否为希望的提交记录的 ID ：<code>git rev-parse HEAD</code>。</p>
+<h3 id="对比两次提交之间的差异">对比两次提交之间的差异</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;commit-<span class="property">id</span>-<span class="number">1</span>&gt; &lt;commit-<span class="property">id</span>-<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>可以对比两次提交之间的全部差异。例如 <code>git diff HEAD~ HEAD</code> 就可以看到所在分支的最近一次提交与之前一次提交的差异。（HEAD只是最近一次提交的 commitID 的别名）</p>
 <hr>
 <h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="preprocessor"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cio31p7n1000ypjs6t7jf40i7" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciody4ui8000ye79p6t7rj7on" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
