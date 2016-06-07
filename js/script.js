@@ -101,7 +101,6 @@
       }
     } else {
       $toTop.addClass('fix');
-      $toTop.css('right', 20);
     }
   });
 

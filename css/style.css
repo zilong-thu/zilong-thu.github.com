@@ -9,6 +9,38 @@ body:after {
 body:after {
   clear: both;
 }
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url("http://fontstatic.useso.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url("http://fontstatic.useso.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSonF5uFdDttMLvmWuJdhhgs.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url("http://fontstatic.useso.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBp0EAVxt0G0biEntp43Qt6E.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url("http://fontstatic.useso.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD4a1YDtoarzwSXxTHggEXMw.woff2") format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url("http://fontstatic.useso.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
 html,
 body,
 div,
@@ -763,6 +795,12 @@ a:visited {
 .article-inner {
   overflow: hidden;
 }
+@media screen and (min-width: 1200px) {
+  .article-inner {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+}
 .article-banner {
   width: 100%;
   height: auto;
@@ -808,15 +846,15 @@ a:visited {
 }
 .article-title {
   text-decoration: none;
-  font-size: 2.6em;
+  font-size: 2em;
   color: #565a5f;
   line-height: 1.1em;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
 a.article-title:visited {
@@ -1888,12 +1926,12 @@ pre .javascript .function {
   text-align: center;
   width: 64px;
   height: 64px;
+  -webkit-border-radius: 64px;
+  border-radius: 64px;
   color: #fff;
   font-size: 32px;
   line-height: 64px;
   background: #565a5f;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
 }
 @media screen and (min-width: 560px) and (max-width: 799px) {
   #toTop {

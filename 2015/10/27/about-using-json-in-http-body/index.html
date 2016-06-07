@@ -37,7 +37,7 @@ Content-Type
 application/x-www-form-urlencoded
 以 URLEncoded 的方式进行编码
 name=test&amp;amp;sub%5B%5D=1&amp;am">
-<meta property="og:updated_time" content="2016-06-07T15:56:22.000Z">
+<meta property="og:updated_time" content="2016-06-07T16:39:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于在HTTP请求BODY中使用JSON格式">
 <meta name="twitter:description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type：
@@ -58,8 +58,7 @@ name=test&amp;amp;sub%5B%5D=1&amp;am">
   
     <link rel="icon" href="/favicon.png">
   
-  <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   
@@ -217,7 +216,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </tbody>
 </table>
 <a id="more"></a>
-<p>HTTP 为超文本传输协议，整个的 HTTP 报文，如果按编程语言里面的类型来分的话，就是一大段字符串。</p>
+<p>HTTP 为超文本传输协议，整个的 HTTP 报文，如果按编程语言里面的类型来分的话，就是一大段字符串。值得注意的是，不像 JSON，<code>application/x-www-form-urlencoded</code> 的方式对复杂类型（例如数组）的处理，并没有严格的标准。有的接口使用 <code>key[]=a&amp;key[]=b</code> 来表示数组 <code>key: [&#39;a&#39;, &#39;b&#39;]</code>，（这也是最常见的，jQuery、superagent等客户端会如此编码），有的库则将数组编码为：<code>key=a&amp;key=b</code>，有的则是携带下标进行编码：<code>key[0]=a&amp;key[1]=b</code>……十分混乱。所以如果是数组且数组的每一项为简单基本类型，而且非要用 <code>application/x-www-form-urlencoded</code> 进行序列化，那么不如用英文逗号分隔的字符串来表示。如果是嵌套对象……那么还是尽早使用 JSON 吧。</p>
 <h2 id="浏览器端"><a href="#浏览器端" class="headerlink" title="浏览器端"></a>浏览器端</h2><p>HTML表单默认是按照<code>application/x-www-form-urlencoded</code>进行编码的。</p>
 <h3 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h3><p>如果使用浏览器原生的HTTP请求方法<code>XMLHttpRequest</code>，那么只需在open一个请求之后、send该请求之前，设置一下请求首部的<code>Content-Type</code>字段即可。示例代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>, <span class="string">'http://url'</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 所有相关的事件绑定必须在调用send()方法之前进行 */</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> state = xhr.readyState;</span><br><span class="line">    <span class="keyword">if</span>(state == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line">        <span class="comment">/* 响应成功, do something */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.send(<span class="built_in">JSON</span>.stringify(object));</span><br></pre></td></tr></table></figure>
@@ -241,7 +240,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cip5nw7xc0094i3s6mfeioqxs" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cip5nx67w0096jbs6k19436g2" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/#disqus_thread" class="article-comment-link">Comments</a>
       
