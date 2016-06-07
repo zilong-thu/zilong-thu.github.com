@@ -27,8 +27,8 @@
   
   <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
   <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -170,19 +170,19 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>总而言之，现在要扩展自己的知识面。<strong>Aiming to be a Full-Stack Engineer!</strong></p>
 <p>这个项目，姑且代号为<strong>MEN</strong>吧（MySQL Express Node），是从2015年3月28日开始创立的。下面简单记录一下开发中的关键技术问题。</p>
 <a id="more"></a>
-<h2 id="项目的包描述">项目的包描述</h2><p>首先是关于工具的选择。选择MySQL而不是貌似很火的MongoDB，是因为听说了后者在尽力实现关系型数据库的特性，因此觉得还是从MySQL入门比较好（是的，哥完全没有数据库基础）。</p>
+<h2 id="项目的包描述"><a href="#项目的包描述" class="headerlink" title="项目的包描述"></a>项目的包描述</h2><p>首先是关于工具的选择。选择MySQL而不是貌似很火的MongoDB，是因为听说了后者在尽力实现关系型数据库的特性，因此觉得还是从MySQL入门比较好（是的，哥完全没有数据库基础）。</p>
 <p>然后服务器的模板引擎用的是ejs，而不是默认的jade，原因是，jade风格过于迥异，用ejs便于以后自己阅读。</p>
 <p>关于前后端分离，只有做了后端开发，才是有所体会。视图（View）的部分，服务器可以渲染，浏览器也可以渲染。从性能、开发效率等各方面来考虑，确实把视图交给前端更好。之后的开发中要注意这个问题。</p>
 <p>npm的<code>mysql</code>模块是用来连接数据库的，现在感觉用起来还不错。</p>
-<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"men"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.0"</span></span>,</span><br><span class="line">  "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">  "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">start</span>": <span class="value"><span class="string">"node ./bin/www"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">body-parser</span>": <span class="value"><span class="string">"~1.12.0"</span></span>,</span><br><span class="line">    "<span class="attribute">compression</span>": <span class="value"><span class="string">"^1.4.3"</span></span>,</span><br><span class="line">    "<span class="attribute">cookie-parser</span>": <span class="value"><span class="string">"~1.3.4"</span></span>,</span><br><span class="line">    "<span class="attribute">debug</span>": <span class="value"><span class="string">"~2.1.1"</span></span>,</span><br><span class="line">    "<span class="attribute">ejs</span>": <span class="value"><span class="string">"~2.3.1"</span></span>,</span><br><span class="line">    "<span class="attribute">express</span>": <span class="value"><span class="string">"~4.12.2"</span></span>,</span><br><span class="line">    "<span class="attribute">express-session</span>": <span class="value"><span class="string">"^1.10.4"</span></span>,</span><br><span class="line">    "<span class="attribute">less-middleware</span>": <span class="value"><span class="string">"1.0.x"</span></span>,</span><br><span class="line">    "<span class="attribute">moment</span>": <span class="value"><span class="string">"^2.10.2"</span></span>,</span><br><span class="line">    "<span class="attribute">morgan</span>": <span class="value"><span class="string">"~1.5.1"</span></span>,</span><br><span class="line">    "<span class="attribute">mysql</span>": <span class="value"><span class="string">"^2.6.1"</span></span>,</span><br><span class="line">    "<span class="attribute">serve-favicon</span>": <span class="value"><span class="string">"~2.2.0"</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在Node中独立出MySQL连接池模块">在Node中独立出MySQL连接池模块</h2><p>最初的时候，写了<code>user</code>, <code>topic</code>两个模型（MVC中的Model）。每个模块文件中都各自创建数据库连接池。然后就发现服务器在启动的时候比较耗时了。后来又添加了一个<code>website</code>模型（用来获取网站运行状态的），也是独自创建并使用数据库连接池。结果服务器启动慢得无法忍。</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"men"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.0"</span>,</span><br><span class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"start"</span>: <span class="string">"node ./bin/www"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"body-parser"</span>: <span class="string">"~1.12.0"</span>,</span><br><span class="line">    <span class="attr">"compression"</span>: <span class="string">"^1.4.3"</span>,</span><br><span class="line">    <span class="attr">"cookie-parser"</span>: <span class="string">"~1.3.4"</span>,</span><br><span class="line">    <span class="attr">"debug"</span>: <span class="string">"~2.1.1"</span>,</span><br><span class="line">    <span class="attr">"ejs"</span>: <span class="string">"~2.3.1"</span>,</span><br><span class="line">    <span class="attr">"express"</span>: <span class="string">"~4.12.2"</span>,</span><br><span class="line">    <span class="attr">"express-session"</span>: <span class="string">"^1.10.4"</span>,</span><br><span class="line">    <span class="attr">"less-middleware"</span>: <span class="string">"1.0.x"</span>,</span><br><span class="line">    <span class="attr">"moment"</span>: <span class="string">"^2.10.2"</span>,</span><br><span class="line">    <span class="attr">"morgan"</span>: <span class="string">"~1.5.1"</span>,</span><br><span class="line">    <span class="attr">"mysql"</span>: <span class="string">"^2.6.1"</span>,</span><br><span class="line">    <span class="attr">"serve-favicon"</span>: <span class="string">"~2.2.0"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在Node中独立出MySQL连接池模块"><a href="#在Node中独立出MySQL连接池模块" class="headerlink" title="在Node中独立出MySQL连接池模块"></a>在Node中独立出MySQL连接池模块</h2><p>最初的时候，写了<code>user</code>, <code>topic</code>两个模型（MVC中的Model）。每个模块文件中都各自创建数据库连接池。然后就发现服务器在启动的时候比较耗时了。后来又添加了一个<code>website</code>模型（用来获取网站运行状态的），也是独自创建并使用数据库连接池。结果服务器启动慢得无法忍。</p>
 <p>上面的每个模块各自创建并使用连接池的做法自然非常之不可取。完全违背了pool的最初设计宗旨。解决方法也很简单，把数据库连接池的创建放到一个单独的模块里，然后把创建后的pool对象暴露出来，即可。</p>
 <p>以下是代码。</p>
 <figure class="highlight javascript"><figcaption><span>/module/pool.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    database: <span class="string">'database-name'</span>,</span><br><span class="line">    user: <span class="string">'username'</span>,</span><br><span class="line">    password: <span class="string">'password'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = pool;</span><br></pre></td></tr></table></figure>
 <p>然后如果某个其他的模块需要使用数据库连接池，就引用一下：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = require(<span class="string">'../modules/pool.js'</span>);</span><br><span class="line">  </span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span><span class="params">(err, connection)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">        <span class="comment">/* handle error  */</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connection.query(&#123;</span><br><span class="line">        sql: <span class="string">'SELECT COUNT(*) AS user_count FROM t_user'</span></span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, rows, fields)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err)&#123;</span><br><span class="line">            <span class="comment">/* handle error  */</span></span><br><span class="line">        &#125;</span><br><span class="line">        connection.release();</span><br><span class="line">        <span class="keyword">callback</span>(<span class="literal">null</span>, rows);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool = <span class="built_in">require</span>(<span class="string">'../modules/pool.js'</span>);</span><br><span class="line">  </span><br><span class="line">pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">        <span class="comment">/* handle error  */</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connection.query(&#123;</span><br><span class="line">        sql: <span class="string">'SELECT COUNT(*) AS user_count FROM t_user'</span></span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err)&#123;</span><br><span class="line">            <span class="comment">/* handle error  */</span></span><br><span class="line">        &#125;</span><br><span class="line">        connection.release();</span><br><span class="line">        callback(<span class="literal">null</span>, rows);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>这样才是正确的连接池用法。</p>
-<h2 id="关于Promise">关于Promise</h2><p>虽然目前写的代码量还不大，但是已经对NodeJS的异步回调深恶痛绝了。发现目前使用的Node 0.12.0是支持原生Promise的，于是不用白不用。不过理解起来还挺困难。</p>
+<h2 id="关于Promise"><a href="#关于Promise" class="headerlink" title="关于Promise"></a>关于Promise</h2><p>虽然目前写的代码量还不大，但是已经对NodeJS的异步回调深恶痛绝了。发现目前使用的Node 0.12.0是支持原生Promise的，于是不用白不用。不过理解起来还挺困难。</p>
 <p>现在要解决这样的案例：先从数据库t_user表中获得注册用户数，然后从t_topic表中查询话题总数，最后把它们交给回调函数（嗯，是的，还是用了一下回调函数~~）。</p>
 <p>代码暂时是这样写的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">exports.getWebsiteStatus = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">        pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                reject(err);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(&#123;</span><br><span class="line">                    sql: <span class="string">'SELECT COUNT(*) AS user_count FROM t_user'</span></span><br><span class="line">                &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">                         reject(err);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        resolve(rows);</span><br><span class="line">                    &#125;</span><br><span class="line">                    connection.release();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">rows1</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'success'</span>);</span><br><span class="line">        pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                callback(err);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(&#123;</span><br><span class="line">                    sql: <span class="string">'SELECT COUNT(*) AS topic_count FROM t_topic'</span></span><br><span class="line">                &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows2, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">                        callback(err);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        callback(<span class="literal">null</span>, &#123;</span><br><span class="line">                            user_count: rows1[<span class="number">0</span>].user_count,</span><br><span class="line">                            topic_count: rows2[<span class="number">0</span>].topic_count</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    connection.release();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        callback(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -191,7 +191,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" data-id="cioe2p4ec002rqz9pnwtqv03b" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" data-id="cip5mn4q5007t8cs6g7lr7ujx" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -233,76 +233,6 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
 </section>
       
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">recents</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/30/note-on-book-you-dont-know-js/" class="title">《你不知道的JavaScript》笔记&amp;心得</a></p>
-              <p class="item-date"><time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" class="title">这三个月</a></p>
-              <p class="item-date"><time datetime="2016-03-10T17:13:50.000Z" itemprop="datePublished">2016-03-11</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/12/23/at-the-end-of-2015/" class="title">记 2015</a></p>
-              <p class="item-date"><time datetime="2015-12-23T15:40:57.000Z" itemprop="datePublished">2015-12-23</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/11/26/a-turning-point-at-the-age-of-27/" class="title">A Turning Point at the Age of 27</a></p>
-              <p class="item-date"><time datetime="2015-11-26T12:14:21.000Z" itemprop="datePublished">2015-11-26</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Git/">Git</a></p>
-              <p class="item-title"><a href="/2015/11/08/learning-git/" class="title">Git 学习笔记</a></p>
-              <p class="item-date"><time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">tag cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 12px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 21.6px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 12px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 12px;">Essays</a> <a href="/tags/Git/" style="font-size: 12px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 12px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 15.2px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 12px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 12px;">JMeter</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 18.4px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 12px;">LBS</a> <a href="/tags/Linux/" style="font-size: 18.4px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 15.2px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 24.8px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 12px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 12px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 12px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 12px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 15.2px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 12px;">i18n</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/个人成长/" style="font-size: 12px;">个人成长</a> <a href="/tags/工作/" style="font-size: 12px;">工作</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/算法/" style="font-size: 15.2px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 12px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 28px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 12px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 28px;">随笔</a>
-    </div>
-  </div>
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
     </div>
     <footer id="footer">
   
@@ -312,6 +242,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
+  <div id="toTop" class="fa fa-chevron-up"></div>
 </footer>
     
 
@@ -330,11 +261,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

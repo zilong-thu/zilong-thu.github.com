@@ -1,5 +1,5 @@
 (function($){
-  var toTop = $('#toTop').length ? $('#toTop').offset().top - $(window).height() + 20 : 0;
+  var toTop = 600;
 
   // Share
   $('body').on('click', function(){
@@ -87,20 +87,22 @@
   });
 
   // To Top
+  $(document).on('click', '#toTop', function () {
+    $(document).scrollTop(0);
+  });
+
+  $toTop = $('#toTop');
   $(document).on('scroll', function () {
     if ($(document).width() >= 800) {
-      if($(this).scrollTop() > toTop) {
-        $('#toTop').addClass('fix');
-        $('#toTop').css('left', $('#sidebar').offset().left);
+      if($(document.body).scrollTop() > toTop) {
+        $toTop.addClass('fix');
       } else {
-        $('#toTop').removeClass('fix');
+        $toTop.removeClass('fix');
       }
     } else {
-      $('#toTop').addClass('fix');
-      $('#toTop').css('right', 20);
+      $toTop.addClass('fix');
+      $toTop.css('right', 20);
     }
-  }).on('click', '#toTop', function () {
-    $(document).scrollTop(0);
   });
 
 })(jQuery);

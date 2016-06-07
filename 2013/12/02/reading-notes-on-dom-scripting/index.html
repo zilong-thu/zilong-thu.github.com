@@ -30,8 +30,8 @@
   
   <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
   <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -187,7 +187,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </blockquote>
 <p>还真是如此。作者在115页才给出更详细的说明：</p>
 <p>在abc.html文件中使用setAttribute()方法修改某项属性，则abc.html并未发生任何变化。发生变化的是运行时的DOM树——在浏览器看来，DOM节点才是文档（document）。所以，以动态方式实时“创建”HTML内容的本质，是在改变浏览器的运行时DOM节点树。</p>
-<p>###取消事件<br>如下代码，由于onclick的事件处理函数接收到的JS代码返回值是false，于是onclick事件处理函数将认为“这个链接没有被点击”。<br><figure class="highlight html"><figcaption><span>空链接示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.baidu.com/"</span> <span class="attribute">onclick</span>=<span class="value">"return false;"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###取消事件<br>如下代码，由于onclick的事件处理函数接收到的JS代码返回值是false，于是onclick事件处理函数将认为“这个链接没有被点击”。<br><figure class="highlight html"><figcaption><span>空链接示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com/"</span> <span class="attr">onclick</span>=<span class="string">"return false;"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>《JavaScript权威指南（第六版）》pp442：</p>
 <blockquote>
 <p>一些事件有与之相关的默认操作。例如，当超链接上发生click事件时，浏览器的默认操作是按照链接加载新页面。事件处理程序可以通过返回一个适当的值、调用事件对象的某个方法或者设置事件对象的某个属性来阻止默认操作的发生。这有时称为“取消”事件。</p>
@@ -228,7 +228,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>如今的浏览器都支持innerHTML属性，但这个属性并不是W3C DOM标准的组成部分。它始见于微软公司的IE4浏览器，并从那时起被其他的浏览器接受。不过，从目前来看，它不太可能成为标准化DOM的组成部分。</p>
 </blockquote>
 <p>如下面的HTML代码，其DOM树示意图紧随其后。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"testdiv"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is <span class="tag">&lt;<span class="title">em</span>&gt;</span>my<span class="tag">&lt;/<span class="title">em</span>&gt;</span> content.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"testdiv"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is <span class="tag">&lt;<span class="name">em</span>&gt;</span>my<span class="tag">&lt;/<span class="name">em</span>&gt;</span> content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <embed src="/svg/DOM_tree.svg" type="image/svg+xml">
 
 <p>innerHTML属性是字符串，值为元素节点标签内的html代码。本质来讲，innerHTML属性是来自HTML-DOM的，而非来自DOM Core的API。</p>
@@ -239,11 +239,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>###DOM节点方法<br>createElement()、createTextNode()都是document的方法。</p>
 <p>而appendChild()、insertBefore()是元素节点的方法。<br><figure class="highlight javascript"><figcaption><span>在元素pp前插入一个新节点元素newElement</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pp.parentNode.insertBefore(newElement, pp);</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight javascript"><figcaption><span>用户自定义的insertAfter()方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertAfter</span>(<span class="params">newElement, targetElement</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> parent = targetElement.parentNode;</span><br><span class="line">	<span class="keyword">if</span>(parent.lastChild == targetElement)&#123;</span><br><span class="line">		parent.appendChild(newElement);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		parent.insertBefore(newElement, targetElement.nextSibling);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###style属性与className属性<br>DOM元素节点的style属性是个对象，这个对象各个属性的值的类型是字符串。<br><figure class="highlight html"><figcaption><span>验证style属性是对象的代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"test_style_div"</span> <span class="attribute">style</span>=<span class="value">"border:1px solid #ccc;border-radius:1em;"</span>&gt;</span></span><br><span class="line">文本节点</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>文本节点的style属性值：<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"test_style_res"</span> <span class="attribute">style</span>=<span class="value">"color:blue;"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_div'</span>);</span><br><span class="line">	<span class="keyword">var</span> nodename = div.nodeName;</span><br><span class="line">	<span class="keyword">var</span> str = <span class="keyword">typeof</span> div.style;</span><br><span class="line">	<span class="keyword">var</span> par = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_res'</span>);</span><br><span class="line">	par.innerHTML = <span class="string">'div.nodeName =&gt; '</span> + nodename  <span class="comment">// DIV</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;typeof div.style =&gt; '</span>+str  <span class="comment">// object</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;par.style.valueOf() =&gt; '</span>+ par.style.valueOf();  <span class="comment">// [object CSSStyleDeclaration]</span></span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	 * 如果要修改某个元素节点的样式属性</span><br><span class="line">	 * 直接给其style赋个新的字符串值就可以了</span><br><span class="line">	 */</span></span><br><span class="line">	par.setAttribute(<span class="string">"style"</span>,<span class="string">"font-weight:bold;"</span>);  <span class="comment">// 粗体，不再是蓝色 </span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###style属性与className属性<br>DOM元素节点的style属性是个对象，这个对象各个属性的值的类型是字符串。<br><figure class="highlight html"><figcaption><span>验证style属性是对象的代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test_style_div"</span> <span class="attr">style</span>=<span class="string">"border:1px solid #ccc;border-radius:1em;"</span>&gt;</span></span><br><span class="line">文本节点</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>文本节点的style属性值：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test_style_res"</span> <span class="attr">style</span>=<span class="string">"color:blue;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_div'</span>);</span><br><span class="line">	<span class="keyword">var</span> nodename = div.nodeName;</span><br><span class="line">	<span class="keyword">var</span> str = <span class="keyword">typeof</span> div.style;</span><br><span class="line">	<span class="keyword">var</span> par = <span class="built_in">document</span>.getElementById(<span class="string">'test_style_res'</span>);</span><br><span class="line">	par.innerHTML = <span class="string">'div.nodeName =&gt; '</span> + nodename  <span class="comment">// DIV</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;typeof div.style =&gt; '</span>+str  <span class="comment">// object</span></span><br><span class="line">		+ <span class="string">'&lt;br/&gt;par.style.valueOf() =&gt; '</span>+ par.style.valueOf();  <span class="comment">// [object CSSStyleDeclaration]</span></span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	 * 如果要修改某个元素节点的样式属性</span><br><span class="line">	 * 直接给其style赋个新的字符串值就可以了</span><br><span class="line">	 */</span></span><br><span class="line">	par.setAttribute(<span class="string">"style"</span>,<span class="string">"font-weight:bold;"</span>);  <span class="comment">// 粗体，不再是蓝色 </span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>DOM使用Camel记号来解决css属性的连字符问题，例如style对象的常见的属性：</p>
 <ul style="list-style-type: square;font-weight:normal;font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;"><br><li>backgroundColor ·········· background-color</li><br><li>color<br></li><li>fontFamily ··············· font-family</li><br><li>fontSize ················· font-size</li><br><li>fontWeight ··············· font-weight</li><br><li>marginTop ················ margin-top</li><br></ul>
 
-<figure class="highlight html"><figcaption><span>DOM可识别简写css属性的结算结果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">id</span>=<span class="value">"example"</span> <span class="attribute">style</span>=<span class="value">"color: grey; font: 12px Arial,sans-serif;"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> para = <span class="built_in">document</span>.getElementById(example);</span><br><span class="line"><span class="built_in">console</span>.log(para.style.fontSize); <span class="comment">// =&gt; 12px</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>DOM可识别简写css属性的结算结果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"example"</span> <span class="attr">style</span>=<span class="string">"color: grey; font: 12px Arial,sans-serif;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> para = <span class="built_in">document</span>.getElementById(example);</span><br><span class="line"><span class="built_in">console</span>.log(para.style.fontSize); <span class="comment">// =&gt; 12px</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>不过，style属性无法访问外部样式表声明的CSS属性值。它只能识别内嵌在DOM元素标记中的内联样式。</p>
 <p>DOM的className属性则是个字符串。操作起来比style方便多了，可以直接进行字符串拼接、删减，来操作元素的样式。例如最原始的addClass()方法（“原始”是与jQuery的addClass()方法相比而言的）：<br><figure class="highlight javascript"><figcaption><span>较原始的addClass()方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">element, value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!element.className)&#123;</span><br><span class="line">		element.className = value;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> newClassName = element.className + <span class="string">' '</span> + value;</span><br><span class="line">		element.className = newClassName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>###再说表格</p>
@@ -258,7 +258,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/" data-id="cioe2p4gs006jqz9pb9qcona9" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/" data-id="cip5mn4oe00478cs6ywoswvi6" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -298,76 +298,6 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
 </section>
       
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">recents</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/30/note-on-book-you-dont-know-js/" class="title">《你不知道的JavaScript》笔记&amp;心得</a></p>
-              <p class="item-date"><time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" class="title">这三个月</a></p>
-              <p class="item-date"><time datetime="2016-03-10T17:13:50.000Z" itemprop="datePublished">2016-03-11</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/12/23/at-the-end-of-2015/" class="title">记 2015</a></p>
-              <p class="item-date"><time datetime="2015-12-23T15:40:57.000Z" itemprop="datePublished">2015-12-23</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/11/26/a-turning-point-at-the-age-of-27/" class="title">A Turning Point at the Age of 27</a></p>
-              <p class="item-date"><time datetime="2015-11-26T12:14:21.000Z" itemprop="datePublished">2015-11-26</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Git/">Git</a></p>
-              <p class="item-title"><a href="/2015/11/08/learning-git/" class="title">Git 学习笔记</a></p>
-              <p class="item-date"><time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">tag cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 12px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 21.6px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 12px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 12px;">Essays</a> <a href="/tags/Git/" style="font-size: 12px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 12px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 15.2px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 12px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 12px;">JMeter</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 18.4px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 12px;">LBS</a> <a href="/tags/Linux/" style="font-size: 18.4px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 15.2px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 24.8px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 12px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 12px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 12px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 12px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 15.2px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 12px;">i18n</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/个人成长/" style="font-size: 12px;">个人成长</a> <a href="/tags/工作/" style="font-size: 12px;">工作</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/算法/" style="font-size: 15.2px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 12px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 28px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 12px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 28px;">随笔</a>
-    </div>
-  </div>
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
     </div>
     <footer id="footer">
   
@@ -377,6 +307,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
+  <div id="toTop" class="fa fa-chevron-up"></div>
 </footer>
     
 
@@ -395,11 +326,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

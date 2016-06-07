@@ -24,8 +24,8 @@
   
   <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
   <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -167,13 +167,13 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>这里根据《算法导论（第三版）》第四章的4.1节的练习题 4.1-5进行拓展研究。用JavaScript实现最大子数组的查找。</p>
 <a id="more"></a>
 <p>##准备工作<br>先定义两个用于生成随机数组的函数：</p>
-<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 生成一个m、n之间的整数 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random</span><span class="params">(m,n)</span>&#123;</span> </span><br><span class="line">    var i=Math.random<span class="params">()</span>; </span><br><span class="line">    return Math.<span class="built_in">round</span><span class="params">(<span class="params">(n-m)</span>*i+m)</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* min: 数组下界</span><br><span class="line"> * max: 数组上界</span><br><span class="line"> * len：生成的数组的长度</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomArr</span><span class="params">(min,max,len)</span>&#123;</span> </span><br><span class="line">    var resultArr=[]; </span><br><span class="line">    <span class="keyword">for</span><span class="params">(var i=<span class="number">0</span>;i&lt;len;i++)</span>&#123; </span><br><span class="line">        resultArr.push<span class="params">(random<span class="params">(min,max)</span>)</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    return resultArr; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var A = getRandomArr<span class="params">(-<span class="number">20</span>, <span class="number">20</span>, <span class="number">6</span>)</span>;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(A)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 生成一个m、n之间的整数 */</span></span><br><span class="line">function <span class="built_in">random</span>(m,n)&#123; </span><br><span class="line">    <span class="built_in">var</span> i=Math.<span class="built_in">random</span>(); </span><br><span class="line">    <span class="built_in">return</span> Math.<span class="built_in">round</span>((n-m)*i+m); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* min: 数组下界</span><br><span class="line"> * max: 数组上界</span><br><span class="line"> * len：生成的数组的长度</span><br><span class="line"> */</span></span><br><span class="line">function getRandomArr(<span class="built_in">min</span>,<span class="built_in">max</span>,len)&#123; </span><br><span class="line">    <span class="built_in">var</span> resultArr=[]; </span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i=<span class="number">0</span>;i&lt;len;i++)&#123; </span><br><span class="line">        resultArr.<span class="built_in">push</span>(<span class="built_in">random</span>(<span class="built_in">min</span>,<span class="built_in">max</span>));</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">return</span> resultArr; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">var</span> A = getRandomArr(-<span class="number">20</span>, <span class="number">20</span>, <span class="number">6</span>);</span><br><span class="line">console.<span class="built_in">log</span>(A);</span><br></pre></td></tr></table></figure>
 <p>##线性复杂度的算法：Kadane算法<br>这个问题用动态规划的方法来解决会更有效，而不是分治策略。例如下面的Kadane算法。</p>
-<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Kadane算法</span><br><span class="line"> * 又被称为扫描法</span><br><span class="line"> * 该算法用到了一个启发式规则：如果前面一段连续子数组的和小于0，那么就丢弃它。</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Kadane</span><span class="params">(A)</span>&#123;</span></span><br><span class="line">    var <span class="built_in">max</span> = A[<span class="number">0</span>],</span><br><span class="line">    sum = <span class="number">0</span>,</span><br><span class="line">    sum_low = <span class="number">0</span>, sum_high = <span class="number">0</span>, <span class="comment">/* 这两个值保存了当前累计计算的、和非负的子数组的下标起始值 */</span></span><br><span class="line">    max_low = <span class="number">0</span>, max_high = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span><span class="params">(var i = <span class="number">0</span>; i&lt;A.length; i++)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span><span class="params">(sum &gt;= <span class="number">0</span>)</span>&#123;</span><br><span class="line">            sum += A[i];</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            sum = A[i];</span><br><span class="line">            sum_low = i;</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span><span class="params">(sum &gt; max)</span>&#123;</span><br><span class="line">            max_low = sum_low;</span><br><span class="line">            max_high = sum_high;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        maxSum: <span class="built_in">max</span>,</span><br><span class="line">        low: max_low,</span><br><span class="line">        high: max_high</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span><span class="params">(Kadane<span class="params">(A)</span>)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Kadane算法</span><br><span class="line"> * 又被称为扫描法</span><br><span class="line"> * 该算法用到了一个启发式规则：如果前面一段连续子数组的和小于0，那么就丢弃它。</span><br><span class="line"> */</span></span><br><span class="line">function Kadane(A)&#123;</span><br><span class="line">    <span class="built_in">var</span> <span class="built_in">max</span> = A[<span class="number">0</span>],</span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span>,</span><br><span class="line">    sum_low = <span class="number">0</span>, sum_high = <span class="number">0</span>, <span class="comment">/* 这两个值保存了当前累计计算的、和非负的子数组的下标起始值 */</span></span><br><span class="line">    max_low = <span class="number">0</span>, max_high = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i = <span class="number">0</span>; i&lt;A.<span class="built_in">length</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">sum</span> &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">sum</span> += A[i];</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">sum</span> = A[i];</span><br><span class="line">            sum_low = i;</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">sum</span> &gt; <span class="built_in">max</span>)&#123;</span><br><span class="line">            max_low = sum_low;</span><br><span class="line">            max_high = sum_high;</span><br><span class="line">            <span class="built_in">max</span> = <span class="built_in">sum</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        maxSum: <span class="built_in">max</span>,</span><br><span class="line">        low: max_low,</span><br><span class="line">        high: max_high</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(Kadane(A));</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="cioe2p4ef002yqz9pgxuvdn1z" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="cip5mn4q2007m8cs62lmrf52d" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/03/16/max-sub-array-problem/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -215,76 +215,6 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
 </section>
       
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">recents</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/30/note-on-book-you-dont-know-js/" class="title">《你不知道的JavaScript》笔记&amp;心得</a></p>
-              <p class="item-date"><time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" class="title">这三个月</a></p>
-              <p class="item-date"><time datetime="2016-03-10T17:13:50.000Z" itemprop="datePublished">2016-03-11</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/12/23/at-the-end-of-2015/" class="title">记 2015</a></p>
-              <p class="item-date"><time datetime="2015-12-23T15:40:57.000Z" itemprop="datePublished">2015-12-23</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/11/26/a-turning-point-at-the-age-of-27/" class="title">A Turning Point at the Age of 27</a></p>
-              <p class="item-date"><time datetime="2015-11-26T12:14:21.000Z" itemprop="datePublished">2015-11-26</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Git/">Git</a></p>
-              <p class="item-title"><a href="/2015/11/08/learning-git/" class="title">Git 学习笔记</a></p>
-              <p class="item-date"><time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">tag cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 12px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 21.6px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 12px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 12px;">Essays</a> <a href="/tags/Git/" style="font-size: 12px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 12px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 15.2px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 12px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 12px;">JMeter</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 18.4px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 12px;">LBS</a> <a href="/tags/Linux/" style="font-size: 18.4px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 15.2px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 24.8px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 12px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 12px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 12px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 12px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 15.2px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 12px;">i18n</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/个人成长/" style="font-size: 12px;">个人成长</a> <a href="/tags/工作/" style="font-size: 12px;">工作</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/算法/" style="font-size: 15.2px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 12px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 28px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 12px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 28px;">随笔</a>
-    </div>
-  </div>
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
     </div>
     <footer id="footer">
   
@@ -294,6 +224,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
+  <div id="toTop" class="fa fa-chevron-up"></div>
 </footer>
     
 
@@ -312,11 +243,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

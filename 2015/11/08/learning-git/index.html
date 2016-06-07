@@ -21,8 +21,8 @@
   
   <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
   <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -170,40 +170,40 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
                 
         <p>本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a href="http://git.oschina.net/progit/" target="_blank" rel="external">《Pro Git 2nd Edition（中文版）》</a>。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。</p>
 <a id="more"></a>
-<h2 id="fetch_操作">fetch 操作</h2><p>fetch 操作仅仅是把远程仓库的代码下载当本地而已。可以同时指定相应的本地分支名，git 便会在 fetch 完成后自动创建一个本地分支，追踪该远程分支。例如：</p>
+<h2 id="fetch-操作"><a href="#fetch-操作" class="headerlink" title="fetch 操作"></a>fetch 操作</h2><p>fetch 操作仅仅是把远程仓库的代码下载当本地而已。可以同时指定相应的本地分支名，git 便会在 fetch 完成后自动创建一个本地分支，追踪该远程分支。例如：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin &lt;branch_name&gt;<span class="symbol">:&lt;local_branch_nam&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="pull_操作">pull 操作</h2><h3 id="强制更新">强制更新</h3><p><a href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes" target="_blank" rel="external">Git Pull While Ignoring Local Changes?</a></p>
+<h2 id="pull-操作"><a href="#pull-操作" class="headerlink" title="pull 操作"></a>pull 操作</h2><h3 id="强制更新"><a href="#强制更新" class="headerlink" title="强制更新"></a>强制更新</h3><p><a href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes" target="_blank" rel="external">Git Pull While Ignoring Local Changes?</a></p>
 <p>【方法1】先clean当前的工作目录，使其与上一次的commit一致，然后再pull即可</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard</span></span><br><span class="line">git pull</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
 <p>【方法2】先将改动们暂存一下（<code>stash</code>），然后更新，更新完了再将暂存栈弹出或删除。</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td></tr></table></figure>
-<h2 id="提交操作">提交操作</h2><h3 id="撤销刚才的提交">撤销刚才的提交</h3><p>好比，初始化一份nodejs代码，<code>git commit</code> 完了，才想起来没有把 <code>node_modules</code> 目录加进 <code>.gitignore</code>文件里去，太可怕了。得把刚才的提交撤销掉，而且保证 <code>node_modules</code> 目录不能在代码仓库里。就得用到这个命令了：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard HEAD~1</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="提交操作"><a href="#提交操作" class="headerlink" title="提交操作"></a>提交操作</h2><h3 id="撤销刚才的提交"><a href="#撤销刚才的提交" class="headerlink" title="撤销刚才的提交"></a>撤销刚才的提交</h3><p>好比，初始化一份nodejs代码，<code>git commit</code> 完了，才想起来没有把 <code>node_modules</code> 目录加进 <code>.gitignore</code>文件里去，太可怕了。得把刚才的提交撤销掉，而且保证 <code>node_modules</code> 目录不能在代码仓库里。就得用到这个命令了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~1</span></span><br></pre></td></tr></table></figure>
 <p>然后，把事情做正确了，再提交。当然了，更全面的问题与解决方案在这里：</p>
 <ul>
 <li><a href="http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit" target="_blank" rel="external">How do you undo the last commit? | 来自 Stackoverflow 的问答</a>。</li>
 </ul>
 <p><strong>原理</strong></p>
 <p>不想使 <code>node_modules</code> 再在代码仓库里出现，过程是这样的：</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  master</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 执行这个</span></span><br><span class="line">git reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
-<h3 id="修改刚才的提交的注释">修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> <span class="comment">--amend</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  <span class="keyword">master</span></span><br><span class="line"> </span><br><span class="line"><span class="title"># 执行这个</span><br><span class="line">git</span> reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line"><span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改刚才的提交的注释"><a href="#修改刚才的提交的注释" class="headerlink" title="修改刚才的提交的注释"></a>修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
 <p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
-<h3 id="更改提交历史——交互式变基">更改提交历史——交互式变基</h3><p>交互式变基，即指 <code>git rebase -i &lt;commit-id&gt;</code>，然后自该 hash 之后（不含该 hash）的所有提交记录就会被呈现在文本编辑器里，按照提示编辑此文本，保存后即可实现对相应提交对象的修改。</p>
+<h3 id="更改提交历史——交互式变基"><a href="#更改提交历史——交互式变基" class="headerlink" title="更改提交历史——交互式变基"></a>更改提交历史——交互式变基</h3><p>交互式变基，即指 <code>git rebase -i &lt;commit-id&gt;</code>，然后自该 hash 之后（不含该 hash）的所有提交记录就会被呈现在文本编辑器里，按照提示编辑此文本，保存后即可实现对相应提交对象的修改。</p>
 <p>很明显，任何对提交历史的操作，都不应该在共有分支上进行。请确保此分支为私有。</p>
-<h2 id="分支操作">分支操作</h2><h3 id="查看分支">查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
 <p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
 <p><code>git branch -r</code>，只查看远程追踪分支</p>
-<h3 id="删除本地分支">删除本地分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
 <p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
-<h3 id="删除远程分支">删除远程分支</h3><p><code>git push origin --delete &lt;branch_name&gt;</code>，可以删除远程仓库里的分支。删除后，会在网站提示诸如此类的消息：</p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>git push origin --delete &lt;branch_name&gt;</code>，可以删除远程仓库里的分支。删除后，会在网站提示诸如此类的消息：</p>
 <blockquote>
 <p>No branch or tag ‘refs/heads/<branch_name>‘ exists in repository ‘<em>*</em>‘</branch_name></p>
 </blockquote>
-<h3 id="重命名一个本地分支">重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
+<h3 id="重命名一个本地分支"><a href="#重命名一个本地分支" class="headerlink" title="重命名一个本地分支"></a>重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
 <p><code>git branch -m &lt;oldname&gt; &lt;newname&gt;</code>，修改任意本地分支的名字</p>
 <p><code>git branch -m &lt;new_name_for_the_current_branch&gt;</code>，修改当前所在分支的名字</p>
-<h3 id="跟踪远程分支">跟踪远程分支</h3><p>如果一个分支尚未与相应的远程分支建立跟踪关系，可以在 <code>push</code> 的时候顺便指定一下：</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">push</span> --<span class="keyword">set</span>-upstream origin master</span><br></pre></td></tr></table></figure>
+<h3 id="跟踪远程分支"><a href="#跟踪远程分支" class="headerlink" title="跟踪远程分支"></a>跟踪远程分支</h3><p>如果一个分支尚未与相应的远程分支建立跟踪关系，可以在 <code>push</code> 的时候顺便指定一下：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --<span class="keyword">set</span>-upstream <span class="comment">origin master</span></span><br></pre></td></tr></table></figure>
 <p>意思是，向远程（origin）分支（master）提交代码，并且今后把这个远程分支作为当前分支的远程跟踪分支。以后运行 <code>git status</code> 就会提示当前分支是否落后于远程跟踪分支了。</p>
 <p>Git 的提示：</p>
 <blockquote>
@@ -211,18 +211,18 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>To push the current branch and set the remote as upstream, use</p>
 <p>   git push –set-upstream origin master</p>
 </blockquote>
-<h2 id="储藏">储藏</h2><p><code>git stash</code> 命令会捕获当前分支的工作目录和索引的全部状态，将其存储在一个栈中。</p>
+<h2 id="储藏"><a href="#储藏" class="headerlink" title="储藏"></a>储藏</h2><p><code>git stash</code> 命令会捕获当前分支的工作目录和索引的全部状态，将其存储在一个栈中。</p>
 <p>不想提交，又想获取最新的远程仓库代码时：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull <span class="comment">--rebase origin feature/my_feature_1</span></span><br><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull --rebase <span class="built_in">origin</span> <span class="built_in">feature</span>/my_feature_1</span><br><span class="line">git stash <span class="built_in">apply</span></span><br></pre></td></tr></table></figure>
 <p><code>git stash</code> 默认执行的是 <code>git stash save</code>，可以给这个储藏添加一条备注：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash save &#34;&#36825;&#26159;&#19968;&#20010;&#26242;&#23384;&#34;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash save &quot;这是一个暂存&quot;</span><br></pre></td></tr></table></figure>
 <p><code>git stash apply</code> 只会取出储藏栈最上面的那个状态，并不会删除它。想要达到“弹出栈”的效果，可以使用 <code>git stash pop</code>，这条命令会把储藏栈的顶端状态弹出，并将其从栈中删除。</p>
 <p><code>git stash list</code>， 查看暂存栈。里面编号为 0 的是最新的暂存状态。</p>
 <p><code>git stash clean</code>， 清空暂存区</p>
-<h2 id="裸版本库">裸版本库</h2><p>【待学习补充】</p>
-<h2 id="提交历史">提交历史</h2><p><code>git log</code>，打开默认的文本编辑器，在其中显示当前分支的提交历史。</p>
+<h2 id="裸版本库"><a href="#裸版本库" class="headerlink" title="裸版本库"></a>裸版本库</h2><p>【待学习补充】</p>
+<h2 id="提交历史"><a href="#提交历史" class="headerlink" title="提交历史"></a>提交历史</h2><p><code>git log</code>，打开默认的文本编辑器，在其中显示当前分支的提交历史。</p>
 <p><code>git log &lt;branch_name&gt;</code>，显示某个分支的提交历史。</p>
-<h3 id="通过提交信息查找提交历史">通过提交信息查找提交历史</h3><p>这对应一个比较少的场景。</p>
+<h3 id="通过提交信息查找提交历史"><a href="#通过提交信息查找提交历史" class="headerlink" title="通过提交信息查找提交历史"></a>通过提交信息查找提交历史</h3><p>这对应一个比较少的场景。</p>
 <blockquote>
 <p>产品经理说：“以前我不小心砍掉了一个功能，现在我想让它再次上线，以前的代码应该还在，所以恢复起来不难吧？”</p>
 </blockquote>
@@ -237,15 +237,15 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>OK，真的出来了几个提交记录。那么想查看对应的记录快照是否有相应的代码，应该先创建一个分支，然后</p>
 <p><code>git checkout &lt;commit-id&gt;</code>，就会把该提交快照全部从仓库里拿到工作区域。</p>
 <p>这时候，可以查看当前的 HEAD 是否为希望的提交记录的 ID ：<code>git rev-parse HEAD</code>。</p>
-<h3 id="对比两次提交之间的差异">对比两次提交之间的差异</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;commit-<span class="property">id</span>-<span class="number">1</span>&gt; &lt;commit-<span class="property">id</span>-<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="对比两次提交之间的差异"><a href="#对比两次提交之间的差异" class="headerlink" title="对比两次提交之间的差异"></a>对比两次提交之间的差异</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="tag">&lt;<span class="name">commit-id-1</span>&gt;</span> <span class="tag">&lt;<span class="name">commit-id-2</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以对比两次提交之间的全部差异。例如 <code>git diff HEAD~ HEAD</code> 就可以看到所在分支的最近一次提交与之前一次提交的差异。（HEAD只是最近一次提交的 commitID 的别名）</p>
 <hr>
-<h2 id="【附录】自己不是很熟练的_Git_命令手册">【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="preprocessor"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="preprocessor"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
+<h2 id="【附录】自己不是很熟练的-Git-命令手册"><a href="#【附录】自己不是很熟练的-Git-命令手册" class="headerlink" title="【附录】自己不是很熟练的 Git 命令手册"></a>【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="meta"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="meta"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="meta"># 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta"># 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="meta"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="meta"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="meta"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cioe2p4cl000yqz9p71976uqh" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cip5mn4qt00948cs60xkdieo4" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -287,76 +287,6 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
 </section>
       
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">recents</h3>
-    <div class="widget">
-      <ul id="recent-post" class="no-thumbnail">
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/30/note-on-book-you-dont-know-js/" class="title">《你不知道的JavaScript》笔记&amp;心得</a></p>
-              <p class="item-date"><time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" class="title">这三个月</a></p>
-              <p class="item-date"><time datetime="2016-03-10T17:13:50.000Z" itemprop="datePublished">2016-03-11</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/12/23/at-the-end-of-2015/" class="title">记 2015</a></p>
-              <p class="item-date"><time datetime="2015-12-23T15:40:57.000Z" itemprop="datePublished">2015-12-23</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/11/26/a-turning-point-at-the-age-of-27/" class="title">A Turning Point at the Age of 27</a></p>
-              <p class="item-date"><time datetime="2015-11-26T12:14:21.000Z" itemprop="datePublished">2015-11-26</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Git/">Git</a></p>
-              <p class="item-title"><a href="/2015/11/08/learning-git/" class="title">Git 学习笔记</a></p>
-              <p class="item-date"><time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">tag cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 12px;">Ajax</a> <a href="/tags/CSS/" style="font-size: 21.6px;">CSS</a> <a href="/tags/EPUB/" style="font-size: 12px;">EPUB</a> <a href="/tags/Essays/" style="font-size: 12px;">Essays</a> <a href="/tags/Git/" style="font-size: 12px;">Git</a> <a href="/tags/GruntJS/" style="font-size: 12px;">GruntJS</a> <a href="/tags/HTML5/" style="font-size: 15.2px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 12px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/JMeter/" style="font-size: 12px;">JMeter</a> <a href="/tags/Java/" style="font-size: 12px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 18.4px;">JavaScript</a> <a href="/tags/LBS/" style="font-size: 12px;">LBS</a> <a href="/tags/Linux/" style="font-size: 18.4px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Node-js/" style="font-size: 15.2px;">Node.js</a> <a href="/tags/NodeJS/" style="font-size: 24.8px;">NodeJS</a> <a href="/tags/Octopress/" style="font-size: 12px;">Octopress</a> <a href="/tags/Promise/" style="font-size: 12px;">Promise</a> <a href="/tags/Web-FE/" style="font-size: 12px;">Web-FE</a> <a href="/tags/WebFE/" style="font-size: 12px;">WebFE</a> <a href="/tags/Web性能优化/" style="font-size: 15.2px;">Web性能优化</a> <a href="/tags/i18n/" style="font-size: 12px;">i18n</a> <a href="/tags/npm/" style="font-size: 12px;">npm</a> <a href="/tags/个人成长/" style="font-size: 12px;">个人成长</a> <a href="/tags/工作/" style="font-size: 12px;">工作</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/算法/" style="font-size: 15.2px;">算法</a> <a href="/tags/网络爬虫/" style="font-size: 12px;">网络爬虫</a> <a href="/tags/读书笔记/" style="font-size: 28px;">读书笔记</a> <a href="/tags/运动与健康/" style="font-size: 12px;">运动与健康</a> <a href="/tags/随笔/" style="font-size: 28px;">随笔</a>
-    </div>
-  </div>
-
-  
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
     </div>
     <footer id="footer">
   
@@ -366,6 +296,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
+  <div id="toTop" class="fa fa-chevron-up"></div>
 </footer>
     
 
@@ -384,11 +315,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>
