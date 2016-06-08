@@ -149,9 +149,14 @@ body,
 }
 body {
   color: #565a5f;
-  background: #f5f8f9;
-  font: 14px "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  background: #fff;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
+}
+@media screen and (max-width: 559px) {
+  body {
+    background-color: #f5f8f9;
+  }
 }
 a {
   color: #38b7ea;
@@ -469,9 +474,9 @@ a:visited {
 }
 .nav-icon {
   text-align: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   position: relative;
   cursor: pointer;
   height: 40px !important;
@@ -565,7 +570,7 @@ a:visited {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 1px solid #eceff2;
 }
 .search-form-input:focus {
@@ -658,7 +663,7 @@ a:visited {
   font-weight: 600;
 }
 #profile .inner .base-info #location {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
   color: #9a9ea3;
 }
@@ -704,11 +709,11 @@ a:visited {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 22px;
 }
 #profile .inner .article-info .article-info-block span {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 #profile .inner .article-info .article-info-block:first-child {
@@ -719,7 +724,7 @@ a:visited {
 }
 #profile .inner .contact-info .contact-list td {
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
 }
 #profile .inner .contact-info .contact-list td a {
   position: relative;
@@ -790,7 +795,7 @@ a:visited {
   border-color: transparent transparent #dbdee1 transparent;
 }
 .article {
-  margin: 40px 0;
+  margin: 40px 0 60px;
 }
 .article-inner {
   overflow: hidden;
@@ -855,7 +860,6 @@ a:visited {
   transition: color 0.2s;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
 }
 a.article-title:visited {
   color: #565a5f;
@@ -937,7 +941,7 @@ a.article-title:hover {
 }
 .article-entry blockquote {
   font-family: Georgia, "Times New Roman", serif;
-  font-weight: bold;
+  font-weight: normal;
   padding: 10px 20px;
   text-align: left;
   border-left: 5px solid #ccc;
@@ -947,9 +951,9 @@ a.article-title:hover {
   margin: 10px 0;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
+  font-size: 16px;
   margin: 1.6em 0;
-  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -998,7 +1002,7 @@ a.article-title:hover {
   padding: 7px 15px;
   -webkit-border-radius: 15px;
   border-radius: 15px;
-  background: #f5f8f9;
+  background: #fff;
   color: #999;
   text-shadow: 0 1px #fff;
   text-decoration: none;
@@ -1014,7 +1018,7 @@ a.article-title:hover {
 .article-footer {
   font-size: 0.85em;
   line-height: 1.6em;
-  border-top: 1px solid #eceff2;
+/*border-top: 1px solid color-border*/
   padding-top: 1.6em;
   margin: 0 20px 20px;
 }
@@ -1156,7 +1160,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #565a5f;
   outline: none;
@@ -1167,7 +1171,7 @@ a.article-title:hover {
   line-height: 36px;
 }
 .article-share-links {
-  background: #f5f8f9;
+  background: #fff;
 }
 .article-share-links:before,
 .article-share-links:after {
@@ -1452,7 +1456,7 @@ ol.toc {
 .layout-wrap-inner.list-categories ul li,
 .layout-wrap-inner.list-categories ul .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .layout-wrap-inner.list-categories ul li a,
@@ -1542,7 +1546,7 @@ ol.toc {
   padding: 20px 0;
   border-top: 1px solid #eceff2;
   color: #565a5f;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
 }
 #footer .outer {
@@ -1569,7 +1573,7 @@ ol.toc {
   border-width: 1px 0;
   overflow: auto;
   color: #ccc;
-  line-height: 22.400000000000002px;
+  line-height: 25.6px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1581,7 +1585,7 @@ ol.toc {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
-  background: #f5f8f9;
+  background: #fff;
   text-shadow: 0 1px #fff;
   padding: 0 0.3em;
 }
@@ -1625,7 +1629,7 @@ ol.toc {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 22.400000000000002px;
+  height: 25.6px;
 }
 .article-entry .gist {
   margin: 0 -20px;
@@ -1654,7 +1658,7 @@ ol.toc {
   background: none;
   border: none;
   padding: 0 20px 0 0;
-  height: 22.400000000000002px;
+  height: 25.6px;
   vertical-align: top;
 }
 .article-entry .gist .gist-file .gist-data .line-data {
@@ -1668,7 +1672,7 @@ ol.toc {
 .article-entry .gist .gist-file .gist-meta {
   background: #34383d;
   color: #999;
-  font: 0.85em "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -1877,7 +1881,7 @@ pre .javascript .function {
 .widget ul .category-list-child,
 .widget ol .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .widget ul li a,
