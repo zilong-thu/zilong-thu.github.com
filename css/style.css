@@ -959,6 +959,9 @@ a.article-title:hover {
   content: "—";
   padding: 0 0.5em;
 }
+.article-entry .quote-error {
+  color: #f00;
+}
 .article-entry .pullquote {
   text-align: left;
   width: 45%;
