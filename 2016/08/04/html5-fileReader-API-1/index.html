@@ -5,20 +5,17 @@
   
   <title>HTML5 fileReader API (1) | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。
-基本使用第二次选择同一个文件时不触发 change 事件的问题自定义样式浏览器兼容性">
+  <meta name="description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5 fileReader API (1)">
 <meta property="og:url" content="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。
-基本使用第二次选择同一个文件时不触发 change 事件的问题自定义样式浏览器兼容性">
+<meta property="og:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。">
 <meta property="og:image" content="http://borninsummer.com/images/2016/08/filereader-api-compatible.png">
-<meta property="og:updated_time" content="2016-08-04T15:06:40.000Z">
+<meta property="og:updated_time" content="2016-08-04T15:29:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5 fileReader API (1)">
-<meta name="twitter:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。
-基本使用第二次选择同一个文件时不触发 change 事件的问题自定义样式浏览器兼容性">
+<meta name="twitter:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。">
 <meta name="twitter:image" content="http://borninsummer.com/images/2016/08/filereader-api-compatible.png">
   
   
@@ -160,12 +157,21 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
                 
         <p>本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。</p>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h2 id="第二次选择同一个文件时不触发-change-事件的问题"><a href="#第二次选择同一个文件时不触发-change-事件的问题" class="headerlink" title="第二次选择同一个文件时不触发 change 事件的问题"></a>第二次选择同一个文件时不触发 change 事件的问题</h2><h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><p><img src="/images/2016/08/filereader-api-compatible.png"></p>
+<a id="more"></a>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h2 id="第二次选择同一个文件时不触发-change-事件的问题"><a href="#第二次选择同一个文件时不触发-change-事件的问题" class="headerlink" title="第二次选择同一个文件时不触发 change 事件的问题"></a>第二次选择同一个文件时不触发 change 事件的问题</h2><h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><p>原生的 <code>&lt;input type=&quot;file&quot;&gt;</code> 样式是这样子的：</p>
+<input type="file">
+
+<p>不能获得较好的交互体验。通常的解决方案是在其外面包裹一层自定义样式了的标签，然后将该 <code>input</code> 的尺寸设置为与其父元素一致、再设为透明的，就可以实现较好的自定义样式。例如：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="params">&lt;label class="input-file"&gt;</span></span><br><span class="line">  <span class="params">&lt;input type="file" name=""&gt;</span></span><br><span class="line"><span class="params">&lt;/label&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># CSS</span></span><br><span class="line">.input-<span class="class">file </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> inline-block;</span><br><span class="line"><span class="symbol">  position:</span> relative;</span><br><span class="line"><span class="symbol">  border:</span> <span class="number">1</span>px solid <span class="meta">#ccc;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.input-file input[type=<span class="string">"file"</span>] &#123;</span><br><span class="line"><span class="symbol">  position:</span> absolute;</span><br><span class="line"><span class="symbol">  top:</span> <span class="number">0</span>;</span><br><span class="line"><span class="symbol">  left:</span> <span class="number">0</span>;</span><br><span class="line"><span class="symbol">  width:</span> <span class="number">100</span>%;</span><br><span class="line"><span class="symbol">  height:</span> <span class="number">100</span>%;</span><br><span class="line"><span class="symbol">  opacity:</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><h3 id="input-type-”file”"><a href="#input-type-”file”" class="headerlink" title="input type=”file”"></a>input type=”file”</h3><p>在 caniuse.com 里面搜索 <code>input-file</code> 可以获得浏览器们对 <code>input</code> 元素的 <code>type=&quot;file&quot;</code> 属性的支持度。目前而言，IE 系列浏览器是从 IE10 才开始支持。Android 4.x 及更低版本的原生安卓浏览器也不支持此功能。不过，在 Android 5.x 下的 the Chrome browser 似乎是支持此属性的。</p>
+<h3 id="fileReader-API"><a href="#fileReader-API" class="headerlink" title="fileReader API"></a>fileReader API</h3><p>从 caniuse.com 给出的兼容性数据来看（市场份额已导入了中国区的数据），IE 系列浏览器对 fileReader 的支持，仅从 IE10 起比较乐观。其他各主流浏览器则对此 API 支持度非常好。</p>
+<p><img src="/images/2016/08/filereader-api-compatible.png"></p>
+<h3 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h3><p>上面进行自定义样式时用到的 opacity 属性的浏览器兼容性是 IE8+ 以及各主流浏览器。可以非常放心地使用。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="cirghay5v00a0fhs6w0q7xxfc" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="cirghfr37009vhds6c68t3pz3" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/#disqus_thread" class="article-comment-link">Comments</a>
       
