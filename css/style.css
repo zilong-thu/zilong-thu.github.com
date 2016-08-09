@@ -1576,7 +1576,8 @@ ol.toc {
   border-width: 1px 0;
   overflow: auto;
   color: #ccc;
-  line-height: 25.6px;
+  line-height: 20px;
+  font-size: 14px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1632,7 +1633,7 @@ ol.toc {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 25.6px;
+  height: 20px;
 }
 .article-entry .gist {
   margin: 0 -20px;
@@ -1661,7 +1662,7 @@ ol.toc {
   background: none;
   border: none;
   padding: 0 20px 0 0;
-  height: 25.6px;
+  height: 20px;
   vertical-align: top;
 }
 .article-entry .gist .gist-file .gist-data .line-data {
@@ -1790,7 +1791,7 @@ pre .javascript .function {
   }
 }
 .widget {
-  line-height: 1.6em;
+  line-height: 1.25;
   word-wrap: break-word;
   font-size: 0.9em;
 }
