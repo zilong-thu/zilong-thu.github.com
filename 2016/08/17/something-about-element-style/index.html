@@ -5,18 +5,18 @@
   
   <title>关于 DOM Element style 属性的一件小事 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+  <meta name="description" content="这几日写了个小插件（仓库地址），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 这种写法来隐藏元素。
 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 DOM Element style 属性的一件小事">
 <meta property="og:url" content="http://borninsummer.com/2016/08/17/something-about-element-style/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+<meta property="og:description" content="这几日写了个小插件（仓库地址），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 这种写法来隐藏元素。
 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
-<meta property="og:updated_time" content="2016-08-16T17:28:48.000Z">
+<meta property="og:updated_time" content="2016-08-16T17:34:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于 DOM Element style 属性的一件小事">
-<meta name="twitter:description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+<meta name="twitter:description" content="这几日写了个小插件（仓库地址），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 这种写法来隐藏元素。
 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
   
   
@@ -157,8 +157,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>这几日写了个小插件（<a href="https://github.com/zilong-thu/toast2.js" target="_blank" rel="external">仓库地址</a>），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 <code>element.style = &#39;display: none&#39;</code> 来隐藏元素。</p>
-<p>因为DOM 标准规定 HTMLElement 的 <code>style</code> 属性是只读的。</p>
+        <p>这几日写了个小插件（<a href="https://github.com/zilong-thu/toast2.js" target="_blank" rel="external">仓库地址</a>），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 <code>element.style = &#39;display: none&#39;</code> 这种写法来隐藏元素。</p>
+<p><strong>因为DOM 标准规定 HTMLElement 的 <code>style</code> 属性是只读的。</strong></p>
 <a id="more"></a>
 <blockquote>
 <p>Note that styles should NOT be set by assigning a string directly to the style property (as in elt.style = “color: blue;” ), since it is considered read-only (even though Firefox(Gecko), Chrome and Opera allow it) because the style attribute returns a  CSSStyleDeclaration object which is also read-only.  However, the style property’s own properties CAN be used to set styles.  Further, it is easier to use the individual styling-properties of the style property (as in elt.style.color = ‘…’ ) than to use elt.style.cssText = ‘…’ or elt.setAttribute(‘style’, ‘…’) , unless you wish to set the complete style in a single statement, since using the style properties will not overwrite other CSS properties that may already be set in the style attribute.</p>
@@ -179,7 +179,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cirxqu3gv009pi3s6hy4uxvy5" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cirxr1uqd009vkzs6ua0rkj2c" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/17/something-about-element-style/#disqus_thread" class="article-comment-link">Comments</a>
       
