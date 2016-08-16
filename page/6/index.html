@@ -124,6 +124,62 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="outer">
       
       <section id="main">
+      <article id="post-node-http-server-examples" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/09/node-http-server-examples/">node.js搭建简单的HTTP服务器</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/09/node-http-server-examples/">
+      <time datetime="2014-01-09T11:45:00.000Z" itemprop="datePublished">2014-01-09</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>###参考资料<br><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章</p>
+<p>###1. 最简单的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">	res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</span><br></pre></td></tr></table></figure>
+<p>###2. 路由控制的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>),</span><br><span class="line">	url  = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">	<span class="keyword">if</span> (pathname ===<span class="string">'/'</span>)&#123;</span><br><span class="line">		res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">		res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/about'</span>)&#123;</span><br><span class="line">		res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">			<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">		&#125;);</span><br><span class="line">		res.end(<span class="string">'About us\n'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/redirect'</span>) &#123;</span><br><span class="line">		<span class="comment">// 重定向</span></span><br><span class="line">		res.writeHead(<span class="number">302</span>, &#123;<span class="string">'Location'</span>:<span class="string">'/'</span>&#125;);</span><br><span class="line">		res.end();</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		res.writeHead(<span class="number">404</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">		res.end(<span class="string">'Page not found\n'</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;).listen(<span class="number">3000</span>,<span class="string">"127.0.0.1"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="cirxqu3ei005hi3s6ro8anig6" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/09/node-http-server-examples/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-html5-web-socket" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,7 +227,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="cirp6cxdb005iqys6miuwlg17" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="cirxqu3ee0058i3s6htpxm2pm" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/08/html5-web-socket/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -236,7 +292,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="cirp6cxd9005fqys6aystf1qc" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="cirxqu3eg005bi3s6yb2gd0uw" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -295,7 +351,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="cirp6cxd8005bqys65csav4dj" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="cirxqu3eh005ei3s6vuxk4rbc" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/03/how-to-improve-12306/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -353,7 +409,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="cirp6cxd60058qys6y8zhf473" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="cirxqu3eb0054i3s6ugsrqjlv" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -409,7 +465,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="cirp6cxd40055qys6xpzav8k2" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="cirxqu3e6004yi3s6win11eea" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/30/html5-localstorage-study/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -473,7 +529,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="cirp6cxd30053qys6brdq1q6h" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="cirxqu3e3004si3s6l9ei90so" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -538,7 +594,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="cirp6cxcz0050qys6ibqwl3co" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="cirxqu3e2004pi3s60cib19ot" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/24/nodejs-primer/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -597,7 +653,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="cirp6cxcw004uqys64k5bokgx" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="cirxqu3e4004wi3s6ewq7zz8o" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -658,68 +714,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="cirp6cxcy004xqys6mmzj4f8p" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="cirxqu3e90051i3s6m4jhj3s5" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-reading-note-on-async-javascript" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/15/reading-note-on-async-javascript/">《异步JavaScript编程》笔记</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/15/reading-note-on-async-javascript/">
-      <time datetime="2013-12-15T14:42:00.000Z" itemprop="datePublished">2013-12-15</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###Metro应用开发<br>从这本书的前言里，我才知道JavaScript原来可以进行Windows 8 下的Metro风格应用的开发。&gt;&gt;详见 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/br211385.aspx" target="_blank">创建第一个采用 JavaScript 的 Windows 应用商店应用</a>。不过从该页面也了解到，操作系统必须是Window 8.1才可以。</p>
-<blockquote>
-<p>感谢网络浏览器的无处不在，JavaScript比以往任何语言都更接近于兑现Java那句古老的承诺：“一次编写，随处运行。”</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/15/reading-note-on-async-javascript/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/" data-id="cirp6cxcv004rqys6vut8gggk" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>

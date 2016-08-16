@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>HTML5 fileReader API (1) | 王子龙的博客</title>
+  <title>关于 DOM Element style 属性的一件小事 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。">
+  <meta name="description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5 fileReader API (1)">
-<meta property="og:url" content="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/index.html">
+<meta property="og:title" content="关于 DOM Element style 属性的一件小事">
+<meta property="og:url" content="http://borninsummer.com/2016/08/17/something-about-element-style/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。">
-<meta property="og:image" content="http://borninsummer.com/images/2016/08/filereader-api-compatible.png">
-<meta property="og:updated_time" content="2016-08-08T16:22:17.000Z">
+<meta property="og:description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
+<meta property="og:updated_time" content="2016-08-16T17:28:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5 fileReader API (1)">
-<meta name="twitter:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。">
-<meta name="twitter:image" content="http://borninsummer.com/images/2016/08/filereader-api-compatible.png">
+<meta name="twitter:title" content="关于 DOM Element style 属性的一件小事">
+<meta name="twitter:description" content="这几日写了个小插件（仓库地址），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 来隐藏元素。
+因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -126,7 +127,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
     <div class="outer">
       
-      <section id="main"><article id="post-html5-fileReader-API-1" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-something-about-element-style" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -135,7 +136,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
         
   
     <h1 class="article-title" itemprop="name">
-      HTML5 fileReader API (1)
+      关于 DOM Element style 属性的一件小事
     </h1>
   
 
@@ -143,8 +144,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2016/08/04/html5-fileReader-API-1/">
-      <time datetime="2016-08-04T14:28:02.000Z" itemprop="datePublished">2016-08-04</time>
+    <a href="/2016/08/17/something-about-element-style/">
+      <time datetime="2016-08-16T17:11:03.000Z" itemprop="datePublished">2016-08-17</time>
     </a>
   </div>
 
@@ -156,67 +157,34 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。</p>
+        <p>这几日写了个小插件（<a href="https://github.com/zilong-thu/toast2.js" target="_blank" rel="external">仓库地址</a>），有个因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 <code>element.style = &#39;display: none&#39;</code> 来隐藏元素。</p>
+<p>因为DOM 标准规定 HTMLElement 的 <code>style</code> 属性是只读的。</p>
 <a id="more"></a>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- CSS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.input-file</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#0095dd</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.input-file</span> <span class="selector-tag">input</span><span class="selector-attr">[type="file"]</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">data-role</span>=<span class="string">"input-file"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"input-file"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"files"</span> <span class="attr">onchange</span>=<span class="string">"handleFileInputChange(this);"</span>&gt;</span>选择文件</span><br><span class="line">  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- JavaScript --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileInputChange</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> file = event.target.files[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">  reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = e.target.result;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'content of the file: '</span>, content);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reader.readAsText(file);</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="第二次选择同一个文件时不触发-change-事件的问题"><a href="#第二次选择同一个文件时不触发-change-事件的问题" class="headerlink" title="第二次选择同一个文件时不触发 change 事件的问题"></a>第二次选择同一个文件时不触发 change 事件的问题</h2><p>解决方案就是每次读完文件，执行一次 form.reset()。改写 <code>reader.onload</code> 回调后代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileInputChange</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> file = event.target.files[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">  reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = e.target.result;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'content of the file: '</span>, content);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> form = <span class="built_in">document</span>.querySelectorAll(<span class="string">'form[data-role="input-file"]'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (form) &#123;</span><br><span class="line">      form.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reader.readAsText(file);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><p>原生的 <code>&lt;input type=&quot;file&quot;&gt;</code> 样式是这样子的：</p>
-<input type="file">
-
-<p>不能获得较好的交互体验。通常的解决方案是在其外面包裹一层自定义样式了的标签，然后将该 <code>input</code> 的尺寸设置为与其父元素一致、再设为透明的，就可以初步实现自定义样式。</p>
-<p>示例：</p>
-<label class="input-file" style="
-    display: inline-block;
-    position: relative;
-    border: 1px solid #ccc;
-    background-color: #0095dd;
-    padding: 5px;
-    color: #fff;
-    border-radius: 5px;"><input type="file" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;cursor: pointer;">选择文件<br></label>
-
-<p>可能会发现上面的 <code>cursor: pointer;</code> 在某些区域失效。那么如果将 input 的透明度去掉，那么就可以看到是原生的那个样式在作祟。而给 <code>input[type=&quot;file&quot;]</code> 添加 <code>font-size: 0</code> 规则也未必有用，因为 file input 是浏览器保护程度较高的元素，有的浏览器下，其样式就是无法做成 pointer。而这目前是一个“众所周知的”困扰（参考 <a href="http://stackoverflow.com/questions/572768/styling-an-input-type-file-button" target="_blank" rel="external">Styling an input type=“file” button | Stackoverflow</a>）。</p>
-<p>解决方案是把 <code>opacity: 0</code> 改为 ‘diaplay: none’（例如本文第一段代码那样）：</p>
-<label class="input-file" style="
-    display: inline-block;
-    position: relative;
-    border: 1px solid #ccc;
-    background-color: #0095dd;
-    padding: 5px;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;"><input type="file" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;">选择文件<br></label>
-
-<p>上面的参考链接里，有人提出了他认为的 <strong>最好的解决方案</strong>：</p>
 <blockquote>
-<p>The best approach would be to have a custom label element with a <strong><code>for</code></strong> attribute attached to a hidden file input element. (The label’s for attribute must match the file element’s id in order for this to work).</p>
+<p>Note that styles should NOT be set by assigning a string directly to the style property (as in elt.style = “color: blue;” ), since it is considered read-only (even though Firefox(Gecko), Chrome and Opera allow it) because the style attribute returns a  CSSStyleDeclaration object which is also read-only.  However, the style property’s own properties CAN be used to set styles.  Further, it is easier to use the individual styling-properties of the style property (as in elt.style.color = ‘…’ ) than to use elt.style.cssText = ‘…’ or elt.setAttribute(‘style’, ‘…’) , unless you wish to set the complete style in a single statement, since using the style properties will not overwrite other CSS properties that may already be set in the style attribute.</p>
 </blockquote>
-<p>相应的代码：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">label</span> <span class="keyword">for</span>=<span class="string">"file-upload"</span> <span class="keyword">class</span>=<span class="string">"custom-file-upload"</span>&gt;</span><br><span class="line">    Custom Upload</span><br><span class="line">&lt;/<span class="keyword">label</span>&gt;</span><br><span class="line">&lt;<span class="keyword">input</span> id=<span class="string">"file-upload"</span> <span class="keyword">type</span>=<span class="string">"file"</span>/&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><h3 id="input-type-”file”"><a href="#input-type-”file”" class="headerlink" title="input type=”file”"></a>input type=”file”</h3><p>在 caniuse.com 里面搜索 <code>input-file</code> 可以获得浏览器们对 <code>input</code> 元素的 <code>type=&quot;file&quot;</code> 属性的支持度。目前而言，IE 系列浏览器是从 IE10 才开始支持。Android 4.x 及更低版本的原生安卓浏览器也不支持此功能。不过，在 Android 5.x 下的 the Chrome browser 似乎是支持此属性的。</p>
-<h3 id="fileReader-API"><a href="#fileReader-API" class="headerlink" title="fileReader API"></a>fileReader API</h3><p>从 caniuse.com 给出的兼容性数据来看（市场份额已导入了中国区的数据），IE 系列浏览器对 fileReader 的支持，仅从 IE10 起比较乐观。其他各主流浏览器则对此 API 支持度非常好。</p>
-<p><img src="/images/2016/08/filereader-api-compatible.png"></p>
-<h3 id="querySelectorAll"><a href="#querySelectorAll" class="headerlink" title="querySelectorAll"></a>querySelectorAll</h3><p>IE8部分支持：</p>
-<blockquote>
-<p>Partial support in IE8 is due to being limited to CSS 2.1 selectors and a small subset of CSS 3 selectors (see notes there). Additionally, it will have trouble with selectors including unrecognized tags (for example HTML5 ones).</p>
-</blockquote>
-<p>IE9+ 及其他所有的浏览器则是全面支持此 API。</p>
-<h2 id="参考资料-amp-扩展阅读"><a href="#参考资料-amp-扩展阅读" class="headerlink" title="参考资料 &amp; 扩展阅读"></a>参考资料 &amp; 扩展阅读</h2><ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">FileReader | MDN</a></li>
-<li><a href="http://stackoverflow.com/questions/572768/styling-an-input-type-file-button" target="_blank" rel="external">Styling an input type=“file” button | Stackoverflow</a></li>
-<li>样式美化相关，最开始找到的是这篇文章：<a href="http://www.haorooms.com/post/css_input_uploadmh" target="_blank" rel="external">css input[type=file] 样式美化，input上传按钮美化</a></li>
-<li><a href="http://www.techug.com/web-file-upload-method" target="_blank" rel="external">Web文件上传方法总结大全</a></li>
-</ul>
+<p>在插件的实现中，希望通过下面的代码来隐藏元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID).style = <span class="string">'display: none'</span>;</span><br></pre></td></tr></table></figure>
+<p>在 Chrome、Firefox 浏览器下是 OK 的。但是在 Safari 下，以及手机的多个浏览器中，都不会生效。而且，如果该插件内部声明了启用严格模式，那么也会在设置这个 style 时提示你尝试给一个只读属性赋值。</p>
+<p>解决办法呢，当然就是使用标准技术：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID);</span><br><span class="line">ele.setAttribute(<span class="string">'style'</span>, <span class="string">'display: none'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.display = <span class="string">'none'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.cssText = <span class="string">'display: none'</span>;</span><br></pre></td></tr></table></figure>
+<p>上面的三种技术，是在任何浏览器下都可以将元素隐藏的。</p>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>话说自去年12月份加入美团猫眼电影，前端业务全部都是用 React 来写。React 对于内联样式的写法是这样的：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button style=&#123;&#123;<span class="string">color:</span> <span class="string">'red'</span>, <span class="string">marginLeft:</span> <span class="string">'15px'</span>&#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p>在此猜测，React 的内联样式属性就是通过修改元素的 style 属性的具体子属性来实现的。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank" rel="external">style | MDN</a></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="cirxqu3gz009wi3s6c1ahyr0o" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cirxqu3gv009pi3s6hy4uxvy5" class="article-share-link">Share</a>
       
-        <a href="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://borninsummer.com/2016/08/17/something-about-element-style/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fileReader/">fileReader</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -224,19 +192,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
 <nav id="article-nav">
   
-    <a href="/2016/08/17/something-about-element-style/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          关于 DOM Element style 属性的一件小事
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/07/04/postcss-how-to-use/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/04/html5-fileReader-API-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PostCSS 系列(1): 基本概念、原理与用法</div>
+      <div class="article-nav-title">HTML5 fileReader API (1)</div>
     </a>
   
 </nav>
