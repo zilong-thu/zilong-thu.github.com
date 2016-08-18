@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="这几日写了个小插件（仓库地址），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 这种写法来隐藏元素。
 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。">
-<meta property="og:updated_time" content="2016-08-16T17:34:51.000Z">
+<meta property="og:updated_time" content="2016-08-18T16:16:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于 DOM Element style 属性的一件小事">
 <meta name="twitter:description" content="这几日写了个小插件（仓库地址），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style = &amp;#39;display: none&amp;#39; 这种写法来隐藏元素。
@@ -160,7 +160,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
         <p>这几日写了个小插件（<a href="https://github.com/zilong-thu/toast2.js" target="_blank" rel="external">仓库地址</a>），因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 <code>element.style = &#39;display: none&#39;</code> 这种写法来隐藏元素。</p>
 <p><strong>因为DOM 标准规定 HTMLElement 的 <code>style</code> 属性是只读的。</strong></p>
 <a id="more"></a>
-<blockquote>
+<h3 id="Element-style-是只读的！"><a href="#Element-style-是只读的！" class="headerlink" title="Element.style 是只读的！"></a>Element.style 是只读的！</h3><blockquote>
 <p>Note that styles should NOT be set by assigning a string directly to the style property (as in elt.style = “color: blue;” ), since it is considered read-only (even though Firefox(Gecko), Chrome and Opera allow it) because the style attribute returns a  CSSStyleDeclaration object which is also read-only.  However, the style property’s own properties CAN be used to set styles.  Further, it is easier to use the individual styling-properties of the style property (as in elt.style.color = ‘…’ ) than to use elt.style.cssText = ‘…’ or elt.setAttribute(‘style’, ‘…’) , unless you wish to set the complete style in a single statement, since using the style properties will not overwrite other CSS properties that may already be set in the style attribute.</p>
 </blockquote>
 <p>在插件的实现中，希望通过下面的代码来隐藏元素：</p>
@@ -169,6 +169,16 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>解决办法呢，当然就是使用标准技术：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID);</span><br><span class="line">ele.setAttribute(<span class="string">'style'</span>, <span class="string">'display: none'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.display = <span class="string">'none'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.cssText = <span class="string">'display: none'</span>;</span><br></pre></td></tr></table></figure>
 <p>上面的三种技术，是在任何浏览器下都可以将元素隐藏的。</p>
+<h3 id="Element-classList"><a href="#Element-classList" class="headerlink" title="Element.classList"></a>Element.classList</h3><p>与 style 类似，classList 也是只读的：</p>
+<blockquote>
+<p>The Element.classList is a read-only property which returns a live DOMTokenList collection of the class attributes of the element.</p>
+<p>Using classList is a convenient alternative to accessing an element’s list of classes as a space-delimited string via element.className.</p>
+</blockquote>
+<p>不过 classList 拥有若干方法，可以方便地操作元素样式名列表（add、remove、toggle 等等）</p>
+<h3 id="Element-className"><a href="#Element-className" class="headerlink" title="Element.className"></a>Element.className</h3><p>className 则既是 getter 又是 setter：</p>
+<blockquote>
+<p><strong>className gets and sets the value of the class attribute of the specified element.</strong></p>
+</blockquote>
 <h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>话说自去年12月份加入美团猫眼电影，前端业务全部都是用 React 来写。React 对于内联样式的写法是这样的：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button style=&#123;&#123;<span class="string">color:</span> <span class="string">'red'</span>, <span class="string">marginLeft:</span> <span class="string">'15px'</span>&#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
 <p>在此猜测，React 的内联样式属性就是通过修改元素的 style 属性的具体子属性来实现的。</p>
@@ -179,7 +189,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cirxr1uqd009vkzs6ua0rkj2c" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cis0j565c009tges63kdp0fue" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/17/something-about-element-style/#disqus_thread" class="article-comment-link">Comments</a>
       
