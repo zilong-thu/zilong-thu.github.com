@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Linux下配置NodeJS环境 | 王子龙的博客</title>
+  <title>《代码大全（第2版）》笔记 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。
-计算机系统：Ubuntu 14.04 LTS 64bit">
+  <meta name="description" content="记按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。
+总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下配置NodeJS环境">
-<meta property="og:url" content="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/index.html">
+<meta property="og:title" content="《代码大全（第2版）》笔记">
+<meta property="og:url" content="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。
-计算机系统：Ubuntu 14.04 LTS 64bit">
-<meta property="og:updated_time" content="2015-09-03T05:46:50.000Z">
+<meta property="og:description" content="记按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。
+总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说">
+<meta property="og:updated_time" content="2016-08-28T13:19:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下配置NodeJS环境">
-<meta name="twitter:description" content="记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。
-计算机系统：Ubuntu 14.04 LTS 64bit">
+<meta name="twitter:title" content="《代码大全（第2版）》笔记">
+<meta name="twitter:description" content="记按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。
+总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说">
   
   
     <link rel="icon" href="/favicon.png">
@@ -127,7 +127,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
     <div class="outer">
       
-      <section id="main"><article id="post-nodejs-environment-setup-on-linux" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-note-on-book-code-complete-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -136,7 +136,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
         
   
     <h1 class="article-title" itemprop="name">
-      Linux下配置NodeJS环境
+      《代码大全（第2版）》笔记
     </h1>
   
 
@@ -144,69 +144,91 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2015/06/10/nodejs-environment-setup-on-linux/">
-      <time datetime="2015-06-10T01:49:02.000Z" itemprop="datePublished">2015-06-10</time>
+    <a href="/2016/08/28/note-on-book-code-complete-2/">
+      <time datetime="2016-08-28T13:05:43.000Z" itemprop="datePublished">2016-08-28</time>
     </a>
   </div>
 
 
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
-  </div>
-
         </div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。</p>
-<p>计算机系统：Ubuntu 14.04 LTS 64bit</p>
+        <h3 id="记"><a href="#记" class="headerlink" title="记"></a>记</h3><p>按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学<br>编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。</p>
+<p>总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说，就是如何编写高质量的代码。作者认为，应该首先为人编写代码，其次才是为机器”。这差不多就总结了这本书的主旨。</p>
+<p>这个笔记最初是在豆瓣上面一点点记录的，顺便还发现豆瓣上面这本书的一个特点：目前其书评大概是隔2个月会有人写一篇；本书出版10年，共计90篇书评，平均每年9篇。相对于那些畅销书，这样的评论增幅的确较慢，估计也是因为本书非常厚重、比较偏技术类的缘故了。</p>
 <a id="more"></a>
-<h2 id="Install-Manually-with-Binary-Package"><a href="#Install-Manually-with-Binary-Package" class="headerlink" title="Install Manually with Binary Package"></a>Install Manually with Binary Package</h2><h3 id="wget下载NodeJS-binary-包"><a href="#wget下载NodeJS-binary-包" class="headerlink" title="wget下载NodeJS binary 包"></a>wget下载NodeJS binary 包</h3><p>在　<code>/home/username/mydownloads/</code>目录下，通过<code>wget</code>来下载NodeJS of Linux Binaries (.tar.gz)，当然，前提是自己得知道该软件的URL。</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-<p>如果网络状况不佳，则可以再次进入该目录，添加 -c 参数来实现断点续下：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-<p>以<code>tar.gz</code>为扩展名的是一种压缩文件，在Linux和OSX下常见，Linux和OSX都可以直接解压使用这种压缩文件。</p>
-<ul>
-<li><a href="http://man.linuxde.net/wget" target="_blank" rel="external">wget命令参考</a></li>
-</ul>
-<h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -C /usr/local --strip-components <span class="number">1</span> -xzf <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
-<p>即可在<code>/home/username/</code>下得到目录名为<code>node-v0.12.4-linux-x64</code>的解压后的文件夹。方便辨识起见，将这个解压后的目录重命名为<code>node</code>：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64 <span class="keyword">node</span><span class="title"></span></span><br></pre></td></tr></table></figure>
-<p>这里使用<code>wget</code>的方法是自己想到的，本以为很笨拙，后来继续搜索，发现这也是别人提到过的可行方案之一：</p>
-<ul>
-<li><a href="http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/" target="_blank" rel="external">How to Install Node.js on Ubuntu 14.04</a> </li>
-</ul>
-<p>其介绍的方法略有不同，从效果来看，这个方法要好一些。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查看是否安装成功 */</span></span><br><span class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>node</span><br><span class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>npm</span><br></pre></td></tr></table></figure>
-<h2 id="Install-via-apt-get"><a href="#Install-via-apt-get" class="headerlink" title="Install via apt-get"></a>Install via apt-get</h2><p>可以通过Ubuntu的Package Manager下载：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> nodejs</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</span><br></pre></td></tr></table></figure>
-<p>但这样获得的NodeJS版本目前也就到0.10.~，很多新特性都用不了，例如<code>promise</code>。期待Unbutu将更新的NodeJS放入其软件中心的那一天。</p>
-<ul>
-<li><a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions" target="_blank" rel="external">Installing Node.js via package manager</a></li>
-<li><a href="http://stackoverflow.com/questions/13203335/set-node-js-to-path-ubuntu-12-04" target="_blank" rel="external">Set Node.js to $PATH (Ubuntu 12.04)</a></li>
-</ul>
-<h2 id="Uninstall-an-application"><a href="#Uninstall-an-application" class="headerlink" title="Uninstall an application"></a>Uninstall an application</h2><blockquote>
-<p>Enter the command “sudo apt-get remove program_name” if the program was installed from the command line via the apt utility. This command only removes the program while leaving the configuration files behind. If you want to totally remove the program and all of its files, use the command “apt-get –purge remove program_name”</p>
+<h3 id="第3章-三思而后行：前期准备"><a href="#第3章-三思而后行：前期准备" class="headerlink" title="第3章 三思而后行：前期准备"></a>第3章 三思而后行：前期准备</h3><blockquote>
+<p>【49页】<br>错误处理已被证实为现代计算机科学中最棘手的问题之一，你不能武断地处理它。有人估计程序中高达 90% 的代码是用来处理异常情况、进行错误处理、或做簿记工作，意味着只有 10% 的代码是用来处理常规的情况。<br>……最好在架构层次上对待它。</p>
 </blockquote>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span>  <span class="comment">--purge  remove  program_name</span></span><br></pre></td></tr></table></figure>
-<p>引用一段《鸟哥的Linux私房菜-基础学习篇（第三版）》里面的几句话，来说明变量、目录的皮毛知识：</p>
+<h3 id="第4章-关键的“构建”决策"><a href="#第4章-关键的“构建”决策" class="headerlink" title="第4章 关键的“构建”决策"></a>第4章 关键的“构建”决策</h3><blockquote>
+<p>一套好的符号系统能把大脑从所有非必要的工作中解放出来，集中精力去对付更高级的问题，从功效上看，能够有效地提高人类的智力。</p>
+</blockquote>
+<p>以及：</p>
 <blockquote>
-<p>page 158<br>网络文件常常提到类似<code>./run.sh</code>的数据，这个命令的意义是什么？<br>答：由于命令的执行需要变量的支持，若你的执行文件放置在本目录，并且本目录并非正规的执行文件目录（<code>/bin</code>、<code>/usr/bin</code>等为正规），此时需要执行命令就得要严格指定该执行文件。<code>./</code>代表“本目录”的意思，所以<code>./run.sh</code>代表执行本目录下名为<code>run.sh</code>的文件。</p>
+<p>【4.3】<br>在我的职业生涯中，我看到了PC之星的升起和大型机之星的陨落，我看到图形用户界面程序代替了字符界面程序，我还看到了Web的崛起和Windows的衰落。（2004年）</p>
+</blockquote>
+<h3 id="第5章-软件构建中的设计"><a href="#第5章-软件构建中的设计" class="headerlink" title="第5章 软件构建中的设计"></a>第5章 软件构建中的设计</h3><p>这一章提到了本书的核心理念：</p>
+<blockquote>
+<p>管理复杂度是软件开发中最为重要的技术话题。在我看来，软件的首要技术使命便是管理复杂度，它实在是太重要了。</p>
+</blockquote>
+<p>以及，程序员的基本职业操守就是：</p>
+<blockquote>
+<p>要写出既让自己容易理解，也能让别人容易看懂，而且很少有错误的程序代码。</p>
+<p>【第90页】：<br>封装帮助你管理复杂度的方法是不让你看到那些复杂度。</p>
+</blockquote>
+<h3 id="第11章-变量名的力量"><a href="#第11章-变量名的力量" class="headerlink" title="第11章 变量名的力量"></a>第11章 变量名的力量</h3><blockquote>
+<p>临时变量，这个名词很奇怪，因为真的是“无论从那种角度看，你程序中的大多数变量都是临时性的。把其中几个称为临时的，可能表明你还没有弄清它们的实际用途。</p>
+</blockquote>
+<p>【275页】给出了CPP/Java的非正式变量命命名规则。然而似乎没有见过针对JavaScript的呢。。。（待调研）</p>
+<p>为变量命名这个事情，也挺考验程序员的英语词汇量的。</p>
+<h3 id="第12章-基本数据类型"><a href="#第12章-基本数据类型" class="headerlink" title="第12章 基本数据类型"></a>第12章 基本数据类型</h3><blockquote>
+<p>【第292页】<br>避免使用“神秘数值” 神秘数值是在程序中出现的、没有经过解释的数值文字量。如果你编程用的语言支持具名常量，那么就用它来代替神秘数值。<br>即使你确信某个数值在代码中永远也不会改变，使用具名常量也会有助于提高可读性。<br>一条很好的经验法则是，程序主体中仅能出现的（数字）字面量就是 0 和 1 。</p>
+</blockquote>
+<h3 id="第15章-使用条件语句"><a href="#第15章-使用条件语句" class="headerlink" title="第15章 使用条件语句"></a>第15章 使用条件语句</h3><blockquote>
+<p>【第363页】<br>利用 default 子句来检测错误<br>如果一条 case 语句中默认子句既没有用来做其他的处理，按照正常执行顺序也不太可能会发生，那么就向里面加入一条诊断消息。</p>
+</blockquote>
+<p>的确，很多时候编辑器的 Lint 工具会提示我们一定要加上一个 default 子句，然而有时候真的不知道该在里面写什么。上面的建议很不错。</p>
+<h3 id="第16章-控制循环"><a href="#第16章-控制循环" class="headerlink" title="第16章 控制循环"></a>第16章 控制循环</h3><blockquote>
+<p>【第382页】<br>在嵌套循环中使用有意义的变量名来提高其可读性</p>
+</blockquote>
+<h3 id="第18章-表驱动法"><a href="#第18章-表驱动法" class="headerlink" title="第18章 表驱动法"></a>第18章 表驱动法</h3><p>表驱动法就讲了三类方法：① 直接访问；② 索引访问；③ 阶梯访问。</p>
+<h3 id="第20章"><a href="#第20章" class="headerlink" title="第20章"></a>第20章</h3><blockquote>
+<p>虽然开发一个高质量产品的最好方法似乎就是专注于产品本身，但就软件质量保证而言，你还需要关注软件开发的过程。</p>
+</blockquote>
+<p>要尽可能多地找出缺陷，靠一种技术肯定是远远不够的，需要多种技术联合使用。例如，进行功能检查，单元测试，代码阅读。这三个就是最基本的了。而我目前的措施，顶多只有功能检查和代码阅读。非常缺少单元测试。</p>
+<h3 id="第21章-协同构建"><a href="#第21章-协同构建" class="headerlink" title="第21章 协同构建"></a>第21章 协同构建</h3><p>对于协同构建技术的一个相关思想比较有趣而且也非常符合在实践中的感受：</p>
+<blockquote>
+<p>……那就是在工作中，开发人员总会对某些错误点视而不见，而其他人不会有相同的盲点，所以开发人员让其他人来检查自己的工作是很有好处的……攻击这些盲点就成为了有效构建的关键。</p>
+<p>正如 Karl Wiegers 所指出的那样：“由人进行的复查能够发现不明显的错误信息、不恰当的注释、硬编码的变量值，以及重复出现的需要进行统一的代码模式，这些是测试发现不了的。”</p>
+</blockquote>
+<p>想到一个话题，“经验丰富的程序员的价值究竟体现在哪里”，窃以为，其人工执行代码检查从而发现潜在问题、漏洞、缺陷的能力，可以弥补测试的不足、减少上线后的BUG率，从而为整个项目节约成本。这便是其价值体现之一。</p>
+<blockquote>
+<p>【第482页】<br>一个采用正式检查的团队报告称，复查可以快速地讲所有开发者的水平提升到最优秀的开发者的高度（Tackett and Van Doren 1999）。</p>
+</blockquote>
+<h3 id="第33章-个人性格"><a href="#第33章-个人性格" class="headerlink" title="第33章 个人性格"></a>第33章 个人性格</h3><p>这一章的主题，像是对程序员的职业发展、学习方法给出合理中肯的建议。</p>
+<p>要保持谦逊的品质。</p>
+<blockquote>
+<p>在成长为高手的过程中，对技术事物的求知欲具有压倒一切的重要性。</p>
+<p>技术环境的特定特征每5到10年就变化一番，如果没有足够的求知欲来跟上这些变化，你就面临落伍的威胁。</p>
+<p>学习编程的一个特别好的途径是研究高手的程序。</p>
+<p>如果每两月能看一本计算机好书，大约每周35页，过不了多久，你就能把握本行业的脉搏，并脱颖而出。（824页）</p>
+<p>当初学者或中级程序员不是错，当熟练级程序员而非技术带头人也无可厚非。但如果知道自己该如何改进后，还总是在初学者或者中级程序员阶段徘徊，就是你的不对了。</p>
+<p>比尔·盖茨说，任何日后出色的程序员前几年就做得很好。从那以后，程序员好坏就定型了（Lammers，1986）。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="cisemrdiw0087zrs6qgwish7o" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="cisemrdjt009vzrs6i0hhtpxp" class="article-share-link">Share</a>
       
-        <a href="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码大全/">代码大全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>
@@ -214,19 +236,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
 <nav id="article-nav">
   
-    <a href="/2015/06/11/linux-command-memo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Ubuntu Linux常用命令笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/17/something-about-element-style/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用Promise实现多个Ajax的异步流程控制</div>
+      <div class="article-nav-title">关于 DOM Element style 属性的一件小事</div>
     </a>
   
 </nav>
