@@ -846,12 +846,11 @@ a:visited {
 .article-header {
   padding: 20px 20px 0;
 }
-.article-header .article-title {
-  display: block;
-}
 .article-title {
+  display: block;
   text-decoration: none;
-  font-size: 2em;
+  font-size: 1.6em;
+  font-weight: bold;
   color: #565a5f;
   line-height: 1.1em;
   -webkit-transition: color 0.2s;
