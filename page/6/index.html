@@ -19,7 +19,7 @@
     <link rel="icon" href="/favicon.png">
   
 
-  <script src="/js/libs/jquery-2.0.3.min.js"></script>
+<script type="application/javascript" src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
@@ -126,6 +126,66 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="outer">
       
       <section id="main">
+      <article id="post-javascript-loop-optimization" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/16/javascript-loop-optimization/">通过递减循环变量提高JavaScript循环性能</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/16/javascript-loop-optimization/">
+      <time datetime="2014-01-16T12:48:00.000Z" itemprop="datePublished">2014-01-16</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://book.douban.com/subject/4719162/" class="douban_book" target="_blank" name="4719162">《高性能网站建设进阶指南》</a>第95页提到：</p>
+<blockquote>
+<p>另外一种提高性能的简单有效的方式是将循环变量递减到0，而不是递增到总长度。根据每个循环的复杂性不同，这个简单的改变可以比原来节约多达50%的执行时间。</p>
+</blockquote>
+<p>我在这几种环境下进行了简单的测试：Node.js，Chrome，Firefox，IE。在浏览器环境下，循环变量从0增长与递减到0相比会有性能损耗；但在Node中则截然相反。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/16/javascript-loop-optimization/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/16/javascript-loop-optimization/" data-id="citab6jko005qw3s6trlv06fb" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/16/javascript-loop-optimization/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-books-for-nodejs-learners" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -169,7 +229,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/" data-id="citaa3roa005pm8s67zudk4px" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/" data-id="citab6jkm005nw3s6bdm2nner" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -227,7 +287,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="citaa3ro8005mm8s6q86nmfm0" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="citab6jkh005kw3s6sjyaz7ho" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/09/node-http-server-examples/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -287,7 +347,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="citaa3ro6005jm8s6cd6qlbce" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="citab6jkg005hw3s6a6kqsnxs" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/08/html5-web-socket/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -352,7 +412,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="citaa3ro5005fm8s6j8pisd8x" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="citab6jke005dw3s6lqy8nwyb" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -411,7 +471,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="citaa3ro30058m8s62bpyrs44" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="citab6jkd005aw3s6008584qm" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/03/how-to-improve-12306/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -469,7 +529,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="citaa3ro4005cm8s643noaeck" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="citab6jkb0056w3s6xp68sql4" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -525,7 +585,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="citaa3ro10055m8s6h5f3inxe" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="citab6jka0053w3s6ech3dtke" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/30/html5-localstorage-study/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -589,7 +649,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="citaa3ro00051m8s6vkojgt2b" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="citab6jk8004zw3s6zphmofeu" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -654,68 +714,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="citaa3rny004ym8s6b4pxqyyi" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="citab6jk5004ww3s6hwps6rrf" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/24/nodejs-primer/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-once-upon-a-time-on-fishfarm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/17/once-upon-a-time-on-fishfarm/">渔场春秋</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/17/once-upon-a-time-on-fishfarm/">
-      <time datetime="2013-12-17T14:19:00.000Z" itemprop="datePublished">2013-12-17</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>记：本文写于2008-3月，当时刚在大学呆了半年时光，却已然非常怀旧。山东省2007年高考语文作文题目是“时间的流逝不会使记忆风化”。也许出于对高考语文发挥不利的惨痛记忆（只拿到108分），因此当时就想写写回忆类的文章。主题嘛，就是有关童年——心灵中的净土。 </p>
-<p>——本文献给童年陪我一起长大的晶晶和宁宁。</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/17/once-upon-a-time-on-fishfarm/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="citaa3rnv004sm8s6rn80kx5u" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -756,6 +757,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </script>
 
 
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>

@@ -19,7 +19,7 @@
     <link rel="icon" href="/favicon.png">
   
 
-  <script src="/js/libs/jquery-2.0.3.min.js"></script>
+<script type="application/javascript" src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
@@ -126,6 +126,80 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="outer">
       
       <section id="main">
+      <article id="post-about-using-json-in-http-body" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/27/about-using-json-in-http-body/">关于在HTTP请求BODY中使用JSON格式</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/10/27/about-using-json-in-http-body/">
+      <time datetime="2015-10-27T15:15:06.000Z" itemprop="datePublished">2015-10-27</time>
+    </a>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用 HTTP POST 或者 PUT 方法向服务器发送非<code>multipart</code>类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的<code>Content-Type</code>：</p>
+<table>
+<thead>
+<tr>
+<th><code>Content-Type</code></th>
+<th>类型说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>application/x-www-form-urlencoded</code></td>
+<td>以 URLEncoded 的方式进行编码</td>
+<td><code>name=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2</code> 解码后就是：<code>name=test&amp;sub[]=1&amp;sub[]=2</code></td>
+</tr>
+<tr>
+<td><code>application/json</code></td>
+<td>消息主体是序列化后的 JSON 字符串，要求服务器端能够支持JSON</td>
+<td><code>{&quot;name&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2]}</code></td>
+</tr>
+</tbody>
+</table>
+        
+          <p class="article-more-link">
+            <a href="/2015/10/27/about-using-json-in-http-body/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="citab6jmm009cw3s6okquo96a" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-skills-learned-in-september" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -169,7 +243,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="citaa3rpm009am8s6ir8hw89a" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="citab6jml0098w3s6l60h56sc" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/10/02/skills-learned-in-september/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -227,7 +301,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/09/15/npm-update-when-changing-nodejs-version/" data-id="citaa3rpl0097m8s67c7uonkt" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/09/15/npm-update-when-changing-nodejs-version/" data-id="citab6jmk0095w3s6gls6a56w" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/09/15/npm-update-when-changing-nodejs-version/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -298,7 +372,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="citaa3rpk0093m8s6t0fvbxxe" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="citab6jmi0091w3s6j2zwpv3z" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -360,7 +434,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/08/20/websites-built-on-nodejs/" data-id="citaa3rpj0090m8s6704vgq64" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/08/20/websites-built-on-nodejs/" data-id="citab6jmg008yw3s64x80fl14" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/08/20/websites-built-on-nodejs/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -426,7 +500,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/08/12/skills-learned-in-the-first-half-of-2015/" data-id="citaa3rph008vm8s6jlkpyb29" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/08/12/skills-learned-in-the-first-half-of-2015/" data-id="citab6jme008tw3s66f5k3erv" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/08/12/skills-learned-in-the-first-half-of-2015/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -492,7 +566,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/08/08/2nd-css-conf/" data-id="citaa3rph008sm8s6bnwtzhdt" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/08/08/2nd-css-conf/" data-id="citab6jmd008qw3s6yo4zzq5g" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/08/08/2nd-css-conf/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -551,7 +625,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/27/char-set-configuration-for-mysql-5-5/" data-id="citaa3rpg008pm8s6pg5hdwlr" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/27/char-set-configuration-for-mysql-5-5/" data-id="citab6jma008jw3s6bz5sb7h3" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/27/char-set-configuration-for-mysql-5-5/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -610,7 +684,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/" data-id="citaa3rpf008mm8s6uc2quxam" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/" data-id="citab6jmb008nw3s60e7tnfn4" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -668,71 +742,12 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="citaa3rpe008im8s6qiaxet7o" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="citab6jm8008fw3s6d57tdud1" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/11/linux-command-memo/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-nodejs-environment-setup-on-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/10/nodejs-environment-setup-on-linux/">Linux下配置NodeJS环境</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/06/10/nodejs-environment-setup-on-linux/">
-      <time datetime="2015-06-10T01:49:02.000Z" itemprop="datePublished">2015-06-10</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录在Linux下通过命令行来配置NodeJS环境的点点滴滴。比较基础。</p>
-<p>计算机系统：Ubuntu 14.04 LTS 64bit</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/10/nodejs-environment-setup-on-linux/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="citaa3rpd008fm8s636wbhjmt" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li></ul>
 
     </footer>
   </div>
@@ -772,6 +787,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </script>
 
 
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>
