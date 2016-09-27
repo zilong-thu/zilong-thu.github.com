@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>用Node.js生成Plot3D网格文件 | 王子龙的博客</title>
+  <title>vim 简单操作笔记 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。
-只要了解正则表达式的语法就OK。">
+  <meta name="description" content="vim 是*">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Node.js生成Plot3D网格文件">
-<meta property="og:url" content="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/index.html">
+<meta property="og:title" content="vim 简单操作笔记">
+<meta property="og:url" content="http://borninsummer.com/2016/09/24/primary-vim-skills/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。
-只要了解正则表达式的语法就OK。">
-<meta property="og:image" content="http://borninsummer.com/images/blog/node/airfoil_data_format.png">
-<meta property="og:image" content="http://borninsummer.com/images/blog/node/wing_mesh.png">
-<meta property="og:updated_time" content="2015-07-26T05:45:52.000Z">
+<meta property="og:description" content="vim 是*">
+<meta property="og:updated_time" content="2016-09-27T16:04:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Node.js生成Plot3D网格文件">
-<meta name="twitter:description" content="上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。
-只要了解正则表达式的语法就OK。">
-<meta name="twitter:image" content="http://borninsummer.com/images/blog/node/airfoil_data_format.png">
+<meta name="twitter:title" content="vim 简单操作笔记">
+<meta name="twitter:description" content="vim 是*">
   
   
     <link rel="icon" href="/favicon.png">
@@ -132,7 +126,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
     <div class="outer">
       
-      <section id="main"><article id="post-using-node-to-write-plot3d-mesh-file" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-primary-vim-skills" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -141,7 +135,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
         
   
     <h1 class="article-title" itemprop="name">
-      用Node.js生成Plot3D网格文件
+      vim 简单操作笔记
     </h1>
   
 
@@ -149,8 +143,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">
-      <time datetime="2014-04-21T07:15:00.000Z" itemprop="datePublished">2014-04-21</time>
+    <a href="/2016/09/24/primary-vim-skills/">
+      <time datetime="2016-09-24T03:29:37.000Z" itemprop="datePublished">2016-09-24</time>
     </a>
   </div>
 
@@ -158,7 +152,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-category">
   	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    <a class="article-category-link" href="/categories/vim/">vim</a>
   </div>
 
         </div>
@@ -167,25 +161,24 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。</p>
-<p>只要了解正则表达式的语法就OK。</p>
+        <p>vim 是<em>*</em></p>
 <a id="more"></a>
-<p>###翼型数据格式<br>NACA系列翼型由这个程序生成。</p>
-<p><a href="/files/exefiles/naca.zip" download="NACA翼型生成程序">NACA翼型生成程序</a></p>
-<p>生成的翼型数据并不直接就是下图的样子，用excel什么的稍微格式化一下就好了。</p>
-<p><img src="/images/blog/node/airfoil_data_format.png" title="翼型文件数据格式"></p>
-<p>生成的网格大概这个样子：<br><img src="/images/blog/node/wing_mesh.png" title="三维机翼网格"></p>
-<p>###Node代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = fs.readFileSync(<span class="string">'naca_airfoil.txt'</span>, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> outStream = fs.WriteStream(<span class="string">'wing.xyz'</span>);</span><br><span class="line"><span class="keyword">var</span> dataArray = data.split(<span class="regexp">/\r\n/</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 网格 */</span></span><br><span class="line"><span class="keyword">var</span> grid = &#123;</span><br><span class="line">		X: [],</span><br><span class="line">		Y: [],</span><br><span class="line">		Z: []</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 翼型数据 */</span></span><br><span class="line">	airfoil = &#123;</span><br><span class="line">		x: [],</span><br><span class="line">		z: []</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取翼型坐标 */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> x, z;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, length = dataArray.length; i &lt; length; i++) &#123;</span><br><span class="line">		x = <span class="built_in">parseFloat</span>( dataArray[i].split(<span class="regexp">/\s+/</span>)[<span class="number">0</span>] );</span><br><span class="line">		z = <span class="built_in">parseFloat</span>( dataArray[i].split(<span class="regexp">/\s+/</span>)[<span class="number">1</span>] );</span><br><span class="line">		airfoil.x.push(x);</span><br><span class="line">		airfoil.z.push(z);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> WINGSPAN = <span class="number">4.0</span>, <span class="comment">/* 翼展 */</span></span><br><span class="line">	JMAX = <span class="number">41</span>;  <span class="comment">/* 展向节点数 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据翼型生成一个三维机翼 */</span></span><br><span class="line"><span class="keyword">var</span> IMAX=airfoil.x.length;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;JMAX; j++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX; i++)&#123;</span><br><span class="line">		grid.X.push(airfoil.x[i]);</span><br><span class="line">		grid.Z.push(airfoil.z[i]);</span><br><span class="line">		grid.Y.push(WINGSPAN/(JMAX<span class="number">-1</span>)*j);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写入Plot3D文件 */</span></span><br><span class="line">outStream.write(<span class="string">'1\r\n'</span>+IMAX+<span class="string">'\t'</span>+JMAX+<span class="string">'\t1\r\n'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">	outStream.write(grid.X[i]+<span class="string">'\t'</span>);</span><br><span class="line">&#125;</span><br><span class="line">outStream.write(<span class="string">'\r\n'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">	outStream.write(grid.Y[i]+<span class="string">'\t'</span>);</span><br><span class="line">&#125;</span><br><span class="line">outStream.write(<span class="string">'\r\n'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">	outStream.write(grid.Z[i]+<span class="string">'\t'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">outStream.end();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'NACA arifoil wing mesh generation finished.'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="跳转、定位、翻页"><a href="#跳转、定位、翻页" class="headerlink" title="跳转、定位、翻页"></a>跳转、定位、翻页</h3><p><code>j</code>，向下滚动</p>
+<p><code>k</code>，向上滚动</p>
+<p><code>gg</code>，跳转到文件第一行</p>
+<p><code>G</code>，跳转到文件末尾行</p>
+<p><code>ctrl + f</code>，forward 向前翻页，即 PageDown</p>
+<p><code>ctrl + b</code>，backward 向后翻页，即 PageUp</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="citlofwu800641vs6mlf7cil6" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="citlofwwl00ac1vs6kvc1nzsb" class="article-share-link">Share</a>
       
-        <a href="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://borninsummer.com/2016/09/24/primary-vim-skills/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
 
     </footer>
   </div>
@@ -193,19 +186,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
 <nav id="article-nav">
   
-    <a href="/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          踝关节韧带撕裂后的处理与相关机理的学习
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/09/21/2016-q3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用Node.js处理Plot3D格式的网格数据</div>
+      <div class="article-nav-title">2016 Q3 Review</div>
     </a>
   
 </nav>
