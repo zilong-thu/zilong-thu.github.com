@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="记按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。
 总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说">
-<meta property="og:updated_time" content="2016-09-27T17:10:21.000Z">
+<meta property="og:updated_time" content="2016-09-28T14:35:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《代码大全（第2版）》笔记">
 <meta name="twitter:description" content="记按照阅读顺序来记录吧。并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。看完这几章之后，就开始顺序看了。
@@ -277,6 +277,22 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>把最忙的循环放在最内层</p>
 </blockquote>
 <p>因为，嵌套循环的总循环次数 = 外层循环次数 + 内层循环次数 * 外层循环次数。所以，外层循环应该数量尽量少于内层循环。</p>
+<h4 id="26-3-数据变化"><a href="#26-3-数据变化" class="headerlink" title="26.3 数据变化"></a>26.3 数据变化</h4><p>缓存机制可以在某些情景中大幅提升软件性能。不过在使用缓存的时候，必须意识到这一点：<strong>缓存增加了程序的复杂性，使得程序更容易出错</strong>。</p>
+<h4 id="26-4-表达式"><a href="#26-4-表达式" class="headerlink" title="26.4 表达式"></a>26.4 表达式</h4><p>这一页提到了一个技术，“编译期初始化”。是说：</p>
+<blockquote>
+<p>如果在一个子程序调用中使用了一个具名常量或是神秘数值，而且它是子程序唯一的参数，这就是一种暗示，你应当提前计算这一数值，把它放到某个常量中，从而避免上面那种子程序调用。</p>
+</blockquote>
+<p>然后大神用C++给出了一个示例。</p>
+<p>不过，在我用 JavaScript 重演这个示例的时候，却发现现在的编译器已经足够聪明了：</p>
+<p>测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lg1</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.log(x) / <span class="built_in">Math</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> NUM = <span class="number">1000000</span>;</span><br><span class="line"><span class="keyword">var</span> LOG2 = <span class="number">0.6931471805599453</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lg2</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.log(x) / LOG2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'lg1'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i&lt; NUM; i++) &#123;</span><br><span class="line">  lg1(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'lg1'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'lg2'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i&lt; NUM; i++) &#123;</span><br><span class="line">  lg2(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'lg2'</span>);</span><br></pre></td></tr></table></figure>
+<p>运行结果是：</p>
+<ul>
+<li>lg1: 29.933ms</li>
+<li>lg2: 29.699ms</li>
+</ul>
+<p>多次运行，也会发现二者并无明显区别。</p>
+<p>猜测是JS引擎足够聪明，认识到 Math.log(2) 就是个常量，因此在编译期自行做了优化。</p>
 <h3 id="第33章-个人性格"><a href="#第33章-个人性格" class="headerlink" title="第33章 个人性格"></a>第33章 个人性格</h3><p>这一章的主题，像是对程序员的职业发展、学习方法给出合理中肯的建议。</p>
 <p>要保持谦逊的品质。</p>
 <blockquote>
@@ -291,7 +307,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="citlqw8zt00aah2s6b8ex7hn3" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="citn0kz5o00a5l7s6v07mtoi3" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/#disqus_thread" class="article-comment-link">Comments</a>
       
