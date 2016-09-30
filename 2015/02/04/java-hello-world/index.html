@@ -188,10 +188,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>###Using Package</p>
 <figure class="highlight java"><figcaption><span>hello.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com;  <span class="comment">/**/</span><br><span class="line"></span><br><span class="line">public class hello&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        System.out.println("Hello world!");</span><br><span class="line">        Person me = new Person();</span><br><span class="line">        me.name = "wzl";</span><br><span class="line">        me.saysomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person&#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public int age;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        System.out.println("I am running...");</span><br><span class="line">    &#125;</span><br><span class="line">    public void saysomething()&#123;</span><br><span class="line">        System.out.println("Daddy is "+name);</span><br><span class="line">        run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>在<code>hello.java</code>的同目录下运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac <span class="_">-d</span> . hello.java</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">javac</span> <span class="selector-tag">-d</span> . <span class="selector-tag">hello</span><span class="selector-class">.java</span></span><br></pre></td></tr></table></figure>
 <p>这样会生成一个名为<code>com</code>的新目录，里面包括两个<code>.class</code>文件：<code>hello.class</code>和<code>Person.class</code>。</p>
 <p>要运行这个hello程序，在<code>com</code>的上一级目录下：</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java <span class="keyword">com</span>.hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">java</span> <span class="selector-tag">com</span><span class="selector-class">.hello</span></span><br></pre></td></tr></table></figure>
 <p>而进入<code>com</code>目录后，无论运行<code>java com.hello</code>，还是运行<code>java hello</code>，都会失败。</p>
 <blockquote>
 <p>Java的包机制需要两个方面保证：</p>
@@ -212,7 +212,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="citq0jl1m007fx3s625fr8qk2" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="citq0q8a10051zgs6apf2x15h" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/02/04/java-hello-world/#disqus_thread" class="article-comment-link">Comments</a>
       
