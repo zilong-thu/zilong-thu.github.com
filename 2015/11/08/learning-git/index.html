@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-08-09T13:21:52.000Z">
+<meta property="og:updated_time" content="2016-10-03T02:46:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -193,10 +193,16 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p><strong>原理</strong></p>
 <p>不想使 <code>node_modules</code> 再在代码仓库里出现，过程是这样的：</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  <span class="keyword">master</span></span><br><span class="line"> </span><br><span class="line"><span class="title"># 执行这个</span><br><span class="line">git</span> reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line"><span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p><code>--hard</code>是物理删除，直接把工作区的改动都删掉了。</p>
 <h3 id="修改刚才的提交的注释"><a href="#修改刚才的提交的注释" class="headerlink" title="修改刚才的提交的注释"></a>修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
 <p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
 <h3 id="更改提交历史——交互式变基"><a href="#更改提交历史——交互式变基" class="headerlink" title="更改提交历史——交互式变基"></a>更改提交历史——交互式变基</h3><p>交互式变基，即指 <code>git rebase -i &lt;commit-id&gt;</code>，然后自该 hash 之后（不含该 hash）的所有提交记录就会被呈现在文本编辑器里，按照提示编辑此文本，保存后即可实现对相应提交对象的修改。</p>
 <p>很明显，任何对提交历史的操作，都不应该在共有分支上进行。请确保此分支为私有。</p>
+<h3 id="移动分支中的某些提交"><a href="#移动分支中的某些提交" class="headerlink" title="移动分支中的某些提交"></a>移动分支中的某些提交</h3><p>假如最开始的分支图是这样的：分支 server 是从 master checkout 出来的，还有一个分支 client 是从 server 的 D 提交处 checkout 出来的，</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  master</span><br><span class="line">    ↓</span><br><span class="line">A-B-<span class="keyword">C</span>       server</span><br><span class="line">     \       ↙</span><br><span class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F</span><br><span class="line">         \</span><br><span class="line">          G-H</span><br><span class="line">            ↑</span><br><span class="line">          client</span><br></pre></td></tr></table></figure>
+<p>那么执行 <code>git rebase --onto master server client</code> 命令，会取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改中的、既与 master 不同、又与 server 分支不同的那些提交，单独拿出来在 master 上面重演一遍。于是就会得到这样的提交图：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  master   client</span><br><span class="line">    ↓      ↙</span><br><span class="line">A-B-<span class="keyword">C</span>-G<span class="string">'-H'</span>       </span><br><span class="line">     \</span><br><span class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F ← server</span><br></pre></td></tr></table></figure>
+<p>执行这样的命令时，最好相应的提交都是“原子性”的。</p>
 <h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
 <p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
 <p><code>git branch -r</code>，只查看远程追踪分支</p>
@@ -254,7 +260,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="citq0rd50009h0ss6woveouz4" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cittgfx6q0099o0s63u8j7pho" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
