@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-10-03T02:46:00.000Z">
+<meta property="og:updated_time" content="2016-10-24T14:01:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -203,6 +203,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>那么执行 <code>git rebase --onto master server client</code> 命令，会取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改中的、既与 master 不同、又与 server 分支不同的那些提交，单独拿出来在 master 上面重演一遍。于是就会得到这样的提交图：</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  master   client</span><br><span class="line">    ↓      ↙</span><br><span class="line">A-B-<span class="keyword">C</span>-G<span class="string">'-H'</span>       </span><br><span class="line">     \</span><br><span class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F ← server</span><br></pre></td></tr></table></figure>
 <p>执行这样的命令时，最好相应的提交都是“原子性”的。</p>
+<h3 id="提交标签"><a href="#提交标签" class="headerlink" title="提交标签"></a>提交标签</h3><p>可以为某个提交创建标签：</p>
+<p><code>git tag -a &lt;tag_name&gt; &lt;commit_id&gt;</code></p>
+<p>可以像下面这样，单独推送该标签到远程仓库：</p>
+<p><code>git push origin &lt;tag_name&gt;</code></p>
+<p>其他推送标签的方法可以参考：<a href="http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git" target="_blank" rel="external">http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git</a></p>
 <h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
 <p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
 <p><code>git branch -r</code>，只查看远程追踪分支</p>
@@ -260,7 +265,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciu2ohcwn009hr2s6fc7jckzt" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciuo4tdmw00971as6pae3alzg" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
