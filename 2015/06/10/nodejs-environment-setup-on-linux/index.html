@@ -168,24 +168,24 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>计算机系统：Ubuntu 14.04 LTS 64bit</p>
 <a id="more"></a>
 <h2 id="Install-Manually-with-Binary-Package"><a href="#Install-Manually-with-Binary-Package" class="headerlink" title="Install Manually with Binary Package"></a>Install Manually with Binary Package</h2><h3 id="wget下载NodeJS-binary-包"><a href="#wget下载NodeJS-binary-包" class="headerlink" title="wget下载NodeJS binary 包"></a>wget下载NodeJS binary 包</h3><p>在　<code>/home/username/mydownloads/</code>目录下，通过<code>wget</code>来下载NodeJS of Linux Binaries (.tar.gz)，当然，前提是自己得知道该软件的URL。</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</div></pre></td></tr></table></figure>
 <p>如果网络状况不佳，则可以再次进入该目录，添加 -c 参数来实现断点续下：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -c http://nodejs.org/dist/v0.<span class="number">12.4</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</div></pre></td></tr></table></figure>
 <p>以<code>tar.gz</code>为扩展名的是一种压缩文件，在Linux和OSX下常见，Linux和OSX都可以直接解压使用这种压缩文件。</p>
 <ul>
 <li><a href="http://man.linuxde.net/wget" target="_blank" rel="external">wget命令参考</a></li>
 </ul>
-<h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -C /usr/local --strip-components <span class="number">1</span> -xzf <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo tar -C /usr/local --strip-components <span class="number">1</span> -xzf <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64.tar.gz</div></pre></td></tr></table></figure>
 <p>即可在<code>/home/username/</code>下得到目录名为<code>node-v0.12.4-linux-x64</code>的解压后的文件夹。方便辨识起见，将这个解压后的目录重命名为<code>node</code>：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64 <span class="keyword">node</span><span class="title"></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">12.4</span>-linux-x64 <span class="keyword">node</span><span class="title"></span></div></pre></td></tr></table></figure>
 <p>这里使用<code>wget</code>的方法是自己想到的，本以为很笨拙，后来继续搜索，发现这也是别人提到过的可行方案之一：</p>
 <ul>
 <li><a href="http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/" target="_blank" rel="external">How to Install Node.js on Ubuntu 14.04</a> </li>
 </ul>
 <p>其介绍的方法略有不同，从效果来看，这个方法要好一些。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 查看是否安装成功 */</span></span><br><span class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>node</span><br><span class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>npm</span><br></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 查看是否安装成功 */</span></div><div class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>node</div><div class="line">ls -l <span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/bin/</span>npm</div></pre></td></tr></table></figure>
 <h2 id="Install-via-apt-get"><a href="#Install-via-apt-get" class="headerlink" title="Install via apt-get"></a>Install via apt-get</h2><p>可以通过Ubuntu的Package Manager下载：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> nodejs</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get <span class="keyword">install</span> nodejs</div><div class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> npm</div></pre></td></tr></table></figure>
 <p>但这样获得的NodeJS版本目前也就到0.10.~，很多新特性都用不了，例如<code>promise</code>。期待Unbutu将更新的NodeJS放入其软件中心的那一天。</p>
 <ul>
 <li><a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions" target="_blank" rel="external">Installing Node.js via package manager</a></li>
@@ -194,7 +194,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <h2 id="Uninstall-an-application"><a href="#Uninstall-an-application" class="headerlink" title="Uninstall an application"></a>Uninstall an application</h2><blockquote>
 <p>Enter the command “sudo apt-get remove program_name” if the program was installed from the command line via the apt utility. This command only removes the program while leaving the configuration files behind. If you want to totally remove the program and all of its files, use the command “apt-get –purge remove program_name”</p>
 </blockquote>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span>  <span class="comment">--purge  remove  program_name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span>  <span class="comment">--purge  remove  program_name</span></div></pre></td></tr></table></figure>
 <p>引用一段《鸟哥的Linux私房菜-基础学习篇（第三版）》里面的几句话，来说明变量、目录的皮毛知识：</p>
 <blockquote>
 <p>page 158<br>网络文件常常提到类似<code>./run.sh</code>的数据，这个命令的意义是什么？<br>答：由于命令的执行需要变量的支持，若你的执行文件放置在本目录，并且本目录并非正规的执行文件目录（<code>/bin</code>、<code>/usr/bin</code>等为正规），此时需要执行命令就得要严格指定该执行文件。<code>./</code>代表“本目录”的意思，所以<code>./run.sh</code>代表执行本目录下名为<code>run.sh</code>的文件。</p>
@@ -203,7 +203,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="civp9ys21008hd9s6q7o8u6ez" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="civpa4in0008fgps6ukm5cspx" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/#disqus_thread" class="article-comment-link">Comments</a>
       

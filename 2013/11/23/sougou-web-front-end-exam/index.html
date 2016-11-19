@@ -187,7 +187,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>这道题就非常不好，考到了<code>substr()</code>的用法——w3school里也说了，“ECMAscript 没有对该方法进行标准化，因此反对使用它。”</p>
 <p>所以，从这两个题来看，搜狗的开发人员是并不打算遵从W3C的标准和规范来开展工作的。这样下去，只会给自己添麻烦。</p>
 <p>###Web类试题<br>（1）关于JavaScript的作用域、<code>this</code>关键字。</p>
-<figure class="highlight javascript"><figcaption><span>请问下面的代码输出多少？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.a = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">aa();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>请问下面的代码输出多少？</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.a = <span class="number">20</span>;</div><div class="line">&#125;</div><div class="line">aa();</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
 <p>=&gt; 结果输出为20，因为<code>this</code>默认情况下指向全局对象，而a又已经存在于全局对象中了，所以函数<code>aa()</code>修改的正是全局变量<code>a</code>。</p>
 <p>由于此处对函数的调用，是直接作为函数来调用的，所以存在一个大问题：</p>
 <blockquote>
@@ -218,7 +218,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/11/23/sougou-web-front-end-exam/" data-id="civp9yrzw003ld9s67e617dw3" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/11/23/sougou-web-front-end-exam/" data-id="civpa4ijv003ggps6j8mfbz9n" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/11/23/sougou-web-front-end-exam/#disqus_thread" class="article-comment-link">Comments</a>
       

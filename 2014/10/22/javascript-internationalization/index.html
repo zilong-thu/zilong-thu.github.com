@@ -165,13 +165,13 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <a id="more"></a>
 <p>这是一个基于jQuery的在客户端实现国际化多语言切换的插件。使用比较方便。前段时间在工作中使用了这个插件。</p>
 <p>插件目录如下：</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jquery-lang-js</span><br><span class="line">  <span class="string">|-- jquery-lang.js</span></span><br><span class="line">  <span class="string">|-- jquery-cookie.js</span></span><br><span class="line">  <span class="string">|-- langpack</span></span><br><span class="line">        <span class="string">|-- ch_nonDynamic.js</span></span><br><span class="line">        <span class="string">|-- ch.json</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">jquery-lang-js</div><div class="line">  <span class="string">|-- jquery-lang.js</span></div><div class="line">  <span class="string">|-- jquery-cookie.js</span></div><div class="line">  <span class="string">|-- langpack</span></div><div class="line">        <span class="string">|-- ch_nonDynamic.js</span></div><div class="line">        <span class="string">|-- ch.json</span></div></pre></td></tr></table></figure>
 <p>在<code>ch.json</code>或者<code>ch_nonDynamic.js</code>文件中定义语言包，HTML中相应的所有短语添加<code>lang=&quot;en&quot;</code>属性，如下所示：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Translate me<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Translate me<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>在确保加载完相应资源后，执行下列语句，初始化当前语言（这里采用的是预先下载语言包的方式，也可以按需加载语言包，后者更为推荐）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.lang = <span class="keyword">new</span> Lang(<span class="string">'en'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.lang = <span class="keyword">new</span> Lang(<span class="string">'en'</span>);</div></pre></td></tr></table></figure>
 <p>切换语言的方法，从英文（en）切换到中文（ch）：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#lang-en"</span> <span class="attr">onclick</span>=<span class="string">"window.lang.change('ch'); return false;"</span>&gt;</span>Switch to Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#lang-en"</span> <span class="attr">onclick</span>=<span class="string">"window.lang.change('ch'); return false;"</span>&gt;</span>Switch to Chinese<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>###方案2：Format.JS</p>
 <p>Format.JS项目网站：  <a href="http://formatjs.io/" target="_blank">http://formatjs.io/</a></p>
 <p>jquery-lang.js只是对字符串进行逐一替换，但Format.JS的功能则更为强大：除了翻译常规字符串，它还可以根据不同的语言，对日期、时间、数字等数值类型或字符串进行相应的格式化。</p>
@@ -181,7 +181,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/10/22/javascript-internationalization/" data-id="civp9ys1h006sd9s6uwppsh87" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/10/22/javascript-internationalization/" data-id="civpa4il5006mgps6uaefbrte" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/10/22/javascript-internationalization/#disqus_thread" class="article-comment-link">Comments</a>
       

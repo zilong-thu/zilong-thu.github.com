@@ -187,10 +187,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>Note that styles should NOT be set by assigning a string directly to the style property (as in elt.style = “color: blue;” ), since it is considered read-only (even though Firefox(Gecko), Chrome and Opera allow it) because the style attribute returns a  CSSStyleDeclaration object which is also read-only.  However, the style property’s own properties CAN be used to set styles.  Further, it is easier to use the individual styling-properties of the style property (as in elt.style.color = ‘…’ ) than to use elt.style.cssText = ‘…’ or elt.setAttribute(‘style’, ‘…’) , unless you wish to set the complete style in a single statement, since using the style properties will not overwrite other CSS properties that may already be set in the style attribute.</p>
 </blockquote>
 <p>在插件的实现中，希望通过下面的代码来隐藏元素：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID).style = <span class="string">'display: none'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID).style = <span class="string">'display: none'</span>;</div></pre></td></tr></table></figure>
 <p>在 Chrome、Firefox 浏览器下是 OK 的。但是在 Safari 下，以及手机的多个浏览器中，都不会生效。而且，如果该插件内部声明了启用严格模式，那么也会在设置这个 style 时提示你尝试给一个只读属性赋值。</p>
 <p>解决办法呢，当然就是使用标准技术：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID);</span><br><span class="line">ele.setAttribute(<span class="string">'style'</span>, <span class="string">'display: none'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.display = <span class="string">'none'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ele.style.cssText = <span class="string">'display: none'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(GLOBAL_ERROR_STACK_ID);</div><div class="line">ele.setAttribute(<span class="string">'style'</span>, <span class="string">'display: none'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line">ele.style.display = <span class="string">'none'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line">ele.style.cssText = <span class="string">'display: none'</span>;</div></pre></td></tr></table></figure>
 <p>上面的三种技术，是在任何浏览器下都可以将元素隐藏的。</p>
 <h3 id="Element-classList"><a href="#Element-classList" class="headerlink" title="Element.classList"></a>Element.classList</h3><p>与 style 类似，classList 也是只读的：</p>
 <blockquote>
@@ -203,7 +203,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>className gets and sets the value of the class attribute of the specified element.</p>
 </blockquote>
 <h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>话说自去年12月份加入美团猫眼电影，前端业务全部都是用 React 来写。React 对于内联样式的写法是这样的：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button style=&#123;&#123;<span class="string">color:</span> <span class="string">'red'</span>, <span class="string">marginLeft:</span> <span class="string">'15px'</span>&#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Button style=&#123;&#123;<span class="string">color:</span> <span class="string">'red'</span>, <span class="string">marginLeft:</span> <span class="string">'15px'</span>&#125;&#125; /&gt;</div></pre></td></tr></table></figure>
 <p>在此猜测，React 的内联样式属性就是通过修改元素的 style 属性的具体子属性来实现的。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank" rel="external">style | MDN</a></li>
@@ -212,7 +212,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="civp9ys2j00a4d9s6av5f50rp" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="civpa4inv00a3gps6gs0v2sdl" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/17/something-about-element-style/#disqus_thread" class="article-comment-link">Comments</a>
       

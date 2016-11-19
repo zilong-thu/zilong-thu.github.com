@@ -168,22 +168,22 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
                 
         <p>一开始，博客是基于Octopress的，其所有预设字体都是针对英文，例如，对于标题，使用下面的字体族：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$heading-font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif, !default;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$heading-font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif, !default;</div></pre></td></tr></table></figure>
 <p>这样一来，如果我的博客是中文标题，就只能采用浏览器默认的字体（一般是宋体），这样既不能保证跨浏览器表现的一致性，也不能得到最佳的外观表现——标题最适合使用无衬线字体，而如果使用宋体这样的衬线字体，会非常难看。下面简记在博客中使用中文字体的解决方案。</p>
 <a id="more"></a>
 <p>###标题<br>标题最好采用无衬线的粗体字体。</p>
 <p>几乎所有的Windows系统都安装有“微软雅黑”字体，优先使用这个；然后使用“黑体”字体来作为候选方案。</p>
 <p>对于MacOS，先采用“丽黑 Pro”，然后用华文细黑作为备用字体。</p>
 <p>另外要注意一点：<strong>永远不要忘记声明英文字体，并且英文字体应该在中文字体之前</strong>——具体可参考<a href="http://www.uisdc.com/web-font" target="_blank" title="优设网-WEB中文字体应用指南">优设网-WEB中文字体应用指南</a>。</p>
-<p>那么，这样声明即可：<br><figure class="highlight"><figcaption><span>octopress\sass\base\typography.scss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$heading-font-family: "PT Sans", "Helvetica Neue", Arial,"Microsoft YaHei",SimHei,"LiHei Pro Medium",STXihei, sans-serif;</span><br></pre></td></tr></table></figure></p>
+<p>那么，这样声明即可：<br><figure class="highlight"><figcaption><span>octopress\sass\base\typography.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$heading-font-family: "PT Sans", "Helvetica Neue", Arial,"Microsoft YaHei",SimHei,"LiHei Pro Medium",STXihei, sans-serif;</div></pre></td></tr></table></figure></p>
 <p>注：<code>sans-serif</code>这种不具体的字体，要放到最后去声明。</p>
 <p>关于不同操作系统下的中文字体名称，可以参考<a href="http://www.cnblogs.com/jiji262/archive/2012/02/13/2349851.html" target="_blank" title="css中font-family的中文字体">css中font-family的中文字体</a></p>
 <p>###引用区块blockquote<br>我的博客中，blockquote都是草绿色背景、带有内嵌的阴影、左边有绿色的粗边框，并且有圆角。为了使引用的内容与正文区别更明显，我将其字体设为楷体——当然，结果是只有在电脑上才会有效，iPad和安卓手机都只使用浏览器默认的字体族（目前都是类似华文细黑这样的无衬线字体）。如果没有楷体，就使用仿宋。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">article</span> <span class="selector-tag">blockquote</span>&#123;</span><br><span class="line">	<span class="attribute">font-family</span>: <span class="string">"PT Serif"</span>,Georgia,Times,<span class="string">"Times New Roman"</span>,KaiTi_GB2312,KaiTi,STKaiti,FangSong,STFangsong,serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">article</span> <span class="selector-tag">blockquote</span>&#123;</div><div class="line">	<span class="attribute">font-family</span>: <span class="string">"PT Serif"</span>,Georgia,Times,<span class="string">"Times New Roman"</span>,KaiTi_GB2312,KaiTi,STKaiti,FangSong,STFangsong,serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/11/30/blog-typography-custom/" data-id="civp9ys00003vd9s62tsy9dnb" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/11/30/blog-typography-custom/" data-id="civpa4ik2003wgps6w2057zxs" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/11/30/blog-typography-custom/#disqus_thread" class="article-comment-link">Comments</a>
       
