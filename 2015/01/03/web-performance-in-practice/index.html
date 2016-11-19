@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://borninsummer.com/images/blog/web_fe/2015/01/pic_1.png">
 <meta property="og:image" content="http://borninsummer.com/images/blog/web_fe/2015/01/pic_dns.jpg">
 <meta property="og:image" content="http://borninsummer.com/images/blog/web_fe/2015/01/pic_3.png">
-<meta property="og:updated_time" content="2016-11-19T13:57:39.000Z">
+<meta property="og:updated_time" content="2016-11-19T13:59:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web前端性能优化实践">
 <meta name="twitter:description" content="摘要： 本文记录了笔者所参与的一个网站平台开发中所采取的Web前端性能优化技术，对优化前后的性能进行分析对比，表明了Web前端性能优化的有效性和必要性。由于水平有限，针对该网站所作的测试肯定存在不科学、不合理的地方，不当之处请谅解。本文仅供相关技术参考之用。
@@ -187,8 +187,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <h3 id="2-2-YSlow评级"><a href="#2-2-YSlow评级" class="headerlink" title="2.2  YSlow评级"></a>2.2  YSlow评级</h3><p>用Chrome浏览器的网络模块进行人工观察与分析，难免会有效率低下、分析不全面的问题。因此应当使用自动化的工具进行更深入的分析。</p>
 <p>YSlow是雅虎公司开发的一个对网站前端性能进行分析的插件，最初作为Firefox浏览器的插件发布，后来也陆续有了Chrome等浏览器的插件。这里使用Firefox下的YSlow插件对指挥旅游首页性能进行分析，评级结果：优化之前的网站的评级，得分为71，评级C。而百度地图、天猫商城的得分、评级则分别是87 B、77 C。</p>
 <p>在23个评级规则中，有4条未能达到A或B级（A意味着性能最优，F意味着有必要进行深入优化），它们应作为网站前端性能优化的主要入手点，分别是：<br>① F：减少HTTP请求次数<br>② C：使用内容分发网络（CDN）<br>③ F：添加较长的Expires头<br>④ F：使用gzip压缩组件<br>⑤ E：压缩JavaScript和CSS<br>⑥ F：Use cookie-free domains，使用无cookie的域名</p>
-<p>##3. 采取的前端性能优化技术</p>
-<h3 id="3-1-服务器开启Gzip压缩"><a href="#3-1-服务器开启Gzip压缩" class="headerlink" title="3.1 服务器开启Gzip压缩"></a>3.1 服务器开启Gzip压缩</h3><p>Gzip最早由Jean-loup Gailly和Mark Adler创建，用于UNIX系统的文件压缩。后来成为Internet上数据压缩的常见格式。绝大多数现代浏览器都支持Gzip格式（体现在浏览器发送的HTTP请求头部的字段<code>Accept-Encoding</code>中）。一般来说，开启Gzip压缩之后，至少可以将数据传输体积减少50%，是加速网站的首要工作。</p>
+<h2 id="3-采取的前端性能优化技术"><a href="#3-采取的前端性能优化技术" class="headerlink" title="3. 采取的前端性能优化技术"></a>3. 采取的前端性能优化技术</h2><h3 id="3-1-服务器开启Gzip压缩"><a href="#3-1-服务器开启Gzip压缩" class="headerlink" title="3.1 服务器开启Gzip压缩"></a>3.1 服务器开启Gzip压缩</h3><p>Gzip最早由Jean-loup Gailly和Mark Adler创建，用于UNIX系统的文件压缩。后来成为Internet上数据压缩的常见格式。绝大多数现代浏览器都支持Gzip格式（体现在浏览器发送的HTTP请求头部的字段<code>Accept-Encoding</code>中）。一般来说，开启Gzip压缩之后，至少可以将数据传输体积减少50%，是加速网站的首要工作。</p>
 <p>项目所采用的web服务器为tomcat，其开启Gzip压缩服务的方法如下。</p>
 <p>在<code>{tomcat_root}/confrver.xml</code>文件中的<code>&lt;Connector /&gt;</code>中添加如下代码：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">compression</span>=<span class="string">"on"</span></div><div class="line"><span class="attr">compressionMinSize</span>=<span class="string">"2048"</span></div><div class="line"><span class="attr">noCompressionUserAgents</span>=<span class="string">"gozilla,traviata"</span> </div><div class="line"><span class="attr">compressableMimeType</span>=<span class="string">"textml,text/xml,text/javascript,text/css,text/plain, application/json"</span></div></pre></td></tr></table></figure>
@@ -216,7 +215,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>现代浏览器通常具有DNS预解析（<code>DNS Prefetch</code>）功能，即加载网页后对页面中的超链接进行DNS解析并将结果缓存在浏览器中，便于用户点击时减少DNS解析时间（目前的DNS解析时间通常为200ms）。但是对于应用型的Web页面（或称单页面应用）而言，对页面内的超链接进行DNS预解析并无太大意义，因为几乎没有超链接。重要的是第一次执行DNS解析时的性能。</p>
 <p>域名管理中的TTL（Time to Live）字段用于高速远程域名服务器可以缓存本记录多长时间。根据Andrew等人（2012）的建议，如果服务器的IP非常稳定（例如多年不变），那么将TTL值设为1天可能是安全的；而对于波动比较大的信息，几秒钟或一分钟后清除掉记录的做法或许更安全。</p>
 <p>在购买到网站域名后，最初是将其TTL设为10分钟。这样在经过较短的时间（几个小时）后，该域名就已经被大部分的DNS服务器记录下来了。现在考虑到本系统的IP为固定IP，主机也在自己的机房内，而且没有备份，因此将TTL设大一点是可以的。目前将TTL值设为了1小时，可以使某个用户在1个小时内再次访问或请求资源时不必再进行完整的DNS解析，而是使用缓存结果。</p>
-<p>###3.6  其他技术<br>其他优化技术包括目前已成为业界实际标准的做法，例如：①将脚本引用置于页面底部；②将样式表引用置于页面顶部；③不在页面中缩放图片；④避免CSS表达式；⑤Ajax请求尽可能使用GET方式；等等。这些在此不做详细分析。</p>
+<h3 id="3-6-其他技术"><a href="#3-6-其他技术" class="headerlink" title="3.6  其他技术"></a>3.6  其他技术</h3><p>其他优化技术包括目前已成为业界实际标准的做法，例如：</p>
+<p>① 将脚本引用置于页面底部；<br>② 将样式表引用置于页面顶部；<br>③ 不在页面中缩放图片；<br>④ 避免CSS表达式；<br>⑤ Ajax请求尽可能使用GET方式；<br>等等。</p>
+<p>这些在此不做详细分析。</p>
 <h2 id="4-前端性能优化结果评估"><a href="#4-前端性能优化结果评估" class="headerlink" title="4. 前端性能优化结果评估"></a>4. 前端性能优化结果评估</h2><h3 id="4-1-页面体积与加载时间"><a href="#4-1-页面体积与加载时间" class="headerlink" title="4.1 页面体积与加载时间"></a>4.1 页面体积与加载时间</h3><h4 id="4-1-1-页面体积"><a href="#4-1-1-页面体积" class="headerlink" title="4.1.1 页面体积"></a>4.1.1 页面体积</h4><p>浏览器视口分辨率：1920×746像素。图片的优化只是针对HTTP请求次数，其前后尺寸变化不大，因此暂不考虑优化前后的差别。JavaScript请求数量“*+4”表示其中4个请求来自其他域（主要是搜狗地图服务）。</p>
 <p>优化前后文件体积压缩率 = 优化后的体积÷优化前的体积</p>
 <table class="table table-bordered"><tbody><tr><th rowspan="2"></th><th colspan="2">优化前</th><th colspan="2">Grunt之后</th><th colspan="2">Gzip之后</th><th rowspan="2">优化前后文件体积压缩率</th></tr><tr><td>请求数</td><td>体积</td><td>请求数</td><td>体积</td><td>请求数</td><td>体积</td></tr><tr><td>JS</td><td>21+4</td><td>2600 KB</td><td>8+5</td><td>1037 KB</td><td>8+5</td><td>375 KB</td><td>14.4%</td></tr><tr><td>CSS</td><td>11</td><td>464 KB</td><td>10</td><td>382 KB</td><td>10</td><td>80.4 KB</td><td>17.3%</td></tr><tr><td>Total</td><td>110</td><td>3300 KB</td><td>75</td><td>1903 KB</td><td>75</td><td>791 KB</td><td>24.0%</td></tr></tbody></table>
@@ -248,7 +249,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="civpa4ils007hgps60lvho66x" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="civpa79ci008giks6ddurybp6" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/01/03/web-performance-in-practice/#disqus_thread" class="article-comment-link">Comments</a>
       
