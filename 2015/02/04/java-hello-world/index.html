@@ -188,10 +188,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>###Using Package</p>
 <figure class="highlight java"><figcaption><span>hello.java</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com;  <span class="comment">/**/</span></div><div class="line"></div><div class="line">public class hello&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.out.println("Hello world!");</div><div class="line">        Person me = new Person();</div><div class="line">        me.name = "wzl";</div><div class="line">        me.saysomething();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Person&#123;</div><div class="line">    public String name;</div><div class="line">    public int age;</div><div class="line">    public void run()&#123;</div><div class="line">        System.out.println("I am running...");</div><div class="line">    &#125;</div><div class="line">    public void saysomething()&#123;</div><div class="line">        System.out.println("Daddy is "+name);</div><div class="line">        run();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在<code>hello.java</code>的同目录下运行：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">javac</span> <span class="selector-tag">-d</span> . <span class="selector-tag">hello</span><span class="selector-class">.java</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac <span class="_">-d</span> . hello.java</div></pre></td></tr></table></figure>
 <p>这样会生成一个名为<code>com</code>的新目录，里面包括两个<code>.class</code>文件：<code>hello.class</code>和<code>Person.class</code>。</p>
 <p>要运行这个hello程序，在<code>com</code>的上一级目录下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">java</span> <span class="selector-tag">com</span><span class="selector-class">.hello</span></div></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java <span class="keyword">com</span>.hello</div></pre></td></tr></table></figure>
 <p>而进入<code>com</code>目录后，无论运行<code>java com.hello</code>，还是运行<code>java hello</code>，都会失败。</p>
 <blockquote>
 <p>Java的包机制需要两个方面保证：</p>
@@ -212,7 +212,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="civq5q5wi004x5qs6f8y8uqtj" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="civs66ydm007oois67f3lp9as" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/02/04/java-hello-world/#disqus_thread" class="article-comment-link">Comments</a>
       
