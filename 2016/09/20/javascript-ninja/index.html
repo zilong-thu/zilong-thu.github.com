@@ -13,7 +13,7 @@
 <meta property="og:description" content="书名《JavaScript忍者秘籍》，作者呢是大名鼎鼎的 jQuery 的创作者。这本书里介绍了各种“忍者级”JS用法，收益颇丰。书中的许多示例代码体现了作者在设计 jQuery 时的编程思想，非常有价值。">
 <meta property="og:image" content="http://borninsummer.com/images/2016/09/s28313380.jpg">
 <meta property="og:image" content="http://borninsummer.com/images/2016/11/js-ninja-chap-11.2.jpg">
-<meta property="og:updated_time" content="2016-11-21T16:48:01.000Z">
+<meta property="og:updated_time" content="2016-11-22T16:09:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript Ninja">
 <meta name="twitter:description" content="书名《JavaScript忍者秘籍》，作者呢是大名鼎鼎的 jQuery 的创作者。这本书里介绍了各种“忍者级”JS用法，收益颇丰。书中的许多示例代码体现了作者在设计 jQuery 时的编程思想，非常有价值。">
@@ -203,11 +203,13 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>差别非常明显。</p>
 <p>另外一个例子是 URL 规范化。</p>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;a href=<span class="string">"test.html"</span> id=<span class="string">"test-subject"</span>&gt;test&lt;/a&gt;</div><div class="line"></div><div class="line"><span class="built_in">var</span> <span class="keyword">link</span> = document.getElementById(<span class="string">'test-subject'</span>);</div><div class="line"><span class="built_in">var</span> linkHref_1 = <span class="keyword">link</span>.getAttributeNode(<span class="string">'href'</span>).nodeValue;  <span class="comment">// test.html</span></div><div class="line"><span class="built_in">var</span> linkHref_2 = <span class="keyword">link</span>.getAttribute(<span class="string">'href'</span>);  <span class="comment">// test.html</span></div><div class="line"><span class="built_in">var</span> linkHref_3 = <span class="keyword">link</span>.href;  <span class="comment">// file:///Users/wzl/Desktop/test.html</span></div></pre></td></tr></table></figure>
+<h4 id="获取计算样式"><a href="#获取计算样式" class="headerlink" title="获取计算样式"></a>获取计算样式</h4><p>广播一条API：</p>
+<p>W3C标准API里有一个可以获得元素的计算样式的方法：<code>window.getComputedStyle(element)</code>。IE &gt; 8 可用。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="civsbnpr800a7pos6l11158ih" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="civtp5vac007goxs66ntn4vwa" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/20/javascript-ninja/#disqus_thread" class="article-comment-link">Comments</a>
       
