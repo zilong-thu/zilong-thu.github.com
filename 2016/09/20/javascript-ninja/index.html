@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://borninsummer.com/images/2016/09/s28313380.jpg">
 <meta property="og:image" content="http://borninsummer.com/images/2016/11/js-ninja-chap-11.2.jpg">
 <meta property="og:image" content="http://borninsummer.com/images/2016/11/depth-first-traversal.png">
-<meta property="og:updated_time" content="2016-11-26T06:51:28.000Z">
+<meta property="og:updated_time" content="2016-11-26T07:00:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript Ninja">
 <meta name="twitter:description" content="书名《JavaScript忍者秘籍》，作者呢是大名鼎鼎的 jQuery 的创作者。这本书里介绍了各种“忍者级”JS用法，收益颇丰。书中的许多示例代码体现了作者在设计 jQuery 时的编程思想，非常有价值。">
@@ -213,11 +213,15 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <li>querySelector 返回的是第一个匹配的元素，querySelectorAll 返回的是所有匹配的元素组成的静态 NodeList。这里的为了找到“第一个”所采用遍历策略，是按照文档顺序（document order）进行查找匹配的。文档顺序是指“a depth-first pre-order traversal of the DOM tree or subtree in question”，即深度优先、先序遍历，这样可以与HTML文本的顺序一致。遍历图如下：</li>
 </ul>
 <p><img src="/images/2016/11/depth-first-traversal.png"></p>
+<ul>
+<li>有个小陷阱，下面的代码依然可以命中那个 strong 元素。这是因为对 querySelector/querySelectorAll 而言，无论指定 context node 为什么，其搜索总是从 document 根节点发起。只不过其返还结果里面会根据上下文节点进行过滤而已。</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">body</span>&gt;</div><div class="line">  &lt;div id=<span class="string">"test-selector"</span>&gt;</div><div class="line">    &lt;<span class="keyword">strong</span>&gt;<span class="keyword">strong</span> text&lt;/<span class="keyword">strong</span>&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div&gt;div&lt;/div&gt;</div><div class="line">&lt;/<span class="keyword">body</span>&gt;</div><div class="line"></div><div class="line">var testDiv = document.getElementById(<span class="symbol">'test</span>-selector');</div><div class="line">testDiv.querySelector(<span class="symbol">'div</span> <span class="keyword">strong</span>');  // 可以命中那个 <span class="keyword">strong</span> 元素</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="civyuzvev007jxks6vquwjrw8" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="civyvar7m00a50is6jyorlfwt" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/20/javascript-ninja/#disqus_thread" class="article-comment-link">Comments</a>
       
