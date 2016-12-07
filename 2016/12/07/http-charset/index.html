@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>王子龙的博客</title>
+  <title>HTTP 头的中文字符处理案例 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个不知名Web前端工程师的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王子龙的博客">
-<meta property="og:url" content="http://borninsummer.com/page/4/index.html">
+  <meta name="description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
+参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP 头的中文字符处理案例">
+<meta property="og:url" content="http://borninsummer.com/2016/12/07/http-charset/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="一个不知名Web前端工程师的个人博客">
+<meta property="og:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
+参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。">
+<meta property="og:updated_time" content="2016-12-07T16:38:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王子龙的博客">
-<meta name="twitter:description" content="一个不知名Web前端工程师的个人博客">
+<meta name="twitter:title" content="HTTP 头的中文字符处理案例">
+<meta name="twitter:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
+参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -125,8 +129,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
     <div class="outer">
       
-      <section id="main">
-      <article id="post-serveral-self-made-epub-books" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-http-charset" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -134,8 +137,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/15/serveral-self-made-epub-books/">几本自制的EPUB格式电子书</a>
+    <h1 class="article-title" itemprop="name">
+      HTTP 头的中文字符处理案例
     </h1>
   
 
@@ -143,8 +146,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2015/03/15/serveral-self-made-epub-books/">
-      <time datetime="2015-03-15T14:24:19.000Z" itemprop="datePublished">2015-03-15</time>
+    <a href="/2016/12/07/http-charset/">
+      <time datetime="2016-12-07T10:05:00.000Z" itemprop="datePublished">2016-12-07</time>
     </a>
   </div>
 
@@ -152,7 +155,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
           
   <div class="article-category">
   	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
   </div>
 
         </div>
@@ -161,588 +164,73 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>存几本自己用Sigil制作的EPUB电子书于此。</p>
-<p><a href="/files/epub/中国近代史_徐中约_上.epub">中国近代史<em>徐中约</em>上</a></p>
-<p><a href="/files/epub/中国近代史_徐中约_下.epub">中国近代史<em>徐中约</em>下</a></p>
-<p><a href="/files/epub/青春（台湾版）.epub">青春（台版） 韩寒</a></p>
-<p>###Sigil</p>
-<p>当初也是从这个开始学习HTML的呢。</p>
-<p><a href="https://github.com/user-none/Sigil" target="_blank" rel="external">SigilGitHub地址</a></p>
+        <p>简单记录一下工作中遇到的两个与HTTP&amp;中文字符相关的问题及解决方案。</p>
+<p>参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。</p>
+<a id="more"></a>
+<h2 id="下载文件名含中文而浏览器解析为“乱码”"><a href="#下载文件名含中文而浏览器解析为“乱码”" class="headerlink" title="下载文件名含中文而浏览器解析为“乱码”"></a>下载文件名含中文而浏览器解析为“乱码”</h2><p>RFC 2616 规定 HTTP 头必须是 ASCII 编码。</p>
+<p>如果文件名含中文，那么在用 Chrome、Safari 时，浏览器可能会自动对下载文件进行一次 decodeURIComponent()，但是严格按照各种标准来实现的 FireFox 并非如此。那么可能就会遇到下载的文件的名字含有“乱码”的情况了。</p>
+<p>提供文件下载服务的程序需要在 HTTP 响应的头里按一定规则设置<code>Content-Type</code>和<code>Content-Disposition</code>这两个字段：一个是与文件类型相关的声明，一个用于指定下载后的文件名。</p>
 <blockquote>
-<p>Sigil is a multi-platform EPUB ebook Editor.</p>
+<p>Content-disposition 是 MIME 协议的扩展，MIME 协议指示 MIME 用户代理如何显示附加的文件<br>[3]</p>
 </blockquote>
-<p>Sigil release的下载地址： <a href="https://github.com/user-none/Sigil/releases" target="_blank" rel="external">https://github.com/user-none/Sigil/releases</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/" data-id="ciwf5sf980058u5s6i4oy1k2r" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EPUB/">EPUB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-java-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/04/java-hello-world/">Java Hello World</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/02/04/java-hello-world/">
-      <time datetime="2015-02-04T02:32:00.000Z" itemprop="datePublished">2015-02-04</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本人擅长用各种编程语言实现“Hello World”程序。</p>
+<p>例如：<code>Content-disposition: attachment; filename=foobar.pdf</code>。不过，filename如果包含中文字符，那么最好在发给浏览器之前，服务器端程序最好先做一下 <code>encodeURIComponent</code>。不过需要注意的是，<code>encodeURIComponent</code>与Java 的 <code>java.net.URLEncoder.encode()</code> 方法并不一样，可以参考[1]中的代码实现：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import java<span class="selector-class">.net</span><span class="selector-class">.URLEncoder</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 符合 RFC 3986 标准的“百分号URL编码”</div><div class="line"> * 在这个方法里，空格会被编码成%20，而不是+</div><div class="line"> * 和浏览器的encodeURIComponent行为一致</div><div class="line"> */</div><div class="line"><span class="selector-tag">public</span> <span class="selector-tag">static</span> <span class="selector-tag">String</span> <span class="selector-tag">encodeURIComponent</span>(String value) &#123;</div><div class="line">  <span class="selector-tag">try</span> &#123;</div><div class="line">    return URLEncoder<span class="selector-class">.encode</span>(value, <span class="string">"UTF-8"</span>)<span class="selector-class">.replaceAll</span>(<span class="string">"\\+"</span>, <span class="string">"%20"</span>);</div><div class="line">  &#125; <span class="selector-tag">catch</span> (UnsupportedEncodingException e) &#123;</div><div class="line">    e<span class="selector-class">.printStackTrace</span>();</div><div class="line">    return null;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个可以工作的下载文件响应的 <code>Content-Disposition</code> 首部是这样的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Content-Disposition: attachment;</div><div class="line">                     filename=<span class="string">"<span class="variable">$encoded_fname</span>"</span>;</div><div class="line">                     filename*=utf-8<span class="string">''</span><span class="variable">$encoded_fname</span></div></pre></td></tr></table></figure>
+<p>其中，<code>$encoded_fname</code> 指的是将 <code>UTF-8</code> 编码的原始文件名按照 <a href="https://tools.ietf.org/html/rfc3986#section-2.1" target="_blank" rel="external">RFC 3986</a> 进行百分号编码（percent encoding）后得到的。百分号编码（percent encoding）的定义如下：</p>
+<blockquote>
+<p>A percent-encoding mechanism is used to represent a data octet in a<br>component when that octet’s corresponding character is outside the<br>allowed set or is being used as a delimiter of, or within, the<br>component.  A percent-encoded octet is encoded as a character<br>triplet, consisting of the percent character “%” followed by the two<br>hexadecimal digits representing that octet’s numeric value.  For<br>example, “%20” is the percent-encoding for the binary octet<br>“00100000” (ABNF: %x20), which in US-ASCII corresponds to the space<br>character (SP).  Section 2.4 describes when percent-encoding and<br>decoding is applied.</p>
+<pre><code>pct-encoded = &quot;%&quot; HEXDIG HEXDIG
+</code></pre><p>The uppercase hexadecimal digits ‘A’ through ‘F’ are equivalent to<br>the lowercase digits ‘a’ through ‘f’, respectively.  If two URIs<br>differ only in the case of hexadecimal digits used in percent-encoded<br>octets, they are equivalent.  For consistency, URI producers and<br>normalizers should use uppercase hexadecimal digits for all percent-<br>encodings.</p>
 </blockquote>
-<p>参考书籍：李刚, 《疯狂Java讲义（第三版）》, 北京：电子工业出版社, 2014.</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/02/04/java-hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="ciwf5sf970055u5s6anh3paqj" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/02/04/java-hello-world/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-array-shuffle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/03/array-shuffle/">数组洗牌算法</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/02/03/array-shuffle/">
-      <time datetime="2015-02-03T15:01:23.000Z" itemprop="datePublished">2015-02-03</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从<a href="http://book.douban.com/subject/25858070/" target="_blank">《JavaScript框架设计》</a>这本书里接触到洗牌算法：shuffle。</p>
-<p>我就是个算法小白……痴。</p>
-<p><img src="/images/blog/2015/01/QQimg201501.gif"></p>
-<p><a href="http://bost.ocks.org/mike/shuffle/" target="_blank">Fisher–Yates Shuffle, January 14, 2012 </a> 这篇文章用JavaScript数组讲解了洗牌算法，并且用D3.js演示各自的重排序效果。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/02/03/array-shuffle/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/02/03/array-shuffle/" data-id="ciwf5sf960051u5s6hgd279ao" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/02/03/array-shuffle/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-server-pressure-testing-using-jmeter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/22/server-pressure-testing-using-jmeter/">用JMeter进行服务器压力测试心得</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/01/22/server-pressure-testing-using-jmeter/">
-      <time datetime="2015-01-22T01:56:22.000Z" itemprop="datePublished">2015-01-22</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/压力测试/">压力测试</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。</p>
-<p><img src="/images/blog/2015/01/jmeter-logo.jpg" style="float: right; margin-left: 10px;"><a href="http://jmeter.apache.org/" target="_blank">Apache JMeter<sup>TM</sup></a>是一个纯Java写的开源程序，维护得还不错。其最初只是用于测试Web应用程序，不过后来扩展得越来越强大，可以开展多种测试。</p>
-<p>压力测试的目的是对软件进行性能评估。开展压力测试可以帮助发现软件的性能瓶颈所在。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/22/server-pressure-testing-using-jmeter/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="ciwf5sf94004uu5s67pgou14n" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JMeter/">JMeter</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-reading-styling-with-css" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/19/reading-styling-with-css/">《CSS设计指南（第3版）》笔记</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/01/19/reading-styling-with-css/">
-      <time datetime="2015-01-19T15:06:22.000Z" itemprop="datePublished">2015-01-19</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>图书信息：<a href="http://book.douban.com/subject/23123255/" target="_blank">《CSS设计指南（第3版）》</a>（豆瓣）<br>原作名: Stylin’with CSS:a designer’s guide</p>
-<p>这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/19/reading-styling-with-css/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="ciwf5sf95004xu5s6svhe67vw" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/01/19/reading-styling-with-css/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-web-performance-in-practice" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/03/web-performance-in-practice/">Web前端性能优化实践</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/01/03/web-performance-in-practice/">
-      <time datetime="2015-01-03T13:51:46.000Z" itemprop="datePublished">2015-01-03</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要： 本文记录了笔者所参与的一个网站平台开发中所采取的Web前端性能优化技术，对优化前后的性能进行分析对比，表明了Web前端性能优化的有效性和必要性。由于水平有限，针对该网站所作的测试肯定存在不科学、不合理的地方，不当之处请谅解。本文仅供相关技术参考之用。</p>
-<p>关键字： Web前端；性能优化</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/03/web-performance-in-practice/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="ciwf5sf93004qu5s66kza7u70" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/01/03/web-performance-in-practice/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web性能优化/">Web性能优化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-farewell-2014-hello-2015" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/01/farewell-2014-hello-2015/">Farewell, 2014. Hello, 2015.</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/01/01/farewell-2014-hello-2015/">
-      <time datetime="2015-01-01T14:06:09.000Z" itemprop="datePublished">2015-01-01</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/总结/">总结</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写给已经离去的2014年和已经到来的2015年。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/01/farewell-2014-hello-2015/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/" data-id="ciwf5sf92004nu5s64z45xrrw" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-how-to-stronger-you-ankle-and-knee" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/25/how-to-stronger-you-ankle-and-knee/">如何让踝关节与膝关节变强壮</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/11/25/how-to-stronger-you-ankle-and-knee/">
-      <time datetime="2014-11-25T15:18:52.000Z" itemprop="datePublished">2014-11-25</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/运动与健康/">运动与健康</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>膝盖的伤病可以说是缩短足球运动者“职业生涯”的首要元凶。易损而不易恢复的半月板，承受过多扭矩之后容易断裂的十字交叉韧带，这两个零件，如果有强大的膝关节周边肌肉的保护，则可以获得更久的职业寿命。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/25/how-to-stronger-you-ankle-and-knee/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/" data-id="ciwf5sf90004gu5s6jk5epau0" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运动与健康/">运动与健康</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-compare-touch-and-click" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/24/compare-touch-and-click/">在触摸设备上比较触摸事件与点击事件</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/11/24/compare-touch-and-click/">
-      <time datetime="2014-11-24T15:48:48.000Z" itemprop="datePublished">2014-11-24</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在触摸设备上，touch事件从手指刚碰到屏幕就会触发，而click事件则要晚一会儿才被触发。触发顺序如下：</p>
-<ol>
-<li>touchstart</li>
-<li>mouseover</li>
-<li>mousemove（一次）</li>
-<li>mousedown</li>
-<li>mouseup</li>
-<li>click</li>
-<li>touchend</li>
+<p>关于何时需要进行 URI 编码：</p>
+<blockquote>
+<p>2.4.  When to Encode or Decode</p>
+<p>Under normal circumstances, the only time when octets within a URI<br>are percent-encoded is during the process of producing the URI from<br>its component parts.  This is when an implementation determines which<br>of the reserved characters are to be used as subcomponent delimiters<br>and which can be safely used as data.  Once produced, a URI is always<br>in its percent-encoded form.</p>
+<p>When a URI is dereferenced, the components and subcomponents<br>significant to the scheme-specific dereferencing process (if any)<br>must be parsed and separated before the percent-encoded octets within<br>those components can be safely decoded, as otherwise the data may be<br>mistaken for component delimiters.  The only exception is for<br>percent-encoded octets corresponding to characters in the unreserved<br>set, which can be decoded at any time.  For example, the octet<br>corresponding to the tilde (“~”) character is often encoded as “%7E”<br>by older URI processing implementations; the “%7E” can be replaced by<br>“~” without changing its interpretation.</p>
+<p>Because the percent (“%”) character serves as the indicator for<br>percent-encoded octets, it must be percent-encoded as “%25” for that<br>octet to be used as data within a URI.  Implementations must not<br>percent-encode or decode the same string more than once, as decoding<br>an already decoded string might lead to misinterpreting a percent<br>data octet as the beginning of a percent-encoding, or vice versa in<br>the case of percent-encoding an already percent-encoded string.</p>
+</blockquote>
+<h2 id="HTTP-头部必须是-ASCII-字符集"><a href="#HTTP-头部必须是-ASCII-字符集" class="headerlink" title="HTTP 头部必须是 ASCII 字符集"></a>HTTP 头部必须是 ASCII 字符集</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/" target="_blank" rel="external">正确处理下载文件时HTTP头的编码问题（Content-Disposition）</a></li>
+<li><a href="https://segmentfault.com/a/1190000005994758" target="_blank" rel="external">各浏览器下载文件名不乱码的解决办法</a></li>
+<li><a href="http://www.cnblogs.com/hongfei/archive/2012/06/12/2546758.html" target="_blank" rel="external">header中Content-Disposition的作用</a></li>
 </ol>
-<p>所以，如果想提升web在触摸设备下的用户体验，让用户觉得响应非常迅速，应该对页面的触摸事件进行事件处理程序的注册，而不应再关注click事件。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/24/compare-touch-and-click/#more">Read More</a>
-          </p>
-        
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/11/24/compare-touch-and-click/" data-id="ciwf5sf8x0049u5s6i42kitwu" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciwf5sfa7007nu5s6f7slfiik" class="article-share-link">Share</a>
       
-        <a href="http://borninsummer.com/2014/11/24/compare-touch-and-click/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://borninsummer.com/2016/12/07/http-charset/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
 
     </footer>
   </div>
   
-</article>
-
-
-
     
-      <article id="post-a-pop-confirm-ui-plugin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/17/a-pop-confirm-ui-plugin/">一个自定制的弹出-确认框插件</a>
-    </h1>
   
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2014/11/17/a-pop-confirm-ui-plugin/">
-      <time datetime="2014-11-17T11:54:15.000Z" itemprop="datePublished">2014-11-17</time>
+    <a href="/2016/11/16/2016-to-2017/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2016 To 2017</div>
     </a>
-  </div>
+  
+</nav>
 
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这里记录几段开发一个要求输入6位PIN码、验证输入有效性、返回该PIN码的弹出确认框的代码。也提供了纯JS插件开发的一种范式（凭自己的感觉与目前对JS的理解来做的）。也许有不足之处，仅供参考。</p>
-<p>设计时对自己提的要求有：</p>
-<ol>
-<li>不依赖任何JS库，使用纯JS。</li>
-<li>不使用样式表。虽然不是好习惯，但是对于小插件，只引用一个脚本便得到想要的效果，足矣。</li>
-<li>保留一定的跨浏览器能力。</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/17/a-pop-confirm-ui-plugin/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="ciwf5sf8z004cu5s6ng6k22d7" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 
-    
-      <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-      </nav>
-    </section>
+</section>
       
     </div>
     <footer id="footer">
@@ -763,7 +251,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
