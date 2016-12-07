@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
 参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。">
-<meta property="og:updated_time" content="2016-12-07T16:38:17.000Z">
+<meta property="og:updated_time" content="2016-12-07T16:42:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP 头的中文字符处理案例">
 <meta name="twitter:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
@@ -168,8 +168,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。</p>
 <a id="more"></a>
 <h2 id="下载文件名含中文而浏览器解析为“乱码”"><a href="#下载文件名含中文而浏览器解析为“乱码”" class="headerlink" title="下载文件名含中文而浏览器解析为“乱码”"></a>下载文件名含中文而浏览器解析为“乱码”</h2><p>RFC 2616 规定 HTTP 头必须是 ASCII 编码。</p>
-<p>如果文件名含中文，那么在用 Chrome、Safari 时，浏览器可能会自动对下载文件进行一次 decodeURIComponent()，但是严格按照各种标准来实现的 FireFox 并非如此。那么可能就会遇到下载的文件的名字含有“乱码”的情况了。</p>
-<p>提供文件下载服务的程序需要在 HTTP 响应的头里按一定规则设置<code>Content-Type</code>和<code>Content-Disposition</code>这两个字段：一个是与文件类型相关的声明，一个用于指定下载后的文件名。</p>
+<p>如果文件名含中文，那么在用 Chrome、Safari 时，浏览器可能会自动对下载文件进行一次解码。解码时的处理，可能正确也可能不正确。这一次我碰到的情况就是，在严格按照各种标准来实现的 FireFox 中进行文件下载，文件名含中文，然后保存的文件仍然只是编码后的名字。</p>
+<p>提供文件下载服务的程序需要在 HTTP 响应的头里按一定规则设置<code>Content-Type</code>和<code>Content-Disposition</code>这两个字段：前一个是与文件类型相关的声明，后一个用于指定下载后的文件名以及相应的解码规则。</p>
 <blockquote>
 <p>Content-disposition 是 MIME 协议的扩展，MIME 协议指示 MIME 用户代理如何显示附加的文件<br>[3]</p>
 </blockquote>
@@ -199,7 +199,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciwf5sfa7007nu5s6f7slfiik" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciwf5xzd100aivzs65122ea2j" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/07/http-charset/#disqus_thread" class="article-comment-link">Comments</a>
       
