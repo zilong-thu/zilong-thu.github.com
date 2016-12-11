@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
 参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。">
-<meta property="og:updated_time" content="2016-12-07T16:43:32.000Z">
+<meta property="og:updated_time" content="2016-12-11T14:59:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP 头的中文字符处理案例">
 <meta name="twitter:description" content="简单记录一下工作中遇到的两个与HTTP&amp;amp;中文字符相关的问题及解决方案。
@@ -183,23 +183,34 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <pre><code>pct-encoded = &quot;%&quot; HEXDIG HEXDIG
 </code></pre><p>The uppercase hexadecimal digits ‘A’ through ‘F’ are equivalent to<br>the lowercase digits ‘a’ through ‘f’, respectively.  If two URIs<br>differ only in the case of hexadecimal digits used in percent-encoded<br>octets, they are equivalent.  For consistency, URI producers and<br>normalizers should use uppercase hexadecimal digits for all percent-<br>encodings.</p>
 </blockquote>
-<p>关于何时需要进行 URI 编码：</p>
+<h2 id="HTTP-头部必须是-ASCII-字符集"><a href="#HTTP-头部必须是-ASCII-字符集" class="headerlink" title="HTTP 头部必须是 ASCII 字符集"></a>HTTP 头部必须是 ASCII 字符集</h2><p>项目中遇到一个情况，需要在发往其他服务的 HTTP 请求的头里携带用户名，于是写了个这样的首部：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">userName:</span> bilibili</div></pre></td></tr></table></figure>
+<p>大部分情况下OK。不过，发现有的用户名是中文……嗯，然后 Node 的 http 模块就开始报字符集不支持的错误。在 stackoverflow 的相似问题中找到了大概的原因：<a href="http://stackoverflow.com/questions/4400678/what-character-encoding-should-i-use-for-a-http-header" target="_blank" rel="external">What character encoding should I use for a HTTP header?</a>。高票答案解释说，只有 ASCII 字符是可以确保正常工作的。</p>
+<p>HTTP 的规范中如此描述（<a href="https://tools.ietf.org/html/rfc7230#section-3.2.4" target="_blank" rel="external">3.2.4.  Field Parsing</a>）：</p>
 <blockquote>
+<p>Historically, HTTP has allowed field content with text in the ISO-8859-1 charset [ISO-8859-1], supporting other charsets only through use of [RFC2047] encoding. In practice, most HTTP header field values use only a subset of the US-ASCII charset [USASCII]. Newly defined header fields SHOULD limit their field values to US-ASCII octets. A recipient SHOULD treat other octets in field content (obs-text) as opaque data.</p>
+</blockquote>
+<p>即 HTTP 头部的事实字符集乃是 US-ASCII 一个子集，虽然 HTTP 规范允许的字符集是 ISO-8859-1。</p>
+<blockquote>
+<p>ISO-8859-1 编码是单字节编码，向下兼容ASCII，其编码范围是0x00-0xFF，0x00-0x7F之间完全和ASCII一致，0x80-0x9F之间是控制字符，0xA0-0xFF之间是文字符号。</p>
+</blockquote>
+<p>那么只好把可能包含中文的头部值进行 URI 编码了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/" target="_blank" rel="external">正确处理下载文件时HTTP头的编码问题（Content-Disposition）</a></li>
+<li><a href="https://segmentfault.com/a/1190000005994758" target="_blank" rel="external">各浏览器下载文件名不乱码的解决办法</a></li>
+<li><a href="http://www.cnblogs.com/hongfei/archive/2012/06/12/2546758.html" target="_blank" rel="external">header中Content-Disposition的作用</a></li>
+</ol>
+<h2 id="附：关于何时需要进行-URI-编码"><a href="#附：关于何时需要进行-URI-编码" class="headerlink" title="附：关于何时需要进行 URI 编码"></a>附：关于何时需要进行 URI 编码</h2><blockquote>
 <p>2.4.  When to Encode or Decode</p>
 <p>Under normal circumstances, the only time when octets within a URI<br>are percent-encoded is during the process of producing the URI from<br>its component parts.  This is when an implementation determines which<br>of the reserved characters are to be used as subcomponent delimiters<br>and which can be safely used as data.  Once produced, a URI is always<br>in its percent-encoded form.</p>
 <p>When a URI is dereferenced, the components and subcomponents<br>significant to the scheme-specific dereferencing process (if any)<br>must be parsed and separated before the percent-encoded octets within<br>those components can be safely decoded, as otherwise the data may be<br>mistaken for component delimiters.  The only exception is for<br>percent-encoded octets corresponding to characters in the unreserved<br>set, which can be decoded at any time.  For example, the octet<br>corresponding to the tilde (“~”) character is often encoded as “%7E”<br>by older URI processing implementations; the “%7E” can be replaced by<br>“~” without changing its interpretation.</p>
 <p>Because the percent (“%”) character serves as the indicator for<br>percent-encoded octets, it must be percent-encoded as “%25” for that<br>octet to be used as data within a URI.  Implementations must not<br>percent-encode or decode the same string more than once, as decoding<br>an already decoded string might lead to misinterpreting a percent<br>data octet as the beginning of a percent-encoding, or vice versa in<br>the case of percent-encoding an already percent-encoded string.</p>
 </blockquote>
-<h2 id="HTTP-头部必须是-ASCII-字符集"><a href="#HTTP-头部必须是-ASCII-字符集" class="headerlink" title="HTTP 头部必须是 ASCII 字符集"></a>HTTP 头部必须是 ASCII 字符集</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/" target="_blank" rel="external">正确处理下载文件时HTTP头的编码问题（Content-Disposition）</a></li>
-<li><a href="https://segmentfault.com/a/1190000005994758" target="_blank" rel="external">各浏览器下载文件名不乱码的解决办法</a></li>
-<li><a href="http://www.cnblogs.com/hongfei/archive/2012/06/12/2546758.html" target="_blank" rel="external">header中Content-Disposition的作用</a></li>
-</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciwf6u2ye00af49s6gu0zu63r" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciwks09ty007up19ph1tnuk5s" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/07/http-charset/#disqus_thread" class="article-comment-link">Comments</a>
       
