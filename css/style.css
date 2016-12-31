@@ -780,6 +780,9 @@ a:visited {
   width: 100%;
   height: auto;
 }
+.article-meta {
+  font-size: 0.8em;
+}
 .article-meta:before,
 .article-meta:after {
   content: "";
@@ -827,8 +830,8 @@ a:visited {
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding: 5px 0 10px;
+  margin-bottom: 15px;
 }
 a.article-title:visited {
   color: #565a5f;
