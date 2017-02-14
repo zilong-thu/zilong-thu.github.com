@@ -25,7 +25,7 @@ GUI 工具 ImageOptim
 Zopfli
 OptiPNG
 pngcrush">
-<meta property="og:updated_time" content="2017-02-14T13:48:52.000Z">
+<meta property="og:updated_time" content="2017-02-14T14:26:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PNG 图片压缩及若干工具对比">
 <meta name="twitter:description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】
@@ -207,9 +207,11 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </ul>
 </blockquote>
 <p>对同一张图片的优化结果，ImageOptim 采用无损压缩，体积为 207 KB。</p>
-<h2 id="Zopfli"><a href="#Zopfli" class="headerlink" title="Zopfli"></a>Zopfli</h2><blockquote>
+<h2 id="Zopfli"><a href="#Zopfli" class="headerlink" title="Zopfli"></a>Zopfli</h2><p>Zopfli 的介绍：</p>
+<blockquote>
 <p>Zopfli is an encoder implementation of DEFLATE, a compression method commonly used in PNG format (among many other usages, e.g. ZIP, etc), designed to produce the likely smallest compressed output. Since it is a lossless transformation, a PNG file that is recompressed with Zopfli still retains all the pixels as expected.</p>
 </blockquote>
+<p>好像得自己编译（当然，也可以把编译后的 <code>zopflipng</code> 程序设置为全局的命令）：</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> git clone https:<span class="comment">//github.com/google/zopfli.git</span></div><div class="line"><span class="symbol">$</span> cd zopfli</div><div class="line"><span class="symbol">$</span> make zopflipng</div></pre></td></tr></table></figure>
 <p>编译完成之后，可以在本目录下生成可执行文件 zopflipng。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./zopflipng images/bg<span class="selector-class">.png</span> build/bg_zopfli.png</div></pre></td></tr></table></figure>
@@ -247,7 +249,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ciz5l4acv00aiyfs6d6jdhyxa" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ciz5mg9z600ajxbs64q823qlh" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/02/14/about-png-compress/#disqus_thread" class="article-comment-link">Comments</a>
       
