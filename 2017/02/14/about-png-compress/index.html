@@ -5,22 +5,37 @@
   
   <title>PNG 图片压缩及若干工具对比 | 王子龙的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。
-imagemin-pngquant第一个找到的工具是 imagemin。不过单纯使用这个工具并不会获得体积更小的PNG图片，需要配合imagemin-pngquant一起使用才可以，后者是一个有损压缩工具。像这样：
-123456789const fs = require(&apos;fs&apos;);const imagemin = requi">
+  <meta name="description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】
+这里共使用了5种工具:
+
+有损压缩工具 ImageOptim
+GUI 工具 ImageOptim
+Zopfli
+OptiPNG
+pngcrush">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PNG 图片压缩及若干工具对比">
 <meta property="og:url" content="http://borninsummer.com/2017/02/14/about-png-compress/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。
-imagemin-pngquant第一个找到的工具是 imagemin。不过单纯使用这个工具并不会获得体积更小的PNG图片，需要配合imagemin-pngquant一起使用才可以，后者是一个有损压缩工具。像这样：
-123456789const fs = require(&apos;fs&apos;);const imagemin = requi">
-<meta property="og:updated_time" content="2017-02-14T13:28:51.000Z">
+<meta property="og:description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】
+这里共使用了5种工具:
+
+有损压缩工具 ImageOptim
+GUI 工具 ImageOptim
+Zopfli
+OptiPNG
+pngcrush">
+<meta property="og:updated_time" content="2017-02-14T13:48:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PNG 图片压缩及若干工具对比">
-<meta name="twitter:description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。
-imagemin-pngquant第一个找到的工具是 imagemin。不过单纯使用这个工具并不会获得体积更小的PNG图片，需要配合imagemin-pngquant一起使用才可以，后者是一个有损压缩工具。像这样：
-123456789const fs = require(&apos;fs&apos;);const imagemin = requi">
+<meta name="twitter:description" content="原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】
+这里共使用了5种工具:
+
+有损压缩工具 ImageOptim
+GUI 工具 ImageOptim
+Zopfli
+OptiPNG
+pngcrush">
   
   
     <link rel="icon" href="/favicon.png">
@@ -162,7 +177,16 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="article-entry" itemprop="articleBody">
       
                 
-        <p>原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。</p>
+        <p>原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】</p>
+<p>这里共使用了5种工具:</p>
+<ul>
+<li>有损压缩工具 ImageOptim</li>
+<li>GUI 工具 ImageOptim</li>
+<li>Zopfli</li>
+<li>OptiPNG</li>
+<li>pngcrush</li>
+</ul>
+<a id="more"></a>
 <h2 id="imagemin-pngquant"><a href="#imagemin-pngquant" class="headerlink" title="imagemin-pngquant"></a>imagemin-pngquant</h2><p>第一个找到的工具是 <a href="https://github.com/imagemin/imagemin" target="_blank" rel="external">imagemin</a>。不过单纯使用这个工具并不会获得体积更小的PNG图片，需要配合<a href="https://github.com/imagemin/imagemin-pngquant" target="_blank" rel="external">imagemin-pngquant</a>一起使用才可以，后者是一个有损压缩工具。像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">'imagemin'</span>);</div><div class="line"><span class="keyword">const</span> imageminPngquant = <span class="built_in">require</span>(<span class="string">'imagemin-pngquant'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> PATH = <span class="string">'./images/distributionBg.png'</span>;</div><div class="line"></div><div class="line">imagemin([PATH], <span class="string">'./build'</span>, &#123;</div><div class="line">  plugins: [imageminPngquant(&#123;quality: <span class="string">'90-100'</span>&#125;)]</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>通过 <code>{quality: &#39;99-100’}</code> 这样的配置，将图片压缩至 156 KB。肉眼的对比也会发现，有可以察觉的差别，但是并不影响图片质量。</p>
@@ -223,7 +247,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ciz5kep1c00aadws6uzofhvo3" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ciz5l4acv00aiyfs6d6jdhyxa" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/02/14/about-png-compress/#disqus_thread" class="article-comment-link">Comments</a>
       
