@@ -126,6 +126,112 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="outer">
       
       <section id="main">
+      <article id="post-about-png-compress" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/14/about-png-compress/">PNG 图片压缩及若干工具对比</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/02/14/about-png-compress/">
+      <time datetime="2017-02-14T12:05:00.000Z" itemprop="datePublished">2017-02-14</time>
+    </a>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。</p>
+<h2 id="imagemin-pngquant"><a href="#imagemin-pngquant" class="headerlink" title="imagemin-pngquant"></a>imagemin-pngquant</h2><p>第一个找到的工具是 <a href="https://github.com/imagemin/imagemin" target="_blank" rel="external">imagemin</a>。不过单纯使用这个工具并不会获得体积更小的PNG图片，需要配合<a href="https://github.com/imagemin/imagemin-pngquant" target="_blank" rel="external">imagemin-pngquant</a>一起使用才可以，后者是一个有损压缩工具。像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">const</span> imagemin = <span class="built_in">require</span>(<span class="string">'imagemin'</span>);</div><div class="line"><span class="keyword">const</span> imageminPngquant = <span class="built_in">require</span>(<span class="string">'imagemin-pngquant'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> PATH = <span class="string">'./images/distributionBg.png'</span>;</div><div class="line"></div><div class="line">imagemin([PATH], <span class="string">'./build'</span>, &#123;</div><div class="line">  plugins: [imageminPngquant(&#123;quality: <span class="string">'90-100'</span>&#125;)]</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>通过 <code>{quality: &#39;99-100’}</code> 这样的配置，将图片压缩至 156 KB。肉眼的对比也会发现，有可以察觉的差别，但是并不影响图片质量。</p>
+<p>相关的 <a href="https://pngquant.org/" target="_blank" rel="external">pngquant</a> 是一个命令行有损压缩（lossy compression）工具。可以通过 homebrew 进行安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>pngquant</div></pre></td></tr></table></figure>
+<h2 id="ImageOptim"><a href="#ImageOptim" class="headerlink" title="ImageOptim"></a>ImageOptim</h2><p>上面是一种自动化的方式，还找到了一个免费的 GUI 工具：<a href="https://imageoptim.com/howto.html" target="_blank" rel="external">ImageOptim</a>。在这个程序的帮助页面，可以看到其优化原理：</p>
+<blockquote>
+<p>ImageOptim 是这些应用程序的前端界面（GUI）：</p>
+<ul>
+<li>Zopfli</li>
+<li>OptiPNG</li>
+<li>PNGCrush</li>
+<li>AdvPNG</li>
+<li>JpegOptim</li>
+<li>JpegTran</li>
+<li>MozJPEG</li>
+<li>及 PNGOUT<br>ImageOptim 会运行它们，最后自动选择最小的文件。</li>
+</ul>
+</blockquote>
+<p>对同一张图片的优化结果，ImageOptim 采用无损压缩，体积为 207 KB。</p>
+<h2 id="Zopfli"><a href="#Zopfli" class="headerlink" title="Zopfli"></a>Zopfli</h2><blockquote>
+<p>Zopfli is an encoder implementation of DEFLATE, a compression method commonly used in PNG format (among many other usages, e.g. ZIP, etc), designed to produce the likely smallest compressed output. Since it is a lossless transformation, a PNG file that is recompressed with Zopfli still retains all the pixels as expected.</p>
+</blockquote>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> git clone https:<span class="comment">//github.com/google/zopfli.git</span></div><div class="line"><span class="symbol">$</span> cd zopfli</div><div class="line"><span class="symbol">$</span> make zopflipng</div></pre></td></tr></table></figure>
+<p>编译完成之后，可以在本目录下生成可执行文件 zopflipng。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./zopflipng images/bg<span class="selector-class">.png</span> build/bg_zopfli.png</div></pre></td></tr></table></figure>
+<p>433 KB 的图片，可以被压缩到 207 KB。可知，在前面用 ImageOptim 进行压缩时，其选择了 Zopfli 的压缩结果。</p>
+<p>阅读资料：</p>
+<ul>
+<li><a href="http://edupertuis.net/2016/01/12/playing-with-zopfli.html" target="_blank" rel="external">http://edupertuis.net/2016/01/12/playing-with-zopfli.html</a></li>
+</ul>
+<h2 id="PNGOUT"><a href="#PNGOUT" class="headerlink" title="PNGOUT"></a>PNGOUT</h2><p>没找到资源</p>
+<h2 id="OptiPNG"><a href="#OptiPNG" class="headerlink" title="OptiPNG"></a>OptiPNG</h2><p>Mac OS X可以用 <code>homebrew</code> 安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>optipng</div></pre></td></tr></table></figure>
+<p>在最高压缩率情况下运行：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ optipng -o7 ./images/bg<span class="selector-class">.png</span> -out build/bg-o7.png</div></pre></td></tr></table></figure>
+<p>可以将该图片由 432 KB 压缩至 240 KB。</p>
+<p>一些阅读资料：</p>
+<ul>
+<li><a href="http://blog.roachking.net/blog/2013/01/30/optimization-with-optipng/" target="_blank" rel="external">使用OptiPNG最佳化PNG</a></li>
+<li><a href="https://linux.die.net/man/1/optipng" target="_blank" rel="external">optipng(1) - Linux man page</a></li>
+</ul>
+<p>PS：node 如果要用，可以先安装并按照它的示例代码来运行（不过，我实际上没有运行成功）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install</span> <span class="comment">--save imagemin-optipng</span></div></pre></td></tr></table></figure>
+<h2 id="pngcrush"><a href="#pngcrush" class="headerlink" title="pngcrush"></a>pngcrush</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>pngcrush</div></pre></td></tr></table></figure>
+<p>可以像下面这样使用 pngcrush：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pngcrush -reduce -<span class="keyword">brute </span><span class="keyword">build/bg_crushed.png </span><span class="keyword">build/bg_crushed_2.png</span></div></pre></td></tr></table></figure>
+<p>一些阅读资料：</p>
+<ul>
+<li><a href="http://pngcrush.com/" target="_blank" rel="external">官网</a></li>
+<li><a href="https://zoompf.com/blog/2014/11/png-optimization" target="_blank" rel="external">https://zoompf.com/blog/2014/11/png-optimization</a></li>
+<li><a href="http://icyleaf.com/2012/03/pngcrush-usage-with-ios-apps/" target="_blank" rel="external">http://icyleaf.com/2012/03/pngcrush-usage-with-ios-apps/</a></li>
+</ul>
+<h2 id="其他参考文章"><a href="#其他参考文章" class="headerlink" title="其他参考文章"></a>其他参考文章</h2><ul>
+<li><a href="https://www.zhihu.com/question/23752454" target="_blank" rel="external">png 图片压缩工具ImageOptim是如何压缩图片的？</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ciz5kep1c00aadws6uzofhvo3" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2017/02/14/about-png-compress/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片压缩/">图片压缩</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-app-rescuetime" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -170,7 +276,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ciya6im0w00ajlg9pmd01wrgc" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ciz5kep1a00a6dws69i4igl2s" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/01/21/app-rescuetime/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -241,7 +347,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ciya6im0o00ahlg9pexqmz7nu" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ciz5kep1h00aidws68luc3mf6" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/18/2016-to-2017/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -298,7 +404,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciya6im0n00adlg9ptzfc994r" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ciz5kep1e00addws68l1tb79h" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/07/http-charset/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -356,7 +462,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="ciya6im0n00ablg9p7a1t4vkm" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="ciz5kep1g00afdws65yzeee8a" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/24/primary-vim-skills/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -410,7 +516,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="ciya6im0m00a8lg9prfot4874" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="ciz5kep1800a4dws6860wvevk" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/20/javascript-ninja/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -465,7 +571,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="ciya6im0l00a6lg9p7ds9qddy" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="ciz5kep1b00a8dws6gopfufws" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -525,7 +631,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="ciya6im0j00a3lg9puqmtzaxq" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/17/something-about-element-style/" data-id="ciz5kep11009ydws6ivhi857v" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/17/something-about-element-style/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -578,7 +684,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="ciya6im0h009wlg9p7fqsg5sa" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="ciz5kep1700a1dws64r573t91" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/04/html5-fileReader-API-1/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -635,68 +741,12 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/07/04/postcss-how-to-use/" data-id="ciya6im0j00a0lg9p46c28qn9" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/07/04/postcss-how-to-use/" data-id="ciz5kep0z009rdws6cmmcb2zy" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/07/04/postcss-how-to-use/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSSNext/">CSSNext</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PostCSS/">PostCSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-note-on-book-you-dont-know-js" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/30/note-on-book-you-dont-know-js/">《你不知道的JavaScript》笔记&amp;心得</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2016/03/30/note-on-book-you-dont-know-js/">
-      <time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time>
-    </a>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://img3.doubanio.com/lpic/s28033372.jpg" style="width: 200px; float: right; margin: 0 15px 0;" /></p>
-<p>这本书于2015年4月在国内出版，而2个月之后，ES6正式通过，成为国际标准。</p>
-<p>ES6的许多特性也在本书中有所提到。例如块级变量声明，箭头函数，<code>Object.keys()</code>方法，<code>Array.prototype.find()</code>方法，属性名表达式，以及 <code>class</code>，等等。</p>
-<p>个人认为，本书对 JS 的多处讲解，深度甚于《JavaScript权威指南》和《JavaScript高级程序设计》。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/03/30/note-on-book-you-dont-know-js/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/03/30/note-on-book-you-dont-know-js/" data-id="ciya6im0h009tlg9ppzt778sb" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2016/03/30/note-on-book-you-dont-know-js/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
     </footer>
   </div>

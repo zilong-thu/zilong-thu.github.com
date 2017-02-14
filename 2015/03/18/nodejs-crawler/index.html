@@ -11,12 +11,12 @@
 <meta property="og:url" content="http://borninsummer.com/2015/03/18/nodejs-crawler/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。">
-<meta property="og:image" content="http://borninsummer.com/images/blog/2015/03/crawler_01.png">
-<meta property="og:updated_time" content="2015-09-18T02:57:40.000Z">
+<meta property="og:image" content="http://borninsummer.com/images/2015/03/crawler_01.png">
+<meta property="og:updated_time" content="2017-02-14T13:28:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJS爬虫程序">
 <meta name="twitter:description" content="出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。">
-<meta name="twitter:image" content="http://borninsummer.com/images/blog/2015/03/crawler_01.png">
+<meta name="twitter:image" content="http://borninsummer.com/images/2015/03/crawler_01.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -166,7 +166,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
         <p>出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。</p>
 <a id="more"></a>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="网络爬虫基本原理"><a href="#网络爬虫基本原理" class="headerlink" title="网络爬虫基本原理"></a>网络爬虫基本原理</h3><p><a href="http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html" target="_blank" rel="external">这篇文章：网络爬虫基本原理(一)</a>其实讲解地已经比较清楚了，尤其是那张图，在此引用一下：</p>
-<p><img src="/images/blog/2015/03/crawler_01.png" class="img-invert"></p>
+<p><img src="/images/2015/03/crawler_01.png" class="img-invert"></p>
 <p>使用NodeJS写的网络爬虫已有不少示例（例如<a href="http://licson.net/post/create-a-simple-web-spider-in-node-js/" target="_blank" rel="external">Create a simple web spider in node.js  by Licson</a>），思路大体一致，使用的包也大同小异，重点是要搞清楚：想从页面中获取什么？自己关心什么？然后要据此使用特定的正则表达式等词法分析手段。</p>
 <h3 id="安装爬虫程序的依赖包"><a href="#安装爬虫程序的依赖包" class="headerlink" title="安装爬虫程序的依赖包"></a>安装爬虫程序的依赖包</h3><p>主要安装的是两个模块：<code>request</code>模块、<code>cheerio</code>模块。前者用于发送HTTP请求，后者用于根据获取到的HTML数据创建一个DOM结构，从而可以对其进行类似jQuery的操作。</p>
 <p>package.json文件内容如下：</p>
@@ -193,7 +193,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="ciya6im010086lg9pfi9galgx" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="ciz5kep0f007sdws6g2azq4zu" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/03/18/nodejs-crawler/#disqus_thread" class="article-comment-link">Comments</a>
       
