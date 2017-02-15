@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2016-10-24T14:01:16.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:50:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
 <meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
@@ -259,13 +259,16 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <h3 id="对比两次提交之间的差异"><a href="#对比两次提交之间的差异" class="headerlink" title="对比两次提交之间的差异"></a>对比两次提交之间的差异</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff <span class="tag">&lt;<span class="name">commit-id-1</span>&gt;</span> <span class="tag">&lt;<span class="name">commit-id-2</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>可以对比两次提交之间的全部差异。例如 <code>git diff HEAD~ HEAD</code> 就可以看到所在分支的最近一次提交与之前一次提交的差异。（HEAD只是最近一次提交的 commitID 的别名）</p>
 <h3 id="找到某一行的全部改动历史"><a href="#找到某一行的全部改动历史" class="headerlink" title="找到某一行的全部改动历史"></a>找到某一行的全部改动历史</h3><p><code>git blame -L &lt;rowNumber&gt;,&lt;row increment number&gt;</code></p>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><p><code>checkout</code> 可以用于切换分支，也可以用于从某次体积记录中把某个或该提交的全部文件拿到工作目录中。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git checkout branch_name</div><div class="line">$ git checkout &lt;commit-<span class="built_in">id</span>&gt;</div><div class="line">$ git checkout &lt;commit-<span class="built_in">id</span>&gt; path/<span class="keyword">to</span>/<span class="built_in">file</span></div></pre></td></tr></table></figure>
+<p>参考阅读：<a href="http://stackoverflow.com/questions/215718/reset-or-revert-a-specific-file-to-a-specific-revision-using-git" target="_blank" rel="external">Reset or revert a specific file to a specific revision using Git?</a></p>
 <hr>
 <h2 id="【附录】自己不是很熟练的-Git-命令手册"><a href="#【附录】自己不是很熟练的-Git-命令手册" class="headerlink" title="【附录】自己不是很熟练的 Git 命令手册"></a>【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># 查看关于某条命令的帮助</span></div><div class="line">git --help &lt;command&gt;</div><div class="line"> </div><div class="line"><span class="meta"># 检查多余的空白（以免给同伴们造成麻烦）</span></div><div class="line">gid diff --check</div><div class="line"> </div><div class="line"><span class="meta"># 彻底放弃最近的 N 次提交</span></div><div class="line">git reset --hard HEAD~N</div><div class="line"> </div><div class="line"><span class="meta"># 图形化查看一个文件的提交历史</span></div><div class="line">gitk &lt;filename&gt;</div><div class="line"></div><div class="line"><span class="meta"># 提交记录，带每次的更改状态</span></div><div class="line">git log --stat</div><div class="line"></div><div class="line"><span class="meta"># 删除一个远程分支（对 1.7.0 版本及以上）</span></div><div class="line">git push origin --delete branch_to_delete</div><div class="line"></div><div class="line"><span class="meta"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></div><div class="line"><span class="meta"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></div><div class="line">git fetch origin feature/branch_1</div><div class="line">git checkout --track origin/feature/branch_1</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciz5nicx7009hrps6lgsp6enz" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="ciz72si4t0095f5s6gd9ux83v" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
       
