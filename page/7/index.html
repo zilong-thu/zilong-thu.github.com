@@ -126,6 +126,187 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     <div class="outer">
       
       <section id="main">
+      <article id="post-node-http-server-examples" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/09/node-http-server-examples/">node.js搭建简单的HTTP服务器</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/09/node-http-server-examples/">
+      <time datetime="2014-01-09T11:45:00.000Z" itemprop="datePublished">2014-01-09</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+                
+        <p>###参考资料<br><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章</p>
+<p>###1. 最简单的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">	res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</div><div class="line">	res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</div></pre></td></tr></table></figure>
+<p>###2. 路由控制的HTTP服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>),</div><div class="line">	url  = <span class="built_in">require</span>(<span class="string">'url'</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> pathname = url.parse(req.url).pathname;</div><div class="line">	<span class="keyword">if</span> (pathname ===<span class="string">'/'</span>)&#123;</div><div class="line">		res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</div><div class="line">		res.end(<span class="string">'Hello, I\'m an HTTP server.'</span>);</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/about'</span>)&#123;</div><div class="line">		res.writeHead(<span class="number">200</span>, &#123;</div><div class="line">			<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">		&#125;);</div><div class="line">		res.end(<span class="string">'About us\n'</span>);</div><div class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">'/redirect'</span>) &#123;</div><div class="line">		<span class="comment">// 重定向</span></div><div class="line">		res.writeHead(<span class="number">302</span>, &#123;<span class="string">'Location'</span>:<span class="string">'/'</span>&#125;);</div><div class="line">		res.end();</div><div class="line">	&#125; <span class="keyword">else</span>&#123;</div><div class="line">		res.writeHead(<span class="number">404</span>, &#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</div><div class="line">		res.end(<span class="string">'Page not found\n'</span>);</div><div class="line">	&#125;	</div><div class="line">&#125;).listen(<span class="number">3000</span>,<span class="string">"127.0.0.1"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:3000'</span>);</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="cj107a0t4005kl8s6vyqddbod" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/09/node-http-server-examples/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-html5-web-socket" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/08/html5-web-socket/">HTML5 Web Socket初步学习</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/08/html5-web-socket/">
+      <time datetime="2014-01-08T12:12:00.000Z" itemprop="datePublished">2014-01-08</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTTP是一个请求和响应协议，其设计目的是请求文件，并围绕请求文件的思想进行操作。从设计初衷上讲，它并不适用于需要服务器实时数据的应用。如即时聊天应用。这种应用需要在服务器上发生某事时向浏览器推送数据。</p>
+<p>使用一系列HTTP序列可以近似实现从服务器获取“实时”数据的功能，例如网页邮箱。</p>
+<p>观察QQ邮箱的网络请求情况，如下图，可以看到它大概每隔29秒多点就会向服务器发送一次请求，看看是否有新邮件。</p>
+<p><img src="/images/blog/html5/20140108/qqmail_http_request.PNG"></p>
+<p>这样会产生大量的服务器负载，因为每个请求都需要在服务器上建立和销毁，以及HTTP头和用户身份验证的网络开销；HTTP头可以给每个请求增加几百KB，在一个繁忙的服务器上，这会给服务器和网络增加相当数量的负载。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/08/html5-web-socket/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="cj107a0t1005al8s67timeeb7" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/08/html5-web-socket/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
+      <article id="post-reading-notes-on-jquery-cookbook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/06/reading-notes-on-jquery-cookbook/">《jQuery Cookbook 中文版》笔记</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/01/06/reading-notes-on-jquery-cookbook/">
+      <time datetime="2014-01-06T11:48:00.000Z" itemprop="datePublished">2014-01-06</time>
+    </a>
+  </div>
+
+
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://book.douban.com/subject/23774480/" class="douban_book" name="23774480" target="_blank" title="jQuery Cookbook 中文版">《jQuery Cookbook 中文版》</a></p>
+<p>仅摘记自己陌生的、新学到的知识点。</p>
+<p>##第1章：jQuery基础</p>
+<p>###关于ready()方法<br><code>jQuery(document).ready(function(){})</code>方法可以在DOM加载之后、整个页面加载之前执行JS代码。与之相比，window.onload属性则是在页面全部加载完后（包括图片、SWF等）才被触发。</p>
+<p>所以ready()比较贴合实际。但是它也不是必须的：</p>
+<blockquote>
+<p>这个定制的jQuery事件只有在JavaScript必须嵌入到页面顶端的文档流并封装在<code>&lt;head&gt;</code>元素里时才有必要。我只需将JavaScript文件包含和内联代码放在<code>&lt;body&gt;</code>结束标签之前，就能避免使用<code>ready()</code>事件。原因有二。</p>
+<p>一，现代优化技术已经断言，当JavaScript代码放在页面解析的最后由浏览器加载时，页面的加载速度就会变得更快。</p>
+<p>二，ready()方法一定程度上增加了代码量，这样不好。代码越少，网页运行得总是越快。</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/06/reading-notes-on-jquery-cookbook/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="cj107a0sz0053l8s6sx79jnzu" class="article-share-link">Share</a>
+      
+        <a href="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+    
       <article id="post-how-to-improve-12306" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,7 +353,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="ciz72si3m0059f5s6stw1imew" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="cj107a0t00056l8s6fgh7a79o" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/03/how-to-improve-12306/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -230,7 +411,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="ciz72si3o005ff5s6fjzswnvb" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="cj107a0t7005ql8s62qnqcr3r" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -286,7 +467,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="ciz72si3j0050f5s60529aw92" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="cj107a0sw004sl8s6qsjljwe7" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/30/html5-localstorage-study/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -350,7 +531,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="ciz72si3i004tf5s6feihlyte" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="cj107a0sy004zl8s6oeuiau4x" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -415,7 +596,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="ciz72si3k0052f5s6s9j5hjoj" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="cj107a0sx004wl8s641a143d2" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/24/nodejs-primer/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -474,7 +655,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="ciz72si3h004qf5s6z5g2r5oq" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="cj107a0su004ql8s6tbbxv9be" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -535,7 +716,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="ciz72si3i004wf5s69yym6ur7" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="cj107a0su004ol8s63k8cwopy" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -548,179 +729,8 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 
 
     
-      <article id="post-reading-note-on-async-javascript" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/15/reading-note-on-async-javascript/">《异步JavaScript编程》笔记</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/15/reading-note-on-async-javascript/">
-      <time datetime="2013-12-15T14:42:00.000Z" itemprop="datePublished">2013-12-15</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###Metro应用开发<br>从这本书的前言里，我才知道JavaScript原来可以进行Windows 8 下的Metro风格应用的开发。&gt;&gt;详见 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/br211385.aspx" target="_blank">创建第一个采用 JavaScript 的 Windows 应用商店应用</a>。不过从该页面也了解到，操作系统必须是Window 8.1才可以。</p>
-<blockquote>
-<p>感谢网络浏览器的无处不在，JavaScript比以往任何语言都更接近于兑现Java那句古老的承诺：“一次编写，随处运行。”</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/15/reading-note-on-async-javascript/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/" data-id="ciz72si3g004mf5s6rwxzhs3r" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-control-more-hardwares" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/13/control-more-hardwares/">软件的未来：操控更多的硬件</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/13/control-more-hardwares/">
-      <time datetime="2013-12-13T05:17:00.000Z" itemprop="datePublished">2013-12-13</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>计算机行业发展至今，软件工程师们可以操控的硬件的种类的增长速度，与CPU技术的发展速度相比，依然是太慢了。在不太远的未来，更多的设备将具备“智能”；可供程序员开发软件的平台会越来越多。可以操控更多的硬件——而不仅仅是在屏幕上输出这个输出那个——会使编程变得更有意思。</p>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/13/control-more-hardwares/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/13/control-more-hardwares/" data-id="ciz72si3f004ff5s6fdlvxss4" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/13/control-more-hardwares/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
-      <article id="post-javascript-array-unique" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/12/09/javascript-array-unique/">JavaScript数组去重方法汇总</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2013/12/09/javascript-array-unique/">
-      <time datetime="2013-12-09T01:47:00.000Z" itemprop="datePublished">2013-12-09</time>
-    </a>
-  </div>
-
-
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。<br>
-        
-          <p class="article-more-link">
-            <a href="/2013/12/09/javascript-array-unique/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2013/12/09/javascript-array-unique/" data-id="ciz72si3e004cf5s6nu0agfrb" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2013/12/09/javascript-array-unique/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-    
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
       </nav>
     </section>
       
