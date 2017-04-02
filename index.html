@@ -160,56 +160,20 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./Picker.js'</span>;</div></pre></td></tr></table></figure>
 <p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></div></pre></td></tr></table></figure>
 <p>最后，通过修改文件名，就解决了这个问题。</p>
-<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><table>
-<thead>
-<tr>
-<th>操作系统</th>
-<th>文件系统</th>
-<th>是否大小写敏感</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Unix</td>
-<td></td>
-<td>是</td>
-</tr>
-<tr>
-<td>Linux</td>
-<td></td>
-<td>是</td>
-</tr>
-<tr>
-<td>MacOS</td>
-<td>日志式 HFS+</td>
-<td>默认否</td>
-</tr>
-<tr>
-<td>Windows</td>
-<td>FAT32 NTFS</td>
-<td>默认否</td>
-</tr>
-</tbody>
-</table>
-<p>在 <a href="http://apple.stackexchange.com/questions/22297/is-bash-in-osx-case-insensitive" target="_blank" rel="external">Is bash in OSX case-insensitive?</a> 中有一个很好的回答：</p>
-<blockquote>
-<p>HFS+ (the Mac filesystem) is usually configured to be case insensitive but case preserving. This means that the file system will consider <code>foo</code> and <code>FoO</code> to be the same, but when you create a new file it will remember which letters where capitalized and which were not.</p>
-<p>To check whether a disk is case sensitive, run for example:</p>
-<p><code>diskutil info disk0s2</code></p>
-<p>Look for the <code>Name:</code> line. If it reads something like <code>Mac OS Extended (Case-sensitive, Journaled)</code> it means that it is case-sensitive. If it just reads <code>Mac OS Extended</code> (without the Case-sensitive) then it is only case preserving but not case sensitive.</p>
-</blockquote>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>要意识到不同操作系统之间是存在这些最基本的差异的。而文件命名，也最好要养成一个习惯，尽量只使用小写。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cj107a0uw00agl8s6usa2wu62" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cj107jswc00au2xs6yvnb9cv3" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -258,68 +222,21 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <h2 id="一切皆对象"><a href="#一切皆对象" class="headerlink" title="一切皆对象"></a>一切皆对象</h2><blockquote>
 <p>其他编程语言用栈储存原始类型，用堆储存引用类型，JavaScript 则完全不同：它是以一个变量对象追踪变量的生存期。原始值被直接保存在变量对象内，而引用值则作为一个指针保存在变量对象内，该指针指向实际对象在内存中的存储位置。<br>page 2</p>
 </blockquote>
 <p>例如，所有的 JavaScript 对象都有一个方法 <code>Object.prototype.valueOf()</code>，该方法返回指定对象的原始值。如果我们一个简单的赋值语句：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div></pre></td></tr></table></figure>
 <p>那么我们会发现变量 <code>a</code> 上面其实有很多方法（当然，大部分都是来自于其原型）。这就是因为该变量是通过变量对象进行追踪的，并不仅仅只有一个值（这也涉及一个概念，“原始封装类型”）。这也是 JavaScript “一切皆为对象”的理念。</p>
-<h2 id="JavaScript-只有值传递"><a href="#JavaScript-只有值传递" class="headerlink" title="JavaScript 只有值传递"></a>JavaScript 只有值传递</h2><p>我们知道，JavaScript 是只有值传递的。而下面的描述则更为深入地解释了内在机理：</p>
-<blockquote>
-<p>当你讲原始值赋给一个变量时，该值将被复制到变量中。也就是说，如果你使一个变量等于另一个时，每个变量有它自己的一份数据拷贝。<br>……每个含有原始值的变量使用自己的存储空间。<br>page 3</p>
-</blockquote>
-<h2 id="鉴别数组"><a href="#鉴别数组" class="headerlink" title="鉴别数组"></a>鉴别数组</h2><p><code>Array.isArray()</code> 方法是 ES5 标准所提出的。目前的支持度已经非常好。IE9+，Chrome/Safari/FireFox 都支持此 API。</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数即对象"><a href="#函数即对象" class="headerlink" title="函数即对象"></a>函数即对象</h3><blockquote>
-<p>函数其实就是对象。使函数不同于其他对象的决定性特点是函数存在一个被称为 <code>[[Call]]</code> 的内部属性。<br>……<code>[[Call]]</code> 是函数独有的，表明该对象可以被执行。由于仅函数拥有该属性，ECMAScript 定义 <code>typeof</code> 操作符对任何具有 <code>[[Call]]</code> 属性的对象返回 “function”。这在过去曾经导致一些问题，因为某些浏览器曾经在正则表达式中包含 <code>[[Call]]</code> 属性，导致后者被错误鉴别为函数。现在，所有浏览器行为都一致，<code>typeof</code> 不会再将正则表达式鉴别为函数了。</p>
-</blockquote>
-<p>函数是 JavaScript 语言的核心。一大特点就是：函数即对象。所以，函数可以被传递来传递去……</p>
-<p>page 18 里面对函数声明、函数表达式进行了对比。不过，对于一个细节，并没有挖得很深。这里简单说一下，大概是“当我们说起函数作用域时，你可曾忘记了什么？”。考虑下面的一段代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> func = <span class="string">'test'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> func1 = <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> func);  <span class="comment">// function</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">func1();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(func1.name);  <span class="comment">// func</span></div></pre></td></tr></table></figure>
-<p>一个函数字面量包含这几部分：</p>
-<ul>
-<li>关键字<code>function</code></li>
-<li>空格</li>
-<li>函数名（function name），非必须</li>
-<li>(形参列表)</li>
-<li>{函数体}</li>
-</ul>
-<p>其中，函数名、所有的形参，也都属于该函数作用域。这就是为什么在该函数内部，<code>func</code> 会屏蔽外部的变量。</p>
-<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>函数重载是一种设计目标，希望可以让一个函数具有多个签名。<strong>函数签名</strong>，是由函数名、参数个数、参数类型、返回值类型组成的。JavaScript 的函数其实根本没有签名，因为它对函数参数的数量与类型完全不做限制。对返回值的类型也一样，没有任何限制。所以可以说 JavaScript 函数是天然可重载的，也可以说 JavaScript 函数没有重载这个概念。</p>
-<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>JavaScript 函数的 <code>call</code>、<code>apply</code> 方法，都只是临时指定一个函数调用对象（<code>this</code>），但 ES5 所定义的新方法 <code>Function.prototype.bind()</code> 则差异较大。</p>
-<ul>
-<li><code>bind</code> 方法会返回一个新函数，并不会更改原始函数任何东西</li>
-<li><code>bind</code> 不但会绑定 <code>this</code> 对象，同时也可以绑定参数，这两个被绑定后，绝大部分情况下是不可更改的</li>
-<li>只有该新函数使用 new 操作符调用时，相应的 <code>this</code> 绑定会失效，但是其他的参数则依然是绑定着的。</li>
-</ul>
-<p>例如下面的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params">label</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(label + <span class="string">': '</span> + <span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person1 = &#123;</div><div class="line">  name: <span class="string">'person1'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * test 1</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> say1 = say.bind(person1, <span class="string">'say2'</span>);</div><div class="line"></div><div class="line">say1(<span class="string">'say2222'</span>);  <span class="comment">// 会输出 say2: person1，而不是 say2222: person1</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * test 2</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> person2 = &#123;</div><div class="line">  name: <span class="string">'person2'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">say1.call(person2);  <span class="comment">// 输出 say2: person1</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> say1(<span class="string">'p3'</span>);  <span class="comment">// 输出：say2: undefined</span></div></pre></td></tr></table></figure>
-<p>总结来说，<code>bind</code> 所产生的新函数，除非用 new 调用，是<strong>永久</strong>的。</p>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="属性探测vs属性值探测"><a href="#属性探测vs属性值探测" class="headerlink" title="属性探测vs属性值探测"></a>属性探测vs属性值探测</h3><p>在实际的开发中，应当区分属性探测与属性值探测之间的区别。前者关注对象的某个属性是否存在、是否为自有（而非来自原型链），后者则关注属性的值（value）而非属性（property）本身。</p>
-<p><code>in</code> 操作符是为了解决“对象的属性是否可达”这个问题而存在的。它完全不管属性指向的值。而<code>hasOwnProperty</code>则忽略原型链，只探测对象的自有属性。自有属性是 JavaScript 在对象上调用其内部接口 <code>[[PUT]]</code> 方法添加上的。</p>
-<h3 id="关于访问器属性"><a href="#关于访问器属性" class="headerlink" title="关于访问器属性"></a>关于访问器属性</h3><p>对象的属性分为两类，第一类是最为常见的数据属性，<code>[[PUT]]</code> 方法默认创建的都是数据属性；另一类是访问器属性。访问器属性的一个例子如下。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  _name: 'WangZilong',</div><div class="line"></div><div class="line">  <span class="keyword">get</span> <span class="built_in">name</span>() &#123;</div><div class="line">    console.<span class="built_in">log</span>('you are getting <span class="built_in">name</span> <span class="keyword">property</span>.');</div><div class="line"><span class="built_in">    return</span> this._name;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="keyword">set</span> <span class="built_in">name</span>(value) &#123;</div><div class="line">    this._name = value;</div><div class="line">    console.<span class="built_in">log</span>('you have <span class="keyword">set</span> a new <span class="built_in">name</span>.');</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.<span class="built_in">log</span>(obj.<span class="built_in">name</span>);</div><div class="line"></div><div class="line">obj.<span class="built_in">name</span> = 'test';</div><div class="line">console.<span class="built_in">log</span>(obj.<span class="built_in">name</span>);</div></pre></td></tr></table></figure>
-<p>如果想实现一个PUB/SUB模式，又想偷懒，那么可以使用访问器属性。访问器属性是在 ES5 里定义的，除了 IE8及以下浏览器、iOS5.1及之前浏览器不支持之外，其他环境中基本都支持访问器属性。</p>
-<p>其实，在前端生态圈里，avalon、vue 这样的 MVC 框架，就是使用了访问器属性（以及借助 <code>Object.defineProperty()</code> 方法），来实现所需的“双向绑定”功能。</p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><blockquote>
-<p>每个对象在创建时都自动拥有一个构造函数属性，其中包含了一个指向其构造函数的引用。那些通过对象字面量形式或 <code>Object</code> 构造函数创建出来的范用对象，其构造函数属性指向 <code>Object</code>；那些通过自定义构造函数创建出来的对象，其构造函数属性指向创建它的构造函数。</p>
-</blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;name: <span class="string">'obj'</span>&#125;;</div><div class="line"></div><div class="line">obj.<span class="keyword">constructor</span>;  <span class="comment">// function Object() &#123; [native code] &#125;</span></div><div class="line"></div><div class="line">obj.hasOwnProperty(<span class="string">'constructor'</span>);  <span class="comment">// 输出 false</span></div></pre></td></tr></table></figure>
-<p>我们来针对 <code>constructor</code> 这个关键词/属性，延伸讨论一下。在 ES6 里面，明确了关键字 <code>class</code> 的用法：定义一个“类”，该类可以被 <code>new</code> 操作符调用，生成一个实例对象。</p>
-<p>构造函数有个小特点：如果创建新实例时，没有什么参数需要传给构造函数，那么构造函数后面是可以不带圆括号的。例如日期：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line"></div><div class="line"><span class="comment">// 等价于：</span></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
-<p>但是，这样的编码是<strong>不清晰</strong>的！看不出来是函数调用。所以，不推荐省略圆括号。</p>
-<h2 id="原型即对象"><a href="#原型即对象" class="headerlink" title="原型即对象"></a>原型即对象</h2><p>原型本质上也是对象。<strong>只有函数才有 <code>prototype</code> 属性。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name || <span class="string">''</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> creature = &#123;</div><div class="line">  <span class="keyword">constructor</span>: Person,</div><div class="line">  sayName: function() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">Person.prototype = creature;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'Peter'</span>);</div><div class="line"></div><div class="line">p.sayName();  <span class="comment">// Peter</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(p <span class="keyword">instanceof</span> Person);  <span class="comment">// true</span></div><div class="line"></div><div class="line"></div><div class="line">Person.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.age !== <span class="literal">undefined</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'I am '</span>, <span class="keyword">this</span>.age, <span class="string">' years old.'</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'I do not know my age yet...'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">p.sayAge();  <span class="comment">// I do not know my age yet...</span></div><div class="line"></div><div class="line"><span class="comment">// 这个时候，creature 对象是 `sayAge` 方法的实际拥有者</span></div><div class="line"><span class="built_in">console</span>.log(creature.hasOwnProperty(<span class="string">'sayAge'</span>));  <span class="comment">// true</span></div><div class="line">creature.isPrototypeOf(p);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>构造函数、原型对象和对象实例之间的关系，最有趣的一个方面也许就是对象实例和构造函数之间没有直接关系。不过对象实例和院线对象，以及原型对象和构造函数之间都有直接联系。</p>
-<p>—— page 59</p>
-</blockquote>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cj107a0uy00apl8s6dchpbqdq" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cj107jswa00ar2xs6groxlcrh" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -368,34 +285,19 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
     
     <div class="article-entry" itemprop="articleBody">
       
-                
         <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>Bash 里，每个变量的值都是字符串。变量名是区分大小写的。要输出变量值，可以用下面方法中的任意一个：</p>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>=<span class="string">"some test string."</span></div><div class="line"></div><div class="line"><span class="meta"># 方法①</span></div><div class="line"><span class="meta"># 美元符号 $ 用于提取变量值</span></div><div class="line">echo $<span class="keyword">var</span></div><div class="line"></div><div class="line"><span class="meta"># 方法②</span></div><div class="line">echo $&#123;<span class="keyword">var</span>&#125;</div><div class="line"></div><div class="line"><span class="meta"># 方法③</span></div><div class="line">echo <span class="string">"$var"</span></div><div class="line"></div><div class="line"><span class="meta"># 方法④</span></div><div class="line"><span class="meta"># 这种语法，非常像 ES6 里面的模板字符串</span></div><div class="line">echo <span class="string">"$&#123;var&#125;"</span></div></pre></td></tr></table></figure>
 <p>上面说到变量值都是字符串，那么如果想知道字符串的长度，可以通过 <code>#</code> 符号来获取：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var=<span class="string">"some test string."</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$#var</span>  <span class="comment"># 输出 17</span></div></pre></td></tr></table></figure>
-<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p><strong> 环境变量是未在当前进程中定义，而从父进程中继承而来的变量。</strong></p>
-<p>用 <code>env</code> 命令，可以查看当前系统中、所有与该终端相关的环境变量。</p>
-<h3 id="常见环境变量"><a href="#常见环境变量" class="headerlink" title="常见环境变量"></a>常见环境变量</h3><p><strong> SHELL </strong></p>
-<p>识别当前所用的是哪种 shell：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="variable">$0</span>  <span class="comment"># 输出 -zsh</span></div><div class="line"></div><div class="line"><span class="comment"># 或者</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span>  <span class="comment"># 输出 /bin/zsh</span></div></pre></td></tr></table></figure>
-<p>我使用的是 oh my zsh。如果用的是默认的 bash shell，应该会输出 <code>/bin/bash</code>。</p>
-<p><strong> UID、GID </strong></p>
-<p>当前登录用户的ID，以及其所属分组，分别可以通过 UID、GID 来查看。root 用户的 UID/GID 都是 0。因此可以通过这个来判断当前用户是否为超级用户。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> [ <span class="variable">$UID</span> <span class="_">-ne</span> 0 ]; <span class="keyword">then</span></div><div class="line">    <span class="built_in">echo</span> Not a root user. Plear run as root.</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="built_in">echo</span> Root user.</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
-<p>上面的脚本，<code>-ne</code> 表示“不等于”的意思（not equal to）。而 <code>[</code>、<code>]</code> 及其中间的内容，属于条件表达式（Conditional expressions）的一种。条件表达式可以用来测试文件属性，或者对字符串、算术进行比较。</p>
-<h2 id="获取程序的返回值"><a href="#获取程序的返回值" class="headerlink" title="获取程序的返回值"></a>获取程序的返回值</h2><p>假设我们有这样一个 C++ 程序：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">   <span class="built_in">cout</span>&lt;&lt;<span class="string">"Hello world!"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">   <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用 g++ 编译后执行。想要获得该程序的返回值（也就是0），可以这样：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 假设编译后得到的可执行文件为 a.out</span></div><div class="line">./a.out</div><div class="line"></div><div class="line"><span class="built_in">echo</span> $?  <span class="comment"># 输出 0</span></div></pre></td></tr></table></figure>
-<p>涉及的概念是“退出状态”：</p>
-<blockquote>
-<p>当一个命令发生错误并退回时，它会返回一个非0的退出状态；而当命令成功完成后，它会返回数字0。退出状态可以从特殊变量 <code>$?</code> 中获得（在命令执行之后立刻运行 <code>echo $?</code>，就可以打印出退出状态）。</p>
-</blockquote>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/03/12/linux-shell-scripting-2/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cj107a0us00a5l8s6qobz1rws" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cj107jsw900ao2xs6zn2h8euz" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -456,7 +358,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="cj107a0ux00aml8s6o2cnqt4z" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="cj107jsw700aj2xs6o2o35ott" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/02/14/about-png-compress/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -515,7 +417,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="cj107a0ux00akl8s6zw59g4op" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="cj107jsw600ah2xs6zg3hp083" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/01/21/app-rescuetime/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -586,7 +488,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="cj107a0uz00asl8s6p4xtvpxd" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="cj107jsw400af2xs6il3aapa6" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/18/2016-to-2017/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -643,7 +545,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="cj107a0uv00adl8s6b93l2us1" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="cj107jsw300ab2xs655jm1zfz" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/12/07/http-charset/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -701,7 +603,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="cj107a0up009wl8s67aml6kqu" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="cj107jsw100a92xs6vmg9nq37" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/24/primary-vim-skills/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -755,7 +657,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="cj107a0us00a7l8s6g3s9fp61" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="cj107jsw000a62xs69lwizepu" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/09/20/javascript-ninja/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -810,7 +712,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="cj107a0uu00aal8s6lr0ikxvs" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="cj107jsvz00a42xs6cfgozzbt" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2016/08/28/note-on-book-code-complete-2/#disqus_thread" class="article-comment-link">Comments</a>
       

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="背景注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：pick.js，但是在引用的时候，是这样的：
 1import *">
-<meta property="og:updated_time" content="2017-04-02T04:41:55.000Z">
+<meta property="og:updated_time" content="2017-04-02T04:48:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于MacOS文件系统的文件名大小写问题">
 <meta name="twitter:description" content="背景注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：pick.js，但是在引用的时候，是这样的：
@@ -169,6 +169,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></div></pre></td></tr></table></figure>
 <p>最后，通过修改文件名，就解决了这个问题。</p>
+<a id="more"></a>
 <h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><table>
 <thead>
 <tr>
@@ -212,7 +213,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cj107a0uw00agl8s6usa2wu62" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cj107jswc00au2xs6yvnb9cv3" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/#disqus_thread" class="article-comment-link">Comments</a>
       

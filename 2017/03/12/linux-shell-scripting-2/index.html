@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="变量基本使用Bash 里，每个变量的值都是字符串。变量名是区分大小写的。要输出变量值，可以用下面方法中的任意一个：
 123456789101112131415var=&quot;some test string.&quot;# 方法①# 美元符号 $ 用于提取变量值echo $var# 方法②echo $&amp;#123;var&amp;#125;# 方法③echo &quot;$var&quot;# 方法④# 这种语法，非常像 ES6 里面的模板字">
-<meta property="og:updated_time" content="2017-04-02T04:41:55.000Z">
+<meta property="og:updated_time" content="2017-04-02T04:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令笔记（二：变量）">
 <meta name="twitter:description" content="变量基本使用Bash 里，每个变量的值都是字符串。变量名是区分大小写的。要输出变量值，可以用下面方法中的任意一个：
@@ -168,6 +168,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>=<span class="string">"some test string."</span></div><div class="line"></div><div class="line"><span class="meta"># 方法①</span></div><div class="line"><span class="meta"># 美元符号 $ 用于提取变量值</span></div><div class="line">echo $<span class="keyword">var</span></div><div class="line"></div><div class="line"><span class="meta"># 方法②</span></div><div class="line">echo $&#123;<span class="keyword">var</span>&#125;</div><div class="line"></div><div class="line"><span class="meta"># 方法③</span></div><div class="line">echo <span class="string">"$var"</span></div><div class="line"></div><div class="line"><span class="meta"># 方法④</span></div><div class="line"><span class="meta"># 这种语法，非常像 ES6 里面的模板字符串</span></div><div class="line">echo <span class="string">"$&#123;var&#125;"</span></div></pre></td></tr></table></figure>
 <p>上面说到变量值都是字符串，那么如果想知道字符串的长度，可以通过 <code>#</code> 符号来获取：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var=<span class="string">"some test string."</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$#var</span>  <span class="comment"># 输出 17</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p><strong> 环境变量是未在当前进程中定义，而从父进程中继承而来的变量。</strong></p>
 <p>用 <code>env</code> 命令，可以查看当前系统中、所有与该终端相关的环境变量。</p>
 <h3 id="常见环境变量"><a href="#常见环境变量" class="headerlink" title="常见环境变量"></a>常见环境变量</h3><p><strong> SHELL </strong></p>
@@ -190,7 +191,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cj107a0us00a5l8s6qobz1rws" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cj107jsw900ao2xs6zn2h8euz" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/#disqus_thread" class="article-comment-link">Comments</a>
       

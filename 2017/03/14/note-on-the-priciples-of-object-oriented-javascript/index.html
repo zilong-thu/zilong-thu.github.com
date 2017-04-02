@@ -17,7 +17,7 @@
 其他编程语言用栈储存原始类型，用堆储存引用类型，JavaScript 则完全不同：它是以一个变量对象追踪变量的生存期。原始值被直接保存在变量对象内，而引用值则作为一个指针保存在变量对象内，该指针指向实际对象在内存中的存储位置。page 2
 
 例如，所有的 JavaScript 对象都有一个方法 Object.prototype.valueOf()，该方法返回指定对象的原始值。如果我们一">
-<meta property="og:updated_time" content="2017-04-02T04:41:55.000Z">
+<meta property="og:updated_time" content="2017-04-02T04:48:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript面向对象精要》笔记">
 <meta name="twitter:description" content="一切皆对象
@@ -176,6 +176,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p>例如，所有的 JavaScript 对象都有一个方法 <code>Object.prototype.valueOf()</code>，该方法返回指定对象的原始值。如果我们一个简单的赋值语句：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div></pre></td></tr></table></figure>
 <p>那么我们会发现变量 <code>a</code> 上面其实有很多方法（当然，大部分都是来自于其原型）。这就是因为该变量是通过变量对象进行追踪的，并不仅仅只有一个值（这也涉及一个概念，“原始封装类型”）。这也是 JavaScript “一切皆为对象”的理念。</p>
+<a id="more"></a>
 <h2 id="JavaScript-只有值传递"><a href="#JavaScript-只有值传递" class="headerlink" title="JavaScript 只有值传递"></a>JavaScript 只有值传递</h2><p>我们知道，JavaScript 是只有值传递的。而下面的描述则更为深入地解释了内在机理：</p>
 <blockquote>
 <p>当你讲原始值赋给一个变量时，该值将被复制到变量中。也就是说，如果你使一个变量等于另一个时，每个变量有它自己的一份数据拷贝。<br>……每个含有原始值的变量使用自己的存储空间。<br>page 3</p>
@@ -230,7 +231,7 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cj107a0uy00apl8s6dchpbqdq" class="article-share-link">Share</a>
+      <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cj107jswa00ar2xs6groxlcrh" class="article-share-link">Share</a>
       
         <a href="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/#disqus_thread" class="article-comment-link">Comments</a>
       
