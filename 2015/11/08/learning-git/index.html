@@ -1,213 +1,218 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>Git 学习笔记 | 王子龙的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+    <meta charset="utf-8">
+    
+    <title>Git 学习笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 学习笔记">
 <meta property="og:url" content="http://borninsummer.com/2015/11/08/learning-git/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-<meta property="og:updated_time" content="2017-02-15T14:50:50.000Z">
+<meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://borninsummer.com/images/2015/11/git.jpg">
+<meta property="og:updated_time" content="2018-07-02T16:46:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 学习笔记">
-<meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
+<meta name="twitter:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+<meta name="twitter:image" content="http://borninsummer.com/images/2015/11/git.jpg">
+    
 
-<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  
-<!-- Google Analytics -->
-<script type="text/javascript">
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
 ga('create', 'UA-45360338-1', 'auto');
 ga('send', 'pageview');
-</script>
-
-<script>
-(function(){var $c=function(a){this.w=a||[]};$c.prototype.set=function(a){this.w[a]=!0};$c.prototype.encode=function(){for(var a=[],b=0;b<this.w.length;b++)this.w[b]&&(a[Math.floor(b/6)]^=1<<b%6);for(b=0;b<a.length;b++)a[b]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".charAt(a[b]||0);return a.join("")+"~"};var vd=new $c;function J(a){vd.set(a)}var Nd=function(a,b){var c=new $c(Dd(a));c.set(b);a.set(Gd,c.w)},Td=function(a){a=Dd(a);a=new $c(a);for(var b=vd.w.slice(),c=0;c<a.w.length;c++)b[c]=b[c]||a.w[c];return(new $c(b)).encode()},Dd=function(a){a=a.get(Gd);ka(a)||(a=[]);return a};var ea=function(a){return"function"==typeof a},ka=function(a){return"[object Array]"==Object.prototype.toString.call(Object(a))},qa=function(a){return void 0!=a&&-1<(a.constructor+"").indexOf("String")},D=function(a,b){return 0==a.indexOf(b)},sa=function(a){return a?a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,""):""},ta=function(a){var b=M.createElement("img");b.width=1;b.height=1;b.src=a;return b},ua=function(){},K=function(a){if(encodeURIComponent instanceof Function)return encodeURIComponent(a);J(28);return a},
-L=function(a,b,c,d){try{a.addEventListener?a.addEventListener(b,c,!!d):a.attachEvent&&a.attachEvent("on"+b,c)}catch(e){J(27)}},wa=function(a,b){if(a){var c=M.createElement("script");c.type="text/javascript";c.async=!0;c.src=a;b&&(c.id=b);var d=M.getElementsByTagName("script")[0];d.parentNode.insertBefore(c,d)}},Ud=function(){return"https:"==M.location.protocol},xa=function(){var a=""+M.location.hostname;return 0==a.indexOf("www.")?a.substring(4):a},ya=function(a){var b=M.referrer;if(/^https?:\/\//i.test(b)){if(a)return b;
-a="//"+M.location.hostname;var c=b.indexOf(a);if(5==c||6==c)if(a=b.charAt(c+a.length),"/"==a||"?"==a||""==a||":"==a)return;return b}},za=function(a,b){if(1==b.length&&null!=b[0]&&"object"===typeof b[0])return b[0];for(var c={},d=Math.min(a.length+1,b.length),e=0;e<d;e++)if("object"===typeof b[e]){for(var g in b[e])b[e].hasOwnProperty(g)&&(c[g]=b[e][g]);break}else e<a.length&&(c[a[e]]=b[e]);return c};var ee=function(){this.keys=[];this.values={};this.m={}};ee.prototype.set=function(a,b,c){this.keys.push(a);c?this.m[":"+a]=b:this.values[":"+a]=b};ee.prototype.get=function(a){return this.m.hasOwnProperty(":"+a)?this.m[":"+a]:this.values[":"+a]};ee.prototype.map=function(a){for(var b=0;b<this.keys.length;b++){var c=this.keys[b],d=this.get(c);d&&a(c,d)}};var O=window,M=document;var Aa=function(a){var b=O._gaUserPrefs;if(b&&b.ioo&&b.ioo()||a&&!0===O["ga-disable-"+a])return!0;try{var c=O.external;if(c&&c._gaUserPrefs&&"oo"==c._gaUserPrefs)return!0}catch(d){}return!1};var Ca=function(a){var b=[],c=M.cookie.split(";");a=new RegExp("^\\s*"+a+"=\\s*(.*?)\\s*$");for(var d=0;d<c.length;d++){var e=c[d].match(a);e&&b.push(e[1])}return b},zc=function(a,b,c,d,e,g){e=Aa(e)?!1:eb.test(M.location.hostname)||"/"==c&&vc.test(d)?!1:!0;if(!e)return!1;b&&1200<b.length&&(b=b.substring(0,1200),J(24));c=a+"="+b+"; path="+c+"; ";g&&(c+="expires="+(new Date((new Date).getTime()+g)).toGMTString()+"; ");d&&"none"!=d&&(c+="domain="+d+";");d=M.cookie;M.cookie=c;if(!(d=d!=M.cookie))a:{a=
-Ca(a);for(d=0;d<a.length;d++)if(b==a[d]){d=!0;break a}d=!1}return d},Cc=function(a){return K(a).replace(/\(/g,"%28").replace(/\)/g,"%29")},vc=/^(www\.)?google(\.com?)?(\.[a-z]{2})?$/,eb=/(^|\.)doubleclick\.net$/i;var oc=function(){return(Ba||Ud()?"https:":"http:")+"//www.google-analytics.com"},Da=function(a){this.name="len";this.message=a+"-8192"},ba=function(a,b,c){c=c||ua;if(2036>=b.length)wc(a,b,c);else if(8192>=b.length)x(a,b,c)||wd(a,b,c)||wc(a,b,c);else throw ge("len",b.length),new Da(b.length);},wc=function(a,b,c){var d=ta(a+"?"+b);d.onload=d.onerror=function(){d.onload=null;d.onerror=null;c()}},wd=function(a,b,c){var d=O.XMLHttpRequest;if(!d)return!1;var e=new d;if(!("withCredentials"in e))return!1;
-e.open("POST",a,!0);e.withCredentials=!0;e.setRequestHeader("Content-Type","text/plain");e.onreadystatechange=function(){4==e.readyState&&(c(),e=null)};e.send(b);return!0},x=function(a,b,c){return O.navigator.sendBeacon?O.navigator.sendBeacon(a,b)?(c(),!0):!1:!1},ge=function(a,b,c){1<=100*Math.random()||Aa("?")||(a=["t=error","_e="+a,"_v=j41","sr=1"],b&&a.push("_f="+b),c&&a.push("_m="+K(c.substring(0,100))),a.push("aip=1"),a.push("z="+hd()),wc(oc()+"/collect",a.join("&"),ua))};var Ha=function(){this.M=[]};Ha.prototype.add=function(a){this.M.push(a)};Ha.prototype.D=function(a){try{for(var b=0;b<this.M.length;b++){var c=a.get(this.M[b]);c&&ea(c)&&c.call(O,a)}}catch(d){}b=a.get(Ia);b!=ua&&ea(b)&&(a.set(Ia,ua,!0),setTimeout(b,10))};function Ja(a){if(100!=a.get(Ka)&&La(P(a,Q))%1E4>=100*R(a,Ka))throw"abort";}function Ma(a){if(Aa(P(a,Na)))throw"abort";}function Oa(){var a=M.location.protocol;if("http:"!=a&&"https:"!=a)throw"abort";}
-function Pa(a){try{O.navigator.sendBeacon?J(42):O.XMLHttpRequest&&"withCredentials"in new O.XMLHttpRequest&&J(40)}catch(c){}a.set(ld,Td(a),!0);a.set(Ac,R(a,Ac)+1);var b=[];Qa.map(function(c,d){if(d.F){var e=a.get(c);void 0!=e&&e!=d.defaultValue&&("boolean"==typeof e&&(e*=1),b.push(d.F+"="+K(""+e)))}});b.push("z="+Bd());a.set(Ra,b.join("&"),!0)}
-function Sa(a){var b=P(a,gd)||oc()+"/collect",c=P(a,fa);!c&&a.get(Vd)&&(c="beacon");if(c){var d=P(a,Ra),e=a.get(Ia),e=e||ua;"image"==c?wc(b,d,e):"xhr"==c&&wd(b,d,e)||"beacon"==c&&x(b,d,e)||ba(b,d,e)}else ba(b,P(a,Ra),a.get(Ia));a.set(Ia,ua,!0)}function Hc(a){var b=O.gaData;b&&(b.expId&&a.set(Nc,b.expId),b.expVar&&a.set(Oc,b.expVar))}function cd(){if(O.navigator&&"preview"==O.navigator.loadPurpose)throw"abort";}function yd(a){var b=O.gaDevIds;ka(b)&&0!=b.length&&a.set("&did",b.join(","),!0)}
-function vb(a){if(!a.get(Na))throw"abort";};var hd=function(){return Math.round(2147483647*Math.random())},Bd=function(){try{var a=new Uint32Array(1);O.crypto.getRandomValues(a);return a[0]&2147483647}catch(b){return hd()}};function Ta(a){var b=R(a,Ua);500<=b&&J(15);var c=P(a,Va);if("transaction"!=c&&"item"!=c){var c=R(a,Wa),d=(new Date).getTime(),e=R(a,Xa);0==e&&a.set(Xa,d);e=Math.round(2*(d-e)/1E3);0<e&&(c=Math.min(c+e,20),a.set(Xa,d));if(0>=c)throw"abort";a.set(Wa,--c)}a.set(Ua,++b)};var Ya=function(){this.data=new ee},Qa=new ee,Za=[];Ya.prototype.get=function(a){var b=$a(a),c=this.data.get(a);b&&void 0==c&&(c=ea(b.defaultValue)?b.defaultValue():b.defaultValue);return b&&b.Z?b.Z(this,a,c):c};var P=function(a,b){var c=a.get(b);return void 0==c?"":""+c},R=function(a,b){var c=a.get(b);return void 0==c||""===c?0:1*c};Ya.prototype.set=function(a,b,c){if(a)if("object"==typeof a)for(var d in a)a.hasOwnProperty(d)&&ab(this,d,a[d],c);else ab(this,a,b,c)};
-var ab=function(a,b,c,d){if(void 0!=c)switch(b){case Na:wb.test(c)}var e=$a(b);e&&e.o?e.o(a,b,c,d):a.data.set(b,c,d)},bb=function(a,b,c,d,e){this.name=a;this.F=b;this.Z=d;this.o=e;this.defaultValue=c},$a=function(a){var b=Qa.get(a);if(!b)for(var c=0;c<Za.length;c++){var d=Za[c],e=d[0].exec(a);if(e){b=d[1](e);Qa.set(b.name,b);break}}return b},yc=function(a){var b;Qa.map(function(c,d){d.F==a&&(b=d)});return b&&b.name},S=function(a,b,c,d,e){a=new bb(a,b,c,d,e);Qa.set(a.name,a);return a.name},cb=function(a,
-b){Za.push([new RegExp("^"+a+"$"),b])},T=function(a,b,c){return S(a,b,c,void 0,db)},db=function(){};var gb=qa(window.GoogleAnalyticsObject)&&sa(window.GoogleAnalyticsObject)||"ga",Ba=!1,he=S("_br"),hb=T("apiVersion","v"),ib=T("clientVersion","_v");S("anonymizeIp","aip");var jb=S("adSenseId","a"),Va=S("hitType","t"),Ia=S("hitCallback"),Ra=S("hitPayload");S("nonInteraction","ni");S("currencyCode","cu");S("dataSource","ds");var Vd=S("useBeacon",void 0,!1),fa=S("transport");S("sessionControl","sc","");S("sessionGroup","sg");S("queueTime","qt");var Ac=S("_s","_s");S("screenName","cd");
-var kb=S("location","dl",""),lb=S("referrer","dr"),mb=S("page","dp","");S("hostname","dh");var nb=S("language","ul"),ob=S("encoding","de");S("title","dt",function(){return M.title||void 0});cb("contentGroup([0-9]+)",function(a){return new bb(a[0],"cg"+a[1])});var pb=S("screenColors","sd"),qb=S("screenResolution","sr"),rb=S("viewportSize","vp"),sb=S("javaEnabled","je"),tb=S("flashVersion","fl");S("campaignId","ci");S("campaignName","cn");S("campaignSource","cs");S("campaignMedium","cm");
-S("campaignKeyword","ck");S("campaignContent","cc");var ub=S("eventCategory","ec"),xb=S("eventAction","ea"),yb=S("eventLabel","el"),zb=S("eventValue","ev"),Bb=S("socialNetwork","sn"),Cb=S("socialAction","sa"),Db=S("socialTarget","st"),Eb=S("l1","plt"),Fb=S("l2","pdt"),Gb=S("l3","dns"),Hb=S("l4","rrt"),Ib=S("l5","srt"),Jb=S("l6","tcp"),Kb=S("l7","dit"),Lb=S("l8","clt"),Mb=S("timingCategory","utc"),Nb=S("timingVar","utv"),Ob=S("timingLabel","utl"),Pb=S("timingValue","utt");S("appName","an");
-S("appVersion","av","");S("appId","aid","");S("appInstallerId","aiid","");S("exDescription","exd");S("exFatal","exf");var Nc=S("expId","xid"),Oc=S("expVar","xvar"),Rc=S("_utma","_utma"),Sc=S("_utmz","_utmz"),Tc=S("_utmht","_utmht"),Ua=S("_hc",void 0,0),Xa=S("_ti",void 0,0),Wa=S("_to",void 0,20);cb("dimension([0-9]+)",function(a){return new bb(a[0],"cd"+a[1])});cb("metric([0-9]+)",function(a){return new bb(a[0],"cm"+a[1])});S("linkerParam",void 0,void 0,Bc,db);var ld=S("usage","_u"),Gd=S("_um");
-S("forceSSL",void 0,void 0,function(){return Ba},function(a,b,c){J(34);Ba=!!c});var ed=S("_j1","jid");cb("\\&(.*)",function(a){var b=new bb(a[0],a[1]),c=yc(a[0].substring(1));c&&(b.Z=function(a){return a.get(c)},b.o=function(a,b,g,ca){a.set(c,g,ca)},b.F=void 0);return b});
-var Qb=T("_oot"),dd=S("previewTask"),Rb=S("checkProtocolTask"),md=S("validationTask"),Sb=S("checkStorageTask"),Uc=S("historyImportTask"),Tb=S("samplerTask"),Vb=S("_rlt"),Wb=S("buildHitTask"),Xb=S("sendHitTask"),Vc=S("ceTask"),zd=S("devIdTask"),Cd=S("timingTask"),Ld=S("displayFeaturesTask"),V=T("name"),Q=T("clientId","cid"),Ad=S("userId","uid"),Na=T("trackingId","tid"),U=T("cookieName",void 0,"_ga"),W=T("cookieDomain"),Yb=T("cookiePath",void 0,"/"),Zb=T("cookieExpires",void 0,63072E3),$b=T("legacyCookieDomain"),
-Wc=T("legacyHistoryImport",void 0,!0),ac=T("storage",void 0,"cookie"),bc=T("allowLinker",void 0,!1),cc=T("allowAnchor",void 0,!0),Ka=T("sampleRate","sf",100),dc=T("siteSpeedSampleRate",void 0,1),ec=T("alwaysSendReferrer",void 0,!1),gd=S("transportUrl"),Md=S("_r","_r");function X(a,b,c,d){b[a]=function(){try{return d&&J(d),c.apply(this,arguments)}catch(b){throw ge("exc",a,b&&b.name),b;}}};var Od=function(a,b,c){this.V=1E4;this.fa=a;this.$=!1;this.B=b;this.ea=c||1},Ed=function(a,b){var c;if(a.fa&&a.$)return 0;a.$=!0;if(b){if(a.B&&R(b,a.B))return R(b,a.B);if(0==b.get(dc))return 0}if(0==a.V)return 0;void 0===c&&(c=Bd());return 0==c%a.V?Math.floor(c/a.V)%a.ea+1:0};var ie=new Od(!0,he,7),je=function(a){if(!Ud()&&!Ba){var b=Ed(ie,a);if(b&&!(!O.navigator.sendBeacon&&4<=b&&6>=b)){var c=(new Date).getHours(),d=[Bd(),Bd(),Bd()].join(".");a=(3==b||5==b?"https:":"http:")+"//www.google-analytics.com/collect?z=br.";a+=[b,"A",c,d].join(".");var e=1!=b%3?"https:":"http:",e=e+"//www.google-analytics.com/collect?z=br.",e=e+[b,"B",c,d].join(".");7==b&&(e=e.replace("//www.","//ssl."));c=function(){4<=b&&6>=b?O.navigator.sendBeacon(e,""):ta(e)};Bd()%2?(ta(a),c()):(c(),ta(a))}}};function fc(){var a,b,c;if((c=(c=O.navigator)?c.plugins:null)&&c.length)for(var d=0;d<c.length&&!b;d++){var e=c[d];-1<e.name.indexOf("Shockwave Flash")&&(b=e.description)}if(!b)try{a=new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7"),b=a.GetVariable("$version")}catch(g){}if(!b)try{a=new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6"),b="WIN 6,0,21,0",a.AllowScriptAccess="always",b=a.GetVariable("$version")}catch(g){}if(!b)try{a=new ActiveXObject("ShockwaveFlash.ShockwaveFlash"),b=a.GetVariable("$version")}catch(g){}b&&
-(a=b.match(/[\d]+/g))&&3<=a.length&&(b=a[0]+"."+a[1]+" r"+a[2]);return b||void 0};var gc=function(a,b){var c=Math.min(R(a,dc),100);if(!(La(P(a,Q))%100>=c)&&(c={},Ec(c)||Fc(c))){var d=c[Eb];void 0==d||Infinity==d||isNaN(d)||(0<d?(Y(c,Gb),Y(c,Jb),Y(c,Ib),Y(c,Fb),Y(c,Hb),Y(c,Kb),Y(c,Lb),b(c)):L(O,"load",function(){gc(a,b)},!1))}},Ec=function(a){var b=O.performance||O.webkitPerformance,b=b&&b.timing;if(!b)return!1;var c=b.navigationStart;if(0==c)return!1;a[Eb]=b.loadEventStart-c;a[Gb]=b.domainLookupEnd-b.domainLookupStart;a[Jb]=b.connectEnd-b.connectStart;a[Ib]=b.responseStart-b.requestStart;
-a[Fb]=b.responseEnd-b.responseStart;a[Hb]=b.fetchStart-c;a[Kb]=b.domInteractive-c;a[Lb]=b.domContentLoadedEventStart-c;return!0},Fc=function(a){if(O.top!=O)return!1;var b=O.external,c=b&&b.onloadT;b&&!b.isValidLoadTime&&(c=void 0);2147483648<c&&(c=void 0);0<c&&b.setPageReadyTime();if(void 0==c)return!1;a[Eb]=c;return!0},Y=function(a,b){var c=a[b];if(isNaN(c)||Infinity==c||0>c)a[b]=void 0},Fd=function(a){return function(b){"pageview"!=b.get(Va)||a.I||(a.I=!0,gc(b,function(b){a.send("timing",b)}))}};var hc=!1,mc=function(a){if("cookie"==P(a,ac)){var b=P(a,U),c=nd(a),d=kc(P(a,Yb)),e=lc(P(a,W)),g=1E3*R(a,Zb),ca=P(a,Na);if("auto"!=e)zc(b,c,d,e,ca,g)&&(hc=!0);else{J(32);var l;a:{c=[];e=xa().split(".");if(4==e.length&&(l=e[e.length-1],parseInt(l,10)==l)){l=["none"];break a}for(l=e.length-2;0<=l;l--)c.push(e.slice(l).join("."));c.push("none");l=c}for(var k=0;k<l.length;k++)if(e=l[k],a.data.set(W,e),c=nd(a),zc(b,c,d,e,ca,g)){hc=!0;return}a.data.set(W,"auto")}}},nc=function(a){if("cookie"==P(a,ac)&&
-!hc&&(mc(a),!hc))throw"abort";},Yc=function(a){if(a.get(Wc)){var b=P(a,W),c=P(a,$b)||xa(),d=Xc("__utma",c,b);d&&(J(19),a.set(Tc,(new Date).getTime(),!0),a.set(Rc,d.R),(b=Xc("__utmz",c,b))&&d.hash==b.hash&&a.set(Sc,b.R))}},nd=function(a){var b=Cc(P(a,Q)),c=ic(P(a,W));a=jc(P(a,Yb));1<a&&(c+="-"+a);return["GA1",c,b].join(".")},Gc=function(a,b,c){for(var d=[],e=[],g,ca=0;ca<a.length;ca++){var l=a[ca];l.H[c]==b?d.push(l):void 0==g||l.H[c]<g?(e=[l],g=l.H[c]):l.H[c]==g&&e.push(l)}return 0<d.length?d:e},
-lc=function(a){return 0==a.indexOf(".")?a.substr(1):a},ic=function(a){return lc(a).split(".").length},kc=function(a){if(!a)return"/";1<a.length&&a.lastIndexOf("/")==a.length-1&&(a=a.substr(0,a.length-1));0!=a.indexOf("/")&&(a="/"+a);return a},jc=function(a){a=kc(a);return"/"==a?1:a.split("/").length};function Xc(a,b,c){"none"==b&&(b="");var d=[],e=Ca(a);a="__utma"==a?6:2;for(var g=0;g<e.length;g++){var ca=(""+e[g]).split(".");ca.length>=a&&d.push({hash:ca[0],R:e[g],O:ca})}return 0==d.length?void 0:1==d.length?d[0]:Zc(b,d)||Zc(c,d)||Zc(null,d)||d[0]}function Zc(a,b){var c,d;null==a?c=d=1:(c=La(a),d=La(D(a,".")?a.substring(1):"."+a));for(var e=0;e<b.length;e++)if(b[e].hash==c||b[e].hash==d)return b[e]};var od=new RegExp(/^https?:\/\/([^\/:]+)/),pd=/(.*)([?&#])(?:_ga=[^&#]*)(?:&?)(.*)/;function Bc(a){a=a.get(Q);var b=Ic(a,0);return"_ga=1."+K(b+"."+a)}function Ic(a,b){for(var c=new Date,d=O.navigator,e=d.plugins||[],c=[a,d.userAgent,c.getTimezoneOffset(),c.getYear(),c.getDate(),c.getHours(),c.getMinutes()+b],d=0;d<e.length;++d)c.push(e[d].description);return La(c.join("."))}var Dc=function(a){J(48);this.target=a;this.T=!1};
-Dc.prototype.ca=function(a,b){if(a.tagName){if("a"==a.tagName.toLowerCase()){a.href&&(a.href=qd(this,a.href,b));return}if("form"==a.tagName.toLowerCase())return rd(this,a)}if("string"==typeof a)return qd(this,a,b)};
-var qd=function(a,b,c){var d=pd.exec(b);d&&3<=d.length&&(b=d[1]+(d[3]?d[2]+d[3]:""));a=a.target.get("linkerParam");var e=b.indexOf("?"),d=b.indexOf("#");c?b+=(-1==d?"#":"&")+a:(c=-1==e?"?":"&",b=-1==d?b+(c+a):b.substring(0,d)+c+a+b.substring(d));return b=b.replace(/&+_ga=/,"&_ga=")},rd=function(a,b){if(b&&b.action){var c=a.target.get("linkerParam").split("=")[1];if("get"==b.method.toLowerCase()){for(var d=b.childNodes||[],e=0;e<d.length;e++)if("_ga"==d[e].name){d[e].setAttribute("value",c);return}d=
-M.createElement("input");d.setAttribute("type","hidden");d.setAttribute("name","_ga");d.setAttribute("value",c);b.appendChild(d)}else"post"==b.method.toLowerCase()&&(b.action=qd(a,b.action))}};
-Dc.prototype.S=function(a,b,c){function d(c){try{c=c||O.event;var d;a:{var g=c.target||c.srcElement;for(c=100;g&&0<c;){if(g.href&&g.nodeName.match(/^a(?:rea)?$/i)){d=g;break a}g=g.parentNode;c--}d={}}("http:"==d.protocol||"https:"==d.protocol)&&sd(a,d.hostname||"")&&d.href&&(d.href=qd(e,d.href,b))}catch(w){J(26)}}var e=this;this.T||(this.T=!0,L(M,"mousedown",d,!1),L(M,"keyup",d,!1));if(c){c=function(b){b=b||O.event;if((b=b.target||b.srcElement)&&b.action){var c=b.action.match(od);c&&sd(a,c[1])&&rd(e,
-b)}};for(var g=0;g<M.forms.length;g++)L(M.forms[g],"submit",c)}};function sd(a,b){if(b==M.location.hostname)return!1;for(var c=0;c<a.length;c++)if(a[c]instanceof RegExp){if(a[c].test(b))return!0}else if(0<=b.indexOf(a[c]))return!0;return!1};var Jd=function(a,b,c){this.U=ed;this.aa=b;(b=c)||(b=(b=P(a,V))&&"t0"!=b?Wd.test(b)?"_gat_"+Cc(P(a,Na)):"_gat_"+Cc(b):"_gat");this.Y=b},Rd=function(a,b){var c=b.get(Wb);b.set(Wb,function(b){Pd(a,b);var d=c(b);Qd(a,b);return d});var d=b.get(Xb);b.set(Xb,function(b){var c=d(b);Id(a,b);return c})},Pd=function(a,b){b.get(a.U)||("1"==Ca(a.Y)[0]?b.set(a.U,"",!0):b.set(a.U,""+hd(),!0))},Qd=function(a,b){b.get(a.U)&&zc(a.Y,"1",b.get(Yb),b.get(W),b.get(Na),6E5)},Id=function(a,b){if(b.get(a.U)){var c=new ee,
-d=function(a){$a(a).F&&c.set($a(a).F,b.get(a))};d(hb);d(ib);d(Na);d(Q);d(Ad);d(a.U);c.set($a(ld).F,Td(b));var e=a.aa;c.map(function(a,b){e+=K(a)+"=";e+=K(""+b)+"&"});e+="z="+hd();ta(e);b.set(a.U,"",!0)}},Wd=/^gtm\d+$/;var fd=function(a,b){var c=a.b;if(!c.get("dcLoaded")){Nd(c,29);b=b||{};var d;b[U]&&(d=Cc(b[U]));d=new Jd(c,"https://stats.g.doubleclick.net/r/collect?t=dc&aip=1&_r=3&",d);Rd(d,c);c.set("dcLoaded",!0)}};var Sd=function(a){if(!a.get("dcLoaded")&&"cookie"==a.get(ac)){Nd(a,51);var b=new Jd(a);Pd(b,a);Qd(b,a);a.get(b.U)&&(a.set(Md,1,!0),a.set(gd,oc()+"/r/collect",!0))}};var Lc=function(){var a=O.gaGlobal=O.gaGlobal||{};return a.hid=a.hid||hd()};var ad,bd=function(a,b,c){if(!ad){var d;d=M.location.hash;var e=O.name,g=/^#?gaso=([^&]*)/;if(e=(d=(d=d&&d.match(g)||e&&e.match(g))?d[1]:Ca("GASO")[0]||"")&&d.match(/^(?:!([-0-9a-z.]{1,40})!)?([-.\w]{10,1200})$/i))zc("GASO",""+d,c,b,a,0),window._udo||(window._udo=b),window._utcp||(window._utcp=c),a=e[1],wa("https://www.google.com/analytics/web/inpage/pub/inpage.js?"+(a?"prefix="+a+"&":"")+hd(),"_gasojs");ad=!0}};var wb=/^(UA|YT|MO|GP)-(\d+)-(\d+)$/,pc=function(a){function b(a,b){d.b.data.set(a,b)}function c(a,c){b(a,c);d.filters.add(a)}var d=this;this.b=new Ya;this.filters=new Ha;b(V,a[V]);b(Na,sa(a[Na]));b(U,a[U]);b(W,a[W]||xa());b(Yb,a[Yb]);b(Zb,a[Zb]);b($b,a[$b]);b(Wc,a[Wc]);b(bc,a[bc]);b(cc,a[cc]);b(Ka,a[Ka]);b(dc,a[dc]);b(ec,a[ec]);b(ac,a[ac]);b(Ad,a[Ad]);b(hb,1);b(ib,"j41");c(Qb,Ma);c(dd,cd);c(Rb,Oa);c(md,vb);c(Sb,nc);c(Uc,Yc);c(Tb,Ja);c(Vb,Ta);c(Vc,Hc);c(zd,yd);c(Ld,Sd);c(Wb,Pa);c(Xb,Sa);c(Cd,Fd(this));
-Jc(this.b,a[Q]);Kc(this.b);this.b.set(jb,Lc());bd(this.b.get(Na),this.b.get(W),this.b.get(Yb))},Jc=function(a,b){if("cookie"==P(a,ac)){hc=!1;var c;b:{var d=Ca(P(a,U));if(d&&!(1>d.length)){c=[];for(var e=0;e<d.length;e++){var g;g=d[e].split(".");var ca=g.shift();("GA1"==ca||"1"==ca)&&1<g.length?(ca=g.shift().split("-"),1==ca.length&&(ca[1]="1"),ca[0]*=1,ca[1]*=1,g={H:ca,s:g.join(".")}):g=void 0;g&&c.push(g)}if(1==c.length){J(13);c=c[0].s;break b}if(0==c.length)J(12);else{J(14);d=ic(P(a,W));c=Gc(c,
-d,0);if(1==c.length){c=c[0].s;break b}d=jc(P(a,Yb));c=Gc(c,d,1);c=c[0]&&c[0].s;break b}}c=void 0}c||(c=P(a,W),d=P(a,$b)||xa(),c=Xc("__utma",d,c),void 0!=c?(J(10),c=c.O[1]+"."+c.O[2]):c=void 0);c&&(a.data.set(Q,c),hc=!0)}c=a.get(cc);if(e=(c=M.location[c?"href":"search"].match("(?:&|#|\\?)"+K("_ga").replace(/([.*+?^=!:${}()|\[\]\/\\])/g,"\\$1")+"=([^&#]*)"))&&2==c.length?c[1]:"")a.get(bc)?(c=e.indexOf("."),-1==c?J(22):(d=e.substring(c+1),"1"!=e.substring(0,c)?J(22):(c=d.indexOf("."),-1==c?J(22):(e=
-d.substring(0,c),c=d.substring(c+1),e!=Ic(c,0)&&e!=Ic(c,-1)&&e!=Ic(c,-2)?J(23):(J(11),a.data.set(Q,c)))))):J(21);b&&(J(9),a.data.set(Q,K(b)));if(!a.get(Q))if(c=(c=O.gaGlobal&&O.gaGlobal.vid)&&-1!=c.search(/^(?:utma\.)?\d+\.\d+$/)?c:void 0)J(17),a.data.set(Q,c);else{J(8);c=O.navigator.userAgent+(M.cookie?M.cookie:"")+(M.referrer?M.referrer:"");d=c.length;for(e=O.history.length;0<e;)c+=e--^d++;a.data.set(Q,[hd()^La(c)&2147483647,Math.round((new Date).getTime()/1E3)].join("."))}mc(a)},Kc=function(a){var b=
-O.navigator,c=O.screen,d=M.location;a.set(lb,ya(a.get(ec)));if(d){var e=d.pathname||"";"/"!=e.charAt(0)&&(J(31),e="/"+e);a.set(kb,d.protocol+"//"+d.hostname+e+d.search)}c&&a.set(qb,c.width+"x"+c.height);c&&a.set(pb,c.colorDepth+"-bit");var c=M.documentElement,g=(e=M.body)&&e.clientWidth&&e.clientHeight,ca=[];c&&c.clientWidth&&c.clientHeight&&("CSS1Compat"===M.compatMode||!g)?ca=[c.clientWidth,c.clientHeight]:g&&(ca=[e.clientWidth,e.clientHeight]);c=0>=ca[0]||0>=ca[1]?"":ca.join("x");a.set(rb,c);a.set(tb,
-fc());a.set(ob,M.characterSet||M.charset);a.set(sb,b&&"function"===typeof b.javaEnabled&&b.javaEnabled()||!1);a.set(nb,(b&&(b.language||b.browserLanguage)||"").toLowerCase());if(d&&a.get(cc)&&(b=M.location.hash)){b=b.split(/[?&#]+/);d=[];for(c=0;c<b.length;++c)(D(b[c],"utm_id")||D(b[c],"utm_campaign")||D(b[c],"utm_source")||D(b[c],"utm_medium")||D(b[c],"utm_term")||D(b[c],"utm_content")||D(b[c],"gclid")||D(b[c],"dclid")||D(b[c],"gclsrc"))&&d.push(b[c]);0<d.length&&(b="#"+d.join("&"),a.set(kb,a.get(kb)+
-b))}};pc.prototype.get=function(a){return this.b.get(a)};pc.prototype.set=function(a,b){this.b.set(a,b)};var qc={pageview:[mb],event:[ub,xb,yb,zb],social:[Bb,Cb,Db],timing:[Mb,Nb,Pb,Ob]};pc.prototype.send=function(a){if(!(1>arguments.length)){var b,c;"string"===typeof arguments[0]?(b=arguments[0],c=[].slice.call(arguments,1)):(b=arguments[0]&&arguments[0][Va],c=arguments);b&&(c=za(qc[b]||[],c),c[Va]=b,this.b.set(c,void 0,!0),this.filters.D(this.b),this.b.data.m={},je(this.b))}};var rc=function(a){if("prerender"==M.visibilityState)return!1;a();return!0};var td=/^(?:(\w+)\.)?(?:(\w+):)?(\w+)$/,sc=function(a){if(ea(a[0]))this.u=a[0];else{var b=td.exec(a[0]);null!=b&&4==b.length&&(this.c=b[1]||"t0",this.K=b[2]||"",this.C=b[3],this.a=[].slice.call(a,1),this.K||(this.A="create"==this.C,this.i="require"==this.C,this.g="provide"==this.C,this.ba="remove"==this.C),this.i&&(3<=this.a.length?(this.X=this.a[1],this.W=this.a[2]):this.a[1]&&(qa(this.a[1])?this.X=this.a[1]:this.W=this.a[1])));b=a[1];a=a[2];if(!this.C)throw"abort";if(this.i&&(!qa(b)||""==b))throw"abort";
-if(this.g&&(!qa(b)||""==b||!ea(a)))throw"abort";if(ud(this.c)||ud(this.K))throw"abort";if(this.g&&"t0"!=this.c)throw"abort";}};function ud(a){return 0<=a.indexOf(".")||0<=a.indexOf(":")};var Yd,Zd,$d;Yd=new ee;$d=new ee;Zd={ec:45,ecommerce:46,linkid:47};
-var ae=function(a){function b(a){var b=(a.hostname||"").split(":")[0].toLowerCase(),c=(a.protocol||"").toLowerCase(),c=1*a.port||("http:"==c?80:"https:"==c?443:"");a=a.pathname||"";D(a,"/")||(a="/"+a);return[b,""+c,a]}var c=M.createElement("a");c.href=M.location.href;var d=(c.protocol||"").toLowerCase(),e=b(c),g=c.search||"",ca=d+"//"+e[0]+(e[1]?":"+e[1]:"");D(a,"//")?a=d+a:D(a,"/")?a=ca+a:!a||D(a,"?")?a=ca+e[2]+(a||g):0>a.split("/")[0].indexOf(":")&&(a=ca+e[2].substring(0,e[2].lastIndexOf("/"))+
-"/"+a);c.href=a;d=b(c);return{protocol:(c.protocol||"").toLowerCase(),host:d[0],port:d[1],path:d[2],query:c.search||"",url:a||""}};var Z={ga:function(){Z.f=[]}};Z.ga();Z.D=function(a){var b=Z.J.apply(Z,arguments),b=Z.f.concat(b);for(Z.f=[];0<b.length&&!Z.v(b[0])&&!(b.shift(),0<Z.f.length););Z.f=Z.f.concat(b)};
-Z.J=function(a){for(var b=[],c=0;c<arguments.length;c++)try{var d=new sc(arguments[c]);if(d.g)Yd.set(d.a[0],d.a[1]);else{if(d.i){var e=d,g=e.a[0];if(!ea(Yd.get(g))&&!$d.get(g)){Zd.hasOwnProperty(g)&&J(Zd[g]);var ca=e.X;!ca&&Zd.hasOwnProperty(g)?(J(39),ca=g+".js"):J(43);if(ca){ca&&0<=ca.indexOf("/")||(ca=(Ba||Ud()?"https:":"http:")+"//www.google-analytics.com/plugins/ua/"+ca);var l=ae(ca),e=void 0;var k=l.protocol,w=M.location.protocol,e="https:"==k||k==w?!0:"http:"!=k?!1:"http:"==w;var Xd;if(Xd=e){var e=
-l,be=ae(M.location.href);if(e.query||0<=e.url.indexOf("?")||0<=e.path.indexOf("://"))Xd=!1;else if(e.host==be.host&&e.port==be.port)Xd=!0;else{var ce="http:"==e.protocol?80:443;Xd="www.google-analytics.com"==e.host&&(e.port||ce)==ce&&D(e.path,"/plugins/")?!0:!1}}Xd&&(wa(l.url),$d.set(g,!0))}}}b.push(d)}}catch(de){}return b};
-Z.v=function(a){try{if(a.u)a.u.call(O,N.j("t0"));else{var b=a.c==gb?N:N.j(a.c);if(a.A)"t0"==a.c&&N.create.apply(N,a.a);else if(a.ba)N.remove(a.c);else if(b)if(a.i){var c;var d=a.a[0],e=a.W;b==N||b.get(V);var g=Yd.get(d);ea(g)?(b.plugins_=b.plugins_||new ee,b.plugins_.get(d)||b.plugins_.set(d,new g(b,e||{})),c=!0):c=!1;if(!c)return!0}else if(a.K){var ca=a.C,l=a.a,k=b.plugins_.get(a.K);k[ca].apply(k,l)}else b[a.C].apply(b,a.a)}}catch(w){}};var N=function(a){J(1);Z.D.apply(Z,[arguments])};N.h={};N.P=[];N.L=0;N.answer=42;var uc=[Na,W,V];N.create=function(a){var b=za(uc,[].slice.call(arguments));b[V]||(b[V]="t0");var c=""+b[V];if(N.h[c])return N.h[c];b=new pc(b);N.h[c]=b;N.P.push(b);return b};N.remove=function(a){for(var b=0;b<N.P.length;b++)if(N.P[b].get(V)==a){N.P.splice(b,1);N.h[a]=null;break}};N.j=function(a){return N.h[a]};N.getAll=function(){return N.P.slice(0)};
-N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loaded=!0;var b=O[gb]=N;X("create",b,b.create);X("remove",b,b.remove);X("getByName",b,b.j,5);X("getAll",b,b.getAll,6);b=pc.prototype;X("get",b,b.get,7);X("set",b,b.set,4);X("send",b,b.send);b=Ya.prototype;X("get",b,b.get);X("set",b,b.set);if(!Ud()&&!Ba){a:{for(var b=M.getElementsByTagName("script"),c=0;c<b.length&&100>c;c++){var d=b[c].src;if(d&&0==d.indexOf("https://www.google-analytics.com/analytics")){J(33);b=!0;break a}}b=
-!1}b&&(Ba=!0)}Ud()||Ba||!Ed(new Od)||(J(36),Ba=!0);(O.gaplugins=O.gaplugins||{}).Linker=Dc;b=Dc.prototype;Yd.set("linker",Dc);X("decorate",b,b.ca,20);X("autoLink",b,b.S,25);Yd.set("displayfeatures",fd);Yd.set("adfeatures",fd);a=a&&a.q;ka(a)?Z.D.apply(N,a):J(50)}};N.da=function(){for(var a=N.getAll(),b=0;b<a.length;b++)a[b].get(V)};
-(function(){var a=N.N;if(!rc(a)){J(16);var b=!1,c=function(){if(!b&&rc(a)){b=!0;var d=c,e=M;e.removeEventListener?e.removeEventListener("visibilitychange",d,!1):e.detachEvent&&e.detachEvent("onvisibilitychange",d)}};L(M,"visibilitychange",c)}})();function La(a){var b=1,c=0,d;if(a)for(b=0,d=a.length-1;0<=d;d--)c=a.charCodeAt(d),b=(b<<6&268435455)+c+(c<<14),c=b&266338304,b=0!=c?b^c>>21:b;return b};})(window);
 
 </script>
-<!-- End Google Analytics -->
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
 
 
-  
 </head>
+
 <body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo" style="background-image: url(/css/images/logo.png)"></i><span class="site-title">王子龙的博客</span></a>
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/.">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
-      </div>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+
+</div>
+        </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-        
-          <td><a class="main-nav-link" href="/.">Home</a></td>
-        
-          <td><a class="main-nav-link" href="/archives">Archives</a></td>
-        
-          <td><a class="main-nav-link" href="/categories">Categories</a></td>
-        
-          <td><a class="main-nav-link" href="/about">About</a></td>
-        
-        <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
-        </td>
-      </tr>
-    </table>
-  </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="outer">
-      
-      <section id="main"><article id="post-learning-git" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      
-	
-		<img src="/images/2015/11/git.jpg" class="article-banner">
-	
-
-
-
-    
-    
-    
-      <header class="article-header">
+        <div class="outer">
+            
+            <section id="main"><article id="post-learning-git" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-  
-    <h1 class="article-title" itemprop="name">
-      Git 学习笔记
-    </h1>
-  
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/11/08/learning-git/">
-      <time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time>
-    </a>
-  </div>
+            
+	
+		<img src="/images/2015/11/git.jpg" class="article-banner" />
+	
 
 
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/Git/">Git</a>
-  </div>
 
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        
+        
+            <header class="article-header">
                 
-        <p>本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a href="http://git.oschina.net/progit/" target="_blank" rel="external">《Pro Git 2nd Edition（中文版）》</a>。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本~~）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。</p>
+    
+        <h1 class="article-title" itemprop="name">
+            Git 学习笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/11/08/learning-git/">
+            <time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Git/">Git</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Git/">Git</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本配置"><span class="toc-number">1.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#别名"><span class="toc-number">1.1.</span> <span class="toc-text">别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置用户信息"><span class="toc-number">1.2.</span> <span class="toc-text">配置用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成公钥（SSH-keys）"><span class="toc-number">1.3.</span> <span class="toc-text">生成公钥（SSH keys）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fetch-操作"><span class="toc-number">2.</span> <span class="toc-text">fetch 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pull-操作"><span class="toc-number">3.</span> <span class="toc-text">pull 操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强制更新"><span class="toc-number">3.1.</span> <span class="toc-text">强制更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交操作"><span class="toc-number">4.</span> <span class="toc-text">提交操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销刚才的提交"><span class="toc-number">4.1.</span> <span class="toc-text">撤销刚才的提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改刚才的提交的注释"><span class="toc-number">4.2.</span> <span class="toc-text">修改刚才的提交的注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改提交历史——交互式变基"><span class="toc-number">4.3.</span> <span class="toc-text">更改提交历史——交互式变基</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动分支中的某些提交"><span class="toc-number">4.4.</span> <span class="toc-text">移动分支中的某些提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交标签"><span class="toc-number">4.5.</span> <span class="toc-text">提交标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">5.</span> <span class="toc-text">分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-number">5.1.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除本地分支"><span class="toc-number">5.2.</span> <span class="toc-text">删除本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除远程分支"><span class="toc-number">5.3.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重命名一个本地分支"><span class="toc-number">5.4.</span> <span class="toc-text">重命名一个本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跟踪远程分支"><span class="toc-number">5.5.</span> <span class="toc-text">跟踪远程分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#储藏"><span class="toc-number">6.</span> <span class="toc-text">储藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#裸版本库"><span class="toc-number">7.</span> <span class="toc-text">裸版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交历史"><span class="toc-number">8.</span> <span class="toc-text">提交历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本命令"><span class="toc-number">8.1.</span> <span class="toc-text">基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可视化提交历史"><span class="toc-number">8.2.</span> <span class="toc-text">可视化提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过提交信息查找提交历史"><span class="toc-number">8.3.</span> <span class="toc-text">通过提交信息查找提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比两次提交之间的差异"><span class="toc-number">8.4.</span> <span class="toc-text">对比两次提交之间的差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找到某一行的全部改动历史"><span class="toc-number">8.5.</span> <span class="toc-text">找到某一行的全部改动历史</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#checkout"><span class="toc-number">9.</span> <span class="toc-text">checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#【附录】自己不是很熟练的-Git-命令手册"><span class="toc-number">10.</span> <span class="toc-text">【附录】自己不是很熟练的 Git 命令手册</span></a></li></ol>
+            </div>
+            <p>本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a href="http://git.oschina.net/progit/" target="_blank" rel="noopener">《Pro Git 2nd Edition（中文版）》</a>。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。</p>
 <a id="more"></a>
 <h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>配置别名可以提高工作效率。</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.co</span> checkout</div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.ci</span> commit</div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.br</span> branch</div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.st</span> status</div></pre></td></tr></table></figure>
-<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">"zilong-thu"</span>;</div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.email</span> <span class="string">"809052335@qq.com"</span></div></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global alias.co checkout</span><br><span class="line">git<span class="built_in"> config </span>--global alias.ci commit</span><br><span class="line">git<span class="built_in"> config </span>--global alias.br branch</span><br><span class="line">git<span class="built_in"> config </span>--global alias.st status</span><br></pre></td></tr></table></figure>
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">"zilong-thu"</span>;</span><br><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">"809052335@qq.com"</span></span><br></pre></td></tr></table></figure>
 <h3 id="生成公钥（SSH-keys）"><a href="#生成公钥（SSH-keys）" class="headerlink" title="生成公钥（SSH keys）"></a>生成公钥（SSH keys）</h3><p>可以用下面的命令生成自己的公钥（public key）：</p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Creates a new ssh key using the provided email</span></div><div class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx@xxxxx.com"</span></div></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Creates a new ssh key using the provided email</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx@xxxxx.com"</span></span><br></pre></td></tr></table></figure>
 <p>生成的 public key 在 <code>~/.ssh/id_rsa.pub</code> 这个文件里。</p>
 <h2 id="fetch-操作"><a href="#fetch-操作" class="headerlink" title="fetch 操作"></a>fetch 操作</h2><p>fetch 操作仅仅是把远程仓库的代码下载当本地而已。可以同时指定相应的本地分支名，git 便会在 fetch 完成后自动创建一个本地分支，追踪该远程分支。例如：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch origin &lt;branch_name&gt;<span class="symbol">:&lt;local_branch_nam&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="pull-操作"><a href="#pull-操作" class="headerlink" title="pull 操作"></a>pull 操作</h2><h3 id="强制更新"><a href="#强制更新" class="headerlink" title="强制更新"></a>强制更新</h3><p><a href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes" target="_blank" rel="external">Git Pull While Ignoring Local Changes?</a></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin &lt;branch_name&gt;<span class="symbol">:&lt;local_branch_nam&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="pull-操作"><a href="#pull-操作" class="headerlink" title="pull 操作"></a>pull 操作</h2><h3 id="强制更新"><a href="#强制更新" class="headerlink" title="强制更新"></a>强制更新</h3><p><a href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes" target="_blank" rel="noopener">Git Pull While Ignoring Local Changes?</a></p>
 <p>【方法1】先clean当前的工作目录，使其与上一次的commit一致，然后再pull即可</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></div><div class="line">git pull</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard</span></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
 <p>【方法2】先将改动们暂存一下（<code>stash</code>），然后更新，更新完了再将暂存栈弹出或删除。</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash</div><div class="line">git pull</div><div class="line">git stash <span class="keyword">pop</span></div></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td></tr></table></figure>
 <h2 id="提交操作"><a href="#提交操作" class="headerlink" title="提交操作"></a>提交操作</h2><h3 id="撤销刚才的提交"><a href="#撤销刚才的提交" class="headerlink" title="撤销刚才的提交"></a>撤销刚才的提交</h3><p>好比，初始化一份nodejs代码，<code>git commit</code> 完了，才想起来没有把 <code>node_modules</code> 目录加进 <code>.gitignore</code>文件里去，太可怕了。得把刚才的提交撤销掉，而且保证 <code>node_modules</code> 目录不能在代码仓库里。就得用到这个命令了：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~1</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~1</span></span><br></pre></td></tr></table></figure>
 <p>然后，把事情做正确了，再提交。当然了，更全面的问题与解决方案在这里：</p>
 <ul>
-<li><a href="http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit" target="_blank" rel="external">How do you undo the last commit? | 来自 Stackoverflow 的问答</a>。</li>
+<li><a href="http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit" target="_blank" rel="noopener">How do you undo the last commit? | 来自 Stackoverflow 的问答</a>。</li>
 </ul>
 <p><strong>原理</strong></p>
 <p>不想使 <code>node_modules</code> 再在代码仓库里出现，过程是这样的：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 出错的提交，是这样的，F 代表当前的文件：</span></div><div class="line">   (F)</div><div class="line">A-B-C</div><div class="line">    ↑</div><div class="line">  <span class="keyword">master</span></div><div class="line"> </div><div class="line"><span class="title"># 执行这个</span></div><div class="line">git reset --hard HEAD~<span class="number">1</span></div><div class="line"> </div><div class="line"><span class="comment"># 当前代码仓库就成了这样：</span></div><div class="line"> (F)</div><div class="line">A-B</div><div class="line">  ↑</div><div class="line"><span class="literal">master</span></div></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 出错的提交，是这样的，F 代表当前的文件：</span></span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  <span class="literal">master</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 执行这个</span></span><br><span class="line">git reset --hard HEAD~<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 当前代码仓库就成了这样：</span></span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line"><span class="literal">master</span></span><br></pre></td></tr></table></figure>
 <p><code>--hard</code>是物理删除，直接把工作区的改动都删掉了。</p>
-<h3 id="修改刚才的提交的注释"><a href="#修改刚才的提交的注释" class="headerlink" title="修改刚才的提交的注释"></a>修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></div></pre></td></tr></table></figure>
+<h3 id="修改刚才的提交的注释"><a href="#修改刚才的提交的注释" class="headerlink" title="修改刚才的提交的注释"></a>修改刚才的提交的注释</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure>
 <p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
 <h3 id="更改提交历史——交互式变基"><a href="#更改提交历史——交互式变基" class="headerlink" title="更改提交历史——交互式变基"></a>更改提交历史——交互式变基</h3><p>交互式变基，即指 <code>git rebase -i &lt;commit-id&gt;</code>，然后自该 hash 之后（不含该 hash）的所有提交记录就会被呈现在文本编辑器里，按照提示编辑此文本，保存后即可实现对相应提交对象的修改。</p>
 <p>很明显，任何对提交历史的操作，都不应该在共有分支上进行。请确保此分支为私有。</p>
 <h3 id="移动分支中的某些提交"><a href="#移动分支中的某些提交" class="headerlink" title="移动分支中的某些提交"></a>移动分支中的某些提交</h3><p>假如最开始的分支图是这样的：分支 server 是从 master checkout 出来的，还有一个分支 client 是从 server 的 D 提交处 checkout 出来的，</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  master</div><div class="line">    ↓</div><div class="line">A-B-<span class="keyword">C</span>       server</div><div class="line">     \       ↙</div><div class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F</div><div class="line">         \</div><div class="line">          G-H</div><div class="line">            ↑</div><div class="line">          client</div></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  master</span><br><span class="line">    ↓</span><br><span class="line">A-B-C       server</span><br><span class="line">     \       ↙</span><br><span class="line">      C-D-E-F</span><br><span class="line">         \</span><br><span class="line">          G-H</span><br><span class="line">            ↑</span><br><span class="line">          client</span><br></pre></td></tr></table></figure>
 <p>那么执行 <code>git rebase --onto master server client</code> 命令，会取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改中的、既与 master 不同、又与 server 分支不同的那些提交，单独拿出来在 master 上面重演一遍。于是就会得到这样的提交图：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  master   client</div><div class="line">    ↓      ↙</div><div class="line">A-B-<span class="keyword">C</span>-G<span class="string">'-H'</span>       </div><div class="line">     \</div><div class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F ← server</div></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  master   client</span><br><span class="line">    ↓      ↙</span><br><span class="line">A-B-<span class="keyword">C</span>-G<span class="string">'-H'</span>       </span><br><span class="line">     \</span><br><span class="line">      <span class="keyword">C</span>-<span class="keyword">D</span>-<span class="keyword">E</span>-F ← server</span><br></pre></td></tr></table></figure>
 <p>执行这样的命令时，最好相应的提交都是“原子性”的。</p>
 <h3 id="提交标签"><a href="#提交标签" class="headerlink" title="提交标签"></a>提交标签</h3><p>可以为某个提交创建标签：</p>
 <p><code>git tag -a &lt;tag_name&gt; &lt;commit_id&gt;</code></p>
 <p>可以像下面这样，单独推送该标签到远程仓库：</p>
 <p><code>git push origin &lt;tag_name&gt;</code></p>
-<p>其他推送标签的方法可以参考：<a href="http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git" target="_blank" rel="external">http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git</a></p>
+<p>其他推送标签的方法可以参考：<a href="http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git" target="_blank" rel="noopener">http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git</a></p>
 <h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
 <p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
 <p><code>git branch -r</code>，只查看远程追踪分支</p>
@@ -215,13 +220,13 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
 <h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>git push origin --delete &lt;branch_name&gt;</code>，可以删除远程仓库里的分支。删除后，会在网站提示诸如此类的消息：</p>
 <blockquote>
-<p>No branch or tag ‘refs/heads/<branch_name>‘ exists in repository ‘<em>*</em>‘</branch_name></p>
+<p>No branch or tag ‘refs/heads/&lt;branch_name&gt;’ exists in repository ‘***’</p>
 </blockquote>
 <h3 id="重命名一个本地分支"><a href="#重命名一个本地分支" class="headerlink" title="重命名一个本地分支"></a>重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
 <p><code>git branch -m &lt;oldname&gt; &lt;newname&gt;</code>，修改任意本地分支的名字</p>
 <p><code>git branch -m &lt;new_name_for_the_current_branch&gt;</code>，修改当前所在分支的名字</p>
 <h3 id="跟踪远程分支"><a href="#跟踪远程分支" class="headerlink" title="跟踪远程分支"></a>跟踪远程分支</h3><p>如果一个分支尚未与相应的远程分支建立跟踪关系，可以在 <code>push</code> 的时候顺便指定一下：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push --<span class="keyword">set</span>-upstream <span class="comment">origin master</span></div></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">push</span> --<span class="keyword">set</span>-upstream origin master</span><br></pre></td></tr></table></figure>
 <p>意思是，向远程（origin）分支（master）提交代码，并且今后把这个远程分支作为当前分支的远程跟踪分支。以后运行 <code>git status</code> 就会提示当前分支是否落后于远程跟踪分支了。</p>
 <p>Git 的提示：</p>
 <blockquote>
@@ -231,9 +236,9 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 </blockquote>
 <h2 id="储藏"><a href="#储藏" class="headerlink" title="储藏"></a>储藏</h2><p><code>git stash</code> 命令会捕获当前分支的工作目录和索引的全部状态，将其存储在一个栈中。</p>
 <p>不想提交，又想获取最新的远程仓库代码时：</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash</div><div class="line">git pull --rebase <span class="built_in">origin</span> <span class="built_in">feature</span>/my_feature_1</div><div class="line">git stash <span class="built_in">apply</span></div></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull --rebase <span class="built_in">origin</span> <span class="built_in">feature</span>/my_feature_1</span><br><span class="line">git stash <span class="built_in">apply</span></span><br></pre></td></tr></table></figure>
 <p><code>git stash</code> 默认执行的是 <code>git stash save</code>，可以给这个储藏添加一条备注：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git stash save &quot;这是一个暂存&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="keyword">save</span> <span class="string">"这是一个暂存"</span></span><br></pre></td></tr></table></figure>
 <p><code>git stash apply</code> 只会取出储藏栈最上面的那个状态，并不会删除它。想要达到“弹出栈”的效果，可以使用 <code>git stash pop</code>，这条命令会把储藏栈的顶端状态弹出，并将其从栈中删除。</p>
 <p><code>git stash list</code>， 查看暂存栈。里面编号为 0 的是最新的暂存状态。</p>
 <p><code>git stash clean</code>， 清空暂存区</p>
@@ -241,6 +246,10 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <h2 id="提交历史"><a href="#提交历史" class="headerlink" title="提交历史"></a>提交历史</h2><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><p><code>git log</code>，打开默认的文本编辑器，在其中显示当前分支的提交历史。</p>
 <p><code>git log &lt;branch_name&gt;</code>，显示某个分支的提交历史。</p>
 <p><code>git log -p</code>，会给出提交历史，并且包含了每次提交的逐行增删改对比。</p>
+<h3 id="可视化提交历史"><a href="#可视化提交历史" class="headerlink" title="可视化提交历史"></a>可视化提交历史</h3><p>git 本身提供了一个可以很好地画出提交分支图历史的命令。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=format:<span class="string">"%h %s"</span> --graph</span><br><span class="line"></span><br><span class="line"># `--pretty` 参数可以指明显示提交记录的格式。其值可以是 `oneline` | `short` | `full` | `fuller` | `format`。其中 `format` 可以指定一个自定义格式。</span><br><span class="line"># `--graph` 参数用来指示 git 借助 ASCII 字符来绘制分支、合并历史。</span><br></pre></td></tr></table></figure>
+<p>上面这个命令可以输出类似这样的字符图：</p>
+<p><img src="/images/2017/05/git-log-graph.png"></p>
 <h3 id="通过提交信息查找提交历史"><a href="#通过提交信息查找提交历史" class="headerlink" title="通过提交信息查找提交历史"></a>通过提交信息查找提交历史</h3><p>这对应一个比较少的场景。</p>
 <blockquote>
 <p>产品经理说：“以前我不小心砍掉了一个功能，现在我想让它再次上线，以前的代码应该还在，所以恢复起来不难吧？”</p>
@@ -251,94 +260,158 @@ N.N=function(){"ga"!=gb&&J(49);var a=O[gb];if(!a||42!=a.answer){N.L=a&&a.l;N.loa
 <blockquote>
 <p>To search the commit log (across all branches) for the given text:</p>
 <p>git log –all –grep=’用户行为分析’</p>
-<p>参考 <a href="http://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message" target="_blank" rel="external">How to search a Git repository by commit message?</a></p>
+<p>参考 <a href="http://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message" target="_blank" rel="noopener">How to search a Git repository by commit message?</a></p>
 </blockquote>
 <p>OK，真的出来了几个提交记录。那么想查看对应的记录快照是否有相应的代码，应该先创建一个分支，然后</p>
 <p><code>git checkout &lt;commit-id&gt;</code>，就会把该提交快照全部从仓库里拿到工作区域。</p>
 <p>这时候，可以查看当前的 HEAD 是否为希望的提交记录的 ID ：<code>git rev-parse HEAD</code>。</p>
-<h3 id="对比两次提交之间的差异"><a href="#对比两次提交之间的差异" class="headerlink" title="对比两次提交之间的差异"></a>对比两次提交之间的差异</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff <span class="tag">&lt;<span class="name">commit-id-1</span>&gt;</span> <span class="tag">&lt;<span class="name">commit-id-2</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="对比两次提交之间的差异"><a href="#对比两次提交之间的差异" class="headerlink" title="对比两次提交之间的差异"></a>对比两次提交之间的差异</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="tag">&lt;<span class="name">commit-id-1</span>&gt;</span> <span class="tag">&lt;<span class="name">commit-id-2</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以对比两次提交之间的全部差异。例如 <code>git diff HEAD~ HEAD</code> 就可以看到所在分支的最近一次提交与之前一次提交的差异。（HEAD只是最近一次提交的 commitID 的别名）</p>
 <h3 id="找到某一行的全部改动历史"><a href="#找到某一行的全部改动历史" class="headerlink" title="找到某一行的全部改动历史"></a>找到某一行的全部改动历史</h3><p><code>git blame -L &lt;rowNumber&gt;,&lt;row increment number&gt;</code></p>
 <h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><p><code>checkout</code> 可以用于切换分支，也可以用于从某次体积记录中把某个或该提交的全部文件拿到工作目录中。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git checkout branch_name</div><div class="line">$ git checkout &lt;commit-<span class="built_in">id</span>&gt;</div><div class="line">$ git checkout &lt;commit-<span class="built_in">id</span>&gt; path/<span class="keyword">to</span>/<span class="built_in">file</span></div></pre></td></tr></table></figure>
-<p>参考阅读：<a href="http://stackoverflow.com/questions/215718/reset-or-revert-a-specific-file-to-a-specific-revision-using-git" target="_blank" rel="external">Reset or revert a specific file to a specific revision using Git?</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git checkout &lt;branch-name&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout &lt;commit-id&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout &lt;commit-id&gt; path/to/file</span></span><br></pre></td></tr></table></figure>
+<p>还可以用于从某个分支里取出其最新的某个特定文件，即 git-checkout specific files from another branch：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;branch-<span class="keyword">name</span>&gt; -- &lt;<span class="keyword">file</span>-<span class="keyword">name</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>参考阅读：<a href="http://stackoverflow.com/questions/215718/reset-or-revert-a-specific-file-to-a-specific-revision-using-git" target="_blank" rel="noopener">Reset or revert a specific file to a specific revision using Git?</a></p>
 <hr>
-<h2 id="【附录】自己不是很熟练的-Git-命令手册"><a href="#【附录】自己不是很熟练的-Git-命令手册" class="headerlink" title="【附录】自己不是很熟练的 Git 命令手册"></a>【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># 查看关于某条命令的帮助</span></div><div class="line">git --help &lt;command&gt;</div><div class="line"> </div><div class="line"><span class="meta"># 检查多余的空白（以免给同伴们造成麻烦）</span></div><div class="line">gid diff --check</div><div class="line"> </div><div class="line"><span class="meta"># 彻底放弃最近的 N 次提交</span></div><div class="line">git reset --hard HEAD~N</div><div class="line"> </div><div class="line"><span class="meta"># 图形化查看一个文件的提交历史</span></div><div class="line">gitk &lt;filename&gt;</div><div class="line"></div><div class="line"><span class="meta"># 提交记录，带每次的更改状态</span></div><div class="line">git log --stat</div><div class="line"></div><div class="line"><span class="meta"># 删除一个远程分支（对 1.7.0 版本及以上）</span></div><div class="line">git push origin --delete branch_to_delete</div><div class="line"></div><div class="line"><span class="meta"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></div><div class="line"><span class="meta"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></div><div class="line">git fetch origin feature/branch_1</div><div class="line">git checkout --track origin/feature/branch_1</div></pre></td></tr></table></figure>
+<h2 id="【附录】自己不是很熟练的-Git-命令手册"><a href="#【附录】自己不是很熟练的-Git-命令手册" class="headerlink" title="【附录】自己不是很熟练的 Git 命令手册"></a>【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看关于某条命令的帮助</span></span><br><span class="line">git --help &lt;command&gt;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">gid diff --check</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 彻底放弃最近的 N 次提交</span></span><br><span class="line">git reset --hard HEAD~N</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形化查看一个文件的提交历史</span></span><br><span class="line">gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 提交记录，带每次的更改状态</span></span><br><span class="line">git log --stat</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">git fetch origin feature/branch_1</span><br><span class="line">git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cj107jsvr009h2xs62mpni1rg" class="article-share-link">Share</a>
-      
-        <a href="http://borninsummer.com/2015/11/08/learning-git/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-    </footer>
-  </div>
-  
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cjl5b6eor009ga8s6tfbuvw1s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
     
+
+        </footer>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2015/11/26/a-turning-point-at-the-age-of-27/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          A Turning Point at the Age of 27
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/10/27/about-using-json-in-http-body/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">关于在HTTP请求BODY中使用JSON格式</div>
-    </a>
-  
+    
+        <a href="/2015/11/26/a-turning-point-at-the-age-of-27/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    A Turning Point at the Age of 27
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/10/27/about-using-json-in-http-body/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">关于在HTTP请求BODY中使用JSON格式</div>
+        </a>
+    
 </nav>
 
-  
+
+    
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
 </section>
-
-</section>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2013 - 2017 王子龙<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-    </div>
-  </div>
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</footer>
     
 
-<script>
-  var disqus_shortname = 'wangzilongblog';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
 
 
 
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
 
-<script src="/js/script.js"></script>
-
-  </div>
+    </div>
 </body>
 </html>
