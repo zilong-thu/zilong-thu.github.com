@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Acorn.js 原理与应用 | 王子龙的博客</title>
+    <title>书写良好的 Git 提交信息 | 王子龙的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Acorn.js 是个好工具，可以做词法分析和语法分析，生成 AST，配合 acorn-walk 以及 escodegen，可以完成许多高级的事情。在工作中用它解决了一些问题。顺便就做了个分享，关于 Acorn.js 的原理与应用。下面是分享的 PPT，在此备份一下。 PPT 下载">
+    <meta name="description" content="在使用 Git 的过程中，可以发现 Git 是会强制每次提交都要写提交消息（commit message）的，这也算是 Linus 的良好编程习惯的体现。准确恰当的提交信息对于回溯项目开发历程、寻找特定功能的代码片段等等，都很有帮助。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Acorn.js 原理与应用">
-<meta property="og:url" content="http://borninsummer.com/2018/11/06/acornjs-intro/index.html">
+<meta property="og:title" content="书写良好的 Git 提交信息">
+<meta property="og:url" content="http://borninsummer.com/2018/11/09/how-to-write-clear-git-commit-messages/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="Acorn.js 是个好工具，可以做词法分析和语法分析，生成 AST，配合 acorn-walk 以及 escodegen，可以完成许多高级的事情。在工作中用它解决了一些问题。顺便就做了个分享，关于 Acorn.js 的原理与应用。下面是分享的 PPT，在此备份一下。 PPT 下载">
+<meta property="og:description" content="在使用 Git 的过程中，可以发现 Git 是会强制每次提交都要写提交消息（commit message）的，这也算是 Linus 的良好编程习惯的体现。准确恰当的提交信息对于回溯项目开发历程、寻找特定功能的代码片段等等，都很有帮助。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-07T16:32:25.754Z">
+<meta property="og:updated_time" content="2018-11-09T13:18:14.358Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Acorn.js 原理与应用">
-<meta name="twitter:description" content="Acorn.js 是个好工具，可以做词法分析和语法分析，生成 AST，配合 acorn-walk 以及 escodegen，可以完成许多高级的事情。在工作中用它解决了一些问题。顺便就做了个分享，关于 Acorn.js 的原理与应用。下面是分享的 PPT，在此备份一下。 PPT 下载">
+<meta name="twitter:title" content="书写良好的 Git 提交信息">
+<meta name="twitter:description" content="在使用 Git 的过程中，可以发现 Git 是会强制每次提交都要写提交消息（commit message）的，这也算是 Linus 的良好编程习惯的体现。准确恰当的提交信息对于回溯项目开发历程、寻找特定功能的代码片段等等，都很有帮助。">
     
 
     
@@ -117,7 +118,7 @@ var _hmt = _hmt || [];
 
         <div class="outer">
             
-            <section id="main"><article id="post-acornjs-intro" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-how-to-write-clear-git-commit-messages" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -125,7 +126,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 class="article-title" itemprop="name">
-            Acorn.js 原理与应用
+            书写良好的 Git 提交信息
         </h1>
     
 
@@ -134,19 +135,19 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/11/06/acornjs-intro/">
-            <time datetime="2018-11-06T04:48:00.000Z" itemprop="datePublished">2018-11-06</time>
+        <a href="/2018/11/09/how-to-write-clear-git-commit-messages/">
+            <time datetime="2018-11-09T13:16:03.000Z" itemprop="datePublished">2018-11-09</time>
         </a>
     </div>
 
 
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Git/">Git</a>
     </div>
 
-                        
                     </div>
                 
             </header>
@@ -158,8 +159,23 @@ var _hmt = _hmt || [];
                 <strong class="toc-title">Catalogue</strong>
                 
             </div>
-            <p><a href="https://github.com/acornjs/acorn" target="_blank" rel="noopener">Acorn.js</a> 是个好工具，可以做词法分析和语法分析，生成 AST，配合 acorn-walk 以及 escodegen，可以完成许多高级的事情。在工作中用它解决了一些问题。顺便就做了个分享，关于 Acorn.js 的原理与应用。下面是分享的 PPT，在此备份一下。</p>
-<p><strong><a href="/files/2018/11/acorn.js-intro.pdf">PPT 下载</a></strong></p>
+            <p>在使用 Git 的过程中，可以发现 Git 是会强制每次提交都要写提交消息（commit message）的，这也算是 Linus 的良好编程习惯的体现。准确恰当的提交信息对于回溯项目开发历程、寻找特定功能的代码片段等等，都很有帮助。</p>
+<a id="more"></a>
+<p>真正到了要写提交信息的时候，很多人可能会图省事，使用 <code>...</code>，或者 <code>abc</code> 这养的内容蒙混过去。这可不是什么好习惯。Git 的提交信息应该简明扼要，描述当前提交所做的主要的事情。可以使用一些可以描述所做改动的关键词作为前缀然后书写详细的信息。</p>
+<p>关键词有两类，一类是动词，表示进行的动作；另一类是名词，可以与业务相关，也可以是动词的名词化形式。下面是一些常见的关键词：</p>
+<ul>
+<li><code>add</code>，或 <code>feature</code>，表示添加新功能</li>
+<li><code>fix</code>，缺陷修复</li>
+<li><code>hotfix</code>，紧急的缺陷修复</li>
+<li><code>update</code>，对已有功能进行更改或优化</li>
+<li><code>remove</code>，或者 <code>rm</code>、<code>delete</code>，删除部分代码、功能</li>
+<li><code>refactor</code>，重构了一些代码、功能</li>
+<li><code>workflow</code>，工作流程更改</li>
+<li><code>chore</code>，琐碎的修改</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增了支持用户上传文件的功能</span></span><br><span class="line">$ git commit -m <span class="string">'add: 上传文件功能'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修复了一个线上问题</span></span><br><span class="line">$ git commit -m <span class="string">'fix: **页面数字取值问题'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对某些代码进行了重构</span></span><br><span class="line">$ git commit -m <span class="string">'refactor: 重构商品列表页'</span></span><br></pre></td></tr></table></figure>
+<p>此外，对于每个项目，可以用业务相关的名词作为关键词前缀。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docs 表示这是对文档进行的修改</span></span><br><span class="line">$ git commit -m <span class="string">'docs: 更新接口文档'</span></span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -170,7 +186,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2018/11/06/acornjs-intro/" data-id="cjoa1qkpq00dvd4s606t6kzyf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2018/11/09/how-to-write-clear-git-commit-messages/" data-id="cjoa1qkpp00dsd4s6woopet2e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -245,19 +261,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2018/11/09/how-to-write-clear-git-commit-messages/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    书写良好的 Git 提交信息
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/08/19/about-these-four-months/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/11/06/acornjs-intro/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">最近这四个月</div>
+            <div class="article-nav-title">Acorn.js 原理与应用</div>
         </a>
     
 </nav>
