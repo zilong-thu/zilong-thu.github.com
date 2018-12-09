@@ -87,7 +87,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -106,7 +106,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -117,6 +117,138 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-char-set-configuration-for-mysql-5-5" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/06/27/char-set-configuration-for-mysql-5-5/">Ubuntu下更改MySQL5.5字符集为UTF-8的过程小记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/06/27/char-set-configuration-for-mysql-5-5/">
+            <time datetime="2015-06-27T08:39:13.000Z" itemprop="datePublished">2015-06-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>在阿里云上部署完运行环境之后（部署参见<a href="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/">NodeJS+Express+MySQL开发小记(2):服务器部署</a>），运行了几天，发现有张表的字符集默认成了 <code>Latin1</code>，导致中文只显示问号。</p>
+<p>先趁此机会尝试安装MySQL5.6，省得以后再升级，但是折腾了一上午，未遂。权衡了一下，还是去修改当前的MySQL5.5的默认字符集得了。</p></p>
+            <p class="article-more-link">
+                <a href="/2015/06/27/char-set-configuration-for-mysql-5-5/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2015/06/27/char-set-configuration-for-mysql-5-5/" data-id="cjpf6mknr008tgws6v7dzpo63" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-notes-on-developing-nodejs-webapp" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -173,7 +305,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/" data-id="cjoyhrytu008kl4s6dokktk61" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/06/17/notes-on-developing-nodejs-webapp/" data-id="cjpf6mkno008kgws61kv6k0v5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -304,7 +436,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cjoyhrytt008gl4s6p34irrwj" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cjpf6mknn008ggws6nr6ck8ts" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -436,7 +568,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="cjoyhryts008dl4s6eanwc6qo" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/06/10/nodejs-environment-setup-on-linux/" data-id="cjpf6mknm008dgws60wp8d49a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -571,7 +703,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/" data-id="cjoyhryts008al4s66l5j8zkz" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/" data-id="cjpf6mknl008agws6ui4uroky" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -703,7 +835,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/05/28/geo-location-coords-transform/" data-id="cjoyhrytq0086l4s6xrzeco2i" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/05/28/geo-location-coords-transform/" data-id="cjpf6mknk0086gws6hhf5zgu4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -834,7 +966,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/05/06/some-thoughts-on-front-end-developing/" data-id="cjoyhrytl0083l4s67se0gt2p" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/05/06/some-thoughts-on-front-end-developing/" data-id="cjpf6mknj0083gws67rsre5ru" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -967,7 +1099,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" data-id="cjoyhrytj0080l4s6tg9dnryv" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" data-id="cjpf6mknh007zgws6g87cmdpd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1098,7 +1230,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="cjoyhrytf007wl4s6sqo6y4qw" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="cjpf6mkng007tgws67oxjcu58" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1230,150 +1362,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="cjoyhryte007tl4s6sp20yclx" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-serveral-self-made-epub-books" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/03/15/serveral-self-made-epub-books/">几本自制的EPUB格式电子书</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/03/15/serveral-self-made-epub-books/">
-            <time datetime="2015-03-15T14:24:19.000Z" itemprop="datePublished">2015-03-15</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/EPUB/">EPUB</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                
-            </div>
-            <p>存几本自己用Sigil制作的EPUB电子书于此。</p>
-<p><a href="/files/epub/中国近代史_徐中约_上.epub">中国近代史<em>徐中约</em>上</a></p>
-<p><a href="/files/epub/中国近代史_徐中约_下.epub">中国近代史<em>徐中约</em>下</a></p>
-<p><a href="/files/epub/青春（台湾版）.epub">青春（台版） 韩寒</a></p>
-<p>###Sigil</p>
-<p>当初也是从这个开始学习HTML的呢。</p>
-<p><a href="https://github.com/user-none/Sigil" target="_blank" rel="noopener">SigilGitHub地址</a></p>
-<blockquote>
-<p>Sigil is a multi-platform EPUB ebook Editor.</p>
-</blockquote>
-<p>Sigil release的下载地址： <a href="https://github.com/user-none/Sigil/releases" target="_blank" rel="noopener">https://github.com/user-none/Sigil/releases</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/" data-id="cjoyhrytd007ql4s6m5yjnj4g" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="cjpf6mknh007wgws6do4rzd2l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1450,7 +1439,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Préc</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">Suiv &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
 </section>
             

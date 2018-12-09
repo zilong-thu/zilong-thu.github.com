@@ -87,7 +87,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -106,7 +106,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -117,6 +117,149 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-serveral-self-made-epub-books" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/03/15/serveral-self-made-epub-books/">几本自制的EPUB格式电子书</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/03/15/serveral-self-made-epub-books/">
+            <time datetime="2015-03-15T14:24:19.000Z" itemprop="datePublished">2015-03-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/EPUB/">EPUB</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>存几本自己用Sigil制作的EPUB电子书于此。</p>
+<p><a href="/files/epub/中国近代史_徐中约_上.epub">中国近代史<em>徐中约</em>上</a></p>
+<p><a href="/files/epub/中国近代史_徐中约_下.epub">中国近代史<em>徐中约</em>下</a></p>
+<p><a href="/files/epub/青春（台湾版）.epub">青春（台版） 韩寒</a></p>
+<p>###Sigil</p>
+<p>当初也是从这个开始学习HTML的呢。</p>
+<p><a href="https://github.com/user-none/Sigil" target="_blank" rel="noopener">SigilGitHub地址</a></p>
+<blockquote>
+<p>Sigil is a multi-platform EPUB ebook Editor.</p>
+</blockquote>
+<p>Sigil release的下载地址： <a href="https://github.com/user-none/Sigil/releases" target="_blank" rel="noopener">https://github.com/user-none/Sigil/releases</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/" data-id="cjpf6mknf007qgws6rwvgjc5a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-java-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -175,7 +318,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="cjoyhrytb007ml4s6cym934rb" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="cjpf6mkne007mgws6f1ebu840" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -309,7 +452,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/02/03/array-shuffle/" data-id="cjoyhryta007il4s6t2833fld" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/02/03/array-shuffle/" data-id="cjpf6mknd007igws6x8ygvu8j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -442,7 +585,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="cjoyhryt9007fl4s6fpeyn23e" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="cjpf6mknc007fgws6l1hg4ixa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -574,7 +717,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="cjoyhryt8007bl4s6f3u0zzyp" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="cjpf6mkna0078gws6uzy62ykn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -706,7 +849,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="cjoyhryt70078l4s6egpn3woa" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="cjpf6mknb007bgws6c9q831zg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -837,7 +980,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/" data-id="cjoyhryt60074l4s66f43pxza" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/" data-id="cjpf6mkn90074gws63jtunats" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -968,7 +1111,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/" data-id="cjoyhryt50071l4s6f7ou2r93" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/" data-id="cjpf6mkn80071gws6lxkwq4f3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1109,7 +1252,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/24/compare-touch-and-click/" data-id="cjoyhryt4006xl4s6uml2jkia" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2014/11/24/compare-touch-and-click/" data-id="cjpf6mkn6006ugws6wswan773" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1246,139 +1389,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="cjoyhryt3006ul4s6y3gbrosz" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-interstellar" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2014/11/16/interstellar/">《星际穿越》观感</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2014/11/16/interstellar/">
-            <time datetime="2014-11-16T12:36:30.000Z" itemprop="datePublished">2014-11-16</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Movies/">Movies</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/电影/">电影</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><img src="/images/2014/black-hole.jpg" alt="《超时空接触》剧照" title="《星际穿越》剧照：黑洞"></p>
-<p>###Interstellar<br>今天看了诺兰的最新大作：Interstellar《星际穿越》，激动与恐惧并生。长达170分钟的电影，讲述了一个波澜壮阔的故事。这是一部科幻片，但没有那些炫目的“隔空触控操作”，而是各种实体的按钮与仪表盘；没有巨大的星际飞船和银河舰队，有的只是一个驾驶员、两个机器人和几个科学家；这里没有异形也没有奇形怪状的外星人，只有土星虫洞黑洞等这些实际存在或者极可能存在的天体。除了星际旅行中的人体无损休眠技术讲不清楚，其他的，都是人类当前触手可及的科技——地球人类熟悉的四维世界，在黑洞中的奇点附近存在的五维世界里向四维世界的女儿交流（穿越时空的交流），是在适当的物理假定下的合理演绎：引力是唯一可以在四维世界与五维世界见传递的作用力，但五维世界里的作用很强的引力波向四维世界的投影后会显得微弱而表现为时常出现的重力异常，例如只能让秒针轻微摆动，男主角奋力地捶打书架也只能让几本书落到地上。<br></p>
-            <p class="article-more-link">
-                <a href="/2014/11/16/interstellar/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2014/11/16/interstellar/" data-id="cjoyhryt2006ql4s6yvco1rw5" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="cjpf6mkn7006xgws6omfiv0bg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1455,7 +1466,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/7/">&laquo; Préc</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">Suiv &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
 </section>
             
