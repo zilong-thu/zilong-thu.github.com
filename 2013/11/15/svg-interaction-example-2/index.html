@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -162,7 +162,7 @@ var _hmt = _hmt || [];
             <p>在HTML里读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。</p>
 <p>风车是我用Adobe Illustrator，仿照随便百度来的一个位图画的。</p>
 <p><embed src="/svg/windmill.svg" type="image/svg+xml"><br><a id="more"></a></p>
-<p>###SVG文件内部脚本嵌入方式<br>在SVG文件里这样嵌入JavaScript脚本：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">&lt;![CDATA[</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">	<span class="comment">// 这里是脚本</span></span></span><br><span class="line"><span class="undefined">	......</span></span><br><span class="line"><span class="undefined">]]&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###SVG文件内部脚本嵌入方式<br>在SVG文件里这样嵌入JavaScript脚本：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">&lt;![CDATA[</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="comment">// 这里是脚本</span></span></span><br><span class="line"><span class="undefined">	......</span></span><br><span class="line"><span class="undefined">]]&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>###加载顺序<br>如果使用<code>&lt;embed&gt;</code>进行外部SVG文件的加载，同时使用诸如<code>window.onload = function(){// Event Handler ...};</code>或者)<code>$(document.ready(function(){});</code>进行事件处理函数注册，那么SVG的加载与事件处理函数的注册是异步的。<br>所以我暂时将脚本放在SVG文件里了。这样当然很不好，内容、行为没有很彻底的分离。</p>
 <p>###SVG与CSS<br>SVG内部可以添加<code>&lt;style&gt;</code>标签包含的样式表，例如在这个风车的例子里，给四个叶子添加<code>:hover</code>伪类样式，鼠标悬停时将描边的颜色改为灰色：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">	<span class="selector-id">#wings</span>&#123;</span></span><br><span class="line"><span class="undefined">		cursor: pointer;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-id">#wings</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">stroke</span>: <span class="selector-id">#999999</span>;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-id">#wings</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">stroke</span>: <span class="selector-id">#333333</span>;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>###循环动画的实现<br>目前暂时使用<code>setInterval</code>来实现动画，每隔35毫秒让风车的四个叶子顺时针旋转1°，于是帧速率约等于28帧（根据《高性能JavaScript》的介绍，<code>setInterval</code>方法是不精确的，所以说“约等于”）。等有时间再研究如何使用<code>requestAnimationFrame()</code>方法实现动画。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runTheWindmill</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> angle = myVar.angle;</span><br><span class="line">	<span class="keyword">var</span> center_circle = <span class="built_in">document</span>.getElementById(<span class="string">'center_circle'</span>);</span><br><span class="line">	<span class="keyword">var</span> cx = center_circle.getAttribute(<span class="string">'cx'</span>),  <span class="comment">// 获取转轴坐标</span></span><br><span class="line">		cy = center_circle.getAttribute(<span class="string">'cy'</span>);</span><br><span class="line">	myVar.SVG_windmill.setAttribute(<span class="string">'transform'</span>,<span class="string">'rotate('</span>+ angle +<span class="string">','</span>+ cx +<span class="string">','</span>+ cy +<span class="string">')'</span>);</span><br><span class="line">	myVar.angle += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 防止风车无限转下去而导致超过JS可以表示的最大整数</span></span><br><span class="line">	<span class="keyword">if</span>(myVar.anglel&gt;<span class="number">360</span>)&#123;</span><br><span class="line">		myVar.angle -= <span class="number">360</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -176,7 +176,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/15/svg-interaction-example-2/" data-id="cjqfvb40k003685s6hp1hjja7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/11/15/svg-interaction-example-2/" data-id="cjqgpfio4000s28s6j3nttiv6" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -252,7 +252,7 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
     
         <a href="/2013/11/18/illustrator-svg-practice-gilr-with-flower/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">Plus récent</strong>
             <div class="article-nav-title">
                 
                     Illustrator自由路径练习(01)：女孩剪影与猫
@@ -262,7 +262,7 @@ var _hmt = _hmt || [];
     
     
         <a href="/2013/11/12/html5-svg-study/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">Plus ancien</strong>
             <div class="article-nav-title">HTML5 SVG 初步学习</div>
         </a>
     
