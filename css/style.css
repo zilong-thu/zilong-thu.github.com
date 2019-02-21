@@ -2203,3 +2203,9 @@ ol.toc {
 .highlight .code .selector-id {
   font-weight: bold;
 }
+figure {
+  text-align: center;
+}
+figure figcaption {
+  text-align: center;
+}
