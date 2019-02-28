@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,135 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-note-on-book-you-dont-know-js" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/03/30/note-on-book-you-dont-know-js/">《你不知道的JavaScript》笔记&amp;心得</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/03/30/note-on-book-you-dont-know-js/">
+            <time datetime="2016-03-30T15:40:08.000Z" itemprop="datePublished">2016-03-30</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/读书笔记/">读书笔记</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><img src="https://img3.doubanio.com/lpic/s28033372.jpg" style="width: 200px; float: right; margin: 0 15px 0;"></p>
+<p>这本书于2015年4月在国内出版，而2个月之后，ES6正式通过，成为国际标准。</p>
+<p>ES6的许多特性也在本书中有所提到。例如块级变量声明，箭头函数，<code>Object.keys()</code>方法，<code>Array.prototype.find()</code>方法，属性名表达式，以及 <code>class</code>，等等。</p>
+<p>个人认为，本书对 JS 的多处讲解，深度甚于《JavaScript权威指南》和《JavaScript高级程序设计》。</p></p>
+            <p class="article-more-link">
+                <a href="/2016/03/30/note-on-book-you-dont-know-js/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2016/03/30/note-on-book-you-dont-know-js/" data-id="cjsos0mdo007590s662095vog" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-what-i-learned-during-the-last-3-months-in-myfe" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -177,7 +306,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" data-id="cjslv7kru009rdps6ngft6g9n" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2016/03/11/what-i-learned-during-the-last-3-months-in-myfe/" data-id="cjsos0mdn007190s65soteubv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -318,7 +447,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/12/23/at-the-end-of-2015/" data-id="cjslv7kru009odps6cglelq5a" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/12/23/at-the-end-of-2015/" data-id="cjsos0mdm006y90s65wn6vlcy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -447,7 +576,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/11/26/a-turning-point-at-the-age-of-27/" data-id="cjslv7krs009jdps6rfirjpn6" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/11/26/a-turning-point-at-the-age-of-27/" data-id="cjsos0mdl006t90s6elw4y7pw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -588,7 +717,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cjslv7krr009hdps6fwtd9e0i" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/11/08/learning-git/" data-id="cjsos0mdk006r90s6pfcfjbu1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -735,7 +864,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cjslv7krn009edps6lpez4m6g" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cjsos0mdj006o90s6h1jftz82" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -871,7 +1000,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cjslv7krm009adps6yjetz2ab" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cjsos0mdi006l90s6bguobgxc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1002,7 +1131,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/09/15/npm-update-when-changing-nodejs-version/" data-id="cjslv7krl0097dps6muxfo2m1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/09/15/npm-update-when-changing-nodejs-version/" data-id="cjsos0mdh006i90s6wug6v2ci" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1146,7 +1275,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="cjslv7krk0093dps6wlzwkzqm" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/09/13/beijing-nodejs-party-note/" data-id="cjsos0mdg006f90s6060fstf7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1283,148 +1412,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/08/20/websites-built-on-nodejs/" data-id="cjslv7krj0090dps6s2cf1bzt" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-skills-learned-in-the-first-half-of-2015" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<a href="/2015/08/12/skills-learned-in-the-first-half-of-2015/" itemprop="url">
-            <img src="/images/2015/09/2015b1.jpg" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/08/12/skills-learned-in-the-first-half-of-2015/">2015年上半年小结与下半年学习规划</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/08/12/skills-learned-in-the-first-half-of-2015/">
-            <time datetime="2015-08-11T16:03:29.000Z" itemprop="datePublished">2015-08-12</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/总结/">总结</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Essays/">Essays</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这半年，学到的新技能屈指可数，下面就屈指数一数。</p></p>
-            <p class="article-more-link">
-                <a href="/2015/08/12/skills-learned-in-the-first-half-of-2015/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2015/08/12/skills-learned-in-the-first-half-of-2015/" data-id="cjslv7kri008vdps6fczj5ut4" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2015/08/20/websites-built-on-nodejs/" data-id="cjsos0mdf006c90s67sh0qxnd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1501,7 +1489,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/">Siguiente  &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
 </section>
             

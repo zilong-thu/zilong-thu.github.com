@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,147 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-compare-touch-and-click" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/11/24/compare-touch-and-click/">在触摸设备上比较触摸事件与点击事件</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/11/24/compare-touch-and-click/">
+            <time datetime="2014-11-24T15:48:48.000Z" itemprop="datePublished">2014-11-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTML5/">HTML5</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>在触摸设备上，touch事件从手指刚碰到屏幕就会触发，而click事件则要晚一会儿才被触发。触发顺序如下：</p>
+<ol>
+<li>touchstart</li>
+<li>mouseover</li>
+<li>mousemove（一次）</li>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>click</li>
+<li>touchend</li>
+</ol>
+<p>所以，如果想提升web在触摸设备下的用户体验，让用户觉得响应非常迅速，应该对页面的触摸事件进行事件处理程序的注册，而不应再关注click事件。</p></p>
+            <p class="article-more-link">
+                <a href="/2014/11/24/compare-touch-and-click/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2014/11/24/compare-touch-and-click/" data-id="cjsos0mct004c90s6pri0ko9h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-a-pop-confirm-ui-plugin" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -182,7 +323,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="cjslv7kqn006wdps6mgc4xoky" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="cjsos0mcs004990s696v4k4ly" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -314,7 +455,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/16/interstellar/" data-id="cjslv7kqm006sdps6kfg6i4yy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/11/16/interstellar/" data-id="cjsos0mcr004590s6qkk0kjq0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -445,7 +586,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/11/about-ajax-get-and-post/" data-id="cjslv7kql006odps6fywhkizk" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/11/11/about-ajax-get-and-post/" data-id="cjsos0mcq004190s6b7bu6abb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -576,7 +717,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/06/three-months-after-graduate/" data-id="cjslv7kqk006ldps6r5s8uotw" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/11/06/three-months-after-graduate/" data-id="cjsos0mcp003z90s6i6od4wb7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -707,7 +848,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/10/22/javascript-internationalization/" data-id="cjslv7kqj006idps6pdaxyo6j" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/10/22/javascript-internationalization/" data-id="cjsos0mco003v90s6rzom9qvj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -838,7 +979,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/10/13/using-gruntjs/" data-id="cjslv7kqi006gdps69rp84xfj" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/10/13/using-gruntjs/" data-id="cjsos0mcn003t90s6kggnueze" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -970,7 +1111,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/09/25/hello-hexo/" data-id="cjslv7kqh006ddps6nti5fivi" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/09/25/hello-hexo/" data-id="cjsos0mcm003q90s610oavokl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1103,7 +1244,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/09/21/about-image-compress/" data-id="cjslv7kqg0069dps6wuooj1jl" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/09/21/about-image-compress/" data-id="cjsos0mcj003m90s6uph91bl3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1234,139 +1375,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" data-id="cjslv7kqf0066dps6ifcugbjf" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-using-node-to-write-plot3d-mesh-file" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">用Node.js生成Plot3D网格文件</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">
-            <time datetime="2014-04-21T07:15:00.000Z" itemprop="datePublished">2014-04-21</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Node-js/">Node.js</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。</p>
-<p>只要了解正则表达式的语法就OK。</p></p>
-            <p class="article-more-link">
-                <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="cjslv7kqe0064dps6zgkgiul7" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" data-id="cjsos0mcj003j90s6j6uq0a1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1443,7 +1452,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/8/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/">Siguiente  &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
     </nav>
 </section>
             

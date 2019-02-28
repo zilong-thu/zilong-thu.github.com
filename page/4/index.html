@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,141 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-openssl-and-base64" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/19/openssl-and-base64/">OpenSSL and Base64 以及网站性能优化的思考</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/19/openssl-and-base64/">
+            <time datetime="2017-07-18T17:06:35.000Z" itemprop="datePublished">2017-07-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>, <a class="tag-link" href="/tags/OpenSSL/">OpenSSL</a>, <a class="tag-link" href="/tags/base64/">base64</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>记录一个小命令，涉及到两个比较基础的概念：OpenSSL 和 base64 编码。</p>
+<blockquote>
+<p>OpenSSL 包含一个命令行工具用来完成 OpenSSL 库中的所有功能，更好的是，它可能已经安装到你的系统中了。<br>—— 百度百科</p>
+<p>Base64 是一种任意二进制到文本字符串的编码方法，常用于在 URL、Cookie、网页中传输少量二进制数据。<br>—— <a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001399413803339f4bbda5c01fc479cbea98b1387390748000" target="_blank" rel="noopener">廖雪峰的官方网站 - base64</a></p>
+</blockquote></p>
+            <p class="article-more-link">
+                <a href="/2017/07/19/openssl-and-base64/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="cjsos0me9008u90s6ueiivqrc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-note-on-book-soft-skills" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -178,7 +313,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="cjslv7ksh00bgdps6f33xlgx2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="cjsos0me8008r90s6c6p8rpnr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -309,7 +444,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="cjslv7ksg00bedps6f9n6rz0a" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="cjsos0me7008n90s67l2dxip9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -428,7 +563,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <div id="toc" class="toc-article">
-                <strong class="toc-title">Catálogo</strong>
+                <strong class="toc-title">Catalogue</strong>
                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web应用数据流的类型"><span class="toc-number">1.</span> <span class="toc-text">web应用数据流的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单向数据流"><span class="toc-number">1.1.</span> <span class="toc-text">单向数据流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-amp-RxJS"><span class="toc-number">2.</span> <span class="toc-text">Observable &amp; RxJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJS-的入门级教程"><span class="toc-number">2.1.</span> <span class="toc-text">RxJS 的入门级教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
             </div>
             <a id="more"></a>
@@ -449,7 +584,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="cjslv7ksf00bbdps6td8a7f1o" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="cjsos0me6008k90s6nndob9ba" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -590,7 +725,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/04/23/webpack-guide-01/" data-id="cjslv7ksd00b7dps60lhhzchj" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/04/23/webpack-guide-01/" data-id="cjsos0me5008g90s6tjbc8lc8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -709,7 +844,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <div id="toc" class="toc-article">
-                <strong class="toc-title">Catálogo</strong>
+                <strong class="toc-title">Catalogue</strong>
                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单曲循环"><span class="toc-number">2.</span> <span class="toc-text">单曲循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
             </div>
             <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>今日突发奇想，想在命令行下播放音乐。找到了一个现成的程序，SoX（Sound eXchange）。</p>
@@ -734,7 +869,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="cjslv7ksc00b4dps63zlog8rd" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="cjsos0me4008e90s6i1ollv4k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -869,7 +1004,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="cjslv7ksb00b0dps67ithwtwa" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="cjsos0me3008b90s6ufhg5h47" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1004,7 +1139,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cjslv7ksa00axdps6jigdr612" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cjsos0me2008890s6mczkhx3g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1140,7 +1275,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cjslv7ks900atdps624rzam70" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cjsos0me1008490s6vlsm5ocj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1274,146 +1409,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cjslv7ks800ardps6hdn7l9ys" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-about-png-compress" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/02/14/about-png-compress/">PNG 图片压缩及若干工具对比</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/02/14/about-png-compress/">
-            <time datetime="2017-02-14T12:05:00.000Z" itemprop="datePublished">2017-02-14</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/图像处理/">图像处理</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/图像处理/">图像处理</a>, <a class="tag-link" href="/tags/图片压缩/">图片压缩</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>原始图片的体积是433KB，格式为 PNG，尺寸为 2560×920。【待补充图片测试用例】</p>
-<p>这里共使用了5种工具:</p>
-<ul>
-<li>有损压缩工具 ImageOptim</li>
-<li>GUI 工具 ImageOptim</li>
-<li>Zopfli</li>
-<li>OptiPNG</li>
-<li>pngcrush</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2017/02/14/about-png-compress/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="cjslv7ks700amdps6quiv0bo6" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cjsos0me0008290s6g1gt8244" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1490,7 +1486,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Anterior</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Siguiente  &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
 </section>
             
