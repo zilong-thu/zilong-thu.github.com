@@ -121,6 +121,135 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-webgl-study-step-01" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/11/11/webgl-study-step-01/">Hello, WebGL</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/11/webgl-study-step-01/">
+            <time datetime="2013-11-11T12:09:00.000Z" itemprop="datePublished">2013-11-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>这是一个WebGL Hello World。</p>
+<p>关于博客引用自己的js代码：使用<code>&lt;script type=&quot;text/script&quot; src=&quot;myjs.js&quot;&gt;&lt;/script&gt;</code>，放在页面的正文里即可（最好放在<code>&lt;!-- more --&gt;</code>的后面）。但现在还不知道如何载入自定义的样式表——尤其某些样式只是在某些博文里做演示用的时候。也不清楚如何写模板，从而可以使用<code>&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;</code>来自定义一些样式。</p>
+<p>值得注意的是，<code>three.js</code> 已经包含了对 <code>requestAnimationFrame</code> 的封装。因此，暂不必考虑其浏览器的差异性问题。</p>
+<p>CSDN博客上也有极为详细的入门例子及代码解释，见 <a href="http://blog.csdn.net/celte/article/details/9458599" target="_blank">CSDN: WebGL库Three.js入门</a>。<br></p>
+            <p class="article-more-link">
+                <a href="/2013/11/11/webgl-study-step-01/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2013/11/11/webgl-study-step-01/" data-id="cjuewiohs002smes6ye82n21l" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-note-on-smashing-css-by-eric-meyer" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -178,7 +307,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/08/note-on-smashing-css-by-eric-meyer/" data-id="cjtsre2t8002w3is6tsc3ztu2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/08/note-on-smashing-css-by-eric-meyer/" data-id="cjuewiohu002wmes6l6yrxixa" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -309,7 +438,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/07/web-front-end-reading-list/" data-id="cjtsre2t7002s3is6bcctn0y2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/07/web-front-end-reading-list/" data-id="cjuewiohr002pmes6if62i40u" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -453,7 +582,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/06/note-on-book-design/" data-id="cjtsre2t6002o3is63rfz2539" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/06/note-on-book-design/" data-id="cjuewiohp002imes65t3q5awu" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -584,7 +713,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/" data-id="cjtsre2t5002l3is6lvdig158" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/" data-id="cjuewiohv002zmes6s8g84pd1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -719,7 +848,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/02/maintainable-javascript/" data-id="cjtsre2t3002i3is6z6cga9bf" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/02/maintainable-javascript/" data-id="cjuewiohq002lmes6mvr0292s" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -847,7 +976,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/01/html5-geolocation/" data-id="cjtsre2t0002f3is63xz4wmsc" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/01/html5-geolocation/" data-id="cjuewioho002gmes6sttqriax" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -974,7 +1103,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/01/html5-audio/" data-id="cjtsre2sx002c3is6vlq0i25i" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/11/01/html5-audio/" data-id="cjuewiohl002bmes6oqgoy1re" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1101,7 +1230,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/10/31/html5-study-note-01/" data-id="cjtsre2sw00293is6cblz6deo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/10/31/html5-study-note-01/" data-id="cjuewiohm002emes62elmvbkk" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1239,7 +1368,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/10/30/my-first-octopress-blog/" data-id="cjtsre2sv00273is68s4wo1jc" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2013/10/30/my-first-octopress-blog/" data-id="cjuewiohk0029mes6cgvlehgv" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
