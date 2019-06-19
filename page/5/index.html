@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
-    <article id="post-koa-running-on-http2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-about-filesystem-case-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -129,7 +129,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/koa-running-on-http2/">Koa Running On HTTP/2</a>
+            <a class="article-title" href="/2017/03/20/about-filesystem-case-sensitive/">关于MacOS文件系统的文件名大小写问题</a>
         </h1>
     
 
@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/koa-running-on-http2/">
+        <a href="/2017/03/20/about-filesystem-case-sensitive/">
             <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
         </a>
     </div>
@@ -147,13 +147,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/HTTP/">HTTP</a>, <a class="tag-link" href="/tags/Koa/">Koa</a>, <a class="tag-link" href="/tags/Node-js/">Node.js</a>
+        <a class="tag-link" href="/tags/操作系统/">操作系统</a>, <a class="tag-link" href="/tags/文件系统/">文件系统</a>
     </div>
 
                     </div>
@@ -163,13 +163,13 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="HTTP2-概述"><a href="#HTTP2-概述" class="headerlink" title="HTTP2 概述"></a>HTTP2 概述</h2><p>翻译自 <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener">Hypertext Transfer Protocol Version 2 (HTTP/2)</a> 的简介：</p>
-<blockquote>
-<p>HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection.  It also introduces unsolicited push of representations from servers to clients.</p>
-<p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
-</blockquote></p>
+            <p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./Picker.js'</span>;</span><br></pre></td></tr></table></figure>
+<p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></span><br></pre></td></tr></table></figure>
+<p>最后，通过修改文件名，就解决了这个问题。</p></p>
             <p class="article-more-link">
-                <a href="/2017/03/20/koa-running-on-http2/#more">Read More</a>
+                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
             </p>
         
         </div>
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="cjvqta0zi00avwls653pb6rws" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cjx3dgq7m00b5jzs68arqnxij" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -256,7 +256,7 @@ var _hmt = _hmt || [];
 
 
 
-    <article id="post-about-filesystem-case-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-koa-running-on-http2" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/about-filesystem-case-sensitive/">关于MacOS文件系统的文件名大小写问题</a>
+            <a class="article-title" href="/2017/03/20/koa-running-on-http2/">Koa Running On HTTP/2</a>
         </h1>
     
 
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/about-filesystem-case-sensitive/">
+        <a href="/2017/03/20/koa-running-on-http2/">
             <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
         </a>
     </div>
@@ -282,13 +282,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
+        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/操作系统/">操作系统</a>, <a class="tag-link" href="/tags/文件系统/">文件系统</a>
+        <a class="tag-link" href="/tags/HTTP/">HTTP</a>, <a class="tag-link" href="/tags/Koa/">Koa</a>, <a class="tag-link" href="/tags/Node-js/">Node.js</a>
     </div>
 
                     </div>
@@ -298,13 +298,13 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./Picker.js'</span>;</span><br></pre></td></tr></table></figure>
-<p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></span><br></pre></td></tr></table></figure>
-<p>最后，通过修改文件名，就解决了这个问题。</p></p>
+            <p><h2 id="HTTP2-概述"><a href="#HTTP2-概述" class="headerlink" title="HTTP2 概述"></a>HTTP2 概述</h2><p>翻译自 <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener">Hypertext Transfer Protocol Version 2 (HTTP/2)</a> 的简介：</p>
+<blockquote>
+<p>HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection.  It also introduces unsolicited push of representations from servers to clients.</p>
+<p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
+</blockquote></p>
             <p class="article-more-link">
-                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
+                <a href="/2017/03/20/koa-running-on-http2/#more">Read More</a>
             </p>
         
         </div>
@@ -315,7 +315,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cjvqta0zh00aswls6leg1c5nm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="cjx3dgq7l00b2jzs6tfnsu8k3" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -451,7 +451,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cjvqta0zj00aywls69yonw2qt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="cjx3dgq7k00ayjzs6va76min1" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -585,7 +585,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cjvqta0zg00apwls606znlkg2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="cjx3dgq7i00arjzs6s5d39f2a" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -724,7 +724,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="cjvqta0zb00adwls69xazx7e6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="cjx3dgq7f00aljzs6ehqceqfl" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -856,7 +856,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="cjvqta0z900a8wls6x8uiso1x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="cjx3dgq7f00ajjzs6ngs1a95i" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -997,7 +997,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="cjvqta0zc00afwls6i2rbmfho" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="cjx3dgq7j00avjzs6ihwerpt3" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1129,7 +1129,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="cjvqta0ze00alwls65z9lc4xk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="cjx3dgq7h00apjzs64teceryi" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1260,7 +1260,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="cjvqta0z5009zwls6h8nfjp52" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="cjx3dgq7c00abjzs6uspiwsy0" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1382,7 +1382,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="cjvqta0za00abwls6w5lw7x1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="cjx3dgq7d00adjzs69wiw3s8n" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1459,7 +1459,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/4/">&laquo; Préc</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Suiv &raquo;</a>
     </nav>
 </section>
             
