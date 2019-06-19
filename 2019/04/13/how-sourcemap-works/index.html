@@ -5,18 +5,20 @@
     
     <title>Source Map 工作原理 | 王子龙的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map Revision 3 ProposalJavaScript、CSS 代码的 sourcemap 是根据 Source Map Revision 3 Proposal [1] 来实现的。 一个 sourceMap 文件的内">
+    <meta name="description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map 提案JavaScript、CSS 代码的 source map 是根据 Source Map Revision 3 Proposal（这个文档在谷歌 Docs 里，如果打不开，可以下载 PDF）这个提案来实现的。提案里用">
 <meta name="keywords" content="Web-FE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Source Map 工作原理">
 <meta property="og:url" content="http://borninsummer.com/2019/04/13/how-sourcemap-works/index.html">
 <meta property="og:site_name" content="王子龙的博客">
-<meta property="og:description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map Revision 3 ProposalJavaScript、CSS 代码的 sourcemap 是根据 Source Map Revision 3 Proposal [1] 来实现的。 一个 sourceMap 文件的内">
+<meta property="og:description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map 提案JavaScript、CSS 代码的 source map 是根据 Source Map Revision 3 Proposal（这个文档在谷歌 Docs 里，如果打不开，可以下载 PDF）这个提案来实现的。提案里用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-19T15:37:20.868Z">
+<meta property="og:image" content="http://borninsummer.com/images/2019/06/source-map.png">
+<meta property="og:updated_time" content="2019-06-19T15:57:15.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Source Map 工作原理">
-<meta name="twitter:description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map Revision 3 ProposalJavaScript、CSS 代码的 sourcemap 是根据 Source Map Revision 3 Proposal [1] 来实现的。 一个 sourceMap 文件的内">
+<meta name="twitter:description" content="简介Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。 Source Map 提案JavaScript、CSS 代码的 source map 是根据 Source Map Revision 3 Proposal（这个文档在谷歌 Docs 里，如果打不开，可以下载 PDF）这个提案来实现的。提案里用">
+<meta name="twitter:image" content="http://borninsummer.com/images/2019/06/source-map.png">
     
 
     
@@ -166,11 +168,12 @@ var _hmt = _hmt || [];
         
             <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Source-Map-Revision-3-Proposal"><span class="toc-number">2.</span> <span class="toc-text">Source Map Revision 3 Proposal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mappings-详解"><span class="toc-number">3.</span> <span class="toc-text">mappings 详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反解析示例"><span class="toc-number">4.</span> <span class="toc-text">反解析示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Source-Map-提案"><span class="toc-number">2.</span> <span class="toc-text">Source Map 提案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mappings-详解"><span class="toc-number">3.</span> <span class="toc-text">mappings 详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反解析示例"><span class="toc-number">4.</span> <span class="toc-text">反解析示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
             </div>
             <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Source Map 是前端开发中非常有用的一种文件，它提供了源码映射的机制，使开发人员能够在本地开发过程或者线上环境基于源码进行调试或者错误堆栈分析。</p>
-<h2 id="Source-Map-Revision-3-Proposal"><a href="#Source-Map-Revision-3-Proposal" class="headerlink" title="Source Map Revision 3 Proposal"></a>Source Map Revision 3 Proposal</h2><p>JavaScript、CSS 代码的 sourcemap 是根据 Source Map Revision 3 Proposal <sup>[1]</sup> 来实现的。</p>
-<p>一个 sourceMap 文件的内容实际上是一个 JSON 对象：</p>
+<h2 id="Source-Map-提案"><a href="#Source-Map-提案" class="headerlink" title="Source Map 提案"></a>Source Map 提案</h2><p>JavaScript、CSS 代码的 source map 是根据 <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit#heading=h.1ce2c87bpj24" target="_blank" rel="noopener">Source Map Revision 3 Proposal</a>（这个文档在谷歌 Docs 里，如果打不开，可以<a href="/files/2019/source_map_revision_3_proposal.pdf">下载 PDF</a>）这个提案来实现的。提案里用一句话描述其特点为“Better bidirectional mapping”，即“更好的双向映射”。</p>
+<p><img src="/images/2019/06/source-map.png"></p>
+<p>按照提案一个 sourceMap 文件的内容实际上是一个 JSON 对象：</p>
 <a id="more"></a>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"version"</span> : <span class="number">3</span>,</span><br><span class="line">  <span class="attr">"file"</span>: <span class="string">"out.js"</span>,</span><br><span class="line">  <span class="attr">"sourceRoot"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"sources"</span>: [<span class="string">"foo.js"</span>, <span class="string">"bar.js"</span>],</span><br><span class="line">  <span class="attr">"sourcesContent"</span>: [<span class="literal">null</span>, <span class="literal">null</span>],</span><br><span class="line">  <span class="attr">"names"</span>: [<span class="string">"src"</span>, <span class="string">"maps"</span>, <span class="string">"are"</span>, <span class="string">"fun"</span>],</span><br><span class="line">  <span class="attr">"mappings"</span>: <span class="string">"A,AAAB;;ABCDE;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>下面我们逐行介绍每个字段的含义。</p>
@@ -189,10 +192,10 @@ var _hmt = _hmt || [];
 <p><strong>mappings</strong></p>
 <p>字符串，编码后的数据。</p>
 <h2 id="mappings-详解"><a href="#mappings-详解" class="headerlink" title="mappings 详解"></a>mappings 详解</h2><h2 id="反解析示例"><a href="#反解析示例" class="headerlink" title="反解析示例"></a>反解析示例</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit#heading=h.1ce2c87bpj24" target="_blank" rel="noopener">Source Map Revision 3 Proposal</a>，这个文档在谷歌 Docs 里，如果打不开，可以<a href="/files/2019/source_map_revision_3_proposal.pdf">下载 PDF</a></li>
 <li><a href="https://github.com/Rich-Harris/vlq/tree/master/sourcemaps" target="_blank" rel="noopener">vlq | github</a></li>
 <li><a href="https://www.npmjs.com/package/vlq" target="_blank" rel="noopener">vlq | npm</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Variable-length_quantity" target="_blank" rel="noopener">vlq | wikipedia</a></li>
+<li><a href="https://www.cnblogs.com/Wayou/p/understanding_frontend_source_map.html" target="_blank" rel="noopener">source map 的原理探究</a></li>
 </ol>
 
         
@@ -204,7 +207,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2019/04/13/how-sourcemap-works/" data-id="cjx3ei8s700er57s6g9z6igvv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2019/04/13/how-sourcemap-works/" data-id="cjx3f09p500erfqs669bu8vtr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
