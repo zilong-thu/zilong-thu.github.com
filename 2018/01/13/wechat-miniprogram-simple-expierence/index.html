@@ -14,7 +14,7 @@
 <meta property="og:description" content="背景 项目起始时间：2017-11-28 前端人数： 3 页面数： 6 一期上线时间：2018-01-16  在我们开发的过程中，小程序的生态也不断变化。例如 &amp;lt;web-view&amp;gt; 最开始不支持其打开的 web 页面调起小程序页面，后来则新增了 JS-SDK 并在高版本的基础库里支持了这样的功能；再例如它的 IDE 不断优化升级，开发体验变好；页面的5级跳转限制，改为了10级；小程序体">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://borninsummer.com/images/2018/01/wxapp-dir.png">
-<meta property="og:updated_time" content="2018-07-02T16:46:08.000Z">
+<meta property="og:updated_time" content="2019-07-19T11:01:50.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探微信小程序开发">
 <meta name="twitter:description" content="背景 项目起始时间：2017-11-28 前端人数： 3 页面数： 6 一期上线时间：2018-01-16  在我们开发的过程中，小程序的生态也不断变化。例如 &amp;lt;web-view&amp;gt; 最开始不支持其打开的 web 页面调起小程序页面，后来则新增了 JS-SDK 并在高版本的基础库里支持了这样的功能；再例如它的 IDE 不断优化升级，开发体验变好；页面的5级跳转限制，改为了10级；小程序体">
@@ -196,10 +196,14 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h2><p>由于小程序的样式表里无法使用相对路径引用图片文件，所以很多时候只好使用 base64 进行转码。</p>
 <h2 id="常用的类"><a href="#常用的类" class="headerlink" title="常用的类"></a>常用的类</h2><ul>
-<li>用于网络请求的 request.js，支持 Promise 接口</li>
-<li>版本判断，Version.js</li>
-<li>时间日期格式化，类似于 moment.js，但是要更为轻量级</li>
-<li>URL 解析与序列化，url.js</li>
+<li>用于网络请求的 request.js，支持 Promise 接口。我个人比较喜欢链式调用的风格，参考: <a href="https://github.com/zilong-thu/my-js-lib/tree/master/wxapp" target="_blank" rel="noopener">http.js | github</a>。</li>
+<li>版本判断，Version.js。Version.js 的作用是对版本号进行解析、比较。例如自己的小程序依赖了某个版本的基础库，那么可以在运行时判断当前基础库是否符合预期，否则提示用户升级等等。要实现的关键 API 有 <code>gt</code>（大于）、<code>lt</code>（小于）、<code>gte</code>（大于等于）、<code>lte</code>（小于等于）、<code>equal</code>（等于）等等。可以参考 <a href="https://www.npmjs.com/package/compare-versions" target="_blank" rel="noopener"><code>compare-version</code></a> 包的实现。</li>
+<li>时间日期格式化，类似于 moment.js，但是要更为轻量级。可以参考这个：<a href="https://github.com/zilong-thu/moment-lite.js" target="_blank" rel="noopener">moment-lite.js</a>。</li>
+<li>URL 解析与序列化，url.js。可以使用 npm 包 <code>query-string</code>，也可以参考这个包自己实现关键 API：<ul>
+<li><code>parse()</code></li>
+<li><code>stringify</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p>iOS 与 Android 平台下，即便相同的小程序，也有许多细节上的差异。在进行兼容性测试时需要按照 H5 的平台兼容性进行测试。</p>
 <p>此外，还有微信各版本的兼容性测试。前端要基于 Version.js 判断微信小程序 SDKVersion，以便对低版本进行友好的提示。</p>
@@ -235,7 +239,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2018/01/13/wechat-miniprogram-simple-expierence/" data-id="cjx3f09od00cwfqs6lejcn357" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2018/01/13/wechat-miniprogram-simple-expierence/" data-id="cjy9zitv700cxfjs6mp21dxkl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
