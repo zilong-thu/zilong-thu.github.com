@@ -121,6 +121,128 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-heap-sort-using-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/09/28/heap-sort-using-javascript/">heap sort using javascript</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/28/heap-sort-using-javascript/">
+            <time datetime="2017-09-28T15:48:41.000Z" itemprop="datePublished">2017-09-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/09/28/heap-sort-using-javascript/" data-id="ck2umh8h600c5i5s6s6oynzte" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-insert-sort-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -171,7 +293,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/20/about-insert-sort-algorithm/" data-id="ck2aj4lf800c9pls6fcbyjycr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/09/20/about-insert-sort-algorithm/" data-id="ck2umh8h700c9i5s6mf58bzp2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -298,7 +420,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/19/about-quick-sort-algorithm/" data-id="ck2aj4lf700c5pls6hj34rjib" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/09/19/about-quick-sort-algorithm/" data-id="ck2umh8hg00cvi5s6wpy9xjie" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -429,7 +551,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/19/about-merge-sort-algorithm/" data-id="ck2aj4lf600c2pls672mcl6oe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/09/19/about-merge-sort-algorithm/" data-id="ck2umh8h700cbi5s6ez4sr3gu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -563,7 +685,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/17/how-to-choose-football-shoes/" data-id="ck2aj4lf500bzpls6j11okvc0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/09/17/how-to-choose-football-shoes/" data-id="ck2umh8h200bvi5s62eu7qavg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -695,7 +817,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/" data-id="ck2aj4lf400bwpls6lzcqdnov" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/" data-id="ck2umh8h500c1i5s6ccp97z4q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -831,7 +953,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/" data-id="ck2aj4lf200bspls653u0j7vu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/" data-id="ck2umh8h300byi5s6hsfk84ha" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -966,7 +1088,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="ck2aj4lf100bppls6wgw01jui" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="ck2umh8h000bpi5s6cc8b1598" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1099,7 +1221,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="ck2aj4lf000bkpls6f14aus0e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="ck2umh8h100bsi5s6ex1ggjbv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1230,147 +1352,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="ck2aj4lez00bipls6165edykb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-about-spa-data-flow-among-components" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/09/about-spa-data-flow-among-components/">About Web SPA Data Flow</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/09/about-spa-data-flow-among-components/">
-            <time datetime="2017-05-09T10:00:00.000Z" itemprop="datePublished">2017-05-09</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Observable/">Observable</a>, <a class="tag-link" href="/tags/React-js/">React.js</a>, <a class="tag-link" href="/tags/RxJS/">RxJS</a>, <a class="tag-link" href="/tags/SPA/">SPA</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web应用数据流的类型"><span class="toc-number">1.</span> <span class="toc-text">web应用数据流的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单向数据流"><span class="toc-number">1.1.</span> <span class="toc-text">单向数据流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-amp-RxJS"><span class="toc-number">2.</span> <span class="toc-text">Observable &amp; RxJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJS-的入门级教程"><span class="toc-number">2.1.</span> <span class="toc-text">RxJS 的入门级教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
-            </div>
-            <a id="more"></a>
-<h2 id="web应用数据流的类型"><a href="#web应用数据流的类型" class="headerlink" title="web应用数据流的类型"></a>web应用数据流的类型</h2><p>什么场景下需要关心数据的变动？</p>
-<h3 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h3><h2 id="Observable-amp-RxJS"><a href="#Observable-amp-RxJS" class="headerlink" title="Observable &amp; RxJS"></a>Observable &amp; RxJS</h2><p><a href="https://tc39.github.io/proposal-observable/" target="_blank" rel="noopener">Observable</a> 是 TC39 提给 ECMAScript 的一个标准库提议，目前仍处于 Stage-1 草案阶段。根据 <a href="https://github.com/tc39/proposal-observable" target="_blank" rel="noopener">tc39/proposal-observable</a> 的说明，<a href="https://github.com/ReactiveX/RxJS" target="_blank" rel="noopener">RxJS</a> 是当前对于 Observable 草案的一个实现。</p>
-<h3 id="RxJS-的入门级教程"><a href="#RxJS-的入门级教程" class="headerlink" title="RxJS 的入门级教程"></a>RxJS 的入门级教程</h3><p><a href="https://fe.ele.me/let-us-learn-rxjs/" target="_blank" rel="noopener">让我们一起来学习 RxJS | 饿了么</a></p>
-<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
-<li><a href="https://medium.com/@andrestaltz/2-minute-introduction-to-rx-24c8ca793877" target="_blank" rel="noopener">2 minute introduction to Rx</a></li>
-<li><a href="https://fe.ele.me/let-us-learn-rxjs/" target="_blank" rel="noopener">让我们一起来学习 RxJS | 饿了么</a></li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="ck2aj4lew00bapls6j018u69d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="ck2umh8gy00bii5s6bqgzrpmv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
