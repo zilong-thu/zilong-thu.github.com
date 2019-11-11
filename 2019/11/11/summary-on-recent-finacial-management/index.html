@@ -14,7 +14,7 @@
 <meta property="og:description" content="Basics从去年 10 月份开始进行基金定投，到现在已经有 440 多天了。定投的资金来源主要包括两个，一是每月的工资收入，二是之前在支付宝买的定期理财产品到期赎回。2019 年初，错过了第一波反弹的高收益率，才发现不断地买买买很容易，但是何时卖出却是最难的。人呐，很容易变得贪婪呢。今年 4 月份之后又有几次反弹，自己就陆陆续续地卖掉了一些基金，落袋为安。今年到上周五（2019-11-08）为止">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://borninsummer.com/images/2019/11/fundations-earnings.jpg">
-<meta property="og:updated_time" content="2019-11-11T17:09:05.574Z">
+<meta property="og:updated_time" content="2019-11-11T17:22:39.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最近的基金定投理财小结">
 <meta name="twitter:description" content="Basics从去年 10 月份开始进行基金定投，到现在已经有 440 多天了。定投的资金来源主要包括两个，一是每月的工资收入，二是之前在支付宝买的定期理财产品到期赎回。2019 年初，错过了第一波反弹的高收益率，才发现不断地买买买很容易，但是何时卖出却是最难的。人呐，很容易变得贪婪呢。今年 4 月份之后又有几次反弹，自己就陆陆续续地卖掉了一些基金，落袋为安。今年到上周五（2019-11-08）为止">
@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Cari"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -114,7 +114,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Cari"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -178,13 +178,13 @@ var _hmt = _hmt || [];
 <li>在股市的低点，例如年初的 2440 点，没有大举买入。因为当时对基金定投还不是很有信心，手里也没有储备足够的现金流，所以错过了。</li>
 <li>整体的定投额度占比较低。目前自己的大部分收入依然是购买了定期理财产品，可能跟自己的风险偏好较低有关。其实应该再拥抱一些风险的。</li>
 </ol>
-<h2 id="说说交银海外中国互联网指数这个基金"><a href="#说说交银海外中国互联网指数这个基金" class="headerlink" title="说说交银海外中国互联网指数这个基金"></a>说说交银海外中国互联网指数这个基金</h2><p>交银海外中国互联网指数其实是自己最早买入的一个基金。不过当时还不懂定投，对于相关的概念、操作都稀里糊涂的。后来对这个基金每天 50 块钱进行定投，坚持了 13 个月。我觉得这个基金虽然选择的公司很好，但仍有个致命缺陷，即由于它购买的是海外股票，因而不能实时查看净值变动以进行买入卖出的操作。于是在收益率超过 6% 之后的某一天，清仓了。卖掉后算了一下，实际的年化收益率达到了将近 7%，所以还不错，这波操作不亏，哈哈。具体的计算见下面的代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 交银海外中国互联网指数收益情况计算</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 末期总金额</span></span><br><span class="line"><span class="keyword">var</span> total = <span class="number">12758</span>;</span><br><span class="line"><span class="comment">// 总收益</span></span><br><span class="line"><span class="keyword">var</span> profit = <span class="number">897</span>;</span><br><span class="line"><span class="comment">// 投入的本金</span></span><br><span class="line"><span class="keyword">var</span> base = total - profit;</span><br><span class="line"><span class="comment">// 总收益率(13个月)</span></span><br><span class="line"><span class="keyword">var</span> profitRate = (profit / base * <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'13个月收益率:'</span>, profitRate, <span class="string">'%'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'年化收益率:'</span>, (profitRate * <span class="number">12</span> / <span class="number">13</span>).toFixed(<span class="number">2</span>), <span class="string">'%'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="说说交银海外中国互联网指数这个基金"><a href="#说说交银海外中国互联网指数这个基金" class="headerlink" title="说说交银海外中国互联网指数这个基金"></a>说说交银海外中国互联网指数这个基金</h2><p>交银海外中国互联网指数其实是自己最早买入的一个基金。不过当时还不懂定投，对于相关的概念、操作都稀里糊涂的。后来对这个基金每天 50 块钱进行定投，坚持了 13 个月。我觉得这个基金虽然选择的公司很好，但仍有个致命缺陷，即由于它购买的是海外股票，因而不能实时查看净值变动以进行买入卖出的操作。于是在收益率超过 6% 之后的某一天，清仓了。卖掉后算了一下，实际的年化收益率达到了将近 6%，所以还不错，这波操作不亏，哈哈。具体的计算见下面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 交银海外中国互联网指数收益情况计算</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 末期总金额</span></span><br><span class="line"><span class="keyword">var</span> total = <span class="number">12758</span>;</span><br><span class="line"><span class="comment">// 总收益</span></span><br><span class="line"><span class="keyword">var</span> profit = <span class="number">757</span>;</span><br><span class="line"><span class="comment">// 投入的本金</span></span><br><span class="line"><span class="keyword">var</span> base = total - profit;</span><br><span class="line"><span class="comment">// 总收益率(13个月)</span></span><br><span class="line"><span class="keyword">var</span> profitRate = (profit / base * <span class="number">100</span>).toFixed(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'13个月收益率:'</span>, profitRate, <span class="string">'%'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'年化收益率:'</span>, (profitRate * <span class="number">12</span> / <span class="number">13</span>).toFixed(<span class="number">2</span>), <span class="string">'%'</span>);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>13个月收益率: 7.56 %</li>
-<li>年化收益率: 6.98 %</li>
+<li>13个月收益率: 6.31 %</li>
+<li>年化收益率: 5.82 %</li>
 </ul>
-<p>结果表明，此基比一般的一年期理财产品要好了不少（同期支付宝 1 年期理财产品最高的收益率应该不到 5%）。^_^</p>
+<p>结果表明，此基比一般的一年期理财产品要好一点点（同期支付宝 1 年期理财产品最高的收益率应该不到 5%）。^_^</p>
 <h2 id="定投感想"><a href="#定投感想" class="headerlink" title="定投感想"></a>定投感想</h2><p>定投久了，会产生一些感想，甚至想称之为“理论”，用来为自己的投资行为做决策、指导。例如：</p>
 <ul>
 <li>现在的暂时高点，以后一定还会出现。所以，不着急卖出，尤其是收益率高但总额较小的时候。</li>
@@ -214,7 +214,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2019/11/11/summary-on-recent-finacial-management/" data-id="ck2uolpkp00f088s6rk1m8kqh" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
+    <a data-url="http://borninsummer.com/2019/11/11/summary-on-recent-finacial-management/" data-id="ck2up3psu00esfks6causipy0" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -291,7 +291,7 @@ var _hmt = _hmt || [];
     
     
         <a href="/2019/10/28/some-jots/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Lebih Tua</strong>
+            <strong class="article-nav-caption">Plus ancien</strong>
             <div class="article-nav-title">随笔</div>
         </a>
     
