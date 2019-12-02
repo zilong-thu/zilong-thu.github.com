@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,137 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-mysql-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/06/15/mysql-hello-world/">MySQL 基本操作笔记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/06/15/mysql-hello-world/">
+            <time datetime="2017-06-15T07:33:00.000Z" itemprop="datePublished">2017-06-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>简单记录一下 MySQL 的最基本的操作命令。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/06/15/mysql-hello-world/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="ck3okole1008iyhs6bt8talla" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-spa-data-flow-among-components" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -185,7 +316,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="ck2up3prp00bffks6xrb7tsh1" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="ck3okole3008nyhs6thwsvvrk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -315,7 +446,7 @@ var _hmt = _hmt || [];
         
             <p><h2 id="webpack-基本概念"><a href="#webpack-基本概念" class="headerlink" title="webpack 基本概念"></a>webpack 基本概念</h2><p><a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a> 是目前非常流行的前端资源（JS/CSS/IMG/…）打包解决方案。它默认按照 ES2015 定义的模块机制来查找、打包文件，即对 <code>import</code>、<code>export</code> 声明进行相应的模块封装，而对于其他代码，则不做任何改动。如果想使用其他的 ES6 特性，现阶段需要借助于 <a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a> 这样的编译工具。</p></p>
             <p class="article-more-link">
-                <a href="/2017/04/23/webpack-guide-01/#more">Ler Mais</a>
+                <a href="/2017/04/23/webpack-guide-01/#more">Read More</a>
             </p>
         
         </div>
@@ -326,7 +457,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/04/23/webpack-guide-01/" data-id="ck2up3prn00bcfks6fticsi98" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/04/23/webpack-guide-01/" data-id="ck3okole2008kyhs69z3sphta" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -470,7 +601,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="ck2up3prh00ayfks6yne2etsk" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="ck3okoldz008eyhs6ylmhl6x1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -594,7 +725,7 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></span><br></pre></td></tr></table></figure>
 <p>最后，通过修改文件名，就解决了这个问题。</p></p>
             <p class="article-more-link">
-                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Ler Mais</a>
+                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
             </p>
         
         </div>
@@ -605,7 +736,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ck2up3prg00aufks62gq7y2xk" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ck3okole0008gyhs6i3sd2pg1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -729,7 +860,7 @@ var _hmt = _hmt || [];
 <p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
 </blockquote></p>
             <p class="article-more-link">
-                <a href="/2017/03/20/koa-running-on-http2/#more">Ler Mais</a>
+                <a href="/2017/03/20/koa-running-on-http2/#more">Read More</a>
             </p>
         
         </div>
@@ -740,7 +871,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ck2up3prl00b8fks6t7uget07" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ck3okoldw0086yhs69wh826a7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -865,7 +996,7 @@ var _hmt = _hmt || [];
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var a</span> = 1;</span><br></pre></td></tr></table></figure>
 <p>那么我们会发现变量 <code>a</code> 上面其实有很多方法（当然，大部分都是来自于其原型）。这就是因为该变量是通过变量对象进行追踪的，并不仅仅只有一个值（这也涉及一个概念，“原始封装类型”）。这也是 JavaScript “一切皆为对象”的理念。</p></p>
             <p class="article-more-link">
-                <a href="/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/#more">Ler Mais</a>
+                <a href="/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/#more">Read More</a>
             </p>
         
         </div>
@@ -876,7 +1007,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ck2up3prk00b5fks6u2yxliuq" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ck3okoldu0083yhs6jsap7zzg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -999,7 +1130,7 @@ var _hmt = _hmt || [];
 <p>上面说到变量值都是字符串，那么如果想知道字符串的长度，可以通过 <code>#</code> 符号来获取：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var=<span class="string">"some test string."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$#var</span>  <span class="comment"># 输出 17</span></span><br></pre></td></tr></table></figure></p>
             <p class="article-more-link">
-                <a href="/2017/03/12/linux-shell-scripting-2/#more">Ler Mais</a>
+                <a href="/2017/03/12/linux-shell-scripting-2/#more">Read More</a>
             </p>
         
         </div>
@@ -1010,7 +1141,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ck2up3prf00asfks66cceh5ro" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ck3okoldr007xyhs6d5b2ubsk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1138,7 +1269,7 @@ var _hmt = _hmt || [];
 <li>pngcrush</li>
 </ul></p>
             <p class="article-more-link">
-                <a href="/2017/02/14/about-png-compress/#more">Ler Mais</a>
+                <a href="/2017/02/14/about-png-compress/#more">Read More</a>
             </p>
         
         </div>
@@ -1149,7 +1280,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ck2up3pri00b1fks6kp6cxkpz" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ck3okoldq007uyhs6ytuffpn5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1270,7 +1401,7 @@ var _hmt = _hmt || [];
 <li>一天的工作时间不太可能全部用来进行编码，还有不少是花在了沟通（约1小时，公司的内部即时通信软件，QQ等）、读写文档（约1小时）上面</li>
 </ul></p>
             <p class="article-more-link">
-                <a href="/2017/01/21/app-rescuetime/#more">Ler Mais</a>
+                <a href="/2017/01/21/app-rescuetime/#more">Read More</a>
             </p>
         
         </div>
@@ -1281,148 +1412,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ck2up3prc00ajfks6u1548b34" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-2016-to-2017" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<a href="/2016/12/18/2016-to-2017/" itemprop="url">
-            <img src="/images/2016/12/2016-summary-logo.png" class="article-banner" />
-        </a>
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/12/18/2016-to-2017/">2016 年度小结</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/12/18/2016-to-2017/">
-            <time datetime="2016-12-17T16:05:00.000Z" itemprop="datePublished">2016-12-18</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/总结/">总结</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>2016年用一个字形容，是累。用一句话来形容的话，就是很累，同时学到了很多东西。当然，又老了一岁。</p>
-<p>中国的城镇化进程势不可挡。当年逃离北上广的年轻人们，也许都已经在各自的二三线城市舒舒服服地过日子了。但是仍有另一批人，怀揣着自己或清晰或朦胧的梦想，来到一线奋斗。知乎上总是会有两群人为各自选择城市的哲学而争辩，看上去是一个非常因人而异的话题。</p>
-<p>有一次，曾经的系队好友从家飞来北京度周末，闲聊时问我，“你在北京感到生活的乐趣了吗”。我只好告诉他，Negative，在这里更多的是工作、挣钱，哪有功夫生活啊。</p>
-<p>女友常说以后要找个机会，最好是大段时间，好比几年，去家寺庙静静心。其实在这里，很多时候是孤独的。“小隐隐于野，中隐隐于市，大隐隐于朝”，屁民大隐无望，那么在大城市里忍受甚至享受孤独的我，也许已经到“中隐”的境界了呢。</p>
-<p>下面就总结一下这一年，记下自己都完成了哪些“KPI”。</p>
-<p>PS：上一年的总结在这里，<a href="/2015/12/23/at-the-end-of-2015/">记 2015</a></p></p>
-            <p class="article-more-link">
-                <a href="/2016/12/18/2016-to-2017/#more">Ler Mais</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ck2up3prd00alfks6rxhrk8my" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ck3okoldj007pyhs6nlp1jgyl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1499,7 +1489,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/4/">&laquo; Préc</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Suiv &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
 </section>
             

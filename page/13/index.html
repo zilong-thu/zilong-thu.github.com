@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,136 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-reading-notes-on-dom-scripting" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/12/02/reading-notes-on-dom-scripting/">《JavaScript DOM 编程艺术》笔记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/12/02/reading-notes-on-dom-scripting/">
+            <time datetime="2013-12-02T07:17:00.000Z" itemprop="datePublished">2013-12-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”</p>
+<p>而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。</p>
+<p>单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。</p>
+<p>我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="douban_book" href="http://book.douban.com/subject/1921890/" target="_blank" name="1921890">&gt;&gt;图书基本信息</a>。</p>
+<p>本文一顿瞎写，老鸟们就别喷了，哥也只是一个四处找工作碰壁的JS新手罢了~~<br></p>
+            <p class="article-more-link">
+                <a href="/2013/12/02/reading-notes-on-dom-scripting/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/" data-id="ck3okolam0023yhs67uhzohqu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-reading-notes-on-the-non-desiners-design-book" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -160,7 +290,7 @@ var _hmt = _hmt || [];
         
             <p><p><a href="http://book.douban.com/subject/3323633/" class="douban_book" name="3323633" target="_blank" title="去豆瓣查看此书~~">写给大家看的设计书（第3版）</a>，英文名“The Non-Desiner’s Design Book”，封面其貌不扬，但内容与内容的排版设计都十分精彩。我大脑里与平面设计相关的灰质被深深地刺激到了，这块灰质表示此书可以给★★★★★。<br></p>
             <p class="article-more-link">
-                <a href="/2013/12/02/reading-notes-on-the-non-desiners-design-book/#more">Ler Mais</a>
+                <a href="/2013/12/02/reading-notes-on-the-non-desiners-design-book/#more">Read More</a>
             </p>
         
         </div>
@@ -171,7 +301,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-the-non-desiners-design-book/" data-id="ck2up3pow004kfks6r6goz9dh" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-the-non-desiners-design-book/" data-id="ck3okolak0020yhs6j5ziyzm7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -288,7 +418,7 @@ var _hmt = _hmt || [];
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$heading-font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif, !default;</span><br></pre></td></tr></table></figure>
 <p>这样一来，如果我的博客是中文标题，就只能采用浏览器默认的字体（一般是宋体），这样既不能保证跨浏览器表现的一致性，也不能得到最佳的外观表现——标题最适合使用无衬线字体，而如果使用宋体这样的衬线字体，会非常难看。下面简记在博客中使用中文字体的解决方案。</p></p>
             <p class="article-more-link">
-                <a href="/2013/11/30/blog-typography-custom/#more">Ler Mais</a>
+                <a href="/2013/11/30/blog-typography-custom/#more">Read More</a>
             </p>
         
         </div>
@@ -299,7 +429,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/30/blog-typography-custom/" data-id="ck2up3pot004afks6eimy8fnc" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/30/blog-typography-custom/" data-id="ck3okolae001syhs63ykhqnza" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -419,7 +549,7 @@ var _hmt = _hmt || [];
         
             <p><p>只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。<br></p>
             <p class="article-more-link">
-                <a href="/2013/11/29/reading-notes-on-book-high-performance-web-sites/#more">Ler Mais</a>
+                <a href="/2013/11/29/reading-notes-on-book-high-performance-web-sites/#more">Read More</a>
             </p>
         
         </div>
@@ -430,7 +560,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/29/reading-notes-on-book-high-performance-web-sites/" data-id="ck2up3pou004dfks6aw3y2amy" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/29/reading-notes-on-book-high-performance-web-sites/" data-id="ck3okolah001xyhs6rikg0nso" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -550,7 +680,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>在web前端开发中，“全面虚拟”就是指用Photoshop建模的过程了。之前我一直不鸟这部分内容，直到昨天面试被鄙视。。。<br></p>
             <p class="article-more-link">
-                <a href="/2013/11/27/reading-notes-on-book-the-principles-of-beautiful-web-design/#more">Ler Mais</a>
+                <a href="/2013/11/27/reading-notes-on-book-the-principles-of-beautiful-web-design/#more">Read More</a>
             </p>
         
         </div>
@@ -561,7 +691,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/27/reading-notes-on-book-the-principles-of-beautiful-web-design/" data-id="ck2up3poo0041fks6s8w7cwm1" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/27/reading-notes-on-book-the-principles-of-beautiful-web-design/" data-id="ck3okolac001qyhs6tddqo43e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -677,7 +807,7 @@ var _hmt = _hmt || [];
             <p><p>在58同城上投了几份简历，很有幸被叫去参加面试了，虽然最后仍然是悲剧，但面试经历又增加了，找工作就像谈恋爱，爱要越挫越勇~~</p>
 <p>下面回忆几个自己不会的不确定的题目。</p></p>
             <p class="article-more-link">
-                <a href="/2013/11/26/yinyuetai-audition/#more">Ler Mais</a>
+                <a href="/2013/11/26/yinyuetai-audition/#more">Read More</a>
             </p>
         
         </div>
@@ -688,7 +818,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/26/yinyuetai-audition/" data-id="ck2up3poq0045fks6udu5k9vw" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/26/yinyuetai-audition/" data-id="ck3okolag001vyhs6hn3bu5b2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -806,7 +936,7 @@ var _hmt = _hmt || [];
 <p>这是一个用impress.js模板写成的页面，整理了一下我看过的希腊神话相关的电影，会有短评、推荐指数等。</p>
 <p>暂时只找到了7部电影。都是自己看过的。下面是一些技术细节的记录。<br></p>
             <p class="article-more-link">
-                <a href="/2013/11/25/movies-about-greek-mythology/#more">Ler Mais</a>
+                <a href="/2013/11/25/movies-about-greek-mythology/#more">Read More</a>
             </p>
         
         </div>
@@ -817,7 +947,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/25/movies-about-greek-mythology/" data-id="ck2up3pom003yfks69js2uyxu" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/25/movies-about-greek-mythology/" data-id="ck3okolaa001myhs69broeqon" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -939,7 +1069,7 @@ var _hmt = _hmt || [];
 <p>###渐进增强与优雅降级<br>这部分内容主要在第4章：“网站是否需要在每个浏览器中看起来都一样？”中做了介绍。</p>
 <p>先谈一下我的一个误区：之前，我一直是以为是否采用某个CSS3、HTML5的超前的技术，是由全球浏览器市场份额来决定的——当然，从全球网站这个宏大的观点来说，是没有大问题的。但对于任何一个特定的网站，不应该首要考虑全球浏览器市场份额，而应该参考自己的网站用户统计数据中关于所用浏览器的报告；除此之外，其他网站的用户统计或全球采样调查都是百无一用的（Eric Meyer，2004）。<br></p>
             <p class="article-more-link">
-                <a href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/#more">Ler Mais</a>
+                <a href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/#more">Read More</a>
             </p>
         
         </div>
@@ -950,7 +1080,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/" data-id="ck2up3por0047fks6y7f5jt14" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/" data-id="ck3okola6001kyhs6s9dnk4r9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1066,7 +1196,7 @@ var _hmt = _hmt || [];
             <p><p>今天上午10:00在清华三教参加的前端工程师的笔试。之前参加了腾讯、百度、小米的笔试，只有百度的那次答的不错，也进入面试了，腾讯和小米的笔试要求都比较高，会考数据结构与算法、操作系统、数据库、C/C++。</p>
 <p>趁着还没忘干净，赶紧记录一下这次考试的心得体会，以及自己不会的题目，以便以后加强学习。<br></p>
             <p class="article-more-link">
-                <a href="/2013/11/23/sougou-web-front-end-exam/#more">Ler Mais</a>
+                <a href="/2013/11/23/sougou-web-front-end-exam/#more">Read More</a>
             </p>
         
         </div>
@@ -1077,7 +1207,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/23/sougou-web-front-end-exam/" data-id="ck2up3poi003ofks6rxrqd30g" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/23/sougou-web-front-end-exam/" data-id="ck3okol9z001ayhs6jo5dz157" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1194,7 +1324,7 @@ var _hmt = _hmt || [];
 <p>###练习作品01：Green Energy</p>
 <embed src="/svg/green_energy.svg" type="image/svg+xml"></p>
             <p class="article-more-link">
-                <a href="/2013/11/21/illustrator-svg-practice-color-gradient/#more">Ler Mais</a>
+                <a href="/2013/11/21/illustrator-svg-practice-color-gradient/#more">Read More</a>
             </p>
         
         </div>
@@ -1205,136 +1335,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/21/illustrator-svg-practice-color-gradient/" data-id="ck2up3pol003ufks6pbiojeeb" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-reading-notes-on-html5-and-javascript-programming" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/">前端知识的零星思考以及对某本书的读书笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/">
-            <time datetime="2013-11-20T12:33:00.000Z" itemprop="datePublished">2013-11-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" class="douban_book" name="20430370" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。</p>
-<p>这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，希望他们以后会出修订版或者第二版。</p>
-<p>除非特别声明，所有代码均在Firefox V25.0.1+ 浏览器的Firebug控制台下测试。</p>
-<p>OK, GO!<br></p>
-            <p class="article-more-link">
-                <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/#more">Ler Mais</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2013/11/20/reading-notes-on-html5-and-javascript-programming/" data-id="ck2up3poh003lfks6ml4z0mkf" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2013/11/21/illustrator-svg-practice-color-gradient/" data-id="ck3okola2001hyhs605pj3gal" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1411,7 +1412,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/12/">&laquo; Préc</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">Suiv &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
     </nav>
 </section>
             

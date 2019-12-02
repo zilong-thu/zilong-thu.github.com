@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,141 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-intro-to-imagemagick" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/30/intro-to-imagemagick/">ImageMagick 简单入门</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/30/intro-to-imagemagick/">
+            <time datetime="2017-10-30T14:33:27.000Z" itemprop="datePublished">2017-10-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/图像处理/">图像处理</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ImageMagick/">ImageMagick</a>, <a class="tag-link" href="/tags/图像处理/">图像处理</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://www.imagemagick.org/script/index.php" target="_blank" rel="noopener">ImageMagick</a> 是一款可以运行在 Linux/Unix/Windows/MacOS （现在甚至支持 iOS、Android）下的免费开源图片处理程序。使用 ImageMagick 可以进行图片的拉伸、裁剪、缩放、格式转换、生成 GIF 、添加文字/图案等各种操作。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>MacOS 下可以方便地使用 Homebrew 进行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ brew install imagemagick</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看使用帮助</span></span><br><span class="line">$ man magick</span><br><span class="line">$ man convert</span><br></pre></td></tr></table></figure>
+<p>magick 和 convert 应该是同一个程序。</p>
+<p>ImageMagick 的最新版本目前已经是 7.* 以上了。建议安装最新版，因为之前它还暴露过了一个严重漏洞，在最新版本里该漏洞是已经修复了的。它的源码放在 Github 上面维护：<a href="https://github.com/ImageMagick。" target="_blank" rel="noopener">https://github.com/ImageMagick。</a></p></p>
+            <p class="article-more-link">
+                <a href="/2017/10/30/intro-to-imagemagick/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/10/30/intro-to-imagemagick/" data-id="ck3okolek009syhs6f06b3lez" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-heap-sort-using-javascript" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -167,7 +302,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/28/heap-sort-using-javascript/" data-id="ck2up3ps000cbfks6xnk8dqcd" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/09/28/heap-sort-using-javascript/" data-id="ck3okolef009gyhs6ryrqdqi8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -282,7 +417,7 @@ var _hmt = _hmt || [];
         
             <p><p><img src="/images/2017/09/insert-sort.jpg" style="width: 500px; border-radius: 5px;"></p></p>
             <p class="article-more-link">
-                <a href="/2017/09/20/about-insert-sort-algorithm/#more">Ler Mais</a>
+                <a href="/2017/09/20/about-insert-sort-algorithm/#more">Read More</a>
             </p>
         
         </div>
@@ -293,7 +428,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/20/about-insert-sort-algorithm/" data-id="ck2up3pry00c6fks62ldagw5z" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/09/20/about-insert-sort-algorithm/" data-id="ck3okoleh009kyhs6re4trmjx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -409,7 +544,7 @@ var _hmt = _hmt || [];
             <p><h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>快速排序算法是由 Tony Hoare 在 1959 年发明的。如果实现得好，那么它的速度可以达到其两个主要竞争者——归并排序与堆排序——的两倍到三倍以上。</p>
 <p>在高速的实现中，快排是一个不稳定的算法，即它不能保证原来相等的值的位置不变。</p></p>
             <p class="article-more-link">
-                <a href="/2017/09/19/about-quick-sort-algorithm/#more">Ler Mais</a>
+                <a href="/2017/09/19/about-quick-sort-algorithm/#more">Read More</a>
             </p>
         
         </div>
@@ -420,7 +555,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/19/about-quick-sort-algorithm/" data-id="ck2up3prz00c9fks61ovxsf4v" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/09/19/about-quick-sort-algorithm/" data-id="ck3okolef009eyhs6ky76pldn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -540,7 +675,7 @@ var _hmt = _hmt || [];
 <li>然后，对需要排序的数组进行拆分，分别对左右两个子数组进行归并排序，然后合并。这样就形成了递归</li>
 </ul></p>
             <p class="article-more-link">
-                <a href="/2017/09/19/about-merge-sort-algorithm/#more">Ler Mais</a>
+                <a href="/2017/09/19/about-merge-sort-algorithm/#more">Read More</a>
             </p>
         
         </div>
@@ -551,7 +686,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/19/about-merge-sort-algorithm/" data-id="ck2up3prx00c2fks6s2t3c99l" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/09/19/about-merge-sort-algorithm/" data-id="ck3okoled009byhs68xev7q0t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -685,7 +820,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/09/17/how-to-choose-football-shoes/" data-id="ck2up3prv00bvfks6fwt9xni2" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/09/17/how-to-choose-football-shoes/" data-id="ck3okolea0096yhs6c1ati8v2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -806,7 +941,7 @@ var _hmt = _hmt || [];
             <p><p>2015年12月至今年6月，我在猫眼做的开发基本都是桌面浏览器项目、B 端产品，技术栈是 Node.js/Koa + Webpack + React.js。从今年7月份开始，趁着一个新的 C 端项目的启动，自己转而投入到移动端 web 开发中。</p>
 <p>C 端产品与 B 端产品差异巨大。</p></p>
             <p class="article-more-link">
-                <a href="/2017/08/21/new-things-learned-in-mobile-web-development/#more">Ler Mais</a>
+                <a href="/2017/08/21/new-things-learned-in-mobile-web-development/#more">Read More</a>
             </p>
         
         </div>
@@ -817,7 +952,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/" data-id="ck2up3prw00bzfks62fev6cpq" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/" data-id="ck3okole7008zyhs60c4xfnh8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -942,7 +1077,7 @@ var _hmt = _hmt || [];
 <li>iOS 设备配置证书</li>
 </ul></p>
             <p class="article-more-link">
-                <a href="/2017/07/20/charles-proxy-remote-mapping/#more">Ler Mais</a>
+                <a href="/2017/07/20/charles-proxy-remote-mapping/#more">Read More</a>
             </p>
         
         </div>
@@ -953,7 +1088,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/" data-id="ck2up3prt00bpfks6yqggfq3q" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/" data-id="ck3okole80093yhs6fmkygnnk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1077,7 +1212,7 @@ var _hmt = _hmt || [];
 <p>Base64 是一种任意二进制到文本字符串的编码方法，常用于在 URL、Cookie、网页中传输少量二进制数据。<br>—— <a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001399413803339f4bbda5c01fc479cbea98b1387390748000" target="_blank" rel="noopener">廖雪峰的官方网站 - base64</a></p>
 </blockquote></p>
             <p class="article-more-link">
-                <a href="/2017/07/19/openssl-and-base64/#more">Ler Mais</a>
+                <a href="/2017/07/19/openssl-and-base64/#more">Read More</a>
             </p>
         
         </div>
@@ -1088,7 +1223,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="ck2up3prs00bmfks644y457wm" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="ck3okole5008vyhs6wlu3gvoq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1210,7 +1345,7 @@ var _hmt = _hmt || [];
 <p>职业发展的驱动力一定是来自个体本身。记住：工作是属于公司的，而职业生涯却是属于你自己的。<br>—— 厄尔·南丁格尔</p>
 </blockquote></p>
             <p class="article-more-link">
-                <a href="/2017/06/16/note-on-book-soft-skills/#more">Ler Mais</a>
+                <a href="/2017/06/16/note-on-book-soft-skills/#more">Read More</a>
             </p>
         
         </div>
@@ -1221,138 +1356,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="ck2up3pru00bsfks6kq5jy9hb" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-mysql-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/06/15/mysql-hello-world/">MySQL 基本操作笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/06/15/mysql-hello-world/">
-            <time datetime="2017-06-15T07:33:00.000Z" itemprop="datePublished">2017-06-15</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/MySQL/">MySQL</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>简单记录一下 MySQL 的最基本的操作命令。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/06/15/mysql-hello-world/#more">Ler Mais</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2017/06/15/mysql-hello-world/" data-id="ck2up3prq00bifks6wcgp30wc" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2017/06/16/note-on-book-soft-skills/" data-id="ck3okole4008ryhs6182oys2l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1429,7 +1433,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Préc</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">Suiv &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
 </section>
             
