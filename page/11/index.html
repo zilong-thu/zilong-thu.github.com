@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,6 +121,137 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-using-gruntjs" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/10/13/using-gruntjs/">用gruntJS压缩合并脚本和样式小记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/10/13/using-gruntjs/">
+            <time datetime="2014-10-13T14:52:38.000Z" itemprop="datePublished">2014-10-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/GruntJS/">GruntJS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>记录自己使用GruntJS对脚本、样式表进行合并及压缩的经验与心得体会。</p></p>
+            <p class="article-more-link">
+                <a href="/2014/10/13/using-gruntjs/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2014/10/13/using-gruntjs/" data-id="ckiaceyc4006l3bs6xn2hy7fx" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-hello-hexo" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -177,7 +308,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/09/25/hello-hexo/" data-id="ckb3zp9n4006jbus6sp3osa6i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/09/25/hello-hexo/" data-id="ckiaceyc0006b3bs6fof3q01j" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -310,7 +441,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/09/21/about-image-compress/" data-id="ckb3zp9n1006cbus64yyjaadz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/09/21/about-image-compress/" data-id="ckiaceyc2006g3bs6xlrlm2m9" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -441,7 +572,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" data-id="ckb3zp9n3006fbus6hbnlvlqk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" data-id="ckiaceyc3006i3bs6nkd6n0x5" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -573,7 +704,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="ckb3zp9mx0062bus6pvmelid3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="ckiaceybw00653bs6gy2s2wub" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -701,7 +832,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" data-id="ckb3zp9my0064bus6wniut4wh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" data-id="ckiaceybx00683bs6tij7c5xf" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -815,7 +946,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
+                <strong class="toc-title">Catálogo</strong>
                 
             </div>
             <p>人生中会遇到很多重大事件。今天算一个。不是绝对的好事。也不是绝对的坏事。</p>
@@ -832,7 +963,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/03/27/the-third-big-day-in-my-life/" data-id="ckb3zp9mz0067bus6tkfyr51y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/03/27/the-third-big-day-in-my-life/" data-id="ckiaceybv00623bs6c51zqfxu" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -966,7 +1097,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/" data-id="ckb3zp9n0006abus69jl3djpt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/" data-id="ckiaceybu00603bs6fbwbrs5f" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1096,7 +1227,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/23/reading-notes-on-ordering-disorder/" data-id="ckb3zp9mw005zbus67p150acd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/23/reading-notes-on-ordering-disorder/" data-id="ckiaceybr005t3bs6li1g7xy0" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1226,138 +1357,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/16/javascript-loop-optimization/" data-id="ckb3zp9mr005qbus6yk2kroid" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-books-for-nodejs-learners" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2014/01/10/books-for-nodejs-learners/">Node.js学习书籍推荐</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2014/01/10/books-for-nodejs-learners/">
-            <time datetime="2014-01-10T15:08:00.000Z" itemprop="datePublished">2014-01-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Node-js/">Node.js</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>最近在学Node.js，感觉其非常强大，也很有趣。国内目前关于Node.js的书籍还不是很多，避免了选择焦虑环节，于是干脆买了几本。目前读了两本，列出来这些书，并附上自己的评价，或许对别人有帮助。</p></p>
-            <p class="article-more-link">
-                <a href="/2014/01/10/books-for-nodejs-learners/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/" data-id="ckb3zp9mv005xbus6y93u2fz4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/16/javascript-loop-optimization/" data-id="ckiaceybt005x3bs6pb3s73wi" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1434,7 +1434,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/10/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">Siguiente  &raquo;</a>
     </nav>
 </section>
             
