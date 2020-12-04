@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
-    <article id="post-about-filesystem-case-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-play-music-with-sox" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -129,7 +129,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/about-filesystem-case-sensitive/">关于MacOS文件系统的文件名大小写问题</a>
+            <a class="article-title" href="/2017/04/22/play-music-with-sox/">Play Music with SoX on MacOS</a>
         </h1>
     
 
@@ -138,8 +138,8 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/about-filesystem-case-sensitive/">
-            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        <a href="/2017/04/22/play-music-with-sox/">
+            <time datetime="2017-04-22T15:18:00.000Z" itemprop="datePublished">2017-04-22</time>
         </a>
     </div>
 
@@ -147,13 +147,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/操作系统/">操作系统</a>, <a class="tag-link" href="/tags/文件系统/">文件系统</a>
+        <a class="tag-link" href="/tags/Command-Line/">Command Line</a>, <a class="tag-link" href="/tags/SoX/">SoX</a>
     </div>
 
                     </div>
@@ -163,14 +163,23 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./Picker.js'</span>;</span><br></pre></td></tr></table></figure>
-<p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></span><br></pre></td></tr></table></figure>
-<p>最后，通过修改文件名，就解决了这个问题。</p></p>
-            <p class="article-more-link">
-                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
-            </p>
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单曲循环"><span class="toc-number">2.</span> <span class="toc-text">单曲循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
+            </div>
+            <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>今日突发奇想，想在命令行下播放音乐。找到了一个现成的程序，SoX（Sound eXchange）。</p>
+<p>Mac 下面执行下面的命令即可安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>sox</span><br></pre></td></tr></table></figure>
+<p>安装好之后，可以通过 <code>play</code> 命令来播放音乐（这首歌是在我博客另一篇博文<a href="http://borninsummer.com/2013/11/01/html5-audio/">HTML5 audio 实验</a>里面用的音乐）：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>play ~<span class="regexp">/Downloads/naruto</span>_xia_ri_xing.mp3</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="/images/2017/04/sox-play.png"></p>
+<h2 id="单曲循环"><a href="#单曲循环" class="headerlink" title="单曲循环"></a>单曲循环</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">play ~/Downloads/naruto_xia_ri_xing<span class="selector-class">.mp3</span> repeat <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><code>repeat</code> 后面加上希望循环的次数，0表示无限循环。任何时候想要停止，按下 <code>ctrl c</code> 即可。</p>
+<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
+<li><a href="https://linux.cn/article-1393-1.html" target="_blank" rel="noopener">在终端命令行下播放音乐的命令 | Linux 中国</a></li>
+</ul>
+
         
         </div>
         <footer class="article-footer">
@@ -180,7 +189,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ckiaceye500b83bs6w618opd1" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="ckiacmk8a00b420s6xpdb400n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -315,7 +324,142 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ckiaceydz00at3bs6cwx5em3g" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ckiacmk8d00bc20s6tm5r5q5s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-about-filesystem-case-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/03/20/about-filesystem-case-sensitive/">关于MacOS文件系统的文件名大小写问题</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/20/about-filesystem-case-sensitive/">
+            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/操作系统/">操作系统</a>, <a class="tag-link" href="/tags/文件系统/">文件系统</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./Picker.js'</span>;</span><br></pre></td></tr></table></figure>
+<p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module <span class="keyword">not</span> found: Error: Can<span class="string">'t resolve '</span>./Picke<span class="string">r' in '</span>some-file<span class="string">'</span></span><br></pre></td></tr></table></figure>
+<p>最后，通过修改文件名，就解决了这个问题。</p></p>
+            <p class="article-more-link">
+                <a href="/2017/03/20/about-filesystem-case-sensitive/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ckiacmk8800ay20s6h2lbst11" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -451,7 +595,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ckiaceye300b53bs677170m5z" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ckiacmk8900b120s6jiqkxfke" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -585,7 +729,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ckiaceye100ax3bs6vowmr2hm" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ckiacmk8600ar20s6n3zn3d6g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -724,7 +868,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ckiaceydx00ao3bs6la37ozpn" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ckiacmk8700at20s6c7vjlkom" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -856,7 +1000,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ckiaceyds00ab3bs6hj10wrne" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ckiacmk8400am20s6n5cdyt6n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -997,7 +1141,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ckiaceydy00ar3bs6xlwbdetd" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ckiacmk8400ak20s6p3i6i607" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1129,7 +1273,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ckiaceydw00am3bs6est01i24" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ckiacmk8300ah20s6471gc1cf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1260,129 +1404,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="ckiaceydt00ae3bs6nf7in639" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-javascript-ninja" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/09/20/javascript-ninja/">JavaScript Ninja</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/09/20/javascript-ninja/">
-            <time datetime="2016-09-19T17:07:20.000Z" itemprop="datePublished">2016-09-20</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><img src="/images/2016/09/s28313380.jpg" style="width: 180px;" alt="《JavaScript忍者秘籍》封面"></p>
-<p>书名《JavaScript忍者秘籍》，作者呢是大名鼎鼎的 jQuery 的创作者。这本书里介绍了各种“忍者级”JS用法，收益颇丰。书中的许多示例代码体现了作者在设计 jQuery 时的编程思想，非常有价值。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/09/20/javascript-ninja/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2016/09/20/javascript-ninja/" data-id="ckiaceydv00aj3bs6fa5y68ej" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="ckiacmk7z00a720s6v4vmi36e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1459,7 +1481,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Siguiente  &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
 </section>
             
