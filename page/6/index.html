@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Cari"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -110,7 +110,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Cari"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
-    <article id="post-play-music-with-sox" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-about-spa-data-flow-among-components" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -129,7 +129,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/04/22/play-music-with-sox/">Play Music with SoX on MacOS</a>
+            <a class="article-title" href="/2017/05/09/about-spa-data-flow-among-components/">About Web SPA Data Flow</a>
         </h1>
     
 
@@ -138,8 +138,8 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/04/22/play-music-with-sox/">
-            <time datetime="2017-04-22T15:18:00.000Z" itemprop="datePublished">2017-04-22</time>
+        <a href="/2017/05/09/about-spa-data-flow-among-components/">
+            <time datetime="2017-05-09T10:00:00.000Z" itemprop="datePublished">2017-05-09</time>
         </a>
     </div>
 
@@ -147,13 +147,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Command-Line/">Command Line</a>, <a class="tag-link" href="/tags/SoX/">SoX</a>
+        <a class="tag-link" href="/tags/Observable/">Observable</a>, <a class="tag-link" href="/tags/React-js/">React.js</a>, <a class="tag-link" href="/tags/RxJS/">RxJS</a>, <a class="tag-link" href="/tags/SPA/">SPA</a>
     </div>
 
                     </div>
@@ -165,19 +165,15 @@ var _hmt = _hmt || [];
         
             <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单曲循环"><span class="toc-number">2.</span> <span class="toc-text">单曲循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web应用数据流的类型"><span class="toc-number">1.</span> <span class="toc-text">web应用数据流的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单向数据流"><span class="toc-number">1.1.</span> <span class="toc-text">单向数据流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-amp-RxJS"><span class="toc-number">2.</span> <span class="toc-text">Observable &amp; RxJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJS-的入门级教程"><span class="toc-number">2.1.</span> <span class="toc-text">RxJS 的入门级教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
             </div>
-            <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>今日突发奇想，想在命令行下播放音乐。找到了一个现成的程序，SoX（Sound eXchange）。</p>
-<p>Mac 下面执行下面的命令即可安装：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>sox</span><br></pre></td></tr></table></figure>
-<p>安装好之后，可以通过 <code>play</code> 命令来播放音乐（这首歌是在我博客另一篇博文<a href="http://borninsummer.com/2013/11/01/html5-audio/">HTML5 audio 实验</a>里面用的音乐）：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>play ~<span class="regexp">/Downloads/naruto</span>_xia_ri_xing.mp3</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="/images/2017/04/sox-play.png"></p>
-<h2 id="单曲循环"><a href="#单曲循环" class="headerlink" title="单曲循环"></a>单曲循环</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">play ~/Downloads/naruto_xia_ri_xing<span class="selector-class">.mp3</span> repeat <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p><code>repeat</code> 后面加上希望循环的次数，0表示无限循环。任何时候想要停止，按下 <code>ctrl c</code> 即可。</p>
+            <a id="more"></a>
+<h2 id="web应用数据流的类型"><a href="#web应用数据流的类型" class="headerlink" title="web应用数据流的类型"></a>web应用数据流的类型</h2><p>什么场景下需要关心数据的变动？</p>
+<h3 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h3><h2 id="Observable-amp-RxJS"><a href="#Observable-amp-RxJS" class="headerlink" title="Observable &amp; RxJS"></a>Observable &amp; RxJS</h2><p><a href="https://tc39.github.io/proposal-observable/" target="_blank" rel="noopener">Observable</a> 是 TC39 提给 ECMAScript 的一个标准库提议，目前仍处于 Stage-1 草案阶段。根据 <a href="https://github.com/tc39/proposal-observable" target="_blank" rel="noopener">tc39/proposal-observable</a> 的说明，<a href="https://github.com/ReactiveX/RxJS" target="_blank" rel="noopener">RxJS</a> 是当前对于 Observable 草案的一个实现。</p>
+<h3 id="RxJS-的入门级教程"><a href="#RxJS-的入门级教程" class="headerlink" title="RxJS 的入门级教程"></a>RxJS 的入门级教程</h3><p><a href="https://fe.ele.me/let-us-learn-rxjs/" target="_blank" rel="noopener">让我们一起来学习 RxJS | 饿了么</a></p>
 <h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
-<li><a href="https://linux.cn/article-1393-1.html" target="_blank" rel="noopener">在终端命令行下播放音乐的命令 | Linux 中国</a></li>
+<li><a href="https://medium.com/@andrestaltz/2-minute-introduction-to-rx-24c8ca793877" target="_blank" rel="noopener">2 minute introduction to Rx</a></li>
+<li><a href="https://fe.ele.me/let-us-learn-rxjs/" target="_blank" rel="noopener">让我们一起来学习 RxJS | 饿了么</a></li>
 </ul>
 
         
@@ -189,7 +185,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="ckiacmk8a00b420s6xpdb400n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="ckiukk5ac00b6u0s67oal586x" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -265,15 +261,25 @@ var _hmt = _hmt || [];
 
 
 
-    <article id="post-koa-running-on-http2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-webpack-guide-01" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<a href="/2017/04/23/webpack-guide-01/" itemprop="url">
+            <img src="/images/2017/04/webpack-logo.png" class="article-banner" />
+        </a>
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/20/koa-running-on-http2/">Koa Running On HTTP/2</a>
+            <a class="article-title" href="/2017/04/23/webpack-guide-01/">Webpack 指南（1. 入门篇）</a>
         </h1>
     
 
@@ -282,8 +288,8 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/20/koa-running-on-http2/">
-            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        <a href="/2017/04/23/webpack-guide-01/">
+            <time datetime="2017-04-23T15:40:00.000Z" itemprop="datePublished">2017-04-23</time>
         </a>
     </div>
 
@@ -291,13 +297,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+        <a class="article-category-link" href="/categories/Webpack/">Webpack</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/HTTP/">HTTP</a>, <a class="tag-link" href="/tags/Koa/">Koa</a>, <a class="tag-link" href="/tags/Node-js/">Node.js</a>
+        <a class="tag-link" href="/tags/Webpack/">Webpack</a>, <a class="tag-link" href="/tags/前端工程化/">前端工程化</a>
     </div>
 
                     </div>
@@ -307,13 +313,9 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="HTTP2-概述"><a href="#HTTP2-概述" class="headerlink" title="HTTP2 概述"></a>HTTP2 概述</h2><p>翻译自 <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener">Hypertext Transfer Protocol Version 2 (HTTP/2)</a> 的简介：</p>
-<blockquote>
-<p>HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection.  It also introduces unsolicited push of representations from servers to clients.</p>
-<p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
-</blockquote></p>
+            <p><h2 id="webpack-基本概念"><a href="#webpack-基本概念" class="headerlink" title="webpack 基本概念"></a>webpack 基本概念</h2><p><a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a> 是目前非常流行的前端资源（JS/CSS/IMG/…）打包解决方案。它默认按照 ES2015 定义的模块机制来查找、打包文件，即对 <code>import</code>、<code>export</code> 声明进行相应的模块封装，而对于其他代码，则不做任何改动。如果想使用其他的 ES6 特性，现阶段需要借助于 <a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a> 这样的编译工具。</p></p>
             <p class="article-more-link">
-                <a href="/2017/03/20/koa-running-on-http2/#more">Read More</a>
+                <a href="/2017/04/23/webpack-guide-01/#more">Read More</a>
             </p>
         
         </div>
@@ -324,7 +326,151 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ckiacmk8d00bc20s6tm5r5q5s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/04/23/webpack-guide-01/" data-id="ckiukk5af00bbu0s6mryt3lro" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-play-music-with-sox" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/22/play-music-with-sox/">Play Music with SoX on MacOS</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/22/play-music-with-sox/">
+            <time datetime="2017-04-22T15:18:00.000Z" itemprop="datePublished">2017-04-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Command-Line/">Command Line</a>, <a class="tag-link" href="/tags/SoX/">SoX</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单曲循环"><span class="toc-number">2.</span> <span class="toc-text">单曲循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考阅读"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
+            </div>
+            <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>今日突发奇想，想在命令行下播放音乐。找到了一个现成的程序，SoX（Sound eXchange）。</p>
+<p>Mac 下面执行下面的命令即可安装：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>sox</span><br></pre></td></tr></table></figure>
+<p>安装好之后，可以通过 <code>play</code> 命令来播放音乐（这首歌是在我博客另一篇博文<a href="http://borninsummer.com/2013/11/01/html5-audio/">HTML5 audio 实验</a>里面用的音乐）：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>play ~<span class="regexp">/Downloads/naruto</span>_xia_ri_xing.mp3</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="/images/2017/04/sox-play.png"></p>
+<h2 id="单曲循环"><a href="#单曲循环" class="headerlink" title="单曲循环"></a>单曲循环</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">play ~/Downloads/naruto_xia_ri_xing<span class="selector-class">.mp3</span> repeat <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><code>repeat</code> 后面加上希望循环的次数，0表示无限循环。任何时候想要停止，按下 <code>ctrl c</code> 即可。</p>
+<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
+<li><a href="https://linux.cn/article-1393-1.html" target="_blank" rel="noopener">在终端命令行下播放音乐的命令 | Linux 中国</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/04/22/play-music-with-sox/" data-id="ckiukk5aa00b0u0s6goi6pyza" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -459,7 +605,142 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ckiacmk8800ay20s6h2lbst11" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="ckiukk5a800auu0s69fd5ws7v" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-koa-running-on-http2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/03/20/koa-running-on-http2/">Koa Running On HTTP/2</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/20/koa-running-on-http2/">
+            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTTP/">HTTP</a>, <a class="tag-link" href="/tags/Koa/">Koa</a>, <a class="tag-link" href="/tags/Node-js/">Node.js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="HTTP2-概述"><a href="#HTTP2-概述" class="headerlink" title="HTTP2 概述"></a>HTTP2 概述</h2><p>翻译自 <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener">Hypertext Transfer Protocol Version 2 (HTTP/2)</a> 的简介：</p>
+<blockquote>
+<p>HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection.  It also introduces unsolicited push of representations from servers to clients.</p>
+<p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
+</blockquote></p>
+            <p class="article-more-link">
+                <a href="/2017/03/20/koa-running-on-http2/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="ckiukk5a900ayu0s6f621o447" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -595,7 +876,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ckiacmk8900b120s6jiqkxfke" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" data-id="ckiukk5ad00b8u0s6g2kd1mc0" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -729,7 +1010,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ckiacmk8600ar20s6n3zn3d6g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/03/12/linux-shell-scripting-2/" data-id="ckiukk5a600aou0s63z9jac8x" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -868,7 +1149,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ckiacmk8700at20s6c7vjlkom" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/02/14/about-png-compress/" data-id="ckiukk5a400aiu0s63sk3pnb6" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1000,7 +1281,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ckiacmk8400am20s6n5cdyt6n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2017/01/21/app-rescuetime/" data-id="ckiukk5a700aru0s6fl9pb0rg" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1141,270 +1422,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ckiacmk8400ak20s6p3i6i607" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-http-charset" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/12/07/http-charset/">HTTP 头的中文字符处理案例</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/12/07/http-charset/">
-            <time datetime="2016-12-07T10:05:00.000Z" itemprop="datePublished">2016-12-07</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/HTTP/">HTTP</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>简单记录一下工作中遇到的两个与HTTP&amp;中文字符相关的问题及解决方案。</p>
-<p>参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/12/07/http-charset/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2016/12/07/http-charset/" data-id="ckiacmk8300ah20s6471gc1cf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-primary-vim-skills" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/09/24/primary-vim-skills/">vim 简单操作笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/09/24/primary-vim-skills/">
-            <time datetime="2016-09-24T03:29:37.000Z" itemprop="datePublished">2016-09-24</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/编辑器/">编辑器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/vim/">vim</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>vim 是***</p></p>
-            <p class="article-more-link">
-                <a href="/2016/09/24/primary-vim-skills/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2016/09/24/primary-vim-skills/" data-id="ckiacmk7z00a720s6v4vmi36e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2016/12/18/2016-to-2017/" data-id="ckiukk5ab00b3u0s6kmxmek9e" class="article-share-link"><i class="fa fa-share"></i>Bagikan</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1481,7 +1499,7 @@ var _hmt = _hmt || [];
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo; Sebelumnya</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Berikutnya &raquo;</a>
     </nav>
 </section>
             
