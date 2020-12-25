@@ -2198,7 +2198,18 @@ ol.toc {
 }
 figure {
   text-align: center;
+  margin-left: 0;
+  margin-right: 0;
 }
 figure figcaption {
   text-align: center;
+  color: #777;
+  font-size: 0.9em;
+}
+figure br {
+  display: none;
+}
+figure img {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
