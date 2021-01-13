@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="入门级流程知识。父级知识节点：NodeJS。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-01T16:47:30.714Z">
+<meta property="og:updated_time" content="2021-01-13T16:17:48.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发一个 npm 包的大概流程">
 <meta name="twitter:description" content="入门级流程知识。父级知识节点：NodeJS。">
@@ -91,7 +91,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -112,7 +112,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -166,7 +166,7 @@ var _hmt = _hmt || [];
             <p>入门级流程知识。父级知识节点：NodeJS。</p>
 <a id="more"></a>
 <h2 id="第一步-初始化项目"><a href="#第一步-初始化项目" class="headerlink" title="第一步: 初始化项目"></a>第一步: 初始化项目</h2><p>包括两部分：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm init</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git init</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 <p>最主要的是在 <code>package.json</code> 里通过 <code>main</code> 字段定义这个包对外暴露的入口；如果是提供命令行工具，则需要通过 <code>bin</code> 字段来定义暴露的命令名称与实际执行的文件。例如：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"@qcsfe/qbear"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"2.8.0-5"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"一个基于 Webpack 的打包构建工具，定义清晰的输入输出流"</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"test"</span>: <span class="string">"mocha tests/index.js"</span>,</span><br><span class="line">    <span class="attr">"lint"</span>: <span class="string">"eslint --ext .js ./lib"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"bin"</span>: &#123;</span><br><span class="line">    <span class="attr">"qbear"</span>: <span class="string">"cli.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">"wangzilong03"</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="第二步-在全局注册包名"><a href="#第二步-在全局注册包名" class="headerlink" title="第二步: 在全局注册包名"></a>第二步: 在全局注册包名</h2><p>一个尚未发布的 npm 包，其他项目是无法通过 npm/yarn 来安装它的，但有两种方式可以让项目在本地使用。</p>
@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2020/04/17/how-to-write-a-npm-package/" data-id="ckjdt3i7d00fi3gs63upefakm" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+    <a data-url="http://borninsummer.com/2020/04/17/how-to-write-a-npm-package/" data-id="ckjvmr3mu00f7dus6v3lv9dc8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -262,7 +262,7 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
     
         <a href="/2020/06/07/the-intelligent-investor/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus récent</strong>
+            <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
                     《聪明的投资者》（The Intelligent Investor）
@@ -272,7 +272,7 @@ var _hmt = _hmt || [];
     
     
         <a href="/2020/03/17/cars-i-have-driven/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Plus ancien</strong>
+            <strong class="article-nav-caption">Older</strong>
             <div class="article-nav-title">那些年我开过的车</div>
         </a>
     

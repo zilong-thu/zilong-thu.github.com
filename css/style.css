@@ -2206,10 +2206,10 @@ figure figcaption {
   color: #777;
   font-size: 0.9em;
 }
-figure br {
-  display: none;
-}
 figure img {
   margin-top: 10px !important;
   margin-bottom: 10px !important;
+}
+figure.image br {
+  display: none;
 }
