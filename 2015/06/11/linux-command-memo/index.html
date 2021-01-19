@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="写在前头Linux里，所有程序或系统装置都是文件">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-02T16:46:08.000Z">
+<meta property="og:updated_time" content="2021-01-19T15:16:28.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu Linux常用命令笔记">
 <meta name="twitter:description" content="写在前头Linux里，所有程序或系统装置都是文件">
@@ -91,7 +91,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -112,7 +112,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -165,7 +165,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
+                <strong class="toc-title">Catálogo</strong>
                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前头"><span class="toc-number">1.</span> <span class="toc-text">写在前头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门级命令"><span class="toc-number">2.</span> <span class="toc-text">入门级命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录与文件操作"><span class="toc-number">3.</span> <span class="toc-text">目录与文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移动文件、目录"><span class="toc-number">3.1.</span> <span class="toc-text">移动文件、目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前完整的工作目录路径"><span class="toc-number">3.2.</span> <span class="toc-text">查看当前完整的工作目录路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看文件、目录体积"><span class="toc-number">3.3.</span> <span class="toc-text">查看文件、目录体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看某个程序的实际路径"><span class="toc-number">3.4.</span> <span class="toc-text">查看某个程序的实际路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">4.</span> <span class="toc-text">vi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩文件操作"><span class="toc-number">5.</span> <span class="toc-text">压缩文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户"><span class="toc-number">6.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统资源与监控"><span class="toc-number">7.</span> <span class="toc-text">系统资源与监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理"><span class="toc-number">8.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络操作"><span class="toc-number">9.</span> <span class="toc-text">网络操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lsof命令"><span class="toc-number">9.1.</span> <span class="toc-text">lsof命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">10.</span> <span class="toc-text">环境</span></a></li></ol>
             </div>
             <h2 id="写在前头"><a href="#写在前头" class="headerlink" title="写在前头"></a>写在前头</h2><p><strong>Linux里，所有程序或系统装置都是文件</strong></p>
@@ -206,6 +206,8 @@ var _hmt = _hmt || [];
 <p><code>top</code>  可以实时输出系统的CPU、内存使用情况</p>
 <h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p><code>chown [选项] [所有者用户][:[组名]] 文件</code>  把某文件的所有者改为某某用户，以及归到某组下</p>
 <p><code>chmod 744 [filename]</code>  把一个文件的权限改为 <code>rwxrwxr--</code></p>
+<p><code>chmod</code> 的意思是 <code>change mode</code>，即改变文件的状态。<code>chmod</code> 最简单的使用语法是 <code>chmod mode file</code>，其中 <code>mode</code> 是权限设定字串，格式为 <code>[ugoa...][[+-=][rwxX]</code>。</p>
+<p><code>chmod u+x [filename]</code>，<code>u</code> 表示该文件的拥有者，<code>+</code> 表示增加权限，<code>x</code> 表示可执行。</p>
 <h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><h3 id="lsof命令"><a href="#lsof命令" class="headerlink" title="lsof命令"></a><code>lsof</code>命令</h3><p>通过list open file命令可以查看到当前打开文件，在linux中所有事物都是以文件形式存在，包括网络连接及硬件设备。下面这个命令会列出所有占用了 8080 端口TCP连接的进程：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -<span class="selector-tag">i</span>:<span class="number">8080</span></span><br></pre></td></tr></table></figure>
 <p><code>-i</code> 参数是用于过滤打开的文件的 <code>Internet address</code> 匹配其后面数字的。如果使用了 <code>-i4</code>，则只过滤 IPV4 的文件；<code>-i6</code> 则只查找 IPV6 的文件。</p>
@@ -220,7 +222,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="ckjvmr3jv008mdus6kujgytya" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/06/11/linux-command-memo/" data-id="ckk45b2r8008keps6w4en737w" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -296,7 +298,7 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
     
         <a href="/2015/06/17/notes-on-developing-nodejs-webapp/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">Más nuevo</strong>
             <div class="article-nav-title">
                 
                     NodeJS+Express+MySQL开发小记(2):服务器部署
@@ -306,7 +308,7 @@ var _hmt = _hmt || [];
     
     
         <a href="/2015/06/10/nodejs-environment-setup-on-linux/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">Más viejo</strong>
             <div class="article-nav-title">Linux下配置NodeJS环境</div>
         </a>
     

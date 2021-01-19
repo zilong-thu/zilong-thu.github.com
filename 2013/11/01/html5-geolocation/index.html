@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="王子龙的博客">
 <meta property="og:description" content="在包含GPS硬件的设备上，通过GPS单元可以获取精确的位置信息。不过，大多数情况下，位置信息都是通过Web获取的。当浏览器提交Internet IP地址给一个Web服务器的时候，该服务器通常能够知道（基于ISP记录）该IP属于哪个城市（通常广告商会在服务器端这么做）。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2015-08-08T17:16:21.000Z">
+<meta property="og:updated_time" content="2021-01-19T15:19:10.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5地理位置获取：GeoLocation">
 <meta name="twitter:description" content="在包含GPS硬件的设备上，通过GPS单元可以获取精确的位置信息。不过，大多数情况下，位置信息都是通过Web获取的。当浏览器提交Internet IP地址给一个Web服务器的时候，该服务器通常能够知道（基于ISP记录）该IP属于哪个城市（通常广告商会在服务器端这么做）。">
@@ -90,7 +90,7 @@ var _hmt = _hmt || [];
             
             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
 </div>
         </div>
@@ -111,7 +111,7 @@ var _hmt = _hmt || [];
                 
                 <td>
                     
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><input type="hidden" name="sitesearch" value="http://borninsummer.com"></form>
 
                 </td>
             </tr>
@@ -159,12 +159,13 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
+                <strong class="toc-title">Catálogo</strong>
                 
             </div>
             <div id="noticeBox" class="noticeBox"></div>
 
-<p>在包含GPS硬件的设备上，通过GPS单元可以获取精确的位置信息。不过，大多数情况下，位置信息都是通过Web获取的。当浏览器提交Internet IP地址给一个Web服务器的时候，该服务器通常能够知道（基于ISP记录）该IP属于哪个城市（通常广告商会在服务器端这么做）。<br><a id="more"></a></p>
+<p>在包含GPS硬件的设备上，通过GPS单元可以获取精确的位置信息。不过，大多数情况下，位置信息都是通过Web获取的。当浏览器提交Internet IP地址给一个Web服务器的时候，该服务器通常能够知道（基于ISP记录）该IP属于哪个城市（通常广告商会在服务器端这么做）。</p>
+<a id="more"></a>
 <p>本来想采用Script DOM Element方法动态加载外部脚本，未能如愿（失败了的代码如下）。有时间再研究。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scriptElement_a = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line"><span class="keyword">var</span> scriptElement_b = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">scriptElement_a.src = <span class="string">'http://j.maxmind.com/app/geoip.js'</span>;</span><br><span class="line">scriptElement_b.src = <span class="string">'http://maps.google.com/maps/api/js?sensor=false'</span>;</span><br><span class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>];</span><br><span class="line">head.appendChild(scriptElement_a);</span><br><span class="line">head.appendChild(scriptElement_b);</span><br></pre></td></tr></table></figure>
 <p>本例子涉及使用Google静态地图图片技术，见： <a href="https://developers.google.com/maps/documentation/staticmaps/?hl=zh-cn#URL_Parameters" target="_blank" rel="noopener">Static Maps API V2 开发者指南</a></p>
@@ -246,8 +247,6 @@ window.onload = function(){
         }
     }
 };
-
-
 </script>
         
         </div>
@@ -258,7 +257,7 @@ window.onload = function(){
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/11/01/html5-geolocation/" data-id="ckjvmr3h2002hdus6fruwl60f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/11/01/html5-geolocation/" data-id="ckk45b2on002feps6zy764c1c" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -334,7 +333,7 @@ window.onload = function(){
 <nav id="article-nav">
     
         <a href="/2013/11/02/maintainable-javascript/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">Más nuevo</strong>
             <div class="article-nav-title">
                 
                     《编写可维护的JavaScript》笔记
@@ -344,7 +343,7 @@ window.onload = function(){
     
     
         <a href="/2013/11/01/html5-audio/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">Más viejo</strong>
             <div class="article-nav-title">HTML5 audio 实验</div>
         </a>
     
