@@ -121,6 +121,265 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-reading-notes-on-javascript-the-good-parts" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/01/02/reading-notes-on-javascript-the-good-parts/">《JavaScript语言精粹》笔记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/01/02/reading-notes-on-javascript-the-good-parts/">
+            <time datetime="2014-01-02T06:37:00.000Z" itemprop="datePublished">2014-01-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://book.douban.com/subject/3590768/" class="douban_book" name="3590768" target="_blank" title="《JavaScript语言精粹》">《JavaScript语言精粹》</a></p>
+<p><a href="http://blog.jobbole.com/53199/" target="_blank">伯乐在线 - 给JavaScript初学者的24条最佳实践</a></p>
+<p><img src="/images/blog/javascript/20140102/where_do_javascript_comes.PNG" title="JavaScript语言特性来源"></p></p>
+            <p class="article-more-link">
+                <a href="/2014/01/02/reading-notes-on-javascript-the-good-parts/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2014/01/02/reading-notes-on-javascript-the-good-parts/" data-id="ckpkj0890005iqhs6lhdvwvqd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-html5-localstorage-study" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/12/30/html5-localstorage-study/">html5 localStorage初探</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/12/30/html5-localstorage-study/">
+            <time datetime="2013-12-30T13:38:00.000Z" itemprop="datePublished">2013-12-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/HTML5/">HTML5</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>HTML5 Web Storage的目的是克服cookie的一些限制：当数据需要被严格控制在客户端上时，无须持续地将数据发送回服务器。这里只初步研究一下localStorage属性。要访问同一个localStorage对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。</p></p>
+            <p class="article-more-link">
+                <a href="/2013/12/30/html5-localstorage-study/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2013/12/30/html5-localstorage-study/" data-id="ckpkj088w005cqhs6wouwf2w8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-accessing-cross-site-data-with-jsonp" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -177,7 +436,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="ckoczb3m400550ps6my8ftspe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/28/accessing-cross-site-data-with-jsonp/" data-id="ckpkj088r0053qhs6br1bh2ke" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -312,7 +571,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="ckoczb3mb005k0ps6cnjmndny" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/24/nodejs-primer/" data-id="ckpkj088t0056qhs6mycbvox4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -441,7 +700,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="ckoczb3m2004z0ps6o50n8hby" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/17/once-upon-a-time-on-fishfarm/" data-id="ckpkj088o004yqhs609c4gp8q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -572,7 +831,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="ckoczb3m9005f0ps6adasvuv2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/17/xiaochunshu-alleyway/" data-id="ckpkj088v0059qhs6khe0sscb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -701,7 +960,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/" data-id="ckoczb3m0004t0ps67m4odch3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/15/reading-note-on-async-javascript/" data-id="ckpkj088k004rqhs6hynx3y8p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -827,7 +1086,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/13/control-more-hardwares/" data-id="ckoczb3lx004k0ps6rrat7rfu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/13/control-more-hardwares/" data-id="ckpkj088h004lqhs68r82fixb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -953,7 +1212,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/09/javascript-array-unique/" data-id="ckoczb3m1004w0ps6y79ewm2a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/09/javascript-array-unique/" data-id="ckpkj088q0050qhs6r3k3vm29" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1080,268 +1339,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/" data-id="ckoczb3lz004q0ps6ptfd82dc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-way-back-to-school-after-an-audition" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/12/03/way-back-to-school-after-an-audition/">坐在冬天的马路边吃午饭的女生</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/12/03/way-back-to-school-after-an-audition/">
-            <time datetime="2013-12-03T06:05:00.000Z" itemprop="datePublished">2013-12-03</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/随笔/">随笔</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                
-            </div>
-            <p>昨天下午去一家小创业公司面试，很常见的那种——只有一个技术人员，负责网站前后端开发、APP开发。小伙子也就二十四五，创业打拼，很辛苦，希望找个有经验的人来帮忙，我太菜了，面试失败。中关村灰蒙蒙的大楼上闪耀的阳光偷偷洒进来，照着这里进进出出的人们。</p>
-<p>面试完，下午两点多了。骑车回学校的路上，路过北大医院，一个戴眼镜的长相清秀的小女生坐在路肩上吃路边摊买的煎饼。按我当时的心情，立刻出现这样的文字：一个刚毕业的女生，独自出来找工作，面试约的是下午3点，因为住得远她连午饭都没有吃，挤地铁挤公交，到了这里，还好，早到了半小时，于是随便买点路边阿姨的煎饼。她就独自一人在那儿，坐在冬天的马路边吃午饭，她男朋友不知道，她爸爸妈妈也不知道。</p>
-<p>只有她自己知道。</p>
-<p>路人看了她一眼，匆匆走过。唯有太阳，暖了她一下午。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2013/12/03/way-back-to-school-after-an-audition/" data-id="ckoczb3lw004h0ps6b5u4uonm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-reading-notes-on-dom-scripting" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/12/02/reading-notes-on-dom-scripting/">《JavaScript DOM 编程艺术》笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/12/02/reading-notes-on-dom-scripting/">
-            <time datetime="2013-12-02T07:17:00.000Z" itemprop="datePublished">2013-12-02</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>这本书写成于这样的时代——“知道CSS的Web设计师在人数上还是要比知道JavaScript语言和DOM的要多得多。”</p>
-<p>而今已经到了JavaScript工程师挤得头破血流也找不着工作的时代。</p>
-<p>单纯地读最新标准下的JavaScript、CSS书籍或标准文档，对深入理解它们的设计初衷是不够的，读一读十年前的Amazon超级畅销书还是很有好处的。</p>
-<p>我读的是第一版，但并不推荐任何新手也去读第一版——这种偶尔出现IE4、IE5字眼的书籍不利于W3C标准的推广~~推荐新手读此书的第二版，的确很适合入门。<a class="douban_book" href="http://book.douban.com/subject/1921890/" target="_blank" name="1921890">&gt;&gt;图书基本信息</a>。</p>
-<p>本文一顿瞎写，老鸟们就别喷了，哥也只是一个四处找工作碰壁的JS新手罢了~~<br></p>
-            <p class="article-more-link">
-                <a href="/2013/12/02/reading-notes-on-dom-scripting/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2013/12/02/reading-notes-on-dom-scripting/" data-id="ckoczb3ly004o0ps6m9zf20ao" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/" data-id="ckpkj088m004uqhs6icc8fubz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
