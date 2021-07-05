@@ -121,6 +121,137 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-nodejs-crawler" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/03/18/nodejs-crawler/">NodeJS爬虫程序</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/03/18/nodejs-crawler/">
+            <time datetime="2015-03-18T10:24:39.000Z" itemprop="datePublished">2015-03-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/网络爬虫/">网络爬虫</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。</p></p>
+            <p class="article-more-link">
+                <a href="/2015/03/18/nodejs-crawler/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="ckqqu43nm008azys6z9y7so2h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-max-sub-array-problem" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -177,7 +308,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="ckpws8e2k008ejis602xclh8j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="ckqqu43ng007xzys6vzqzv2fv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -320,7 +451,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/" data-id="ckpws8e2c007qjis6gdcig31b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/03/15/serveral-self-made-epub-books/" data-id="ckqqu43nd007mzys60zxgsctx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -454,7 +585,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="ckpws8e28007jjis64b4bv70r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/02/04/java-hello-world/" data-id="ckqqu43ne007qzys6ykv8bsar" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -588,7 +719,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/02/03/array-shuffle/" data-id="ckpws8e2f007yjis6n4axzuh4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/02/03/array-shuffle/" data-id="ckqqu43nf007uzys6v0mqy56i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -721,7 +852,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="ckpws8e2a007njis6j2faw2hv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="ckqqu43nc007jzys6g4g5nrh0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -853,7 +984,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="ckpws8e25007cjis6ir6ctyve" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="ckqqu43n80075zys677tr24o1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -985,7 +1116,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="ckpws8e2d007ujis69mn5ftrh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="ckqqu43nn008ezys6n2xk0rvo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1116,7 +1247,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/" data-id="ckpws8e27007gjis6qyd8s9k6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2015/01/01/farewell-2014-hello-2015/" data-id="ckqqu43na007czys6lbp0nczw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1247,148 +1378,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/" data-id="ckpws8e210075jis62spjgj92" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-compare-touch-and-click" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2014/11/24/compare-touch-and-click/">在触摸设备上比较触摸事件与点击事件</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2014/11/24/compare-touch-and-click/">
-            <time datetime="2014-11-24T15:48:48.000Z" itemprop="datePublished">2014-11-24</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/HTML5/">HTML5</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>在触摸设备上，touch事件从手指刚碰到屏幕就会触发，而click事件则要晚一会儿才被触发。触发顺序如下：</p>
-<ol>
-<li>touchstart</li>
-<li>mouseover</li>
-<li>mousemove（一次）</li>
-<li>mousedown</li>
-<li>mouseup</li>
-<li>click</li>
-<li>touchend</li>
-</ol>
-<p>所以，如果想提升web在触摸设备下的用户体验，让用户觉得响应非常迅速，应该对页面的触摸事件进行事件处理程序的注册，而不应再关注click事件。</p></p>
-            <p class="article-more-link">
-                <a href="/2014/11/24/compare-touch-and-click/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2014/11/24/compare-touch-and-click/" data-id="ckpws8e1s006yjis65zrpnbnn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/11/25/how-to-stronger-you-ankle-and-knee/" data-id="ckqqu43n5006vzys601nqy3r2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

@@ -121,6 +121,138 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-using-node-to-write-plot3d-mesh-file" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">用Node.js生成Plot3D网格文件</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">
+            <time datetime="2014-04-21T07:15:00.000Z" itemprop="datePublished">2014-04-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Node-js/">Node.js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。</p>
+<p>只要了解正则表达式的语法就OK。</p></p>
+            <p class="article-more-link">
+                <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="ckqqu43mw0062zys6vo3yfzod" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-using-nodejs-to-scale-plot3d-mesh-data" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -173,7 +305,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" data-id="ckpws8e1h006bjis6e4ti6v4l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" data-id="ckqqu43mz006azys6ee2rr9f0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -304,7 +436,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/03/27/the-third-big-day-in-my-life/" data-id="ckpws8e1f0065jis6uulxbxum" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/03/27/the-third-big-day-in-my-life/" data-id="ckqqu43mu005yzys6cwtxk7h2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -438,7 +570,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/" data-id="ckpws8e1e0063jis6ojaqlr3c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/" data-id="ckqqu43my0068zys6nuwtkahq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -568,7 +700,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/23/reading-notes-on-ordering-disorder/" data-id="ckpws8e1d0061jis60twv7ykn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/23/reading-notes-on-ordering-disorder/" data-id="ckqqu43mv0060zys6qi9zlj55" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -698,7 +830,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/16/javascript-loop-optimization/" data-id="ckpws8e19005yjis6j09h265c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/16/javascript-loop-optimization/" data-id="ckqqu43mx0065zys6rghf0ab4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -829,7 +961,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/" data-id="ckpws8e17005wjis64u608god" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/10/books-for-nodejs-learners/" data-id="ckqqu43mt005tzys6c04t5ton" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -960,7 +1092,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="ckpws8e14005sjis6i2yn2oxu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/09/node-http-server-examples/" data-id="ckqqu43mu005vzys69p19flj2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1090,7 +1222,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="ckpws8e12005qjis645qy7ccx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/08/html5-web-socket/" data-id="ckqqu43mq005mzys6683o6qw4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1225,136 +1357,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="ckpws8e15005ujis67mv7r5kr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-how-to-improve-12306" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2014/01/03/how-to-improve-12306/">12306网站前端初步优化之我见</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2014/01/03/how-to-improve-12306/">
-            <time datetime="2014-01-03T02:25:00.000Z" itemprop="datePublished">2014-01-03</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>最近买火车票，感觉12306网站做得实在太垃圾了——加载速度慢，使用同步的Ajax验证码，未使用CSS Spirites …… ——完全不是抱着处理大量请求、高并发去的啊。于是抽空瞥了一下网站源码，发现其前端部分是个极好的反面教材，可以作为web前端工程师进行性能优化的案例。本文仅指出12306网站前端方面存在的问题，并提出性能优化建议。鄙人水平有限，如有不对之处，还望读者朋友多多见谅，并感谢批评指正~~</p>
-<p>另外，1月3日下午我给12306铁路客运服务的“意见反馈”邮箱发了一封邮件，也不知道他们会不会处理。更不知道会不会被……</p>
-<p><span style="font-weight:bold;">参考资料：</span></p>
-<ul><br><li><a href="http://book.douban.com/subject/3132277/" class="douban_book" name="3132277" target="_blank">《高性能网站建设指南》</a><br></li><br><li><a href="http://book.douban.com/subject/4719162/" class="douban_book" name="4719162" target="_blank">《高性能网站建设进阶指南》</a></li><br></ul></p>
-            <p class="article-more-link">
-                <a href="/2014/01/03/how-to-improve-12306/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="ckpws8e0x005hjis66sbktdza" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="ckqqu43mr005pzys6kmky2xme" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
