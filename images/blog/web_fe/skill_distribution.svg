@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="480px" height="360px" viewBox="0 0 480 360" style="enable-background:new 0 0 480 360;" xml:space="preserve">
+<g>
+	<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="331.5" y1="33" x2="331.5" y2="309"/>
+	<rect x="315.5" y="32.5" style="fill:#8CC63F;stroke:#000000;stroke-miterlimit:10;" width="16" height="29"/>
+	<rect x="266.5" y="90.5" style="fill:#8CC63F;stroke:#000000;stroke-miterlimit:10;" width="65" height="31"/>
+	<rect x="190.5" y="154.5" style="fill:#8CC63F;stroke:#000000;stroke-miterlimit:10;" width="141" height="31"/>
+	<rect x="76.5" y="217.5" style="fill:#8CC63F;stroke:#000000;stroke-miterlimit:10;" width="255" height="31"/>
+	<rect x="229.5" y="277.5" style="fill:#8CC63F;stroke:#000000;stroke-miterlimit:10;" width="102" height="31"/>
+</g>
+<text transform="matrix(1 0 0 1 362.334 299.333)" style="font-family:'YouYuan'; font-size:16;">新手</text>
+<text transform="matrix(1 0 0 1 359.667 237)" style="font-family:'YouYuan'; font-size:16;">高级新手</text>
+<text transform="matrix(1 0 0 1 358 173.6665)" style="font-family:'YouYuan'; font-size:16;">胜任者</text>
+<text transform="matrix(1 0 0 1 358.334 110)" style="font-family:'YouYuan'; font-size:16;">精通者</text>
+<text transform="matrix(1 0 0 1 358.334 49.6665)" style="font-family:'YouYuan'; font-size:16;">专家</text>
+<text transform="matrix(1 0 0 1 23 40.3335)" style="fill:#333; font-family:'YouYuan'; font-size:16;">大多数人都是高级新手。</text>
+<text transform="matrix(1 0 0 1 36 349)" style="font-family:'YouYuan'; font-size:12;">摘自《程序员的思维修炼》</text>
+</svg>
