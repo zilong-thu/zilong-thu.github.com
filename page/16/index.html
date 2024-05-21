@@ -130,6 +130,139 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-reading-notes-on-book-more-bulletproff-web-design-with-css" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/">《无懈可击的Web设计II》笔记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/">
+            <time datetime="2013-11-24T02:24:00.000Z" itemprop="datePublished">2013-11-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CSS/" rel="tag">CSS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p><a href="http://book.douban.com/subject/4935289/" class="douban_book" name="4935289" target="_blank" title="去豆瓣看看这本书~~">《无懈可击的Web设计II》</a>这本书装订得很漂亮，全部彩色打印。貌似老外写的书，引进并翻译过来后再出版的基本都会好好做装订，像<a href="http://book.douban.com/subject/3821157/" class="douban_book" name="3821157" target="_blank" title="去豆瓣看看这本书~~">《Web界面设计》</a>也是全彩打印，真贵啊——不过这也是设计类书籍的惯例。装订精美，也不愁销量。</p>
+<p>###渐进增强与优雅降级<br>这部分内容主要在第4章：“网站是否需要在每个浏览器中看起来都一样？”中做了介绍。</p>
+<p>先谈一下我的一个误区：之前，我一直是以为是否采用某个CSS3、HTML5的超前的技术，是由全球浏览器市场份额来决定的——当然，从全球网站这个宏大的观点来说，是没有大问题的。但对于任何一个特定的网站，不应该首要考虑全球浏览器市场份额，而应该参考自己的网站用户统计数据中关于所用浏览器的报告；除此之外，其他网站的用户统计或全球采样调查都是百无一用的（Eric Meyer，2004）。</p></p>
+            <p class="article-more-link">
+                <a href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/" data-id="clquveqpd004dafld0877hl1k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-sougou-web-front-end-exam" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1219,139 +1352,6 @@ var _hmt = _hmt || [];
 </div>
 
     <a data-url="https://borninsummer.com/2013/11/11/webgl-study-step-01/" data-id="clquveqp9003jafldg30l66fn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-note-on-smashing-css-by-eric-meyer" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2013/11/08/note-on-smashing-css-by-eric-meyer/">《 Smashing CSS 》读书笔记</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2013/11/08/note-on-smashing-css-by-eric-meyer/">
-            <time datetime="2013-11-08T05:24:00.000Z" itemprop="datePublished">2013-11-08</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/CSS/" rel="tag">CSS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><em>Smashing CSS: Professional Techniques for Modern Layout</em>(by Eric Meyer)，我所读的中文版译名为<a href="http://book.douban.com/subject/10793898/" name="10793898" class="douban_book" target="_blank">《精彩绝伦的CSS》</a>。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。</p>
-<p>这本书的完稿时间是2010年8月，在中国的出版时间则是2012年7月。国内引进CSS方面的书籍的速度总是这样慢，Eric Meyer现在正在写《CSS: The Definitive Guide》的第四版，国内又不知道要什么时候才可以引进呢。</p>
-<p>刚翻开没看多少页，就看到了今年10月份参加前端笔试时遇到的而且不知道该怎样回答的一个问题相关的内容。</p></p>
-            <p class="article-more-link">
-                <a href="/2013/11/08/note-on-smashing-css-by-eric-meyer/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://borninsummer.com/2013/11/08/note-on-smashing-css-by-eric-meyer/" data-id="clquveqp8003fafld4na4d2yz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
