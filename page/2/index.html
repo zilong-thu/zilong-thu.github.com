@@ -71,6 +71,8 @@ var _hmt = _hmt || [];
     
 
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1653521488348699"
+     crossorigin="anonymous"></script>
 <meta name="generator" content="Hexo 5.0.0"></head>
 
 <body>
@@ -130,6 +132,167 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-ts-coverage-analysis" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/11/02/ts-coverage-analysis/">如何进行 TypeScript 覆盖率分析</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/11/02/ts-coverage-analysis/">
+            <time datetime="2021-11-02T07:31:00.000Z" itemprop="datePublished">2021-11-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/TypeScript/" rel="tag">TypeScript</a>, <a class="tag-link-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#type-coverage"><span class="toc-number">1.</span> <span class="toc-text">type-coverage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#type-coverage-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">type-coverage 的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type-coverage-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">type-coverage 工作原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%8F%AF%E7%94%A8%E7%9A%84-ts-%E8%A6%86%E7%9B%96%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">真实可用的 ts 覆盖率统计算法</span></a></li></ol>
+            </div>
+            <p>自从用了 TypeScript 之后，爱不释手，已经回不去 JavaScript 时代了。最近在公司各个项目中普及 TypeScript，包括对老代码进行 TypeScript 化改造，比较关心项目 TypeScript 覆盖率的变化情况。</p>
+<h2 id="type-coverage"><a href="#type-coverage" class="headerlink" title="type-coverage"></a><code>type-coverage</code></h2><p>调研后找到两个比较好的包，看起来 <code>type-coverage</code> 的使用情况更好一些。</p>
+<table>
+<thead>
+<tr>
+<th>Package Name</th>
+<th>Weekly Downloads</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type-coverage</td>
+<td>21,838</td>
+<td>*.ts, *.js, *.tsx</td>
+</tr>
+<tr>
+<td>typescript-coverage-report</td>
+<td>19,997</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="type-coverage-的基本使用"><a href="#type-coverage-的基本使用" class="headerlink" title="type-coverage 的基本使用"></a>type-coverage 的基本使用</h3><h3 id="type-coverage-工作原理"><a href="#type-coverage-工作原理" class="headerlink" title="type-coverage 工作原理"></a>type-coverage 工作原理</h3><h2 id="真实可用的-ts-覆盖率统计算法"><a href="#真实可用的-ts-覆盖率统计算法" class="headerlink" title="真实可用的 ts 覆盖率统计算法"></a>真实可用的 ts 覆盖率统计算法</h2><p>真实项目中，我们的代码不光是 <code>js</code>、<code>ts</code>，而是包括了 <code>vue</code> 或者 <code>tsx</code> 等。以我们的项目而言，如何支持 Vue 文件分析是个问题。</p>
+<p>另外，直接以 <code>type-coverage</code> 按代码行级别的覆盖率统计，可能会让老项目在 TS 化改造过程中非常没有信心——每天改一点，何时是个头？</p>
+<p>其实，可以定义不同的 TS 覆盖率级别（类似于自动驾驶级别），我自己想出来的是这样的：</p>
+<ul>
+<li>L1 级 TS 覆盖率 = <code>.ts</code> 文件与声明了 <code>lang=&quot;ts&quot;</code> 的 <code>.vue</code> 文件的个数占所有文件的比例。</li>
+<li>L2 级 TS 覆盖率 = <code>.ts</code> 文件与声明了 <code>lang=&quot;ts&quot;</code> 且组件以 <code>class</code> 声明的 <code>.vue</code> 文件的个数占所有文件的比例。</li>
+<li>L3 级 TS 覆盖率 = 基于 <code>type-coverage</code> 按行统计得到的 ts 覆盖率。</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2021/11/02/ts-coverage-analysis/" data-id="clquveqqk00h0aflda50j0ox6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-purchasing-house" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1293,132 +1456,6 @@ var _hmt = _hmt || [];
 </div>
 
     <a data-url="https://borninsummer.com/2020/06/07/the-intelligent-investor/" data-id="clquveqqg00g9afldefcndcq1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-how-to-write-a-npm-package" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/04/17/how-to-write-a-npm-package/">开发一个 npm 包的大概流程</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/04/17/how-to-write-a-npm-package/">
-            <time datetime="2020-04-17T08:38:00.000Z" itemprop="datePublished">2020-04-17</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/NodeJS/" rel="tag">NodeJS</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>入门级流程知识。父级知识节点：NodeJS。</p></p>
-            <p class="article-more-link">
-                <a href="/2020/04/17/how-to-write-a-npm-package/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://borninsummer.com/2020/04/17/how-to-write-a-npm-package/" data-id="clquveqqg00g6afldeujq56to" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
