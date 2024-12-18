@@ -155,6 +155,24 @@ code {
     padding: 0;
   }
 }
+.ads-container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1020px;
+}
+.ads-container:before,
+.ads-container:after {
+  content: "";
+  display: table;
+}
+.ads-container:after {
+  clear: both;
+}
+@media screen and (max-width: 559px) {
+  .ads-container {
+    padding: 0;
+  }
+}
 .left,
 .alignleft {
   float: left;
