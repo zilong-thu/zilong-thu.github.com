@@ -204,7 +204,7 @@
   font-weight: bold;
 }
 .lg-sub-html p {
-  font-size: 12px;
+  font-size: 13px;
   margin: 5px 0 0;
 }
 
@@ -643,7 +643,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .lg-outer .lg-dropdown {
   background-color: #fff;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 15px;
   list-style-type: none;
   margin: 0;
   padding: 10px 0;
@@ -686,7 +686,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   white-space: pre;
   padding: 4px 12px;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 12px;
+  font-size: 13px;
 }
 .lg-outer .lg-dropdown a:hover {
   background-color: rgba(0, 0, 0, 0.07);
