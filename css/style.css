@@ -159,6 +159,7 @@ code {
   margin: 0 auto;
   padding: 20px 20px 0 20px;
   max-width: 1020px;
+  max-height: 130px;
 }
 .ads-container:before,
 .ads-container:after {
@@ -170,7 +171,7 @@ code {
 }
 @media screen and (max-width: 559px) {
   .ads-container {
-    padding: 0;
+    padding: 20px 0 0 0;
   }
 }
 .left,
