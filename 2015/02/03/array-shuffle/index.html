@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数组洗牌算法 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="从《JavaScript框架设计》这本书里接触到洗牌算法：shuffle。 我就是个算法小白……痴。   Fisher–Yates Shuffle, January 14, 2012  这篇文章用JavaScript数组讲解了洗牌算法，并且用D3.js演示各自的重排序效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组洗牌算法">
+<meta property="og:url" content="https://borninsummer.com/2015/02/03/array-shuffle/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="从《JavaScript框架设计》这本书里接触到洗牌算法：shuffle。 我就是个算法小白……痴。   Fisher–Yates Shuffle, January 14, 2012  这篇文章用JavaScript数组讲解了洗牌算法，并且用D3.js演示各自的重排序效果。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/QQimg201501.gif">
+<meta property="article:published_time" content="2015-02-03T15:01:23.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.152Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2015/01/QQimg201501.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-array-shuffle" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数组洗牌算法
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/02/03/array-shuffle/">
+            <time datetime="2015-02-03T15:01:23.000Z" itemprop="datePublished">2015-02-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>从<a href="http://book.douban.com/subject/25858070/" target="_blank">《JavaScript框架设计》</a>这本书里接触到洗牌算法：shuffle。</p>
+<p>我就是个算法小白……痴。</p>
+<img src="/images/2015/01/QQimg201501.gif">
+
+<p><a href="http://bost.ocks.org/mike/shuffle/" target="_blank">Fisher–Yates Shuffle, January 14, 2012 </a> 这篇文章用JavaScript数组讲解了洗牌算法，并且用D3.js演示各自的重排序效果。</p>
+<a id="more"></a>
+
+<p>###算法演进</p>
+<p>下面的代码均来自该博文。</p>
+<p>先来一发粗糙的算法：</p>
+<figure class="highlight javascript"><figcaption><span>低效算法-01</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle_1</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> copy = [], n = array.length, i;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* While there remain elements to shuffle… */</span></span><br><span class="line">  <span class="keyword">while</span> (n) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Pick a remaining element… */</span></span><br><span class="line">    <span class="comment">/* 问题就在于，越到最后，数组的空值就越多，就越难以选中 */</span></span><br><span class="line">    i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * array.length);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* If not already shuffled, move it to the new array. */</span></span><br><span class="line">    <span class="keyword">if</span> (i <span class="keyword">in</span> array) &#123;</span><br><span class="line">      copy.push(array[i]);</span><br><span class="line">      <span class="keyword">delete</span> array[i];</span><br><span class="line">      n--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个算法的问题就是，每次做随机运算时所用的范围，跟剩余的数组长度并不一致。导致最后很难“命中”，于是越来越慢，所需的循环次数往往要大于数组长度 n 。所以，随机过程需要有个可变的范围，其上限应该等于剩余的数组项的个数：</p>
+<figure class="highlight javascript"><figcaption><span>改进的算法-02</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle_2</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> copy = [], n = array.length, i;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* While there remain elements to shuffle… */</span></span><br><span class="line">  <span class="keyword">while</span> (n) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Pick a remaining element… */</span></span><br><span class="line">    <span class="comment">/* 优化之处：此时每次生成的随机数，都一定能够对应到一个剩余的数组项 */</span></span><br><span class="line">    i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * n--);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* And move it to the new array. */</span></span><br><span class="line">    <span class="comment">/* 新的性能瓶颈，splice方法…… */</span></span><br><span class="line">    copy.push(array.splice(i, <span class="number">1</span>)[<span class="number">0</span>]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的算法对随机过程进行了改进，可以保证在 n 次循环后就完成随机排序。循环次数下来了，下面该优化每一次循环时的操作了。此时的性能瓶颈在于，数组的<code>splice(i, 1)</code>操作，将下标为<code>i</code>的数组项删除掉，然后把后面的所有项依次向前移动一位。因此复杂度是O(n2)。</p>
+<p>为什么一定要移动<code>(n-i)</code>个项呢？如果每次随机过程后，把挑出来的项跟队尾那个项交换一次，不就足够了么，毕竟下一次循环的时候<code>n</code>做了自减运算，数组的尾部就不再变动了。于是有：</p>
+<figure class="highlight javascript"><figcaption><span>改进的算法-03</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle_3</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> m = array.length, t, i;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* While there remain elements to shuffle… */</span></span><br><span class="line">  <span class="keyword">while</span> (m) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Pick a remaining element… */</span></span><br><span class="line">    i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * m--);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* And swap it with the current element. */</span></span><br><span class="line">    t = array[m];  <span class="comment">/* 把当前剩余数组的最后一项拿出来 */</span></span><br><span class="line">    array[m] = array[i];  <span class="comment">/* 跟选中的那个项换一下位置 */</span></span><br><span class="line">    array[i] = t;  <span class="comment">/* 这样就只是做了三次赋值运算而已，复杂度是1 */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样一来，整个算法的复杂度就是O(n)啦。</p>
+<p>要注意的是，原文中的算法-03是直接在传入的数组上进行操作的。也许先搞一个副本出来，对副本进行操作会更合适：</p>
+<figure class="highlight javascript"><figcaption><span>改进的算法-04</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle_4</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* 改变形参名，在局部作用域内创建arr的副本，要求arr必须严格是个数组 */</span></span><br><span class="line">  <span class="keyword">var</span> array = arr.slice(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> m = array.length, t, i;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* While there remain elements to shuffle… */</span></span><br><span class="line">  <span class="keyword">while</span> (m) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Pick a remaining element… */</span></span><br><span class="line">    i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * m--);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* And swap it with the current element. */</span></span><br><span class="line">    t = array[m];  <span class="comment">/* 把当前剩余数组的最后一项拿出来 */</span></span><br><span class="line">    array[m] = array[i];  <span class="comment">/* 跟选中的那个项换一下位置 */</span></span><br><span class="line">    array[i] = t;  <span class="comment">/* 这样就只是做了三次赋值运算而已，复杂度是1 */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###性能对比<br>测试用一个较长的数组，<code>n=10000</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10000</span>; i++)&#123; arr.push(i); &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;shuffle-01&#x27;</span>);</span><br><span class="line">shuffle_1(arr);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;shuffle-01&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;shuffle-02&#x27;</span>);</span><br><span class="line">shuffle_2(arr);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;shuffle-02&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;shuffle-04&#x27;</span>);</span><br><span class="line">shuffle_4(arr);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;shuffle-04&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 Chrome 39 中的结果是这样的：</p>
+<ul>
+<li>shuffle-01: 28.587ms</li>
+<li>shuffle-02: 14.757ms</li>
+<li>shuffle-04: 0.120ms</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/02/03/array-shuffle/" data-id="cm8bcxssr0089djle3zu2dg0p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/02/04/java-hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Java Hello World
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/01/22/server-pressure-testing-using-jmeter/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">用JMeter进行服务器压力测试心得</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>About Web SPA Data Flow | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="web应用数据流的类型什么场景下需要关心数据的变动？ 单向数据流Observable &amp; RxJSObservable 是 TC39 提给 ECMAScript 的一个标准库提议，目前仍处于 Stage-1 草案阶段。根据 tc39&#x2F;proposal-observable 的说明，RxJS 是当前对于 Observable 草案的一个实现。 RxJS 的入门级教程让我们一起来学习 Rx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About Web SPA Data Flow">
+<meta property="og:url" content="https://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="web应用数据流的类型什么场景下需要关心数据的变动？ 单向数据流Observable &amp; RxJSObservable 是 TC39 提给 ECMAScript 的一个标准库提议，目前仍处于 Stage-1 草案阶段。根据 tc39&#x2F;proposal-observable 的说明，RxJS 是当前对于 Observable 草案的一个实现。 RxJS 的入门级教程让我们一起来学习 Rx">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-05-09T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.159Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="RxJS">
+<meta property="article:tag" content="SPA">
+<meta property="article:tag" content="React.js">
+<meta property="article:tag" content="Observable">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-about-spa-data-flow-among-components" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            About Web SPA Data Flow
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/09/about-spa-data-flow-among-components/">
+            <time datetime="2017-05-09T10:00:00.000Z" itemprop="datePublished">2017-05-09</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Observable/" rel="tag">Observable</a>, <a class="tag-link-link" href="/tags/React-js/" rel="tag">React.js</a>, <a class="tag-link-link" href="/tags/RxJS/" rel="tag">RxJS</a>, <a class="tag-link-link" href="/tags/SPA/" rel="tag">SPA</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web%E5%BA%94%E7%94%A8%E6%95%B0%E6%8D%AE%E6%B5%81%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">web应用数据流的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="toc-number">1.1.</span> <span class="toc-text">单向数据流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-amp-RxJS"><span class="toc-number">2.</span> <span class="toc-text">Observable &amp; RxJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJS-%E7%9A%84%E5%85%A5%E9%97%A8%E7%BA%A7%E6%95%99%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">RxJS 的入门级教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%98%85%E8%AF%BB"><span class="toc-number">3.</span> <span class="toc-text">参考阅读</span></a></li></ol>
+            </div>
+            <a id="more"></a>
+
+<h2 id="web应用数据流的类型"><a href="#web应用数据流的类型" class="headerlink" title="web应用数据流的类型"></a>web应用数据流的类型</h2><p>什么场景下需要关心数据的变动？</p>
+<h3 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h3><h2 id="Observable-amp-RxJS"><a href="#Observable-amp-RxJS" class="headerlink" title="Observable &amp; RxJS"></a>Observable &amp; RxJS</h2><p><a target="_blank" rel="noopener" href="https://tc39.github.io/proposal-observable/">Observable</a> 是 TC39 提给 ECMAScript 的一个标准库提议，目前仍处于 Stage-1 草案阶段。根据 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-observable">tc39/proposal-observable</a> 的说明，<a target="_blank" rel="noopener" href="https://github.com/ReactiveX/RxJS">RxJS</a> 是当前对于 Observable 草案的一个实现。</p>
+<h3 id="RxJS-的入门级教程"><a href="#RxJS-的入门级教程" class="headerlink" title="RxJS 的入门级教程"></a>RxJS 的入门级教程</h3><p><a target="_blank" rel="noopener" href="https://fe.ele.me/let-us-learn-rxjs/">让我们一起来学习 RxJS | 饿了么</a></p>
+<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@andrestaltz/2-minute-introduction-to-rx-24c8ca793877">2 minute introduction to Rx</a></li>
+<li><a target="_blank" rel="noopener" href="https://fe.ele.me/let-us-learn-rxjs/">让我们一起来学习 RxJS | 饿了么</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/05/09/about-spa-data-flow-among-components/" data-id="cm8bcxst100chdjled0q2ghf4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/15/mysql-hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    MySQL 基本操作笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/04/23/webpack-guide-01/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Webpack 指南（1. 入门篇）</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

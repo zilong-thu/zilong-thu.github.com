@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>用JMeter进行服务器压力测试心得 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。 Apache JMeterTM是一个纯Java写的开源程序，维护得还不错。其最初只是用于测试Web应用程序，不过后来扩展得越来越强大，可以开展多种测试。 压力测试的目的是对软件进行性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用JMeter进行服务器压力测试心得">
+<meta property="og:url" content="https://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。 Apache JMeterTM是一个纯Java写的开源程序，维护得还不错。其最初只是用于测试Web应用程序，不过后来扩展得越来越强大，可以开展多种测试。 压力测试的目的是对软件进行性">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/jmeter-logo.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/jmeter-http-01.png">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/jmeter-http-02.png">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/jmeter-thread-01.png">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/node-throughput.png">
+<meta property="og:image" content="https://borninsummer.com/images/2015/01/node-average-res-time.png">
+<meta property="article:published_time" content="2015-01-22T01:56:22.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.152Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="JMeter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2015/01/jmeter-logo.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-server-pressure-testing-using-jmeter" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            用JMeter进行服务器压力测试心得
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/01/22/server-pressure-testing-using-jmeter/">
+            <time datetime="2015-01-22T01:56:22.000Z" itemprop="datePublished">2015-01-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/JMeter/" rel="tag">JMeter</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Node%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">一个简单的Node服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0HTTP%E8%AF%B7%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">手动添加HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%BB%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">线程组设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试结果</span></a></li></ol>
+            </div>
+            <p>公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。</p>
+<p><img src="/images/2015/01/jmeter-logo.jpg" style="float: right; margin-left: 10px;"><a href="http://jmeter.apache.org/" target="_blank">Apache JMeter<sup>TM</sup></a>是一个纯Java写的开源程序，维护得还不错。其最初只是用于测试Web应用程序，不过后来扩展得越来越强大，可以开展多种测试。</p>
+<p>压力测试的目的是对软件进行性能评估。开展压力测试可以帮助发现软件的性能瓶颈所在。</p>
+<a id="more"></a>
+
+<h3 id="一个简单的Node服务器"><a href="#一个简单的Node服务器" class="headerlink" title="一个简单的Node服务器"></a>一个简单的Node服务器</h3><p>下面的app.js为一个简单的HTTP服务器，为此需要准备一个html文件，命名为<code>segment-01.html</code>。</p>
+<figure class="highlight javascript"><figcaption><span>Node服务器app.js代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> count = <span class="number">0</span> ;</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    count++;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;第&#x27;</span>, count, <span class="string">&#x27;次请求&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    fs.readFile(<span class="string">&#x27;segment-01.html&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, html</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;出错了&#x27;</span>);</span><br><span class="line">            res.writeHeader(<span class="number">500</span>, &#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/plain&quot;</span>&#125;);</span><br><span class="line">            res.end(<span class="string">&#x27;Internal Server Error.&#x27;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(count, <span class="string">&#x27; 访问磁盘文件&#x27;</span>);</span><br><span class="line">            res.writeHeader(<span class="number">200</span>, &#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/html&quot;</span>&#125;);</span><br><span class="line">            res.end(html);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;).listen(<span class="number">1337</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;服务器运行在1337端口&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="手动添加HTTP请求"><a href="#手动添加HTTP请求" class="headerlink" title="手动添加HTTP请求"></a>手动添加HTTP请求</h3><p>右键线程组-&gt;添加-&gt;Sampler-&gt;HTTP请求，然后写入该请求的主机或IP、端口号、请求的路径、请求方法等。</p>
+<img src="/images/2015/01/jmeter-http-01.png">
+
+<p>###测试脚本录制<br>如果要测试的页面请求较多，或者不清楚具体的请求路径、请求参数，也可以使用脚本录制功能。方法如下：</p>
+<p>首选更改代理服务器设置：Internet属性-&gt;连接-&gt;局域网(LAN)设置对话框中，将代理服务器打开。</p>
+<p>然后在JMeter中为工作台添加“非测试单元-&gt;HTTP代理服务器”，并把Test plan content 的目标控制器选择为当前的线程组。</p>
+<img src="/images/2015/01/jmeter-http-02.png">
+
+<p>在JMeter的“HTTP代理服务器”页面，点击“启动”后，在浏览器中进行操作，其所发起的所有HTTP请求（包括请求参数、发送的数据）都会被记录下来。</p>
+<h3 id="线程组设置"><a href="#线程组设置" class="headerlink" title="线程组设置"></a>线程组设置</h3><img src="/images/2015/01/jmeter-thread-01.png">
+
+<p>每个线程组可以包括多个请求。线程组中的请求是按照顺序依次发起的，并且直到上一个请求的响应返回后，才会进行下一个请求。而各个线程则是同时进行的。</p>
+<p>一般要设一个合适的Ramp-Up Period，以使服务器有个“热身”的时间，让压力逐渐增加而不是一下子过来。</p>
+<p>测试可以使用循环次数控制，也可以使用持续时间。我一般选择按持续时间来进行测试，持续时间要比热身时间大一个数量级，以尽可能消除热身阶段的误差（Ramp-Up阶段并不是真正的并发的），例如Ramp-Up Period设为了10s，那么持续时间要在110s以上才行。</p>
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p><strong>吞吐率（Throughput） = 完成的请求数 ÷ 经历的时间 [单位：req/sec]</strong></p>
+<p>下面是在工作用的台式机上对本地的Node服务器程序进行压力测试的结果。当并发数在2500及以上时，错误率较高，测试难以持续，因此并发数到2000为止。</p>
+<img src="/images/2015/01/node-throughput.png">
+
+<p>每个请求的平均响应时间</p>
+<img src="/images/2015/01/node-average-res-time.png">
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/01/22/server-pressure-testing-using-jmeter/" data-id="cm8bcxssq0086djlebfy2dfeq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/02/03/array-shuffle/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    数组洗牌算法
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/01/19/reading-styling-with-css/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《CSS设计指南（第3版）》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

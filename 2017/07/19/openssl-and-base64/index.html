@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>OpenSSL and Base64 以及网站性能优化的思考 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="记录一个小命令，涉及到两个比较基础的概念：OpenSSL 和 base64 编码。  OpenSSL 包含一个命令行工具用来完成 OpenSSL 库中的所有功能，更好的是，它可能已经安装到你的系统中了。—— 百度百科 Base64 是一种任意二进制到文本字符串的编码方法，常用于在 URL、Cookie、网页中传输少量二进制数据。—— 廖雪峰的官方网站 - base64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenSSL and Base64 以及网站性能优化的思考">
+<meta property="og:url" content="https://borninsummer.com/2017/07/19/openssl-and-base64/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="记录一个小命令，涉及到两个比较基础的概念：OpenSSL 和 base64 编码。  OpenSSL 包含一个命令行工具用来完成 OpenSSL 库中的所有功能，更好的是，它可能已经安装到你的系统中了。—— 百度百科 Base64 是一种任意二进制到文本字符串的编码方法，常用于在 URL、Cookie、网页中传输少量二进制数据。—— 廖雪峰的官方网站 - base64">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-07-18T17:06:35.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.160Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="base64">
+<meta property="article:tag" content="OpenSSL">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-openssl-and-base64" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            OpenSSL and Base64 以及网站性能优化的思考
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/19/openssl-and-base64/">
+            <time datetime="2017-07-18T17:06:35.000Z" itemprop="datePublished">2017-07-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="tag-link-link" href="/tags/OpenSSL/" rel="tag">OpenSSL</a>, <a class="tag-link-link" href="/tags/base64/" rel="tag">base64</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">单个文件处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">文件批量处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%B0%8F%E7%9A%84%E5%9B%BE%E7%89%87%E5%8F%AF%E4%BB%A5%E8%80%83%E8%99%91%E4%BD%BF%E7%94%A8-base64-%E8%BF%9B%E8%A1%8C%E5%86%85%E8%81%94%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">多小的图片可以考虑使用 base64 进行内联？</span></a></li></ol>
+            </div>
+            <p>记录一个小命令，涉及到两个比较基础的概念：OpenSSL 和 base64 编码。</p>
+<blockquote>
+<p>OpenSSL 包含一个命令行工具用来完成 OpenSSL 库中的所有功能，更好的是，它可能已经安装到你的系统中了。<br>—— 百度百科</p>
+<p>Base64 是一种任意二进制到文本字符串的编码方法，常用于在 URL、Cookie、网页中传输少量二进制数据。<br>—— <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001399413803339f4bbda5c01fc479cbea98b1387390748000">廖雪峰的官方网站 - base64</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="单个文件处理"><a href="#单个文件处理" class="headerlink" title="单个文件处理"></a>单个文件处理</h2><p>OpenSSL 可以将任意 PNG 图片编码成 base64 字符序列，下面的命令以 <code>in.png</code> 图片作为输入，转码后把 base64 序列输出到 <code>out.txt</code> 文件里。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl base64 -in in.png -out out.txt</span><br></pre></td></tr></table></figure>
+
+<p>不过有个问题，上面的命令会产生折行（即 line breaks），要想直。要想去掉折行，需要添加 <code>-A</code> 参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl base64 -A -in in.png -out out.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件批量处理"><a href="#文件批量处理" class="headerlink" title="文件批量处理"></a>文件批量处理</h2><p>可以在需要进行批量处理的目录下运行下面的脚本，会将所有的图片逐个生成为同名的 <code>txt</code> 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> `find . -name <span class="string">&quot;*.png&quot;</span> -o -name <span class="string">&quot;*.jpeg&quot;</span> -o -name <span class="string">&quot;*.jpg&quot;</span> -o -name <span class="string">&quot;*.gif&quot;</span>`;</span><br><span class="line">  <span class="keyword">do</span> openssl base64 -A -<span class="keyword">in</span> <span class="variable">$filename</span> -out <span class="variable">$filename</span>.txt;</span><br><span class="line">  <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">data:image/png;base64,base64_code_goes_here</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="多小的图片可以考虑使用-base64-进行内联？"><a href="#多小的图片可以考虑使用-base64-进行内联？" class="headerlink" title="多小的图片可以考虑使用 base64 进行内联？"></a>多小的图片可以考虑使用 base64 进行内联？</h2><p>Base64 生成的文件体积为原始图片体积的4/3倍，它对于网站性能优化的提升通常仅针对超小体积的图标类型图片，以体积的稍微增加，来减少 HTTP 的请求次数。那么多小的图片可以考虑使用 base64 进行内联呢？</p>
+<p>考虑一个对图片文件的 HTTP 请求报文，其由三部分组成：请求行，请求头，请求响应。例如下面是对一张图片的请求的请求行与请求头报文：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Request Headers</span><br><span class="line"><span class="keyword">GET</span> <span class="string">/piaofang/img/connect/project-bg/bg-00-wide-e4a26031.png?__sprite__</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>ms0.meituan.net</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>keep-alive</span><br><span class="line"><span class="attribute">Pragma</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>no-cache</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>image/webp,image/apng,image/*,*/*;q=0.8</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://ms0.meituan.net/piaofang/css/celebrity/piazza.331e5210.css</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">Accept-Language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6,da;q=0.5</span><br></pre></td></tr></table></figure>
+
+<p>而得到的响应则是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 04 Dec 2017 08:59:58 GMT</span><br><span class="line">Content-Type: image/png</span><br><span class="line">Content-Length: 4331</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Server: Tengine</span><br><span class="line">Last-Modified: Mon, 04 Dec 2017 06:44:55 GMT</span><br><span class="line">ETag: &quot;5a24eee7-10eb&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Cache-Control: max-age=2592000,s-maxage=3600</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">X-Ser: BC208_dx-lt-shandong-qingdao-2-cache-7, BC14_lt-fujian-fuzhou-1-cache-1</span><br></pre></td></tr></table></figure>
+
+<p>请求头 + 请求响应报文，一共 939 字节（记为H）。再加上图片本身的体积，记为 I 字节。图片转为 base64 后体积会变为 <code>4/3 * I</code> 个字节。如果要问对于多大的 I，应该采用 base64 进行转换，就相当于求解满足下面条件的不等式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">H + I &gt; 4/3*I</span><br></pre></td></tr></table></figure>
+
+<p>解为 <code>I &lt; 3 * H = 2817KB</code>，即当图片的体积小于 2.8KB 时，使用 base64 进行压缩是会让性能更优的。而且考虑到 HTTP 请求本身的开销（计算资源、建立连接、网络延时等），将这个上限定为 4KB 也是不错的选择。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/07/19/openssl-and-base64/" data-id="cm8bcxst200ctdjlebu66gfhn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/20/charles-proxy-remote-mapping/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Charles 的配置
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/06/16/note-on-book-soft-skills/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《软技能——代码之外的生存指南》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

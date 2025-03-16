@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>用Promise实现多个Ajax的异步流程控制 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="我觊觎Promise好久了。但由于缘分未到，以及智商不够，一直没有机会在实战中用它。前段时间的 2015 上海前端技术峰会 中的主题分享之《ES6实战》让我有这样的感觉：ES5的好多特性都还没有完全掌握呢，ES6就来了。然后据说明年ES7就要来了…… 所以说，  学无止境。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Promise实现多个Ajax的异步流程控制">
+<meta property="og:url" content="https://borninsummer.com/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="我觊觎Promise好久了。但由于缘分未到，以及智商不够，一直没有机会在实战中用它。前段时间的 2015 上海前端技术峰会 中的主题分享之《ES6实战》让我有这样的感觉：ES5的好多特性都还没有完全掌握呢，ES6就来了。然后据说明年ES7就要来了…… 所以说，  学无止境。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-06-02T13:04:15.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.154Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Promise">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-using-promise-to-carry-out-multi-ajax-procedure" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            用Promise实现多个Ajax的异步流程控制
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/">
+            <time datetime="2015-06-02T13:04:15.000Z" itemprop="datePublished">2015-06-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Promise/" rel="tag">Promise</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise%E6%9E%81%E7%AE%80%E5%8F%B2"><span class="toc-number">1.</span> <span class="toc-text">Promise极简史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">背景描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">几个工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%88%9D%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E5%86%99Promise%E4%BB%A3%E7%A0%81%E7%9A%84"><span class="toc-number">4.</span> <span class="toc-text">最初我是这样写Promise代码的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC-0-0-1"><span class="toc-number">4.1.</span> <span class="toc-text">版本-0.0.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC-0-0-2"><span class="toc-number">4.2.</span> <span class="toc-text">版本-0.0.2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Polyfill"><span class="toc-number">5.</span> <span class="toc-text">Polyfill</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
+            </div>
+            <p>我觊觎Promise好久了。但由于缘分未到，以及智商不够，一直没有机会在实战中用它。前段时间的 <a target="_blank" rel="noopener" href="http://www.w3ctech.com/event/51">2015 上海前端技术峰会</a> 中的主题分享之《ES6实战》让我有这样的感觉：ES5的好多特性都还没有完全掌握呢，ES6就来了。然后据说明年ES7就要来了……</p>
+<p>所以说，</p>
+<blockquote>
+<p>学无止境。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Promise极简史"><a href="#Promise极简史" class="headerlink" title="Promise极简史"></a>Promise极简史</h2><blockquote>
+<p>Promise对象曾经以多种形式存在于很多语言中。这个词最先由C++工程师用在Xanadu项目中。该项目是Web应用项目的先驱。随后Promise被用在E编程语言中，这又激发了Python开发人员的灵感，将它实现成了Twisted框架的Deferred对象。<br>……<br>不过，Promise今天受到如此多关注的原因当然是jQuery。jQuery 1.5在2011年1月携 $.ajax 重量级重写之势，用其Promise实现了震惊无数的初次接触Promise对象的开发者。<br>—— $3.1 《JavaScript异步编程》Trevor Burnham</p>
+</blockquote>
+<p>在现在的jQuery中，deferred对象指的应该就是其自己实现的Promise。</p>
+<h2 id="背景描述"><a href="#背景描述" class="headerlink" title="背景描述"></a>背景描述</h2><p>在浏览器端，有个表单，为了填写方便，两个输入框使用<code>&lt;select&gt;</code>元素供用户选择；此外，在编辑一个条目时（对应数据库中一行），还要将该条目的数据从服务器获取到，然后生成到表单中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=&quot;student-info&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; data-key=&quot;name&quot;&gt;</span><br><span class="line">    &lt;select data-key=&quot;province&quot;&gt;</span><br><span class="line">        &lt;option value=&quot;10&quot;&gt;省份1&lt;/option&gt;</span><br><span class="line">        &lt;option value=&quot;11&quot;&gt;省份2&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &lt;select data-key=&quot;university&quot;&gt;</span><br><span class="line">        &lt;option value=&quot;1&quot;&gt;学校1&lt;/option&gt;</span><br><span class="line">        &lt;option value=&quot;2&quot;&gt;学校2&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="几个工具"><a href="#几个工具" class="headerlink" title="几个工具"></a>几个工具</h2><p>没有使用任何MVC或者MVVM框架。只是借助于jQuery、Underscore等进行构建。</p>
+<p>从表单中获取数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * selector: 表单容器的选择器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">util.getDataFromForm = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> inputs = $(selector).find(*[data-key]);</span><br><span class="line"></span><br><span class="line">    inputs.each(<span class="function"><span class="keyword">function</span>(<span class="params">index, element</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> value = $(element).val();</span><br><span class="line">        <span class="keyword">var</span> key = $(element).data(<span class="string">&#x27;key&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        data[key] = value;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>把数据渲染到表单中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * data: 模型数据</span></span><br><span class="line"><span class="comment"> * selector: 表单容器的选择器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">util.renderFormWithData = <span class="function"><span class="keyword">function</span>(<span class="params">data, selector</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> inputs = $(selector).find(*[data-key]);</span><br><span class="line"></span><br><span class="line">    inputs.each(<span class="function"><span class="keyword">function</span>(<span class="params">index, element</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> key = $(element).data(<span class="string">&#x27;key&#x27;</span>);</span><br><span class="line">        $(element).val(data[key]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="最初我是这样写Promise代码的"><a href="#最初我是这样写Promise代码的" class="headerlink" title="最初我是这样写Promise代码的"></a>最初我是这样写Promise代码的</h2><p>OK，对于上面这个表单，两个select元素是需要从服务器GET数据后生成的（借助于模板，在此不放代码了）。然后如果要编辑一个条目，还需要额外GET该条目的数据并赋值到表单里。</p>
+<p>如果不使用Promise，而是只用回调写法，那么最多的情况下，需要嵌套三层。任何一层失败了，都不好办。而借助于Promise，可以大胆地像同步代码那样写：</p>
+<h3 id="版本-0-0-1"><a href="#版本-0-0-1" class="headerlink" title="版本-0.0.1"></a>版本-0.0.1</h3><p>Promise异步流程控制-0.0.1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepareForm</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;/rest/province/all&#x27;</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">            <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="comment">/* render the province select element */</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;/rest/university/all&#x27;</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">            <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="comment">/* render the university select element */</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(callback)&#123;</span><br><span class="line">            callback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;error: &#x27;</span>, error);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，<code>prepareForm</code>函数依然接受一个回调函数作为参数。如果是ADD操作，则回调中无须再次执行一个Ajax操作；如果是UPDATE操作，则回调函数需要对该条目进行Ajax请求，然后根据这个值去渲染表单——这时不需担心表单里的两个<code>select</code>元素尚未就绪，因为__一定__是就绪了之后才根据模型对象渲染表单的。</p>
+<p>注意：__每次调用then都会返回一个新创建的Promise对象__。</p>
+<h3 id="版本-0-0-2"><a href="#版本-0-0-2" class="headerlink" title="版本-0.0.2"></a>版本-0.0.2</h3><p>版本-0.0.1并没有很好地处理<code>rejected</code>情况。<br>【未完待续】</p>
+<p>##后来我意识到Promise应该这样用<br>上面我误以为直接链式<code>then()</code>方法就是Promise处理异步流程的精髓了。然而大错特错。对于异步任务，重要的是保证数据的获取。这通常就需要自定义一个壳，来包装一下Ajax请求的参数、返回数据等，尤其要把返回的数据传给<code>resolve()</code>，以便在<code>then()</code>里可以使用这个数据。下面是例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/* 先定义一个返回Promise对象的Ajax过程 */</span><br><span class="line">var getAjaxPromise = function(option)&#123;</span><br><span class="line">    return new Promise(function(resolve, reject)&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url: option.url,</span><br><span class="line">            type: &#x27;get&#x27;,</span><br><span class="line">            data: option.data || &#x27;&#x27;,</span><br><span class="line">            success: function(data)&#123;</span><br><span class="line">                resolve(data);</span><br><span class="line">            &#125;,</span><br><span class="line">            error: function(error)&#123;</span><br><span class="line">                reject(error);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">/* 启动第1个异步任务 */</span><br><span class="line">var p1 = getAjaxPromise(&#123;</span><br><span class="line">    url: &#x27;root/url/1&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">p1.then(function(data1)&#123;</span><br><span class="line">    /* 处理第1个异步任务的结果 */</span><br><span class="line">    console.log(data1);</span><br><span class="line"></span><br><span class="line">    /* 然后启动第2个异步任务 */</span><br><span class="line">    return getAjaxPromise(&#123;</span><br><span class="line">        url: &#x27;root/url/2&#x27;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">.then(function(data2)&#123;</span><br><span class="line">    /* 处理第2个异步任务的结果 */</span><br><span class="line">    console.log(data2);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>then()</code> 方法可以链式调用，关键就是每个then都会返回一个新的Promise对象。</p>
+<h2 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h2><p>对于IE、低版本Chrome（例如V32以前的）等目前并不支持Promise特性的浏览器，可以借助于es6-promise polyfill来保证根据ES6规范写的Promise代码仍能正常运行。</p>
+<p>在Github里影响较大的Promise补丁是这个： <a target="_blank" rel="noopener" href="https://github.com/jakearchibald/es6-promise">jakearchibald/es6-promise</a>。如其自己描述的，That is __”A polyfill for ES6-style Promises”__。</p>
+<p>可以像下面这样简单地判断浏览器是否支持原生的Promise，如果不支持，则异步地下载polyfill脚本。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 针对浏览器的情形</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">root</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root.Promise === <span class="literal">undefined</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">        script.src = <span class="string">&#x27;/js/es6-promise.min.js&#x27;</span>;</span><br><span class="line">        script.type = <span class="string">&#x27;text/javascript&#x27;</span>;</span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>下面参考资料都比较好。</p>
+<ul>
+<li>《JavaScript异步编程》Trevor Burnham</li>
+<li><a target="_blank" rel="noopener" href="http://www.zhihu.com/question/25413141">nodejs异步控制「co、async、Q 、『es6原生promise』、then.js、bluebird」有何优缺点？最爱哪个？哪个简单？| 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="http://liubin.github.io/promises-book/">JavaScript Promise迷你书（中文版）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise | MDN</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.sitepoint.com/six-things-might-know-promises/">Six Things You Might Not Know About Promises | sitepoint</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.sitepoint.com/overview-javascript-promises/">An Overview of JavaScript Promises | sitepoint</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.sitepoint.com/deeper-dive-javascript-promises/">A Deeper Dive Into JavaScript Promises</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/06/02/using-promise-to-carry-out-multi-ajax-procedure/" data-id="cm8bcxsss0092djlea3w563m0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/06/10/nodejs-environment-setup-on-linux/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Linux下配置NodeJS环境
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/05/28/geo-location-coords-transform/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">电子地图地理坐标系统及相关算法的JavaScript实现</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

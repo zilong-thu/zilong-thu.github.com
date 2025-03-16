@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Longest Valid Parenthese 问题的 DP 解法 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="来源：Leetcode: 32. Longest Valid Parentheses  Longest Valid ParenthesesGiven a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Valid Parenthese 问题的 DP 解法">
+<meta property="og:url" content="https://borninsummer.com/2019/03/20/longest-valid-parenthese/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="来源：Leetcode: 32. Longest Valid Parentheses  Longest Valid ParenthesesGiven a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2019/03/longest-valid-parenthese-my-solution-q80.jpeg">
+<meta property="article:published_time" content="2019-03-20T15:39:09.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.165Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2019/03/longest-valid-parenthese-my-solution-q80.jpeg">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-longest-valid-parenthese" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Longest Valid Parenthese 问题的 DP 解法
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/03/20/longest-valid-parenthese/">
+            <time datetime="2019-03-20T15:39:09.000Z" itemprop="datePublished">2019-03-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>来源：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-valid-parentheses/">Leetcode: 32. Longest Valid Parentheses</a></p>
+<blockquote>
+<p>Longest Valid Parentheses<br>Given a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.</p>
+</blockquote>
+<p>要求子序列的所有括号是连续的、无间断的。</p>
+<a id="more"></a>
+
+<p>Example 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;(()(()&quot;</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The longest valid parentheses substring is &quot;()&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;)()())&quot;</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: The longest valid parentheses substring is &quot;()()&quot;</span><br></pre></td></tr></table></figure>
+
+<p>我的思路，使用动态规划，可以找到其最优子结构。具体如下图所示：</p>
+<img src="/images/2019/03/longest-valid-parenthese-my-solution-q80.jpeg" />
+
+<p>JavaScript 的实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">s</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> longestValidParenthesesDP = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> max = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> dp = <span class="keyword">new</span> <span class="built_in">Array</span>(s.length).fill(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; s.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s[i] === <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">      dp[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((s[i] === <span class="string">&#x27;)&#x27;</span>) &amp;&amp; (s[i - <span class="number">1</span>] === <span class="string">&#x27;(&#x27;</span>)) &#123;</span><br><span class="line">      <span class="keyword">let</span> left = i - <span class="number">2</span> &gt;= <span class="number">0</span> ? dp[i - <span class="number">2</span>] : <span class="number">0</span>;</span><br><span class="line">      dp[i] = left + <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((s[i] === <span class="string">&#x27;)&#x27;</span>) &amp;&amp; (s[i - <span class="number">1</span>] === <span class="string">&#x27;)&#x27;</span>)) &#123;</span><br><span class="line">      <span class="keyword">let</span> x = i - dp[i - <span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; s[x] === <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> left = x - <span class="number">1</span> &gt;= <span class="number">0</span> ? dp[x - <span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">        dp[i] = dp[i - <span class="number">1</span>] + left + <span class="number">2</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        dp[i] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    max = <span class="built_in">Math</span>.max(max, dp[i]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> max;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试用例</span></span><br><span class="line"><span class="keyword">let</span> tests = [&#123;</span><br><span class="line">  <span class="attr">s</span>: <span class="string">&quot;()&quot;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">s</span>: <span class="string">&quot;(()&quot;</span>,</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">s</span>: <span class="string">&quot;)()())&quot;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">s</span>: <span class="string">&quot;(()())&quot;</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">s</span>: <span class="string">&quot;(()()))))())&quot;</span></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">tests.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> res = longestValidParenthesesDP(item.s);</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2019/03/20/longest-valid-parenthese/" data-id="cm8bcxst800frdjle0dqmajpv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/04/13/how-sourcemap-works/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Source Map 工作原理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2019/02/28/change-macbook-pro-15-battery/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">自己动手，更换2015年 Macbook Pro 15&#39; 的电池</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

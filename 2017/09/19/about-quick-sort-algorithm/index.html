@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>about quick sort algorithm | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="历史快速排序算法是由 Tony Hoare 在 1959 年发明的。如果实现得好，那么它的速度可以达到其两个主要竞争者——归并排序与堆排序——的两倍到三倍以上。 在高速的实现中，快排是一个不稳定的算法，即它不能保证原来相等的值的位置不变。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="about quick sort algorithm">
+<meta property="og:url" content="https://borninsummer.com/2017/09/19/about-quick-sort-algorithm/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="历史快速排序算法是由 Tony Hoare 在 1959 年发明的。如果实现得好，那么它的速度可以达到其两个主要竞争者——归并排序与堆排序——的两倍到三倍以上。 在高速的实现中，快排是一个不稳定的算法，即它不能保证原来相等的值的位置不变。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-09-18T16:49:49.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.161Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-about-quick-sort-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            about quick sort algorithm
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/19/about-quick-sort-algorithm/">
+            <time datetime="2017-09-18T16:49:49.000Z" itemprop="datePublished">2017-09-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2"><span class="toc-number">1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF1%EF%BC%9A%E9%9D%9E%E5%8E%9F%E5%9D%80%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">思路1：非原址排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF2%EF%BC%9A%E5%8E%9F%E5%9D%80%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">思路2：原址排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9D%80%E4%B8%8E%E9%9D%9E%E5%8E%9F%E5%9D%80%E5%BF%AB%E6%8E%92%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-number">4.</span> <span class="toc-text">原址与非原址快排的性能对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+            </div>
+            <h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>快速排序算法是由 Tony Hoare 在 1959 年发明的。如果实现得好，那么它的速度可以达到其两个主要竞争者——归并排序与堆排序——的两倍到三倍以上。</p>
+<p>在高速的实现中，快排是一个不稳定的算法，即它不能保证原来相等的值的位置不变。</p>
+<a id="more"></a>
+
+<h2 id="思路1：非原址排序"><a href="#思路1：非原址排序" class="headerlink" title="思路1：非原址排序"></a>思路1：非原址排序</h2><p><code>pivot</code>，为“中枢、支点”的意思。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * q-1.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 选取中间值为基准点、高效的实现示例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort1</span>(<span class="params">A</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (A.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> pivot = <span class="built_in">Math</span>.floor(A.length / <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">var</span> left = [];</span><br><span class="line">  <span class="keyword">var</span> right = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i === pivot) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (A[i] &lt;= A[pivot]) &#123;</span><br><span class="line">      left.push(A[i]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      right.push(A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> quickSort(left).concat([A[pivot]].concat(quickSort(right)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> A = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">89</span>, <span class="number">5</span>, <span class="number">34</span>, <span class="number">2</span>, <span class="number">80</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">var</span> b = quickSort1(A);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路2：原址排序"><a href="#思路2：原址排序" class="headerlink" title="思路2：原址排序"></a>思路2：原址排序</h2><p>上面的排序实现里，<code>left</code>、<code>right</code> 数组都是新创建的，无疑会增加内存的消耗。这里再给出一版基于原址的快速排序实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * q-2.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort2</span>(<span class="params">A</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 在原数组中交换数组里的两个项</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> swapArrayItems = <span class="function"><span class="keyword">function</span>(<span class="params">arr, i, j</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = tmp;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 在原数组中寻找分隔左右数组的项的下标</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> partition = <span class="function"><span class="keyword">function</span>(<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pivot = arr[<span class="built_in">Math</span>.floor((left + right) / <span class="number">2</span>)];</span><br><span class="line">    <span class="keyword">var</span> i = left;</span><br><span class="line">    <span class="keyword">var</span> j = right;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">      <span class="keyword">while</span>(arr[i] &lt; pivot) i++;</span><br><span class="line">      <span class="keyword">while</span>(arr[j] &gt; pivot) j--;</span><br><span class="line">      <span class="keyword">if</span> (i &lt;= j) &#123;</span><br><span class="line">        swapArrayItems(arr, i, j);</span><br><span class="line">        i++;</span><br><span class="line">        j--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 原址快排函数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> quick = <span class="function"><span class="keyword">function</span>(<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index;</span><br><span class="line">    <span class="keyword">if</span> (arr.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      index = partition(arr, left, right);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (left &lt; index - <span class="number">1</span>) &#123;</span><br><span class="line">        quick(arr, left, index - <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (right &gt; index) &#123;</span><br><span class="line">        quick(arr, index, right);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> quick(A, <span class="number">0</span>, A.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="原址与非原址快排的性能对比"><a href="#原址与非原址快排的性能对比" class="headerlink" title="原址与非原址快排的性能对比"></a>原址与非原址快排的性能对比</h2><p>如果对上面的两种实现以及 JavaScript 内置的 sort 方法进行性能对比，会发现原址排序快很多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * test.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> q1 = <span class="built_in">require</span>(<span class="string">&#x27;./q-1.js&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> q2 = <span class="built_in">require</span>(<span class="string">&#x27;./q-2.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr1.map(<span class="function"><span class="params">i</span> =&gt;</span> i);</span><br><span class="line"><span class="keyword">var</span> arr3 = arr1.map(<span class="function"><span class="params">i</span> =&gt;</span> i);</span><br><span class="line"><span class="keyword">var</span> NUM = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;非原址排序&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">  q1(arr1);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;非原址排序&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;原址排序&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">  q2(arr2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;原址排序&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">&#x27;Array.prototype.sort&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">  arr3.sort();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">&#x27;Array.prototype.sort&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;arr1 =&gt; &#x27;</span>, arr1);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;arr2 =&gt; &#x27;</span>, arr2);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;arr3 =&gt; &#x27;</span>, arr3);</span><br></pre></td></tr></table></figure>
+
+<p>运行时间对比（10万次）：</p>
+<ul>
+<li>非原址排序: 246.511ms</li>
+<li>原址排序: 31.057ms</li>
+<li><code>Array.prototype.sort</code>: 56.593ms</li>
+</ul>
+<p>注：数组原型上的 <code>sort</code> 方法有不同的实现，根据参考资料[3]，Mozilla Firefox 使用了归并排序来实现 sort，而 Chrome 则使用了快排的一种变体。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>第一篇是维基百科的词条，非常有意思。</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quicksort">https://en.wikipedia.org/wiki/Quicksort</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html">http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html</a></li>
+<li>Loiane Groner. 学习JavaScript数据结构与算法[M], 北京: 人民邮电出版社, 2015.</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/09/19/about-quick-sort-algorithm/" data-id="cm8bcxst200dbdjleaa6s81zr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/20/about-insert-sort-algorithm/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    关于插入排序
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/09/19/about-merge-sort-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">关于归并排序</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

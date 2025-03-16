@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>最大子数组问题 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最大子数组问题仅对存在负数的数组才有意义。 这里根据《算法导论（第三版）》第四章的4.1节的练习题 4.1-5进行拓展研究。用JavaScript实现最大子数组的查找。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大子数组问题">
+<meta property="og:url" content="https://borninsummer.com/2015/03/16/max-sub-array-problem/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="最大子数组问题仅对存在负数的数组才有意义。 这里根据《算法导论（第三版）》第四章的4.1节的练习题 4.1-5进行拓展研究。用JavaScript实现最大子数组的查找。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-03-16T11:47:08.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.153Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-max-sub-array-problem" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            最大子数组问题
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/03/16/max-sub-array-problem/">
+            <time datetime="2015-03-16T11:47:08.000Z" itemprop="datePublished">2015-03-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%9AKadane%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">线性复杂度的算法：Kadane算法</span></a></li></ol>
+            </div>
+            <p>最大子数组问题仅对存在负数的数组才有意义。</p>
+<p>这里根据《算法导论（第三版）》第四章的4.1节的练习题 4.1-5进行拓展研究。用JavaScript实现最大子数组的查找。</p>
+<a id="more"></a>
+
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>先定义两个用于生成随机数组的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/* 生成一个m、n之间的整数 */</span><br><span class="line">function random(m,n)&#123; </span><br><span class="line">    var i=Math.random(); </span><br><span class="line">    return Math.round((n-m)*i+m); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* min: 数组下界</span><br><span class="line"> * max: 数组上界</span><br><span class="line"> * len：生成的数组的长度</span><br><span class="line"> */</span><br><span class="line">function getRandomArr(min,max,len)&#123; </span><br><span class="line">    var resultArr=[]; </span><br><span class="line">    for(var i=0;i&lt;len;i++)&#123; </span><br><span class="line">        resultArr.push(random(min,max));</span><br><span class="line">    &#125; </span><br><span class="line">    return resultArr; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var A = getRandomArr(-20, 20, 6);</span><br><span class="line">console.log(A);</span><br></pre></td></tr></table></figure>
+
+<h2 id="线性复杂度的算法：Kadane算法"><a href="#线性复杂度的算法：Kadane算法" class="headerlink" title="线性复杂度的算法：Kadane算法"></a>线性复杂度的算法：Kadane算法</h2><p>这个问题用动态规划的方法来解决会更有效，而不是分治策略。例如下面的Kadane算法。</p>
+<p>算法的关键在于：遍历、累加的过程中，曾经出现的最大子数组是会被记录下来的。重置下标时，只是为了寻找“潜在”的下一个最大子数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/* Kadane算法</span><br><span class="line"> * 又被称为扫描法</span><br><span class="line"> * 该算法用到了一个启发式规则：如果前面一段连续子数组的和小于0，那么就丢弃它。</span><br><span class="line"> */</span><br><span class="line">function Kadane(A)&#123;</span><br><span class="line">    var max = A[0],</span><br><span class="line">    sum = 0,</span><br><span class="line">    sum_low = 0, sum_high = 0, /* 这两个值保存了当前累计计算的、和非负的子数组的下标起始值 */</span><br><span class="line">    max_low = 0, max_high = 0;</span><br><span class="line"></span><br><span class="line">    for(var i = 0; i&lt;A.length; i++)&#123;</span><br><span class="line">        if(sum &gt;= 0)&#123;</span><br><span class="line">            sum += A[i];</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            sum = A[i];</span><br><span class="line">            sum_low = i;</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(sum &gt; max)&#123;</span><br><span class="line">            max_low = sum_low;</span><br><span class="line">            max_high = sum_high;</span><br><span class="line">            max = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        maxSum: max,</span><br><span class="line">        low: max_low,</span><br><span class="line">        high: max_high</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(Kadane(A));</span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/03/16/max-sub-array-problem/" data-id="cm8bcxsst009ndjle29u3bz29" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/03/18/nodejs-crawler/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    NodeJS爬虫程序
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/03/15/serveral-self-made-epub-books/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">几本自制的EPUB格式电子书</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

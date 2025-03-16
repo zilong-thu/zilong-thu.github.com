@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《CSS3实战：开发与设计》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS3实战：开发与设计》笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="本文记录我在读《CSS3实战：开发与设计》时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/Peculiar.PNG">
+<meta property="og:image" content="https://borninsummer.com/images/2013/browser_market-share_20131106.png">
+<meta property="article:published_time" content="2013-11-05T06:55:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.140Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/Peculiar.PNG">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-practical-css3-develop-and-design-reading-note" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《CSS3实战：开发与设计》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/05/practical-css3-develop-and-design-reading-note/">
+            <time datetime="2013-11-05T06:55:00.000Z" itemprop="datePublished">2013-11-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CSS/" rel="tag">CSS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8rem%E8%B0%83%E6%95%B4%E6%96%87%E6%9C%AC%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.</span> <span class="toc-text">用rem调整文本大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS3%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">CSS3选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5%E6%A0%87%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">HTML5标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IE%E6%9D%A1%E4%BB%B6%E6%B3%A8%E9%87%8A"><span class="toc-number">4.</span> <span class="toc-text">IE条件注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web%E5%AD%97%E4%BD%93"><span class="toc-number">5.</span> <span class="toc-text">Web字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%96%87%E6%9C%AC%E9%98%B4%E5%BD%B1"><span class="toc-number">6.</span> <span class="toc-text">多重文本阴影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA"><span class="toc-number">7.</span> <span class="toc-text">控制文本溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%96%AD%E5%AD%97"><span class="toc-number">8.</span> <span class="toc-text">控制断字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#border-radius%E9%AB%98%E7%BA%A7"><span class="toc-number">9.</span> <span class="toc-text">border-radius高级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%90%E5%8F%98%E8%89%B2"><span class="toc-number">10.</span> <span class="toc-text">渐变色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E6%99%AF"><span class="toc-number">11.</span> <span class="toc-text">多重背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS3-transform"><span class="toc-number">12.</span> <span class="toc-text">CSS3 transform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS3-transition"><span class="toc-number">13.</span> <span class="toc-text">CSS3 transition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS3-animation"><span class="toc-number">14.</span> <span class="toc-text">CSS3 animation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS3%E4%B8%8E%E5%9B%BE%E6%A0%87"><span class="toc-number">15.</span> <span class="toc-text">CSS3与图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%EF%BC%9Aflexbox"><span class="toc-number">16.</span> <span class="toc-text">弹性盒子：flexbox</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7"><span class="toc-number"></span> <span class="toc-text">附：关于本文的一个奇技淫巧</span></a>
+            </div>
+            <p>本文记录我在读<a href="http://book.douban.com/subject/24745215/" target="_blank" class="douban_book" name="24745215">《CSS3实战：开发与设计》</a>时新掌握的知识点，并且不少技术我都用代码进行了测试，效果可以直接在本文看到。</p>
+<a id="more"></a>
+<hr/>
+
+<script type="text/javascript">
+(function(){
+    var url = '/css/style_practical_css3.css';
+    var link =  document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    document.head.appendChild(link);
+})();
+</script>
+
+<h3 id="用rem调整文本大小"><a href="#用rem调整文本大小" class="headerlink" title="用rem调整文本大小"></a>用rem调整文本大小</h3><p>更多可参见 <a href="http://www.w3.org/TR/css3-values/" target="_blank">www.w3.org/TR/css3-values/</a>。</p>
+<p>根元素，即<code>&lt;html&gt;</code>标签。1rem == html 的computed style 中的font-size。</p>
+<h3 id="CSS3选择器"><a href="#CSS3选择器" class="headerlink" title="CSS3选择器"></a>CSS3选择器</h3><p>目标伪类选择器 <code>:target</code>。</p>
+<p>CSS3还没普及完，CSS4标准就已经在研制了。可以参见<a href="http://www.w3.org/TR/selectors4/" target="_blank">CSS4选择器</a>。</p>
+<blockquote>
+<p>Selectors Level 4 describes the selectors that already exist in [SELECT], and further introduces new selectors for CSS and other languages that may need them.</p>
+</blockquote>
+<h3 id="HTML5标题"><a href="#HTML5标题" class="headerlink" title="HTML5标题"></a>HTML5标题</h3><p>HTML5中的标题级别不再以标题<code>h</code>后面的数字代表，转而以它们所嵌套在内的所谓分区元素的级别为依托的HTML5纲要算法。</p>
+<p>这一点在《HTML5经典实例》中也详细介绍了。</p>
+<p>具体可参见Mozilla的文章：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Sections_and_Outlines_of_an_HTML5_document">Sections and Outlines of an HTML5 Document</a></p>
+<h3 id="IE条件注释"><a href="#IE条件注释" class="headerlink" title="IE条件注释"></a>IE条件注释</h3><p>IE条件注释这样使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">    &lt;script src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，当检测到浏览器是IE且版本低于IE9，则会加载并执行该脚本。</p>
+<p>在HTML文档中的任意位置，都可以使用这些IE条件判断。</p>
+<ul>
+<li>if IE        // 如果是IE浏览器</li>
+<li>if IE 6      // 如果是IE6</li>
+<li>if lt IE 9   // 如果是早于IE9的IE浏览器，不包括IE9</li>
+<li>if lte IE 8  // 如果是IE8或者更早的IE浏览器</li>
+</ul>
+<h3 id="Web字体"><a href="#Web字体" class="headerlink" title="Web字体"></a>Web字体</h3><p>使用下载了的ttf格式的UglyQua字体，将其放在网站根目录下的fonts文件夹中，就可以使用<code>@font-face</code>规则自定义web字体了。CSS代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>: UglyQua;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;/fonts/UglyQua.ttf&#x27;</span>);</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;/fonts/UglyQua-Italic.ttf&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html code:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-family: UglyQua;font-size: 2em;&quot;</span>&gt;</span>This is some text using font format <span class="tag">&lt;<span class="name">i</span>&gt;</span>UglyQua<span class="tag">&lt;/<span class="name">i</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p style="font-family: UglyQua;font-size: 2em;">This is some text using font format <i>UglyQua</i>.</p>
+
+<h3 id="多重文本阴影"><a href="#多重文本阴影" class="headerlink" title="多重文本阴影"></a>多重文本阴影</h3><p>在同一个CSS选择器下，可以应用多重文本阴影。例如</p>
+<figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.multi-shadow</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="number">#000</span>,</span><br><span class="line">        <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="number">#aaa</span>,</span><br><span class="line">        <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> <span class="number">#999</span>,</span><br><span class="line">        <span class="number">0</span> <span class="number">0</span> <span class="number">6px</span> <span class="number">#888</span>,</span><br><span class="line">        <span class="number">0</span> <span class="number">0</span> <span class="number">8px</span> <span class="number">#666</span>,</span><br><span class="line">        <span class="number">0</span> <span class="number">6px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>),</span><br><span class="line">        <span class="number">0</span> <span class="number">8px</span> <span class="number">20px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html code</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;multi-shadow&quot;</span>&gt;</span>Multiple Text Shadows!<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么就会得到这样的字体：（为减小本网站screen.css样式表的体积，本博文尽可能使用内联样式。）</p>
+<p class="multi-shadow" style="font-size:2em; text-shadow: 0 0 2px #000, 0 0 2px #aaa, 0 0 4px #999, 0 0 6px #888, 0 0 8px #666, 0 6px 6px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.5);">Multiple Text Shadows!</p>
+
+<p>使用下面的代码则可以创造火焰文字：</p>
+<figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fire-words</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white,</span><br><span class="line">        <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>,</span><br><span class="line">        <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">        -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="number">#ff8800</span>,</span><br><span class="line">        <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="number">#ff2200</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>html code</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;fire-words&quot;</span>&gt;</span>火焰文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p style="font-size: 3em;line-height:1.2; text-shadow: 0 0 4px white, 0 -5px 4px #ffff33, 2px -10px 6px #ffdd33, -2px -15px 11px #ff8800, 2px -25px 18px #ff2200; color: orange;">静态火焰文字</p>
+
+<h3 id="控制文本溢出"><a href="#控制文本溢出" class="headerlink" title="控制文本溢出"></a>控制文本溢出</h3><p>如果容器盒定义了<code>overflow: hidden;</code>，那么其文本子节点的<code>text-overflow</code>属性控制文本溢出时的显示效果。</p>
+<p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">text-overflow</span>: clip | ellipsis | string;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>clip<br>  修剪文本。</li>
+<li>ellipsis<br>  显示省略符号来代表被修剪的文本。主流的现代浏览器都支持此属性。</li>
+<li>string<br>  使用给定的字符串来代表被修剪的文本。</li>
+</ul>
+<p>具体见<a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp" target="_blank">w3school的例子</a>吧。</p>
+<p>但是目前对于第三个属性，只有Firefox支持，Chrome尚不支持。Firefox中的使用方法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">text-overflow</span>: <span class="string">&#x27; ...read more&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制断字"><a href="#控制断字" class="headerlink" title="控制断字"></a>控制断字</h3><p>使用hyphens属性。</p>
+<h3 id="border-radius高级"><a href="#border-radius高级" class="headerlink" title="border-radius高级"></a>border-radius高级</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-radius</span>: <span class="number">10px</span>/<span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+
+<p>意味着每个圆角水平半径为10px，垂直半径为20px。而</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-radius</span>: <span class="number">5px</span> <span class="number">10px</span> <span class="number">15px</span> <span class="number">20px</span>/<span class="number">30px</span> <span class="number">15px</span> <span class="number">10px</span> <span class="number">5px</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>/</code>之前的代表从左上角顺时针各个角的水平半径，后面则代表四个角的垂直半径。这样应该就可以画一个椭圆的盒子出来了：</p>
+<div style="width: 400px;
+        height: 200px;
+        border-radius: 200px/100px;
+        background-color: #cccccc;
+        line-height: 200px;
+        text-align: center;
+        margin: 10px 0;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.5);">这是一个椭圆形的div盒子。</div>
+
+<h3 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h3><p>本质上来讲，CSS渐变是一种特殊的背景图片，你完全可以把它放在任何一个图片能工作的位置，例如<code>background-image</code>和<code>border-image</code>。</p>
+<p>在线性渐变中，对角线关键词能保证渐变方向总是从一个角到另一角，但角度则是从左上角开始逆时针转的，除非是正方形，否则135°就不是从右上角到左下角的渐变了。</p>
+<h3 id="多重背景"><a href="#多重背景" class="headerlink" title="多重背景"></a>多重背景</h3><p>CSS3允许开发人员向一个元素添加多重背景，方法很简单，在<code>background</code>中添加多个<code>img</code>或者<code>gradient</code>即可。背景的层叠顺序是：先声明的在上层，后声明的在下层，像photoshop，向栈，但绝不像CSS的层叠顺序啊——确实，鬼知道那些CSS规范制定者脑子里在想什么。</p>
+<h3 id="CSS3-transform"><a href="#CSS3-transform" class="headerlink" title="CSS3 transform"></a>CSS3 transform</h3><p>下面的代码，Chrome不支持。但是新版的Firefox完全没问题。</p>
+<div id="book_wrapper" style="position: relative;height:400px;transform: perspective(1200px) rotateY(-9deg);transform-style: preserve-3d;">
+    <article id="book_front" style="-webkit-transform:translateZ(3rem);transform: translateZ(3rem);">
+        <p style="font-size:1.5em;text-alignt:center;font-weight:bold;">随笔</p>
+    </article>
+    <article id="book_p1" style="-webkit-transform: translateZ(0rem);transform: translateZ(0rem);"></article>
+    <article id="book_p2" style="-webkit-transform: translateZ(-3rem);transform: translateZ(-3rem);"></article>
+    <article id="book_back" style="-webkit-transform: translateZ(-6rem);transform: translateZ(-6rem);"></article>
+</div>
+
+<p>像<code>backface-visibility</code>（当元素在3D空间旋转而导致其正面远离观察者时，指定它的背面是否可见），<code>translate</code>,<code>preserve-3d</code>这些属性，目前浏览器支持度还不是很好，暂不研究了。</p>
+<h3 id="CSS3-transition"><a href="#CSS3-transition" class="headerlink" title="CSS3 transition"></a>CSS3 transition</h3><p>下面是7种不同的timing-function属性值的实验。鼠标悬浮于上即可看到在3秒内不同timing-function产生的过渡动画效果。</p>
+<div id="tran-eg" style="width:600px;height:350px;border:1px solid #ccc;">
+<div style="background-color: blue;transition-timing-function: linear;">linear</div>
+<div style="background-color: red;transition-timing-function: ease;">ease</div>
+<div style="background-color: green;transition-timing-function: ease-out;">ease-out</div>
+<div style="background-color: #ccc;transition-timing-function: ease-in;">ease-in</div>
+<div style="background-color: orange;transition-timing-function: ease-in-out;">ease-in-out</div>
+<div style="background-color: #06f;transition-timing-function: steps(5);">steps(5)</div>
+<div style="background-color: gray;transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);">cubic-bezier(0.25, 0.1, 0.25, 1.0)</div>
+</div>
+
+<h3 id="CSS3-animation"><a href="#CSS3-animation" class="headerlink" title="CSS3 animation"></a>CSS3 animation</h3><p>下面我们将上面制作的火焰文字动起来。</p>
+<div class="burning_text" style="font-size: 3em;
+    color: orange;
+    line-height: 2em;
+    font-family: sans-serif;
+    font-weight: bold;">燃烧的文字动画</div>
+
+<p>CSS代码如下。截止到发文时（2013年11月6日），Chrome目前必须使用<code>@-webkit-keyframes text-flames</code>定义的样式（且整个规则copy一遍），Firefox最新版和IE10(WIN8平台下的)则已经支持不带前缀的<code>@keyframes</code>规则了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> text-flames&#123;</span><br><span class="line">    <span class="number">0%</span>  &#123; <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="number">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="number">#ff2200</span>;&#125;</span><br><span class="line">    <span class="number">19%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">2px</span> -<span class="number">10px</span> <span class="number">6px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">2px</span> -<span class="number">15px</span> <span class="number">11px</span> <span class="number">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">18px</span> <span class="number">#ff2200</span>;&#125;</span><br><span class="line">    <span class="number">20%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">4px</span> <span class="number">3px</span> <span class="number">#ffff44</span>, <span class="number">3px</span> -<span class="number">9px</span> <span class="number">7px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">14px</span> <span class="number">12px</span> <span class="number">#ff9900</span>, <span class="number">3px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="number">#ff3300</span>;&#125;</span><br><span class="line">    <span class="number">39%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">4px</span> <span class="number">3px</span> <span class="number">#ffff44</span>, <span class="number">3px</span> -<span class="number">9px</span> <span class="number">7px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">14px</span> <span class="number">12px</span> <span class="number">#ff9900</span>, <span class="number">3px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="number">#ff3300</span>;&#125;</span><br><span class="line">    <span class="number">40%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">3px</span> -<span class="number">8px</span> <span class="number">8px</span> <span class="number">#ffdd44</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">12px</span> <span class="number">11px</span> <span class="number">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">20px</span> <span class="number">#ff3300</span>;&#125;</span><br><span class="line">    <span class="number">59%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">3px</span> -<span class="number">8px</span> <span class="number">8px</span> <span class="number">#ffdd44</span>,</span><br><span class="line">                     -<span class="number">3px</span> -<span class="number">12px</span> <span class="number">11px</span> <span class="number">#ff8800</span>, <span class="number">2px</span> -<span class="number">25px</span> <span class="number">20px</span> <span class="number">#ff3300</span>;&#125;</span><br><span class="line">    <span class="number">60%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> white, <span class="number">0</span> -<span class="number">6px</span> <span class="number">5px</span> <span class="number">#ffff55</span>, <span class="number">2px</span> -<span class="number">7px</span> <span class="number">7px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">5px</span> -<span class="number">13px</span> <span class="number">15px</span> <span class="number">#ff7700</span>, <span class="number">4px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="number">#ff4411</span>;&#125;</span><br><span class="line">    <span class="number">79%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> white, <span class="number">0</span> -<span class="number">6px</span> <span class="number">5px</span> <span class="number">#ffff55</span>, <span class="number">2px</span> -<span class="number">7px</span> <span class="number">7px</span> <span class="number">#ffdd33</span>,</span><br><span class="line">                     -<span class="number">5px</span> -<span class="number">13px</span> <span class="number">15px</span> <span class="number">#ff7700</span>, <span class="number">4px</span> -<span class="number">24px</span> <span class="number">19px</span> <span class="number">#ff4411</span>;&#125;</span><br><span class="line">    <span class="number">80%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">5px</span> -<span class="number">8px</span> <span class="number">6px</span> <span class="number">#ffee33</span>,</span><br><span class="line">                     -<span class="number">4px</span> -<span class="number">12px</span> <span class="number">13px</span> <span class="number">#ff8822</span>, <span class="number">2px</span> -<span class="number">26px</span> <span class="number">18px</span> <span class="number">#ff2200</span>;&#125;</span><br><span class="line">    <span class="number">100%</span> &#123;<span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">4px</span> white, <span class="number">0</span> -<span class="number">5px</span> <span class="number">4px</span> <span class="number">#ffff33</span>, <span class="number">5px</span> -<span class="number">8px</span> <span class="number">6px</span> <span class="number">#ffee33</span>,</span><br><span class="line">                     -<span class="number">4px</span> -<span class="number">12px</span> <span class="number">13px</span> <span class="number">#ff8822</span>, <span class="number">2px</span> -<span class="number">26px</span> <span class="number">18px</span> <span class="number">#ff2200</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.burning_text</span>&#123;</span><br><span class="line">    -webkit-<span class="attribute">animation</span>: text-flames <span class="number">0.6s</span> infinite;</span><br><span class="line">    <span class="attribute">animation</span>: text-flames <span class="number">0.6s</span> infinite;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: sans-serif;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然了，将动画用于使文字呈现闪烁功能，有点像回到了以前文本的<code>blink</code>噩梦时代。还是得将动画的精力放在其他上面。动画的精髓应该在于：如何安排关键帧属性。</p>
+<h3 id="CSS3与图标"><a href="#CSS3与图标" class="headerlink" title="CSS3与图标"></a>CSS3与图标</h3><p>约定俗成的图标能比文字更快更准确地传达信息。讲CSS的书很少专门讲图标，不过相信讲“交互设计”这类主题的书籍应该会非常强调图标的重要性。</p>
+<p>这应该涉及符号学与人类学、语言学。图标传达信息非常直接，与人类早期创造象形文字的原因是一样的。文字后来才出现，可以弥补象形符号的不足，使其更准确——但仍不够精确，无法完全避免误解。</p>
+<p>图标应作为背景图片而不是img元素放入页面，并且，在CSS3之前，就已经有针对背景图片的优化技术：CSS Sprite。最主要目的就是减少HTTP请求数目。</p>
+<p>另外一个非常赞的做法是，使用纯HTML+CSS制作的图标。我已知的例子是三角形的制作以及由其进阶衍生的气泡提示框的制作（来自另一本CSS3的入门书籍：<a target="_blank" rel="noopener" href="http://book.douban.com/subject/10482084/">《CSS3实用指南》</a> by 吉伦瓦特）。</p>
+<p>Lucian Martin提供了一套成熟的图标集。见 <a target="_blank" rel="noopener" href="http://lucianmarin.com/peculiar">Peculiar</a></p>
+<img src="/images/blog/Peculiar.PNG" class="">
+
+<h3 id="弹性盒子：flexbox"><a href="#弹性盒子：flexbox" class="headerlink" title="弹性盒子：flexbox"></a>弹性盒子：flexbox</h3><p>CSS3为<code>display</code>属性添加了一个新的值：<code>flex</code>。<code>flex-flow</code>定义了弹性盒子里面子元素的流动方向。</p>
+<figure class="highlight css"><figcaption><span>css code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">section</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-flow</span>: row;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">article</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">30%</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html code:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>##响应式布局之媒介查询</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">800px</span>)&#123;</span><br><span class="line">    <span class="comment">/* some code here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该代码意思是：当且仅当设备是屏幕媒体类型并且浏览器窗口宽度不超过800px时，应用代码块里的样式。</p>
+<p>然而移动设备的浏览器有时候是个骗子：它会按照假设的宽度去渲染网页，而不是使用设备的宽度。解决此问题的方法是使用<code>viewport</code>。在HTML的<code>&lt;head&gt;</code>里添加：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码会视情况来触发媒介查询从而让浏览器已自身的实际宽度来渲染网页。</p>
+<p>##总结<br>★★★★☆（其实不到四星，也就3.7星这样）</p>
+<p>总体而言，这本书文笔不是特别晦涩，书里面没有放置完整的代码，而是放在网站上，因此节省了空间；对于CSS3的主要特性都讲到了，也给出了很好的演示例子。错误不多。作者目前就职于Opera，很多例子都会涉及到代码在Opera浏览器下的表现以及与其他浏览器的差异，算是视角比较独特，因为Opera的用户群比Firefox，Chrome，Safari都要少。</p>
+<p>如果你想学习CSS3，又完全没有读过任何一本CSS3方面的书籍，可以从这本入手。</p>
+<img src="/images/2013/browser_market-share_20131106.png" />
+
+<p>（桌面浏览器全球市场份额，截止到2013-11-06）</p>
+<h2 id="附：关于本文的一个奇技淫巧"><a href="#附：关于本文的一个奇技淫巧" class="headerlink" title="附：关于本文的一个奇技淫巧"></a>附：关于本文的一个奇技淫巧</h2><p>本文在一开始的时候内嵌了这样一段JS代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">&#x27;&#123;&#123;root_url&#125;&#125;/stylesheets/style_practical_css3.css&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> link =  <span class="built_in">document</span>.createElement(<span class="string">&quot;link&quot;</span>);</span><br><span class="line">    link.rel = <span class="string">&quot;stylesheet&quot;</span>;</span><br><span class="line">    link.type = <span class="string">&quot;text/css&quot;</span>;</span><br><span class="line">    link.href = url;</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(link);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>用于获取仅用于本文的样式表。可以减轻全站总样式表的体积。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/05/practical-css3-develop-and-design-reading-note/" data-id="cm8bcxsse003cdjlee477alr0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/06/note-on-book-design/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《书籍设计（第10辑）》简评
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/02/maintainable-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《编写可维护的JavaScript》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.avatar {
+  max-width: 128px;
+  float: right;
+}
+
+.telephone {
+  display: none;
+}
+
+@media print {
+  #header,
+  #comments,
+  #footer,
+  footer.article-footer,
+  .article-header .article-title {
+    display: none;
+  }
+
+  .article-inner {
+    box-shadow: none;
+  }
+
+  .article-entry h3 {
+    margin: 1em 0;
+    line-height: 1em;
+  }
+
+  #main article {
+    margin-top: 0;
+  }
+
+  .telephone {
+    display: list-item;
+  }
+}

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《代码大全（第2版）》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="记从今年4月初，到9月的最后一天，用了半年，终于断断续续地把这个大部头著作读完了。 按照阅读顺序来记录吧。虽然最开始并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。不过看完这几章之后，就开始顺序看了。 总体感觉，这本书是属于“软件工程”范畴">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《代码大全（第2版）》笔记">
+<meta property="og:url" content="https://borninsummer.com/2016/08/28/note-on-book-code-complete-2/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="记从今年4月初，到9月的最后一天，用了半年，终于断断续续地把这个大部头著作读完了。 按照阅读顺序来记录吧。虽然最开始并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学编程的人）、第13章（喜欢参与网上争论的人）。不过看完这几章之后，就开始顺序看了。 总体感觉，这本书是属于“软件工程”范畴">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-08-28T13:05:43.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.157Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="代码大全">
+<meta property="article:tag" content="Code Complete">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-note-on-book-code-complete-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《代码大全（第2版）》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/28/note-on-book-code-complete-2/">
+            <time datetime="2016-08-28T13:05:43.000Z" itemprop="datePublished">2016-08-28</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Code-Complete/" rel="tag">Code Complete</a>, <a class="tag-link-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/" rel="tag">代码大全</a>, <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>, <a class="tag-link-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E4%B8%89%E6%80%9D%E8%80%8C%E5%90%8E%E8%A1%8C%EF%BC%9A%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">第3章 三思而后行：前期准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%85%B3%E9%94%AE%E7%9A%84%E2%80%9C%E6%9E%84%E5%BB%BA%E2%80%9D%E5%86%B3%E7%AD%96"><span class="toc-number">3.</span> <span class="toc-text">第4章 关键的“构建”决策</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%9E%84%E5%BB%BA%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">4.</span> <span class="toc-text">第5章 软件构建中的设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC11%E7%AB%A0-%E5%8F%98%E9%87%8F%E5%90%8D%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">第11章 变量名的力量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC12%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">第12章 基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.</span> <span class="toc-text">第15章 使用条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC16%E7%AB%A0-%E6%8E%A7%E5%88%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">8.</span> <span class="toc-text">第16章 控制循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC18%E7%AB%A0-%E8%A1%A8%E9%A9%B1%E5%8A%A8%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">第18章 表驱动法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC20%E7%AB%A0"><span class="toc-number">10.</span> <span class="toc-text">第20章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC21%E7%AB%A0-%E5%8D%8F%E5%90%8C%E6%9E%84%E5%BB%BA"><span class="toc-number">11.</span> <span class="toc-text">第21章 协同构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC22%E7%AB%A0-%E5%BC%80%E5%8F%91%E8%80%85%E6%B5%8B%E8%AF%95"><span class="toc-number">12.</span> <span class="toc-text">第22章 开发者测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC23%E7%AB%A0-%E8%B0%83%E8%AF%95"><span class="toc-number">13.</span> <span class="toc-text">第23章 调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC24%E7%AB%A0-%E9%87%8D%E6%9E%84"><span class="toc-number">13.1.</span> <span class="toc-text">第24章 重构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-5-%E9%87%8D%E6%9E%84%E7%AD%96%E7%95%A5"><span class="toc-number">13.2.</span> <span class="toc-text">24.5 重构策略</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC25%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5"><span class="toc-number">14.</span> <span class="toc-text">第25章 代码调整策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#25-5-%E5%8F%8D%E5%A4%8D%E8%B0%83%E6%95%B4"><span class="toc-number">14.1.</span> <span class="toc-text">25.5 反复调整</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC26%E7%AB%A0-%E4%BB%A3%E7%A0%81%E8%B0%83%E6%95%B4%E6%8A%80%E6%9C%AF"><span class="toc-number">15.</span> <span class="toc-text">第26章 代码调整技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#26-2-%E8%8A%82"><span class="toc-number">15.1.</span> <span class="toc-text">26.2 节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-3-%E6%95%B0%E6%8D%AE%E5%8F%98%E5%8C%96"><span class="toc-number">15.2.</span> <span class="toc-text">26.3 数据变化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-4-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">15.3.</span> <span class="toc-text">26.4 表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#26-7-%E5%8F%98%E5%BE%97%E8%B6%8A%E5%A4%9A%EF%BC%8C%E4%BA%8B%E6%83%85%E5%8F%8D%E8%80%8C%E8%B6%8A%E6%B2%A1%E5%8F%98"><span class="toc-number">15.4.</span> <span class="toc-text">26.7 变得越多，事情反而越没变</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-27-%E7%AB%A0"><span class="toc-number">16.</span> <span class="toc-text">第 27 章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC32%E7%AB%A0-%E8%87%AA%E8%AF%B4%E6%98%8E%E4%BB%A3%E7%A0%81"><span class="toc-number">17.</span> <span class="toc-text">第32章 自说明代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC33%E7%AB%A0-%E4%B8%AA%E4%BA%BA%E6%80%A7%E6%A0%BC"><span class="toc-number">18.</span> <span class="toc-text">第33章 个人性格</span></a></li></ol>
+            </div>
+            <h3 id="记"><a href="#记" class="headerlink" title="记"></a>记</h3><p>从今年4月初，到9月的最后一天，用了半年，终于断断续续地把这个大部头著作读完了。</p>
+<p>按照阅读顺序来记录吧。虽然最开始并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学<br>编程的人）、第13章（喜欢参与网上争论的人）。不过看完这几章之后，就开始顺序看了。</p>
+<p>总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说，就是如何编写高质量的代码。作者认为，应该首先为人编写代码，其次才是为机器”。这差不多就总结了这本书的主旨。</p>
+<p>这个笔记最初是在豆瓣上面一点点记录的，顺便还发现豆瓣上面这本书的一个特点：目前其书评大概是隔2个月会有人写一篇；本书出版10年，共计90篇书评，平均每年9篇。相对于那些畅销书，这样的评论增幅的确较慢，估计也是因为本书非常厚重、比较偏技术类的缘故了。</p>
+<p>即使那么多年过去了，程序员在工作时的常见心理表现似乎没什么大变化。程序员普遍自负，例如23.4节说的，“就算是已经看到了一个缺陷，你的自负还是会让你觉得自己的代码完美无缺”。~~</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Any fool can write code that a computer can understand. Good programmers write code that humans can understand.<br>–- Martin Fowler</p>
+</blockquote>
+<blockquote>
+<p> “There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies. The first method is far more difficult.”<br>– C.A.R. Hoare</p>
+</blockquote>
+<blockquote>
+<p>Brooks Law: “Adding manpower to a late software project makes it later!”</p>
+</blockquote>
+<p>注：Fred Brooks 是 IBM System/360 OS 项目的软件主管。</p>
+<h3 id="第3章-三思而后行：前期准备"><a href="#第3章-三思而后行：前期准备" class="headerlink" title="第3章 三思而后行：前期准备"></a>第3章 三思而后行：前期准备</h3><blockquote>
+<p>【49页】<br>错误处理已被证实为现代计算机科学中最棘手的问题之一，你不能武断地处理它。有人估计程序中高达 90% 的代码是用来处理异常情况、进行错误处理、或做簿记工作，意味着只有 10% 的代码是用来处理常规的情况。<br>……最好在架构层次上对待它。</p>
+</blockquote>
+<h3 id="第4章-关键的“构建”决策"><a href="#第4章-关键的“构建”决策" class="headerlink" title="第4章 关键的“构建”决策"></a>第4章 关键的“构建”决策</h3><blockquote>
+<p>一套好的符号系统能把大脑从所有非必要的工作中解放出来，集中精力去对付更高级的问题，从功效上看，能够有效地提高人类的智力。</p>
+</blockquote>
+<p>以及：</p>
+<blockquote>
+<p>【4.3】<br>在我的职业生涯中，我看到了PC之星的升起和大型机之星的陨落，我看到图形用户界面程序代替了字符界面程序，我还看到了Web的崛起和Windows的衰落。（2004年）</p>
+</blockquote>
+<h3 id="第5章-软件构建中的设计"><a href="#第5章-软件构建中的设计" class="headerlink" title="第5章 软件构建中的设计"></a>第5章 软件构建中的设计</h3><p>这一章提到了本书的核心理念：</p>
+<blockquote>
+<p>管理复杂度是软件开发中最为重要的技术话题。在我看来，软件的首要技术使命便是管理复杂度，它实在是太重要了。</p>
+</blockquote>
+<p>以及，程序员的基本职业操守就是：</p>
+<blockquote>
+<p>要写出既让自己容易理解，也能让别人容易看懂，而且很少有错误的程序代码。</p>
+</blockquote>
+<blockquote>
+<p>【第90页】：<br>封装帮助你管理复杂度的方法是不让你看到那些复杂度。</p>
+</blockquote>
+<h3 id="第11章-变量名的力量"><a href="#第11章-变量名的力量" class="headerlink" title="第11章 变量名的力量"></a>第11章 变量名的力量</h3><blockquote>
+<p>临时变量，这个名词很奇怪，因为真的是“无论从那种角度看，你程序中的大多数变量都是临时性的。把其中几个称为临时的，可能表明你还没有弄清它们的实际用途。</p>
+</blockquote>
+<p>【275页】给出了CPP/Java的非正式变量命命名规则。然而似乎没有见过针对JavaScript的呢。。。（待调研）</p>
+<p>为变量命名这个事情，也挺考验程序员的英语词汇量的。</p>
+<h3 id="第12章-基本数据类型"><a href="#第12章-基本数据类型" class="headerlink" title="第12章 基本数据类型"></a>第12章 基本数据类型</h3><blockquote>
+<p>【第292页】<br>避免使用“神秘数值” 神秘数值是在程序中出现的、没有经过解释的数值文字量。如果你编程用的语言支持具名常量，那么就用它来代替神秘数值。<br>即使你确信某个数值在代码中永远也不会改变，使用具名常量也会有助于提高可读性。<br>一条很好的经验法则是，程序主体中仅能出现的（数字）字面量就是 0 和 1 。</p>
+</blockquote>
+<h3 id="第15章-使用条件语句"><a href="#第15章-使用条件语句" class="headerlink" title="第15章 使用条件语句"></a>第15章 使用条件语句</h3><blockquote>
+<p>【第363页】<br>利用 default 子句来检测错误<br>如果一条 case 语句中默认子句既没有用来做其他的处理，按照正常执行顺序也不太可能会发生，那么就向里面加入一条诊断消息。</p>
+</blockquote>
+<p>的确，很多时候编辑器的 Lint 工具会提示我们一定要加上一个 default 子句，然而有时候真的不知道该在里面写什么。上面的建议很不错。</p>
+<h3 id="第16章-控制循环"><a href="#第16章-控制循环" class="headerlink" title="第16章 控制循环"></a>第16章 控制循环</h3><blockquote>
+<p>【第382页】<br>在嵌套循环中使用有意义的变量名来提高其可读性</p>
+</blockquote>
+<h3 id="第18章-表驱动法"><a href="#第18章-表驱动法" class="headerlink" title="第18章 表驱动法"></a>第18章 表驱动法</h3><p>表驱动法就讲了三类方法：① 直接访问；② 索引访问；③ 阶梯访问。</p>
+<h3 id="第20章"><a href="#第20章" class="headerlink" title="第20章"></a>第20章</h3><blockquote>
+<p>虽然开发一个高质量产品的最好方法似乎就是专注于产品本身，但就软件质量保证而言，你还需要关注软件开发的过程。</p>
+</blockquote>
+<p>要尽可能多地找出缺陷，靠一种技术肯定是远远不够的，需要多种技术联合使用。例如，进行功能检查，单元测试，代码阅读。这三个就是最基本的了。而我目前的措施，顶多只有功能检查和代码阅读。非常缺少单元测试。</p>
+<h3 id="第21章-协同构建"><a href="#第21章-协同构建" class="headerlink" title="第21章 协同构建"></a>第21章 协同构建</h3><p>对于协同构建技术的一个相关思想比较有趣而且也非常符合在实践中的感受：</p>
+<blockquote>
+<p>……那就是在工作中，开发人员总会对某些错误点视而不见，而其他人不会有相同的盲点，所以开发人员让其他人来检查自己的工作是很有好处的……攻击这些盲点就成为了有效构建的关键。</p>
+</blockquote>
+<blockquote>
+<p>正如 Karl Wiegers 所指出的那样：“由人进行的复查能够发现不明显的错误信息、不恰当的注释、硬编码的变量值，以及重复出现的需要进行统一的代码模式，这些是测试发现不了的。”</p>
+</blockquote>
+<p>想到一个话题，“经验丰富的程序员的价值究竟体现在哪里”，窃以为，其人工执行代码检查从而发现潜在问题、漏洞、缺陷的能力，可以弥补测试的不足、减少上线后的BUG率，从而为整个项目节约成本。这便是其价值体现之一。</p>
+<blockquote>
+<p>【第482页】<br>一个采用正式检查的团队报告称，复查可以快速地讲所有开发者的水平提升到最优秀的开发者的高度（Tackett and Van Doren 1999）。</p>
+</blockquote>
+<h3 id="第22章-开发者测试"><a href="#第22章-开发者测试" class="headerlink" title="第22章 开发者测试"></a>第22章 开发者测试</h3><blockquote>
+<p>有些程序员会将术语“测试（testing）”和“调试（debugging）”混用，但是严谨的程序员会区分这两种活动。测试是一种检查错误的方法，而调试意味着错误已经被发现，要做的是诊断错误并消灭造成这些错误的根本原因。</p>
+</blockquote>
+<p>在最近的开发体验中（说白了，就是指工作啦），深感开发者如果能够进行充分的自测，那么其交付的软件质量，将会更高，对代码质量（可维护性、可靠性、容错能力等）也都会有相应的（以及间接的）帮助。然而：</p>
+<blockquote>
+<p>测试对于绝大多数开发人员来说都是一种煎熬……</p>
+<p>开发者测试应该占整个项目时间的8%~25%</p>
+</blockquote>
+<p>519页有一条很有趣，而且自己也遇到这样的事情：</p>
+<blockquote>
+<p>让人惊奇的是，笔误（拼写错误）是一个常见的问题根源……我的一位同事仅仅借助一个拼写检查工具对可执行文件中的所有字符串进行检查，就在我写的一个程序里发现了许多的错误。</p>
+</blockquote>
+<p>说真的，编码过程中，还是应该尽量使用拼写正确的英文单词~~</p>
+<p><strong>测试数据生成器（test-data generators）</strong>是用于产生对自己的代码进行测试用的数据的类或工具，作者在【524 页】提到了自己的一个经历，总结认为：</p>
+<blockquote>
+<p>比起手工构造测试数据，随机数据生成器可以更加彻底地对程序进行测试。</p>
+</blockquote>
+<p>这个概念目前我们也正在试用，对于线下无数据的情形比较有帮助。</p>
+<h3 id="第23章-调试"><a href="#第23章-调试" class="headerlink" title="第23章 调试"></a>第23章 调试</h3><p>程序员背锅誓言：</p>
+<blockquote>
+<p><strong>要知道，如果你写的程序出了问题，那就是你的原因，不是计算机的，也不是编译器的。程序不会每次都产生不同的结果。它不是自己写出来的，是你写的，所以，请对它负责。</strong></p>
+</blockquote>
+<p>有种编程方式叫做迷信式编程（programming by superstition），迷信式编程的同学大概是这样子的：</p>
+<blockquote>
+<p>每个团队里也许都有这样一个程序员，他总会遇到无穷的问题：不听话的机器，奇怪的编译器错误，月圆时才会出现的编程语言的隐藏缺陷，失效的数据，忘记做的重要改动，一个不能正常保存程序的疯狂的编辑器……</p>
+</blockquote>
+<p>以及新手程序员常犯错误：</p>
+<blockquote>
+<p>因此，如果你从一开始就假设错误是你引发的，就能避免陷入这样的尴尬境地：在公众面前先指责别人犯了错，最终却发现错误其实由你而生。</p>
+</blockquote>
+<p>550页：</p>
+<blockquote>
+<p>当你的编译器输出了一大堆的错误信息时，如果无法迅速找出第二条或第三条错误信息的源头，不要担心。先把第一条处理了，再重新编译。</p>
+</blockquote>
+<p>557页：</p>
+<blockquote>
+<p>要有这样一种假设：那些编写编译器的人对你所使用的语言的了解要远远胜过你自己。如果他们对你的程序提出了警告，这常常表示你现在有了一个学习你所使用语言更多的知识的良机。要努力去理解这些警告信息的真正含义。</p>
+</blockquote>
+<h4 id="第24章-重构"><a href="#第24章-重构" class="headerlink" title="第24章 重构"></a>第24章 重构</h4><p>终于读到了这一章。</p>
+<p>Martin Fowler（1999） 将重构定义为：<strong>在不改变软件外部行为的前提下，对其内部结构进行改变，使之更容易理解并便于修改</strong>。</p>
+<p>当代的软件大都是会不断演化的，那么，<strong>一旦有机会重新审视你的程序，就要用自己的全部所学去改进它</strong>。——这已是上升到哲学层面了。</p>
+<p>在什么时候应该去重构你的代码的理由中，有一条是关于注释的，刷新了自己对于注释的理解：</p>
+<blockquote>
+<p>注释在程序中扮演了重要的角色，但它不应当被用来为拙劣代码的存在而辩护。有箴言为证：“不要为拙劣的代码编写文档——应当重写代码。”（Kernighan and Plauger，1978）</p>
+</blockquote>
+<h4 id="24-5-重构策略"><a href="#24-5-重构策略" class="headerlink" title="24.5 重构策略"></a>24.5 重构策略</h4><blockquote>
+<p>关注易于出错的模块</p>
+<p>有的模块更容易出错，健壮性远逊于其他模块。程序里面是不是有一部分代码让你和开发团队的其他人都觉得烫手？这很可能就是容易出错的模块了。尽管绝大部分人对这部分富于挑战性的代码的自然反应都会是敬而远之，但集中处理这样的代码将是最为有效的重构策略。</p>
+</blockquote>
+<h3 id="第25章-代码调整策略"><a href="#第25章-代码调整策略" class="headerlink" title="第25章 代码调整策略"></a>第25章 代码调整策略</h3><blockquote>
+<p>“调整（tuning）”一词，指的是较小规模的修改，这种修改可能会影响到单个的类、单个子程序，更为普遍的情况是聊聊几行代码。“调整”并不是指大型的设计修改或其他在概要层次上对性能的改进。</p>
+</blockquote>
+<p>以前做 Linux tuning，原来也只是小修改啊……sigh</p>
+<h4 id="25-5-反复调整"><a href="#25-5-反复调整" class="headerlink" title="25.5 反复调整"></a>25.5 反复调整</h4><p>作者结合自己进行的一个最为棘手的代码调整案例，给出了一条哲理：</p>
+<blockquote>
+<p><strong>如果你的坑挖得足够深，你总会看到惊人的宝藏。</strong></p>
+</blockquote>
+<h3 id="第26章-代码调整技术"><a href="#第26章-代码调整技术" class="headerlink" title="第26章 代码调整技术"></a>第26章 代码调整技术</h3><p>最早见到“惰性求值”（Lazy Evaluation）一词，貌似是在《JavaScript权威指南》里面。不过，这个概念应该算是一种通用的编程思想。</p>
+<blockquote>
+<p>如果程序采用了这一方法，那么它会避免做任何事情，直到迫不得已。</p>
+</blockquote>
+<h4 id="26-2-节"><a href="#26-2-节" class="headerlink" title="26.2 节"></a>26.2 节</h4><blockquote>
+<p>把最忙的循环放在最内层</p>
+</blockquote>
+<p>因为，嵌套循环的总循环次数 = 外层循环次数 + 内层循环次数 * 外层循环次数。所以，外层循环应该数量尽量少于内层循环。</p>
+<h4 id="26-3-数据变化"><a href="#26-3-数据变化" class="headerlink" title="26.3 数据变化"></a>26.3 数据变化</h4><p>缓存机制可以在某些情景中大幅提升软件性能。不过在使用缓存的时候，必须意识到这一点：<strong>缓存增加了程序的复杂性，使得程序更容易出错</strong>。</p>
+<h4 id="26-4-表达式"><a href="#26-4-表达式" class="headerlink" title="26.4 表达式"></a>26.4 表达式</h4><p>这一页提到了一个技术，“编译期初始化”。是说：</p>
+<blockquote>
+<p>如果在一个子程序调用中使用了一个具名常量或是神秘数值，而且它是子程序唯一的参数，这就是一种暗示，你应当提前计算这一数值，把它放到某个常量中，从而避免上面那种子程序调用。</p>
+</blockquote>
+<p>然后大神用C++给出了一个示例。</p>
+<p>不过，在我用 JavaScript 重演这个示例的时候，却发现现在的编译器已经足够聪明了：</p>
+<p>测试代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function lg1(x) &#123;</span><br><span class="line">  return Math.log(x) / Math.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var NUM = 1000000;</span><br><span class="line">var LOG2 = 0.6931471805599453;</span><br><span class="line">function lg2(x) &#123;</span><br><span class="line">  return Math.log(x) / LOG2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.time(&#x27;lg1&#x27;);</span><br><span class="line">for(var i = 1; i&lt; NUM; i++) &#123;</span><br><span class="line">  lg1(i);</span><br><span class="line">&#125;</span><br><span class="line">console.timeEnd(&#x27;lg1&#x27;);</span><br><span class="line"></span><br><span class="line">console.time(&#x27;lg2&#x27;);</span><br><span class="line">for(var i = 1; i&lt; NUM; i++) &#123;</span><br><span class="line">  lg2(i);</span><br><span class="line">&#125;</span><br><span class="line">console.timeEnd(&#x27;lg2&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>运行结果是：</p>
+<ul>
+<li>lg1: 29.933ms</li>
+<li>lg2: 29.699ms</li>
+</ul>
+<p>多次运行，也会发现二者并无明显区别。</p>
+<p>猜测是JS引擎足够聪明，认识到 Math.log(2) 就是个常量，因此在编译期自行做了优化。</p>
+<h4 id="26-7-变得越多，事情反而越没变"><a href="#26-7-变得越多，事情反而越没变" class="headerlink" title="26.7 变得越多，事情反而越没变"></a>26.7 变得越多，事情反而越没变</h4><blockquote>
+<p>当你需要让某个测试跑上一亿次才能得出一个可测量的结果时，你不得不产生疑问，有谁会注意这些优化工作对实际程序锁产生的影响。如今的计算机一级如此强悍，读很多常见类型的程序来说，本章所讨论的性能优化提升的意义已如明日黄花。<br>……<br>代码调整无可避免地为性能改善的良好愿望而付出复杂性、可读性、简单性、可维护性方面的代价。由于每一次调整后需要对性能进行重新评估，代码调整还引入了巨额的管理维护开销。</p>
+</blockquote>
+<h3 id="第-27-章"><a href="#第-27-章" class="headerlink" title="第 27 章"></a>第 27 章</h3><blockquote>
+<p>如果你习惯于开发小项目，那么你的第一个中大型项目有可能严重失控，它不会像你憧憬的那样成功，而会变成一头无法控制的野兽。……与此相对的是，如果你已经习惯于开发大型项目，那么你所用的方法可能对小项目来说太正规了。</p>
+</blockquote>
+<h3 id="第32章-自说明代码"><a href="#第32章-自说明代码" class="headerlink" title="第32章 自说明代码"></a>第32章 自说明代码</h3><p>代码注释有多种类型，其中最为有价值的是这三类：</p>
+<ul>
+<li>目的性注释，表明这个代码的目的</li>
+<li>概述性注释，简要介绍这段代码的设计思路、使用的算法、技巧等等</li>
+<li>传达代码无法表述的信息，例如版权声明、作者、版本号等等</li>
+</ul>
+<blockquote>
+<p>对于完工的代码，只允许有三种注释类型：代码无法表述的信息、目的性注释和概述性注释。</p>
+</blockquote>
+<p>大部分情况下，最好不使用行尾注释技术，除了下面两类：</p>
+<ul>
+<li>数据声明</li>
+<li>用于标记大的代码块的结束</li>
+</ul>
+<h3 id="第33章-个人性格"><a href="#第33章-个人性格" class="headerlink" title="第33章 个人性格"></a>第33章 个人性格</h3><p>这一章的主题，像是对程序员的职业发展、学习方法给出合理中肯的建议。</p>
+<p>要保持谦逊的品质。</p>
+<blockquote>
+<p>在成长为高手的过程中，对技术事物的求知欲具有压倒一切的重要性。</p>
+</blockquote>
+<blockquote>
+<p>技术环境的特定特征每5到10年就变化一番，如果没有足够的求知欲来跟上这些变化，你就面临落伍的威胁。</p>
+</blockquote>
+<blockquote>
+<p>学习编程的一个特别好的途径是研究高手的程序。</p>
+</blockquote>
+<blockquote>
+<p>如果每两月能看一本计算机好书，大约每周35页，过不了多久，你就能把握本行业的脉搏，并脱颖而出。（824页）</p>
+</blockquote>
+<blockquote>
+<p>当初学者或中级程序员不是错，当熟练级程序员而非技术带头人也无可厚非。但如果知道自己该如何改进后，还总是在初学者或者中级程序员阶段徘徊，就是你的不对了。</p>
+</blockquote>
+<blockquote>
+<p>比尔·盖茨说，任何日后出色的程序员前几年就做得很好。从那以后，程序员好坏就定型了（Lammers，1986）。</p>
+</blockquote>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="cm8bcxssz00bidjle1dqza0xp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/09/20/javascript-ninja/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    JavaScript Ninja
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/08/17/something-about-element-style/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">关于 DOM Element style 属性的一件小事</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Ubuntu Linux 常用命令笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="写在前头Linux里，所有程序或系统装置都是文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu Linux 常用命令笔记">
+<meta property="og:url" content="https://borninsummer.com/2015/06/11/linux-command-memo/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="写在前头Linux里，所有程序或系统装置都是文件">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-06-11T06:15:02.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.154Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-linux-command-memo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Ubuntu Linux 常用命令笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/06/11/linux-command-memo/">
+            <time datetime="2015-06-11T06:15:02.000Z" itemprop="datePublished">2015-06-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Operating-System/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">写在前头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%BA%A7%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">入门级命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">目录与文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text">移动文件、目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%8C%E6%95%B4%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">查看当前完整的工作目录路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E4%BD%93%E7%A7%AF"><span class="toc-number">3.3.</span> <span class="toc-text">查看文件、目录体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%9E%E9%99%85%E8%B7%AF%E5%BE%84"><span class="toc-number">3.4.</span> <span class="toc-text">查看某个程序的实际路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">4.</span> <span class="toc-text">vi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">压缩文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">6.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">7.</span> <span class="toc-text">系统资源与监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">网络操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lsof%E5%91%BD%E4%BB%A4"><span class="toc-number">9.1.</span> <span class="toc-text">lsof命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">10.</span> <span class="toc-text">环境</span></a></li></ol>
+            </div>
+            <h2 id="写在前头"><a href="#写在前头" class="headerlink" title="写在前头"></a>写在前头</h2><p><strong>Linux里，所有程序或系统装置都是文件</strong></p>
+<a id="more"></a>
+
+<h2 id="入门级命令"><a href="#入门级命令" class="headerlink" title="入门级命令"></a>入门级命令</h2><p><code>ls -a</code>  查看所有文件，包括隐藏的文件</p>
+<p><code>ls -al</code>  列出当前目录下所有的文件的详细权限与属性，需要以root身份登录</p>
+<p><code>ll</code>  列出当前目录下的所有文件和目录（包括隐藏文件和目录）的详细权限与属性</p>
+<p><code>mkdir directoryName</code>  创建一个目录</p>
+<p><code>rm -rf</code>  强行(-f)向下递归(-r)删除一个目录，不管该目录是否为空</p>
+<p><code>vi filename.txt</code>  创建新文</p>
+<p><code>df -h</code>  查看磁盘空间使用情况</p>
+<p><code>who</code> 查看系统有哪些用户登录了</p>
+<p><code>netstat -a</code>  查看网络的联机状态</p>
+<p><code>ps -aux</code>  查看后台执行的程序</p>
+<h2 id="目录与文件操作"><a href="#目录与文件操作" class="headerlink" title="目录与文件操作"></a>目录与文件操作</h2><h3 id="移动文件、目录"><a href="#移动文件、目录" class="headerlink" title="移动文件、目录"></a>移动文件、目录</h3><p><code>mv ~/dir1/dir-03 ~</code> 把 <code>dir-03</code> 目录放到 <code>~</code> 目录下</p>
+<h3 id="查看当前完整的工作目录路径"><a href="#查看当前完整的工作目录路径" class="headerlink" title="查看当前完整的工作目录路径"></a>查看当前完整的工作目录路径</h3><p><code>pwd</code> 显示当前所在的目录的完整路径（print working directory）</p>
+<h3 id="查看文件、目录体积"><a href="#查看文件、目录体积" class="headerlink" title="查看文件、目录体积"></a>查看文件、目录体积</h3><p><code>du</code> – display disk usage statistics.</p>
+<p>常用参数：</p>
+<p><code>-h</code>：Human-readable，即以可读性好的方式给出体积数值</p>
+<p><code>-s</code>：This option means it will not list the size for each subdirectory, only the total size.</p>
+<h3 id="查看某个程序的实际路径"><a href="#查看某个程序的实际路径" class="headerlink" title="查看某个程序的实际路径"></a>查看某个程序的实际路径</h3><p><code>which</code>：locate a program file in the user’s path。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which git</span><br><span class="line"># 输出  /usr/bin/git</span><br></pre></td></tr></table></figure>
+
+<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><p><code>i</code> 开始输入</p>
+<p><code>:wq!</code>  保存并退出</p>
+<p><code>vi filename</code>  用 vi 打开一个文件</p>
+<p><code>esc</code>然后 <code>ctrl+z</code>可以退出编辑并关闭vi编辑器</p>
+<h2 id="压缩文件操作"><a href="#压缩文件操作" class="headerlink" title="压缩文件操作"></a>压缩文件操作</h2><p><code>tar -C /usr/local -xzf node-v0.10.34-linux-x86.tar.gz</code> 把后面的压缩文件解压缩到目录<code>/usr/local</code>下</p>
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 创建新用户 */</span><br><span class="line">root@iZ23jp8wbg8Z:/tmp# adduser wzl</span><br><span class="line">Adding user `wzl&#x27; ...</span><br><span class="line">Adding new group `wzl&#x27; (1000) ...</span><br><span class="line">Adding new user `wzl&#x27; (1000) with group `wzl&#x27; ...</span><br><span class="line">Creating home directory `/home/wzl&#x27; ...</span><br><span class="line">Copying files from `/etc/skel&#x27; ...</span><br><span class="line">Enter new UNIX password:</span><br><span class="line">Retype new UNIX password:</span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
+
+<p>创建完一个用户后，会在<code>/home</code>目录下以该用户名自动创建一个目录。</p>
+<p><code>su wzl</code>  切换为用户<code>wzl</code></p>
+<p><code>exit</code>，如果由root用户切换为wzl后再执行<code>exit</code>，则回到root用户下</p>
+<p><code>passwd</code> 进入修改自己的密码的模式</p>
+<h2 id="系统资源与监控"><a href="#系统资源与监控" class="headerlink" title="系统资源与监控"></a>系统资源与监控</h2><p><code>ps aux</code>  查看系统的所有进程(参数说明 a: 与Terminal无关；u: 有效用户相关的进程；x：列出完整信息，通常与参数a一起使用。)</p>
+<p><code>ps aux | grep node</code>  只查看与<code>node</code>有关的进程</p>
+<p><code>free -m -t</code>  以MB为单位（<code>-m</code>），显示所有可用内存（<code>-t</code>），然后打印出内存使用情况</p>
+<p><code>df -hl</code>  查看电脑的磁盘等信息</p>
+<p><code>lscpu</code>  查看电脑的CPU信息，可以据此了解CPU核心数、主频等关键信息</p>
+<p><code>top</code>  可以实时输出系统的CPU、内存使用情况</p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p><code>chown [选项] [所有者用户][:[组名]] 文件</code>  把某文件的所有者改为某某用户，以及归到某组下</p>
+<p><code>chmod 744 [filename]</code>  把一个文件的权限改为 <code>rwxrwxr--</code></p>
+<p><code>chmod</code> 的意思是 <code>change mode</code>，即改变文件的状态。<code>chmod</code> 最简单的使用语法是 <code>chmod mode file</code>，其中 <code>mode</code> 是权限设定字串，格式为 <code>[ugoa...][[+-=][rwxX]</code>。</p>
+<p><code>chmod u+x [filename]</code>，<code>u</code> 表示该文件的拥有者，<code>+</code> 表示增加权限，<code>x</code> 表示可执行。</p>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><h3 id="lsof命令"><a href="#lsof命令" class="headerlink" title="lsof命令"></a><code>lsof</code>命令</h3><p>通过list open file命令可以查看到当前打开文件，在linux中所有事物都是以文件形式存在，包括网络连接及硬件设备。下面这个命令会列出所有占用了 8080 端口TCP连接的进程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code> 参数是用于过滤打开的文件的 <code>Internet address</code> 匹配其后面数字的。如果使用了 <code>-i4</code>，则只过滤 IPV4 的文件；<code>-i6</code> 则只查找 IPV6 的文件。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>set</code> 可以查看当前会话中的所有环境信息</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/06/11/linux-command-memo/" data-id="cm8bcxsst009jdjlecem0ggh4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/06/17/notes-on-developing-nodejs-webapp/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    NodeJS+Express+MySQL开发小记(2):服务器部署
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/06/10/nodejs-environment-setup-on-linux/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Linux下配置NodeJS环境</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

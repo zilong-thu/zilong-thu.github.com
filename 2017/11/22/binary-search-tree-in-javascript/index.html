@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Binary-Search-Tree in JavaScript | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这里用 JavaScript 实现一个二叉搜索树。二叉搜索树可以很方便地进行排序。下面的实现比较简单，很容易就会出现非平衡二叉树。G.M. Adelson-Velsky 和 E.M. Landis 在 1962 年的论文《An Algorithm For The Organization Of Information》中提出了一种可以实现自平衡二叉树，后世称为 AVL 树。 除了 AVL 树，还有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary-Search-Tree in JavaScript">
+<meta property="og:url" content="https://borninsummer.com/2017/11/22/binary-search-tree-in-javascript/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这里用 JavaScript 实现一个二叉搜索树。二叉搜索树可以很方便地进行排序。下面的实现比较简单，很容易就会出现非平衡二叉树。G.M. Adelson-Velsky 和 E.M. Landis 在 1962 年的论文《An Algorithm For The Organization Of Information》中提出了一种可以实现自平衡二叉树，后世称为 AVL 树。 除了 AVL 树，还有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2017/11/bst_result.jpg">
+<meta property="article:published_time" content="2017-11-21T17:20:13.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.161Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2017/11/bst_result.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-binary-search-tree-in-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Binary-Search-Tree in JavaScript
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/22/binary-search-tree-in-javascript/">
+            <time datetime="2017-11-21T17:20:13.000Z" itemprop="datePublished">2017-11-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">代码分析</span></a></li></ol>
+            </div>
+            <p>这里用 JavaScript 实现一个二叉搜索树。二叉搜索树可以很方便地进行排序。下面的实现比较简单，很容易就会出现非平衡二叉树。G.M. Adelson-Velsky 和 E.M. Landis 在 1962 年的论文《An Algorithm For The Organization Of Information》中提出了一种可以实现自平衡二叉树，后世称为 AVL 树。</p>
+<p>除了 AVL 树，还有很多其他的平衡二叉树的实现，例如 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30527705">AVL树，红黑树，B树，B+树，Trie树都分别应用在哪些现实场景中？</a> 就是个不错的入门级参考，可以大致了解这些平衡树的特点、区别。看起来，红黑树是应用最广泛的。</p>
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 二叉搜索树构造函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BinarySearchTree</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Node = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.key = key;</span><br><span class="line">    <span class="built_in">this</span>.left = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.right = <span class="literal">null</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> root = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 插入值</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.insert = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newNode = <span class="keyword">new</span> Node(key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root === <span class="literal">null</span>) &#123;</span><br><span class="line">      root = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      insertNode(root, newNode);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">insertNode</span>(<span class="params">node, newNode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (newNode.key &lt; node.key) &#123;</span><br><span class="line">      <span class="keyword">if</span> (node.left === <span class="literal">null</span>) &#123;</span><br><span class="line">        node.left = newNode;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        insertNode(node.left, newNode);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (node.right === <span class="literal">null</span>) &#123;</span><br><span class="line">        node.right = newNode;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        insertNode(node.right, newNode);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 中序遍历二叉树</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.inOrderTraverse = <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    inOrderTraverseNode(root, cb);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">inOrderTraverseNode</span>(<span class="params">node, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">      inOrderTraverseNode(node.left, cb);</span><br><span class="line">      cb(node);</span><br><span class="line">      inOrderTraverseNode(node.right, cb);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 先序遍历二叉树</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.preOrderTraverse = <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    preOrderTraverseNode(root, cb);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">preOrderTraverseNode</span>(<span class="params">node, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">      cb(node);</span><br><span class="line">      preOrderTraverseNode(node.left, cb);</span><br><span class="line">      preOrderTraverseNode(node.right, cb);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 后序遍历二叉树</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.postOrderTraverse = <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    postOrderTraverseNode(root, cb);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">postOrderTraverseNode</span>(<span class="params">node, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">      postOrderTraverseNode(node.left, cb);</span><br><span class="line">      postOrderTraverseNode(node.right, cb);</span><br><span class="line">      cb(node);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 获取最小值节点</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.min = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> findMinNode(root);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">findMinNode</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = node;</span><br><span class="line">    <span class="keyword">while</span>(n &amp;&amp; n.left) &#123;</span><br><span class="line">      n = n.left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 移除一个节点</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="built_in">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    root = removeNode(root, key);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">removeNode</span>(<span class="params">node, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (key &lt; node.key) &#123;</span><br><span class="line">      node.left = removeNode(node.left, key);</span><br><span class="line">      <span class="keyword">return</span> node;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; node.key) &#123;</span><br><span class="line">      node.right = removeNode(node.right, key);</span><br><span class="line">      <span class="keyword">return</span> node;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (node.left === <span class="literal">null</span> &amp;&amp; node.right === <span class="literal">null</span>) &#123;</span><br><span class="line">        node = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.left === <span class="literal">null</span>) &#123;</span><br><span class="line">        node = node.right;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.right === <span class="literal">null</span>) &#123;</span><br><span class="line">        node = node.left;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> aux = findMinNode(node.right);</span><br><span class="line">      node.key = aux.key;</span><br><span class="line">      node.right = removeNode(node.right, aux.key);</span><br><span class="line">      <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试代码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bst = <span class="keyword">new</span> BinarySearchTree();</span><br><span class="line"></span><br><span class="line">bst.insert(<span class="number">17</span>);</span><br><span class="line">bst.insert(<span class="number">1</span>);</span><br><span class="line">bst.insert(<span class="number">2</span>);</span><br><span class="line">bst.insert(<span class="number">1</span>);</span><br><span class="line">bst.insert(<span class="number">10</span>);</span><br><span class="line">bst.insert(<span class="number">4</span>);</span><br><span class="line">bst.insert(<span class="number">15</span>);</span><br><span class="line">bst.insert(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\n中序遍历二叉树 =&gt;\n&#x27;</span>);</span><br><span class="line">bst.inOrderTraverse(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(node.key);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\n先序遍历二叉树 =&gt;\n&#x27;</span>);</span><br><span class="line">bst.preOrderTraverse(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(node.key);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\n后序遍历二叉树 =&gt;\n&#x27;</span>);</span><br><span class="line">bst.postOrderTraverse(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(node.key);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\nmin node =&gt;&#x27;</span>, bst.min().key);</span><br><span class="line"></span><br><span class="line">bst.remove(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;\n先序遍历二叉树 =&gt;\n&#x27;</span>);</span><br><span class="line">bst.preOrderTraverse(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(node.key);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>上面的测试代码，执行完所有的插入操作之后，二叉搜索树是这个样子的：</p>
+<img src="/images/2017/11/bst_result.jpg" />
+
+<p>也就是说，它并非尽可能是满二叉树。会因为输入数据的顺序原因，而导致某个或某些分支特别长。这样是非常影响搜索效率的。AVL 树、红黑树等都是为了尽可能实现满二叉树而提出的算法。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/11/22/binary-search-tree-in-javascript/" data-id="cm8bcxst300dsdjle8ngx3nlu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/11/23/red-black-tree/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Red-Black Tree
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/10/30/intro-to-imagemagick/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">ImageMagick 简单入门</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

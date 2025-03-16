@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《jQuery Cookbook 中文版》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="《jQuery Cookbook 中文版》 仅摘记自己陌生的、新学到的知识点。 ##第1章：jQuery基础###关于ready()方法jQuery(document).ready(function()&amp;#123;&amp;#125;)方法可以在DOM加载之后、整个页面加载之前执行JS代码。与之相比，window.onload属性则是在页面全部加载完后（包括图片、SWF等）才被触发。 所以ready()比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《jQuery Cookbook 中文版》笔记">
+<meta property="og:url" content="https://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《jQuery Cookbook 中文版》 仅摘记自己陌生的、新学到的知识点。 ##第1章：jQuery基础###关于ready()方法jQuery(document).ready(function()&amp;#123;&amp;#125;)方法可以在DOM加载之后、整个页面加载之前执行JS代码。与之相比，window.onload属性则是在页面全部加载完后（包括图片、SWF等）才被触发。 所以ready()比">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-01-06T11:48:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.147Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-jquery-cookbook" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《jQuery Cookbook 中文版》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/01/06/reading-notes-on-jquery-cookbook/">
+            <time datetime="2014-01-06T11:48:00.000Z" itemprop="datePublished">2014-01-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><a href="http://book.douban.com/subject/23774480/" class="douban_book" name="23774480" target="_blank" title="jQuery Cookbook 中文版">《jQuery Cookbook 中文版》</a></p>
+<p>仅摘记自己陌生的、新学到的知识点。</p>
+<p>##第1章：jQuery基础<br>###关于ready()方法<br><code>jQuery(document).ready(function()&#123;&#125;)</code>方法可以在DOM加载之后、整个页面加载之前执行JS代码。与之相比，window.onload属性则是在页面全部加载完后（包括图片、SWF等）才被触发。</p>
+<p>所以ready()比较贴合实际。但是它也不是必须的：</p>
+<blockquote>
+<p>这个定制的jQuery事件只有在JavaScript必须嵌入到页面顶端的文档流并封装在<code>&lt;head&gt;</code>元素里时才有必要。我只需将JavaScript文件包含和内联代码放在<code>&lt;body&gt;</code>结束标签之前，就能避免使用<code>ready()</code>事件。原因有二。</p>
+<p>一，现代优化技术已经断言，当JavaScript代码放在页面解析的最后由浏览器加载时，页面的加载速度就会变得更快。</p>
+<p>二，ready()方法一定程度上增加了代码量，这样不好。代码越少，网页运行得总是越快。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>###jQuery的选择器引擎<br>jQuery的选择器引擎是<a href="http://sizzlejs.com" target="_blank">Sizzle</a> —— A pure-JavaScript CSS selector engine<br>designed to be easily dropped in to a host library.</p>
+<p>###克隆DOM元素<br>先克隆，再移动，最后删除原有的DOM元素，就可以实现DOM元素及其事件处理函数的移动了。 </p>
+<p>###html()方法机理<br>jQuery的html()方法会尽量使用DOM的innerHTML属性来获取和设置HTML块（从其源代码即可看出来）。html()方法在XML文档中不可用，但是可用于XHTML文档。</p>
+<p>值得注意的是，html()方法与text()方法只有一点不同：后者会对HTML进行转义（将<code>&lt;</code>和<code>&gt;</code>替换为HTML实体<code>&amp;lt;</code>和<code>&amp;gt;</code>）。</p>
+<p>##第2章：用jQuery选择元素<br>###使用上下文参数<br>jQuery()可以接受第二个参数，指定上下文。jQuery将在这个上下文中搜索匹配选择器表达式的元素。</p>
+<p>jQuery使用的默认上下文是document，使用上下文时的执行逻辑可以按照如下方式表达：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery( context ).find( selector );</span><br></pre></td></tr></table></figure>
+
+<p>——这就是jQuery在后台所做的事情。</p>
+<p>所以，如果已经有了对上下文的引用，那么应该传递这个引用而不是选择器——让jQuery再次经历选择过程是浪费时间。</p>
+<p>##第3章：超越基础<br>###将选中的jQuery对象转换为原始的DOM对象<br>使用jQuery(selector).get()即可得到DOM对象。或者使用<code>[]</code>符号进行下标访问，也可以获得原始DOM对象。</p>
+<p>###从现有数组中建立独特的数组<br>jQuery的工具方法<code>$.map(array, function(item, index)&#123;&#125;)</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.map([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">n, i</span>)</span>&#123; <span class="keyword">return</span> n+i; &#125;);    <span class="comment">// =&gt; 返回一个新数组[1,3,5]</span></span><br></pre></td></tr></table></figure>
+
+<p>###避免jQuery与其他程序库冲突<br>一般是指Prototype库。可以在jQuery库加载代码后面立即运行 <code>jQuery.noConflict();</code>，用以释放<code>$</code>变量，然后jQuery就只能用jQuery变量了。</p>
+<p>也可以声明自己的jQuery简写名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jq = jQuery.noConflict();</span><br></pre></td></tr></table></figure>
+
+<p>还有一种更高级的方法：在闭包中封装jQuery代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jQuery.noConflict();</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;#some_id&#x27;</span>).css(<span class="string">&#x27;font-weight&#x27;</span>, <span class="string">&#x27;bold&#x27;</span>);</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+
+<p>##第5章：更快、更简单、更有趣<br>我觉得这一章是精华。本章以几个常见的jQuery错误为例，从JavaScript层面上进行了详细的解释。</p>
+<blockquote>
+<p>这不是jQuery，而是JavaScript。</p>
+</blockquote>
+<p>对JavaScript理解不深的人也可以用jQuery做出炫丽的效果来。但是，理解jQuery的本质，才可以成为更好的程序员。</p>
+<p>###从其他程序库借用代码<br>jQuery.fn与jQuery.prototype引用同一个对象。</p>
+<blockquote>
+<p>当用jQuery()或$()创建一个jQuery对象时，实际上调用的是<code>new jQuery()</code>（jQuery库自动为你添加<code>new</code>操作）。……所以，编写jQuery.fn插件，实际上进行的是传统的面向对象JavaScript编程，用构造器的原型向对象添加一个方法。</p>
+</blockquote>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/01/06/reading-notes-on-jquery-cookbook/" data-id="cm8bcxssm006adjle41ou4r53" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/01/08/html5-web-socket/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    HTML5 Web Socket初步学习
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/01/03/how-to-improve-12306/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">12306网站前端初步优化之我见</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

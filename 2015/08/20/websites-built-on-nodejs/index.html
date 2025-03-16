@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nodejs在网站构建中的应用 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="国外在Qura上有人问过这个问题，有比较好的回答： What are the biggest websites built with Node.js on the server side?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs在网站构建中的应用">
+<meta property="og:url" content="https://borninsummer.com/2015/08/20/websites-built-on-nodejs/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="国外在Qura上有人问过这个问题，有比较好的回答： What are the biggest websites built with Node.js on the server side?">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/logo/nodejs.png">
+<meta property="article:published_time" content="2015-08-20T01:49:22.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.155Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="NodeJS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/logo/nodejs.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-websites-built-on-nodejs" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/images/logo/nodejs.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Nodejs在网站构建中的应用
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/08/20/websites-built-on-nodejs/">
+            <time datetime="2015-08-20T01:49:22.000Z" itemprop="datePublished">2015-08-20</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/NodeJS/" rel="tag">NodeJS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BD%E5%A4%96"><span class="toc-number">1.</span> <span class="toc-text">国外</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Walmart"><span class="toc-number">1.1.</span> <span class="toc-text">Walmart</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-bay-PayPal"><span class="toc-number">1.2.</span> <span class="toc-text">E-bay &#x2F; PayPal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedIn"><span class="toc-number">1.3.</span> <span class="toc-text">LinkedIn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Yahoo"><span class="toc-number">1.4.</span> <span class="toc-text">Yahoo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google"><span class="toc-number">1.5.</span> <span class="toc-text">Google</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trello"><span class="toc-number">1.6.</span> <span class="toc-text">Trello</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uber"><span class="toc-number">1.7.</span> <span class="toc-text">Uber</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BD%E5%86%85"><span class="toc-number">2.</span> <span class="toc-text">国内</span></a></li></ol>
+            </div>
+            <h2 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h2><p>在Qura上有人问过这个问题，有比较好的回答：</p>
+<p><a target="_blank" rel="noopener" href="http://www.quora.com/What-are-the-biggest-websites-built-with-Node-js-on-the-server-side">What are the biggest websites built with Node.js on the server side?</a></p>
+<a id="more"></a>
+
+<h3 id="Walmart"><a href="#Walmart" class="headerlink" title="Walmart"></a>Walmart</h3><h3 id="E-bay-PayPal"><a href="#E-bay-PayPal" class="headerlink" title="E-bay / PayPal"></a>E-bay / PayPal</h3><p>Paypal是最早将Node.js用于生产环境的公司之一。在他们的<a target="_blank" rel="noopener" href="https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/">开发者博客中</a>记录了当初使用node.js和java分别做开发，前者体现出来的优势：</p>
+<blockquote>
+<p>We started in January and it took us a few months to get the necessary infrastructure in place for node.js to work in PayPal, e.g. sessions, centralized logging, keystores. During this time we had five engineers working on the Java application. Two months in to the Java development, two engineers started working on the parallel node.js app. In early June they met at a crossroads, the applications had the same set of functionality; the node.js application, a smaller team with a two month delayed start, had quickly caught up. A few details stood out after we ran the test cases and both applications passed the same functional tests.</p>
+</blockquote>
+<h3 id="LinkedIn"><a href="#LinkedIn" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><p><a target="_blank" rel="noopener" href="http://venturebeat.com/2011/08/16/linkedin-node/">How LinkedIn used Node.js and HTML5 to build a better, faster app</a></p>
+<p>那个时候，他们的web app是基于Underscore.js+Backbone.js的。</p>
+<h3 id="Yahoo"><a href="#Yahoo" class="headerlink" title="Yahoo"></a>Yahoo</h3><h3 id="Google"><a href="#Google" class="headerlink" title="Google"></a>Google</h3><h3 id="Trello"><a href="#Trello" class="headerlink" title="Trello"></a>Trello</h3><h3 id="Uber"><a href="#Uber" class="headerlink" title="Uber"></a>Uber</h3><h2 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.html-js.com/">前端乱炖</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.apjs.net/">angular中文网</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/08/20/websites-built-on-nodejs/" data-id="cm8bcxssx00agdjlehtrb6d7x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/09/13/beijing-nodejs-party-note/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    北京 Node.js Party 参会录
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/08/12/skills-learned-in-the-first-half-of-2015/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">2015年上半年小结与下半年学习规划</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>关于MacOS文件系统的文件名大小写问题 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="背景注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：pick.js，但是在引用的时候，是这样的： 1import *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于MacOS文件系统的文件名大小写问题">
+<meta property="og:url" content="https://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="背景注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：pick.js，但是在引用的时候，是这样的： 1import *">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-03-20T05:52:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.159Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="文件系统">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-about-filesystem-case-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            关于MacOS文件系统的文件名大小写问题
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/20/about-filesystem-case-sensitive/">
+            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>, <a class="tag-link-link" href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">文件系统</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E7%8A%B6"><span class="toc-number">2.</span> <span class="toc-text">现状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+            </div>
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>注意到这个事情，是因为今天在工作中发现了由此导致的一个构建问题。我在某个项目A上进行开发，该项目依赖了一个公共组件C。C是由其他同学负责维护，里面的JS源码、以及由 ES6 编译为 ES5 之后的部分文件名，是大写开头的（当然了，我个人是习惯于总是小写命名文件，用连字符处理长文件名情形），但是有个文件在创建的时候，用了小写开头的：<code>pick.js</code>，但是在引用的时候，是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * from &#x27;./Picker.js&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>由于我们所有的开发人员都是配 Mac，因此在开发环境中，并没能发现这个隐藏的错误。只是在 A 项目中，发现这个文件是找不到的（我们使用了 webpack 进行构建）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module not found: Error: Can&#x27;t resolve &#x27;./Picker&#x27; in &#x27;some-file&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>最后，通过修改文件名，就解决了这个问题。</p>
+<a id="more"></a>
+
+
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>文件系统</th>
+<th>是否大小写敏感</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unix</td>
+<td></td>
+<td>是</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td></td>
+<td>是</td>
+</tr>
+<tr>
+<td>MacOS</td>
+<td>日志式 HFS+</td>
+<td>默认否</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>FAT32 NTFS</td>
+<td>默认否</td>
+</tr>
+</tbody></table>
+<p>在 <a target="_blank" rel="noopener" href="http://apple.stackexchange.com/questions/22297/is-bash-in-osx-case-insensitive">Is bash in OSX case-insensitive?</a> 中有一个很好的回答：</p>
+<blockquote>
+<p>HFS+ (the Mac filesystem) is usually configured to be case insensitive but case preserving. This means that the file system will consider <code>foo</code> and <code>FoO</code> to be the same, but when you create a new file it will remember which letters where capitalized and which were not.</p>
+<p>To check whether a disk is case sensitive, run for example:</p>
+<p><code>diskutil info disk0s2</code></p>
+<p>Look for the <code>Name:</code> line. If it reads something like <code>Mac OS Extended (Case-sensitive, Journaled)</code> it means that it is case-sensitive. If it just reads <code>Mac OS Extended</code> (without the Case-sensitive) then it is only case preserving but not case sensitive.</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>要意识到不同操作系统之间是存在这些最基本的差异的。而文件命名，也最好要养成一个习惯，尽量只使用小写。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/03/20/about-filesystem-case-sensitive/" data-id="cm8bcxst000c3djle78q71sg4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/22/play-music-with-sox/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Play Music with SoX on MacOS
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/20/koa-running-on-http2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Koa Running On HTTP/2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>用Node.js生成Plot3D网格文件 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。 只要了解正则表达式的语法就OK。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Node.js生成Plot3D网格文件">
+<meta property="og:url" content="https://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。 只要了解正则表达式的语法就OK。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/node/airfoil_data_format.png">
+<meta property="og:image" content="https://borninsummer.com/images/blog/node/wing_mesh.png">
+<meta property="article:published_time" content="2014-04-21T07:15:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.149Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/node/airfoil_data_format.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-using-node-to-write-plot3d-mesh-file" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            用Node.js生成Plot3D网格文件
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/04/21/using-node-to-write-plot3d-mesh-file/">
+            <time datetime="2014-04-21T07:15:00.000Z" itemprop="datePublished">2014-04-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Node-js/" rel="tag">Node.js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>上一篇博客是读Plot3D网格，这一篇差不多。根据NACA翼型生成程序给出的点坐标，拉伸为三维机翼。</p>
+<p>只要了解正则表达式的语法就OK。</p>
+<a id="more"></a>
+
+<p>###翼型数据格式<br>NACA系列翼型由这个程序生成。</p>
+<p><a href="/files/exefiles/naca.zip" download="NACA翼型生成程序">NACA翼型生成程序</a></p>
+<p>生成的翼型数据并不直接就是下图的样子，用excel什么的稍微格式化一下就好了。</p>
+<img src="/images/blog/node/airfoil_data_format.png" title="翼型文件数据格式"/>
+
+<p>生成的网格大概这个样子：<br><img src="/images/blog/node/wing_mesh.png" title="三维机翼网格"/></p>
+<p>###Node代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = fs.readFileSync(<span class="string">&#x27;naca_airfoil.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> outStream = fs.WriteStream(<span class="string">&#x27;wing.xyz&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> dataArray = data.split(<span class="regexp">/\r\n/</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 网格 */</span></span><br><span class="line"><span class="keyword">var</span> grid = &#123;</span><br><span class="line">        <span class="attr">X</span>: [],</span><br><span class="line">        <span class="attr">Y</span>: [],</span><br><span class="line">        <span class="attr">Z</span>: []</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 翼型数据 */</span></span><br><span class="line">    airfoil = &#123;</span><br><span class="line">        <span class="attr">x</span>: [],</span><br><span class="line">        <span class="attr">z</span>: []</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取翼型坐标 */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x, z;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, length = dataArray.length; i &lt; length; i++) &#123;</span><br><span class="line">        x = <span class="built_in">parseFloat</span>( dataArray[i].split(<span class="regexp">/\s+/</span>)[<span class="number">0</span>] );</span><br><span class="line">        z = <span class="built_in">parseFloat</span>( dataArray[i].split(<span class="regexp">/\s+/</span>)[<span class="number">1</span>] );</span><br><span class="line">        airfoil.x.push(x);</span><br><span class="line">        airfoil.z.push(z);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> WINGSPAN = <span class="number">4.0</span>, <span class="comment">/* 翼展 */</span></span><br><span class="line">    JMAX = <span class="number">41</span>;  <span class="comment">/* 展向节点数 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据翼型生成一个三维机翼 */</span></span><br><span class="line"><span class="keyword">var</span> IMAX=airfoil.x.length;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;JMAX; j++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX; i++)&#123;</span><br><span class="line">        grid.X.push(airfoil.x[i]);</span><br><span class="line">        grid.Z.push(airfoil.z[i]);</span><br><span class="line">        grid.Y.push(WINGSPAN/(JMAX-<span class="number">1</span>)*j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 写入Plot3D文件 */</span></span><br><span class="line">outStream.write(<span class="string">&#x27;1\r\n&#x27;</span>+IMAX+<span class="string">&#x27;\t&#x27;</span>+JMAX+<span class="string">&#x27;\t1\r\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">    outStream.write(grid.X[i]+<span class="string">&#x27;\t&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">outStream.write(<span class="string">&#x27;\r\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">    outStream.write(grid.Y[i]+<span class="string">&#x27;\t&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">outStream.write(<span class="string">&#x27;\r\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;IMAX*JMAX; i++)&#123;</span><br><span class="line">    outStream.write(grid.Z[i]+<span class="string">&#x27;\t&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">outStream.end();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;NACA arifoil wing mesh generation finished.&#x27;</span>);</span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/04/21/using-node-to-write-plot3d-mesh-file/" data-id="cm8bcxssn006zdjlehmq770cm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    踝关节韧带撕裂后的处理与相关机理的学习
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/04/15/using-nodejs-to-scale-plot3d-mesh-data/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">用Node.js处理Plot3D格式的网格数据</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

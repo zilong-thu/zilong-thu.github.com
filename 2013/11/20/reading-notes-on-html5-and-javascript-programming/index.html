@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>前端知识的零星思考以及对某本书的读书笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是《HTML5与JavaScript程序设计》。 这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识的零星思考以及对某本书的读书笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/11/20/reading-notes-on-html5-and-javascript-programming/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是《HTML5与JavaScript程序设计》。 这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-20T12:33:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.142Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-html5-and-javascript-programming" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            前端知识的零星思考以及对某本书的读书笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/">
+            <time datetime="2013-11-20T12:33:00.000Z" itemprop="datePublished">2013-11-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>这些天想通过读一本书，来发散式地对前端进行调研、思考。选的是<a href="http://book.douban.com/subject/20430370/" class="douban_book" name="20430370" target="_blank" title="去豆瓣">《HTML5与JavaScript程序设计》</a>。</p>
+<p>这本书是国内的陈爽和贺荣两人所著，在如今译作大行其道的时代，实属难得（虽然读后非常失望，他们勇气可嘉，但尚需努力）。只是碰巧在图书馆瞄到了这个标题，就借了来看看。预计4天读完，主要任务是读代码。书中的例子如果顺便练习，代码也会顺便贴到本文里。书中确实有不少错误，而且不仅是印刷错误那么简单的，希望他们以后会出修订版或者第二版。</p>
+<p>除非特别声明，所有代码均在Firefox V25.0.1+ 浏览器的Firebug控制台下测试。</p>
+<p>OK, GO!</p>
+<a id="more"></a>
+
+<p>###HTML5发展历程</p>
+<ul>
+<li>超文本标记语言（第一版），1993年6月作为IETF工作草案发布</li>
+<li>HTML2.0， 1995年11月作为RFC1866发布</li>
+<li>HTML3.2， 1996年1月14日发布</li>
+<li>HTML4.0， 1997年12月18日发布</li>
+<li>HTML4.01，1999年12月24日发布，HTML4.0的微小改进</li>
+<li>HTML5， 2008年1月22日公布第一份正式草案</li>
+</ul>
+<p>###V8引擎<br>V8引擎在运行之前将JavaScript编译成机器码，而非字节码或是直译它，以此提升性能。更进一步，使用了如内联缓存（inline caching）等方法来提高性能。有了这些功能，JavaScript程序与V8引擎的速度媲美二进制编译。（来自Wikipedia，看上去《HTML5与JavaScript程序设计》这书的不少内容也是直接摘抄自维基百科。）</p>
+<p>###乔布斯：对Flash的思考<br>2010年4月，乔帮主的一篇文章——<a href="http://www.apple.com/hotnews/thoughts-on-flash/" target="_blank" title="原文地址">Thoughts on Flash（对Flash的思考）</a>——将原本只是在开发人员中知名的HTML5推向主流媒体。乔帮主指出，指出随着HTML5的发展，观看视频或其它内容时，Adobe Flash将不再是必须的。</p>
+<p>这篇文章让我对开源、标准化有更深的理解了。也在此推荐一个可以将Flash文件迅速转换为HTML5的网站：<a href="https://www.pixelplant.com/" target="_blank" title="Convert Flash to HTML5">Convert Flash to HTML5</a>。</p>
+<p>###判断奇偶数<br>现在知道取余数运算<code>%</code>是可以非常精确的，但也会有误差，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>运行结果为<code>true</code>。但是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102.00000000000001</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>结果为<code>false</code>，而</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">102.000000000000001</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n%<span class="number">2</span>===<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>运行结果是<code>true</code>。所以我认为，这里面应该有个截断误差的问题，好比小于10-15次方的部分就会被舍弃。当然，如果知道自己使用取余数运算符时传给它的数总是整数，那就没有任何问题。对小数取余也没什么实际意义，当用户给<code>%</code>一个小数时，JavaScript只是不得不对它计算一下而已。</p>
+<p>另外，Number类用于四舍五入的<code>toFixed()</code>方法，最多也只能支持到小数点后16位。</p>
+<p>###函数参数传递<br>JavaScript大部分参数是值传递，而对function、object、array类型，则是引用传递。例如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    array.push(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line">test(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// =&gt;  [0, 1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>###void函数与死链接<br>void是一个操作符，它计算一个表达式，但是不返回值。可以用来实现死链接，下面是三种实现死链接的方法——不过，话说死链接是干嘛用的？嗯，这种hack不可取，知道就行了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;JavaScript:void(0)&quot;</span>&gt;</span>死链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  // 单击没有任何作用</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;JavaScript:void((function()&#123;alert(&#x27;hello&#x27;);&#125;)())&quot;</span>&gt;</span>死链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  // 单击会运行该函数</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>死链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  // #默认的锚点是#top，未必如愿</span><br></pre></td></tr></table></figure>
+<p>###有限的栈空间与函数递归<br>浏览器的栈空间是有限的，递归应尽量使用迭代来代替。</p>
+<p>###eval动态执行<br>这是JavaScript的强大之处吧，eval方法（全局方法）铸就了JSON以及Ajax的牛逼。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;&#123;&quot;name&quot;:&quot;lili&quot;,&quot;sex&quot;:&quot;male&quot;&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> jsonObj = <span class="built_in">eval</span>(<span class="string">&#x27;(&#x27;</span>+str+<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(jsonObj.name);  <span class="comment">// =&gt; lili</span></span><br></pre></td></tr></table></figure>
+<p>###替换全部字串<br>由于字符串的<code>replace()</code>方法只会替换它碰到的第一个字串，于是书中6.1.2节给出了实现将字符串A中全部字串b1替换为b2的方法，其实很简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceAll</span>(<span class="params">str, oldStr, newStr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = str;</span><br><span class="line">    <span class="keyword">while</span>(value.indexOf(oldStr)&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        value = value.replace(oldStr, newStr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;hello world, hello JavaScript, hello Octopress.&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(replaceAll(str,<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;hi&#x27;</span>));  <span class="comment">// =&gt;  &#x27;hi world, hi JavaScript, hi Octopress.&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>###String类的四种正则表达式方法<br>String类有<span class="Mosaic">四种支持正则表达式的方法<sup>注</sup><span class="annotate-content"><span class="triTop"></span><span class="triTopOuter"></span>这部分内容主要参考自<a href="http://book.douban.com/subject/10549733/" title="去豆瓣看看" target="_blank">《JavaScript权威指南（第六版）》</a> pp262~263.</span></span>：</p>
+<p>####search()<br><code>search()</code>返回第一个与正则表达式匹配的子串的起始位置。它不支持全局检索，因为它忽略正则表达式参数中的修饰符<code>g</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;It&#x27;s a very nice day today.&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str1.search(<span class="regexp">/n/i</span>));  <span class="comment">// =&gt; 12</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&#x27;It\&#x27;s a very nice day today.&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str2.search(<span class="regexp">/ n/i</span>));  <span class="comment">// =&gt;  11，注意n前面的空格</span></span><br></pre></td></tr></table></figure>
+<p>####replace()<br><code>replace()</code>方法执行检索与替换操作。其接受两个参数：第一个参数是正则表达式或字符串（上面的例子），第二个参数是要换成的新的字符串。如果正则表达式中设置了修饰符<code>g</code>，那么源字符串中所有与模式匹配的子串都将替换成第二个参数指定的字符串；如果不带修饰符<code>g</code>，则只替换所匹配的第一个子串。所以上面例子的<code>replaceAll()</code>可以用原生<code>replace()</code>方法使用正则表达式参数实现。<br>####match()<br><code>match()</code><br>####exec()<br><code>exec()</code></p>
+<p>###parseInt<br>parse这个单词意为“vt.从语法上描述或分析（词句等）”。因此<code>parseInt</code>可理解为将字符串尽可能解析为<code>Int</code>类型的数字，而<code>parseFloat()</code>则意味着尽可能将字符串解析为浮点数。</p>
+<p>###JavaScript与矩阵<br>JavaScript本身不支持多维数组，例如我们无法这样构造一个10×10的矩阵：<code>var _2dArray[10][10];</code>，只能通过一位数组来构造多维数组。代码6-28比较好地说明了构造矩阵的方法。</p>
+<p>###location对象<br>今年10月份百度web前端笔试的试题就有一道题，让你用JavaScript实现从当前窗口的URL中提取search字段的方法。</p>
+<p>大致如此书所说的这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRULParams</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = location.search;</span><br><span class="line">    <span class="keyword">if</span>(str.indexOf(<span class="string">&#x27;?&#x27;</span>)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> array = str.substring(<span class="number">1</span>).split(<span class="string">&#x27;&amp;&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###Screen对象<br>属性<code>availHeight</code>，<code>availWidth</code>，指设备（显示器）的可用最大高度、宽度。对windows系统，要除去任务栏。不过win7下如果将任务栏设为“自动隐藏任务栏”，那么它们就等于屏幕的分辨率高度、宽度。</p>
+<p>对于台式机，<code>DeviceXDPI</code>、<code>DeviceYDPI</code>是<code>undefined</code>。</p>
+<p>##书评<br>当我读到114页代码9-15“删除表格中的一行”，函数名写为`function showRow(lineBtn)·，就实在忍不下去了，删除表格行跟showRow毛关系哎？</p>
+<p>于是感觉这本书实在太烂了。唯一可取之处是它的代码还可以一看（虽然好多好多错误，以及不符合规范的写法）。国内的作者到时用点心去写啊，起码不要犯低级错误啊，109页，他们愣是把<code>element.nextSibling</code>解释为“前一个兄弟节点”，把<code>element.previousSibling</code>解释为“后一个兄弟节点”——你妹啊！！忍无可忍，不再读下去。</p>
+<p>总体评分★★☆☆☆</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/20/reading-notes-on-html5-and-javascript-programming/" data-id="cm8bcxssg0047djlefxxeapne" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/21/illustrator-svg-practice-color-gradient/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Illustrator色彩渐变练习
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/19/reading-notes-on-book-web-design-for-developers/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《写给程序员的Web设计书》读书笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

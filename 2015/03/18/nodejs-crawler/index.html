@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>NodeJS爬虫程序 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS爬虫程序">
+<meta property="og:url" content="https://borninsummer.com/2015/03/18/nodejs-crawler/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2015/03/crawler_01.png">
+<meta property="article:published_time" content="2015-03-18T10:24:39.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.153Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="网络爬虫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2015/03/crawler_01.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-nodejs-crawler" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            NodeJS爬虫程序
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/03/18/nodejs-crawler/">
+            <time datetime="2015-03-18T10:24:39.000Z" itemprop="datePublished">2015-03-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" rel="tag">网络爬虫</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">网络爬虫基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%88%AC%E8%99%AB%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装爬虫程序的依赖包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80"><span class="toc-number">2.</span> <span class="toc-text">小试牛刀</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="toc-number">2.1.</span> <span class="toc-text">抓取豆瓣电影</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%8E%E7%A1%AE%E7%A7%8D%E5%AD%90URL%E6%9D%A5%E6%BA%90%EF%BC%9A%E5%88%A9%E7%94%A8%E7%BD%91%E7%AB%99%E6%8F%90%E4%BE%9B%E7%9A%84%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">明确种子URL来源：利用网站提供的页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">3.1.</span> <span class="toc-text">添加请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%81%9C%E6%AD%A2%E3%80%81%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98"><span class="toc-number">3.2.</span> <span class="toc-text">程序停止、数据保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%B9%8B%E5%89%8D%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">3.3.</span> <span class="toc-text">读取之前的结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">关于遍历算法</span></a></li></ol>
+            </div>
+            <p>出于工作需求，要获取到足够多的网页数据给Hadoop研发人员做Demo用。自己简单试了试用NodeJS编写网络爬虫，初步感觉还不错，挺有意思。</p>
+<a id="more"></a>
+
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="网络爬虫基本原理"><a href="#网络爬虫基本原理" class="headerlink" title="网络爬虫基本原理"></a>网络爬虫基本原理</h3><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html">这篇文章：网络爬虫基本原理(一)</a>其实讲解地已经比较清楚了，尤其是那张图，在此引用一下：</p>
+<img src="/images/2015/03/crawler_01.png" class="img-invert">
+
+<p>使用NodeJS写的网络爬虫已有不少示例（例如<a target="_blank" rel="noopener" href="http://licson.net/post/create-a-simple-web-spider-in-node-js/">Create a simple web spider in node.js  by Licson</a>），思路大体一致，使用的包也大同小异，重点是要搞清楚：想从页面中获取什么？自己关心什么？然后要据此使用特定的正则表达式等词法分析手段。</p>
+<h3 id="安装爬虫程序的依赖包"><a href="#安装爬虫程序的依赖包" class="headerlink" title="安装爬虫程序的依赖包"></a>安装爬虫程序的依赖包</h3><p>主要安装的是两个模块：<code>request</code>模块、<code>cheerio</code>模块。前者用于发送HTTP请求，后者用于根据获取到的HTML数据创建一个DOM结构，从而可以对其进行类似jQuery的操作。</p>
+<p>package.json文件内容如下：</p>
+<figure class="highlight javascript"><figcaption><span>package.json文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;crawler&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.0.1&quot;</span>,</span><br><span class="line">  <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;Wang Zilong&quot;</span>,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;request&quot;</span>: <span class="string">&quot;~2.53.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cheerio&quot;</span>: <span class="string">&quot;~0.18.0&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;engines&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;node&quot;</span>: <span class="string">&quot;0.10.x&quot;</span>,</span><br><span class="line">    <span class="string">&quot;npm&quot;</span>: <span class="string">&quot;1.3.x&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h2><h3 id="抓取豆瓣电影"><a href="#抓取豆瓣电影" class="headerlink" title="抓取豆瓣电影"></a>抓取豆瓣电影</h3><p>下面的程序可以工作，使用的Node.js版本是 0.12.0。不过，对豆瓣请求过于频繁的话，它会对IP进行封禁。</p>
+<p>该脚本以几个“种子URL”为入口，获取到一个页面后，先保存，然后解析该页面的HTML中具有相同结构的超链接（使用<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/cheerio"><code>cheerio</code>模块</a>），对比已经检索过的页面的链接，如果不存在，则对其发起请求（基于<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/request">request模块</a>）。</p>
+<figure class="highlight javascript"><figcaption><span>程序段-01-豆瓣电影网页爬虫</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> outStream = fs.WriteStream(<span class="string">&#x27;urls.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 精心挑选的种子URL——如何精心是个问题 */</span></span><br><span class="line"><span class="keyword">var</span> originalURL = [</span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/1292052/&#x27;</span>, <span class="comment">/* 《肖申克的救赎》 */</span></span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/11026735/&#x27;</span>,  <span class="comment">/* 《超能陆战队》 */</span></span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/3993588/&#x27;</span>  <span class="comment">/* 《狼图腾》 */</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 去重字典 */</span></span><br><span class="line"><span class="keyword">var</span> urlDic  = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> urlList = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 传入一个可能带有参数字符串的链接，返回一个无参数的链接 */</span></span><br><span class="line"><span class="keyword">var</span> Tools = &#123;&#125;;</span><br><span class="line">Tools.getUrl = <span class="function"><span class="keyword">function</span>(<span class="params">href</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index = href.indexOf(<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> url = href;</span><br><span class="line">    <span class="keyword">if</span> (index &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">        url = href.substring(<span class="number">0</span>, index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> url; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Tools.getNumbersOfUrl = <span class="function"><span class="keyword">function</span>(<span class="params">href</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pattern = <span class="regexp">/\d+/</span>;</span><br><span class="line">    <span class="keyword">var</span> numbers = pattern.exec(href);</span><br><span class="line">    <span class="keyword">return</span> numbers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据传入的url，获取该页面，并提取该页面中的类似URL地址并去重 */</span></span><br><span class="line">fetchNextURLs = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    request(&#123;<span class="attr">url</span>: url&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.error(error);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;成功爬取到页面： &#x27;</span> + url );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> $ = cheerio.load(response.body.toString());</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 保存当前页面 */</span></span><br><span class="line">        <span class="keyword">var</span> numbers = Tools.getNumbersOfUrl(url);</span><br><span class="line">        <span class="keyword">var</span> htmlStream = fs.WriteStream(<span class="string">&#x27;./douban_movies_html/movie&#x27;</span>+numbers + <span class="string">&#x27;.html&#x27;</span>);</span><br><span class="line">        htmlStream.write(body);</span><br><span class="line">        htmlStream.end();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 获取当前页面包含的所有URL，去重后放入hrefs列表 */</span></span><br><span class="line">        <span class="keyword">var</span> hrefs = [];</span><br><span class="line">        $(<span class="string">&#x27;#recommendations dt a&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> $me = $(<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">var</span> href = Tools.getUrl( $me.attr(<span class="string">&#x27;href&#x27;</span>) );</span><br><span class="line">            <span class="keyword">var</span> numbers = Tools.getNumbersOfUrl(href);</span><br><span class="line">            <span class="keyword">if</span>(!urlDic[numbers])&#123;</span><br><span class="line">                urlDic[numbers] = <span class="literal">true</span>;</span><br><span class="line">                hrefs.push(href);</span><br><span class="line">                outStream.write(href+ <span class="string">&#x27;\r\n&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* hrefs的长度为0，表明无法继续查找新的链接了，因此停止爬虫程序 */</span></span><br><span class="line">        <span class="keyword">if</span>(hrefs.length === <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;本页面未能爬取到新链接。&#x27;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            urlList.concat(hrefs);</span><br><span class="line">            <span class="comment">/* 如果没有超过预定值，则继续进行请求 */</span></span><br><span class="line">            <span class="keyword">if</span>(urlList.length&lt; <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; hrefs.length; i++) &#123;</span><br><span class="line">                    fetchNextURLs(hrefs[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                outStream.end();</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;超过预订的数目，爬虫程序正常结束。获取到的总链接数为：&#x27;</span>, urlList.length);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据种子URL启动爬虫 */</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; originalURL.length; i++) &#123;</span><br><span class="line">    fetchNextURLs(originalURL[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="明确种子URL来源：利用网站提供的页面"><a href="#明确种子URL来源：利用网站提供的页面" class="headerlink" title="明确种子URL来源：利用网站提供的页面"></a>明确种子URL来源：利用网站提供的页面</h2><p>有的站点实际上是自己提供种子URL的，例如京东商城的“全部分类列表”，点击其中任何一个分类（具有<code>http://list.jd.com/listId.html</code>格式），就可以得到一大批“优质”的链接（具有<code>http://item.jd.com/id.html</code>）。然后就可以利用类似上面的递归，来一个个获取页面。代码如下。</p>
+<figure class="highlight javascript"><figcaption><span>程序段-02-京东商城货品页网页爬虫</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> outStream = fs.WriteStream(<span class="string">&#x27;urls.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 去重字典 */</span></span><br><span class="line"><span class="keyword">var</span> urlDic  = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> urlList = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 针对京东商城的商品页面进行设计的爬虫程序 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 获取种子URL */</span></span><br><span class="line">getSeeds = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    request(&#123;<span class="attr">url</span>: url&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.error(error);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;得到种子页面： &#x27;</span> + url );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> $ = cheerio.load(response.body.toString());</span><br><span class="line"></span><br><span class="line">        $(<span class="string">&#x27;a[href*=&quot;list.jd.com/&quot;]&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> $me = $(<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">var</span> href = $me.attr(<span class="string">&#x27;href&#x27;</span>);</span><br><span class="line">            fetchItemURLs(href);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据传入的url，获取该页面，并提取该页面中的类似URL地址并去重 */</span></span><br><span class="line">fetchItemURLs = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    request(&#123;<span class="attr">url</span>: url&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.error(error);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;成功爬取到页面： &#x27;</span> + url );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> $ = cheerio.load(response.body.toString());</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 保存当前页面 */</span></span><br><span class="line">        <span class="keyword">var</span> pattern = <span class="regexp">/\d+-?\d+-?\d+/</span>;</span><br><span class="line">        <span class="keyword">var</span> numbers = pattern.exec(url);</span><br><span class="line">        <span class="keyword">var</span> htmlStream = fs.WriteStream(<span class="string">&#x27;./jd/item&#x27;</span>+ numbers+<span class="string">&#x27;.html&#x27;</span>);</span><br><span class="line">            htmlStream.write(body);</span><br><span class="line">            htmlStream.end();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 获取当前页面包含的所有URL，去重后放入hrefs列表 */</span></span><br><span class="line">        <span class="keyword">var</span> hrefs = [];</span><br><span class="line">        $(<span class="string">&#x27;a[href*=&quot;item.jd.com/&quot;]&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> $me = $(<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">var</span> href = $me.attr(<span class="string">&#x27;href&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> pattern = <span class="regexp">/\d+/</span>;</span><br><span class="line">            <span class="keyword">var</span> numbers = pattern.exec(href);</span><br><span class="line">            <span class="keyword">if</span>(!urlDic[numbers])&#123;</span><br><span class="line">                urlDic[numbers] = <span class="literal">true</span>;</span><br><span class="line">                hrefs.push(href);</span><br><span class="line">                outStream.write(href+ <span class="string">&#x27;\r\n&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* hrefs的长度为0，表明无法继续查找新的链接了，因此停止爬虫程序 */</span></span><br><span class="line">        <span class="keyword">if</span>(hrefs.length === <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;本页面未能爬取到新链接。&#x27;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            urlList.concat(hrefs);</span><br><span class="line">            <span class="comment">/* 如果没有超过预定值，则继续进行请求 */</span></span><br><span class="line">            <span class="keyword">if</span>(urlList.length&lt; <span class="number">1000</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; hrefs.length; i++) &#123;</span><br><span class="line">                    fetchItemURLs(hrefs[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                outStream.end();</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;超过预订的数目，爬虫程序正常结束。获取到的总链接数为：&#x27;</span>, urlList.length);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据种子URL启动爬虫 */</span></span><br><span class="line">getSeeds(<span class="string">&#x27;http://www.jd.com/allSort.aspx&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加请求头"><a href="#添加请求头" class="headerlink" title="添加请求头"></a>添加请求头</h3><p>京东的商品页面可以随便爬，不会对爬虫进行禁止（这也反映了该网站服务器集群性能的优异）；但豆瓣就不一样了，我用2.1的程序爬之，获取了几百个页面，然后豆瓣就禁止该爬虫访问了。</p>
+<p>解决的办法有：减小并发数；伪造成浏览器。后一个方法比较简单，如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 给request的选项中添加 headers 属性，把User-Agent字段加入到每个HTTP请求的头部。</span><br><span class="line"> * 这样一来，豆瓣就会认为这是浏览器发起的一个请求从而不会拒绝响应了。 </span><br><span class="line"> */</span><br><span class="line">request(&#123;</span><br><span class="line">        url: url,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &#x27;Accept&#x27;: &#x27;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#x27;,</span><br><span class="line">            &#x27;User-Agent&#x27;: &#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, function (error, response, body) &#123;</span><br></pre></td></tr></table></figure>
+
+<h3 id="程序停止、数据保存"><a href="#程序停止、数据保存" class="headerlink" title="程序停止、数据保存"></a>程序停止、数据保存</h3><p>运行后会注意到，已经获取到的页面实际上已经远远超过预定值1000了，但是程序依旧没有停止下来。</p>
+<p>大爷的，原来是对JS的Array <code>concat</code>函数理解错了。<code>concat</code>操作并不是在原数组的上面进行的，而是返回一个新的拼接后的数组。</p>
+<p>另外，每当抓取到一个页面，就应该把该页面的 URL 保存到文件中，使用<code>fs.appendFile()</code>方法即可。</p>
+<p>最后，将预期的抓取页面数作为程序的<code>option</code>属性的一部分，当达到该值后，便调用<code>process.exit()</code>方法立即结束当前的node程序（目前会导致最后一个正在搜索的结果不能保存下来，不过在总数目很可观的情况下，这无伤大雅）。</p>
+<p>经过这一番折腾，针对豆瓣电影的爬虫变成这个样子：</p>
+<figure class="highlight javascript"><figcaption><span>程序段-03-豆瓣电影网页爬虫</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 精心挑选的种子URL——如何精心是个问题 */</span></span><br><span class="line"><span class="keyword">var</span> originalURL = [</span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/1292052/&#x27;</span>, <span class="comment">/* 《肖申克的救赎》 */</span></span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/11026735/&#x27;</span>,  <span class="comment">/* 《超能陆战队》 */</span></span><br><span class="line">        <span class="string">&#x27;http://movie.douban.com/subject/3993588/&#x27;</span>  <span class="comment">/* 《狼图腾》 */</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="attr">targetNumber</span>: <span class="number">100000</span>,  <span class="comment">/* 预期的爬取页面数 */</span></span><br><span class="line">    <span class="attr">fileNames</span>: &#123;</span><br><span class="line">        <span class="attr">crawled</span>: <span class="string">&#x27;urlCrawled.txt&#x27;</span>,  <span class="comment">/* 每次爬取到一个页面，就将其URL保存到该文件中 */</span></span><br><span class="line">        <span class="attr">allURLsFound</span>: <span class="string">&#x27;allURLsFound.txt&#x27;</span>  <span class="comment">/* 用于保存所有已知的URL */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* 数据记录 */</span></span><br><span class="line"><span class="keyword">var</span> urlDic  = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">urlListAll</span>: [],  <span class="comment">/* 要爬取的连接数 */</span></span><br><span class="line">    <span class="attr">urlListCrawled</span>: [],  <span class="comment">/* 已爬链接 */</span></span><br><span class="line">    <span class="attr">countUrlCrawled</span>: <span class="number">0</span>  <span class="comment">/* 已爬链接数目 */</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 传入一个可能带有参数字符串的链接，返回一个无参数的链接 */</span></span><br><span class="line"><span class="keyword">var</span> Tools = &#123;&#125;;</span><br><span class="line">Tools.getUrl = <span class="function"><span class="keyword">function</span>(<span class="params">href</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index = href.indexOf(<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> url = href;</span><br><span class="line">    <span class="keyword">if</span> (index &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">        url = href.substring(<span class="number">0</span>, index);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> url;</span><br><span class="line">&#125;;</span><br><span class="line">Tools.getNumbersOfUrl = <span class="function"><span class="keyword">function</span>(<span class="params">href</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pattern = <span class="regexp">/\d+/</span>;</span><br><span class="line">    <span class="keyword">var</span> numbers = pattern.exec(href);</span><br><span class="line">    <span class="keyword">return</span> numbers;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 每爬取到一个页面，将其URL附加到一个txt文件中 */</span></span><br><span class="line">Tools.saveCrawled = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    data.countUrlCrawled++;</span><br><span class="line">    data.urlListCrawled.push(url);</span><br><span class="line">    fs.appendFile(option.fileNames.crawled, url + <span class="string">&#x27;\r\n&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 在爬虫程序结束后，把爬取到的页面的URL写入文件 */</span></span><br><span class="line">Tools.exitCrawler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    process.exit();</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 根据传入的url，获取该页面，并提取该页面中的类似URL地址并去重 */</span></span><br><span class="line">fetchNextURLs = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    request(&#123;</span><br><span class="line">        <span class="attr">url</span>: url,</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (error) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">console</span>.error(error);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Tools.saveCrawled(url);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;成功爬取到页面： &#x27;</span> + url );</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;已爬页面数 = &#x27;</span>+ data.countUrlCrawled );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> $ = cheerio.load(response.body.toString());</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 保存当前页面 */</span></span><br><span class="line">        <span class="keyword">var</span> numbers = Tools.getNumbersOfUrl(url);</span><br><span class="line">        <span class="keyword">var</span> htmlStream = fs.WriteStream(<span class="string">&#x27;./douban_movies_html/movie&#x27;</span>+numbers + <span class="string">&#x27;.html&#x27;</span>);</span><br><span class="line">        htmlStream.write(body);</span><br><span class="line">        htmlStream.end();</span><br><span class="line"> </span><br><span class="line">        <span class="comment">/* 获取当前页面包含的所有URL，去重后放入hrefs列表 */</span></span><br><span class="line">        <span class="keyword">var</span> hrefs = [];</span><br><span class="line">        $(<span class="string">&#x27;#recommendations dt a&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> $me = $(<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">var</span> href = Tools.getUrl( $me.attr(<span class="string">&#x27;href&#x27;</span>) );</span><br><span class="line">            <span class="keyword">var</span> numbers = Tools.getNumbersOfUrl(href);</span><br><span class="line">            <span class="keyword">if</span>(!urlDic[numbers])&#123;</span><br><span class="line">                urlDic[numbers] = <span class="literal">true</span>;</span><br><span class="line">                hrefs.push(href);</span><br><span class="line">                fs.appendFile(option.fileNames.allURLsFound, href+ <span class="string">&#x27;\r\n&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">/* hrefs的长度为0，表明无法继续查找新的链接了，因此不再递归 */</span></span><br><span class="line">        <span class="keyword">if</span>(hrefs.length === <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;本页面未能爬取到新链接。&#x27;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            data.urlListAll = data.urlListAll.concat(hrefs);</span><br><span class="line">            <span class="comment">/* 如果没有超过预定值，则继续进行请求 */</span></span><br><span class="line">            <span class="keyword">if</span>(data.countUrlCrawled &lt; option.targetNumber)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; hrefs.length; i++) &#123;</span><br><span class="line">                    fetchNextURLs(hrefs[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&#x27;爬取到的页面数目已达到预期值...&#x27;</span>);</span><br><span class="line">                Tools.exitCrawler();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 根据种子URL启动爬虫 */</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; originalURL.length; i++) &#123;</span><br><span class="line">    fetchNextURLs(originalURL[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取之前的结果"><a href="#读取之前的结果" class="headerlink" title="读取之前的结果"></a>读取之前的结果</h3><p>如果在程序开始的时候，先读取之前已抓取的页面、待抓取的页面的列表，那么整个爬虫程序就变成了支持“断点续爬”功能的了。</p>
+<p>【待完成】</p>
+<h2 id="关于遍历算法"><a href="#关于遍历算法" class="headerlink" title="关于遍历算法"></a>关于遍历算法</h2><p>在2、3小节中的两段代码，都是深度遍历优先的。</p>
+<p>深度优先思路很简单，代码也容易写，但是存在致命的缺点：深度未知。因而就容易使爬虫陷进自己挖的坑里，即所谓“爬虫陷入问题”。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/03/18/nodejs-crawler/" data-id="cm8bcxssr008odjle74grcch0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    NodeJS+Express+MySQL开发小记(1)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/03/16/max-sub-array-problem/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">最大子数组问题</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

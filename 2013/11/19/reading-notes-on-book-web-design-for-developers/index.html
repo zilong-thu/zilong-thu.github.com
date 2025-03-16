@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《写给程序员的Web设计书》读书笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="《写给程序员的Web设计书》原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。 下面各标题的编号对应的是书中的章节号。 ###2.3 明确目的  设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《写给程序员的Web设计书》读书笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/11/19/reading-notes-on-book-web-design-for-developers/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《写给程序员的Web设计书》原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。 下面各标题的编号对应的是书中的章节号。 ###2.3 明确目的  设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-19T14:09:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.142Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-book-web-design-for-developers" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《写给程序员的Web设计书》读书笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/19/reading-notes-on-book-web-design-for-developers/">
+            <time datetime="2013-11-19T14:09:00.000Z" itemprop="datePublished">2013-11-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><a href="http://book.douban.com/subject/6783748/" name="6783748" class="douban_book" target="_blank">《写给程序员的Web设计书》</a>原作名为“Web Design for Developers: A Programmer’s Guide to Design Tools and Techniques”。</p>
+<p>下面各标题的编号对应的是书中的章节号。</p>
+<p>###2.3 明确目的</p>
+<blockquote>
+<p>设计这个网站时，要时刻关注一条：服务于你的目标用户。……在进行Foodbox设计工作的时候，要记住你是在为客户和网站目标用户而设计。这工作不是为你增添炫耀资本的，不要企图用那些刚刚学到的很炫的技术来震撼你的同事。客户和他们的目标用户才是第一位的。</p>
+</blockquote>
+<p>在我看来，按照优先级排序是这样的：网站目的&gt;目标用户&gt;客户或自己的老板&gt;自己想炫耀的技术。</p>
+<a id="more"></a>
+<p>###2.5.1 一些约定俗成的布局风格</p>
+<blockquote>
+<p>之所以网站之间有这么多相似的地方，是因为开发人员会模仿已经成功的例子。例如，所有的新闻页看起来都差不多，这不是巧合。毕竟，所有的报纸的布局也是相似的。</p>
+</blockquote>
+<blockquote>
+<p>日积月累，用户就会对页面的共性有所期待。一个合格的页面应该做到让用户能够快速找到他想要找到的内容，而不是在页面里茫然四顾或在网站中点来点去。页面需要一个很简单的浏览方式……</p>
+</blockquote>
+<p>所以说，不应该排斥那些约定俗成的东西，不能总想着创新。这也是为什么HTML5直接引入了<code>&lt;header&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;footer&gt;</code>这样的语义结构标签了。</p>
+<p>###3.5 网络安全色</p>
+<blockquote>
+<p>网络安全色调色板只提供了216种颜色，这些颜色在不同的操作系统上都是一样的。这个概念起源于计算机显卡技术不够强大的时代。Mac机上的设计师想确保对于同一张图片，PC机用户也能看到同样的效果。</p>
+</blockquote>
+<blockquote>
+<p>现在设计师已经放弃了这种网络安全色调色板，因为大多数用户的显示器都能显示上百万种颜色了。虽然不同的机器上的色彩显示还是有区别，但是这种区别基本上可以忽略不计了。</p>
+</blockquote>
+<p>一个很不错的配色设计方案网站：<a href="http://colorschemedesigner.com/" target="_blank">colorschemedesigner.com</a></p>
+<p>###4.2 字体类别<br>####衬线字体（serif font）<br>典型的是Times New Roman。衬线字体是为印刷而设计的，在电脑屏幕上的表现可不怎么样。衬线字体的主要问题是：太细的笔画使屏幕上显示的字母看不太清，字号越小越严重。不过不能因此而贬低其在印刷领域的地位——印刷的时候，衬线字体是一种可读性很高的字体。<br>####无衬线字体（sans-serif font）<br>代表字体有Arial，Helvetica，Verdana。它们适合在屏幕上阅读，所以是网站主要内容的首选字体。甚至在字号很小的时候也很清晰。<br>####等宽字体（fixed-width font或Monospaced font）<br>适合显示源代码、发票等对缩进、对齐有一定要求的内容。代表字体是Courier。<br>####cursive<br>这些字体试图模仿人的手写体。通常，它们主要由曲线和 Serif 字体中没有的笔划装饰组成。例如，大写 A 再其左腿底部可能有一个小弯，或者完全由花体部分和小的弯曲部分组成。Cursive 字体的例子包括 Zapf Chancery、Author 和 Comic Sans。<br>####fantasy</p>
+<p>关于字体类，<a href="http://www.w3school.com.cn/css/css_font-family.asp" target="_blank">w3school “CSS 字体系列”</a>也讲得很详细，可作为参考。</p>
+<blockquote>
+<p>最后，我们大概只能有这样的保证：每个系统上肯定都会有一种衬线字体、一种无衬线字体和一种等宽字体，而系统自己会为每种字体选一个默认的样式。</p>
+</blockquote>
+<p>###4.3.3 字体栈（font stacks）<br>下面就是一个字体栈：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Helvectica, Arial, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>字体栈的设计关键在于，必须对所选字体有很清晰的了解，它们最好差别不要太大。</p>
+<p>有篇英文讲解字体栈：<a href="http://unitinteractive.com/blog/2008/06/26/better-css-font-stacks/" target="_blank">Better CSS Font Stacks</a></p>
+<p>###HTML实体代码<br><code>&amp;nbsp;</code> 空格，non-breaking blank space</p>
+<p><code>&amp;copy;</code> 版权符号 &copy;</p>
+<p><code>&amp;amp;</code> &amp;符号</p>
+<p>###图片格式<br>现在明白为什么当年借了师姐的数码单反相机，其照片是RAW格式的了，因为这是一种未经压缩的照片存储格式。而如果相机默认存储为JPEG，则一定是经过压缩了的。</p>
+<p>###十六进制颜色码的三位数写法<br>使用<code>#f80</code>来代替<code>#ff8800</code>的最大好处就是：减少代码字数，从而减小CSS文件的体积、使得下载更快。除此之外，没有别的好处。</p>
+<p>###什么时候可以终止对一种浏览器的支持？<br>这本书有很多内容与我看过的其他书是重复的，所以一一掠过。不过，这本书时不时出现的“小乔爱问”还是很不错的。就像这个。作者的回答是：</p>
+<blockquote>
+<p>我在决定支持哪种浏览器时一直遵守这条准则：支持市场份额最大的两个版本的浏览器，同时保证网站在其他浏览器中可用且刻度。不要求在所有浏览器中看到的网页完全相同，但至少用户可以正常使用网站。</p>
+</blockquote>
+<p>以及</p>
+<blockquote>
+<p>……由此我需要指出，不要用IE进行开发，那完全是浪费时间。你要做的是在一个与标准兼容的浏览器中做开发，然后针对其他怪异的浏览器做出修正。</p>
+</blockquote>
+<p>标准，当然指的就是W3C推荐的标准了。</p>
+<p>###关于SEO<br>与其做SEO，不如好好做网站编辑，对页面内容进行高质量加工。</p>
+<p>###20.3.5 压缩脚本文件<br>通过去掉JavaScript、CSS文件里的空格、换行，就足以将文件的尺寸减小不少了。</p>
+<p>##总结<br>这本书从零开始介绍了网站的前端页面是如何搭建的：从与客户交流，绘制草图，用Photoshop制作页面切图，切图转化为HTML、CSS代码，色彩方案的选择，以及到搜索引擎优化、前端性能优化，很完整的步骤。适合那些选修了《计算机网页设计基础》这类课程的新人去读。不太适合老手认认真真地读，但其提供的一些资源挺不错。</p>
+<p>评价：对于新手★★★★☆，对于学习了半年以上的人★★★☆☆</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/19/reading-notes-on-book-web-design-for-developers/" data-id="cm8bcxssg0043djle4niuapmh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/20/reading-notes-on-html5-and-javascript-programming/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    前端知识的零星思考以及对某本书的读书笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/19/illustrator-svg-fashion-girl/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Illustrator自由路径练习(02)：时尚女孩</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

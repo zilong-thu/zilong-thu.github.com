@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>HTML5 SVG交互实例：转动的风车 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在HTML里读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。 风车是我用Adobe Illustrator，仿照随便百度来的一个位图画的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 SVG交互实例：转动的风车">
+<meta property="og:url" content="https://borninsummer.com/2013/11/15/svg-interaction-example-2/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="在HTML里读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。 风车是我用Adobe Illustrator，仿照随便百度来的一个位图画的。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-15T07:44:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.142Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-svg-interaction-example-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            HTML5 SVG交互实例：转动的风车
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/15/svg-interaction-example-2/">
+            <time datetime="2013-11-15T07:44:00.000Z" itemprop="datePublished">2013-11-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>在HTML里读取外部的一个SVG文件，这个外部SVG文件包含内置的JavaScript控制交互操作：用户点击风车的任何一个叶子，风车会转起来，如果再点一下叶片，就会停止转动。</p>
+<p>风车是我用Adobe Illustrator，仿照随便百度来的一个位图画的。</p>
+<embed  src="/svg/windmill.svg" type="image/svg+xml">
+<a id="more"></a>
+###SVG文件内部脚本嵌入方式
+在SVG文件里这样嵌入JavaScript脚本：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml">&lt;![CDATA[</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    // 这里是脚本</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    ......</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">]]&gt;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+###加载顺序
+如果使用`<embed>`进行外部SVG文件的加载，同时使用诸如`window.onload = function(){// Event Handler ...};`或者)`$(document.ready(function(){});`进行事件处理函数注册，那么SVG的加载与事件处理函数的注册是异步的。
+所以我暂时将脚本放在SVG文件里了。这样当然很不好，内容、行为没有很彻底的分离。
+
+<p>###SVG与CSS<br>SVG内部可以添加<code>&lt;style&gt;</code>标签包含的样式表，例如在这个风车的例子里，给四个叶子添加<code>:hover</code>伪类样式，鼠标悬停时将描边的颜色改为灰色：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#wings</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#wings</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">        stroke: <span class="number">#999999</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#wings</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">        stroke: <span class="number">#333333</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>###循环动画的实现<br>目前暂时使用<code>setInterval</code>来实现动画，每隔35毫秒让风车的四个叶子顺时针旋转1°，于是帧速率约等于28帧（根据《高性能JavaScript》的介绍，<code>setInterval</code>方法是不精确的，所以说“约等于”）。等有时间再研究如何使用<code>requestAnimationFrame()</code>方法实现动画。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runTheWindmill</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> angle = myVar.angle;</span><br><span class="line">    <span class="keyword">var</span> center_circle = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;center_circle&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> cx = center_circle.getAttribute(<span class="string">&#x27;cx&#x27;</span>),  <span class="comment">// 获取转轴坐标</span></span><br><span class="line">        cy = center_circle.getAttribute(<span class="string">&#x27;cy&#x27;</span>);</span><br><span class="line">    myVar.SVG_windmill.setAttribute(<span class="string">&#x27;transform&#x27;</span>,<span class="string">&#x27;rotate(&#x27;</span>+ angle +<span class="string">&#x27;,&#x27;</span>+ cx +<span class="string">&#x27;,&#x27;</span>+ cy +<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">    myVar.angle += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 防止风车无限转下去而导致超过JS可以表示的最大整数</span></span><br><span class="line">    <span class="keyword">if</span>(myVar.anglel&gt;<span class="number">360</span>)&#123;</span><br><span class="line">        myVar.angle -= <span class="number">360</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/15/svg-interaction-example-2/" data-id="cm8bcxssg003tdjle5sgj594s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/18/illustrator-svg-practice-gilr-with-flower/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Illustrator自由路径练习(01)：女孩剪影与猫
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/12/html5-svg-study/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">HTML5 SVG 初步学习</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

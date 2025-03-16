@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Charles 的配置 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="目录  HTTPS 抓包配置 Charles 请求映射（Proxy Remote Mapping） iOS 设备配置证书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charles 的配置">
+<meta property="og:url" content="https://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="目录  HTTPS 抓包配置 Charles 请求映射（Proxy Remote Mapping） iOS 设备配置证书">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-1-menu.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-2-key-chain.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-3-trust.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-4-ssl-proxing.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-5-443-port.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/2017/07/pic-6-remote-map.jpg">
+<meta property="article:published_time" content="2017-07-20T12:09:15.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.160Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Charles">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2017/07/pic-1-menu.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-charles-proxy-remote-mapping" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Charles 的配置
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/20/charles-proxy-remote-mapping/">
+            <time datetime="2017-07-20T12:09:15.000Z" itemprop="datePublished">2017-07-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Charles/">Charles</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Charles/" rel="tag">Charles</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-%E6%8A%93%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">https 抓包配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84%EF%BC%88Proxy-Remote-Mapping%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">请求映射（Proxy Remote Mapping）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE%E8%AF%81%E4%B9%A6"><span class="toc-number">3.</span> <span class="toc-text">iOS 设备配置证书</span></a></li></ol>
+            </div>
+            <p><strong>目录</strong></p>
+<ul>
+<li>HTTPS 抓包配置</li>
+<li>Charles 请求映射（Proxy Remote Mapping）</li>
+<li>iOS 设备配置证书</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="https-抓包配置"><a href="#https-抓包配置" class="headerlink" title="https 抓包配置"></a>https 抓包配置</h2><p>点击 Charles 的 Help –&gt; SSL Proxing —&gt; Install Charles Root Certificate：</p>
+<img src="/images/2017/07/pic-1-menu.jpg" />
+
+<p>然后在弹出的对话框里选择“添加”按钮，进入钥匙串管理界面：</p>
+<img src="/images/2017/07/pic-2-key-chain.jpg" />
+
+<p>双击刚才生成的 charles 证书，在下面的对话框里选择使用此证书时【始终信任】。然后会要求输入系统密码。输入密码确认后，就添加完成了。</p>
+<img src="/images/2017/07/pic-3-trust.jpg" />
+
+<p>在 Charles 中启用 SSL Proxy，菜单 Proxy → SSL Proxy Settings。</p>
+<img src="/images/2017/07/pic-4-ssl-proxing.jpg" />
+
+<p>点击【Add】，在 Edit Location 对话框里，把 443 端口添加进去。点击OK。</p>
+<img src="/images/2017/07/pic-5-443-port.jpg" />
+
+
+<h2 id="请求映射（Proxy-Remote-Mapping）"><a href="#请求映射（Proxy-Remote-Mapping）" class="headerlink" title="请求映射（Proxy Remote Mapping）"></a>请求映射（Proxy Remote Mapping）</h2><p>选择 charles 的 Tools —&gt; Map Remote，在弹出的 Map Remote Settings 里面点击【Add】：</p>
+<img src="/images/2017/07/pic-6-remote-map.jpg" />
+
+
+<h2 id="iOS-设备配置证书"><a href="#iOS-设备配置证书" class="headerlink" title="iOS 设备配置证书"></a>iOS 设备配置证书</h2><p>通过上面的配置，安卓设备已经可以直接代理 HTTPS 的请求了。但是 iOS 要更为严格一些，需要再给手机配置一下证书。给手机设置代理服务后，打开 Safari 访问 <a target="_blank" rel="noopener" href="https://chls.pro/ssl">https://chls.pro/ssl</a>，根据提示安装证书，之后就可以代理 HTTPS 请求到 HTTP 了。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/07/20/charles-proxy-remote-mapping/" data-id="cm8bcxst200cwdjle1eqvgulv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/21/new-things-learned-in-mobile-web-development/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    初涉 Mobile Web 开发
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/07/19/openssl-and-base64/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">OpenSSL and Base64 以及网站性能优化的思考</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

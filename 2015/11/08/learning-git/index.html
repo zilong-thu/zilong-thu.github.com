@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Git 学习笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 学习笔记">
+<meta property="og:url" content="https://borninsummer.com/2015/11/08/learning-git/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 《Pro Git 2nd Edition（中文版）》。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2015/11/git.jpg">
+<meta property="article:published_time" content="2015-11-08T03:37:19.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.156Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2015/11/git.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-learning-git" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/images/2015/11/git.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Git 学习笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/11/08/learning-git/">
+            <time datetime="2015-11-08T03:37:19.000Z" itemprop="datePublished">2015-11-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Git/">Git</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Git/" rel="tag">Git</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%AB%E5%90%8D"><span class="toc-number">1.1.</span> <span class="toc-text">别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">配置用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%85%AC%E9%92%A5%EF%BC%88SSH-keys%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">生成公钥（SSH keys）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fetch-%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">fetch 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pull-%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">pull 操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0"><span class="toc-number">3.1.</span> <span class="toc-text">强制更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">提交操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E5%88%9A%E6%89%8D%E7%9A%84%E6%8F%90%E4%BA%A4"><span class="toc-number">4.1.</span> <span class="toc-text">撤销刚才的提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%88%9A%E6%89%8D%E7%9A%84%E6%8F%90%E4%BA%A4%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="toc-number">4.2.</span> <span class="toc-text">修改刚才的提交的注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2%E2%80%94%E2%80%94%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%8F%98%E5%9F%BA"><span class="toc-number">4.3.</span> <span class="toc-text">更改提交历史——交互式变基</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%88%86%E6%94%AF%E4%B8%AD%E7%9A%84%E6%9F%90%E4%BA%9B%E6%8F%90%E4%BA%A4"><span class="toc-number">4.4.</span> <span class="toc-text">移动分支中的某些提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%A0%87%E7%AD%BE"><span class="toc-number">4.5.</span> <span class="toc-text">提交标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">5.1.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF"><span class="toc-number">5.2.</span> <span class="toc-text">删除本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-number">5.3.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF"><span class="toc-number">5.4.</span> <span class="toc-text">重命名一个本地分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AA%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-number">5.5.</span> <span class="toc-text">跟踪远程分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%A8%E8%97%8F"><span class="toc-number">6.</span> <span class="toc-text">储藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E7%89%88%E6%9C%AC%E5%BA%93"><span class="toc-number">7.</span> <span class="toc-text">裸版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="toc-number">8.</span> <span class="toc-text">提交历史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">8.1.</span> <span class="toc-text">基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="toc-number">8.2.</span> <span class="toc-text">可视化提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%E6%9F%A5%E6%89%BE%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="toc-number">8.3.</span> <span class="toc-text">通过提交信息查找提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-diff"><span class="toc-number">8.4.</span> <span class="toc-text">git diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E6%9F%90%E4%B8%80%E8%A1%8C%E7%9A%84%E5%85%A8%E9%83%A8%E6%94%B9%E5%8A%A8%E5%8E%86%E5%8F%B2"><span class="toc-number">8.5.</span> <span class="toc-text">找到某一行的全部改动历史</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#checkout"><span class="toc-number">9.</span> <span class="toc-text">checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E9%99%84%E5%BD%95%E3%80%91%E8%87%AA%E5%B7%B1%E4%B8%8D%E6%98%AF%E5%BE%88%E7%86%9F%E7%BB%83%E7%9A%84-Git-%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C"><span class="toc-number">10.</span> <span class="toc-text">【附录】自己不是很熟练的 Git 命令手册</span></a></li></ol>
+            </div>
+            <p>本文记录一下自己在学习、使用Git时不断碰到的问题与解决方法。个人感觉最好的在线教材是 <a target="_blank" rel="noopener" href="http://git.oschina.net/progit/">《Pro Git 2nd Edition（中文版）》</a>。遗憾的是这本书尚无国内出版社出版发行，因此无法享受到纸质书阅读的快乐（除非自己打印了一本 ~~ ）。另外，《Git版本控制管理（第2版）》这本书也很不错，有纸质书可以读。</p>
+<a id="more"></a>
+
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>配置别名可以提高工作效率。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line">$ git config --global alias.br branch</span><br><span class="line">$ git config --global alias.st status</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;zilong-thu&quot;</span>;</span><br><span class="line">$ git config --global user.email <span class="string">&quot;809052335@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="生成公钥（SSH-keys）"><a href="#生成公钥（SSH-keys）" class="headerlink" title="生成公钥（SSH keys）"></a>生成公钥（SSH keys）</h3><p>可以用下面的命令生成自己的公钥（public key）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Creates a new ssh key using the provided email</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;xxxxx@xxxxx.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>生成的 public key 在 <code>~/.ssh/id_rsa.pub</code> 这个文件里。</p>
+<h2 id="fetch-操作"><a href="#fetch-操作" class="headerlink" title="fetch 操作"></a>fetch 操作</h2><p>fetch 操作仅仅是把远程仓库的代码下载当本地而已。可以同时指定相应的本地分支名，git 便会在 fetch 完成后自动创建一个本地分支，追踪该远程分支。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin &lt;branch_name&gt;:&lt;local_branch_nam&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="pull-操作"><a href="#pull-操作" class="headerlink" title="pull 操作"></a>pull 操作</h2><h3 id="强制更新"><a href="#强制更新" class="headerlink" title="强制更新"></a>强制更新</h3><p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes">Git Pull While Ignoring Local Changes?</a></p>
+<p>【方法1】先clean当前的工作目录，使其与上一次的commit一致，然后再pull即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>【方法2】先将改动们暂存一下（<code>stash</code>），然后更新，更新完了再将暂存栈弹出或删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br><span class="line">$ git pull</span><br><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交操作"><a href="#提交操作" class="headerlink" title="提交操作"></a>提交操作</h2><h3 id="撤销刚才的提交"><a href="#撤销刚才的提交" class="headerlink" title="撤销刚才的提交"></a>撤销刚才的提交</h3><p>好比，初始化一份nodejs代码，<code>git commit</code> 完了，才想起来没有把 <code>node_modules</code> 目录加进 <code>.gitignore</code>文件里去，太可怕了。得把刚才的提交撤销掉，而且保证 <code>node_modules</code> 目录不能在代码仓库里。就得用到这个命令了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~1</span><br></pre></td></tr></table></figure>
+
+<p>然后，把事情做正确了，再提交。当然了，更全面的问题与解决方案在这里：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit">How do you undo the last commit? | 来自 Stackoverflow 的问答</a>。</li>
+</ul>
+<p><strong>原理</strong></p>
+<p>不想使 <code>node_modules</code> 再在代码仓库里出现，过程是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 出错的提交，是这样的，F 代表当前的文件：</span><br><span class="line">   (F)</span><br><span class="line">A-B-C</span><br><span class="line">    ↑</span><br><span class="line">  master</span><br><span class="line"></span><br><span class="line"># 执行这个</span><br><span class="line">git reset --hard HEAD~1</span><br><span class="line"></span><br><span class="line"># 当前代码仓库就成了这样：</span><br><span class="line"> (F)</span><br><span class="line">A-B</span><br><span class="line">  ↑</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
+
+<p><code>--hard</code>是物理删除，直接把工作区的改动都删掉了。</p>
+<h3 id="修改刚才的提交的注释"><a href="#修改刚才的提交的注释" class="headerlink" title="修改刚才的提交的注释"></a>修改刚才的提交的注释</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+
+<p>这样会打开文本编辑器，可以让你修改刚才的提交的注释。</p>
+<h3 id="更改提交历史——交互式变基"><a href="#更改提交历史——交互式变基" class="headerlink" title="更改提交历史——交互式变基"></a>更改提交历史——交互式变基</h3><p>交互式变基，即指 <code>git rebase -i &lt;commit-id&gt;</code>，然后自该 hash 之后（不含该 hash）的所有提交记录就会被呈现在文本编辑器里，按照提示编辑此文本，保存后即可实现对相应提交对象的修改。</p>
+<p>很明显，任何对提交历史的操作，都不应该在共有分支上进行。请确保此分支为私有。</p>
+<h3 id="移动分支中的某些提交"><a href="#移动分支中的某些提交" class="headerlink" title="移动分支中的某些提交"></a>移动分支中的某些提交</h3><p>假如最开始的分支图是这样的：分支 server 是从 master checkout 出来的，还有一个分支 client 是从 server 的 D 提交处 checkout 出来的，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  master</span><br><span class="line">    ↓</span><br><span class="line">A-B-C       server</span><br><span class="line">     \       ↙</span><br><span class="line">      C-D-E-F</span><br><span class="line">         \</span><br><span class="line">          G-H</span><br><span class="line">            ↑</span><br><span class="line">          client</span><br></pre></td></tr></table></figure>
+
+<p>那么执行 <code>git rebase --onto master server client</code> 命令，会取出 client 分支，找出处于 client 分支和 server 分支的共同祖先之后的修改中的、既与 master 不同、又与 server 分支不同的那些提交，单独拿出来在 master 上面重演一遍。于是就会得到这样的提交图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  master   client</span><br><span class="line">    ↓      ↙</span><br><span class="line">A-B-C-G&#x27;-H&#x27;</span><br><span class="line">     \</span><br><span class="line">      C-D-E-F ← server</span><br></pre></td></tr></table></figure>
+
+<p>执行这样的命令时，最好相应的提交都是“原子性”的。</p>
+<h3 id="提交标签"><a href="#提交标签" class="headerlink" title="提交标签"></a>提交标签</h3><p>可以为某个提交创建标签：</p>
+<p><code>git tag -a &lt;tag_name&gt; &lt;commit_id&gt;</code></p>
+<p>可以像下面这样，单独推送该标签到远程仓库：</p>
+<p><code>git push origin &lt;tag_name&gt;</code></p>
+<p>其他推送标签的方法可以参考：<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git">http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git</a></p>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p><code>git branch</code>，查看已有的本地分支</p>
+<p><code>git branch -a</code>，查看全部分支，包括本地分支和远程追踪分支</p>
+<p><code>git branch -r</code>，只查看远程追踪分支</p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p><code>git branch -d branch_name</code>，适用于要删除的分支中的所有数据都已经合并到其他分支里的情形。</p>
+<p><code>git branch -D branch_name</code>，无视该分支下的未合并的提交，强制删除。</p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p><code>git push origin --delete &lt;branch_name&gt;</code>，可以删除远程仓库里的分支。删除后，会在网站提示诸如此类的消息：</p>
+<blockquote>
+<p>No branch or tag ‘refs/heads/<branch_name>‘ exists in repository ‘…’</p>
+</blockquote>
+<h3 id="重命名一个本地分支"><a href="#重命名一个本地分支" class="headerlink" title="重命名一个本地分支"></a>重命名一个本地分支</h3><p>使用<code>-m</code>修饰符，表明要重命名一个分支（<code>m</code>相当于Linux下的<code>move</code>，或者<code>mv</code>的缩写，<code>mv</code>命令在Linux里用于重命名文件）</p>
+<p><code>git branch -m &lt;oldname&gt; &lt;newname&gt;</code>，修改任意本地分支的名字</p>
+<p><code>git branch -m &lt;new_name_for_the_current_branch&gt;</code>，修改当前所在分支的名字</p>
+<h3 id="跟踪远程分支"><a href="#跟踪远程分支" class="headerlink" title="跟踪远程分支"></a>跟踪远程分支</h3><p>如果一个分支尚未与相应的远程分支建立跟踪关系，可以在 <code>push</code> 的时候顺便指定一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin master</span><br></pre></td></tr></table></figure>
+
+<p>意思是，向远程（origin）分支（master）提交代码，并且今后把这个远程分支作为当前分支的远程跟踪分支。以后运行 <code>git status</code> 就会提示当前分支是否落后于远程跟踪分支了。</p>
+<p>Git 的提示：</p>
+<blockquote>
+<p>The current branch master has no upstream branch.</p>
+<p>To push the current branch and set the remote as upstream, use</p>
+<p>   git push –set-upstream origin master</p>
+</blockquote>
+<h2 id="储藏"><a href="#储藏" class="headerlink" title="储藏"></a>储藏</h2><p><code>git stash</code> 命令会捕获当前分支的工作目录和索引的全部状态，将其存储在一个栈中。</p>
+<p>不想提交，又想获取最新的远程仓库代码时：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br><span class="line">$ git pull --rebase origin feature/my_feature_1</span><br><span class="line">$ git stash apply</span><br></pre></td></tr></table></figure>
+
+<p><code>git stash</code> 默认执行的是 <code>git stash save</code>，可以给这个储藏添加一条备注：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash save <span class="string">&quot;这是一个暂存&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>git stash apply</code> 只会取出储藏栈最上面的那个状态，并不会删除它。想要达到“弹出栈”的效果，可以使用 <code>git stash pop</code>，这条命令会把储藏栈的顶端状态弹出，并将其从栈中删除。</p>
+<p><code>git stash list</code>， 查看暂存栈。里面编号为 0 的是最新的暂存状态。</p>
+<p><code>git stash clean</code>， 清空暂存区</p>
+<h2 id="裸版本库"><a href="#裸版本库" class="headerlink" title="裸版本库"></a>裸版本库</h2><p>【待学习补充】</p>
+<h2 id="提交历史"><a href="#提交历史" class="headerlink" title="提交历史"></a>提交历史</h2><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><p><code>git log</code>，打开默认的文本编辑器，在其中显示当前分支的提交历史。</p>
+<p><code>git log &lt;branch_name&gt;</code>，显示某个分支的提交历史。</p>
+<p><code>git log -p</code>，会给出提交历史，并且包含了每次提交的逐行增删改对比。</p>
+<h3 id="可视化提交历史"><a href="#可视化提交历史" class="headerlink" title="可视化提交历史"></a>可视化提交历史</h3><p>git 本身提供了一个可以很好地画出提交分支图历史的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --pretty=format:<span class="string">&quot;%h %s&quot;</span> --graph</span><br><span class="line"></span><br><span class="line"><span class="comment"># `--pretty` 参数可以指明显示提交记录的格式。其值可以是 `oneline` | `short` | `full` | `fuller` | `format`。其中 `format` 可以指定一个自定义格式。</span></span><br><span class="line"><span class="comment"># `--graph` 参数用来指示 git 借助 ASCII 字符来绘制分支、合并历史。</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这个命令可以输出类似这样的字符图：</p>
+<img src="/images/2017/05/git-log-graph.png">
+
+
+<h3 id="通过提交信息查找提交历史"><a href="#通过提交信息查找提交历史" class="headerlink" title="通过提交信息查找提交历史"></a>通过提交信息查找提交历史</h3><p>这对应一个比较少的场景。</p>
+<blockquote>
+<p>产品经理说：“以前我不小心砍掉了一个功能，现在我想让它再次上线，以前的代码应该还在，所以恢复起来不难吧？”</p>
+</blockquote>
+<p>OK，不管难不难，首先得在广袤的代码仓库中找到相关的提交历史。</p>
+<p>这个时候，需要关键字。而用户能够用关键字标识提交对象的地方，就只有每次的提交信息（commit message）了。所以说，以后每个特定的功能开始、完成，最好都在提交历史中加入能够描述该功能的关键字。以便日后进行搜索定位。好了，下面说一下如何搜索历史。</p>
+<p>猜测那个功能的关键字，是“用户行为分析”。那么可以这样：</p>
+<blockquote>
+<p>To search the commit log (across all branches) for the given text:</p>
+<p>git log –all –grep=’用户行为分析’</p>
+<p>参考 <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/7124914/how-to-search-a-git-repository-by-commit-message">How to search a Git repository by commit message?</a></p>
+</blockquote>
+<p>OK，真的出来了几个提交记录。那么想查看对应的记录快照是否有相应的代码，应该先创建一个分支，然后</p>
+<p><code>git checkout &lt;commit-id&gt;</code>，就会把该提交快照全部从仓库里拿到工作区域。</p>
+<p>这时候，可以查看当前的 HEAD 是否为希望的提交记录的 ID ：<code>git rev-parse HEAD</code>。</p>
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对比两次提交之间的差异</span></span><br><span class="line">$ git diff &lt;commit-id-1&gt; &lt;commit-id-2&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对比两个分支之间的代码差异</span></span><br><span class="line"><span class="comment"># 给出 b 相对于 a 的差异</span></span><br><span class="line">$ git diff branch-a branch-b</span><br></pre></td></tr></table></figure>
+
+<p>可以对比两次提交之间的全部差异。例如 <code>git diff HEAD~ HEAD</code> 就可以看到所在分支的最近一次提交与之前一次提交的差异。（HEAD只是最近一次提交的 commitID 的别名）</p>
+<h3 id="找到某一行的全部改动历史"><a href="#找到某一行的全部改动历史" class="headerlink" title="找到某一行的全部改动历史"></a>找到某一行的全部改动历史</h3><p><code>git blame -L &lt;rowNumber&gt;,&lt;row increment number&gt;</code></p>
+<h2 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h2><p><code>checkout</code> 可以用于切换分支，也可以用于从某次体积记录中把某个或该提交的全部文件拿到工作目录中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;branch-name&gt;</span><br><span class="line">$ git checkout &lt;commit-id&gt;</span><br><span class="line">$ git checkout &lt;commit-id&gt; path/to/file</span><br></pre></td></tr></table></figure>
+
+<p>还可以用于从某个分支里取出其最新的某个特定文件，即 git-checkout specific files from another branch：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;branch-name&gt; -- &lt;file-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考阅读：<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/215718/reset-or-revert-a-specific-file-to-a-specific-revision-using-git">Reset or revert a specific file to a specific revision using Git?</a></p>
+<hr>
+<h2 id="【附录】自己不是很熟练的-Git-命令手册"><a href="#【附录】自己不是很熟练的-Git-命令手册" class="headerlink" title="【附录】自己不是很熟练的 Git 命令手册"></a>【附录】自己不是很熟练的 Git 命令手册</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看关于某条命令的帮助</span></span><br><span class="line">$ git --<span class="built_in">help</span> &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查多余的空白（以免给同伴们造成麻烦）</span></span><br><span class="line">$ git diff --check</span><br><span class="line"></span><br><span class="line"><span class="comment"># 彻底放弃最近的 N 次提交</span></span><br><span class="line">$ git reset --hard HEAD~N</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图形化查看一个文件的提交历史</span></span><br><span class="line">$ gitk &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交记录，带每次的更改状态</span></span><br><span class="line">$ git <span class="built_in">log</span> --<span class="built_in">stat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除一个远程分支（对 1.7.0 版本及以上）</span></span><br><span class="line">$ git push origin --delete branch_to_delete</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新分支，让它与远程分支的名称一样，并且保持与该远程分支相关</span></span><br><span class="line"><span class="comment"># 这样就创建了一个名为 feature/branch_1 的本地新分支</span></span><br><span class="line">$ git fetch origin feature/branch_1</span><br><span class="line">$ git checkout --track origin/feature/branch_1</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/11/08/learning-git/" data-id="cm8bcxssx00ardjleh82geocg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/11/26/a-turning-point-at-the-age-of-27/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    A Turning Point at the Age of 27
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/10/27/about-using-json-in-http-body/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">关于在HTTP请求BODY中使用JSON格式</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

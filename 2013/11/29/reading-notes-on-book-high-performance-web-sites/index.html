@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《高性能网站建设指南》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录《高性能网站建设指南》的若干技术要点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《高性能网站建设指南》笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/11/29/reading-notes-on-book-high-performance-web-sites/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录《高性能网站建设指南》的若干技术要点。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-29T06:09:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.144Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-book-high-performance-web-sites" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《高性能网站建设指南》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/29/reading-notes-on-book-high-performance-web-sites/">
+            <time datetime="2013-11-29T06:09:00.000Z" itemprop="datePublished">2013-11-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。</p>
+<a id="more"></a>
+<p>###用到的HTTP基础知识<br>HTTP是一种客户端/服务器协议，由请求和响应构成。浏览器向一个特定的URL发送HTTP请求，URL对应的宿主服务器发回HTTP响应。和很多Internet服务一样，该协议使用简单的纯文本格式。请求的类型有GET、POST、HEAD、PUT、DELETE、OPTIONS和TRACE。最常见的是GET请求。</p>
+<p>###规则1：减少HTTP请求<br>####图片地图<br>####CSS Sprites<br>最大优点——通过合并图片减少HTTP请求。次要优点——合并后的图片比分离的图片总尺寸要小。如果需要在页面中为背景、按钮、导航栏、链接等提供大量图片，此技术绝对是一种优秀的解决方案——干净的标签、很少的图片和很短的响应时间。<br>####内联图片<br>####合并脚本和样式表<br>前端工程师必须选择是对JavaScript和CSS进行“内联”还是将其放在外部的脚本和样式表文件中。一般来说，使用外部脚本和样式表对性能更有利。然而，如果遵循软件工程师所推崇的方式和模块化的原则将代码分开放倒多个小文件中，会降低性能，因为每个文件都会导致一个额外的HTTP请求。</p>
+<p>多个脚本应该合并为一个脚本，多个样式表也应该合并为一个样式表。理想情况下，一个页面应该使用不多于一个的脚本和样式表。<br>###规则2：使用内容发布网络<br>Use a Content Delivery Network</p>
+<p>CDN用于发布静态内容，如图片、脚本、样式表和Flash。</p>
+<p>不过，通常是大中型的商业网站才有考虑使用CDN的必要。</p>
+<p>###规则3：添加Expires头<br>为组件添加长久的Expires头。</p>
+<p>HTTP规范建议这个有效期不要超过一年——建议而已。</p>
+<p>###规则4：压缩组件<br>对于前端人员而言，可以做的只有：压缩脚本和样式表。</p>
+<p>规则3和4，很多工作是需要在服务器端完成的。例如让服务器开启Gzip压缩，此举非常有必要，一般来说，至少可以将数据传输体积减少50%，是加速网站的首要工作。</p>
+<p>【附】Tomcat下开启Gzip压缩服务的方法：<br>在<code>&#123;tomcat_root&#125;/conf/server.xml</code>文件中的<code>&lt;Connector /&gt;</code>中添加如下语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compression=&quot;on&quot;</span><br><span class="line">compressionMinSize=&quot;2048&quot;</span><br><span class="line">noCompressionUserAgents=&quot;gozilla,traviata&quot; </span><br><span class="line">compressableMimeType=&quot;text/html,text/xml,text/javascript,text/css,text/plain, application/json&quot;</span><br></pre></td></tr></table></figure>
+
+<p>###规则5：将样式表放在顶部<br>可用性工程师先驱Jakob Nielson在其web文章中从进度指示器的角度强调了可视化回馈的重要性：</p>
+<blockquote>
+<p>进度指示器有三个主要优势——它们让用户知道系统没有崩溃，只是正在为他或她解决问题；它们指出了用户大概还需要等多久，以便用户能够在漫长的等待中做些其他事情；最后，它们能给用户提供一些可以看的东西，使得等待不再是那么无聊。最后一点优势不可低估，这也是为什么推荐使用图形进度条而不仅仅以数字形式显示预期的剩余时间。</p>
+</blockquote>
+<p>在我们这里，HTML页面就是进度指示器。当浏览器逐步地加载页面时，页头、导航栏、顶端logo等，所有这些都会为等待页面的用户提供视觉反馈。这改善了整体用户体验。</p>
+<p>将样式表放在文档底部会导致在浏览器中阻止内容逐步呈现。为避免当样式变化时重绘页面中的元素，浏览器会阻塞内容逐步呈现。规则5对于加载页面所需的实际时间没有太多影响，它影响的更多的是浏览器对这些组件顺序的反应。</p>
+<p>具体而言，本规则是：<strong>使用LINK标签将样式表放在文档HEAD中</strong>。</p>
+<p>###规则6：将脚本放在底部<br>HTTP1.1规范建议浏览器从每个主机名并行地下载两个组件。当然，最终具体并行下载几个组件，是由浏览器说了算的。很明显，并行下载数是8，总比并行下载数是2要好很多。但增加并行下载数量是由开销的：这取决于你的带宽和CPU速度，过多的并行下载反而会降低性能。Yahoo!的研究表明，使用两个主机名比使用1、4、10个主机名能带来更好的性能提升。</p>
+<p>并行下载组件的优点很明显，但下载脚本时并行下载实际上是被禁用的——即使使用了不同的主机名，浏览器不不会启动其他的下载。其中一个原因是，脚本可能使用<code>document.write</code>来修改页面内容，因此浏览器会瞪大，以确保页面能够恰当地布局。</p>
+<p>总体而言：</p>
+<ul>
+<li>脚本会阻塞对其后面内容的呈现。</li>
+<li>脚本会suze对其后面组件的下载。</li>
+</ul>
+<p>另外一个原因是为了保证脚本能够按照正常的顺序执行。如果并行下载多个脚本，就无法保证响应是按照特定的顺序到达浏览器的。</p>
+<p>如果一个脚本可以延迟，那么它一定可以移到页面的底部，这是加速web页面的最佳方式。所以，尽可能<strong>将脚本移到页面底部</strong>。</p>
+<p>###规则7：避免CSS表达式<br>###规则8：使用外部JavaScript和CSS<br>每天，用户可能只有开始的一次访问携带的是空缓存，之后的多次后续页面查看都具有完整缓存。<br>###规则9：减少DNS查找<br>Reduce DNS Lookups.</p>
+<dd>TTL</dd>
+<dt>TTL(Time-To-Live)，表示一条域名解析记录在DNS服务器上缓存时间。当各地的DNS服务器接受到解析请求时，就会向域名指定的DNS服务器发出解析请求从而获得解析记录；在获得这个记录之后，记录会在DNS服务器中保存一段时间，这段时间内如果再接到这个域名的解析请求，DNS服务器将不再向DNS服务器发出请求，而是直接返回刚才获得的记录；而这个记录在DNS服务器上保留的时间，就是TTL值。</dt>
+
+<p>通过使用Keep-Alive和较少的域名来减少DNS查找。</p>
+<p>PS：然后我就将本博客的DNS TTL 从600s改为3600s了。现在还不知道Github具体的作息规律……</p>
+<p>###规则10：精简JavaScript<br>对JavaScript而言，就是常用的压缩。但对于CSS，能做的有限：</p>
+<ul>
+<li>合并相同的类、移除不使用的类</li>
+<li>移除注释与空白（包括换行），使用素偶写（用#606 代替 #660066 ）和移除不必要的字符串（用 0 代替 0px）</li>
+</ul>
+<p>###规则11：避免重定向<br>JavaScript也可以用于执行重定向，将<code>document.location</code>设置为期望的URL即可。但是，如果你必须进行重定向，最好的技术是使用标准的 3xx HTTP状态码，这主要是为了确保后退按钮能够正常工作。方法见<a href="http://www.w3.org/QA/Tips/reback" target="_blank">Use standard redirects: don’t break the back button!</a>。<br>###规则12：移除重复脚本<br>Remove Duplicate Scripts</p>
+<p>这个很简单：<strong>确保脚本只被包含一次</strong>。</p>
+<p>###规则13：配置ETag<br>####条件GET请求<br>如果缓存的组件过期了（或者用户明确地重新加载了页面），浏览器在重用它之前必须首先检查它是否仍然有效。这称作一个条件GET请求。不幸的是浏览器必须产生这个HTTP请求，执行有效性检查，但这仍比简单地下载所有已过期的组件效率要高。如果浏览器缓存中的组件是有效的（即它能够和原始服务器上的组件相匹配），原始服务器就不好返回整个组件，而是返回一个“304 Not Modified”状态码。</p>
+<p>服务器在检测缓存的组件是否和原始服务器上的组件匹配时有两种方式：</p>
+<ul>
+<li>比较最新修改日期</li>
+<li>比较实体标签</li>
+</ul>
+<p>最后，看作者意思是，要么仔细配置ETag，要么就干脆别用它。<br>###规则14：使Ajax可缓存<br>Ajax不是一个单独的、需要许可证的技术，而是一组技术，包括JavaScript、CSS、DOM和异步数据获取。</p>
+<p>Ajax是异步的、非阻塞的、未必“即时”的技术。Ajax的心脏——XMLHttpRequest。</p>
+<p>HTTP头的<code>Cache-Control: no-store</code>会使得Ajax不被缓存。</p>
+<p>使这些Ajax请求可缓存，除了改变HTTP头之外还需要进行更多的工作。响应的个性化和动态本质必须被反映到缓存中。可供采用的最好的方式是使用查询字符串参数。</p>
+<p>##总结<br>推荐度：★★★★★</p>
+<p>大部分技术指导如今已基本成为前端开发的惯例。而书中列举的大部分网站例子，都是2007年及之前的，此书一出，这些网站应该都统统不再具有书里所描绘的前端性能问题了。这本书是读其续作之前应该大致看一遍的。相信读完续作，也可以体会到互联网发展的变迁。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/29/reading-notes-on-book-high-performance-web-sites/" data-id="cm8bcxssi004udjleht6b96gz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/30/blog-typography-custom/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    在博客中使用无衬线中文字体
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/27/reading-notes-on-book-the-principles-of-beautiful-web-design/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《完美网页的视觉设计法则》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>谈一谈网站图片压缩 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="公司前段时间更换登录页面的背景图。然后研究了一下相关的问题，包括PS切图、图片格式以及响应式布局三方面。 PS切图：除了风光背景图，像logo、登陆框组的背景这样的都应该单独切出来，保存为PNG格式。logo应该放在一张sprite图中。 图片格式风光背景图，之前的project里面用的是PNG格式，我没有多想，也采用了PNG格式，不过使用了PNG-8，体积是原体积一半（1MB多一点）。对这么大的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈一谈网站图片压缩">
+<meta property="og:url" content="https://borninsummer.com/2014/09/21/about-image-compress/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="公司前段时间更换登录页面的背景图。然后研究了一下相关的问题，包括PS切图、图片格式以及响应式布局三方面。 PS切图：除了风光背景图，像logo、登陆框组的背景这样的都应该单独切出来，保存为PNG格式。logo应该放在一张sprite图中。 图片格式风光背景图，之前的project里面用的是PNG格式，我没有多想，也采用了PNG格式，不过使用了PNG-8，体积是原体积一半（1MB多一点）。对这么大的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/9.15.2.png">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/xiaomi-png8.png">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/xiaomi-png24.png">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/xiaomi-jpeg-q60.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/xiaomi-jpeg-q100.jpg">
+<meta property="article:published_time" content="2014-09-21T05:23:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.149Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="Web性能优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/web_fe/2014/09/21/9.15.2.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-about-image-compress" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            谈一谈网站图片压缩
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/09/21/about-image-compress/">
+            <time datetime="2014-09-21T05:23:00.000Z" itemprop="datePublished">2014-09-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag">Web性能优化</a>, <a class="tag-link-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PS%E5%88%87%E5%9B%BE%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">PS切图：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">图片格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JPEGmini"><span class="toc-number">2.1.</span> <span class="toc-text">JPEGmini</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="toc-number">3.</span> <span class="toc-text">响应式布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">附录：</span></a></li></ol>
+            </div>
+            <p>公司前段时间更换登录页面的背景图。然后研究了一下相关的问题，包括PS切图、图片格式以及响应式布局三方面。</p>
+<h3 id="PS切图："><a href="#PS切图：" class="headerlink" title="PS切图："></a>PS切图：</h3><p>除了风光背景图，像logo、登陆框组的背景这样的都应该单独切出来，保存为PNG格式。logo应该放在一张sprite图中。</p>
+<h3 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h3><p>风光背景图，之前的project里面用的是PNG格式，我没有多想，也采用了PNG格式，不过使用了PNG-8，体积是原体积一半（1MB多一点）。对这么大的背景图，我感觉有点不对劲，但是由于之前也没有经验，一下子也没搞清楚哪里不对劲。</p>
+<a id="more"></a>
+
+<p>下班后，试了试将图片保存为JPEG格式，体积变成了200K以下，于是明白了：</p>
+<p><strong>PNG格式适合对透明度有要求的情形；PNG-8处理不了复杂色域下的渐变，PNG-24可以几乎不失真地保留渐变。但是对于色域很广、对透明度没有要求的图片（准确地说是照片），应该毫不犹豫地采用JPEG格式。</strong></p>
+<p>于是，第二天我将背景图的格式保存为JPEG，体积从1.1MB降到了200KB。结果当然是速度提升很大。</p>
+<h4 id="JPEGmini"><a href="#JPEGmini" class="headerlink" title="JPEGmini"></a>JPEGmini</h4><p>JPEGmini是一个很轻量级的用于将JPEG格式图片在保证几乎不失真的前提下进行有损压缩的小软件。如果仅仅是要压缩JPEG图片，那么就可以不必打开Photoshop，而是使用这个小程序，更快更好。下载地址见：<a href="http://www.jpegmini.com/" target="_blank">JPEGmini官方网站</a></p>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>美工给的图是按照1920像素×1080像素做的。我把logo、登陆框的大小按照1400像素的画布进行切图，然后输出了四种尺寸的背景图：1920px，1600px，1400px，1200px。分为4个区间，每个区间使用大于本区间尺寸的那张图。至于屏幕宽度在1920像素以上的，根据项目的实际用户人群来看，目前没有考虑的必要。</p>
+<h3 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h3><p>关于图片格式，多说几句。由于我觉得200K~300K的背景图尺寸可能还是有点大，于是就看了下小米的官网里面对图片的尺寸是如何控制的。就到目前来说，小米网站的图片应该是没有考虑过优化的问题。</p>
+<p>下面是那张原图与我使用不同的压缩技术处理后的图片的比较。</p>
+<div class="output">
+<img src="/images/blog/web_fe/2014/09/21/9.15.2.png" title="小米官网的一张原始图片"><br/>
+格式：PNG<br/>
+大小：317KB
+</div>
+<div class="output">
+<img src="/images/blog/web_fe/2014/09/21/xiaomi-png8.png" title="PNG-8格式"><br/>
+格式: PNG-8<br/>
+尺寸: 500w x 440h<br/>
+大小:126.3K<br/>
+设置:可选择, 256颜色， 100% 扩散仿色, 透明区域关闭, 无透明度仿色, 非交错的, 0% Web 靠色
+</div>
+
+<div class="output">
+<img src="/images/blog/web_fe/2014/09/21/xiaomi-png24.png" title="PNG-24格式"><br/>
+格式: PNG-24<br/>
+尺寸: 500w x 440h<br/>
+大小:320.9K<br/>
+设置:非交错的, 透明区域关闭
+</div>
+
+
+<div class="output">
+<img src="/images/blog/web_fe/2014/09/21/xiaomi-jpeg-q60.jpg" title="jpeg格式"><br/>
+格式: JPEG<br/>
+尺寸: 500w x 440h<br/>
+大小:55.87K<br/>
+设置:品质为60, 非连续的, 优化的打开
+</div>
+
+<div class="output">
+<img src="/images/blog/web_fe/2014/09/21/xiaomi-jpeg-q100.jpg" title="jpeg格式"><br/>
+格式: JPEG<br/>
+尺寸: 500w x 440h<br/>
+大小:197.2K<br/>
+设置:品质为100, 非连续的, 优化的打开
+</div>
+
+<p>结论：保存为JPEG格式就足以满足对该类型图片的质量要求了。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/09/21/about-image-compress/" data-id="cm8bcxssr008ldjle8b0z2iex" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/09/25/hello-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Hello, hexo
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/04/24/health-recovery-after-ligament-tearing-of-ankle-joint/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">踝关节韧带撕裂后的处理与相关机理的学习</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

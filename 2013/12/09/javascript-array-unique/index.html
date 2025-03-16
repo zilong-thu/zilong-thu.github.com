@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>JavaScript数组去重方法汇总 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数组去重方法汇总">
+<meta property="og:url" content="https://borninsummer.com/2013/12/09/javascript-array-unique/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-12-09T01:47:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.145Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-javascript-array-unique" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            JavaScript数组去重方法汇总
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/12/09/javascript-array-unique/">
+            <time datetime="2013-12-09T01:47:00.000Z" itemprop="datePublished">2013-12-09</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>摘要：本文主要内容包括：生成纯数值数组方法、生成数值与字符串混合的随机数组的方法，基于遍历、基于排序、基于词典的数组去重方法，这些去重方法、排序算法的复杂度分析、在浏览器中的性能测试分析。</p>
+<a id="more"></a>
+
+<p>##1. 生成测试用的数组<br>测试使用的数组有两类：纯数值类型的数组，混合了数字与字符串的数组。</p>
+<p>###1.1 纯数值数组生成方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 生成一个m、n之间的整数 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">random</span>(<span class="params">m,n</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> i=<span class="built_in">Math</span>.random(); </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round((n-m)*i+m); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* l：生成的数组的长度 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomArr</span>(<span class="params">m,n,l</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> resultArr=[]; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;l;i++)&#123; </span><br><span class="line">        resultArr.push(random(m,n));</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> resultArr; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>###1.2 生成含有随机长度字符串的混合数组<br>参考<sup>[3]</sup>。生成随机字符串的思路很简单：先准备一个数组，含有 0<del>9、A</del>Z、a~z 这些字符；随机生成一个数字，根据用户设定的最大字符串长度，确定当前字符串的长度；根据这个长度进行循环，每次循环都随机生成一个数字，将其映射到该数组的下标，读取该下标的值，即为字符串当前位置处的一个字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* length: 字符串的长度，如果未定义，则随机生成 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomString</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> chars = <span class="string">&#x27;0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz&#x27;</span>.split(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> chars_length = chars.length;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (! length) &#123;</span><br><span class="line">        length = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * chars_length);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        str += chars[<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * chars_length)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：貌似针对混合数组进行去重的应用例子不多，所以下面也不具体研究了。</p>
+<p>##2. 去重方法<br>###2.1 使用indexOf()进行数组遍历<br>思路：</p>
+<ol>
+<li>构建一个新的数组存放结果</li>
+<li>for循环中每次从原数组中取出一个元素，用indexOf查找新数组中是否有该元素</li>
+<li>若没有，则存到结果数组中</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res.indexOf(v) == -<span class="number">1</span>) </span><br><span class="line">            res.push(v);</span><br><span class="line">    &#125;)  </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度分析：</p>
+<p>按最坏的情况，数组里没有任何重复元素，则需要进行 n 次indexOf()运算，但indexOf()本身的复杂度为 i，所以总体数组下标查询次数为 1+2+3+…+ (n-1)=(n-1)n/2，于是复杂度为O(n2)。可见这并不是一个高效的算法。</p>
+<p>###2.2 先排序再遍历<br>思路：</p>
+<ol>
+<li>先将原数组进行排序</li>
+<li>检查原数组中的第i个元素 与 结果数组中的最后一个元素是否相同，因为已经排序，所以重复元素会在相邻位置</li>
+<li>如果不相同，则将该元素存入结果数组中</li>
+</ol>
+<p>####2.2.1 sort()方法<br>javascript内置了sort()方法，用于对数组进行排序。但其具体使用何种排序算法，取决于javascript引擎。</p>
+<figure class="highlight javascript"><figcaption><span>某种使用sort()的排序去重算法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;);    <span class="comment">/* 先排序 */</span></span><br><span class="line">    <span class="keyword">var</span> res = [<span class="built_in">this</span>[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>[i] !== res[res.length - <span class="number">1</span>])&#123;</span><br><span class="line">            res.push(<span class="built_in">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">10</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>,<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>,  <span class="number">11</span>, <span class="number">12</span>, <span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用sort()对arr排序，在不同浏览器下得到不同结果：</span></span><br><span class="line"><span class="comment"> * Firefox =&gt;  [0, 1, 3, &quot;e&quot;, &quot;e&quot;, &quot;d&quot;, &quot;b&quot;, &quot;a&quot;, &quot;a&quot;, 0, 1, 10, 11, 12, 20, &quot;d&quot;, &quot;b&quot;]</span></span><br><span class="line"><span class="comment"> * Chrome  =&gt;  [0, 0, 1, 1, 3, 10, 11, 12, 20, &quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;b&quot;, &quot;d&quot;, &quot;d&quot;, &quot;e&quot;, &quot;e&quot;]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 去重的结果也不同：</span></span><br><span class="line"><span class="comment"> * Firefox =&gt;  [&quot;b&quot;, &quot;d&quot;, 0, 1, 10, 11, 12, 20, &quot;a&quot;, &quot;b&quot;, &quot;d&quot;, &quot;e&quot;, 0, 1, 3]</span></span><br><span class="line"><span class="comment"> * Chrome  =&gt;  [0, &quot;e&quot;, 1, 3, 10, 11, 12, 0, &quot;a&quot;, &quot;b&quot;, &quot;d&quot;, &quot;e&quot;, 20]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(delrep2.call(arr));</span><br></pre></td></tr></table></figure>
+<p>####2.2.2 内置sort()方法纯数值数组排序速度测试<br>部分内容参考这篇文章：[4]。以该作者当时的机器与浏览器水平，对1~999999之间的长度为30000的随机数组的排序，火狐2.0居然要300多毫秒，现在火狐25.0.1在我台式机i5 CPU上，只需要3毫秒就完成同样规模的数组排序（外加去重，当然，去重的复杂度只有n，影响不大）。</p>
+<p>结论：</p>
+<p>先排序再去重能够提高复杂度，就是因为在遍历原数组以决定是否要把原数组中的某个元素放入新数组时，不必再遍历已生成的新数组，而是只需要判断该元素是否等于新数组的最后一个元素即可。</p>
+<p>对于纯数值类型的数组，可以考虑使用sort()方法减少代码量，此时要注意一定要自己指定传递给sort()方法的参考函数。但是对于数字与字符串混合的数组，不宜使用sort()方法，因为不同浏览器使用了不同的算法，会得到不同的排序结果（例如Chrome可以得到正确的排序结果，而火狐就不行）。此时应该使用自己定义的排序算法。</p>
+<p>###2.3 基于基数排序的词典法<br>如果认为一个混合数组中，元素1和元素”1”不相同，即要求区数组元素的类型，那么应该使用<code>typeof()</code>运算符将类型记忆下来。</p>
+<figure class="highlight javascript"><figcaption><span>不考虑类型的词典法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</span><br><span class="line">        res = [] ;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[v]) &#123;</span><br><span class="line">            obj[v] = <span class="literal">true</span>;</span><br><span class="line">            res.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>区分类型的词典法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delrep4</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;,</span><br><span class="line">        res = [] ;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[<span class="keyword">typeof</span>(v) + v]) &#123;</span><br><span class="line">            obj[<span class="keyword">typeof</span>(v) + v] = <span class="literal">true</span>;</span><br><span class="line">            res.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##3. 性能测试<br>###3.1 测试代码</p>
+<figure class="highlight javascript"><figcaption><span>测试模块代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readClock</span>(<span class="params">func,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">var</span> res = func.call(arr);</span><br><span class="line">    <span class="built_in">console</span>.log(+<span class="keyword">new</span> <span class="built_in">Date</span>() - start);</span><br><span class="line">    <span class="built_in">console</span>.log(res.slice(<span class="number">0</span>,<span class="number">10</span>));  <span class="comment">/* 只输出前10个元素 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = getRandomArr(<span class="number">0</span>,<span class="number">9999</span>,<span class="number">30000</span>);</span><br><span class="line">readClock(delrep1,arr);</span><br><span class="line">readClock(delrep2,arr);</span><br><span class="line">readClock(delrep3,arr);</span><br><span class="line">readClock(delrep4,arr);</span><br></pre></td></tr></table></figure>
+<p>###3.2 测试结果：</p>
+<p>（1）var arr = getRandomArr(0,9999,30000);</p>
+<p>单位：毫秒</p>
+<p>Chrome：  delrep1 222，delrep2 18, delrep3 4, delrep4 21</p>
+<p>Firefox： delrep1 6037，delrep2 8, delrep3 24, delrep4 47</p>
+<p>（2）var arr = getRandomArr(0,9999,500000);不运行readClock(delrep1,arr);</p>
+<p>单位：毫秒</p>
+<p>Chrome：  delrep2 174, delrep3 41, delrep4 155</p>
+<p>Firefox： delrep2 110，delrep3 379, delrep4 555</p>
+<p>###3.3 初步结论<br>对于相同的、不使用JS内置算法（如sort()）的情况下，谷歌浏览器的JS解释引擎比火狐快一个量级。</p>
+<p>火狐浏览器对sort()方法的实现，很可能使用了快速排序算法，才使得其如此之快。但从前面的混合数组例子来看，V8的sort()算法考虑更周全。</p>
+<p>Chrome的词典法去重，速度非常快。所以如果是运行于服务器端，使用Node.js，那么可以考虑优先采用词典法去重。</p>
+<p>##参考文章：</p>
+<p>[1] <a href="http://www.ituring.com.cn/article/49791" target="_blank">图灵社区-WEB前端-JavaScript数组去重</a></p>
+<p>[2] <a href="http://www.nowamagic.net/javascript/js_RemoveRepeatElement.php" target="_blank">JavaScript数组去重的几种方法</a></p>
+<p>[3] <a href="http://liunian.info/generate-random-string-in-javascript.html" target="_blank">使用 JavaScript 生成随机字符串</a></p>
+<p>[4] <a href="http://www.jb51.net/article/6136.htm" target="_blank">数据排序谁最快(javascript中的Array.prototype.sort PK 快速排序)</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/12/09/javascript-array-unique/" data-id="cm8bcxssj005fdjle26lg52rn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/12/13/control-more-hardwares/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    软件的未来：操控更多的硬件
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/12/06/reading-notes-on-eloquent-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《JavaScript编程精解》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

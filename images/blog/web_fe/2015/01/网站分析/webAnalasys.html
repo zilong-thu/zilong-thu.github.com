@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="网站分析 	  #echartsContainer, #ecContainerLoadTime{ 	width: 1000px; 	height: 500px; 	padding: 10px; 	margin: 50px auto; }          (function(){ 	var domEC &#x3D; document.getElementById(&#39;echartsContainer&#39;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王子龙的博客">
+<meta property="og:url" content="https://borninsummer.com/images/blog/web_fe/2015/01/%E7%BD%91%E7%AB%99%E5%88%86%E6%9E%90/webAnalasys.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="网站分析 	  #echartsContainer, #ecContainerLoadTime{ 	width: 1000px; 	height: 500px; 	padding: 10px; 	margin: 50px auto; }          (function(){ 	var domEC &#x3D; document.getElementById(&#39;echartsContainer&#39;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-13T02:58:40.297Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.297Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <!DOCTYPE html>
+<html>
+<head>
+	<title>网站分析</title>
+	<meta charset="utf-8">
+<style type="text/css">
+#echartsContainer,
+#ecContainerLoadTime{
+	width: 1000px;
+	height: 500px;
+	padding: 10px;
+	margin: 50px auto;
+}
+</style>
+</head>
+<body>
+<div id="echartsContainer"></div>
+
+<div id="ecContainerLoadTime" style="width: 700px;height: 400px;"></div>
+
+<script type="text/javascript" src="echarts-plain.js"></script>
+<script>
+(function(){
+	var domEC = document.getElementById('echartsContainer');
+	var myEChart = echarts.init(domEC);
+	var option = {
+		title:{
+			text: '优化前的网站首次加载的资源统计分析',
+			subtext: '数据来源：Chrome的Network模块分析数据',
+			x: 'center'
+		},
+		tooltip : {
+	        trigger: 'item',
+	        // formatter: '{c} KB'
+	    },
+	    legend: {
+	        data:['智慧旅游', '百度地图', '天猫商城'],
+	        x: 'left'
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : false,
+	    grid: {
+	    	borderWidth: 0
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['脚本', '样式表', '图片'],
+	            splitLine: {show: false},
+	            axisLine: {show: true}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	        	name: '体积(KB)',
+	            type : 'value',
+	            splitArea : {show : false},
+	            splitLine: {show: false},
+	            axisLine: {show: true},
+	            max: 3000
+	        },{
+	        	name: '请求数(次)',
+	        	type: 'value',
+	        	splitArea : {show: false},
+	        	splitLine: {show: false},
+	        	axisLine: {show: true},
+	            max: 100
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'智慧旅游',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[2600, 480, 284]
+	        },{
+	            name:'智慧旅游',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[25, 10, 46]
+	        },{
+	            name:'百度地图',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[324, 22.7, 436]
+	        },{
+	            name:'百度地图',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[18, 1, 50]
+	        },{
+	            name:'天猫商城',
+	            yAxisIndex: 0,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} KB'
+                    	}
+	            	}
+	            },
+	            data:[379, 250, 1100]
+	        },{
+	            name:'天猫商城',
+	            yAxisIndex: 1,
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} 次'
+                    	}
+	            	}
+	            },
+	            data:[49, 6, 95]
+	        }
+	    ]
+	};
+
+	
+	myEChart.setOption(option);
+})();
+
+
+function getArrayAverage(arr){
+	var length = arr.length;
+	var average = 0;
+	arr.forEach(function(val){
+		average += val/length;
+	});
+	return average.toFixed(2);
+}
+
+(function(){
+	//  无缓存
+	var contentLoadTime = [2.28, 2.25, 2.52, 2.30, 3.45, 2.79, 2.45, 2.35, 3.45, 2.27, 2.43, 2.83, 2.71];
+	var loadTime = [2.85, 3.19, 3.1, 2.94, 4.11, 3.41, 3.24, 3.32, 4.26, 2.93, 3.05, 3.37, 3.32];
+
+	var averageCLT = getArrayAverage(contentLoadTime);
+	var	averageLoadTime = getArrayAverage(loadTime);
+	console.log('无缓存平均contentLoadTime：', averageCLT);
+	console.log('无缓存平均loadTime：', averageLoadTime);
+
+
+	// 有缓存
+	var contentLoadTime2 = [1.68, 1.45, 1.26, 1.27, 1.22];
+	var loadTime2        = [2.40, 2.21, 1.88, 1.89, 1.86];
+	var averageCLT2 = getArrayAverage(contentLoadTime2);
+	var	averageLoadTime2 = getArrayAverage(loadTime2);
+	console.log('有缓存平均contentLoadTime2：', averageCLT2);
+	console.log('有缓存平均loadTime2：', averageLoadTime2);
+
+	var domEC = document.getElementById('ecContainerLoadTime');
+	var myEChart = echarts.init(domEC);
+	var option = {
+		title:{
+			text: '页面加载时间对比',
+			subtext: '数据来源：Chrome的Network模块分析数据',
+			x: 'right'
+		},
+		tooltip : {
+	        trigger: 'item',
+	        // formatter: '{c} KB'
+	    },
+	    legend: {
+	        data:['智慧旅游-优化前', '智慧旅游-优化后', '百度地图'],
+	        x: 'left'
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : false,
+	    grid: {
+	    	borderWidth: 0
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : ['无缓存DOMContentLoadTime', '无缓存LoadTime', '有缓存DOMContentLoadTime', '有缓存LoadTime'],
+	            splitLine: {show: false},
+	            axisLine: {show: true}
+	        }
+	    ],
+	    yAxis : [
+	        {
+	        	name: '加载时间(s)',
+	            type : 'value',
+	            splitArea : {show : false},
+	            splitLine: {show: false},
+	            axisLine: {show: true},
+	            max: 30
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'智慧旅游-优化前',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data: [10, 30, 5.5, 10]
+	        },{
+	            name:'智慧旅游-优化后',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data: [averageCLT, averageLoadTime, averageCLT2, averageLoadTime2]
+	        },{
+	            name:'百度地图',
+	            type:'bar',
+	            smooth:true,
+	            itemStyle: {
+	            	normal: {
+	            		areaStyle: {type: 'default'},
+	            		label : {
+                        	show: true,
+                        	position: 'top',
+                        	formatter: '{c} s'
+                    	}
+	            	}
+	            },
+	            data:[1.78, 0.68, 1.43, 0.54]
+	        }
+	    ]
+	};
+
+	
+	myEChart.setOption(option);
+})();
+
+</script>
+</body>
+</html>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/images/blog/web_fe/2015/01/%E7%BD%91%E7%AB%99%E5%88%86%E6%9E%90/webAnalasys.html" data-id="cm8bcxssb0023djlee1d33lfr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

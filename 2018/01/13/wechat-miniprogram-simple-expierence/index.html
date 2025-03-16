@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>初探微信小程序开发 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="背景 项目起始时间：2017-11-28 前端人数： 3 页面数： 6 一期上线时间：2018-01-16  在我们开发的过程中，小程序的生态也不断变化。例如 &lt;web-view&gt; 最开始不支持其打开的 web 页面调起小程序页面，后来则新增了 JS-SDK 并在高版本的基础库里支持了这样的功能；再例如它的 IDE 不断优化升级，开发体验变好；页面的5级跳转限制，改为了10级；小程序体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探微信小程序开发">
+<meta property="og:url" content="https://borninsummer.com/2018/01/13/wechat-miniprogram-simple-expierence/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="背景 项目起始时间：2017-11-28 前端人数： 3 页面数： 6 一期上线时间：2018-01-16  在我们开发的过程中，小程序的生态也不断变化。例如 &lt;web-view&gt; 最开始不支持其打开的 web 页面调起小程序页面，后来则新增了 JS-SDK 并在高版本的基础库里支持了这样的功能；再例如它的 IDE 不断优化升级，开发体验变好；页面的5级跳转限制，改为了10级；小程序体">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2018/01/wxapp-dir.png">
+<meta property="article:published_time" content="2018-01-13T01:41:12.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.162Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2018/01/wxapp-dir.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-wechat-miniprogram-simple-expierence" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            初探微信小程序开发
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/13/wechat-miniprogram-simple-expierence/">
+            <time datetime="2018-01-13T01:41:12.000Z" itemprop="datePublished">2018-01-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-view-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">web-view 的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98"><span class="toc-number">3.</span> <span class="toc-text">数据缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">图片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">常用的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lt-web-view-gt-%E7%9A%84-user-agent"><span class="toc-number">7.</span> <span class="toc-text">&lt;web-view&gt; 的 user-agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wx-request-%E4%B8%8E-cookie"><span class="toc-number">8.</span> <span class="toc-text">wx.request() 与 cookie</span></a></li></ol>
+            </div>
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>项目起始时间：2017-11-28</li>
+<li>前端人数： 3</li>
+<li>页面数： 6</li>
+<li>一期上线时间：2018-01-16</li>
+</ul>
+<p>在我们开发的过程中，小程序的生态也不断变化。例如 <code>&lt;web-view&gt;</code> 最开始不支持其打开的 web 页面调起小程序页面，后来则新增了 JS-SDK 并在高版本的基础库里支持了这样的功能；再例如它的 IDE 不断优化升级，开发体验变好；页面的5级跳转限制，改为了10级；小程序体积限制由 1MB 扩大为了 2MB …… 总体来说，一直在朝着好的方向发展。</p>
+<a id="more"></a>
+
+<h2 id="web-view-的使用"><a href="#web-view-的使用" class="headerlink" title="web-view 的使用"></a>web-view 的使用</h2><p>应当指定一个特定的路径，用于打开任意的在业务域名白名单内的页面。</p>
+<img src="/images/2018/01/wxapp-dir.png" style="width: 200px;" alt="页面目录">
+
+<p>由于 <code>&lt;web-view&gt;</code> 所在页面只会渲染 web 页面，其他任何组件都不显示，所以，在相应的 HTML 里就只包含这样的一个组件即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;web-view src=&quot;&#123;&#123;url&#125;&#125;&quot;&gt;&lt;/web-view&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>web-view/index.js</code> 的主要逻辑如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">onLoad</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> sysInfo = wx.getSystemInfoSync();</span><br><span class="line">    <span class="keyword">const</span> version = <span class="keyword">new</span> Version(sysInfo.SDKVersion);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// web-view 组件是 1.6.4 基础库开始支持的</span></span><br><span class="line">    <span class="comment">// 但是其 JS-SDK 却是从 1.6.6 才开始支持</span></span><br><span class="line">    <span class="comment">// 所以这里要求最低为 1.6.6</span></span><br><span class="line">    <span class="keyword">if</span> (version.isLowerThan(<span class="string">&#x27;1.6.6&#x27;</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> wx.showModal(&#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&#x27;提示&#x27;</span>,</span><br><span class="line">        <span class="attr">content</span>: <span class="string">&#x27;当前微信版本过低，无法在小程序内打开网页，请升级到最新微信版本后重试。&#x27;</span>,</span><br><span class="line">        <span class="attr">showCancel</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">confirmText</span>: <span class="string">&#x27;知道了&#x27;</span>,</span><br><span class="line">        <span class="function"><span class="title">success</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">          wx.navigateBack();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以拿到 URL 里的查询参数</span></span><br><span class="line">    <span class="keyword">if</span> (options &amp;&amp; options.__host) &#123;</span><br><span class="line">      <span class="keyword">let</span> url = <span class="built_in">decodeURIComponent</span>(options.__host || <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">      <span class="keyword">const</span> query = <span class="built_in">Object</span>.assign(&#123;&#125;, options);</span><br><span class="line">      <span class="keyword">delete</span> query.__host;</span><br><span class="line"></span><br><span class="line">      url += <span class="string">&#x27;?&#x27;</span> + util.stringifyQuery(query);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">this</span>.setData(&#123;url&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其他页面在想使用 web-view 时就可以这样，方式1：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigator</span> <span class="attr">url</span>=<span class="string">&quot;/pages/webview/index?__host=https://your.host.name/path/to/page&amp;query_1=value_1&amp;query_2=value_2&quot;</span>&gt;</span></span><br><span class="line">  通过web-view打开网页</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者方式2:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://your.host.name/path/to/page?query_1=value_1&amp;query_2=value_2&#x27;</span>;</span><br><span class="line">wx.navigateTo(&#123;</span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;/pages/webview/index__host=&#x27;</span> + <span class="built_in">encodeURIComponent</span>(url)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据缓存"><a href="#数据缓存" class="headerlink" title="数据缓存"></a>数据缓存</h2><p>可以比较充分地使用小程序的 <code>storage</code> 接口，进行本地缓存。建议缓存的数据包括：</p>
+<ul>
+<li>元数据</li>
+<li>用户登录后的基础数据，例如 userId，token</li>
+<li>设备ID</li>
+</ul>
+<h2 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h2><p>由于小程序的样式表里无法使用相对路径引用图片文件，所以很多时候只好使用 base64 进行转码。</p>
+<h2 id="常用的类"><a href="#常用的类" class="headerlink" title="常用的类"></a>常用的类</h2><ul>
+<li>用于网络请求的 request.js，支持 Promise 接口。我个人比较喜欢链式调用的风格，参考: <a target="_blank" rel="noopener" href="https://github.com/zilong-thu/my-js-lib/tree/master/wxapp">http.js | github</a>。</li>
+<li>版本判断，Version.js。Version.js 的作用是对版本号进行解析、比较。例如自己的小程序依赖了某个版本的基础库，那么可以在运行时判断当前基础库是否符合预期，否则提示用户升级等等。要实现的关键 API 有 <code>gt</code>（大于）、<code>lt</code>（小于）、<code>gte</code>（大于等于）、<code>lte</code>（小于等于）、<code>equal</code>（等于）等等。可以参考 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/compare-versions"><code>compare-version</code></a> 包的实现。</li>
+<li>时间日期格式化，类似于 moment.js，但是要更为轻量级。可以参考这个：<a target="_blank" rel="noopener" href="https://github.com/zilong-thu/moment-lite.js">moment-lite.js</a>。</li>
+<li>URL 解析与序列化，url.js。可以使用 npm 包 <code>query-string</code>，也可以参考这个包自己实现关键 API：<ul>
+<li><code>parse()</code></li>
+<li><code>stringify</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p>iOS 与 Android 平台下，即便相同的小程序，也有许多细节上的差异。在进行兼容性测试时需要按照 H5 的平台兼容性进行测试。</p>
+<p>此外，还有微信各版本的兼容性测试。前端要基于 Version.js 判断微信小程序 SDKVersion，以便对低版本进行友好的提示。</p>
+<h2 id="lt-web-view-gt-的-user-agent"><a href="#lt-web-view-gt-的-user-agent" class="headerlink" title="&lt;web-view&gt; 的 user-agent"></a><code>&lt;web-view&gt;</code> 的 user-agent</h2><p>user-agent 对于我们开发者来说比较方便，尤其在一些做服务端渲染的页面，以及其他对用户的运行环境敏感的服务。</p>
+<p>如果期望在 user-agent 里用 <code>miniprogram</code> 标识为小程序的浏览器，那么恐怕会在 iOS 下遇到问题：其微信小程序 <code>&lt;web-view&gt;</code> 的 UA 里缺失了 miniprogram 字段。用 <code>&lt;web-view&gt;</code> 打开任意页面，获取其发起的请求里携带的 user-agent，拦截到的各个客户端的 user-agent 如下：</p>
+<p>① dev-tools:</p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 wechatdevtools/1.01.1712150 MicroMessenger/6.5.7 Language/zh_CN webview/1_3 webdebugger miniprogram port/9974</p>
+<p>② android wechat:</p>
+<p>Mozilla/5.0 (Linux; Android 7.0; Mi-4c Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN miniProgram</p>
+<p>③ iphone6:</p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_1 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Mobile/15C153 MicroMessenger/6.6.1 NetType/WIFI Language/zh_CN</p>
+<p>④ iphone7:</p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 MicroMessenger/6.6.1 NetType/WIFI Language/zh_CN</p>
+<p>所以目前来看，ios 微信的实现是有问题的。</p>
+<p>官方对于此问题的回应是：</p>
+<blockquote>
+<p>userAgent暂不支持，后续会提供类似功能</p>
+</blockquote>
+<p>所以，只能耐心等待了。</p>
+<h2 id="wx-request-与-cookie"><a href="#wx-request-与-cookie" class="headerlink" title="wx.request() 与 cookie"></a><code>wx.request()</code> 与 <code>cookie</code></h2><p>考虑先后两个请求 A 与 B。请求A：<code>wx.request()</code> 发起，服务器响应了 <code>set-cookie: token=***</code> 首部，于是在客户端设置了 <code>token</code> 值。</p>
+<p>后续请求B：也是 <code>wx.request()</code> 发起，然后在服务器端查看 HTTP 请求的头，里面有一条就是 <code>cookie</code>。而且，如果这个设备登录过多个账号，那么后续的请求可能会被自动加入不同的 <code>cookie</code> 值。</p>
+<p>然而这个 cookie 在开发者工具里根本就看不到。</p>
+<p>解决方法，显式地在请求的参数里设置 <code>header</code> 的 <code>cookie</code> 值为空字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">  url: &#x27;you-host&#x27;,</span><br><span class="line">  header: &#123;</span><br><span class="line">    cookie: &#x27;&#x27;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果这还不够（因为我发现这个方法有时未必起作用，算是微信小程序的bug？），那么要在自己的服务器明确地拒绝使用 cookie 里的值。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2018/01/13/wechat-miniprogram-simple-expierence/" data-id="cm8bcxst400e2djle8363a2kl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/01/21/about-async-function/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    About ECMAScript Async Functions
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/12/14/summary-of-2017/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">2017年度小结</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

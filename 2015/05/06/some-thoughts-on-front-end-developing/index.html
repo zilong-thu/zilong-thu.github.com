@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>前端开发中的几点感想 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="简记自己最近对于前端开发的几点感想。从2013年7月到现在，断断续续从事前端开发快两年了。文字很水，学识粗浅，大神轻喷。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发中的几点感想">
+<meta property="og:url" content="https://borninsummer.com/2015/05/06/some-thoughts-on-front-end-developing/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="简记自己最近对于前端开发的几点感想。从2013年7月到现在，断断续续从事前端开发快两年了。文字很水，学识粗浅，大神轻喷。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-05-06T12:04:03.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.153Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Web-FE">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-some-thoughts-on-front-end-developing" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            前端开发中的几点感想
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/05/06/some-thoughts-on-front-end-developing/">
+            <time datetime="2015-05-06T12:04:03.000Z" itemprop="datePublished">2015-05-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Web-FE/" rel="tag">Web-FE</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%B1%80%E9%99%90%E4%BA%8E%E5%89%8D%E7%AB%AF"><span class="toc-number">1.</span> <span class="toc-text">不要局限于前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.</span> <span class="toc-text">使用模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8CSS%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">使用CSS预处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E4%BC%98%E5%85%88%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9"><span class="toc-number">4.</span> <span class="toc-text">移动优先与浏览器兼容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E7%BB%99%E8%87%AA%E5%B7%B1%E6%8C%96%E5%9D%91%E5%9F%8B%E9%9B%B7"><span class="toc-number">5.</span> <span class="toc-text">不要给自己挖坑埋雷</span></a></li></ol>
+            </div>
+            <p>简记自己最近对于前端开发的几点感想。从2013年7月到现在，断断续续从事前端开发快两年了。文字很水，学识粗浅，大神轻喷。</p>
+<a id="more"></a>
+
+<h2 id="不要局限于前端"><a href="#不要局限于前端" class="headerlink" title="不要局限于前端"></a>不要局限于前端</h2><p>最近这一个多月，自己在技能树上对这几个方面进行了扩展：</p>
+<ul>
+<li>NodeJS</li>
+<li>SQL, MySQL</li>
+<li>LESS</li>
+</ul>
+<p>个人打算通过NodeJS，逐渐触及服务器端、数据库端的开发知识。在使用NodeJS 0.12.0 + Express 4.12.2 + MySQL 5.6 搭建一个简单的社区网站的过程中，已经体会到涉猎前端之外的技能所带来的好处了。</p>
+<p>现在的IT行业，分工已经呈现越来越细的趋势。小的或者初创业的互联网公司，大都不会招太多前端开发岗位，他们往往希望一个员工，能够“通晓”数据库、服务器、前端、切图，如果会点测试、运维、营销，效果更佳；而任何一个初具规模的互联网公司（好比，100人以上），基本都会非常明确地设置前端开发岗位，或者成立自己的UED（User Experience Department，用户体验技术部）。大公司设置如此细分的工作岗位，是为了整体能够更有效率的工作。与富士康对工艺流程的细分、不同岗位的人各司其职，本质上是一样的。</p>
+<p>我是半道出家，在花了两年时间掌握了初级的前端开发技能之前，可以说是毫无计算机基础的。从自己的角度来看，前端工程师不应该只是掌握了HTML/CSS/JavaScript/jQuery/Bootstrap/Grunt/Underscore/Angular 等等技能就自认为可以高枕无忧了的。去写一些关于服务器如何处理前端请求、从数据库获取数据再返回给前端的代码（好比用NodeJS+Express+MySQL），会对“前后端分离”这样的命题，以及RESTful API这样的名词，有更为深刻的理解。</p>
+<h2 id="使用模板"><a href="#使用模板" class="headerlink" title="使用模板"></a>使用模板</h2><p>jQuery简化了DOM查询，“抹平”了不同浏览器的互不兼容的实现，但这并不意味着它就是最后的答案。在执行根据数据渲染视图、获取表单数据等任务时，应该抛弃拼接HTML字符串、逐个查询DOM元素值这样的思路，而应该转向模板以及模型。</p>
+<p>模板的一大优势就是，它使得数据与视图在物理上进行了一定的解耦。刚开始做前端开发的时候，总是使用字符串拼接来生成HTML标记，放眼望去，一堆JS代码里夹杂着无数的HTML标记，不禁让人怀疑：“当年我把JavaScript代码从HTML标记里分离出来，结果这倒好，HTML里没有了JS，JS却充斥着HTML。”</p>
+<p>早期，模板标记在服务器端可能应用更多，像JSP，PHP，但随着前后端分离的兴起，前端开发也常常使用模板标记，而且语法特性也往往类似（例如Underscore的模板就跟EJS、JSP很像）。这在一定程度上缩减了前后端开发的差异。</p>
+<h2 id="使用CSS预处理器"><a href="#使用CSS预处理器" class="headerlink" title="使用CSS预处理器"></a>使用CSS预处理器</h2><p>如果仅仅用一个样式表来管理整个网站的样式，那实在是太痛苦了；而即使划分了明确的模块，使用了多个CSS文件，在编写代码的时候，重复书写的类名等等实在太多，而且也体现不出CSS DOM的树结构。前端开发人员应当了解并且最好在自己参与的项目中使用CSS预处理器。</p>
+<p>有几个显而易见的使用CSS预处理器的好处：</p>
+<ul>
+<li>重复使用的颜色、字体值</li>
+<li>处理浏览器厂商前缀</li>
+<li><code>lighten</code>, <code>darken</code>等函数</li>
+<li>树结构明显</li>
+</ul>
+<p>常见的CSS预处理器：LESS，Stylus，SASS。</p>
+<p>CSS是直接面向浏览器的，而CSS预处理器则具有更好的开发友好性。</p>
+<h2 id="移动优先与浏览器兼容"><a href="#移动优先与浏览器兼容" class="headerlink" title="移动优先与浏览器兼容"></a>移动优先与浏览器兼容</h2><p>这年头，移动端太重要了。</p>
+<p>如果网站不是那种偏应用型的（像Google Docs或者在线绘图类的），那么总应该优先考虑小屏幕设备下的UI设计问题。这个观念现在应该已经深入人心了，也不多说了。</p>
+<p>要说的是浏览器兼容性问题。初学者（当然，我现在也是初学者）往往鄙视兼容性问题，并且以“按照W3C标准”开发、“仅支持Chrome”为荣。这其实是比较幼稚的或者过于理想的观念。__从古到今，跨平台问题就从来没有被解决过。__即便现在HTML5已经板上钉钉了，“仅支持Chrome就OK”的想法也是在三五年内难以实现的事情。</p>
+<p>就算老板没有要求网站有良好的兼容性，身为一个有追求的前端攻城狮，也应该时不时打开古老的IE，或者某些国产的大用户量的浏览器，看看自己的网页在它们眼里是什么样子~~</p>
+<h2 id="不要给自己挖坑埋雷"><a href="#不要给自己挖坑埋雷" class="headerlink" title="不要给自己挖坑埋雷"></a>不要给自己挖坑埋雷</h2><p>最后的最后，以一个经典段子，来提醒前端er们，不要给自己的程序埋雷。如果觉得开发得不爽了，那么越早重构越好！</p>
+<blockquote>
+<p>三个程序员被要求穿过一片田地，到达另一侧的房子。<br>菜鸟程序员目测了一下之间很短的距离，说：“不远！我只要十分钟。”<br>资深程序员看了一眼田地，想了一会，说：“我应该能在一天内过去。”菜鸟程序员很惊讶。<br>大神程序员看了一眼田地，说：“看起来要十分钟，但我觉得十五分钟应该够了。” 资深程序员冷笑了一声。<br>菜鸟程序员出发了，但只过了一会，地雷爆炸了，炸出了巨大的洞。这下他必须偏移预定的路线，原路返回，反复尝试穿过田地。最后他花了两天到达目的地，到的时候颤颤发抖，还受了伤。<br>资深程序员一出发就匍匐前进，仔细地拍打地面，寻找地雷，只有在安全的时候才前进。他在一天的时间内小心谨慎地缓慢爬过了这片地，只触发了几个地雷。<br>大神程序员出发之后径直穿过了田地，十分果断。他只用了十分钟就到了另一边。<br>“你是怎么做到的？”另外两个人问道，“那些地雷怎么没有伤到你？”<br>“很简单，”他回答道，“我最初就没有埋地雷。”</p>
+</blockquote>
+<p>如何才能不给自己埋雷？我想，等我写了十年代码，再回来回答这个问题，应该就可以答上来了吧。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/05/06/some-thoughts-on-front-end-developing/" data-id="cm8bcxsss008vdjlee8oz3e0g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/05/28/geo-location-coords-transform/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    电子地图地理坐标系统及相关算法的JavaScript实现
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">NodeJS+Express+MySQL开发小记(1)</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

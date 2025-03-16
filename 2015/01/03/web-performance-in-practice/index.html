@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Web前端性能优化实践 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="摘要： 本文记录了笔者所参与的一个网站平台开发中所采取的Web前端性能优化技术，对优化前后的性能进行分析对比，表明了Web前端性能优化的有效性和必要性。由于水平有限，针对该网站所作的测试肯定存在不科学、不合理的地方，不当之处请谅解。本文仅供相关技术参考之用。 关键字： Web前端；性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端性能优化实践">
+<meta property="og:url" content="https://borninsummer.com/2015/01/03/web-performance-in-practice/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="摘要： 本文记录了笔者所参与的一个网站平台开发中所采取的Web前端性能优化技术，对优化前后的性能进行分析对比，表明了Web前端性能优化的有效性和必要性。由于水平有限，针对该网站所作的测试肯定存在不科学、不合理的地方，不当之处请谅解。本文仅供相关技术参考之用。 关键字： Web前端；性能优化">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2015/01/pic_1.png">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2015/01/pic_dns.jpg">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/2015/01/pic_3.png">
+<meta property="article:published_time" content="2015-01-03T13:51:46.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.152Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Web性能优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/web_fe/2015/01/pic_1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-web-performance-in-practice" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Web前端性能优化实践
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/01/03/web-performance-in-practice/">
+            <time datetime="2015-01-03T13:51:46.000Z" itemprop="datePublished">2015-01-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag">Web性能优化</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1. 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%89%8D%E7%9A%84%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2. 前端性能优化前的情况分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Chrome-Network%E7%80%91%E5%B8%83%E5%9B%BE%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">2.1  Chrome Network瀑布图分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-YSlow%E8%AF%84%E7%BA%A7"><span class="toc-number">2.2.</span> <span class="toc-text">2.2  YSlow评级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%87%87%E5%8F%96%E7%9A%84%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">3. 采取的前端性能优化技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%90%AFGzip%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 服务器开启Gzip压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BD%BF%E7%94%A8GruntJS%E5%8E%8B%E7%BC%A9%E5%90%88%E5%B9%B6%E7%BB%84%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 使用GruntJS压缩合并组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.3.</span> <span class="toc-text">3.3  图片压缩与拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E7%9A%84%E9%80%89%E5%8F%96"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1  图片格式的选取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2  图片压缩方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-%E5%9B%BE%E7%89%87%E6%8B%BC%E6%8E%A5%EF%BC%9ACSS-Sprites"><span class="toc-number">3.3.3.</span> <span class="toc-text">3.3.3  图片拼接：CSS Sprites</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%B7%BB%E5%8A%A0Expires%E5%A4%B4"><span class="toc-number">3.4.</span> <span class="toc-text">3.4  添加Expires头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E7%BC%A9%E7%9F%ADDNS%E6%9F%A5%E6%89%BE%E6%97%B6%E9%97%B4"><span class="toc-number">3.5.</span> <span class="toc-text">3.5  缩短DNS查找时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF"><span class="toc-number">3.6.</span> <span class="toc-text">3.6  其他技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%BB%93%E6%9E%9C%E8%AF%84%E4%BC%B0"><span class="toc-number">4.</span> <span class="toc-text">4. 前端性能优化结果评估</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%A1%B5%E9%9D%A2%E4%BD%93%E7%A7%AF%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 页面体积与加载时间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E9%A1%B5%E9%9D%A2%E4%BD%93%E7%A7%AF"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1 页面体积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2 页面加载时间</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">5.</span> <span class="toc-text">5. 总结与展望</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E8%AF%A6%E8%A7%A3Use-cookie-free-domains"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 详解Use cookie-free domains</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
+            </div>
+            <p>摘要： 本文记录了笔者所参与的一个网站平台开发中所采取的Web前端性能优化技术，对优化前后的性能进行分析对比，表明了Web前端性能优化的有效性和必要性。由于水平有限，针对该网站所作的测试肯定存在不科学、不合理的地方，不当之处请谅解。本文仅供相关技术参考之用。</p>
+<p>关键字： Web前端；性能优化</p>
+<a id="more"></a>
+
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><p>Steve Souders（2008）<sup>[1]</sup> 提出的14条针对网站前端的性能优化技术，让开发者意识到网站的性能并不单单是在服务器端，前端的性能优化也是极其重要的。</p>
+<blockquote>
+<p>“如果我们可以将后端响应时间缩短一半，整体响应时间只能减少5%<del>10%；而如果关注前端性能，同样是将其响应时间减少一半，则整体响应时间可以减少40%</del>45%。”</p>
+</blockquote>
+<h2 id="2-前端性能优化前的情况分析"><a href="#2-前端性能优化前的情况分析" class="headerlink" title="2. 前端性能优化前的情况分析"></a>2. 前端性能优化前的情况分析</h2><h3 id="2-1-Chrome-Network瀑布图分析"><a href="#2-1-Chrome-Network瀑布图分析" class="headerlink" title="2.1  Chrome Network瀑布图分析"></a>2.1  Chrome Network瀑布图分析</h3><p>开始性能优化之前，网站首次加载main.jsp时，共计加载了25个脚本文件、10个样式表文件以及46张图片，页面的总体积达到3.3MB（如图1所示）。公网10Mb带宽、无缓存情况下，页面完全加载所需时间为30s左右。同样的网络环境下，百度地图、淘宝网等典型网站的加载时间则分别为2s、7.75s（网站与百度地图的网站类型更为相近，之后的对比将主要针对百度地图）。</p>
+<figure style="text-align: center;">
+<img src="/images/blog/web_fe/2015/01/pic_1.png">
+<figurecaption>图1. 各网站静态资源加载对比（重点比较脚本、样式表）</figurecaption>
+</figure>
+
+
+<p>图 1是针对 <a href="http://map.baidu.com/" target="_blank">百度地图</a>、<a href="http://www.tmall.com/" target="_blank">天猫商城</a> 的测试结果（2014年12月19日）。由该图可以看出，网站存在两个突出的问题：</p>
+<ul>
+<li>文件体积太大；</li>
+<li>脚本、样式表请求数太多。</li>
+</ul>
+<h3 id="2-2-YSlow评级"><a href="#2-2-YSlow评级" class="headerlink" title="2.2  YSlow评级"></a>2.2  YSlow评级</h3><p>用Chrome浏览器的网络模块进行人工观察与分析，难免会有效率低下、分析不全面的问题。因此应当使用自动化的工具进行更深入的分析。</p>
+<p>YSlow是雅虎公司开发的一个对网站前端性能进行分析的插件，最初作为Firefox浏览器的插件发布，后来也陆续有了Chrome等浏览器的插件。这里使用Firefox下的YSlow插件对指挥旅游首页性能进行分析，评级结果：优化之前的网站的评级，得分为71，评级C。而百度地图、天猫商城的得分、评级则分别是87 B、77 C。</p>
+<p>在23个评级规则中，有4条未能达到A或B级（A意味着性能最优，F意味着有必要进行深入优化），它们应作为网站前端性能优化的主要入手点，分别是：<br>① F：减少HTTP请求次数<br>② C：使用内容分发网络（CDN）<br>③ F：添加较长的Expires头<br>④ F：使用gzip压缩组件<br>⑤ E：压缩JavaScript和CSS<br>⑥ F：Use cookie-free domains，使用无cookie的域名</p>
+<h2 id="3-采取的前端性能优化技术"><a href="#3-采取的前端性能优化技术" class="headerlink" title="3. 采取的前端性能优化技术"></a>3. 采取的前端性能优化技术</h2><h3 id="3-1-服务器开启Gzip压缩"><a href="#3-1-服务器开启Gzip压缩" class="headerlink" title="3.1 服务器开启Gzip压缩"></a>3.1 服务器开启Gzip压缩</h3><p>Gzip最早由Jean-loup Gailly和Mark Adler创建，用于UNIX系统的文件压缩。后来成为Internet上数据压缩的常见格式。绝大多数现代浏览器都支持Gzip格式（体现在浏览器发送的HTTP请求头部的字段<code>Accept-Encoding</code>中）。一般来说，开启Gzip压缩之后，至少可以将数据传输体积减少50%，是加速网站的首要工作。</p>
+<p>项目所采用的web服务器为tomcat，其开启Gzip压缩服务的方法如下。</p>
+<p>在<code>&#123;tomcat_root&#125;/confrver.xml</code>文件中的<code>&lt;Connector /&gt;</code>中添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compression=&quot;on&quot;</span><br><span class="line">compressionMinSize=&quot;2048&quot;</span><br><span class="line">noCompressionUserAgents=&quot;gozilla,traviata&quot; </span><br><span class="line">compressableMimeType=&quot;textml,text/xml,text/javascript,text/css,text/plain, application/json&quot;</span><br></pre></td></tr></table></figure>
+
+<p>开启成功之后，网站的HTTP响应头部中会使用<code>Content-Encoding</code>来确认响应已经被压缩。</p>
+<p>Gzip压缩对网站性能的提升效果是很明显的，例如jquery-1.8.3.min.js的原始体积为91.4KB，Gzip压缩后的体积为33.4KB，压缩率（压缩后体积与压缩前体积之比）为36.5%；登录页面加载的全部文本资源大小为238KB，通过Gzip压缩，实际的传输体积仅为55KB，压缩率达到了23%。</p>
+<h3 id="3-2-使用GruntJS压缩合并组件"><a href="#3-2-使用GruntJS压缩合并组件" class="headerlink" title="3.2 使用GruntJS压缩合并组件"></a>3.2 使用GruntJS压缩合并组件</h3><p>合并与压缩组件主要针对的是网站的JavaScript脚本与CSS样式表。通过合并文件，减少HTTP请求次数，然后对文件进行压缩以减少文件体积。前端开发中，可以使用GruntJS工具，使合并与压缩的工作更加自动化。</p>
+<p>Grunt3是基于NodeJS的一个自动化压缩、合并、测试等构建工具，在安装Node环境后，通过npm进行安装。其相应的任务文件（Gruntfile.js）与依赖包应当放在项目的WebRoot目录下，并且添加到版本控制中。要执行压缩与合并任务，需要获取uglify、cssmin等组件。下面简介Grunt的使用方法。</p>
+<p>(1). 安装NodeJS<br>(2). 安装 Grunt的CLI<br>    全局安装，可能需要管理员权限：<code>npm install -g grunt-cli</code><br>(3). 在WebRoot目录下新建package.json，然后执行<code>npm install</code>命令，package.json文件内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;ZHLY&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;grunt&quot;: &quot;~0.4.1&quot;,</span><br><span class="line">    &quot;grunt-contrib-uglify&quot;: &quot;~0.2.2&quot;,</span><br><span class="line">    &quot;grunt-contrib-cssmin&quot;: &quot;~0.5.0&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(4). 新建Gruntfile.js，在里面配置要执行的任务（合并、压缩等）。如下配置Gruntfile.js文件（代码只为示意，略去详细的文件名）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function(grunt) &#123;</span><br><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  pkg: grunt.file.readJSON(&#x27;package.json&#x27;),</span><br><span class="line">  uglify: &#123;</span><br><span class="line">    options: &#123;</span><br><span class="line">      banner: &#x27;/*压缩文件声明文本...*/\n&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    build:&#123;</span><br><span class="line">     files:[&#123;</span><br><span class="line">      src: [&#x27;a.js&#x27;, &#x27;b.js&#x27;, &#x27;c.js&#x27;],</span><br><span class="line">      dest: &#x27;abc.min.js&#x27;</span><br><span class="line">     &#125;,&#123;</span><br><span class="line">      src: [&#x27;d.js&#x27;],</span><br><span class="line">      dest: &#x27;d.min.js&#x27;</span><br><span class="line">     &#125;]</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  cssmin: &#123;</span><br><span class="line">   options: &#123;</span><br><span class="line">     keepSpecialComments: 0</span><br><span class="line">   &#125;,</span><br><span class="line">   compress: &#123;</span><br><span class="line">     files: [&#123;</span><br><span class="line">       src: [&quot;a.css&quot;, &quot;b.css&quot;],</span><br><span class="line">       dest: &#x27;ab.min.css&#x27;</span><br><span class="line">     &#125;,&#123;</span><br><span class="line">       src: [&#x27;c.css&#x27;],</span><br><span class="line">       dest: &#x27;c.min.css&#x27;</span><br><span class="line">     &#125;]</span><br><span class="line">    ]</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">  /* 加载任务插件 */</span><br><span class="line">grunt.loadNpmTasks(&#x27;grunt-contrib-uglify&#x27;);</span><br><span class="line">grunt.loadNpmTasks(&#x27;grunt-contrib-cssmin&#x27;);</span><br><span class="line"></span><br><span class="line">  /* 默认被执行的任务列表 */</span><br><span class="line">  grunt.registerTask(&#x27;default&#x27;, [&#x27;uglify&#x27;, &#x27;cssmin&#x27;]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>(5)在Gruntfile.js的同一目录下，运行<code>grunt</code>命令，就能得到想要的压缩文件。记得将项目中相应的资源引用更改为压缩后的文件名即可。<br>要注意的是，合并后的压缩文件的加载顺序应当与未压缩时的加载顺序一致，以避免出现例类似<code>undefined</code>的问题。</p>
+<h3 id="3-3-图片压缩与拼接"><a href="#3-3-图片压缩与拼接" class="headerlink" title="3.3  图片压缩与拼接"></a>3.3  图片压缩与拼接</h3><h4 id="3-3-1-图片格式的选取"><a href="#3-3-1-图片格式的选取" class="headerlink" title="3.3.1  图片格式的选取"></a>3.3.1  图片格式的选取</h4><p>网站登录页面的背景图按照1920×1080像素的尺寸进行设计。最初使用的格式为PNG，体积为2.1MB，有线和无线端的下载都很慢。更改为PNG-8后，体积减到1MB，但加载速度仍然很慢。最后更改为JPEG格式，输出质量为80%，图片的体积减小到260KB左右，图片的下载速度明显改善。</p>
+<p>PNG、PNG-8、PNG-24以及JPEG格式图片的主要区别如下：</p>
+<p>PNG格式适合对透明度有要求的情形；PNG-8处理不了复杂色域下的渐变，PNG-24可以几乎不失真地保留渐变。但是对于色域很广、对透明度没有要求的图片（准确地说是照片），应该毫不犹豫地采用JPEG格式。</p>
+<p>因此，大背景图应当首选JPEG格式，而页面中的应用图标则应当使用PNG格式（或者PNG-24）。GIF格式适用于呈现动图，但因其色域窄、质量差，所以其他静态图都尽量使用PNG而非GIF。</p>
+<h4 id="3-3-2-图片压缩方法"><a href="#3-3-2-图片压缩方法" class="headerlink" title="3.3.2  图片压缩方法"></a>3.3.2  图片压缩方法</h4><p>使用Photoshop自带图片压缩的选项，菜单为：文件–存储为Web所用格式。一般而言，JPEG选择输出质量为70~80%可以保证视觉上几乎没有差异，当然要因图片而异，有时输出质量为原图的30%也可以保证较高的视觉质量。<br>还有一个专门对JPEG格式的图片进行有损压缩的工具：JPEGmini <sup>[4]</sup>。</p>
+<h4 id="3-3-3-图片拼接：CSS-Sprites"><a href="#3-3-3-图片拼接：CSS-Sprites" class="headerlink" title="3.3.3  图片拼接：CSS Sprites"></a>3.3.3  图片拼接：CSS Sprites</h4><p>CSS Sprites（CSS图片拼接，或CSS精灵图）利用的是CSS <code>backgrond-position</code>属性的特点：可以自定义背景图片相对于容器视口的坐标位置。使用这种技术，可以将许多小图片放到同一张图片里面，从而减少了HTTP请求，提高网页加载速度。<br>代码示意： <code>background-position: x y;</code></p>
+<h3 id="3-4-添加Expires头"><a href="#3-4-添加Expires头" class="headerlink" title="3.4  添加Expires头"></a>3.4  添加Expires头</h3><p>现代浏览器通常会默认使用缓存来减少HTTP请求的数量，并减小HTTP响应的大小，使Web页面加载得更快。Web服务器使用<code>Expires</code>头来告诉浏览器它可以使用一个组件的当前副本，直到指定的时间为止。这样在第二次试图请求某个资源时，便可能从浏览器的缓存中读取，避免了网络传输，从而加快页面加载速度。</p>
+<p>根据Apache Tomcat文档的说明，在 <code>&#123;tomcat_root&#125;/conf/web.xml</code> 文件中的相应位置添加如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>ExpiresFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.apache.catalina.filters.ExpiresFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresByType image<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 1 month<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresByType text/css<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 1 week<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>ExpiresFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>REQUEST<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以为图像（<code>image</code>）、样式表（<code>text/css</code>）、脚本（<code>application/javascript</code>）等静态文件的HTTP请求响应头添加 <code>Expires</code>和<code>Cache-Control: max-age=</code> 头信息。</p>
+<p>过期时间的选择应当依据项目开发进度、网站更新频率、用户使用频率等来决定。例如，图片通常是很少进行修改的，而脚本、样式表的更新则较为频繁，考虑到是在开发阶段，因此图片的过期时间设为1个月，而脚本、样式表的过期时间设为1周。</p>
+<h3 id="3-5-缩短DNS查找时间"><a href="#3-5-缩短DNS查找时间" class="headerlink" title="3.5  缩短DNS查找时间"></a>3.5  缩短DNS查找时间</h3><figure  style="text-align: center;">
+<img src="/images/blog/web_fe/2015/01/pic_dns.jpg">
+<figurecaption>图3. DNS解析过程示意图</figurecaption>
+</figure>
+
+<p>现代浏览器通常具有DNS预解析（<code>DNS Prefetch</code>）功能，即加载网页后对页面中的超链接进行DNS解析并将结果缓存在浏览器中，便于用户点击时减少DNS解析时间（目前的DNS解析时间通常为200ms）。但是对于应用型的Web页面（或称单页面应用）而言，对页面内的超链接进行DNS预解析并无太大意义，因为几乎没有超链接。重要的是第一次执行DNS解析时的性能。</p>
+<p>域名管理中的TTL（Time to Live）字段用于高速远程域名服务器可以缓存本记录多长时间。根据Andrew等人（2012）的建议，如果服务器的IP非常稳定（例如多年不变），那么将TTL值设为1天可能是安全的；而对于波动比较大的信息，几秒钟或一分钟后清除掉记录的做法或许更安全。</p>
+<p>在购买到网站域名后，最初是将其TTL设为10分钟。这样在经过较短的时间（几个小时）后，该域名就已经被大部分的DNS服务器记录下来了。现在考虑到本系统的IP为固定IP，主机也在自己的机房内，而且没有备份，因此将TTL设大一点是可以的。目前将TTL值设为了1小时，可以使某个用户在1个小时内再次访问或请求资源时不必再进行完整的DNS解析，而是使用缓存结果。</p>
+<h3 id="3-6-其他技术"><a href="#3-6-其他技术" class="headerlink" title="3.6  其他技术"></a>3.6  其他技术</h3><p>其他优化技术包括目前已成为业界实际标准的做法，例如：</p>
+<p>① 将脚本引用置于页面底部；<br>② 将样式表引用置于页面顶部；<br>③ 不在页面中缩放图片；<br>④ 避免CSS表达式；<br>⑤ Ajax请求尽可能使用GET方式；<br>等等。</p>
+<p>这些在此不做详细分析。</p>
+<h2 id="4-前端性能优化结果评估"><a href="#4-前端性能优化结果评估" class="headerlink" title="4. 前端性能优化结果评估"></a>4. 前端性能优化结果评估</h2><h3 id="4-1-页面体积与加载时间"><a href="#4-1-页面体积与加载时间" class="headerlink" title="4.1 页面体积与加载时间"></a>4.1 页面体积与加载时间</h3><h4 id="4-1-1-页面体积"><a href="#4-1-1-页面体积" class="headerlink" title="4.1.1 页面体积"></a>4.1.1 页面体积</h4><p>浏览器视口分辨率：1920×746像素。图片的优化只是针对HTTP请求次数，其前后尺寸变化不大，因此暂不考虑优化前后的差别。JavaScript请求数量“*+4”表示其中4个请求来自其他域（主要是搜狗地图服务）。</p>
+<p>优化前后文件体积压缩率 = 优化后的体积÷优化前的体积</p>
+<table class="table table-bordered"><tbody><tr><th rowspan="2"></th><th colspan="2">优化前</th><th colspan="2">Grunt之后</th><th colspan="2">Gzip之后</th><th rowspan="2">优化前后文件体积压缩率</th></tr><tr><td>请求数</td><td>体积</td><td>请求数</td><td>体积</td><td>请求数</td><td>体积</td></tr><tr><td>JS</td><td>21+4</td><td>2600 KB</td><td>8+5</td><td>1037 KB</td><td>8+5</td><td>375 KB</td><td>14.4%</td></tr><tr><td>CSS</td><td>11</td><td>464 KB</td><td>10</td><td>382 KB</td><td>10</td><td>80.4 KB</td><td>17.3%</td></tr><tr><td>Total</td><td>110</td><td>3300 KB</td><td>75</td><td>1903 KB</td><td>75</td><td>791 KB</td><td>24.0%</td></tr></tbody></table>
+
+<p>在这里，压缩后的JS文件平均大小为80KB，CSS文件的平均大小为38.2KB。</p>
+<p>文件压缩之后究竟应该多大才算合适？目前也无定论，只能根据经验来判断。合并后的文件如果太大，则对单个文件的下载、解析、执行的耗时就越长（当然，随着浏览器能力的不断提升，这个时间相比于网络传输时间仍是小量）。<a href="http://book.douban.com/subject/25856314/" target="_blank">《Web性能权威指南》</a>里提到：</p>
+<blockquote>
+<p>谷歌PageSpeed团队的测试表明，30~50KB（压缩后）是每个JavaScript文件大小的合适范围：既大道了能够减少小文件带来的网络延迟，还能确保递增及分层式的执行。<br>page 176.</p>
+</blockquote>
+<h4 id="4-1-2-页面加载时间"><a href="#4-1-2-页面加载时间" class="headerlink" title="4.1.2 页面加载时间"></a>4.1.2 页面加载时间</h4><p>10Mb带宽下，操作系统Windows 8 x64，内存8GB，CPU Intel i5，屏幕分辨率1366×768像素，使用Chrome浏览器（主版本号38）于2014-12-25 21:08至21:45，每隔1~2分钟对网站主页面/main.jsp进行无缓存加载时间测试（每次刷新页面之前，都先执行清空浏览器缓存的操作）；同时，也对第二次加载的时间进行了记录，以作为有无缓存的性能对比。详细结果如图 4所示。由图可见，经过优化后，页面无缓存的情况下完全加载时间为3.31秒，比优化之前减少了一个数量级，加载速度有很明显的提升。</p>
+<figure  style="text-align: center;">
+<img src="/images/blog/web_fe/2015/01/pic_3.png">
+<figurecaption>图4. 网站优化前后页面加载时间对比</figurecaption>
+</figure>
+
+<p>###4.2  YSlow评级</p>
+<p>在实施了上面的优化措施之后，用YSlow工具对网站主页面进行评级，得分80，等级为C，得分为F的项目由6降为3个，与优化之前相比有所提高。<br>YSlow给出的结果表明网站仍存在可以继续优化的方面，具体见下节。</p>
+<h2 id="5-总结与展望"><a href="#5-总结与展望" class="headerlink" title="5. 总结与展望"></a>5. 总结与展望</h2><p>网站前端性能优化中最首要的原则是：优先针对瓶颈进行优化。所谓瓶颈，乃是制约性能的最关键因素。对于网站，其第一瓶颈为Gzip压缩未开启。开启压缩之后的瓶颈，则是组件未压缩。对于中小型网站来说，解决了前几个瓶颈问题，性能问题也就解决了一大半。</p>
+<p>YSlow评级仍为3个方面给出F评分：<br>① F：减少HTTP请求次数；<br>② F：添加较长的Expires头；<br>③ F：Use cookie-free domains，使用无cookie的域名。</p>
+<p>其中，①是仍需继续优化的方面；至于②，由于使用的CDN和搜狗地图服务对其资源并未添加Expires头，导致本项评分较低，但本域下的资源的Expires头都已经符号符合其评判标准了；而对于②，由于目前服务器只申请了一个域名，静态资源大都从该域名下获取，导致评分较低。这些都是未来可以进一步开展优化的方面。</p>
+<h3 id="5-1-详解Use-cookie-free-domains"><a href="#5-1-详解Use-cookie-free-domains" class="headerlink" title="5.1 详解Use cookie-free domains"></a>5.1 详解Use cookie-free domains</h3><blockquote>
+<p>HTTP 1.0增加了请求和响应头部，以便双方能够交换有关请求和响应的元信息。最终，HTTP 1.1把这种格式变成了标准：服务器和客户端都可以轻松扩展首部，而且始终以纯文本形式发送，以保证与之前的HTTP版本的兼容。<br>今天，每个浏览器发起的HTTP请求，都会携带额外500<del>800字节的HTTP元数据：用户代理字符串、很少改变的接收和传输首部、缓存指令等等。有时候，500</del>800字节都说少了，因为没有包括最大的一块：HTTP cookie。现代应用经常通过cookie进行会话管理、记录个性选项或者完成分析。综合到一起，所有这些未经压缩的HTTP元数据经常会给每个HTTP请求增加几千字节的协议开销。<br>——《Web性能权威指南》</p>
+</blockquote>
+<p>对于本项目这种需要用户名、密码验证登陆的网站，观察其主域下所有资源的请求头（包括document、css、javascript、images等），会发现全部的HTTP请求头部（Request Headers）中都把该域下的Cookie给发送过去了，即使服务器不需要。而且这个cookie还是未经任何压缩的。</p>
+<blockquote>
+<p>浏览器执行“每个服务端最大连接数”的限制是根据URL上的主机名，而不是解析出来的IP地址。<br>……<br>这对那些想把内容分配到多个域的人来说是个好消息，他们不必额外部署服务器，而是为新域建立一条CNAME记录。CNAME仅仅是域名的一个别名。即使域名都指向同一个服务器，浏览器依旧会为每个主机名开放最大连接数。<br>——《高性能网站建设进阶指南》</p>
+</blockquote>
+<p>目前很多网站的常见做法是分离图片，即让网站的文本资源从域1下载的同时，让所需的全部图片资源从域2开始并行下载。</p>
+<p>此技术的具体实施方法：基本思路是在域名解析中添加CNAME记录，然后在工程中将资源分离；具体如何写代码，【待研究】。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]. Steve Souders. High Performance Web Sites [M].<br>[2]. YSlow官网，<a target="_blank" rel="noopener" href="http://yslow.org/">http://yslow.org/</a><br>[3]. Grunt中文网，<a target="_blank" rel="noopener" href="http://www.gruntjs.net/">http://www.gruntjs.net/</a><br>[4]. JPEGmini官网，<a target="_blank" rel="noopener" href="http://www.jpegmini.com/">http://www.jpegmini.com/</a><br>[5]. Andrew S. Tanenbaum, David J. Wetherall著, 严伟, 潘爱民 译. 计算机网络（第五版）[M]. 北京：清华大学出版社, 2012.<br>[6]. Ilya Grigorik. High Performance Browser Networking [M]. 李松峰 译. Web性能权威指南 [M]. 北京：人民邮电出版社, 2014.<br>[7]. Steve Souders. Even faster Web Sites: Performance Best Practice for Web Developers [M]. 口碑网前端团队 译. 高性能网站建设进阶指南, 北京: 电子工业出版社, 2010.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/01/03/web-performance-in-practice/" data-id="cm8bcxssq007zdjled0kz4kbz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/01/19/reading-styling-with-css/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《CSS设计指南（第3版）》笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/01/01/farewell-2014-hello-2015/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Farewell, 2014. Hello, 2015.</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

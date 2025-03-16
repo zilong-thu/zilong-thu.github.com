@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>一个自定制的弹出-确认框插件 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这里记录几段开发一个要求输入6位PIN码、验证输入有效性、返回该PIN码的弹出确认框的代码。也提供了纯JS插件开发的一种范式（凭自己的感觉与目前对JS的理解来做的）。也许有不足之处，仅供参考。 设计时对自己提的要求有：  不依赖任何JS库，使用纯JS。 不使用样式表。虽然不是好习惯，但是对于小插件，只引用一个脚本便得到想要的效果，足矣。 保留一定的跨浏览器能力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个自定制的弹出-确认框插件">
+<meta property="og:url" content="https://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这里记录几段开发一个要求输入6位PIN码、验证输入有效性、返回该PIN码的弹出确认框的代码。也提供了纯JS插件开发的一种范式（凭自己的感觉与目前对JS的理解来做的）。也许有不足之处，仅供参考。 设计时对自己提的要求有：  不依赖任何JS库，使用纯JS。 不使用样式表。虽然不是好习惯，但是对于小插件，只引用一个脚本便得到想要的效果，足矣。 保留一定的跨浏览器能力。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-11-17T11:54:15.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.150Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-a-pop-confirm-ui-plugin" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            一个自定制的弹出-确认框插件
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/11/17/a-pop-confirm-ui-plugin/">
+            <time datetime="2014-11-17T11:54:15.000Z" itemprop="datePublished">2014-11-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>这里记录几段开发一个要求输入6位PIN码、验证输入有效性、返回该PIN码的弹出确认框的代码。也提供了纯JS插件开发的一种范式（凭自己的感觉与目前对JS的理解来做的）。也许有不足之处，仅供参考。</p>
+<p>设计时对自己提的要求有：</p>
+<ol>
+<li>不依赖任何JS库，使用纯JS。</li>
+<li>不使用样式表。虽然不是好习惯，但是对于小插件，只引用一个脚本便得到想要的效果，足矣。</li>
+<li>保留一定的跨浏览器能力。</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 说明 @wzl</span><br><span class="line"> * 本插件最后会提供一个对象，可以挂载到window下或者其他对象下</span><br><span class="line"> * 本例中，该对象以window.popConfirm为入口访问</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">window.popConfirm = (function()&#123;</span><br><span class="line">    var doc = document;</span><br><span class="line"></span><br><span class="line">    var _pop = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/* 定义EventUtil对象，用于提供对事件相关的统一处理方法 */</span><br><span class="line">    var EventUtil = &#123;&#125;;</span><br><span class="line">    EventUtil.getEvent = function (event) &#123;</span><br><span class="line">        return event? event : window.event;</span><br><span class="line">    &#125;;</span><br><span class="line">    EventUtil.getTarget = function(event)&#123;</span><br><span class="line">        return event.target || event.srcElement;</span><br><span class="line">    &#125;;</span><br><span class="line">    EventUtil.preventDefault = function(event)&#123;</span><br><span class="line">        if(event.preventDefault)&#123;</span><br><span class="line">            event.preventDefault();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            event.returnValue = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    EventUtil.stopPropagation = function(event)&#123;</span><br><span class="line">        if (event.stopPropagation) &#123;</span><br><span class="line">            event.stopPropagation();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            event.cancelBubble = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    EventUtil.addHandler = function(element, type, handler)&#123;</span><br><span class="line">        if (element.addEventListener) &#123;</span><br><span class="line">            element.addEventListener(type, handler, false);</span><br><span class="line">        &#125; else if (element.attachEvent)&#123;</span><br><span class="line">            element.attachEvent(&#x27;on&#x27;+type, handler);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            element[&#x27;on&#x27;+type] = handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* UI部件的生成与样式 */</span><br><span class="line">    var domPopContainer = doc.createElement(&#x27;div&#x27;);</span><br><span class="line">    domPopContainer.style.cssText = &#x27;display:none; z-index:8000; position:fixed; top:0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.5);transition: display 0.3s;&#x27;;</span><br><span class="line">    domPopContainer.name = &#x27;popConfirm&#x27;;</span><br><span class="line">    doc.body.appendChild(domPopContainer);</span><br><span class="line"></span><br><span class="line">    var text_normal = &#x27;&lt;span style=&quot;color: #666;&quot;&gt;PIN由6位数字组成&lt;/span&gt;&#x27;;</span><br><span class="line">    var text_warning = &#x27;请输入正确的6位数字PIN码&#x27;;</span><br><span class="line">    var divstr = &#x27;&lt;div name=&quot;confirmForm&quot; style=&quot;margin: 200px auto;width:320px; height: 150px;font-size: 16px; line-height: 1; border-radius: 5px;background-color: #fff; padding: 15px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);&quot;&gt;&#x27;+</span><br><span class="line">                     &#x27;&lt;div style=&quot;text-align: center;padding-top:13px;&quot;&gt;&lt;label for=&quot;_pop-input-PIN&quot; style=&quot;width:40px;padding-right:10px;&quot;&gt; PIN &lt;/label&gt;&#x27;+</span><br><span class="line">                         &#x27;&lt;input id=&quot;_pop-input-PIN&quot; type=&quot;password&quot; maxlength=&quot;6&quot; style=&quot;width: 210px; padding: 5px;border-radius: 3px;border: 1px solid #ccc;&quot;/&gt;&lt;/div&gt;&#x27;+</span><br><span class="line">                     &#x27;&lt;div id=&quot;_pop-div-hint&quot; style=&quot;height:24px;padding:10px 0 4px 62px;font-size:12px;&quot;&gt;&#x27;+ text_normal +&#x27;&lt;/div&gt;&#x27;+</span><br><span class="line">                     &#x27;&lt;div style=&quot;text-align: center;padding-top:15px;&quot;&gt;&lt;button name=&quot;confirmButton&quot; style=&quot;height: 36px; width: 90px; border-radius:5px; background-color: #5cb85c; border: 1px solid #4cae4c;&quot;&gt;确定&lt;/button&gt;&lt;/div&gt;&#x27;+</span><br><span class="line">                 &#x27;&lt;/div&gt;&#x27;;</span><br><span class="line">    domPopContainer.innerHTML = divstr;</span><br><span class="line">    var domInput = doc.getElementById(&#x27;_pop-input-PIN&#x27;);</span><br><span class="line">    var domHint = doc.getElementById(&#x27;_pop-div-hint&#x27;);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">/* 下面是对象的方法 */</span><br><span class="line">    _pop.show = function()&#123;</span><br><span class="line">        domPopContainer.style.setProperty(&#x27;display&#x27;, &#x27;block&#x27;);</span><br><span class="line">    &#125;;</span><br><span class="line">    _pop.hide = function()&#123;</span><br><span class="line">        domPopContainer.style.setProperty(&#x27;display&#x27;, &#x27;none&#x27;);</span><br><span class="line">    &#125;;</span><br><span class="line">    _pop.showHint = function(html)&#123;</span><br><span class="line">        domHint.innerHTML = html || &#x27;&#x27;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    /* 输入的pin是个字符串 */</span><br><span class="line">    _pop.validatePIN = function(pin)&#123;</span><br><span class="line">        if (pin.length!==6) &#123;</span><br><span class="line">            _pop.showHint(&#x27;&lt;span style=&quot;color: #f00;&quot;&gt;不足6个数字！&lt;/span&gt;&#x27;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        var pattern=/^[0-9]&#123;1,20&#125;$/</span><br><span class="line">        var isAllNumber = pattern.test(pin);</span><br><span class="line">        if(!isAllNumber)&#123;</span><br><span class="line">            _pop.showHint(&#x27;&lt;span style=&quot;color: #f00;&quot;&gt;必须全部是数字！&lt;/span&gt;&#x27;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;;</span><br><span class="line">    _pop.getPIN = function()&#123;</span><br><span class="line">        var val = domInput.value;</span><br><span class="line">        _pop.PIN = val;</span><br><span class="line">        return val;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 对部件进行事件委托 */</span><br><span class="line">    var onConfirmBtnClick = function()&#123;</span><br><span class="line">        var pin = _pop.getPIN();</span><br><span class="line">        if(_pop.validatePIN(pin))&#123;</span><br><span class="line">            _pop.hide();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    EventUtil.addHandler(domPopContainer, &#x27;click&#x27;, function(event)&#123;</span><br><span class="line">        event = EventUtil.getEvent(event);</span><br><span class="line">        var target = EventUtil.getTarget(event);</span><br><span class="line"></span><br><span class="line">        var name = target.name;</span><br><span class="line">        switch(name)&#123;</span><br><span class="line">            case &#x27;popConfirm&#x27;:</span><br><span class="line">                /* 单击遮罩背景层，关闭弹出框 */</span><br><span class="line">                _pop.hide();</span><br><span class="line">            break;</span><br><span class="line"></span><br><span class="line">            case &#x27;confirmButton&#x27;:</span><br><span class="line">                onConfirmBtnClick();</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        EventUtil.stopPropagation(event);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    EventUtil.addHandler(domInput, &#x27;focus&#x27;, function(event)&#123;</span><br><span class="line">        _pop.showHint(text_normal);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    EventUtil.addHandler(domInput, &#x27;keydown&#x27;, function(event)&#123;</span><br><span class="line">        event = EventUtil.getEvent(event);</span><br><span class="line">        if (event.keyCode == 13) &#123;</span><br><span class="line">            onConfirmBtnClick();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return _pop;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/11/17/a-pop-confirm-ui-plugin/" data-id="cm8bcxssp007mdjle2krg9eqt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/24/compare-touch-and-click/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    在触摸设备上比较触摸事件与点击事件
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/11/16/interstellar/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《星际穿越》观感</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

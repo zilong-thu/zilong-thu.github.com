@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Koa Running On HTTP/2 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="HTTP2 概述翻译自 Hypertext Transfer Protocol Version 2 (HTTP&#x2F;2) 的简介：  HTTP&#x2F;2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Koa Running On HTTP&#x2F;2">
+<meta property="og:url" content="https://borninsummer.com/2017/03/20/koa-running-on-http2/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="HTTP2 概述翻译自 Hypertext Transfer Protocol Version 2 (HTTP&#x2F;2) 的简介：  HTTP&#x2F;2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression an">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-03-20T05:52:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.159Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="HTTP">
+<meta property="article:tag" content="Koa">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-koa-running-on-http2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Koa Running On HTTP/2
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/20/koa-running-on-http2/">
+            <time datetime="2017-03-20T05:52:00.000Z" itemprop="datePublished">2017-03-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/HTTP/" rel="tag">HTTP</a>, <a class="tag-link-link" href="/tags/Koa/" rel="tag">Koa</a>, <a class="tag-link-link" href="/tags/Node-js/" rel="tag">Node.js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP2-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">HTTP2 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPDY"><span class="toc-number">2.</span> <span class="toc-text">SPDY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Koa-2-SPDY"><span class="toc-number">3.</span> <span class="toc-text">Koa 2 + SPDY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6"><span class="toc-number">4.</span> <span class="toc-text">如何生成证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">实现一个简单的静态文件服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9C%B0%E5%9D%80"><span class="toc-number">6.</span> <span class="toc-text">代码地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E4%BD%BF%E7%94%A8%E4%BA%86-HTTP-2-%E6%8A%80%E6%9C%AF%E7%9A%84%E5%85%AC%E5%8F%B8"><span class="toc-number">7.</span> <span class="toc-text">当前使用了 HTTP&#x2F;2 技术的公司</span></a></li></ol>
+            </div>
+            <h2 id="HTTP2-概述"><a href="#HTTP2-概述" class="headerlink" title="HTTP2 概述"></a>HTTP2 概述</h2><p>翻译自 <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol Version 2 (HTTP/2)</a> 的简介：</p>
+<blockquote>
+<p>HTTP/2 enables a more efficient use of network resources and a reduced perception of latency by introducing header field compression and allowing multiple concurrent exchanges on the same connection.  It also introduces unsolicited push of representations from servers to clients.</p>
+<p>HTTP/2 可以提升对网络资源的使用效率，并且通过压缩头部、在同一个连接里多路复用，来减少网络等待时间。HTTP/2 还引入了服务器推送的技术。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h2><p>SPDY 是 HTTP/2 的前身，是目前使用应用最广泛的 HTTP/2 实现。</p>
+<blockquote>
+<p>SPDY（读作“SPeeDY”）是Google开发的基于TCP的传输层协议，用以最小化网络延迟，提升网络速度，优化用户的网络使用体验。SPDY并不是一种用于替代HTTP的协议，而是对HTTP协议的增强。新协议的功能包括数据流的多路复用、请求优先级以及HTTP报头压缩。</p>
+<p>—— <a target="_blank" rel="noopener" href="http://baike.baidu.com/item/SPDY?sefr=enterbtn">SPDY | 百度百科</a></p>
+</blockquote>
+<h2 id="Koa-2-SPDY"><a href="#Koa-2-SPDY" class="headerlink" title="Koa 2 + SPDY"></a>Koa 2 + SPDY</h2><p>这里的例子直接使用最新版本的 Koa 2，其要求使用 Node.js 至少 7.6 版本，我用的是 7.8。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># using Node.js@7.8.0</span><br><span class="line"></span><br><span class="line"># 使用的几个主要的包：</span><br><span class="line">  &quot;http2&quot;: &quot;^3.3.6&quot;,</span><br><span class="line">  &quot;koa&quot;: &quot;^2.2.0&quot;,</span><br><span class="line">  &quot;spdy&quot;: &quot;^3.4.4&quot;</span><br></pre></td></tr></table></figure>
+
+<p>改造的时候，思路也比较简单。koa 模块输出的是一个类，Koa，其有个原型方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># http.createServer 的参数是个函数 requestListener</span><br><span class="line"># requestListener的参数分别为 request、response</span><br><span class="line">listen() &#123;</span><br><span class="line">  debug(&#x27;listen&#x27;);</span><br><span class="line">  const server = http.createServer(this.callback());</span><br><span class="line">  return server.listen.apply(server, arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 其中，this.callback() 做的事情，是把所有的中间件，合并为一个中间件</span><br></pre></td></tr></table></figure>
+
+<p>那么，基于 HTTPS、SPDY、HTTP/2 的 koa app 只需要继承 Koa，重写 listen 方法即可。例如基于 SPDY 的 Koa 应用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">const Koa = require(&#x27;koa&#x27;);</span><br><span class="line">const spdy  = require(&#x27;spdy&#x27;);</span><br><span class="line">const options = require(&#x27;./keys&#x27;);  // 这里输出的是证书</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class KoaOnHttps extends Koa &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  listen() &#123;</span><br><span class="line">    const server = spdy.createServer(options, this.callback());</span><br><span class="line">    return server.listen.apply(server, arguments);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const app = new KoaOnHttps();</span><br><span class="line"></span><br><span class="line">// x-response-time</span><br><span class="line">app.use(async function (ctx, next) &#123;</span><br><span class="line">  const start = new Date();</span><br><span class="line"></span><br><span class="line">  await next();</span><br><span class="line"></span><br><span class="line">  const ms = new Date() - start;</span><br><span class="line">  ctx.set(&#x27;X-Response-Time&#x27;, `$&#123;ms&#125;ms`);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// logger</span><br><span class="line">app.use(async function (ctx, next) &#123;</span><br><span class="line">  const start = new Date();</span><br><span class="line"></span><br><span class="line">  await next();</span><br><span class="line"></span><br><span class="line">  const ms = new Date() - start;</span><br><span class="line">  console.log(`$&#123;ctx.method&#125; $&#123;ctx.url&#125; - $&#123;ms&#125;`);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何生成证书"><a href="#如何生成证书" class="headerlink" title="如何生成证书"></a>如何生成证书</h2><p>目前，Node.js 生态里无论是 SPDY，还是 HTTP2，都是基于 HTTPS 的。那么开发中需要自己配置签名和证书。参考一篇博客：<a target="_blank" rel="noopener" href="https://juejin.im/entry/57f3a546da2f60004f6eebbc">https://juejin.im/entry/57f3a546da2f60004f6eebbc</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir keys</span><br><span class="line">$ cd keys</span><br><span class="line">$ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 </span><br><span class="line">$ openssl rsa -passin pass:x -in server.pass.key -out server.key</span><br><span class="line">$ openssl req -new -key server.key -out server.csr</span><br><span class="line"># ...</span><br><span class="line"># 输入证书相关信息（随意填写）</span><br><span class="line"># ...</span><br><span class="line">$ openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt</span><br><span class="line">$ rm server.pass.key</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现一个简单的静态文件服务器"><a href="#实现一个简单的静态文件服务器" class="headerlink" title="实现一个简单的静态文件服务器"></a>实现一个简单的静态文件服务器</h2><ul>
+<li>资源类型</li>
+<li>处理404</li>
+</ul>
+<h2 id="代码地址"><a href="#代码地址" class="headerlink" title="代码地址"></a>代码地址</h2><h2 id="当前使用了-HTTP-2-技术的公司"><a href="#当前使用了-HTTP-2-技术的公司" class="headerlink" title="当前使用了 HTTP/2 技术的公司"></a>当前使用了 HTTP/2 技术的公司</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.taobao.com/">淘宝首页</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.upyun.com/">又拍云</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/03/20/koa-running-on-http2/" data-id="cm8bcxst000c6djle1wf4hz4z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/03/20/about-filesystem-case-sensitive/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    关于MacOS文件系统的文件名大小写问题
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/14/note-on-the-priciples-of-object-oriented-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《JavaScript面向对象精要》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

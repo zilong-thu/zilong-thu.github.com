@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>NodeJS+Express+MySQL开发小记(1) | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近使用NodeJS 0.12.0 + Express 4.12.2 + MySQL 5.6 来做一个完整的社区网站，纯属个人项目，网站内容暂不透露。如果自己能坚持下去（希望如此），那么在基本成型之后，会考虑开放源代码，并将网站上线运行。也许从此就可以赢娶白富美出任CEO登上人生巅峰了呢。 总而言之，现在要扩展自己的知识面。Aiming to be a Full-Stack Engineer! 这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS+Express+MySQL开发小记(1)">
+<meta property="og:url" content="https://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="最近使用NodeJS 0.12.0 + Express 4.12.2 + MySQL 5.6 来做一个完整的社区网站，纯属个人项目，网站内容暂不透露。如果自己能坚持下去（希望如此），那么在基本成型之后，会考虑开放源代码，并将网站上线运行。也许从此就可以赢娶白富美出任CEO登上人生巅峰了呢。 总而言之，现在要扩展自己的知识面。Aiming to be a Full-Stack Engineer! 这">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-04-14T15:40:56.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.153Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="NodeJS">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-notes-on-nodejs-express-mysql-and-promise" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            NodeJS+Express+MySQL开发小记(1)
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/04/14/notes-on-nodejs-express-mysql-and-promise/">
+            <time datetime="2015-04-14T15:40:56.000Z" itemprop="datePublished">2015-04-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/NodeJS/">NodeJS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/NodeJS/" rel="tag">NodeJS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%8C%85%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">项目的包描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Node%E4%B8%AD%E7%8B%AC%E7%AB%8B%E5%87%BAMySQL%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%A8%A1%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">在Node中独立出MySQL连接池模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EPromise"><span class="toc-number">3.</span> <span class="toc-text">关于Promise</span></a></li></ol>
+            </div>
+            <p>最近使用NodeJS 0.12.0 + Express 4.12.2 + MySQL 5.6 来做一个完整的社区网站，纯属个人项目，网站内容暂不透露。如果自己能坚持下去（希望如此），那么在基本成型之后，会考虑开放源代码，并将网站上线运行。也许从此就可以赢娶白富美出任CEO登上人生巅峰了呢。</p>
+<p>总而言之，现在要扩展自己的知识面。<strong>Aiming to be a Full-Stack Engineer!</strong></p>
+<p>这个项目，姑且代号为__MEN__吧（MySQL Express Node），是从2015年3月28日开始创立的。下面简单记录一下开发中的关键技术问题。</p>
+<a id="more"></a>
+
+<h2 id="项目的包描述"><a href="#项目的包描述" class="headerlink" title="项目的包描述"></a>项目的包描述</h2><p>首先是关于工具的选择。选择MySQL而不是貌似很火的MongoDB，是因为听说了后者在尽力实现关系型数据库的特性，因此觉得还是从MySQL入门比较好（是的，哥完全没有数据库基础）。</p>
+<p>然后服务器的模板引擎用的是ejs，而不是默认的jade，原因是，jade风格过于迥异，用ejs便于以后自己阅读。</p>
+<p>关于前后端分离，只有做了后端开发，才是有所体会。视图（View）的部分，服务器可以渲染，浏览器也可以渲染。从性能、开发效率等各方面来考虑，确实把视图交给前端更好。之后的开发中要注意这个问题。</p>
+<p>npm的<code>mysql</code>模块是用来连接数据库的，现在感觉用起来还不错。</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;men&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;node ./bin/www&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;body-parser&quot;</span>: <span class="string">&quot;~1.12.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;compression&quot;</span>: <span class="string">&quot;^1.4.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;cookie-parser&quot;</span>: <span class="string">&quot;~1.3.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;debug&quot;</span>: <span class="string">&quot;~2.1.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ejs&quot;</span>: <span class="string">&quot;~2.3.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;express&quot;</span>: <span class="string">&quot;~4.12.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;express-session&quot;</span>: <span class="string">&quot;^1.10.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;less-middleware&quot;</span>: <span class="string">&quot;1.0.x&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;moment&quot;</span>: <span class="string">&quot;^2.10.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;morgan&quot;</span>: <span class="string">&quot;~1.5.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;mysql&quot;</span>: <span class="string">&quot;^2.6.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;serve-favicon&quot;</span>: <span class="string">&quot;~2.2.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在Node中独立出MySQL连接池模块"><a href="#在Node中独立出MySQL连接池模块" class="headerlink" title="在Node中独立出MySQL连接池模块"></a>在Node中独立出MySQL连接池模块</h2><p>最初的时候，写了<code>user</code>, <code>topic</code>两个模型（MVC中的Model）。每个模块文件中都各自创建数据库连接池。然后就发现服务器在启动的时候比较耗时了。后来又添加了一个<code>website</code>模型（用来获取网站运行状态的），也是独自创建并使用数据库连接池。结果服务器启动慢得无法忍。</p>
+<p>上面的每个模块各自创建并使用连接池的做法自然非常之不可取。完全违背了pool的最初设计宗旨。解决方法也很简单，把数据库连接池的创建放到一个单独的模块里，然后把创建后的pool对象暴露出来，即可。</p>
+<p>以下是代码。</p>
+<figure class="highlight javascript"><figcaption><span>/module/pool.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">3306</span>,</span><br><span class="line">    <span class="attr">database</span>: <span class="string">&#x27;database-name&#x27;</span>,</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&#x27;username&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;password&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = pool;</span><br></pre></td></tr></table></figure>
+
+<p>然后如果某个其他的模块需要使用数据库连接池，就引用一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var pool = require(&#x27;../modules/pool.js&#x27;);</span><br><span class="line">  </span><br><span class="line">pool.getConnection(function(err, connection) &#123;</span><br><span class="line">    if (err)&#123;</span><br><span class="line">        /* handle error  */</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connection.query(&#123;</span><br><span class="line">        sql: &#x27;SELECT COUNT(*) AS user_count FROM t_user&#x27;</span><br><span class="line">    &#125;, function(err, rows, fields) &#123;</span><br><span class="line">        if (err)&#123;</span><br><span class="line">            /* handle error  */</span><br><span class="line">        &#125;</span><br><span class="line">        connection.release();</span><br><span class="line">        callback(null, rows);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样才是正确的连接池用法。</p>
+<h2 id="关于Promise"><a href="#关于Promise" class="headerlink" title="关于Promise"></a>关于Promise</h2><p>虽然目前写的代码量还不大，但是已经对NodeJS的异步回调深恶痛绝了。发现目前使用的Node 0.12.0是支持原生Promise的，于是不用白不用。不过理解起来还挺困难。</p>
+<p>现在要解决这样的案例：先从数据库t_user表中获得注册用户数，然后从t_topic表中查询话题总数，最后把它们交给回调函数（嗯，是的，还是用了一下回调函数~~）。</p>
+<p>代码暂时是这样写的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exports</span>.getWebsiteStatus = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">        pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                reject(err);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(&#123;</span><br><span class="line">                    <span class="attr">sql</span>: <span class="string">&#x27;SELECT COUNT(*) AS user_count FROM t_user&#x27;</span></span><br><span class="line">                &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">                         reject(err);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        resolve(rows);</span><br><span class="line">                    &#125;</span><br><span class="line">                    connection.release();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">rows1</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line">        pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, connection</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                callback(err);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                connection.query(&#123;</span><br><span class="line">                    <span class="attr">sql</span>: <span class="string">&#x27;SELECT COUNT(*) AS topic_count FROM t_topic&#x27;</span></span><br><span class="line">                &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows2, fields</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">                        callback(err);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        callback(<span class="literal">null</span>, &#123;</span><br><span class="line">                            <span class="attr">user_count</span>: rows1[<span class="number">0</span>].user_count,</span><br><span class="line">                            <span class="attr">topic_count</span>: rows2[<span class="number">0</span>].topic_count</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    connection.release();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        callback(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>关于如何改进，寡人猜测也就两方面：（1）直接用SQL进行两次查询，不然时间会耗费在获取数据库的连接上；（2）Promise这么写也太丑了，得接着研究如何优雅地写Promise。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/04/14/notes-on-nodejs-express-mysql-and-promise/" data-id="cm8bcxssr008sdjlegx5lhx0k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/05/06/some-thoughts-on-front-end-developing/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    前端开发中的几点感想
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/03/18/nodejs-crawler/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">NodeJS爬虫程序</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

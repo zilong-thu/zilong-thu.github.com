@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>12306网站前端初步优化之我见 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近买火车票，感觉12306网站做得实在太垃圾了——加载速度慢，使用同步的Ajax验证码，未使用CSS Spirites …… ——完全不是抱着处理大量请求、高并发去的啊。于是抽空瞥了一下网站源码，发现其前端部分是个极好的反面教材，可以作为web前端工程师进行性能优化的案例。本文仅指出12306网站前端方面存在的问题，并提出性能优化建议。鄙人水平有限，如有不对之处，还望读者朋友多多见谅，并感谢批评">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12306网站前端初步优化之我见">
+<meta property="og:url" content="https://borninsummer.com/2014/01/03/how-to-improve-12306/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="最近买火车票，感觉12306网站做得实在太垃圾了——加载速度慢，使用同步的Ajax验证码，未使用CSS Spirites …… ——完全不是抱着处理大量请求、高并发去的啊。于是抽空瞥了一下网站源码，发现其前端部分是个极好的反面教材，可以作为web前端工程师进行性能优化的案例。本文仅指出12306网站前端方面存在的问题，并提出性能优化建议。鄙人水平有限，如有不对之处，还望读者朋友多多见谅，并感谢批评">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/20140103/network_12306.PNG">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/20140103/comments_12306.PNG">
+<meta property="og:image" content="https://borninsummer.com/images/blog/web_fe/20140103/login_validation.PNG">
+<meta property="article:published_time" content="2014-01-03T02:25:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.147Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/web_fe/20140103/network_12306.PNG">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-how-to-improve-12306" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            12306网站前端初步优化之我见
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/01/03/how-to-improve-12306/">
+            <time datetime="2014-01-03T02:25:00.000Z" itemprop="datePublished">2014-01-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>最近买火车票，感觉12306网站做得实在太垃圾了——加载速度慢，使用同步的Ajax验证码，未使用CSS Spirites …… ——完全不是抱着处理大量请求、高并发去的啊。于是抽空瞥了一下网站源码，发现其前端部分是个极好的反面教材，可以作为web前端工程师进行性能优化的案例。本文仅指出12306网站前端方面存在的问题，并提出性能优化建议。鄙人水平有限，如有不对之处，还望读者朋友多多见谅，并感谢批评指正~~</p>
+<p>另外，1月3日下午我给12306铁路客运服务的“意见反馈”邮箱发了一封邮件，也不知道他们会不会处理。更不知道会不会被……</p>
+<p><span style="font-weight:bold;">参考资料：</span></p>
+<ul>
+<li><a href="http://book.douban.com/subject/3132277/" class="douban_book" name="3132277" target="_blank">《高性能网站建设指南》</a>
+</li>
+<li><a href="http://book.douban.com/subject/4719162/" class="douban_book" name="4719162" target="_blank">《高性能网站建设进阶指南》</a></li>
+</ul>
+
+<a id="more"></a>
+
+<p>###1. 减少HTTP请求<br>以铁路客户服务中心客运首页 <a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/index/init">https://kyfw.12306.cn/otn/index/init</a> 为例。</p>
+<p>###问题分析<br>先看第一次加载页面时的网络瀑布图（蓝色方框标记的为图片请求）：</p>
+<img src="/images/blog/web_fe/20140103/network_12306.PNG" title="加载铁路客户服务中心客运首页页面时的网络瀑布图"/>
+
+<p>共34次HTTP请求，图片请求了14次。有很多是非常小的图片，例如 icon_new.png，只为了这1.3KB，就与服务器进行了三次握手，真是愚蠢。</p>
+<p>###优化建议</p>
+<ul>
+<li>icon_new.png使用纯CSS制作（inline-block）</li>
+<li>背景色、框，不要使用bg.png、bg_navlist.png、bg_line.png、bg_nav01.png，应尽量使用CSS，可以绘制更高效的界面</li>
+<li>将 logo.png，icon_phone.png，icon8.png，bg_nav.png，icon.png合为一张Spirites图。</li>
+<li>其他icon也尽可能按照整个网站的需求进行合并（一张图最好）</li>
+</ul>
+<p>最后，非照片类图片请求数不应该超过两次。这样可以大大减轻服务器载荷。</p>
+<p>###2. 压缩组件<br>以铁路客户服务中心客运首页 <a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/index/init">https://kyfw.12306.cn/otn/index/init</a> 为例。</p>
+<img src="/images/blog/web_fe/20140103/comments_12306.PNG" title="HTML文件里含有不必要的注释"/>
+
+<p>打开该页面的源代码，会看到一些注释。总体来说占html文件的比重不多。但是，考虑到该网站在放票的10秒内会接到大量的请求，还是应该将这些注释去掉。</p>
+<p>另外，这些注释的存在，使得人感觉这个网站仍然处于开发阶段——太不专业了。</p>
+<p>###3. 使用异步Ajax<br>分析的是用户登录页面：<a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/login/init#">https://kyfw.12306.cn/otn/login/init#</a></p>
+<img src="/images/blog/web_fe/20140103/login_validation.PNG" title="登录页面及HTTP Request头"/>
+
+<p>用户在登录时需要输入验证码，其验证过程为：输入到第四个字符时，页面向服务器发送POST请求，对验证码进行验证。</p>
+<p>“异步”的英文名是Async。12306网站用户登录的随机码相关验证url名为checkRandCodeAnsyn，感觉不太对劲，然后看了下其JavaScript实现，好家伙，居然使用了同步Ajax请求！</p>
+<p>这就是为什么输入验证码后页面会假死——其实只是在等待服务器返回数据而已。什么人会故意使用同步Ajax请求呢？就是那些希望用户等待等待等待……的Idiots。</p>
+<p>我的优化建议是，把下面代码中<code>async</code>值改为<code>true</code>。</p>
+<figure class="highlight javascript"><figcaption><span>https://kyfw.12306.cn/otn/resources/merged/login_js.js?scriptVersion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">checkRandCode:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> d;</span><br><span class="line">    <span class="keyword">var</span> c=$(<span class="string">&quot;#randCode&quot;</span>).val();</span><br><span class="line">    $.ajax(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">url</span>:ctx+<span class="string">&quot;passcodeNew/checkRandCodeAnsyn&quot;</span>,</span><br><span class="line">            <span class="attr">type</span>:<span class="string">&quot;post&quot;</span>,</span><br><span class="line">            <span class="attr">data</span>:&#123;<span class="attr">randCode</span>:c,<span class="attr">rand</span>:<span class="string">&quot;sjrand&quot;</span>&#125;,</span><br><span class="line">            <span class="attr">async</span>:<span class="literal">false</span>,    <span class="comment">// =&gt; OK，这里是巨大的BUG。居然使用了同步Ajax请求！改为true就可以了</span></span><br><span class="line">            <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(e.data==<span class="string">&quot;N&quot;</span>)&#123;</span><br><span class="line">                    d=<span class="literal">false</span>;</span><br><span class="line">                    $(<span class="string">&quot;#i-ok&quot;</span>).css(<span class="string">&quot;display&quot;</span>,<span class="string">&quot;none&quot;</span>)</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    d=<span class="literal">true</span>;</span><br><span class="line">                    $(<span class="string">&quot;#i-ok&quot;</span>).css(<span class="string">&quot;display&quot;</span>,<span class="string">&quot;block&quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/01/03/how-to-improve-12306/" data-id="cm8bcxssm0066djle34bo93fv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/01/06/reading-notes-on-jquery-cookbook/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《jQuery Cookbook 中文版》笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/01/02/reading-notes-on-javascript-the-good-parts/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《JavaScript语言精粹》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

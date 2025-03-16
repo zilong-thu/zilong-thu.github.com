@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>开发一个 npm 包的大概流程 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="入门级流程知识。父级知识节点：NodeJS。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发一个 npm 包的大概流程">
+<meta property="og:url" content="https://borninsummer.com/2020/04/17/how-to-write-a-npm-package/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="入门级流程知识。父级知识节点：NodeJS。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-17T08:38:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.167Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="NodeJS">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-how-to-write-a-npm-package" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            开发一个 npm 包的大概流程
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/04/17/how-to-write-a-npm-package/">
+            <time datetime="2020-04-17T08:38:00.000Z" itemprop="datePublished">2020-04-17</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/NodeJS/" rel="tag">NodeJS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">第一步: 初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%9C%A8%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C%E5%8C%85%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">第二步: 在全局注册包名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%9A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96"><span class="toc-number">2.1.</span> <span class="toc-text">第一种：相对路径依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%EF%BC%9A%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">第二种：软链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%8F%91%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">第三步：发包</span></a></li></ol>
+            </div>
+            <p>入门级流程知识。父级知识节点：NodeJS。</p>
+<a id="more"></a>
+
+<h2 id="第一步-初始化项目"><a href="#第一步-初始化项目" class="headerlink" title="第一步: 初始化项目"></a>第一步: 初始化项目</h2><p>包括两部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<p>最主要的是在 <code>package.json</code> 里通过 <code>main</code> 字段定义这个包对外暴露的入口；如果是提供命令行工具，则需要通过 <code>bin</code> 字段来定义暴露的命令名称与实际执行的文件。例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;@qcsfe/qbear&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;2.8.0-5&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;一个基于 Webpack 的打包构建工具，定义清晰的输入输出流&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;mocha tests/index.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;lint&quot;</span>: <span class="string">&quot;eslint --ext .js ./lib&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;bin&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;qbear&quot;</span>: <span class="string">&quot;cli.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;wangzilong03&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步-在全局注册包名"><a href="#第二步-在全局注册包名" class="headerlink" title="第二步: 在全局注册包名"></a>第二步: 在全局注册包名</h2><p>一个尚未发布的 npm 包，其他项目是无法通过 npm/yarn 来安装它的，但有两种方式可以让项目在本地使用。</p>
+<h3 id="第一种：相对路径依赖"><a href="#第一种：相对路径依赖" class="headerlink" title="第一种：相对路径依赖"></a>第一种：相对路径依赖</h3><p>如果我们的项目 A，希望使用一个尚未发布的包 <code>newPackage</code>，可以通过 <code>file</code> 前缀告诉项目 A 从本机读取依赖：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;@babel/polyfill&quot;</span>: <span class="string">&quot;^7.4.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;@qcsfe/qbear&quot;</span>: <span class="string">&quot;2.8.0-5&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;newPackage&quot;</span>: <span class="string">&quot;file:path/to/newPackage&quot;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二种：软链接"><a href="#第二种：软链接" class="headerlink" title="第二种：软链接"></a>第二种：软链接</h3><p>首先，在我们的包 <code>newPackage</code> 下面，执行 <code>npm link</code>，这样会在全局注册自己的包名。</p>
+<p>然后在需要使用 newPackage 的项目里执行 <code>npm link newPackage</code>，就可以直接用了。</p>
+<h2 id="第三步：发包"><a href="#第三步：发包" class="headerlink" title="第三步：发包"></a>第三步：发包</h2><p>开发、测试中也可以发包，这时候一般不发布语义化的版本号，而是使用诸如 <code>1.1.1-0</code>、<code>1.1.1-alpha</code>、<code>1.1.1-SNAPSHOT</code> 这样的版本号。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先确保自己有 npm 或私有镜像（例如美团的 mnpm）的账号，没有的话需要通过 npm adduser 来注册</span></span><br><span class="line"><span class="comment"># 参考 [npm-adduser | npm docs](https://docs.npmjs.com/cli-commands/adduser.html)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后登录</span></span><br><span class="line">$ npm login</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布</span></span><br><span class="line">$ npm publish</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2020/04/17/how-to-write-a-npm-package/" data-id="cm8bcxsta00gpdjle92rg5gto" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/06/07/the-intelligent-investor/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《聪明的投资者》（The Intelligent Investor）
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/17/cars-i-have-driven/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">那些年我开过的车</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

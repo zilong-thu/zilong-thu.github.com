@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>初涉 Mobile Web 开发 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="2015年12月至今年6月，我在猫眼做的开发基本都是桌面浏览器项目、B 端产品，技术栈是 Node.js&#x2F;Koa + Webpack + React.js。从今年7月份开始，趁着一个新的 C 端项目的启动，自己转而投入到移动端 web 开发中。 C 端产品与 B 端产品差异巨大。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初涉 Mobile Web 开发">
+<meta property="og:url" content="https://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="2015年12月至今年6月，我在猫眼做的开发基本都是桌面浏览器项目、B 端产品，技术栈是 Node.js&#x2F;Koa + Webpack + React.js。从今年7月份开始，趁着一个新的 C 端项目的启动，自己转而投入到移动端 web 开发中。 C 端产品与 B 端产品差异巨大。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-08-20T17:13:21.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.160Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="Mobile Web">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-new-things-learned-in-mobile-web-development" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            初涉 Mobile Web 开发
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/21/new-things-learned-in-mobile-web-development/">
+            <time datetime="2017-08-20T17:13:21.000Z" itemprop="datePublished">2017-08-21</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Mobile-Web/" rel="tag">Mobile Web</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93"><span class="toc-number">1.</span> <span class="toc-text">服务器端渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI-%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C"><span class="toc-number">2.</span> <span class="toc-text">UI&#x2F;交互体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hybrid-%E7%8E%AF%E5%A2%83%E5%88%A4%E6%96%AD"><span class="toc-number">3.</span> <span class="toc-text">Hybrid 环境判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">前端性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8A%E8%B7%A8%E7%BB%88%E7%AB%AFWeb%E3%80%8Bby-%E5%BE%90%E5%87%AF"><span class="toc-number">5.</span> <span class="toc-text">《跨终端Web》by 徐凯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95"><span class="toc-number">6.</span> <span class="toc-text">开发调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E8%A1%A8%E5%8D%95"><span class="toc-number">7.</span> <span class="toc-text">移动端的表单</span></a></li></ol>
+            </div>
+            <p>2015年12月至今年6月，我在猫眼做的开发基本都是桌面浏览器项目、B 端产品，技术栈是 Node.js/Koa + Webpack + React.js。从今年7月份开始，趁着一个新的 C 端项目的启动，自己转而投入到移动端 web 开发中。</p>
+<p>C 端产品与 B 端产品差异巨大。</p>
+<a id="more"></a>
+
+<h2 id="服务器端渲染"><a href="#服务器端渲染" class="headerlink" title="服务器端渲染"></a>服务器端渲染</h2><p>页面的首屏部分最好由服务器端执行渲染。页面的其他部分则可以灵活处理。很多 AJAX 请求的响应不必是数据，可以是服务器端根据数据使用模板渲染后的 HTML 字符串，浏览器只负责执行类似 <code>Element.innerHTML = response.htmlStr</code> 这的简单视图替换或者插入。</p>
+<h2 id="UI-交互体验"><a href="#UI-交互体验" class="headerlink" title="UI/交互体验"></a>UI/交互体验</h2><p>前端需要解决这些移动端特有的交互问题：</p>
+<ul>
+<li>下拉刷新/上拉无限加载（touchEvents）</li>
+<li>快速点击响应（例如 fastClick.js）</li>
+<li>元素吸顶（sticky）</li>
+</ul>
+<p>即使页面效果在开发机器上通过 Chrome/Simulator 等调试通过，在移动 web 上还是可能会出现不一致。举个例子，PC 浏览器对于 <code>position: fixed</code> 的实现是完全合乎标准，而且高性能的，但是在 iOS 下面，绝对定位的元素如果在 DOM 树上是 <code>overflow: scroll</code> 的容器元素的后代节点，那么容器在滚动时，就会引起绝对定位元素不停抖动。此时就需要将绝对定位元素与滚动容器解除父子/祖先后代关系。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-class">.scroll-y</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding-top</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">overflow-x</span>: hidden;</span></span><br><span class="line"><span class="css">  <span class="attribute">overflow-y</span>: scroll;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.fixed</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">position</span>: fixed;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 下面的 DOM 结构会抖动</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;scroll-y&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fixed&quot;</span>&gt;</span>fixed element<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span>很多内容在这里<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 下面的 DOM 结构不会抖动</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fixed&quot;</span>&gt;</span>fixed element<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;scroll-y&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span>很多内容在这里<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Hybrid-环境判断"><a href="#Hybrid-环境判断" class="headerlink" title="Hybrid 环境判断"></a>Hybrid 环境判断</h2><p>猫眼专业版的 Web 页面大部分情况下是运行在 APP 内部的。有的功能只有特定版本区间的 APP 才可以使用。所以需要 Web 开发人员根据 <code>User-Agent</code> 来判断客户端环境。应当对此进行功能封装，关注这些指标：操作系统及版本，是否运行在 APP 中，是的话 APP 的版本号。</p>
+<h2 id="前端性能"><a href="#前端性能" class="headerlink" title="前端性能"></a>前端性能</h2><ul>
+<li>图片懒加载</li>
+<li>小图片内联为 base64 格式</li>
+</ul>
+<h2 id="《跨终端Web》by-徐凯"><a href="#《跨终端Web》by-徐凯" class="headerlink" title="《跨终端Web》by 徐凯"></a>《跨终端Web》by 徐凯</h2><blockquote>
+<p>面对这种终端碎片化的潮流，前端工程师怎么办？解决方案就是基于最重要的前端开发思想渐进增强和优雅退化得出的移动优先：一是毫无疑问绝大部分用户已经或正在成为智能设备用户，我们要为80%的目标用户服务；二是专注于核心业务需求，人的本性、业务本质和商业模式本质基本上不会随着终端改变而改变，所以相 同业务在手机、平板、桌面和电视上呈现的本质和商业模式不会有不同，小屏幕终端是我们重新思考业务本质和核心人机交互流程的机会，其挖掘出的本质会改变其 他终端；三是针对未来人机交互，现在移动设备引领人机交互的变革潮流，通过必备特性虚拟或增强现实，并逐步引入到桌面和电视等设备中。</p>
+</blockquote>
+<p>这本书提到了一些前端工程师需要牢记并执行的准则。简述如下：客户端中的 WebView 已经成为业务中十分重要的移动浏览器……根据浏览器、操作系统、屏幕分辨率对浏览器进行分级……A级为优先级最高，A级要求测试通过所有的测试用例。<strong>前端需要在提交测试之前，按照上限标准进行充分的自测</strong>。</p>
+<h2 id="开发调试"><a href="#开发调试" class="headerlink" title="开发调试"></a>开发调试</h2><p>移动端 Web 开发的调试比 B 端页面繁琐多了，而且花在浏览器兼容性方面的自测时间也要长许多。</p>
+<p>调试的两大利器：</p>
+<ul>
+<li>Charles</li>
+<li>XCode Simulator</li>
+<li>Browser Sync</li>
+</ul>
+<h2 id="移动端的表单"><a href="#移动端的表单" class="headerlink" title="移动端的表单"></a>移动端的表单</h2><p>即使用 jQuery，也可以较方便地实时收集表单数据：在 <code>form</code> 元素上可以监听 <code>input</code> 事件，实时进行处理。</p>
+<p>Android/iOS 设备都会在可输入元素获得焦点时自动唤起软键盘（soft keyboard）并且将页面上推，使得输入元素不至于被软键盘遮挡。不过，要确保页面不会有什么特殊的布局，好比在一些 <code>height: 100%</code> 的页面容器。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2017/08/21/new-things-learned-in-mobile-web-development/" data-id="cm8bcxst200d4djle9k3oc88e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/17/how-to-choose-football-shoes/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    关于脚型与选择足球鞋
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/07/20/charles-proxy-remote-mapping/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Charles 的配置</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

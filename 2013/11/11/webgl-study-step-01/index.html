@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hello, WebGL | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这是一个WebGL Hello World。 关于博客引用自己的js代码：使用&lt;script type&#x3D;&quot;text&#x2F;script&quot; src&#x3D;&quot;myjs.js&quot;&gt;&lt;&#x2F;script&gt;，放在页面的正文里即可（最好放在&lt;!-- more --&gt;的后面）。但现在还不知道如何载入自定义的样式表——尤其某些样式只是在某些博文里做演示用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello, WebGL">
+<meta property="og:url" content="https://borninsummer.com/2013/11/11/webgl-study-step-01/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这是一个WebGL Hello World。 关于博客引用自己的js代码：使用&lt;script type&#x3D;&quot;text&#x2F;script&quot; src&#x3D;&quot;myjs.js&quot;&gt;&lt;&#x2F;script&gt;，放在页面的正文里即可（最好放在&lt;!-- more --&gt;的后面）。但现在还不知道如何载入自定义的样式表——尤其某些样式只是在某些博文里做演示用的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/html5/box.gif">
+<meta property="article:published_time" content="2013-11-11T12:09:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.141Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/html5/box.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-webgl-study-step-01" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Hello, WebGL
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/11/webgl-study-step-01/">
+            <time datetime="2013-11-11T12:09:00.000Z" itemprop="datePublished">2013-11-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>这是一个WebGL Hello World。</p>
+<p>关于博客引用自己的js代码：使用<code>&lt;script type=&quot;text/script&quot; src=&quot;myjs.js&quot;&gt;&lt;/script&gt;</code>，放在页面的正文里即可（最好放在<code>&lt;!-- more --&gt;</code>的后面）。但现在还不知道如何载入自定义的样式表——尤其某些样式只是在某些博文里做演示用的时候。也不清楚如何写模板，从而可以使用<code>&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;</code>来自定义一些样式。</p>
+<p>值得注意的是，<code>three.js</code> 已经包含了对 <code>requestAnimationFrame</code> 的封装。因此，暂不必考虑其浏览器的差异性问题。</p>
+<p>CSDN博客上也有极为详细的入门例子及代码解释，见 <a href="http://blog.csdn.net/celte/article/details/9458599" target="_blank">CSDN: WebGL库Three.js入门</a>。</p>
+<a id="more"></a>
+
+<img src="/images/blog/html5/box.gif" style="display:none;" />
+
+
+<p>不知道是从<code>Three.js</code>直接学起好呢，还是先学习<code>WebGL</code>，再学习库。保存一个资源链接：<a href="http://learningwebgl.com/blog/?page_id=1217" target="_blank">learningwebgl.com</a>，以及相应的中文翻译网站：<a href="http://www.hiwebgl.com/?p=42" target="_blank">WebGL中文教程</a></p>
+<p>###iPad4 iOS7下Safari运行效果</p>
+<p>手指在滑动页面的时候，动画是停止的。</p>
+<p>###参考资料<br><a href="https://github.com/mrdoob/three.js" target="_blank">three.js</a></p>
+<p>纹理贴图参考：<a href="http://book.douban.com/subject/25761108/" class="douban_book" name="25761108" target="_blank">《HTML5游戏编程核心技术与实战》</a></p>
+<p>###效果演示</p>
+<div id="webgl_container" class="output" style="width: 400px; height: 400px;"></div>
+
+<script type="text/javascript" src="/javascripts/libs/three.min.js"></script>
+<script type="text/javascript">
+function hello_world_loop(){
+    var camera, scene, renderer, light;
+    var geometry, material, mesh;
+
+    function init() {
+        var width,
+            height,
+            container = document.getElementById('webgl_container');
+
+        // 纹理贴图
+        var text = THREE.ImageUtils.loadTexture('/images/blog/html5/box.gif');
+
+        width = container.clientWidth;
+        height = container.clientHeight;
+
+        camera = new THREE.PerspectiveCamera( 75, width/ height, 1, 10000 );
+
+        camera.position.z = 900;
+
+        scene = new THREE.Scene();
+
+        geometry = new THREE.CubeGeometry( 400, 400, 400 );
+        material = new THREE.MeshBasicMaterial( {map:text} );
+
+        mesh = new THREE.Mesh( geometry, material );
+        scene.add( mesh );
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize( width, height );
+
+        light = new THREE.DirectionalLight(0xFF0000, 1.0, 0);  
+        light.position.set( 100, 100, 200 );  
+        scene.add(light);  
+
+        container.appendChild( renderer.domElement );
+    }
+
+    function animate() {
+
+        // note: three.js includes requestAnimationFrame shim
+        requestAnimationFrame( animate );
+
+        mesh.rotation.x += 0.005;
+        mesh.rotation.y += 0.01;
+
+        renderer.render( scene, camera );
+
+    }
+    init();
+    requestAnimationFrame( animate );
+}
+
+hello_world_loop();
+</script>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/11/webgl-study-step-01/" data-id="cm8bcxssf003ldjle7pifhgsa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/12/html5-svg-study/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    HTML5 SVG 初步学习
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/08/note-on-smashing-css-by-eric-meyer/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《 Smashing CSS 》读书笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

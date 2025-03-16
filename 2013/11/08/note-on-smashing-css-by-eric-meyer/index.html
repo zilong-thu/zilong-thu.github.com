@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《 Smashing CSS 》读书笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Smashing CSS: Professional Techniques for Modern Layout(by Eric Meyer)，我所读的中文版译名为《精彩绝伦的CSS》。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。 这本书的完稿时间是2010年8月，在中国的出版时间则是2012年7月。国内引进CSS方面的书籍的速度总是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 Smashing CSS 》读书笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/11/08/note-on-smashing-css-by-eric-meyer/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="Smashing CSS: Professional Techniques for Modern Layout(by Eric Meyer)，我所读的中文版译名为《精彩绝伦的CSS》。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。 这本书的完稿时间是2010年8月，在中国的出版时间则是2012年7月。国内引进CSS方面的书籍的速度总是">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-08T05:24:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.141Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-note-on-smashing-css-by-eric-meyer" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《 Smashing CSS 》读书笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/08/note-on-smashing-css-by-eric-meyer/">
+            <time datetime="2013-11-08T05:24:00.000Z" itemprop="datePublished">2013-11-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CSS/" rel="tag">CSS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><em>Smashing CSS: Professional Techniques for Modern Layout</em>(by Eric Meyer)，我所读的中文版译名为<a href="http://book.douban.com/subject/10793898/" name="10793898" class="douban_book" target="_blank">《精彩绝伦的CSS》</a>。我本以为Eric Meyer写了《CSS权威指南》后就没啥事儿了，原来他还一直在写书。跟Nicholas一样。</p>
+<p>这本书的完稿时间是2010年8月，在中国的出版时间则是2012年7月。国内引进CSS方面的书籍的速度总是这样慢，Eric Meyer现在正在写《CSS: The Definitive Guide》的第四版，国内又不知道要什么时候才可以引进呢。</p>
+<p>刚翻开没看多少页，就看到了今年10月份参加前端笔试时遇到的而且不知道该怎样回答的一个问题相关的内容。</p>
+<a id="more"></a> 
+<p>###重置样式表</p>
+<p>当时笔试题目是：</p>
+<blockquote>
+<p>如何使用CSS解决各浏览器默认样式不一致的问题？</p>
+</blockquote>
+<p>该问题的答案就在“$1.9 重置样式表”一节中。在此将其原文摘录如下：</p>
+<blockquote>
+<p>有一件关于CSS的事情你可能没有考虑过，那就是即便你创建了HTML文档后，一行CSS也不写，CSS也总是对文档起作用。实际上，有大量的CSS被应用在“未应用样式”的文档上，它们全部来自于浏览器本身。标题元素的默认大小和字体粗细、不同元素和不同行之间的间距、列表项前面的项目符号，甚至块元素和行内元素之间的区别——全部是默认样式集决定的。<br>当然，不同浏览器的默认样式略有不同，这不能怪浏览器厂商，因为还没有规范确切地说明文档应该具有什么样的默认样式。鉴于这种情况，大部分浏览器都尽量模仿Mosaic浏览器（Mosaic浏览器：互联网上第一个被普遍使用的浏览器，由美国伊利诺伊大学的NCSA组织在1993年发布）显示文档的效果。是的，确实是Mosaic！因为它曾经是Netscape 1.0和IE3等浏览器试图模仿的对象。如果深入了解浏览器的默认样式，你就会发现那些从早期的Mosaic测试版浏览器复制过来的东西，设置连像素都是。<br>作为对策，很多人开发了重置样式，这意味着可以通过设置通用的属性尽量减少浏览器之间的不一致性，最简单的方式是：</p>
+<ul>
+<li>{maring: 0; padding: 0;}</li>
+</ul>
+</blockquote>
+<p>后来对此方法的改进是，在样式表第一条规则中队希望采用重置样式的元素逐一声明，像Octopress博客模板的<code>screen.css</code>这样：</p>
+<figure class="highlight css"><figcaption><span>Octopress博客模板的重置样式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>,<span class="selector-tag">div</span>,<span class="selector-tag">span</span>,applet,<span class="selector-tag">object</span>,<span class="selector-tag">iframe</span>,</span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,</span><br><span class="line"><span class="selector-tag">p</span>,<span class="selector-tag">blockquote</span>,pre,<span class="selector-tag">a</span>,<span class="selector-tag">abbr</span>,acronym,<span class="selector-tag">address</span>,</span><br><span class="line">big,<span class="selector-tag">cite</span>,<span class="selector-tag">code</span>,<span class="selector-tag">del</span>,<span class="selector-tag">dfn</span>,<span class="selector-tag">em</span>,<span class="selector-tag">img</span>,<span class="selector-tag">ins</span>,<span class="selector-tag">kbd</span>,<span class="selector-tag">q</span>,s,<span class="selector-tag">samp</span>,</span><br><span class="line">small,strike,<span class="selector-tag">strong</span>,sub,<span class="selector-tag">sup</span>,tt,<span class="selector-tag">var</span>,<span class="selector-tag">b</span>,u,<span class="selector-tag">i</span>,center,</span><br><span class="line"><span class="selector-tag">dl</span>,<span class="selector-tag">dt</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">li</span>,</span><br><span class="line"><span class="selector-tag">fieldset</span>,<span class="selector-tag">form</span>,<span class="selector-tag">label</span>,<span class="selector-tag">legend</span>,</span><br><span class="line"><span class="selector-tag">table</span>,<span class="selector-tag">caption</span>,<span class="selector-tag">tbody</span>,<span class="selector-tag">tfoot</span>,<span class="selector-tag">thead</span>,<span class="selector-tag">tr</span>,<span class="selector-tag">th</span>,<span class="selector-tag">td</span>,</span><br><span class="line"><span class="selector-tag">article</span>,<span class="selector-tag">aside</span>,<span class="selector-tag">canvas</span>,<span class="selector-tag">details</span>,embed,<span class="selector-tag">figure</span>,<span class="selector-tag">figcaption</span>,</span><br><span class="line"><span class="selector-tag">footer</span>,<span class="selector-tag">header</span>,<span class="selector-tag">hgroup</span>,<span class="selector-tag">menu</span>,<span class="selector-tag">nav</span>,output,ruby,<span class="selector-tag">section</span>,<span class="selector-tag">summary</span>,</span><br><span class="line"><span class="selector-tag">time</span>,<span class="selector-tag">mark</span>,<span class="selector-tag">audio</span>,<span class="selector-tag">video</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font</span>:inherit;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">vertical-align</span>:baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目的也是一样的：<em>为了让我们在开始书写CSS之前，尽量使所有的浏览器表现一致，同时也让页面好看一些。</em></p>
+<p>嗯，我已经感动地想哭了。没有任何实习经验项目经验的人要想快速获得经验，最好的办法就是读书了——可是笔试之前我TM都干嘛去了………以后还是得多读书+多练习！</p>
+<p>###特殊性<br>特殊性是一个选择器“特殊程度”的数字表示，有三样东西经常被用来确定选择器的特殊性：</p>
+<ul>
+<li>每个元素描述符贡献 0,0,0,1</li>
+<li>每个类、伪类或者属性描述符贡献 0,0,1,0</li>
+<li>每个ID描述符贡献 0,1,0,0</li>
+</ul>
+<p>比较的时候，将这个“四位数”理解为“无穷进制”的数字即可，然后大的就有高的特殊性。</p>
+<p>关于特殊性的结构相近问题，看下面例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;<span class="attribute">font-style</span>: normal;&#125;</span><br><span class="line"><span class="selector-tag">html</span> <span class="selector-tag">li</span> &#123;<span class="attribute">font-style</span>: italic;&#125;</span><br></pre></td></tr></table></figure>
+<p>这两个的特殊性相同，都是 0,0,0,2。此时后写的会赢，与html元素相比ul元素在文档中的位置离li元素更近也不管用。<strong>特殊性只是单纯的数值，它不会以任何方式评估页面的结构。</strong></p>
+<p>特殊性的第一个 0 是用于行内样式的（inline style）。</p>
+<p>可以总结CSS规则调用的顺序为： 重要性比较，重要的胜出 -&gt; 特殊性比较，特殊性值高的胜出 -&gt; 声明顺序比较，后声明的被执行</p>
+<p>###通用选择<br>星号（*）被作为通用选择符来代替“全部元素”。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> * &#123;<span class="attribute">border</span>: <span class="number">1px</span> solid red;&#125;</span><br></pre></td></tr></table></figure>
+<p>表示将<code>div</code>节点下的所有后代元素的边框设为该样式。</p>
+<p>通用选择符的唯一需要注意之处就是特殊性：* 对特殊性的贡献是 0,0,0,0 。</p>
+<p>###使用伪元素插入内容<br>CSS2有两个伪元素选择器，<code>:before</code>和<code>:after</code>。它们的<code>content</code>属性值是字符串类型，CSS会将其插入到HTML文档流中，但不能解析结构性字符串；值也可以是浏览器所支持的任何字符或者图像字符，只需要知道它们的十六进制字符编码，并且在前面加一个反斜杠即可。</p>
+<p>例如 <code>li:before &#123;content: &quot;\BB &quot;;&#125;</code>可以在每个<code>li</code>标签之前插入一个<code>&gt;&gt;</code>符号。</p>
+<p>Eric Meyer强烈推荐仅将使用伪元素生成内容用于渐进增强（progressive enhangcement）的特性，以便当前页面不支持这些特性时也可以正常展现内容。</p>
+<p>不过，这话是2010年说的，在如今IE6只占全球不到5%的市场份额的情况下，已经可以不必考虑浏览器是否能支持伪类特性，而仅需要考虑CSS是否能够被加载，然后据此来判断是否要采用伪元素生成内容。</p>
+<p>向页面的打印副本中插入超链接URL就是个很好的渐进增强示例。将下面的规则添加到打印媒体样式表中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href]</span>:after&#123; content: <span class="string">&quot; [&quot;</span> <span class="built_in">attr</span>(href) <span class="string">&quot;]&quot;</span>; <span class="attribute">font-size</span>: smaller;&#125;</span><br></pre></td></tr></table></figure>
+<p>详见<a href="http://alistapart.com/article/goingtoprint/" target="_blank" title="Going to Print">Eric Meyer, 2002, “Going to Print”</a>。</p>
+<p><code>content</code>的属性还可以是<code>url</code>，例如用图片代替<code>list-style</code>作为列表项的标记：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> <span class="selector-tag">li</span>:before&#123;content: <span class="built_in">url</span>(<span class="string">&#x27;star.gif&#x27;</span>); &#125;</span><br></pre></td></tr></table></figure>
+<p>###调整字体值的顺序<br>在此强调一下<code>font</code>简写属性的书写顺序问题。最基本的<code>font</code>声明如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font</span>: &lt;font-size&gt; &lt;font-family&gt;;</span><br></pre></td></tr></table></figure>
+<p>问题的关键在于，你必须同时包含这两个值并且按照该顺序进行书写——先写字号，再写字体族。如果颠倒了顺序，或者漏掉了其中一个，那么任何现代浏览器都会完全忽略这条声明。</p>
+<p>此外，如果在声明中包含了其他关键字，则它们全部（有一个例外，即行高<code>line-height</code>，它必须放在字号的后面，用<code>/</code>与字号值连起来）都得放在这两个必备值的前面——这些在字号前面的属性值的顺序可以随意打乱，只要确保它们都在字号的前面即可。</p>
+<p>###图像替换技术<br>CSS图像替换技术允许你使用图像替换文本，通过这种方式，文本仍然是可打印、可访问的。最受欢迎的图像替换技术通常被认为是Phark，也叫Rundle方法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">140</span>xp;</span><br><span class="line">    <span class="attribute">text-indent</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">&#x27;page-header.gif&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，背景图片是不会被打印的。于是，相应的打印样式表就可以这样写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的Phark方式的漏洞是：图片加载失败的话，一切就完蛋了。于是有另外一种方案：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;page-header.gif&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Dive Into Fishing&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此方法缺点在于，图像在屏幕上和打印时都会出现。</p>
+<p>###打印样式<br>三种方式可以将打印样式关联到页面，如下。而几乎所有人都会使用link的方式，所以，你也不必过于纠结使用哪个方式——Just link！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;print&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">media</span>=<span class="string">&quot;print&quot;</span> <span class="attr">href</span>=<span class="string">&quot;print.css&quot;</span>&gt;</span></span><br><span class="line">@import url(print.css) print;</span><br></pre></td></tr></table></figure>
+<p>###列表缩进：margin or padding？<br>作者提到一点：<strong>我们有着强有力的论据可以证明使用内边距要好过使用外边距。</strong>即在应用了</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">padding</span>:<span class="number">0</span>; <span class="attribute">margin</span>: <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>消除所有浏览器的装订距离后，如果要自定义缩进，那么最好使用padding。<br>至于列表结构，使用外边距、内边距的区别见下面的例子。（内容取自我简历的学业、学科获奖情况）</p>
+<p><code>ul, ol &#123;margin-left:0; padding-left:2.5em;&#125;</code> =&gt;</p>
+<ol style="margin-left:0; padding-left:2.5em;background-color: #666;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+<p><code>ul, ol &#123;margin-left:1.25; padding-left:1.25em;&#125;</code> =&gt;</p>
+<ol style="margin-left:1.25; padding-left:1.25em;background-color: #666;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+<p><code>ul, ol &#123;margin-left:2.5em; padding-left:0;&#125;</code> =&gt;</p>
+<ol style="margin-left:2.5em; padding-left:0;background-color: #666;">
+<li>清华大学航天航空学院IHI文体二等奖学金，校级</li>
+<li>清华校友-1982级励学基金，校级</li>
+<li>清华大学法士特三等奖学金，校级</li>
+<li>清华大学学业优秀奖学金三等奖学金，校级</li>
+</ol>
+
+<p>###文档背景<br>根据HTML规范，绘制Web页面的区域，首先是从<code>html</code>元素那里获取背景，如果<code>html</code>元素没有设置背景，则从<code>body</code>元素获取背景。如果<code>body</code>元素也没有设置背景的话，那么浏览器就会使用某个默认的颜色进行填充。</p>
+<p>一般是白色。</p>
+<p>###轮廓与边框的区别<br>轮廓（<code>outline</code>）的尺寸对布局没有影响，而边框（<code>border</code>）的尺寸则会被计算到盒模型的宽度与高度上，从而影响页面布局。这方面与轮廓相似的一个属性是<code>box-shadow</code>，盒子阴影也可以显示块元素的位置，但不会影响到布局。</p>
+<p>轮廓的绘制总是贴着边框。如果边框有外边距，那么轮廓会覆盖在外边距内，并依然贴着盒子边框的外侧。</p>
+<div style="outline: 10px dashed blue; width:30em;height:5em;border:10px solid green;">
+    <code>style="outline: 10px dashed blue; width:20em;height:5em;border:10px solid green;"</code>
+</div>
+<div style="outline: 10px dashed blue; width:30em;height:5em;margin:3em;border:10px solid green;">
+    <code>style="outline: 10px dashed blue; width:20em;height:5em;margin:3em;border:10px solid green;"</code>
+</div>
+
+<p>###居中块状框<br>记录一下本节作者引用的CSS规范，这是原理性的东西，所以值得重视：</p>
+<blockquote>
+<p>当一个元素具有特定的宽度，并且左右外边距都设为自动确定时（<code>margin: 0 auto;</code>），浏览器会取元素和容器的宽度之差，除以二后分别应用在元素的左外边距和右外边距上。因此元素就被居中了。</p>
+</blockquote>
+<p>###多栏布局中使用浮动与定位的优劣比较<br>在4.9节，作者提到，“它们最有可能被浮动，因为使用定位一般被认为是实现多栏布局的一个很糟糕的解决方案。”</p>
+<p>那么，在此稍微研究下这两种技术在多栏布局方面的优劣区别。</p>
+<p>知乎上面有人问这样的问题：<a target="_blank" rel="noopener" href="http://www.zhihu.com/question/19588854">在 CSS 布局中，用 float 好还是用 position 好？分别有什么优势？</a>（尼玛知乎长得跟stackoverflow真像。）</p>
+<p>看了下解答，原因大致就是：position用于整体框架布局，需使用大量的精确计算，结果还未必正确；而float则不必。</p>
+<p><code>float</code>的本质是给用户添加了可自定义尺寸<code>inline-block</code>的盒模型。</p>
+<p>另外，对于移动web开发，目前最好使用CSS3的新特性如<code>flex-box</code>、<code>column layout</code>等。因为这些平台（iOS，Android）浏览器的实现都是按照最新的标准开发的。</p>
+<p>###复杂的螺旋<br>确实，这是个很有价值的例子——是不是很老我就不清楚了，不过作者说他在2001年的时候创建了这个技术，到现在，12年过去了……</p>
+<p>其实思路很简单，跟Adobe Photoshop或者Premiere里的遮罩层原理一样。但是图片消耗有点大哈。</p>
+<p>###表格样式<br>不推荐使用表格来布局，但用来呈现数据内容还是非常方便的。不能总是排斥它。下面是一个行标题的例子。为行中的<code>&lt;th&gt;</code>声明属性<code>scope=&quot;col&quot;</code>即可。</p>
+<p>另外，6.5节“表的图形化”非常有意思，原来表格的每个<code>tr</code>元素都是可以通过浮动属性绘制直方图。当然了，这个工作最好用JS来完成。</p>
+<p>###媒体查询<br>作者说这可以自成一章，甚至编撰成一本书，我想他说的应该是“响应式Web设计”或者“移动Web设计”这类内容。</p>
+<blockquote>
+<p>媒体查询（media query）的重点就在于设置可以应用在不同媒体环境的、分条件的样式代码块。</p>
+</blockquote>
+<p>###多背景技术<br>CSS3中正式引入。同一个元素可以设置多个背景。不过，先声明的在上层。</p>
+<p>##总结<br>本来觉得3年前的书了，也许会过时。但读完后还是非常有收获。有几个非常好的技术，我没有在博客里写演示实例，以后有机会使用它们的时候再去翻书好了。</p>
+<p>对于这本CSS领域的书籍，最后总体评分：★★★★★</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/08/note-on-smashing-css-by-eric-meyer/" data-id="cm8bcxsse003edjled63n6qa1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/11/webgl-study-step-01/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Hello, WebGL
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/07/web-front-end-reading-list/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">前端工程师自我修炼之道（不断更新）</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

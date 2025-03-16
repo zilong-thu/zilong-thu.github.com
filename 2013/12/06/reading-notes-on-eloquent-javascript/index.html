@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《JavaScript编程精解》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="《JavaScript 编程精解》书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。 作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript编程精解》笔记">
+<meta property="og:url" content="https://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《JavaScript 编程精解》书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。 作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-12-06T05:28:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.145Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-eloquent-javascript" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《JavaScript编程精解》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/12/06/reading-notes-on-eloquent-javascript/">
+            <time datetime="2013-12-06T05:28:00.000Z" itemprop="datePublished">2013-12-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><a href="http://book.douban.com/subject/19933548/" class="douban_book" target="_blank" name="19933548">《JavaScript 编程精解》</a>书很薄，160多页，适合一两天看完，查漏补缺之用。据说此书的亮点是，通过用JavaScript来解决许多算法问题，来讲解JavaScript核心技术。</p>
+<p>作者“警告”说：学习编程时总是需要探索新的挑战、新的领域，拒绝不断探索的程序员必定会停滞不前、忘记编程的快乐并失去编程的意志（或成为管理人员）。嗯，我会争取做十年程序员，然后……成为管理人员或者成为一个写书的人吧~~</p>
+<a id="more"></a>
+
+<p>###关于自动类型转换<br>作为弱类型语言，JavaScript有一套复杂的自动类型转换规则。</p>
+<p>最为重要的有这样几个：</p>
+<ol>
+<li>任意值向布尔值的类型转换</li>
+<li>任意值与字符串相加（或者应该叫做字符串拼接）时，任意值将会转换为字符串</li>
+<li>数字与字符串乘、除、减时，JavaScript将尝试把字符串转换为数字</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span> == <span class="number">0</span>;                 <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="number">0</span>;                    <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="string">&#x27;5&#x27;</span> == <span class="number">5</span>;                   <span class="comment">// =&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> + <span class="string">&#x27;abc&#x27;</span>);      <span class="comment">// =&gt; &#x27;nullabc&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">undefined</span>+<span class="string">&#x27;abc&#x27;</span>);   <span class="comment">// =&gt; &#x27;undefinedabc&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>*<span class="string">&#x27;abc&#x27;</span>);           <span class="comment">// =&gt; NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> - <span class="string">&#x27;3&#x27;</span>);           <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> + <span class="string">&#x27;3&#x27;</span>);           <span class="comment">// =&gt; &#x27;53&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>/<span class="string">&#x27;3&#x27;</span>);             <span class="comment">// =&gt; 1.6666666666666667</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>%<span class="string">&#x27;3&#x27;</span>);             <span class="comment">// =&gt; 2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>);        <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> === <span class="literal">NaN</span>);       <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+<p>###函数与闭包<br>JavaScript函数是first-class functions (functions as first-class objects)。详见<a href="http://en.wikipedia.org/wiki/Funarg_problem" target="_blank">Wikipedia: Funarg problem</a>。</p>
+<p>函数栈的特性及其将函数用作对象的能力带来一个有趣的问题：如果创建的局部变量的函数调用不在栈上了，那局部变量会发生什么变化？如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> local = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> local;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦调用了<code>createFunction</code>函数，它就会创建一个局部变量<code>local</code>，并返回一个函数。如何处理这一情况就是向上函数变元问题（upwards funarg problem）。JavaScript是从一种能够解决这个问题的语言演变而来的，只要这个局部变量是可达的，就会尽力保存局部变量。</p>
+<p>闭包：<strong>包裹一些局部变量的一个函数叫做一个闭包。</strong></p>
+<p><strong>闭包：即一个函数，通过它可以引用由包含这个函数的代码所定义的变量。</strong>——Lisp语言大师 Paul Graham在<a href="http://book.douban.com/subject/6021440/" class="douban_book" name="6021440" target="_blank">《黑客与画家》</a>(pp. 195)中的解释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">amount</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> local = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">number</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number + amount;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> addTwo = makeAdder(<span class="number">2</span>);</span><br><span class="line">addTwo(<span class="number">3</span>);    <span class="comment">// =&gt; 25</span></span><br></pre></td></tr></table></figure>
+
+<p>更本质的例子应该是这样的：</p>
+<figure class="highlight javascript"><figcaption><span>javascript闭包示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = foo();</span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="built_in">console</span>.log(a());  <span class="comment">// =&gt; 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = foo();</span><br><span class="line"><span class="built_in">console</span>.log(b());  <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b());  <span class="comment">// =&gt; 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = a;</span><br><span class="line"><span class="built_in">console</span>.log(c());  <span class="comment">// =&gt; 4</span></span><br></pre></td></tr></table></figure>
+
+<p>纯函数：当使用函数的时候，同样的参数总是返回同样的值，而没有副作用。</p>
+<p>用递归解决一个算法问题：</p>
+<blockquote>
+<p>从数字1开始，重复执行加5或者乘3这个步骤，会产生无穷多个数字。如何编写函数，使其能够找出恰当的加法和乘法运算序列，以产生指定数字？例如，数字13=1*3+5+5。而数字15则没办法实现。</p>
+</blockquote>
+<figure class="highlight javascript"><figcaption><span>解决方案</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findSequence</span>(<span class="params">goal</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">find</span>(<span class="params">start, history</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == goal)&#123;</span><br><span class="line">            <span class="keyword">return</span> history;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(start&gt;goal)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> find(start+<span class="number">5</span>, <span class="string">&#x27;(&#x27;</span>+history + <span class="string">&#x27;+ 5 )&#x27;</span>) || find(start*<span class="number">3</span>, <span class="string">&#x27;(&#x27;</span>+history+<span class="string">&#x27; * 3 )&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> find(<span class="number">1</span>, <span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">findSequence(<span class="number">34</span>);    <span class="comment">// =&gt; &quot;(((((1 * 3) + 5) * 3) + 5) + 5)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>此方案找出的未必是最短的运算序列，只是找出一种序列而已。</p>
+<p>这样的递归非常消耗资源，例如，在Firebug里运行<code>findSequence(8001); </code>很快出结果，但是运行<code>findSequence(80001);</code>就会让火狐死掉，然后以“ too much recursion”为由不再继续进行运算。后者也会让Chrome很崩溃：“RangeError: Maximum call stack size exceeded”。</p>
+<p>作者在书里还非常推崇这种简洁美。我觉得，用递归实现算法原理设计，然后用循环取代之，才能放在项目里使用——这才是正经的程序员修炼之道。</p>
+<p>###对象属性的命名<br>中括号内的部分可以为任意表达式，中括号会将表达式转换为字符串来判断对象中是否有该属性的名称。所以，变量名称也可以当成属性名称。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gf = &#123;<span class="string">&quot;my girlfriend name&quot;</span>:<span class="string">&quot;coco&quot;</span>, <span class="attr">age</span>:<span class="number">19</span>, <span class="number">5</span>:<span class="string">&quot;25&quot;</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(gf.age);                       <span class="comment">// =&gt; 19</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="string">&quot;5&quot;</span>]);                      <span class="comment">// =&gt; 25</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="number">1</span>+<span class="number">2</span>+<span class="number">2</span>]);                    <span class="comment">// =&gt; 25</span></span><br><span class="line"><span class="built_in">console</span>.log(gf[<span class="string">&quot;my girlfriend name&quot;</span>]);     <span class="comment">// =&gt; &quot;coco&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> propertyName = <span class="string">&quot;my girlfriend name&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(gf[propertyName]);             <span class="comment">// =&gt; &quot;coco&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>###对象的存储与引用<br>对象本身存储在堆上，而声名的变量只是对这个位置的引用。</p>
+<figure class="highlight javascript"><figcaption><span>obj、obj1、obj2是对完全相同的一个对象的引用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">age</span>:<span class="number">19</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj1 = obj,</span><br><span class="line">    obj2 = obj1;</span><br><span class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">age</span>:<span class="number">19</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj2 == obj);        <span class="comment">// =&gt; true;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj3 == obj);        <span class="comment">// =&gt; false;</span></span><br><span class="line"></span><br><span class="line">obj1.age=<span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj2.age);           <span class="comment">// =&gt; 18</span></span><br><span class="line"><span class="built_in">console</span>.log(obj[<span class="string">&quot;age&quot;</span>]);         <span class="comment">// =&gt; 18</span></span><br></pre></td></tr></table></figure>
+
+<p>###抽象<br>程序员一直在寻找尽可能降低程序复杂度的方法，其中很重要的一点就是努力让程序变得更抽象。对于JavaScript，有两种常用的抽象方法：函数式编程和面向对象编程。<br>###高阶函数<br>高阶函数：操作其他函数的函数称为高阶函数。<br>####（1）修改函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">negate</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !func(x);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&#x27;246&#x27;</span>,</span><br><span class="line">    str2 = <span class="number">245</span>;</span><br><span class="line"><span class="keyword">var</span> isNotNaN = negate(<span class="built_in">isNaN</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(str1));              <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(str2));              <span class="comment">// =&gt; false</span></span><br><span class="line"><span class="built_in">console</span>.log(isNotNaN(str2));           <span class="comment">// =&gt; true</span></span><br><span class="line"><span class="built_in">console</span>.log(isNotNaN(<span class="literal">NaN</span>));            <span class="comment">// =&gt; false</span></span><br></pre></td></tr></table></figure>
+
+<p>####（2）归约函数<br>####（3）映射数组<br>映射数组算法遍历数组，将函数应用于每个元素（例如<code>forEach</code>），并返回新的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">func, array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>)</span>&#123;</span><br><span class="line">        result.push(func(element));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map(<span class="built_in">Math</span>.round, [<span class="number">0.01</span>,<span class="number">0.2</span>, <span class="number">2</span>, <span class="number">9.89</span>, <span class="built_in">Math</span>.PI]);</span><br></pre></td></tr></table></figure>
+
+<p>###对象即词典<br>我读到这个标题而没读内容，便认识到了对象的数据结构特点。对象的词典特性在数组去重中有很好的应用，具体见<a href="/blog/2013/12/09/javascript-array-unique/" title="JavaScript数组去重方法汇总">JavaScript数组去重方法汇总</a>。</p>
+<p>###原型继承<br>略过。<br>###JavaScript正则表达式<br>JavaScript的正则表达式使用的语法是Perl兼容正则表达式（Perl Compatible Regular Expressions）。</p>
+<blockquote>
+<p>该语法非常含糊，以至于在前10次（或更多次）使用的时候，不得不去查看正则表达式的细节。持之以恒，就可以编写出非常复杂、神秘的表达式了。</p>
+</blockquote>
+<p>###HTTP请求<br>具有浏览器兼容性的请求对象创建函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">requestObject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="string">&quot;Mxsml2.XMLHTTP&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;Could not create HTTP request object.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法</span></span><br><span class="line"><span class="keyword">var</span> request = requestObject();</span><br><span class="line">request.open(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;/stylesheets/data.txt&#x27;</span>, <span class="literal">false</span>);  <span class="comment">// false意味着这是一个同步请求</span></span><br><span class="line">request.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">request.responseText;  <span class="comment">// 同步请求，只有在收到服务器的返回数据时才会执行到这一句</span></span><br></pre></td></tr></table></figure>
+<p>####JSON优于XML的原因<br>JSON是XML的替代方案，即JavaScript Object Notation。</p>
+<ol>
+<li>XML文档过于冗长</li>
+<li>DOM接口在提取信息方面很笨拙</li>
+</ol>
+
+<p>####读取JSON数据<br>使用<code>eval()</code>可以对JSON文档进行解析。将一个JSON文档传给<code>eval</code>之前，需要用括号将其包住；如果程序以<code>&#123;</code>字符开始，该字符将被市委代码块的开始，而不作为对象的开始。</p>
+<p>XMLHttpRequest仅允许请求自己的域名，通常我们会知道得到的是哪种文本，所以使用<code>eval()</code>来解析JSON对象也许不是什么问题。但如果使用Script DOM Element方法获取跨域HTTP请求时，则最好不要调用<code>eval()</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = requestObject();</span><br><span class="line">request.open(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;/stylesheets/data.json&#x27;</span>, <span class="literal">true</span>);  <span class="comment">// false意味着这是一个同步请求</span></span><br><span class="line">request.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(request.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> data = <span class="built_in">eval</span>(<span class="string">&quot;(&quot;</span> + request.responseText +<span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(data.lemon);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+<p>####对HTTP请求进行包装</p>
+<figure class="highlight javascript"><figcaption><span>XMLHttpRequest包装示例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleHttpRequest</span>(<span class="params">url, success, failure</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> request = requestObject();</span><br><span class="line">    request.open(<span class="string">&quot;GET&quot;</span>, url, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    request.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(request.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(request.status == <span class="number">200</span> || !failure )&#123;</span><br><span class="line">                success(request.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(failure)&#123;</span><br><span class="line">                failure( request.status, request.statusText);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    request.send(<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在设计得更为复杂时，最好将参数设为一个对象。就像jQuery那样。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/12/06/reading-notes-on-eloquent-javascript/" data-id="cm8bcxssj005cdjleg3leajqo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/12/09/javascript-array-unique/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    JavaScript数组去重方法汇总
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/12/03/way-back-to-school-after-an-audition/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">坐在冬天的马路边吃午饭的女生</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

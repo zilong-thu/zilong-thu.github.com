@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>HTML5 fileReader API (1) | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 fileReader API (1)">
+<meta property="og:url" content="https://borninsummer.com/2016/08/04/html5-fileReader-API-1/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/2016/08/filereader-api-compatible.png">
+<meta property="article:published_time" content="2016-08-04T14:28:02.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.157Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="HTML5">
+<meta property="article:tag" content="fileReader">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/2016/08/filereader-api-compatible.png">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-html5-fileReader-API-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            HTML5 fileReader API (1)
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/04/html5-fileReader-API-1/">
+            <time datetime="2016-08-04T14:28:02.000Z" itemprop="datePublished">2016-08-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/HTML5/" rel="tag">HTML5</a>, <a class="tag-link-link" href="/tags/fileReader/" rel="tag">fileReader</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%80%89%E6%8B%A9%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E6%97%B6%E4%B8%8D%E8%A7%A6%E5%8F%91-change-%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">第二次选择同一个文件时不触发 change 事件的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">自定义样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">浏览器兼容性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#input-type-%E2%80%9Dfile%E2%80%9D"><span class="toc-number">4.1.</span> <span class="toc-text">input type&#x3D;”file”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fileReader-API"><span class="toc-number">4.2.</span> <span class="toc-text">fileReader API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#querySelectorAll"><span class="toc-number">4.3.</span> <span class="toc-text">querySelectorAll</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99-amp-%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-number">5.</span> <span class="toc-text">参考资料 &amp; 扩展阅读</span></a></li></ol>
+            </div>
+            <p>本文介绍在使用 HTML5 fileReader API 之 readAsText 的基础用法及常见的问题与解决方案。fileReader 可以将文件内容异步地读入内存，然后提供给浏览器引擎。readAsText 方法将文件内容读取为纯文本。</p>
+<a id="more"></a>
+
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- CSS --&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">.input-file &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  position: relative;</span><br><span class="line">  border: 1px solid #ccc;</span><br><span class="line">  background-color: #0095dd;</span><br><span class="line">  padding: 5px;</span><br><span class="line">  color: #fff;</span><br><span class="line">  border-radius: 5px;</span><br><span class="line">  margin-top: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.input-file input[type=&quot;file&quot;] &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">  display: none;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- HTML --&gt;</span><br><span class="line">&lt;form data-role=&quot;input-file&quot;&gt;</span><br><span class="line">  &lt;label class=&quot;input-file&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;files&quot; onchange=&quot;handleFileInputChange(this);&quot;&gt;选择文件</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- JavaScript --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function handleFileInputChange(event) &#123;</span><br><span class="line">  var file = event.target.files[0];</span><br><span class="line"></span><br><span class="line">  var reader = new FileReader();</span><br><span class="line"></span><br><span class="line">  reader.onload = function(e) &#123;</span><br><span class="line">    var content = e.target.result;</span><br><span class="line">    console.log(&#x27;content of the file: &#x27;, content);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reader.readAsText(file);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二次选择同一个文件时不触发-change-事件的问题"><a href="#第二次选择同一个文件时不触发-change-事件的问题" class="headerlink" title="第二次选择同一个文件时不触发 change 事件的问题"></a>第二次选择同一个文件时不触发 change 事件的问题</h2><p>解决方案就是每次读完文件，执行一次 form.reset()。改写 <code>reader.onload</code> 回调后代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function handleFileInputChange(event) &#123;</span><br><span class="line">  var file = event.target.files[0];</span><br><span class="line"></span><br><span class="line">  var reader = new FileReader();</span><br><span class="line"></span><br><span class="line">  reader.onload = function(e) &#123;</span><br><span class="line">    var content = e.target.result;</span><br><span class="line">    console.log(&#x27;content of the file: &#x27;, content);</span><br><span class="line"></span><br><span class="line">    var form = document.querySelectorAll(&#x27;form[data-role=&quot;input-file&quot;]&#x27;)[0];</span><br><span class="line">    if (form) &#123;</span><br><span class="line">      form.reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reader.readAsText(file);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><p>原生的 <code>&lt;input type=&quot;file&quot;&gt;</code> 样式是这样子的：</p>
+<input type="file">
+
+<p>不能获得较好的交互体验。通常的解决方案是在其外面包裹一层自定义样式了的标签，然后将该 <code>input</code> 的尺寸设置为与其父元素一致、再设为透明的，就可以初步实现自定义样式。</p>
+<p>示例：</p>
+<p>&lt;label<br>  class=”input-file”<br>  style=”<br>    display: inline-block;<br>    position: relative;<br>    border: 1px solid #ccc;<br>    background-color: #0095dd;<br>    padding: 5px;<br>    color: #fff;<br>    border-radius: 5px;”</p>
+<blockquote>
+<p><input
+  type="file"
+  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;cursor: pointer;">选择文件<br></label></p>
+</blockquote>
+<p>可能会发现上面的 <code>cursor: pointer;</code> 在某些区域失效。那么如果将 input 的透明度去掉，那么就可以看到是原生的那个样式在作祟。而给 <code>input[type=&quot;file&quot;]</code> 添加 <code>font-size: 0</code> 规则也未必有用，因为 file input 是浏览器保护程度较高的元素，有的浏览器下，其样式就是无法做成 pointer。而这目前是一个“众所周知的”困扰（参考 <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/572768/styling-an-input-type-file-button">Styling an input type=“file” button | Stackoverflow</a>）。</p>
+<p>解决方案是把 <code>opacity: 0</code> 改为 ‘diaplay: none’（例如本文第一段代码那样）：</p>
+<p>&lt;label<br>  class=”input-file”<br>  style=”<br>    display: inline-block;<br>    position: relative;<br>    border: 1px solid #ccc;<br>    background-color: #0095dd;<br>    padding: 5px;<br>    color: #fff;<br>    border-radius: 5px;<br>    cursor: pointer;”</p>
+<blockquote>
+<p><input
+  type="file"
+  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;">选择文件<br></label></p>
+</blockquote>
+<p>上面的参考链接里，有人提出了他认为的 <strong>最好的解决方案</strong>：</p>
+<blockquote>
+<p>The best approach would be to have a custom label element with a <strong><code>for</code></strong> attribute attached to a hidden file input element. (The label’s for attribute must match the file element’s id in order for this to work).</p>
+</blockquote>
+<p>相应的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;label for=&quot;file-upload&quot; class=&quot;custom-file-upload&quot;&gt;</span><br><span class="line">    Custom Upload</span><br><span class="line">&lt;/label&gt;</span><br><span class="line">&lt;input id=&quot;file-upload&quot; type=&quot;file&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><h3 id="input-type-”file”"><a href="#input-type-”file”" class="headerlink" title="input type=”file”"></a>input type=”file”</h3><p>在 caniuse.com 里面搜索 <code>input-file</code> 可以获得浏览器们对 <code>input</code> 元素的 <code>type=&quot;file&quot;</code> 属性的支持度。目前而言，IE 系列浏览器是从 IE10 才开始支持。Android 4.x 及更低版本的原生安卓浏览器也不支持此功能。不过，在 Android 5.x 下的 the Chrome browser 似乎是支持此属性的。</p>
+<h3 id="fileReader-API"><a href="#fileReader-API" class="headerlink" title="fileReader API"></a>fileReader API</h3><p>从 caniuse.com 给出的兼容性数据来看（市场份额已导入了中国区的数据），IE 系列浏览器对 fileReader 的支持，仅从 IE10 起比较乐观。其他各主流浏览器则对此 API 支持度非常好。</p>
+<img src="/images/2016/08/filereader-api-compatible.png" />
+
+<h3 id="querySelectorAll"><a href="#querySelectorAll" class="headerlink" title="querySelectorAll"></a>querySelectorAll</h3><p>IE8部分支持：</p>
+<blockquote>
+<p>Partial support in IE8 is due to being limited to CSS 2.1 selectors and a small subset of CSS 3 selectors (see notes there). Additionally, it will have trouble with selectors including unrecognized tags (for example HTML5 ones).</p>
+</blockquote>
+<p>IE9+ 及其他所有的浏览器则是全面支持此 API。</p>
+<h2 id="参考资料-amp-扩展阅读"><a href="#参考资料-amp-扩展阅读" class="headerlink" title="参考资料 &amp; 扩展阅读"></a>参考资料 &amp; 扩展阅读</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader">FileReader | MDN</a></li>
+<li><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/572768/styling-an-input-type-file-button">Styling an input type=“file” button | Stackoverflow</a></li>
+<li>样式美化相关，最开始找到的是这篇文章：<a target="_blank" rel="noopener" href="http://www.haorooms.com/post/css_input_uploadmh">css input[type=file] 样式美化，input上传按钮美化</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.techug.com/web-file-upload-method">Web文件上传方法总结大全</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2016/08/04/html5-fileReader-API-1/" data-id="cm8bcxssy00b9djle0s8v3te6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/08/17/something-about-element-style/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    关于 DOM Element style 属性的一件小事
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/07/04/postcss-how-to-use/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">PostCSS 系列(1): 基本概念、原理与用法</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

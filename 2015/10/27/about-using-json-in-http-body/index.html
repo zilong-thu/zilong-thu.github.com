@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>关于在HTTP请求BODY中使用JSON格式 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type： | Content-Type| 类型说明 | 示例| —– | —– | —— | —— || application&#x2F;x-www-form-urlencoded | 以 URLEncoded 的方式进行编码 | name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于在HTTP请求BODY中使用JSON格式">
+<meta property="og:url" content="https://borninsummer.com/2015/10/27/about-using-json-in-http-body/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="在使用 HTTP POST 或者 PUT 方法向服务器发送非multipart类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的Content-Type： | Content-Type| 类型说明 | 示例| —– | —– | —— | —— || application&#x2F;x-www-form-urlencoded | 以 URLEncoded 的方式进行编码 | name">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-10-27T15:15:06.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.155Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-about-using-json-in-http-body" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            关于在HTTP请求BODY中使用JSON格式
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/10/27/about-using-json-in-http-body/">
+            <time datetime="2015-10-27T15:15:06.000Z" itemprop="datePublished">2015-10-27</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/HTTP/" rel="tag">HTTP</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF"><span class="toc-number">1.</span> <span class="toc-text">浏览器端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest"><span class="toc-number">1.1.</span> <span class="toc-text">XMLHttpRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery"><span class="toc-number">1.2.</span> <span class="toc-text">jQuery</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84npm%E5%8C%85%E4%B9%8Brequest"><span class="toc-number">2.</span> <span class="toc-text">Node.js的npm包之request</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+            </div>
+            <p>在使用 HTTP POST 或者 PUT 方法向服务器发送非<code>multipart</code>类型的数据时，有两种最常用的对消息主体进行编码的方法，它们分别对应不同的<code>Content-Type</code>：</p>
+<p>| <code>Content-Type</code>| 类型说明 | 示例<br>| —– | —– | —— | —— |<br>| <code>application/x-www-form-urlencoded</code> | 以 URLEncoded 的方式进行编码 | <code>name=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2</code> 解码后就是：<code>name=test&amp;sub[]=1&amp;sub[]=2</code> |<br>| <code>application/json</code> | 消息主体是序列化后的 JSON 字符串，要求服务器端能够支持JSON | <code>&#123;&quot;name&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2]&#125;</code> |</p>
+<a id="more"></a>
+
+<p>HTTP 为超文本传输协议，整个的 HTTP 报文，如果按编程语言里面的类型来分的话，就是一大段字符串。值得注意的是，不像 JSON，<code>application/x-www-form-urlencoded</code> 的方式对复杂类型（例如数组）的处理，并没有严格的标准。有的接口使用 <code>key[]=a&amp;key[]=b</code> 来表示数组 <code>key: [&#39;a&#39;, &#39;b&#39;]</code>，（这也是最常见的，jQuery、superagent等客户端会如此编码），有的库则将数组编码为：<code>key=a&amp;key=b</code>，有的则是携带下标进行编码：<code>key[0]=a&amp;key[1]=b</code>……十分混乱。所以如果是数组且数组的每一项为简单基本类型，而且非要用 <code>application/x-www-form-urlencoded</code> 进行序列化，那么不如用英文逗号分隔的字符串来表示。如果是嵌套对象……那么还是尽早使用 JSON 吧。</p>
+<h2 id="浏览器端"><a href="#浏览器端" class="headerlink" title="浏览器端"></a>浏览器端</h2><p>HTML表单默认是按照<code>application/x-www-form-urlencoded</code>进行编码的。</p>
+<h3 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h3><p>如果使用浏览器原生的HTTP请求方法<code>XMLHttpRequest</code>，那么只需在open一个请求之后、send该请求之前，设置一下请求首部的<code>Content-Type</code>字段即可。示例代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&#x27;POST&#x27;, &#x27;http://url&#x27;, true);</span><br><span class="line">xhr.setRequestHeader(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);</span><br><span class="line"></span><br><span class="line">/* 所有相关的事件绑定必须在调用send()方法之前进行 */</span><br><span class="line">xhr.onreadystatechange = function()&#123;</span><br><span class="line">    var state = xhr.readyState;</span><br><span class="line">    if(state == 4 &amp;&amp; xhr.status == 200)&#123;</span><br><span class="line">        /* 响应成功, do something */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.send(JSON.stringify(object));</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest">XMLHttpRequest | MDN</a></p>
+<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><p>如果使用jQuery，默认情况下，其<code>contentType</code>值为：<code>application/x-www-form-urlencoded; charset=UTF-8</code>。可以通过将其设为<code>application/json</code>，然后将数据进行JSON序列化，就可以正确地发送JSON数据了。</p>
+<p>urlencoded格式的Ajax请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &#x27;some_url&#x27;,</span><br><span class="line">    type: &#x27;POST&#x27;,</span><br><span class="line">    data: object</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>JSON格式的Ajax请求（需要手动进行JSON）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &#x27;some_url&#x27;,</span><br><span class="line">    type: &#x27;POST&#x27;,</span><br><span class="line">    contentType: &#x27;application/json&#x27;,</span><br><span class="line">    data: JSON.stringify(object)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Node-js的npm包之request"><a href="#Node-js的npm包之request" class="headerlink" title="Node.js的npm包之request"></a>Node.js的npm包之request</h2><p>在Node.js环境中，如果使用了流行的npm模块<a href="ttps://github.com/request/request"><code>request</code></a>，那么这样写是模拟URLEncoded编码进行提交的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#x27;http://service.com/upload&#x27;, &#123;</span><br><span class="line">    form: &#123;</span><br><span class="line">        key:&#x27;value&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>而要想以JSON格式执行POST请求，那么应该这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: &#x27;&#x27;,</span><br><span class="line">    method: &#x27;POST&#x27;,</span><br><span class="line">    json: true,</span><br><span class="line">    body: &#123;</span><br><span class="line">        key:&#x27;value&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>request</code>模块对<code>body</code>的说明：</p>
+<blockquote>
+<p>body - entity body for PATCH, POST and PUT requests. Must be a Buffer or String, unless json is true. If json is true, then body must be a JSON-serializable object.</p>
+</blockquote>
+<p>是说，<code>body</code>必须是个<code>Buffer</code>类型或者<code>String</code>类型，除非<code>json</code>选项为<code>true</code>。如果<code>json</code>为真，那么<code>body</code>必须是一个可以被JSON序列化的对象。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://imququ.com/post/four-ways-to-post-data-in-http.html">四种常见的 POST 提交数据方式</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cm8bcxssx00andjle3swu0msh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/11/08/learning-git/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Git 学习笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/10/02/skills-learned-in-september/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">小结：最近一月学到的东西</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>说说2013年搜狗校招的前端开发笔试题 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="今天上午10:00在清华三教参加的前端工程师的笔试。之前参加了腾讯、百度、小米的笔试，只有百度的那次答的不错，也进入面试了，腾讯和小米的笔试要求都比较高，会考数据结构与算法、操作系统、数据库、C&#x2F;C++。 趁着还没忘干净，赶紧记录一下这次考试的心得体会，以及自己不会的题目，以便以后加强学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说2013年搜狗校招的前端开发笔试题">
+<meta property="og:url" content="https://borninsummer.com/2013/11/23/sougou-web-front-end-exam/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="今天上午10:00在清华三教参加的前端工程师的笔试。之前参加了腾讯、百度、小米的笔试，只有百度的那次答的不错，也进入面试了，腾讯和小米的笔试要求都比较高，会考数据结构与算法、操作系统、数据库、C&#x2F;C++。 趁着还没忘干净，赶紧记录一下这次考试的心得体会，以及自己不会的题目，以便以后加强学习。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-11-23T04:28:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.143Z">
+<meta property="article:author" content="zilong-thu">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-sougou-web-front-end-exam" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            说说2013年搜狗校招的前端开发笔试题
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/11/23/sougou-web-front-end-exam/">
+            <time datetime="2013-11-23T04:28:00.000Z" itemprop="datePublished">2013-11-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Web-FE/">Web-FE</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>今天上午10:00在清华三教参加的前端工程师的笔试。之前参加了腾讯、百度、小米的笔试，只有百度的那次答的不错，也进入面试了，腾讯和小米的笔试要求都比较高，会考数据结构与算法、操作系统、数据库、C/C++。</p>
+<p>趁着还没忘干净，赶紧记录一下这次考试的心得体会，以及自己不会的题目，以便以后加强学习。</p>
+<a id="more"></a>
+
+<p>###试题不足之处<br>先简评一下试题，总体而言，搜狗的试题出的还不错，前端工程师需要选择试卷里面的“Web类”和“数据结构类”进行解答，而笔试其他岗位的则选择其他类的试题做就可以了，显得很条理。不足之处也是有的，主要是CSS与JavaScript的两道题涉及了W3C、ECMAJavaScript不推荐的内容。</p>
+<p>个人觉得不应该出现在这样的笔试中的题目是分别如下：</p>
+<p>（1）关于IE6下的CSS选择器<br>（题目内容具体记不清楚了，差不多是这样吧。）</p>
+<blockquote>
+<p>下面的CSS规则在IE6中会显示为多大的字号？</p>
+</blockquote>
+<blockquote>
+<p>h1: 19px!important;    </p>
+</blockquote>
+<blockquote>
+<p>h1: 20px;</p>
+</blockquote>
+<blockquote>
+<p>*h1: 21px;</p>
+</blockquote>
+<blockquote>
+<p>_h1: 22px;</p>
+</blockquote>
+<p>刚才又查了一下，IE6的全球市场份额只有4.93%了。这既然是校招，既然着眼于未来，为何题目却要针对IE6去考？我只能理解成为了考察大家对浏览器兼容性问题的认识而不得不搬出IE6来。</p>
+<p>（2）关于substr()</p>
+<blockquote>
+<p>题目：</p>
+</blockquote>
+<blockquote>
+<p>已知 var str = “0123456789”;</p>
+</blockquote>
+<blockquote>
+<p>下面哪个结果跟其他三个不一样？</p>
+</blockquote>
+<blockquote>
+<p>(A). str.substring(5)   (B). str.substring(-5)   (C). str.substr(5)   (D). str.substr(-5)</p>
+</blockquote>
+<p>这道题就非常不好，考到了<code>substr()</code>的用法——w3school里也说了，“ECMAscript 没有对该方法进行标准化，因此反对使用它。”</p>
+<p>所以，从这两个题来看，搜狗的开发人员是并不打算遵从W3C的标准和规范来开展工作的。这样下去，只会给自己添麻烦。</p>
+<p>###Web类试题<br>（1）关于JavaScript的作用域、<code>this</code>关键字。</p>
+<figure class="highlight javascript"><figcaption><span>请问下面的代码输出多少？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.a = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">aa();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>=&gt; 结果输出为20，因为<code>this</code>默认情况下指向全局对象，而a又已经存在于全局对象中了，所以函数<code>aa()</code>修改的正是全局变量<code>a</code>。</p>
+<p>由于此处对函数的调用，是直接作为函数来调用的，所以存在一个大问题：</p>
+<blockquote>
+<p>根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this的值）是全局对象。然而，在严格模式下，调用上下文则是undefined。</p>
+</blockquote>
+<p>所以，上面的代码仅在非严格模式下才会输出20。这个题目也展示了一种不好的编程风格——它在以函数形式调用的函数内部使用了<code>this</code>关键字，而这是通常来说要避免的，因为上下文不能很明确。</p>
+<p>（2）HTML的DOM模型</p>
+<blockquote>
+<p>简答题：</p>
+</blockquote>
+<blockquote>
+<p>简述浏览器事件处理机制，以及如何阻止事件的传播？</p>
+</blockquote>
+<p>###数据结构类试题<br>我不会的：</p>
+<blockquote>
+<p>广度优先搜索用到了哪种数据结构？</p>
+</blockquote>
+<blockquote>
+<p>(A)链表 (B)队列  (C)栈  (D)散列表</p>
+</blockquote>
+<p>还考了那道很常见的题目：</p>
+<blockquote>
+<p>从0点~12点，时针和分针相遇多少次？时针、分针和秒针相遇多少次？</p>
+</blockquote>
+<p>主观题1：</p>
+<blockquote>
+<p>已知数组a[]与b[]均是长度为N的非递减序列，给出求前k个a[i]+b[j]值最小的算法，并给出算法复杂度。</p>
+</blockquote>
+<p>主观题2我完全不会，也不记得了。</p>
+<p>总之，数据结构这块，自己完全是小白啊。下周再学习学习JS，CSS，练习几个AI卡通人物例子，就开始复习C++并再次学习数据结构吧。不懂数据结构的前端不是好后台！</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2013/11/23/sougou-web-front-end-exam/" data-id="cm8bcxssh004edjlef1ns3kbe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2013/11/24/reading-notes-on-book-more-bulletproff-web-design-with-css/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《无懈可击的Web设计II》笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2013/11/21/illustrator-svg-practice-color-gradient/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Illustrator色彩渐变练习</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

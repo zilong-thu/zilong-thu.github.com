@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《CSS设计指南（第3版）》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="图书信息：《CSS设计指南（第3版）》（豆瓣）原作名: Stylin’with CSS:a designer’s guide 这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS设计指南（第3版）》笔记">
+<meta property="og:url" content="https://borninsummer.com/2015/01/19/reading-styling-with-css/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="图书信息：《CSS设计指南（第3版）》（豆瓣）原作名: Stylin’with CSS:a designer’s guide 这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-01-19T15:06:22.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.152Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-styling-with-css" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《CSS设计指南（第3版）》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/01/19/reading-styling-with-css/">
+            <time datetime="2015-01-19T15:06:22.000Z" itemprop="datePublished">2015-01-19</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p>图书信息：<a href="http://book.douban.com/subject/23123255/" target="_blank">《CSS设计指南（第3版）》</a>（豆瓣）<br>原作名: Stylin’with CSS:a designer’s guide</p>
+<p>这本书比较基础，适合初学者。自己已经很久没有专门读CSS方面的书了，就把这本买了半年多却一直未读的书拿出来翻了一翻。顺便查漏补缺。</p>
+<a id="more"></a>
+
+<p>##第1章 HTML标记与文档结构</p>
+<blockquote>
+<p>目前，HTML一共有114个标签，但按照80/20原则，使用其中25个左右的标签就可以满足80%的标记需要。</p>
+</blockquote>
+<p>超链接元素<code>a</code>的属性<code>href</code>的英文短语是：hyperlink reference。意为“超链接引用”。</p>
+<p>####1.2.2 块级元素和行内元素</p>
+<blockquote>
+<p>几乎所有HTML元素的<code>display</code>属性值要么为<code>block</code>，要么为<code>inline</code>。最明显的一个例外是<code>table</code>元素，它又自己特殊的<code>display</code>属性值。</p>
+</blockquote>
+<p>##第2章 CSS工作原理</p>
+<p>###2.3 特殊的上下文选择符</p>
+<p>通用选择符*：</p>
+<blockquote>
+<p>这个选择符有一个非常有意思的用法，即用它来构成非子选择符，比如：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">section * a&#123;font-size: 1.3em;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###2.4 ID和类选择符</p>
+<blockquote>
+<p>可以给<code>id</code>和<code>class</code>属性设定任何值，但不能以数字或特殊符号开头。</p>
+</blockquote>
+<p>####2.9.3 计算特指度</p>
+<p>这本书给的计算方法为“ICE”公式。这是个无穷大进制的三位数。依次代表id-class-element。</p>
+<p>##第3章 定位元素<br>这里再次强调CSS的核心技术乃是定位：</p>
+<blockquote>
+<p>要掌握CSS技术，核心就是要掌握元素定位，只有这样才能用CSS创造出专业水准的页面布局。</p>
+</blockquote>
+<p>定位主要靠三个属性：<code>position</code> | <code>display</code> | <code>float</code>。</p>
+<p>###3.1 理解盒模型<br>简写样式：<br>盒模型边距或边框的属性值简写模式按照上右下左来写。如果只写了3个，那么漏写的那个（一般也就是最后那个，左边）将使用对边的值。</p>
+<p>####3.1.4 叠加外边距</p>
+<blockquote>
+<p><strong>垂直方向上的外边距会叠加。水平外边距不会叠加。</strong></p>
+</blockquote>
+<p>难怪在某本书上看到说，在布局控制方面，<code>padding</code>要比<code>margin</code>更好，就是因为前者定位明确。</p>
+<p>###3.2 盒子有多大</p>
+<blockquote>
+<p>盒模型结论一：没有（就是没有设置<code>width</code>的）宽度的块级元素始终会扩展到天猫其父元素的宽度为止。添加水平边框、内边距和外边距，会导致内容宽度减少，减少量等于水平边框、内边距和外边距的和。</p>
+<p>盒模型结论二：为设定了宽度的盒子添加边框、内边距和外边距，会导致盒子扩展得更宽。实际上，盒子的<code>width</code>属性设定的只是盒子内容区的宽度，而非盒子要占据的水平宽度。</p>
+</blockquote>
+<p>###3.3 浮动与清除</p>
+<blockquote>
+<p>浮动非图片元素时，必须给它指定宽度，否则后果难以预料。图片无所谓，因为它本身有默认的宽度。</p>
+</blockquote>
+<p>####3.3.2 围住浮动元素的三种方法</p>
+<blockquote>
+<p><strong>方法1：为父元素添加<code>overflow: hidden</code></strong><br><strong>方法2：同时浮动父元素</strong><br><strong>方法3：在父元素内容的末尾添加非浮动元素，可以直接在标记中添加，也可以通过给父元素添加<code>clearfix</code>类来添加（当然，样式表中得需要相应的<code>clearfix</code>规则）</strong></p>
+</blockquote>
+<p>###3.6 背景<br>背景图片是叠加在背景颜色之上的。</p>
+<blockquote>
+<p>渐变是CSS帮我们生成的背景图片。添加渐变可以使用<code>background-image</code>属性，也可以使用简写的<code>background</code>属性。</p>
+</blockquote>
+<p>##第4章 字体和文本<br>这一章的4.4.2节 借助网格排版，给出了一个水平网格线背景下的文字排版，网格间隔18像素，仔细排版后确实很好看。</p>
+<p>##第5章 页面布局</p>
+<blockquote>
+<p>很多网站为了在第一屏极可能多的显示信息，都采用了多栏布局。这里所说的“第一屏”就是用户无需滚动就能看到的页面区域，相当于传统报纸行业所说的“折痕之上”的版面。</p>
+</blockquote>
+<p>##第6章 界面组件<br>###6.1 导航菜单</p>
+<blockquote>
+<p><code>:hover</code>事件会沿着元素的结构层次“向上冒泡”。</p>
+</blockquote>
+<p>下面是一个导航条+菜单示例。</p>
+<div class="multi_drop_menu"><ul><li><a href="#">导航1</a></li><li><a href="#">导航2</a></li><li><a href="#">导航3</a></li><li><a href="#">导航4有下拉菜单</a><ul><li><a href="#">二级子菜单1</a></li><li><a href="#">二级子菜单2 >></a><ul><li><a href="#">三级子菜单1</a></li><li><a href="#">三级子菜单2</a></li><li><a href="#">三级子菜单3</a></li></ul></li><li><a href="#">二级子菜单3</a></li></ul></li><li><a href="#">导航5</a></li></ul></div>
+
+<p>###6.3 弹出层</p>
+<blockquote>
+<p>如果要使用<code>figcaption</code>，必须确保它在<code>figure</code>中是唯一的。而且，它要么是第一个子元素，要么是最后一个子元素。</p>
+</blockquote>
+<blockquote>
+<p>在一个包含多个同辈元素的容器内，这些同辈元素都会构造一个 __堆叠上下文__。<br><code>z-index</code>只对那些<code>position</code>值为<code>static</code>之外的元素有效。换句话说，涉及的两个元素必须是<code>absolute</code>、<code>relative</code>或<code>fixed</code>才行。</p>
+</blockquote>
+<div class="withTriangle">使用<code>::after</code>伪元素制作的三角形</div>
+
+<script>
+(function(){
+    var url = '/stylesheets/unique/stylin-with-css.css';
+    var link =  document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    document.head.appendChild(link);
+})();
+</script>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2015/01/19/reading-styling-with-css/" data-id="cm8bcxssq0083djlefrj3bkbs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/01/22/server-pressure-testing-using-jmeter/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    用JMeter进行服务器压力测试心得
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2015/01/03/web-performance-in-practice/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Web前端性能优化实践</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

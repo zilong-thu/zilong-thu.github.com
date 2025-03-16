@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>关于 DOM Element style 属性的一件小事 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这几日写了个小插件，因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style &#x3D; &#39;display: none&#39; 这种写法来隐藏元素。 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。 附：插件地址  仓库地址 文档地址 npm包地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 DOM Element style 属性的一件小事">
+<meta property="og:url" content="https://borninsummer.com/2016/08/17/something-about-element-style/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="这几日写了个小插件，因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 element.style &#x3D; &#39;display: none&#39; 这种写法来隐藏元素。 因为DOM 标准规定 HTMLElement 的 style 属性是只读的。 附：插件地址  仓库地址 文档地址 npm包地址">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-08-16T17:11:03.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.157Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-something-about-element-style" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            关于 DOM Element style 属性的一件小事
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/17/something-about-element-style/">
+            <time datetime="2016-08-16T17:11:03.000Z" itemprop="datePublished">2016-08-17</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/HTML/" rel="tag">HTML</a>, <a class="tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Element-style-%E6%98%AF%E5%8F%AA%E8%AF%BB%E7%9A%84%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">Element.style 是只读的！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Element-classList"><span class="toc-number">2.</span> <span class="toc-text">Element.classList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Element-className"><span class="toc-number">3.</span> <span class="toc-text">Element.className</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="toc-number">4.</span> <span class="toc-text">题外话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+            </div>
+            <p>这几日写了个小插件，因为对 DOM element 的 style 属性的使用不当，导致这个插件有点问题。具体来说，就是无法通过 <code>element.style = &#39;display: none&#39;</code> 这种写法来隐藏元素。</p>
+<p><strong>因为DOM 标准规定 HTMLElement 的 <code>style</code> 属性是只读的。</strong></p>
+<p>附：插件地址</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zilong-thu/toast2.js">仓库地址</a></li>
+<li><a href="http://borninsummer.com/toast2.js/">文档地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/toast2">npm包地址</a></li>
+</ul>
+<a id="more"></a>
+
+<h3 id="Element-style-是只读的！"><a href="#Element-style-是只读的！" class="headerlink" title="Element.style 是只读的！"></a>Element.style 是只读的！</h3><blockquote>
+<p>Note that styles should NOT be set by assigning a string directly to the style property (as in elt.style = “color: blue;” ), since it is considered read-only (even though Firefox(Gecko), Chrome and Opera allow it) because the style attribute returns a  CSSStyleDeclaration object which is also read-only.  However, the style property’s own properties CAN be used to set styles.  Further, it is easier to use the individual styling-properties of the style property (as in elt.style.color = ‘…’ ) than to use elt.style.cssText = ‘…’ or elt.setAttribute(‘style’, ‘…’) , unless you wish to set the complete style in a single statement, since using the style properties will not overwrite other CSS properties that may already be set in the style attribute.</p>
+</blockquote>
+<p>在插件的实现中，希望通过下面的代码来隐藏元素：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(GLOBAL_ERROR_STACK_ID).style = &#x27;display: none&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>在 Chrome、Firefox 浏览器下是 OK 的。但是在 Safari 下，以及手机的多个浏览器中，都不会生效。而且，如果该插件内部声明了启用严格模式，那么也会在设置这个 style 时提示你尝试给一个只读属性赋值。</p>
+<p>解决办法呢，当然就是使用标准技术：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var ele = document.getElementById(GLOBAL_ERROR_STACK_ID);</span><br><span class="line">ele.setAttribute(&#x27;style&#x27;, &#x27;display: none&#x27;);</span><br><span class="line"></span><br><span class="line">// 或者</span><br><span class="line">ele.style.display = &#x27;none&#x27;;</span><br><span class="line"></span><br><span class="line">// 或者</span><br><span class="line">ele.style.cssText = &#x27;display: none&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>上面的三种技术，是在任何浏览器下都可以将元素隐藏的。</p>
+<h3 id="Element-classList"><a href="#Element-classList" class="headerlink" title="Element.classList"></a>Element.classList</h3><p>与 style 类似，classList 也是只读的：</p>
+<blockquote>
+<p>The Element.classList is a read-only property which returns a live DOMTokenList collection of the class attributes of the element.</p>
+<p>Using classList is a convenient alternative to accessing an element’s list of classes as a space-delimited string via element.className.</p>
+</blockquote>
+<p>不过 classList 拥有若干方法，可以方便地操作元素样式名列表（add、remove、toggle 等等）</p>
+<h3 id="Element-className"><a href="#Element-className" class="headerlink" title="Element.className"></a>Element.className</h3><p>className 则既是 getter 又是 setter：</p>
+<blockquote>
+<p>className gets and sets the value of the class attribute of the specified element.</p>
+</blockquote>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>话说自去年12月份加入美团猫眼电影，前端业务全部都是用 React 来写。React 对于内联样式的写法是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button style=&#123;&#123;color: &#x27;red&#x27;, marginLeft: &#x27;15px&#x27;&#125;&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在此猜测，React 的内联样式属性就是通过修改元素的 style 属性的具体子属性来实现的。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style">style | MDN</a></li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2016/08/17/something-about-element-style/" data-id="cm8bcxssz00bcdjleetgpgrl7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/08/28/note-on-book-code-complete-2/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    《代码大全（第2版）》笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/08/04/html5-fileReader-API-1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">HTML5 fileReader API (1)</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

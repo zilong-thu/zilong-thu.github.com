@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>《JavaScript高级程序设计》笔记 | 王子龙的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="《JavaScript高级程序设计（第3版）》 乱写一通。 这本书是2013-2014的寒假坐火车回家前在候车室里开始看的。火车上也看了一路。整个假期基本就只看这一本书。偶尔敲一敲里面的代码。此书与犀牛书确实有很多不同之处，真正想学习JavaScript的同学，两本都买并无不可。 2014年9月~10月，重读此书，亦对此博文进行扩充。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript高级程序设计》笔记">
+<meta property="og:url" content="https://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/index.html">
+<meta property="og:site_name" content="王子龙的博客">
+<meta property="og:description" content="《JavaScript高级程序设计（第3版）》 乱写一通。 这本书是2013-2014的寒假坐火车回家前在候车室里开始看的。火车上也看了一路。整个假期基本就只看这一本书。偶尔敲一敲里面的代码。此书与犀牛书确实有很多不同之处，真正想学习JavaScript的同学，两本都买并无不可。 2014年9月~10月，重读此书，亦对此博文进行扩充。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://borninsummer.com/images/blog/javascript/20140128/qq2013plugin_in_firefox.PNG">
+<meta property="article:published_time" content="2014-01-25T03:22:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:58:40.148Z">
+<meta property="article:author" content="zilong-thu">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://borninsummer.com/images/blog/javascript/20140128/qq2013plugin_in_firefox.PNG">
+    
+
+    
+        <link rel="alternate" href="/" title="王子龙的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-45360338-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?73ca1d91f31b2463befdc1c1827f2576";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">王子龙的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+                    <a class="main-nav-link" href="/donate">Donate</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                    <td><a class="main-nav-link" href="/donate">Donate</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://borninsummer.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            <section id="main"><article id="post-reading-notes-on-professional-javascript-for-web-developers" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            《JavaScript高级程序设计》笔记
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/">
+            <time datetime="2014-01-25T03:22:00.000Z" itemprop="datePublished">2014-01-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><a href="http://book.douban.com/subject/10546125/" class="douban_book" name="10546125" target="_blank">《JavaScript高级程序设计（第3版）》</a></p>
+<p>乱写一通。</p>
+<p>这本书是2013-2014的寒假坐火车回家前在候车室里开始看的。火车上也看了一路。整个假期基本就只看这一本书。偶尔敲一敲里面的代码。此书与犀牛书确实有很多不同之处，真正想学习JavaScript的同学，两本都买并无不可。</p>
+<p>2014年9月~10月，重读此书，亦对此博文进行扩充。</p>
+<a id="more"></a>
+
+<p>##第4章<br>###4.1 基本类型和引用类型的值<br>在复制某个保存着对象的变量时，操作的是对象的引用；但在通过这些变量为对象添加属性时，操作的是实际的对象。<br>####4.1.3 传递参数<br>ECMAScript中的所有函数参数的传递都是按值传递的。即，把函数外部的值复制给函数的形参（形参是局部变量），就跟把值从一个变量复制到另一个变量一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    obj.name = <span class="string">&#x27;Nicholas&#x27;</span>;</span><br><span class="line">    obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = <span class="string">&#x27;Greg&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line"><span class="built_in">console</span>.log(person.name);  <span class="comment">// =&gt; Nicholas</span></span><br></pre></td></tr></table></figure>
+
+<p>####4.1.4 检测类型<br><code>typeof</code>运算符用来检测变量是什么基本类型，而<code>instanceof</code>运算符可用来检测是哪种对象类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Wang Zilong&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="string">&#x27;25&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;yellow&#x27;</span>];</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I am a function&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>);</span><br><span class="line"><span class="built_in">console</span>.log(func <span class="keyword">instanceof</span> <span class="built_in">Function</span>);</span><br><span class="line"><span class="built_in">console</span>.log(now <span class="keyword">instanceof</span> <span class="built_in">Date</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> func);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> now);</span><br></pre></td></tr></table></figure>
+
+<p>####4.2.2 没有块级作用域</p>
+<blockquote>
+<p>变量查询也不是没有代价的。很明显，访问局部变量要比访问全局变量更快，因为不用向上搜索作用域链。JavaScript引擎在优化标识符查询方面做得不错，因此这个差别在将来恐怕可以忽略不计了。</p>
+</blockquote>
+
+<p>我觉得，这一点的启示重要的不是局部变量优势不再，而是以后在使用闭包时可以不必太担心性能问题。因为闭包总是在访问外部变量。</p>
+<p>###4.3 垃圾收集<br>标记清除是目前主流的垃圾收集算法，这种算法的思想是给当前不使用的值加上标记，然后再回收其内存。</p>
+<p>2008年为止，IE、Firefox、Opera、Chrome和Safari的JavaScript实现使用的都是标记清除式的垃圾收集策略（或类似的策略），只不过垃圾收集的时间间隔互有不同。</p>
+<p>##第5章 引用类型<br>####5.2.5 重排序方法<br><code>sort()</code>方法默认情况下会调用每个数组项的<code>toString()</code>转型方法，然后比较得到的字符串，以确定如何排序。即使数组的每一项都是数值，<code>sort()</code>方法比较的也是字符串。</p>
+<p>####5.2.6 操作方法<br><code>splice()</code>方法是功能最强大的数组方法了。语法：</p>
+<p>splice(操作位置下标, 要删除的项的数目, 要插入的项)</p>
+<p>###5.3 Date类型<br>ECMAScript添加了 Date.now() 方法，返回表示调用这个方法时的日期和时间的毫秒数。与 +new Date() 结果相同。</p>
+<p>###5.5 函数<br>####5.5.2 函数声明与函数表达式<br>解析器在向执行环境中加载数据时，对函数声明和函数表达式并非一视同仁。解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问）；至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行。</p>
+<p>####5.7.1 Global对象</p>
+<blockquote>
+<p>Global对象可以说是ECMAScript中最特别的一个对象了，因为不管你从什么角度上看，这个对象都是不存在的。</p>
+</blockquote>
+
+<p>####5.7.2 Math对象<br>要找到数组中的最大或最小值，可以如下使用<code>apply()</code>方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, values);</span><br></pre></td></tr></table></figure>
+
+<p>##第6章 面向对象的程序设计<br>####6.2.1 工厂模式<br>工厂模式解决了创建多个相似对象的问题，但没有解决对象识别的问题（即怎样知道一个对象的类型）。<br>####6.2.2 构造函数模式</p>
+<p>##第7章 函数表达式<br>###7.2 闭包<br>####7.2.1 闭包与变量<br>为何感觉这一节的内容似曾相识？好像是在《JavaScript语言精粹》里面也有讲。果然，读书有一个规律：读两本书每本书只读一边，不如读一本书读两遍效果好。</p>
+<p>废话少说，敲代码，试例子。</p>
+<figure class="highlight javascript"><figcaption><span>失败了的闭包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res = createFunctions();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, length = res.length; i&lt;length; i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res[i]());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>成功的闭包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res = createFunctions();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, length = res.length; i&lt;length; i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res[i]());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>####7.2.2 关于this对象<br>每个函数在被调用时都会自动获得两个特殊变量：<code>this</code>和<code>arguments</code>。匿名函数的执行环境通常具有全局性，因此其<code>this</code>值通常指向<code>window</code>。当然，在通过<code>call()</code>或者<code>apply()</code>方法改变函数执行环境的情况下，<code>this</code>就会指向其他变量。</p>
+<figure class="highlight javascript"><figcaption><span>原始的闭包</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;The window&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;My object&#x27;</span>,</span><br><span class="line">    <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.getName()());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>修正1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;The window&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;My object&#x27;</span>,</span><br><span class="line">    <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> that = <span class="built_in">this</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> that.name;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.getName()());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><figcaption><span>作为方法的函数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;The window&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;My object&#x27;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 函数作为对象的方法时，其内部的this值默认指向该对象实例</span></span><br><span class="line">    <span class="comment">// 《JavaScript语言精粹》</span></span><br><span class="line">    <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.getName());</span><br></pre></td></tr></table></figure>
+
+<p>###7.3 模仿块级作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 这里是块级作用域</span></span><br><span class="line">&#125;();    <span class="comment">// 出错！</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码会出错，是因为JavaScript会将<code>function</code>关键字当做一个函数声明的开始，而函数声明后面是不能跟函数调用符号（圆括号）的。然而，函数表达式后面是可以跟圆括号的。这样就是行得通的：</p>
+<figure class="highlight javascript"><figcaption><span>块级作用域技术</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 这里是块级作用域</span></span><br><span class="line">    <span class="comment">// 通常称为私有作用域</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>这种技术经常在全局作用域中被用在函数外部，从而限制向全局作用域中添加过多的变量和函数。</p>
+<p>##第8章 BOM<br>尝试访问未声明的变量会抛出错误，但是通过<code>window</code>对象，可以知道某个可能未声明的变量是否存在。</p>
+<p>###8.3 location对象<br><code>location</code>对象是最有用的BOM对象之一，它提供了当前窗口中加载的文档有关的信息，还提供了一些导航功能。</p>
+<p>2013年10月份的百度前端开发笔试试题就有一道是考<code>location</code>对象的查询字段参数获取方法的。在此记录一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryStringArgs</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> qs = (location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">&quot;&quot;</span>),</span><br><span class="line">        args = &#123;&#125;,</span><br><span class="line">        items = qs.length ? qs.split(<span class="string">&quot;&amp;&quot;</span>) : [] ,</span><br><span class="line">        item = <span class="literal">null</span>,</span><br><span class="line">        name = <span class="literal">null</span>,</span><br><span class="line">        value = <span class="literal">null</span>,</span><br><span class="line">        i = <span class="number">0</span>,</span><br><span class="line">        len = items.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt; len; i++)&#123;</span><br><span class="line">        item = items[i].split(<span class="string">&quot;=&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查询字符串应该是编码过了的</span></span><br><span class="line">        <span class="comment">// 所以要解码</span></span><br><span class="line">        name = <span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>]);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (name.length)&#123;</span><br><span class="line">            args[name] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###8.3 navigator对象<br>####8.3.1 检测插件</p>
+<figure class="highlight javascript"><figcaption><span>非IE浏览器下检测插件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPlugin</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    name = name.toLowerCase();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=navigator.plugins.length; i&lt;len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (navigator.plugins[i].name.toLowerCase().indexOf(name)&gt;-<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(hasPlugin(<span class="string">&quot;Flash&quot;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(hasPlugin(<span class="string">&quot;QuickTime&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>例如火狐浏览器下查看QQ2013插件：</p>
+<img src="/images/blog/javascript/20140128/qq2013plugin_in_firefox.PNG">
+
+<p>##第11章 DOM扩展<br>###11.3 HTML5<br>####11.3.7 scrollIntoView()方法<br>经测试，现在的Chrome浏览器也已经支持scrollIntoView()方法了。</p>
+<p>##第20章 JSON<br>JavaScript字符串与JSON字符串的最大区别在于，JSON字符串必须使用双引号（单引号会导致语法错误）。</p>
+<p>JSON是目前Web服务开发中交换数据的事实标准。</p>
+<p>ECMAScript 5 定义了全局对象JSON。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JSON</span><br><span class="line">  |-- stringify(obj, [ Array || Function], [Number || String])</span><br><span class="line">  |-- parse()</span><br></pre></td></tr></table></figure>
+
+<p>JSON.stringify(obj)会先检查obj是否有自己的toJSON()方法，据此亦可以自定义序列化规则。</p>
+<p>##第21章 Ajax与Comet<br>####21.5.3 Comet<br>Ajax是一种从页面向服务器请求数据的技术，而Comet则是一种服务器向页面推送数据的技术。Comet能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。</p>
+<p>Comet有两张实现方式：长轮询，流。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2014/01/25/reading-notes-on-professional-javascript-for-web-developers/" data-id="cm8bcxssn006rdjlegl2w5w8m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/03/27/the-third-big-day-in-my-life/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    谁愿摧眉折腰
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2014/01/23/reading-notes-on-ordering-disorder/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">《秩序之美》笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2025 zilong-thu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
