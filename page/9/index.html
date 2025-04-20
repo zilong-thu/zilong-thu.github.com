@@ -130,6 +130,141 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-note-on-book-code-complete-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/28/note-on-book-code-complete-2/">《代码大全（第2版）》笔记</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/28/note-on-book-code-complete-2/">
+            <time datetime="2016-08-28T13:05:43.000Z" itemprop="datePublished">2016-08-28</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Code-Complete/" rel="tag">Code Complete</a>, <a class="tag-link-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/" rel="tag">代码大全</a>, <a class="tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>, <a class="tag-link-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h3 id="记"><a href="#记" class="headerlink" title="记"></a>记</h3><p>从今年4月初，到9月的最后一天，用了半年，终于断断续续地把这个大部头著作读完了。</p>
+<p>按照阅读顺序来记录吧。虽然最开始并没有按照书页顺序来读，而是听从了译序里的“这本书适合谁看，该怎么看”的建议。先看了18章（初级程序员）、11章（低年级学生）、第8章（防御式编程）、第7章（自学<br>编程的人）、第13章（喜欢参与网上争论的人）。不过看完这几章之后，就开始顺序看了。</p>
+<p>总体感觉，这本书是属于“软件工程”范畴的。译序里提到：“这本书讲的正是为了到达‘编码完成’这一重要里程碑所必需的软件构件技术，确切地说，就是如何编写高质量的代码。作者认为，应该首先为人编写代码，其次才是为机器”。这差不多就总结了这本书的主旨。</p>
+<p>这个笔记最初是在豆瓣上面一点点记录的，顺便还发现豆瓣上面这本书的一个特点：目前其书评大概是隔2个月会有人写一篇；本书出版10年，共计90篇书评，平均每年9篇。相对于那些畅销书，这样的评论增幅的确较慢，估计也是因为本书非常厚重、比较偏技术类的缘故了。</p>
+<p>即使那么多年过去了，程序员在工作时的常见心理表现似乎没什么大变化。程序员普遍自负，例如23.4节说的，“就算是已经看到了一个缺陷，你的自负还是会让你觉得自己的代码完美无缺”。~~</p></p>
+            <p class="article-more-link">
+                <a href="/2016/08/28/note-on-book-code-complete-2/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2016/08/28/note-on-book-code-complete-2/" data-id="cm8bcxssz00bidjle1dqza0xp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-something-about-element-style" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1244,142 +1379,6 @@ var _hmt = _hmt || [];
 </div>
 
     <a data-url="https://borninsummer.com/2015/10/27/about-using-json-in-http-body/" data-id="cm8bcxssx00andjle3swu0msh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-skills-learned-in-september" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2015/10/02/skills-learned-in-september/">小结：最近一月学到的东西</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/10/02/skills-learned-in-september/">
-            <time datetime="2015-10-02T15:02:22.000Z" itemprop="datePublished">2015-10-02</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/WebFE/" rel="tag">WebFE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>最近一月（主要是9月份），通过若干项目，学到了一些新技能。</p>
-<p>月末又读了几篇学习方法理论相关的博文，加深、印证了自己的观念。</p>
-<p>对于大多数的我们来说，可以认为“世无天才”，唯有“勤奋”二字，可以将人与人区分开来。绝大部分时候，“我们的努力程度之低，根本轮不到拼天分”。至于学习方法，要理解体会这个规律：</p>
-<blockquote>
-<p>这个世界的知识，对于一个人来说，有三层：<br>最内一层是舒适区，在这里面的知识都是这个人掌握、运用得非常好的。就像一个学了一两年前端开发的同学A，对JS的各种特性肯定是如数家珍。<br>最外面的是新领域，叫做“恐慌区”，这里的知识对这个人来说都是陌生的，完全没有掌握甚至没有接触的。就像那个同学A（假定TA就像我一样，是自学编程，因此只会前端开发），如果让他去用JAVA写后台，通常真的会很痛苦。<br>处在新领域和舒适区之间的，就是学习区。好比如果这个同学懂JS，又要学后端开发，那么直接上手Node.js，可能比先学JAVA，然后开始做后端开发要稍微少点门槛。</p>
-</blockquote></p>
-            <p class="article-more-link">
-                <a href="/2015/10/02/skills-learned-in-september/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://borninsummer.com/2015/10/02/skills-learned-in-september/" data-id="cm8bcxssx00aqdjle9o9ngpb5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
