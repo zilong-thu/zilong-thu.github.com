@@ -130,6 +130,138 @@ var _hmt = _hmt || [];
         <div class="outer">
             
             <section id="main">
+    <article id="post-acornjs-intro" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/11/06/acornjs-intro/">Acorn.js 原理与应用</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/11/06/acornjs-intro/">
+            <time datetime="2018-11-06T04:48:00.000Z" itemprop="datePublished">2018-11-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                
+            </div>
+            <p><a target="_blank" rel="noopener" href="https://github.com/acornjs/acorn">Acorn.js</a> 是个好工具，可以做词法分析和语法分析，生成 AST，配合 acorn-walk 以及 escodegen，可以完成许多高级的事情。在工作中用它解决了一些问题。顺便就做了个分享，关于 Acorn.js 的原理与应用。下面是分享的 PPT，在此备份一下。</p>
+<p><strong><a href="/files/2018/11/acorn.js-intro.pdf">PPT 下载</a></strong></p>
+<p>PPT 中部分代码示例：<a target="_blank" rel="noopener" href="https://github.com/zilong-thu/learn-acorn.js">learn-acorn.js | zilong-thu’s github</a>。</p>
+<p>有些示例是源码阅读，这个大家直接下载 acorn.js 的源码来看就好了。另外有部分代码是公司的项目，因此不能放出来，见谅~~</p>
+<p>在我的电子书<a href="https://borninsummer.com/Practice-in-Front-End-Engineering-and-Components-Development/">《Web前端工程化与组件化开发实践》</a> 中，有一章专门对 JS 的解析器进行介绍，感兴趣的朋友可以移步：<a href="https://borninsummer.com/Practice-in-Front-End-Engineering-and-Components-Development/part-2/chapter-3-js-parsers/1-js-parser.html">JavaScript 解析器</a>。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://borninsummer.com/2018/11/06/acornjs-intro/" data-id="cm8bcxst700f7djlefoe6gm1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-these-four-months" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1249,135 +1381,6 @@ var _hmt = _hmt || [];
 </div>
 
     <a data-url="https://borninsummer.com/2018/02/16/telnet-netcat-tcp-and-http/" data-id="cm8bcxst400eddjleaytm8q2u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-book-note-css-mastery" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/02/10/book-note-css-mastery/">笔记-《精通CSS-高级Web标准解决方案》（第二版）</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/02/10/book-note-css-mastery/">
-            <time datetime="2018-02-10T11:15:23.000Z" itemprop="datePublished">2018-02-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>《精通CSS-高级Web标准解决方案》（第二版）于2014年上市，该书的第一版是2010年引入国内，英文版则是2009年第一次问世。书中的很多技术方案在今天看来已经比较过时了，但其理念则是不变的。例如 $2.4 节“规划、组织和维护样式表”，作者介绍的方式是在一个大的CSS文件里，通过明显的大块注释与空行，将不同的模块、组件分割开来。现在这种方式已经很少采用，大都是借助于 less/sass 等工具，采用多文件编写源码、单文件引入的方式，来将模块与组件样式更好地分离。但理念与初衷都是一样的：减少模块耦合，使代码更清晰易维护。</p>
-<p>PS：这本书我在2015年8月购买，但两年半后才开始认真读，真是印证了“买书如山倒，读书如抽丝” ~~ （说白了就是懒，哈哈哈……）。</p>
-<p>整体而言，部分过时的技术细节并不会掩盖这本书亮丽的光华。恰当的示例图片非常精准地指出了CSS2.1里那些容易让人理解错误的关键技术。</p>
-<img src="/images/2018/02/css-mastery.jpg" style="width: 200px; border-radius: 5px;" alt="《精通CSS-高级Web标准解决方案》（第二版）"></p>
-            <p class="article-more-link">
-                <a href="/2018/02/10/book-note-css-mastery/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://borninsummer.com/2018/02/10/book-note-css-mastery/" data-id="cm8bcxst400e9djlec2tjhwxf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
