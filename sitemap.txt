@@ -1,3 +1,7 @@
+https://zilong-thu.github.io/2018/12/30/goodbye-2018/
+https://zilong-thu.github.io/2020/01/04/goodbye-2019/
+https://zilong-thu.github.io/2020/12/19/summary-of-the-year/
+https://zilong-thu.github.io/2021/12/25/summary-of-the-year/
 https://zilong-thu.github.io/2026/07/12/trip-to-taipei/
 https://zilong-thu.github.io/2026/02/18/a-trip-to-fiji/
 https://zilong-thu.github.io/2026/01/07/a-trip-to-penang/
@@ -10,7 +14,6 @@ https://zilong-thu.github.io/2016/03/11/what-i-learned-during-the-last-3-months-
 https://zilong-thu.github.io/404.html
 https://zilong-thu.github.io/2015/06/27/char-set-configuration-for-mysql-5-5/
 https://zilong-thu.github.io/2018/11/06/acornjs-intro/
-https://zilong-thu.github.io/2020/01/04/goodbye-2019/
 https://zilong-thu.github.io/2018/08/19/about-these-four-months/
 https://zilong-thu.github.io/about/index.html
 https://zilong-thu.github.io/about/en/index.html
@@ -33,7 +36,6 @@ https://zilong-thu.github.io/2021/05/24/trip-to-hainan-island/
 https://zilong-thu.github.io/2021/06/14/summary-of-mid-year/
 https://zilong-thu.github.io/2021/07/31/about-purchasing-house/
 https://zilong-thu.github.io/2021/11/02/ts-coverage-analysis/
-https://zilong-thu.github.io/2021/12/25/summary-of-the-year/
 https://zilong-thu.github.io/2022/02/12/note-on-book-one-up-on-wall-street/
 https://zilong-thu.github.io/2020/03/17/cars-i-have-driven/
 https://zilong-thu.github.io/2020/06/07/the-intelligent-investor/
@@ -41,14 +43,12 @@ https://zilong-thu.github.io/2020/04/17/how-to-write-a-npm-package/
 https://zilong-thu.github.io/2020/06/17/mid-year-summary/
 https://zilong-thu.github.io/2020/12/10/10-years-back-to-beijing/
 https://zilong-thu.github.io/2020/12/04/The-7-Habits-of-Highly-Effective-People/
-https://zilong-thu.github.io/2020/12/19/summary-of-the-year/
 https://zilong-thu.github.io/2019/08/19/a-new-driver-is-born/
 https://zilong-thu.github.io/2019/11/11/summary-on-recent-finacial-management/
 https://zilong-thu.github.io/2019/10/28/some-jots/
 https://zilong-thu.github.io/2019/12/02/book-note-on-rich-dad-find-a-job-for-your-money/
 https://zilong-thu.github.io/2018/11/25/film-hidden-figures/
 https://zilong-thu.github.io/2018/12/08/learn-automatic-investment-plan/
-https://zilong-thu.github.io/2018/12/30/goodbye-2018/
 https://zilong-thu.github.io/2019/02/28/change-macbook-pro-15-battery/
 https://zilong-thu.github.io/2019/03/20/longest-valid-parenthese/
 https://zilong-thu.github.io/2019/04/13/about-making-career-decisions/
