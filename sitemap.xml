@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zilong-thu.github.io/2026/07/12/trip-to-taipei/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zilong-thu.github.io/2026/02/18/a-trip-to-fiji/</loc>
     
     <lastmod>2026-07-12</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://zilong-thu.github.io/2026/01/07/a-trip-to-penang/</loc>
-    
-    <lastmod>2026-07-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zilong-thu.github.io/2026/07/12/trip-to-taipei/</loc>
     
     <lastmod>2026-07-12</lastmod>
     
