@@ -190,11 +190,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                
-            </div>
-            <p>只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。</p>
+            
+            <div class="article-body">
+                <div class="article-content">
+                    <p>只懂JS是不够的，前端开发人员必须知道如何提高浏览器端性能。本文记录<a class="douban_book" href="http://book.douban.com/subject/3132277/" name="3132277" target="_blank">《高性能网站建设指南》</a>的若干技术要点。</p>
 <a id="more"></a>
 <p>###用到的HTTP基础知识<br>HTTP是一种客户端/服务器协议，由请求和响应构成。浏览器向一个特定的URL发送HTTP请求，URL对应的宿主服务器发回HTTP响应。和很多Internet服务一样，该协议使用简单的纯文本格式。请求的类型有GET、POST、HEAD、PUT、DELETE、OPTIONS和TRACE。最常见的是GET请求。</p>
 <p>###规则1：减少HTTP请求<br>####图片地图<br>####CSS Sprites<br>最大优点——通过合并图片减少HTTP请求。次要优点——合并后的图片比分离的图片总尺寸要小。如果需要在页面中为背景、按钮、导航栏、链接等提供大量图片，此技术绝对是一种优秀的解决方案——干净的标签、很少的图片和很短的响应时间。<br>####内联图片<br>####合并脚本和样式表<br>前端工程师必须选择是对JavaScript和CSS进行“内联”还是将其放在外部的脚本和样式表文件中。一般来说，使用外部脚本和样式表对性能更有利。然而，如果遵循软件工程师所推崇的方式和模块化的原则将代码分开放倒多个小文件中，会降低性能，因为每个文件都会导致一个额外的HTTP请求。</p>
@@ -250,6 +249,9 @@ var _hmt = _hmt || [];
 <p>##总结<br>推荐度：★★★★★</p>
 <p>大部分技术指导如今已基本成为前端开发的惯例。而书中列举的大部分网站例子，都是2007年及之前的，此书一出，这些网站应该都统统不再具有书里所描绘的前端性能问题了。这本书是读其续作之前应该大致看一遍的。相信读完续作，也可以体会到互联网发展的变迁。</p>
 
+                </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -259,7 +261,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2013/11/29/reading-notes-on-book-high-performance-web-sites/" data-id="cmrhecne9004wpwle2crmga9z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2013/11/29/reading-notes-on-book-high-performance-web-sites/" data-id="cmuhvvova004zi1le5p0zeszp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

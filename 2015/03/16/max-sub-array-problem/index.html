@@ -190,11 +190,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%9AKadane%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">线性复杂度的算法：Kadane算法</span></a></li></ol>
-            </div>
-            <p>最大子数组问题仅对存在负数的数组才有意义。</p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <p>最大子数组问题仅对存在负数的数组才有意义。</p>
 <p>这里根据《算法导论（第三版）》第四章的4.1节的练习题 4.1-5进行拓展研究。用JavaScript实现最大子数组的查找。</p>
 <a id="more"></a>
 
@@ -204,6 +203,14 @@ var _hmt = _hmt || [];
 <h2 id="线性复杂度的算法：Kadane算法"><a href="#线性复杂度的算法：Kadane算法" class="headerlink" title="线性复杂度的算法：Kadane算法"></a>线性复杂度的算法：Kadane算法</h2><p>这个问题用动态规划的方法来解决会更有效，而不是分治策略。例如下面的Kadane算法。</p>
 <p>算法的关键在于：遍历、累加的过程中，曾经出现的最大子数组是会被记录下来的。重置下标时，只是为了寻找“潜在”的下一个最大子数组。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/* Kadane算法</span><br><span class="line"> * 又被称为扫描法</span><br><span class="line"> * 该算法用到了一个启发式规则：如果前面一段连续子数组的和小于0，那么就丢弃它。</span><br><span class="line"> */</span><br><span class="line">function Kadane(A)&#123;</span><br><span class="line">    var max = A[0],</span><br><span class="line">    sum = 0,</span><br><span class="line">    sum_low = 0, sum_high = 0, /* 这两个值保存了当前累计计算的、和非负的子数组的下标起始值 */</span><br><span class="line">    max_low = 0, max_high = 0;</span><br><span class="line"></span><br><span class="line">    for(var i = 0; i&lt;A.length; i++)&#123;</span><br><span class="line">        if(sum &gt;= 0)&#123;</span><br><span class="line">            sum += A[i];</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            sum = A[i];</span><br><span class="line">            sum_low = i;</span><br><span class="line">            sum_high = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(sum &gt; max)&#123;</span><br><span class="line">            max_low = sum_low;</span><br><span class="line">            max_high = sum_high;</span><br><span class="line">            max = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        maxSum: max,</span><br><span class="line">        low: max_low,</span><br><span class="line">        high: max_high</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(Kadane(A));</span><br></pre></td></tr></table></figure>
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%9AKadane%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">线性复杂度的算法：Kadane算法</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -213,7 +220,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2015/03/16/max-sub-array-problem/" data-id="cmrhecnej008jpwle6umhgtcp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2015/03/16/max-sub-array-problem/" data-id="cmuhvvovh008oi1le00gqhdnb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

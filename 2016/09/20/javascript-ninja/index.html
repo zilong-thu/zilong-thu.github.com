@@ -183,11 +183,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%87%BD%E6%95%B0%E6%98%AF%E6%A0%B9%E5%9F%BA"><span class="toc-number">1.</span> <span class="toc-text">第3章 函数是根基</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E6%8C%A5%E8%88%9E%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">第4章 挥舞函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">4.4 函数重载方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-%E9%97%AD%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">第5章 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC8%E7%AB%A0-%E9%A9%AF%E6%9C%8D%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">第8章 驯服线程和定时器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%E5%BC%80%E5%8F%91%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AD%96%E7%95%A5"><span class="toc-number">5.</span> <span class="toc-text">第 11 章  开发跨浏览器策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E6%B4%9E%E6%82%89%E7%89%B9%E6%80%A7%E3%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%A0%B7%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">第 12 章 洞悉特性、属性和样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%AE%A1%E7%AE%97%E6%A0%B7%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">获取计算样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E5%BC%95%E6%93%8E"><span class="toc-number">7.</span> <span class="toc-text">第 15 章 CSS 选择器引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#15-1-W3C-Selectors-API"><span class="toc-number">7.1.</span> <span class="toc-text">15.1 W3C Selectors API</span></a></li></ol></li></ol>
-            </div>
-            <img src="/images/2016/09/s28313380.jpg" style="width: 180px;" alt="《JavaScript忍者秘籍》封面">
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <img src="/images/2016/09/s28313380.jpg" style="width: 180px;" alt="《JavaScript忍者秘籍》封面">
 
 <p>书名《JavaScript忍者秘籍》，作者呢是大名鼎鼎的 jQuery 的创作者。这本书里介绍了各种“忍者级”JS用法，收益颇丰。书中的许多示例代码体现了作者在设计 jQuery 时的编程思想，非常有价值。</p>
 <a id="more"></a>
@@ -258,6 +257,14 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;test-selector&quot;&gt;</span><br><span class="line">    &lt;strong&gt;strong text&lt;/strong&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div&gt;div&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">var testDiv = document.getElementById(&#x27;test-selector&#x27;);</span><br><span class="line">testDiv.querySelector(&#x27;div strong&#x27;);  // 可以命中那个 strong 元素</span><br></pre></td></tr></table></figure>
 
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%87%BD%E6%95%B0%E6%98%AF%E6%A0%B9%E5%9F%BA"><span class="toc-number">1.</span> <span class="toc-text">第3章 函数是根基</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E6%8C%A5%E8%88%9E%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">第4章 挥舞函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">4.4 函数重载方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0-%E9%97%AD%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">第5章 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC8%E7%AB%A0-%E9%A9%AF%E6%9C%8D%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">第8章 驯服线程和定时器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%E5%BC%80%E5%8F%91%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AD%96%E7%95%A5"><span class="toc-number">5.</span> <span class="toc-text">第 11 章  开发跨浏览器策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E6%B4%9E%E6%82%89%E7%89%B9%E6%80%A7%E3%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%A0%B7%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">第 12 章 洞悉特性、属性和样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%AE%A1%E7%AE%97%E6%A0%B7%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">获取计算样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E5%BC%95%E6%93%8E"><span class="toc-number">7.</span> <span class="toc-text">第 15 章 CSS 选择器引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#15-1-W3C-Selectors-API"><span class="toc-number">7.1.</span> <span class="toc-text">15.1 W3C Selectors API</span></a></li></ol></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -267,7 +274,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2016/09/20/javascript-ninja/" data-id="cmrhecneo00azpwleboa1b0nq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2016/09/20/javascript-ninja/" data-id="cmuhvvovo00b8i1le5pp0gtvo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

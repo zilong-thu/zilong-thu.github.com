@@ -185,11 +185,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">第一步: 初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%9C%A8%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C%E5%8C%85%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">第二步: 在全局注册包名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%9A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96"><span class="toc-number">2.1.</span> <span class="toc-text">第一种：相对路径依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%EF%BC%9A%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">第二种：软链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%8F%91%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">第三步：发包</span></a></li></ol>
-            </div>
-            <p>入门级流程知识。父级知识节点：NodeJS。</p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <p>入门级流程知识。父级知识节点：NodeJS。</p>
 <a id="more"></a>
 
 <h2 id="第一步-初始化项目"><a href="#第一步-初始化项目" class="headerlink" title="第一步: 初始化项目"></a>第一步: 初始化项目</h2><p>包括两部分：</p>
@@ -207,6 +206,14 @@ var _hmt = _hmt || [];
 <h2 id="第三步：发包"><a href="#第三步：发包" class="headerlink" title="第三步：发包"></a>第三步：发包</h2><p>开发、测试中也可以发包，这时候一般不发布语义化的版本号，而是使用诸如 <code>1.1.1-0</code>、<code>1.1.1-alpha</code>、<code>1.1.1-SNAPSHOT</code> 这样的版本号。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先确保自己有 npm 或私有镜像（例如美团的 mnpm）的账号，没有的话需要通过 npm adduser 来注册</span></span><br><span class="line"><span class="comment"># 参考 [npm-adduser | npm docs](https://docs.npmjs.com/cli-commands/adduser.html)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后登录</span></span><br><span class="line">$ npm login</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布</span></span><br><span class="line">$ npm publish</span><br></pre></td></tr></table></figure>
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">第一步: 初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%9C%A8%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C%E5%8C%85%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">第二步: 在全局注册包名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%9A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96"><span class="toc-number">2.1.</span> <span class="toc-text">第一种：相对路径依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%EF%BC%9A%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">第二种：软链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%8F%91%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">第三步：发包</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -216,7 +223,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2020/04/17/how-to-write-a-npm-package/" data-id="cmrhecnez00gbpwleci08amzv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2020/04/17/how-to-write-a-npm-package/" data-id="cmuhvvovx00gci1le5p4r6c60" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

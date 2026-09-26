@@ -190,11 +190,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%90%8D%E5%90%AB%E4%B8%AD%E6%96%87%E8%80%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E4%B8%BA%E2%80%9C%E4%B9%B1%E7%A0%81%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">下载文件名含中文而浏览器解析为“乱码”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E5%A4%B4%E9%83%A8%E5%BF%85%E9%A1%BB%E6%98%AF-ASCII-%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">HTTP 头部必须是 ASCII 字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%85%B3%E4%BA%8E%E4%BD%95%E6%97%B6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C-URI-%E7%BC%96%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">附：关于何时需要进行 URI 编码</span></a></li></ol>
-            </div>
-            <p>简单记录一下工作中遇到的两个与HTTP&amp;中文字符相关的问题及解决方案。</p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <p>简单记录一下工作中遇到的两个与HTTP&amp;中文字符相关的问题及解决方案。</p>
 <p>参考资料[1]总结得非常细致。本文再把相关的 RFC 协议原文贴过来，做笔记用。</p>
 <a id="more"></a>
 
@@ -243,6 +242,14 @@ var _hmt = _hmt || [];
 <p>Because the percent (“%”) character serves as the indicator for<br>percent-encoded octets, it must be percent-encoded as “%25” for that<br>octet to be used as data within a URI.  Implementations must not<br>percent-encode or decode the same string more than once, as decoding<br>an already decoded string might lead to misinterpreting a percent<br>data octet as the beginning of a percent-encoding, or vice versa in<br>the case of percent-encoding an already percent-encoded string.</p>
 </blockquote>
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%90%8D%E5%90%AB%E4%B8%AD%E6%96%87%E8%80%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E4%B8%BA%E2%80%9C%E4%B9%B1%E7%A0%81%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">下载文件名含中文而浏览器解析为“乱码”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E5%A4%B4%E9%83%A8%E5%BF%85%E9%A1%BB%E6%98%AF-ASCII-%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">HTTP 头部必须是 ASCII 字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%85%B3%E4%BA%8E%E4%BD%95%E6%97%B6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C-URI-%E7%BC%96%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">附：关于何时需要进行 URI 编码</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -252,7 +259,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2016/12/07/http-charset/" data-id="cmrhecnep00b7pwle1bin6hjd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2016/12/07/http-charset/" data-id="cmuhvvovp00bei1lebj44hrca" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

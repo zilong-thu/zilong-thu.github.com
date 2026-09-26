@@ -61,4 +61,50 @@
         });
     }
 
+    // TOC scroll spy: highlight the heading currently being read
+    var $toc = $('#toc');
+    if ($toc.length) {
+        var tocItems = $toc.find('.toc-link').map(function () {
+            var target = document.getElementById(decodeURIComponent(this.hash.slice(1)));
+            return target ? { link: $(this), target: target } : null;
+        }).get();
+        var $activeLink = null;
+        var ticking = false;
+
+        var updateActiveToc = function () {
+            ticking = false;
+            var current = null;
+            for (var i = 0; i < tocItems.length; i++) {
+                // A heading counts as current once it passes the top quarter of the viewport
+                if (tocItems[i].target.getBoundingClientRect().top <= window.innerHeight / 4) {
+                    current = tocItems[i];
+                } else {
+                    break;
+                }
+            }
+            var $link = current ? current.link : null;
+            if ($link && $activeLink && $link[0] === $activeLink[0]) return;
+            if ($activeLink) $activeLink.removeClass('active');
+            $activeLink = $link;
+            if (!$link) return;
+            $link.addClass('active');
+
+            // Keep the active item visible when the TOC itself scrolls
+            var tocEl = $toc[0];
+            // #toc is positioned, so it is the offsetParent of its links
+            var linkTop = $link[0].offsetTop;
+            if (linkTop < tocEl.scrollTop || linkTop > tocEl.scrollTop + tocEl.clientHeight - 30) {
+                tocEl.scrollTop = linkTop - tocEl.clientHeight / 2;
+            }
+        };
+
+        $(window).on('scroll resize', function () {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(updateActiveToc);
+            }
+        });
+        updateActiveToc();
+    }
+
 })(jQuery);

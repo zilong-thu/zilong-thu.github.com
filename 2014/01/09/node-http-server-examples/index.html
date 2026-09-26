@@ -184,16 +184,18 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                
-            </div>
-            <p>###参考资料<br><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章</p>
+            
+            <div class="article-body">
+                <div class="article-content">
+                    <p>###参考资料<br><a href="http://book.douban.com/subject/23780706/" class="douban_book" name="23780706" target="_blank">《Node.js入门经典》</a>第5章</p>
 <p>###1. 最简单的HTTP服务器</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>:<span class="string">&#x27;text/plain&#x27;</span>&#125;);</span><br><span class="line">    res.end(<span class="string">&#x27;Hello, I\&#x27;m an HTTP server.&#x27;</span>);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Server running at http://127.0.0.1:3000&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>###2. 路由控制的HTTP服务器</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>),</span><br><span class="line">    url  = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">    <span class="keyword">if</span> (pathname ===<span class="string">&#x27;/&#x27;</span>)&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>:<span class="string">&#x27;text/plain&#x27;</span>&#125;);</span><br><span class="line">        res.end(<span class="string">&#x27;Hello, I\&#x27;m an HTTP server.&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">&#x27;/about&#x27;</span>)&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(<span class="string">&#x27;About us\n&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pathname === <span class="string">&#x27;/redirect&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// 重定向</span></span><br><span class="line">        res.writeHead(<span class="number">302</span>, &#123;<span class="string">&#x27;Location&#x27;</span>:<span class="string">&#x27;/&#x27;</span>&#125;);</span><br><span class="line">        res.end();</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">404</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>:<span class="string">&#x27;text/plain&#x27;</span>&#125;);</span><br><span class="line">        res.end(<span class="string">&#x27;Page not found\n&#x27;</span>);</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;).listen(<span class="number">3000</span>,<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Server running at http://127.0.0.1:3000&#x27;</span>);</span><br></pre></td></tr></table></figure>
+                </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -203,7 +205,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2014/01/09/node-http-server-examples/" data-id="cmrhecned006epwle6m3h8z2a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2014/01/09/node-http-server-examples/" data-id="cmuhvvovd006hi1le1ebr62md" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

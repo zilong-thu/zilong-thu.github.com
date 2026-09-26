@@ -190,11 +190,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">写在前头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%BA%A7%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">入门级命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">目录与文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text">移动文件、目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%8C%E6%95%B4%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">查看当前完整的工作目录路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E4%BD%93%E7%A7%AF"><span class="toc-number">3.3.</span> <span class="toc-text">查看文件、目录体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%9E%E9%99%85%E8%B7%AF%E5%BE%84"><span class="toc-number">3.4.</span> <span class="toc-text">查看某个程序的实际路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">4.</span> <span class="toc-text">vi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">压缩文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">6.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">7.</span> <span class="toc-text">系统资源与监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">网络操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lsof%E5%91%BD%E4%BB%A4"><span class="toc-number">9.1.</span> <span class="toc-text">lsof命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">10.</span> <span class="toc-text">环境</span></a></li></ol>
-            </div>
-            <h2 id="写在前头"><a href="#写在前头" class="headerlink" title="写在前头"></a>写在前头</h2><p><strong>Linux里，所有程序或系统装置都是文件</strong></p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <h2 id="写在前头"><a href="#写在前头" class="headerlink" title="写在前头"></a>写在前头</h2><p><strong>Linux里，所有程序或系统装置都是文件</strong></p>
 <a id="more"></a>
 
 <h2 id="入门级命令"><a href="#入门级命令" class="headerlink" title="入门级命令"></a>入门级命令</h2><p><code>ls -a</code>  查看所有文件，包括隐藏的文件</p>
@@ -243,6 +242,14 @@ var _hmt = _hmt || [];
 <p><code>-i</code> 参数是用于过滤打开的文件的 <code>Internet address</code> 匹配其后面数字的。如果使用了 <code>-i4</code>，则只过滤 IPV4 的文件；<code>-i6</code> 则只查找 IPV6 的文件。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><code>set</code> 可以查看当前会话中的所有环境信息</p>
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">写在前头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%BA%A7%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">入门级命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">目录与文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95"><span class="toc-number">3.1.</span> <span class="toc-text">移动文件、目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%8C%E6%95%B4%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">查看当前完整的工作目录路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E4%BD%93%E7%A7%AF"><span class="toc-number">3.3.</span> <span class="toc-text">查看文件、目录体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%9E%E9%99%85%E8%B7%AF%E5%BE%84"><span class="toc-number">3.4.</span> <span class="toc-text">查看某个程序的实际路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi"><span class="toc-number">4.</span> <span class="toc-text">vi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">压缩文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">6.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">7.</span> <span class="toc-text">系统资源与监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C"><span class="toc-number">9.</span> <span class="toc-text">网络操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lsof%E5%91%BD%E4%BB%A4"><span class="toc-number">9.1.</span> <span class="toc-text">lsof命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">10.</span> <span class="toc-text">环境</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -252,7 +259,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2015/06/11/linux-command-memo/" data-id="cmrhecnek0098pwlegfnqd74n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2015/06/11/linux-command-memo/" data-id="cmuhvvovj009fi1lega1wamqq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

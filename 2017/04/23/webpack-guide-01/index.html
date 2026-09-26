@@ -201,11 +201,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">webpack 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87"><span class="toc-number">2.</span> <span class="toc-text">源码目录组织</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">B 端项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.</span> <span class="toc-text">单页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">多页面</span></a></li></ol>
-            </div>
-            <h2 id="webpack-基本概念"><a href="#webpack-基本概念" class="headerlink" title="webpack 基本概念"></a>webpack 基本概念</h2><p><a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a> 是目前非常流行的前端资源（JS/CSS/IMG/…）打包解决方案。它默认按照 ES2015 定义的模块机制来查找、打包文件，即对 <code>import</code>、<code>export</code> 声明进行相应的模块封装，而对于其他代码，则不做任何改动。如果想使用其他的 ES6 特性，现阶段需要借助于 <a target="_blank" rel="noopener" href="https://babeljs.io/">Babel</a> 这样的编译工具。</p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <h2 id="webpack-基本概念"><a href="#webpack-基本概念" class="headerlink" title="webpack 基本概念"></a>webpack 基本概念</h2><p><a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a> 是目前非常流行的前端资源（JS/CSS/IMG/…）打包解决方案。它默认按照 ES2015 定义的模块机制来查找、打包文件，即对 <code>import</code>、<code>export</code> 声明进行相应的模块封装，而对于其他代码，则不做任何改动。如果想使用其他的 ES6 特性，现阶段需要借助于 <a target="_blank" rel="noopener" href="https://babeljs.io/">Babel</a> 这样的编译工具。</p>
 <a id="more"></a>
 
 <h2 id="源码目录组织"><a href="#源码目录组织" class="headerlink" title="源码目录组织"></a>源码目录组织</h2><h3 id="B-端项目"><a href="#B-端项目" class="headerlink" title="B 端项目"></a>B 端项目</h3><p>首先，我们以 B 端多页面项目为例，说一下一个合理的前端工程项目的目录结构，怎么组织比较合适——所谓合适，是指代码目录清晰（URL清晰）、可扩展、公有/私有资源区分明确，等等。</p>
@@ -227,6 +226,14 @@ var _hmt = _hmt || [];
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── build</span><br><span class="line">├── client</span><br><span class="line">│   ├── components</span><br><span class="line">│   ├── pages</span><br><span class="line">│   │   ├── explore</span><br><span class="line">│   │   ├── home</span><br><span class="line">│   │   │   ├── index.js</span><br><span class="line">│   │   │   └── style.less</span><br><span class="line">│   │   └── user</span><br><span class="line">│   └── vendor</span><br><span class="line">├── package.json</span><br><span class="line">├── server</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure>
 
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">webpack 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87"><span class="toc-number">2.</span> <span class="toc-text">源码目录组织</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">B 端项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.</span> <span class="toc-text">单页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B5%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">多页面</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -236,7 +243,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2017/04/23/webpack-guide-01/" data-id="cmrhecneq00bzpwledq8pdh6u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2017/04/23/webpack-guide-01/" data-id="cmuhvvovq00c5i1le6zyu8w2b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

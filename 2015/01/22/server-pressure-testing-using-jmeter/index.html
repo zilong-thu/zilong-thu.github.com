@@ -197,11 +197,10 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
         
-            <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Node%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">一个简单的Node服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0HTTP%E8%AF%B7%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">手动添加HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%BB%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">线程组设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试结果</span></a></li></ol>
-            </div>
-            <p>公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。</p>
+            
+            <div class="article-body has-toc">
+                <div class="article-content">
+                    <p>公司的网站项目要做压力测试，目的是了解现在的平台的并发能力。由于没有专业的压力测试工程师，于是我就被顶了上去，摸索了半个多月，搞明白了用apache-jmeter-2.12进行压力测试的流程。本文简记其中的心得体会。</p>
 <p><img src="/images/2015/01/jmeter-logo.jpg" style="float: right; margin-left: 10px;"><a href="http://jmeter.apache.org/" target="_blank">Apache JMeter<sup>TM</sup></a>是一个纯Java写的开源程序，维护得还不错。其最初只是用于测试Web应用程序，不过后来扩展得越来越强大，可以开展多种测试。</p>
 <p>压力测试的目的是对软件进行性能评估。开展压力测试可以帮助发现软件的性能瓶颈所在。</p>
 <a id="more"></a>
@@ -229,6 +228,14 @@ var _hmt = _hmt || [];
 <p>每个请求的平均响应时间</p>
 <img src="/images/2015/01/node-average-res-time.png">
 
+                </div>
+                
+                    <div id="toc" class="toc-article">
+                        <strong class="toc-title">Catalogue</strong>
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84Node%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">一个简单的Node服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0HTTP%E8%AF%B7%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">手动添加HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%BB%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">线程组设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试结果</span></a></li></ol>
+                    </div>
+                
+            </div>
         
         </div>
         <footer class="article-footer">
@@ -238,7 +245,7 @@ var _hmt = _hmt || [];
 
 </div>
 
-    <a data-url="https://zilong-thu.github.io/2015/01/22/server-pressure-testing-using-jmeter/" data-id="cmrhecneh0087pwle7bvj3mtm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://zilong-thu.github.io/2015/01/22/server-pressure-testing-using-jmeter/" data-id="cmuhvvovg0082i1leeemq2asq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
